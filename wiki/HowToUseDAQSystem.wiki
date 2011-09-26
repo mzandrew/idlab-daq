@@ -1,0 +1,38 @@
+#summary How to use the 2011 cosmic / beam test bPID/iTOP data acquisition system
+
+=Introduction=
+
+A thorough description of the electronics and system for 2011 cosmic / beam test is available at [http://www.phys.hawaii.edu/~kurtisn/documentation/bPID_electronics/ bPID electronics documentation].
+
+==Hardware==
+
+===DSP_cPCI===
+
+The DSP_cPCI revB board has 4 multigigabit/s fiber optic transceivers, 3 FPGAs, 4 dual-core digital signal processors (DSPs) and 256MiB of SDRAM per DSP.
+
+==Software==
+
+===kernel driver===
+
+The kernel driver (altix.ko) is loaded at boot time if a DSP_cPCI board is present.
+
+===shared library===
+
+Some parts of the software to deal with data from the DSP_cPCI board are organized into a library (libaltix.so).
+
+===userland programs===
+
+Programs written to interface with the DSP_cPCI board must
+{{{
+#include altix_userland.h
+#include libaltix.h
+}}}
+and get linked with libaltix.so via:
+{{{
+-laltix
+}}}
+as long as libaltix.so is in the library path.
+
+=How to use DAQ system=
+
+(unfinished)
