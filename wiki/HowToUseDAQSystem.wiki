@@ -2,7 +2,7 @@
 
 =introduction=
 
-A thorough description of the electronics and system for 2011 cosmic / beam test is available at [http://www.phys.hawaii.edu/~kurtisn/documentation/bPID_electronics/ bPID electronics documentation].
+A thorough description of the electronics and system for 2011 cosmic / beam test is available here:  [http://code.google.com/p/idlab-scrod/wiki/BelleIIbPIDElectronicsDocumentation Belle II bPID electronics documentation]
 
 ==hardware==
 
