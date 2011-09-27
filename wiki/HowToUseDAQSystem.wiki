@@ -8,7 +8,7 @@ A thorough description of the electronics and system for 2011 cosmic / beam test
 
 ===front-end===
 
-Background information on what the front-end electronics does can be found here:  [http://code.google.com/p/idlab-scrod/wiki/HowToUseFrontEndElectronics how to use front-end electronics].
+Background information on what the front-end electronics do can be found here:  [http://code.google.com/p/idlab-scrod/wiki/HowToUseFrontEndElectronics how to use front-end electronics].
 
 ===DSP_cPCI===
 
