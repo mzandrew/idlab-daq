@@ -1,16 +1,20 @@
 #summary How to use the 2011 cosmic / beam test bPID/iTOP data acquisition system
 
-=Introduction=
+=introduction=
 
 A thorough description of the electronics and system for 2011 cosmic / beam test is available at [http://www.phys.hawaii.edu/~kurtisn/documentation/bPID_electronics/ bPID electronics documentation].
 
-==Hardware==
+==hardware==
+
+===front-end===
+
+Background information on what the front-end electronics does can be found here:  [http://code.google.com/p/idlab-scrod/wiki/HowToUseFrontEndElectronics how to use front-end electronics].
 
 ===DSP_cPCI===
 
 The DSP_cPCI revB board has 4 multigigabit/s fiber optic transceivers, 3 FPGAs, 4 dual-core digital signal processors (DSPs) and 256MiB of SDRAM per DSP.
 
-==Software==
+==software==
 
 ===kernel driver===
 
