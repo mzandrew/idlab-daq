@@ -1,0 +1,668 @@
+#!/usr/bin/perl -w
+# 2011-07 - 2011-10 mza
+
+use strict;
+
+my $verbosity = 3;
+my $subdir = "mypackets";
+my %packet;
+
+# # # # # # # # packet format starts here # # # # # # # # #
+my $number_of_packets_in_a_quarter_event = 132;
+
+my $header = 0x00be11e2;
+my $number_of_words_in_packet = 140;
+my $protocol_freeze_date_string =   20111016;
+my $protocol_freeze_date        = 0x20111016;
+my @valid_packet_types = (0xb01dface, 0x00c0ffee, 0x000ab0de, 0xce11b10c, 0x0000eada, 0x000f00da);
+my $packet_type;
+#$packet_type = 0x00c0ffee; # raw data stream
+$packet_type = 0xb01dface; # commands from back-end to front-end
+#$packet_type = 0x000ab0de; # "housekeeping"
+#$packet_type = 0xce11b10c; # trigger stream
+my $intended_SCROD_revision = 0xa;
+my $intended_SCROD_id = 1;
+my $intended_SCROD = ($intended_SCROD_revision << 16) + $intended_SCROD_id;
+my $footer = 0x62504944;
+
+my $header_index                    =   0;
+my $number_of_words_in_packet_index =   1;
+my $protocol_freeze_date_index      =   2;
+my $packet_type_index               =   3;
+my $event_number_index              =   4;
+my $packet_number_index             =   5;
+
+my $intended_SCROD_index            = 137;
+my $checksum_index                  = 138;
+my $footer_index                    = 139;
+
+sub build_packet {
+	$packet{$header_index}                    = $header;
+	$packet{$number_of_words_in_packet_index} = $number_of_words_in_packet; # packet_size_in_words
+	$packet{$protocol_freeze_date_index}      = $protocol_freeze_date;      # in BCD
+	$packet{$packet_type_index}               = $packet_type;               # one of @valid_packet_types
+	my $j = 1;
+	for (my $i=4; $i<137; $i++) {
+#		$packet{${i}} = 0xa5f0f0a5;
+		$packet{${i}}                         = $j;                         # dummy data
+		$j++;
+	}
+	$packet{$intended_SCROD_index}            = $intended_SCROD;
+	$packet{$checksum_index}                  = 0;                          # placeholder for checksum (calculated below)
+	$packet{$footer_index}                    = $footer;
+	$packet{$checksum_index} = calculate_checksum();
+}
+
+# # # # # # # # packet format ends here # # # # # # # # #
+
+my $info;
+my ($start_meat, $end_meat) = (4, 136); # magic numbers correspond to protocol format above
+my $number_of_quarter_events_read = 0;
+my $current_event_number = 0;
+my $total_errors_for_all_packets = 0;
+my $number_of_quarter_events_unsuccessfully_parsed = 0;
+my $number_of_quarter_events_successfully_parsed = 0;
+
+my @verbosity;
+my ($number_of_packets_successfully_parsed, $number_of_packets_unsuccessfully_parsed);
+my $eof_reached = 0;
+
+use integer; # needed to calculate checksum
+sub calculate_checksum {
+	my $checksum = 0;
+	for (my $i=0; $i<$number_of_words_in_packet; $i++) {
+		next if ($i==$checksum_index);
+		$checksum += $packet{$i};
+	}
+#	$checksum %= 0x100000000; # "non-portable"
+	$checksum &= 0xffffffff;
+#	printf(" 0x%08x", $checksum);
+	return $checksum;
+}
+
+sub calculate_checksum_and_incorporate_into_packet {
+	$packet{$checksum_index} = calculate_checksum();
+}
+
+sub write_word {
+	print OUT pack("L", @_);
+}
+
+sub write_packet {
+	my ($filename) = @_;
+	print "writing to file \"$filename\"...";
+	open(OUT, ">" . $filename) || die;
+	binmode(OUT);
+	for (my $i=0; $i<$number_of_words_in_packet; $i++) {
+		write_word($packet{$i});
+	}
+	close(OUT);
+	print "\n";
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+sub clear_packet {
+	for (my $i=0; $i<$number_of_words_in_packet; $i++) {
+		$packet{$i} = 0;
+	}
+}
+
+sub reset_summary_counters {
+	$number_of_packets_successfully_parsed   = 0;
+	$number_of_packets_unsuccessfully_parsed = 0;
+}
+
+sub print_summary {
+	$verbosity[2] .= "summary of parsed packets:\n";
+	$verbosity[2] .= "\n";
+	my $total_number_of_packets_parsed = $number_of_packets_successfully_parsed + $number_of_packets_unsuccessfully_parsed;
+	$verbosity[2] .= "                     number of packets parsed:  " . $total_number_of_packets_parsed . " (" . $number_of_packets_successfully_parsed . " successfully + " . $number_of_packets_unsuccessfully_parsed
+. " unsuccessfully)\n";
+#	$verbosity[2] .= "        number of packets successfully parsed:  " . $number_of_packets_successfully_parsed   . "\n";
+#	$verbosity[2] .= "      number of packets unsuccessfully parsed:  " . $number_of_packets_unsuccessfully_parsed . "\n";
+#	my $percentage = (1000.0 * $number_of_packets_unsuccessfully_parsed) / ($number_of_packets_unsuccessfully_parsed + $number_of_packets_successfully_parsed + 0.0);
+#	$verbosity[2] .= "        percentage of packets that had errors:  " . sprintf("%0.02f", $percentage) . "\n";
+	$verbosity[2] .= "            number of quarter events read out:  " . $number_of_quarter_events_read . "\n";
+	my $number_of_packets_that_were_part_of_whole_quarter_events = $number_of_quarter_events_read * $number_of_packets_in_a_quarter_event;
+	$verbosity[2] .= "number of packets in that many quarter events:  " . $number_of_packets_that_were_part_of_whole_quarter_events . "\n";
+	my $number_of_extra_packets = $total_number_of_packets_parsed - $number_of_packets_that_were_part_of_whole_quarter_events;
+	$verbosity[2] .= "                      number of extra packets:  " . $number_of_extra_packets . "\n";
+	$verbosity[2] .= "              number of quarter events parsed:  " . $number_of_quarter_events_read . " (" . $number_of_quarter_events_successfully_parsed . " successfully + " . $number_of_quarter_events_unsuccessfully_parsed . " unsuccessfully)\n";
+	if ($verbosity >= 2) {
+		print $verbosity[2];
+		$verbosity[2] = "";
+	}
+}
+
+sub read_N_words {
+	print "\n\nthis function (read_N_words) does not work yet\n\n";
+	exit(10);
+	my ($number_of_words_to_read) = @_;
+	my $data;
+	my $bytes_read = read(IN, $data, 4*$number_of_words_to_read);
+	if ($bytes_read == $number_of_words_to_read) {
+		return unpack("(L)*", $data); # "L" means unsigned 32 bit integers http://perldoc.perl.org/functions/pack.html
+	} else {
+		#print "\n\nERROR:  end of file\n";
+		$verbosity[3] .= "\n\nreached end of file\n\n";
+		#exit(8);
+		$eof_reached = 1;
+		return 0;
+	}
+}
+
+sub read_word {
+	my $data;
+	my $bytes_read = read(IN, $data, 4);
+	if ($bytes_read == 4) {
+		return unpack("L", $data); # "L" means unsigned 32 bit integers http://perldoc.perl.org/functions/pack.html
+	} else {
+		#print "\n\nERROR:  end of file\n";
+		$verbosity[3] .= "\n\nreached end of file\n\n";
+		#exit(7);
+		$eof_reached = 1;
+		return 0;
+	}
+}
+
+sub open_packet_file {
+	my ($filename) = @_;
+	$verbosity[4] = "opening file \"$filename\"...";
+	open(IN, $filename) || die;
+	binmode(IN);
+	$verbosity[4] .= "\n";
+	if ($verbosity >= 4) {
+		print $verbosity[4];
+	}
+}
+
+sub close_packet_file {
+	close(IN);
+}
+
+sub read_single_packet {
+	my ($filename, $desired_packet_number) = @_;
+	open_packet_file($filename);
+	$verbosity[4] = "searching file \"$filename\" for packet corresponding to header #$desired_packet_number...";
+	inner_read_packet($desired_packet_number);
+	close_packet_file();
+	$verbosity[4] .= "\n";
+	if ($verbosity >= 4) {
+		print $verbosity[4];
+	}
+}
+
+sub inner_read_packet {
+	my ($desired_packet_number_relative_to_current_position) = @_;
+	my $maximum_number_of_words_to_search_for_header = 5000;
+	my $current_packet_number = 0;
+	for (my $i=0; $i<$maximum_number_of_words_to_search_for_header; $i++) {
+		$eof_reached = 0;
+		my $a_packet = read_word();
+		if ($a_packet == $header) {
+			if ($i % $number_of_words_in_packet) {
+				$verbosity[3] .= "\nskipped " . $i . " words to find header";
+			}
+			$i = 0;
+			$current_packet_number++;
+			if ($current_packet_number == $desired_packet_number_relative_to_current_position) {
+				clear_packet();
+				$i = $maximum_number_of_words_to_search_for_header; # quit this $i loop after this iteration
+				$packet{0} = $a_packet;
+				for (my $j=1; $j<$number_of_words_in_packet; $j++) {
+					$packet{$j} = read_word();
+				}
+#				my @packet_array = ($a_packet, read_N_words($number_of_words_in_packet-1));
+#				for (my $j=0; $j<$number_of_words_in_packet; $j++) {
+#					if (defined $packet_array[$j]) {
+#						$packet{$j} = $packet_array[$j];
+#					} else {
+#						print "$j\n";
+#						exit(10);
+#					}
+#				}
+			}
+		}
+	}
+#	my $last_read_position = tell(IN);
+#	seek(IN, 0, 2); # go to end of file
+#	my $end_of_file_position = tell(IN);
+#	if ($last_read_position != $end_of_file_position) {
+#		my $expected = $number_of_words_in_packet;
+#		my $got = $end_of_file_position / 4;
+#		print "\n\n";
+#		print "WARNING:  too much data in file!\n";
+#		print "expected $expected words, got $got words\n";
+#	}
+}
+
+sub parse_packet_header {
+	my ($word, $hexword, $errors_for_this_packet) = (0, 0, 0);
+	$info .= "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n";
+	for (my $i=0; $i<$start_meat; $i++) {
+		$word = $packet{$i};
+		$hexword = sprintf("%08x", $word);
+		if ($i == $header_index) {
+			$info .= "\n";
+			$info .= "                         header:  " . $hexword;
+			if ($word != $header) {                    $errors_for_this_packet++; $info .= " <= ERROR"; }
+			$info .= "\n";
+		} elsif ($i == $number_of_words_in_packet_index) {
+			$info .= "      number of words in packet:  " . $hexword;
+			if ($word != $number_of_words_in_packet) { $errors_for_this_packet++; $info .= " <= ERROR"; }
+			$info .= "\n";
+		} elsif ($i == $protocol_freeze_date_index) {
+			$info .= "           protocol freeze date:  " . $hexword;
+			if ($word != $protocol_freeze_date) {      $errors_for_this_packet++; $info .= " <= ERROR"; }
+			$info .= "\n";
+		} elsif ($i == $packet_type_index) {
+			$info .= "                    packet type:  " . $hexword;
+			my $n = 0;
+			foreach my $packet_type (@valid_packet_types) { if ($word == $packet_type) { $n++; } }
+			if ($n==0) {                               $errors_for_this_packet++; $info .= " <= ERROR"; }
+			$info .= "\n";
+		} else {
+		}
+	}
+	return $errors_for_this_packet;
+}
+
+sub parse_packet_meat {
+	my $errors_for_this_packet = 0;
+	if ($packet{$packet_type_index} == 0x0000eada) {
+		#print "found event header packet\n";
+		$errors_for_this_packet += parse_event_header_packet_meat();
+	} elsif ($packet{$packet_type_index} == 0x00c0ffee) {
+		#print "found coffee meat packet\n";
+		$errors_for_this_packet += parse_coffee_packet_meat();
+	} elsif ($packet{$packet_type_index} == 0x000f00da) {
+		#print "found event footer packet\n";
+		$errors_for_this_packet += parse_event_footer_packet_meat();
+	} elsif ($packet{$packet_type_index} == 0xb01dface) {
+		#print "found command packet\n";
+	} elsif ($packet{$packet_type_index} == 0x000ab0de) {
+		#print "found housekeeping packet\n";
+	} elsif ($packet{$packet_type_index} == 0xce11b10c) {
+		#print "found trigger stream / scaler packet\n";
+		$errors_for_this_packet += parse_trigger_stream_scaler_packet_meat();
+#	} elsif ($packet{$packet_type_index} == ) {
+#		print "found \n";
+	} else {
+		$errors_for_this_packet++;
+		print "found unknown packet\n";
+	}
+	return $errors_for_this_packet;
+}
+
+sub parse_event_header_packet_meat {
+	my ($word, $hexword, $errors_for_this_packet) = (0, 0, 0);
+	for (my $i=$start_meat; $i<=$end_meat; $i++) {
+		$word = $packet{$i};
+		$hexword = sprintf("%08x", $word);
+		if ($i == $start_meat) {
+			$info .= "                   event number:  " . $hexword;
+			$current_event_number = $word; # only update this here in an event header packet
+			$info .= "\n";
+		} elsif ($i == $start_meat + 1) {
+			$info .= "                  packet number:  " . $hexword;
+			my ($row, $col, $packet_number, $channel_number, $window_number) = parse_origin_window_packet_number_word($word);
+			#$info .= " (packet_number=$packet_number)";
+			$info .= " (row=$row col=$col packet_number=$packet_number channel=$channel_number window=$window_number)";
+		} else {
+		}
+	}
+	$info .= "\n";
+	return $errors_for_this_packet;
+}
+
+sub parse_event_footer_packet_meat {
+	my ($word, $hexword, $errors_for_this_packet) = (0, 0, 0);
+	for (my $i=$start_meat; $i<=$end_meat; $i++) {
+		$word = $packet{$i};
+		$hexword = sprintf("%08x", $word);
+		if ($i == $start_meat) {
+			$info .= "                   event number:  " . $hexword;
+			if ($current_event_number != $word) { $errors_for_this_packet++; $info .= " <= ERROR (should be " . sprintf("%08x", $current_event_number) . ")"; }
+			$info .= "\n";
+		} elsif ($i == $start_meat + 1) {
+			$info .= "                  packet number:  " . $hexword;
+			my ($row, $col, $packet_number, $channel_number, $window_number) = parse_origin_window_packet_number_word($word);
+			#$info .= " (packet_number=$packet_number)";
+			$info .= " (row=$row col=$col packet_number=$packet_number channel=$channel_number window=$window_number)";
+		} else {
+		}
+	}
+	$info .= "\n";
+	return $errors_for_this_packet;
+}
+
+sub parse_origin_window_packet_number_word {
+	my ($word) = @_;
+	my ($row, $col, $packet_number, $channel_number, $window_number);
+	$row            = ($word & 0x30000000) >> 28;
+	$col            = ($word & 0x03000000) >> 24;
+	$packet_number  = ($word & 0x00ff0000) >> 16;
+	$channel_number = ($word & 0x00007000) >> 12;
+	$window_number  = ($word & 0x000001ff) >>  0;
+	return ($row, $col, $packet_number, $channel_number, $window_number);
+}
+
+#my $packet_number_for_the_previous_packet = 0;
+#$packet_number_for_the_previous_packet = 0;
+sub parse_coffee_packet_meat {
+	my ($word, $hexword, $errors_for_this_packet) = (0, 0, 0);
+	my $last_packet_number;
+	my ($c, $j, $k) = (0, 0, 0);
+	for (my $i=$start_meat; $i<=$end_meat; $i++) {
+#		$errors_for_this_packet++;
+#		$info .= "$i ";
+		$word = $packet{$i};
+		$hexword = sprintf("%08x", $word);
+		if ($i==$event_number_index) {
+			$info .= "                   event number:  " . $hexword;
+			if ($current_event_number != $word) { $errors_for_this_packet++; $info .= " <= ERROR (should be " . sprintf("%08x", $current_event_number) . ")"; }
+			$info .= "\n\n";
+		} elsif ($i==$packet_number_index || $i==$packet_number_index+33 || $i==$packet_number_index+2*33 || $i==$packet_number_index+3*33) {
+			my ($row, $col, $packet_number, $channel_number, $window_number) = parse_origin_window_packet_number_word($word);
+			$info .= " (row=$row col=$col packet_number=$packet_number channel=$channel_number window=$window_number)";
+			if ($i == $packet_number_index) {
+#				$packet_number_for_the_previous_packet = $last_packet_number; # only set this here
+				$last_packet_number = $packet_number; # only set this here
+				$info .= "\n";
+			} else {
+				if ($last_packet_number != $packet_number) { $errors_for_this_packet++; $info .= " <= ERROR"; }
+				$info .= "\n";
+				$c++;
+			}
+		} else {
+			$info .= $hexword;
+			my $k = $i - $start_meat - 1;
+			my $j = $k - $c;
+			$info .= "  ";
+			if ($j%4==0) { $info .= "  "; }
+			if ($j%8==0) { $info .= "\n"; }
+			if ($k==32) { $info .= "\n"; }
+			if ($k==65) { $info .= "\n"; }
+			if ($k==98) { $info .= "\n"; }
+		}
+	}
+	return $errors_for_this_packet;
+}
+
+my $last_trigger_index = $start_meat + 1 + 64;
+my $last_scaler_index  = $last_trigger_index + 64;
+
+sub parse_trigger_stream_scaler_packet_meat {
+	my ($word, $hexword, $errors_for_this_packet) = (0, 0, 0);
+	for (my $i=$start_meat; $i<=$end_meat; $i++) {
+		$word = $packet{$i};
+		$hexword = sprintf("%08x", $word);
+		if ($i == $start_meat) {
+			$info .= "                   event number:  " . $hexword;
+			$info .= "\n";
+		} elsif ($i == $start_meat + 1) {
+			$info .= "                  packet number:  " . $hexword;
+			my ($row, $col, $packet_number, $channel_number, $window_number) = parse_origin_window_packet_number_word($word);
+			$info .= " (row=$row col=$col packet_number=$packet_number channel=$channel_number window=$window_number)";
+			$info .= "\ntrigger stream:\n";
+		} elsif ($i <= $last_trigger_index) {
+			$info .= $hexword . "  ";
+			my $j = $i - $start_meat - 1;
+			if ($j%4==0) { $info .= "  "; }
+			if ($j%8==0) { $info .= "\n"; }
+			if ($i == $last_trigger_index) { $info .= "\nscalers:\n"; }
+		} elsif ($i <= $last_scaler_index) {
+			$info .= $hexword . "  ";
+			my $k = $i - $last_trigger_index;
+			if ($k%4==0) { $info .= "  "; }
+			if ($k%8==0) { $info .= "\n"; }
+		} else {
+#			$info .= "\n";
+#			$info .= $hexword . "  ";
+#			$info .= "barf (reserved word) ";
+		}
+	}
+	$info .= "\n";
+	return $errors_for_this_packet;
+}
+
+sub parse_packet_footer {
+	my ($word, $hexword, $errors_for_this_packet) = (0, 0, 0);
+	for (my $i=$end_meat+1; $i<=139; $i++) {
+		$word = $packet{$i};
+		$hexword = sprintf("%08x", $word);
+		if ($i == $intended_SCROD_index) {
+			$info .= "\n";
+			$info .= "          intended SCROD rev/id:  " . $hexword;
+			$info .= "\n";
+		} elsif ($i == $checksum_index) {  $info .= "    checksum reported in packet:  " . $hexword;
+			my $checksum_from_packet = $word;
+			my $checksum = calculate_checksum();
+			if ($checksum != $checksum_from_packet) {
+				$errors_for_this_packet++;
+#				$info .= "\n";
+				$info .= "\nchecksum calculated from packet:  " . sprintf("%08x", $checksum)             . " <= ERROR";
+#				$info .= "\n    checksum reported in packet:  " . sprintf("%08x", $checksum_from_packet) . " <= ERROR";
+				my $diff = $checksum-$checksum_from_packet;
+				$info .= sprintf(" 0x%08x / 0x%08x", $diff, 0xffffffff ^ $diff);
+			}
+			$info .= "\n";
+		} elsif ($i == $footer_index) {    $info .= "                         footer:  " . $hexword;
+			if ($word != $footer) { $errors_for_this_packet++; $info .= " <= ERROR"; }
+			$info .= "\n";
+		} else {
+		}
+	}
+	return $errors_for_this_packet;
+}
+
+sub new_parse_packet {
+	my $errors_for_this_packet = 0;
+	$info = "";
+	$errors_for_this_packet += parse_packet_header();
+	$errors_for_this_packet += parse_packet_meat();
+	$errors_for_this_packet += parse_packet_footer();
+	if ($errors_for_this_packet) {
+		$total_errors_for_all_packets += $errors_for_this_packet;
+		$number_of_packets_unsuccessfully_parsed++;
+		if ($verbosity >= 3) {
+			print STDERR $info;
+		}
+	} else {
+		$number_of_packets_successfully_parsed++;
+		if ($verbosity >= 5) {
+			print $info;
+		}
+	}
+	return $errors_for_this_packet;
+}
+
+sub read_all_packets {
+	my ($filename) = @_;
+	reset_summary_counters();
+	$eof_reached = 0;
+	open_packet_file($filename);
+	#for (my $i=1; !$eof_reached; $i++) {
+	while (!$eof_reached) {
+		inner_read_packet(1);
+		if ($eof_reached) { last; }
+		parse_packet();
+	}
+	close_packet_file();
+	print_summary();
+}
+
+sub read_multiple_packets {
+	my ($filename, $number_of_packets_to_read) = @_;
+	reset_summary_counters();
+	$eof_reached = 0;
+	open_packet_file($filename);
+	for (my $i=1; $i<=$number_of_packets_to_read; $i++) {
+		inner_read_packet(1);
+		parse_packet();
+		if ($eof_reached) { last; }
+	}
+	close_packet_file();
+	print_summary();
+}
+
+sub read_quarter_event {
+	my ($filename) = @_;
+	reset_summary_counters();
+	$eof_reached = 0;
+	open_packet_file($filename);
+	my $number_of_packets_to_read = $number_of_packets_in_a_quarter_event;
+	for (my $i=1; $i<=$number_of_packets_to_read; $i++) {
+		inner_read_packet(1);
+		new_parse_packet();
+		if ($eof_reached) { last; }
+	}
+	close_packet_file();
+	print_summary();
+}
+
+#my $found_the_start_of_a_new_quarter_event;
+sub read_all_quarter_events {
+	my ($filename) = @_;
+	my $errors_for_this_quarter_event;
+	reset_summary_counters();
+	$eof_reached = 0;
+	open_packet_file($filename);
+	my $number_of_packets_to_read = $number_of_packets_in_a_quarter_event;
+	$number_of_quarter_events_unsuccessfully_parsed = 0;
+	$number_of_quarter_events_successfully_parsed = 0;
+	while (!$eof_reached) {
+		#$found_the_start_of_a_new_quarter_event = 0;
+		$errors_for_this_quarter_event = 0;
+		for (my $i=1; $i<=$number_of_packets_to_read; $i++) {
+			inner_read_packet(1);
+			if ($eof_reached) { print "\n\nreached end of file\n\n"; last; }
+			$errors_for_this_quarter_event += new_parse_packet();
+			if ($i == $number_of_packets_to_read) { $number_of_quarter_events_read++; }
+		}
+		if ($errors_for_this_quarter_event) {
+			$number_of_quarter_events_unsuccessfully_parsed++;
+		} else {
+			$number_of_quarter_events_successfully_parsed++;
+		}
+	}
+	close_packet_file();
+	print_summary();
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if (! -e $subdir) {
+	mkdir($subdir);
+}
+
+#read_single_packet("$subdir/B01DFACE.packet", 1);
+#parse_packet();
+
+#read_single_packet("$subdir/00C0FFEE.packet", 1);
+#parse_packet();
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if (0) {
+
+build_packet();
+write_packet("$subdir/valid.packet");
+my %proper_packet = %packet; # save for later
+read_single_packet("$subdir/valid.packet", 1);
+#parse_packet();
+
+%packet = %proper_packet; # restore to valid packet
+$packet{4} = 0xb01dface;
+calculate_checksum_and_incorporate_into_packet();
+write_packet("$subdir/command-packet-for-flow-control.$protocol_freeze_date_string.packet");
+#parse_packet();
+
+%packet = %proper_packet; # restore to valid packet
+$packet{$header_index} = 0xa5f00f5a;
+calculate_checksum_and_incorporate_into_packet();
+write_packet("$subdir/packet-with-wrong-header.packet");
+#parse_packet();
+
+%packet = %proper_packet; # restore to valid packet
+$packet{$number_of_words_in_packet_index} = 0x00000067;
+calculate_checksum_and_incorporate_into_packet();
+write_packet("$subdir/packet-with-wrong-quoted-number-of-words.too-few.packet");
+#parse_packet();
+
+%packet = %proper_packet; # restore to valid packet
+$packet{$number_of_words_in_packet_index} = 0x00670000;
+calculate_checksum_and_incorporate_into_packet();
+write_packet("$subdir/packet-with-wrong-quoted-number-of-words.too-many.packet");
+#parse_packet();
+
+%packet = %proper_packet; # restore to valid packet
+$packet{$protocol_freeze_date_index} = 0x20100708;
+calculate_checksum_and_incorporate_into_packet();
+write_packet("$subdir/packet-with-wrong-protocol-freeze-date.packet");
+#parse_packet();
+
+%packet = %proper_packet; # restore to valid packet
+$packet{$packet_type_index} = 0x000ab0de;
+#$packet{$packet_type_index} = 0x00c0ffee;
+#$packet{$packet_type_index} = 0xce11b10c;
+#$packet{$packet_type_index} = 0xb01dface;
+calculate_checksum_and_incorporate_into_packet();
+write_packet("$subdir/packet-with-wrong-packet-type.packet");
+#parse_packet();
+
+%packet = %proper_packet; # restore to valid packet
+#$packet{$intended_SCROD_index} = 0x000a0001;
+#$packet{$intended_SCROD_index} = 0x000a0012;
+$packet{$intended_SCROD_index} = 0x000b0001;
+#$packet{$intended_SCROD_index} = 0xfff5fffe;
+calculate_checksum_and_incorporate_into_packet();
+write_packet("$subdir/packet-with-wrong-intended-SCROD.packet");
+#parse_packet();
+
+%packet = %proper_packet; # restore to valid packet
+$packet{$checksum_index} = 0x0f5aa5f0;
+write_packet("$subdir/packet-with-invalid-checksum.packet");
+#parse_packet();
+
+%packet = %proper_packet; # restore to valid packet
+$packet{$footer_index} = 0xa5f00f5a;
+calculate_checksum_and_incorporate_into_packet();
+write_packet("$subdir/packet-with-wrong-footer.packet");
+#parse_packet();
+
+#read_single_packet("$subdir/matt.file", 1);
+#parse_packet();
+
+#read_single_packet("$subdir/mza.file", 1);
+#parse_packet();
+
+#read_single_packet("$subdir/event_header.packet", 1);
+#parse_packet();
+
+}
+
+#read_all_packets("logdir/card1.channel1.rawdata");
+#read_all_packets("logdir/card2.channel0.rawdata");
+#read_all_packets("logdir/card2.channel1.rawdata");
+#read_all_packets("logdir/card2.channel2.rawdata");
+#read_all_packets("logdir/card2.channel3.rawdata");
+#read_multiple_packets("logdir/card1.channel1.rawdata", 3000);
+#read_multiple_packets("logdir/2011-09-11.card1.channel1.with-errors.rawdata", 3000);
+
+#parse_coffee_packet();
+#read_single_packet("logdir/card1.channel2.rawdata", 1);
+#new_parse_packet();
+#read_single_packet("logdir/card1.channel2.rawdata", 1);
+
+#$verbosity = 5;
+
+#read_quarter_event("logdir/card1.channel2.rawdata.1eventwithgoodcoffeedata");
+#read_quarter_event("logdir/card1.channel2.rawdata.2eventswithgoodcoffeedataand2cellblockpackets");
+#read_quarter_event("logdir/card1.channel2.rawdata");
+
+read_all_quarter_events("logdir/card1.channel2.rawdata");
+#read_all_quarter_events("logdir/card1.channel2.rawdata.4eventswith24extrabytes");
+#read_all_quarter_events("logdir/card1.channel2.rawdata.1000-quarter-events");
+
