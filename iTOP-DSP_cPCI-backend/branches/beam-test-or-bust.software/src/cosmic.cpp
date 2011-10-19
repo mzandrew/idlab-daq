@@ -453,9 +453,9 @@ int main(int argc, char** argv) {
 //	usleep(500000); // wait for FPGA to reset everything and bring fiber link up again
 	send_command_packet_to_all_enabled_channels(0xe0000000, 0x00000008); // set event number
 	usleep(1000);
-//	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
-	setup_default_DAC_settings(); // just initialize the array locally
-	send_DAC_setting_command();
+	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
+//	setup_default_DAC_settings(); // just initialize the array locally
+//	send_DAC_setting_command();
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x00000001); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000001ff); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000003ff); // set all DACs to given argument
