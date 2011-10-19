@@ -1,0 +1,52 @@
+#!/bin/bash -e
+
+declare filename_prefix filename channels
+declare -i card
+declare total_readout_size_in_bytes single_chunk_size_in_bytes
+
+declare channels # "0123" for all four or "2" just for channel two, etc
+channels="2"
+card=1
+#declare total_readout_size_in_bytes="600M"
+declare total_readout_size_in_bytes="1450M"
+#declare total_readout_size_in_bytes="60G"
+declare single_chunk_size_in_bytes="72800"
+filename_prefix="logdir/card${card}.channel"
+#filename_prefix="/tmp/ramdisk/card${card}.channel"
+
+for i in $(seq 0 3); do
+	filename="${filename_prefix}${i}.rawdata"
+	if [ -e "${filename}" ]; then
+		ls -lart "${filename}"
+		rm -f "${filename}"
+	fi
+done
+
+sync
+
+# # # # # # actual readout starts here # # # # # #
+
+time (./bin/cosmic \
+	${card} \
+	-v \
+	-f \
+	-c ${channels} \
+	-t ${total_readout_size_in_bytes} \
+	-b ${single_chunk_size_in_bytes} \
+	-p ${filename_prefix} \
+	; sync;)
+
+# # # # # # actual readout ends here # # # # # # #
+
+for i in $(seq 0 3); do
+	filename="${filename_prefix}${i}.rawdata"
+	filename_analysis="${filename_prefix}${i}.analysis"
+	if [ -e "${filename}" ]; then
+		ls -lart "${filename}"
+		if [ 1 -eq 0 ]; then
+			./analyze_packet "${filename}" > "${filename_analysis}"
+		fi
+	fi
+done
+
+
