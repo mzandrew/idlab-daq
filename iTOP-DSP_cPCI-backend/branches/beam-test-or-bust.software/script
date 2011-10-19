@@ -5,8 +5,8 @@ declare -i card
 declare total_readout_size_in_bytes single_chunk_size_in_bytes
 
 declare channels # "0123" for all four or "2" just for channel two, etc
-channels="2"
-card=1
+channels="1"
+card=2
 #declare total_readout_size_in_bytes="600M"
 declare total_readout_size_in_bytes="1450M"
 #declare total_readout_size_in_bytes="60G"
