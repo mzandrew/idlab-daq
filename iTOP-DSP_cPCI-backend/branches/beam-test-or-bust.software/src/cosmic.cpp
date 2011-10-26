@@ -451,21 +451,40 @@ int main(int argc, char** argv) {
 
 //	send_command_packet_to_all_enabled_channels(0x33333333, 0x00000000); // global reset
 //	usleep(500000); // wait for FPGA to reset everything and bring fiber link up again
-	send_command_packet_to_all_enabled_channels(0xe0000000, 0x00000008); // set event number
-	usleep(1000);
-	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
+//	send_command_packet_to_all_enabled_channels(0xe0000000, 0x00000008); // set event number
+//	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
+//	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x00000000); // set trigger thresholds for all channels
+//	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x0000077b); // set trigger thresholds for all channels
+//	send_command_packet_to_all_enabled_channels(0x5555b1a5, 0x00000000); // set Vbias values for all channels
+//	send_command_packet_to_all_enabled_channels(0x5555b1a5, 0x0000044c); // set Vbias values for all channels
+//	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
 //	setup_default_DAC_settings(); // just initialize the array locally
 //	send_DAC_setting_command();
-//	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x00000001); // set all DACs to given argument
+//	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x00000000); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000001ff); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000003ff); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000005ff); // set all DACs to given argument
 
+//	send_command_packet_to_all_enabled_channels(0x000001ff, 0x00000000); // set start window
+//	send_command_packet_to_all_enabled_channels(0x000101ff, 0x00000003); // set end window
+//	usleep(10000);
+//	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+//	usleep(10000);
+//	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+
+//	usleep(10000);
+//	send_command_packet_to_all_enabled_channels(0x000001ff, 0x00000010); // set start window
+//	send_command_packet_to_all_enabled_channels(0x000101ff, 0x00000013); // set end window
+//	usleep(10000);
+//	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+//	usleep(10000);
+//	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+
 //	while (1) {
 //	for (unsigned long int i=0; i<1000000; i++) {
 //	for (unsigned long int i=0; i<26000; i++) {
-	for (unsigned long int i=0; i<1000; i++) {
-//	for (unsigned long int i=0; i<100; i++) {
+//	for (unsigned long int i=0; i<1000; i++) {
+	for (unsigned long int i=0; i<100; i++) {
 		event_number++;
 		read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 		reset_trigger_flip_flop();
@@ -491,6 +510,7 @@ int main(int argc, char** argv) {
 					}
 				}
 			}
+//			send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
 		}
 //		printf("\n");
 		usleep(NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS);
