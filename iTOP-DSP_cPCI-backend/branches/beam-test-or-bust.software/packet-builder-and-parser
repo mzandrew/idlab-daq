@@ -3,7 +3,7 @@
 
 use strict;
 
-my $verbosity = 3;
+my $verbosity = 5;
 my $subdir = "mypackets";
 my %packet;
 
