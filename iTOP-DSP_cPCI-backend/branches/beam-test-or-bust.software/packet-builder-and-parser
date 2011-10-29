@@ -6,6 +6,7 @@ use strict;
 my $verbosity = 5;
 my $subdir = "mypackets";
 my %packet;
+my ($card, $channels, $channel);
 
 # # # # # # # # packet format starts here # # # # # # # # #
 my $number_of_packets_in_a_quarter_event = 132;
@@ -169,7 +170,7 @@ sub read_word {
 sub open_packet_file {
 	my ($filename) = @_;
 	$verbosity[4] = "opening file \"$filename\"...";
-	open(IN, $filename) || die;
+	open(IN, $filename) || die "can't open file \"$filename\"";
 	binmode(IN);
 	$verbosity[4] .= "\n";
 	if ($verbosity >= 4) {
@@ -528,7 +529,7 @@ sub read_all_quarter_events {
 	my $errors_for_this_quarter_event;
 	reset_summary_counters();
 	$eof_reached = 0;
-	open_packet_file($filename);
+	open_packet_file($filename) || die "cannot open file \"$filename\"";
 	my $number_of_packets_to_read = $number_of_packets_in_a_quarter_event;
 	$number_of_quarter_events_unsuccessfully_parsed = 0;
 	$number_of_quarter_events_successfully_parsed = 0;
@@ -551,118 +552,38 @@ sub read_all_quarter_events {
 	print_summary();
 }
 
+sub read_config_file {
+	my $config_file = ".config";
+	open(CONFIGFILE, $config_file);
+	while (my $line = <CONFIGFILE>) {
+		chomp($line);
+		$line =~ s/#.*//;
+		next if ($line =~ /^$/);
+#		print "$line\n";
+		if ($line =~ m/card=([0-9]+)/) {
+			print "using card #$1\n";
+			$card = $1;
+		}
+		if ($line =~ m/channels="([0-9]+)"/) {
+			print "using channels $1\n";
+			$channels = $1;
+		}
+	}
+	$channel = $channels;
+	$channel =~ s/([0-9])+/$1/;
+	close(CONFIGFILE);
+}
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if (! -e $subdir) {
 	mkdir($subdir);
 }
 
-#read_single_packet("$subdir/B01DFACE.packet", 1);
-#parse_packet();
-
-#read_single_packet("$subdir/00C0FFEE.packet", 1);
-#parse_packet();
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if (0) {
-
-build_packet();
-write_packet("$subdir/valid.packet");
-my %proper_packet = %packet; # save for later
-read_single_packet("$subdir/valid.packet", 1);
-#parse_packet();
-
-%packet = %proper_packet; # restore to valid packet
-$packet{4} = 0xb01dface;
-calculate_checksum_and_incorporate_into_packet();
-write_packet("$subdir/command-packet-for-flow-control.$protocol_freeze_date_string.packet");
-#parse_packet();
-
-%packet = %proper_packet; # restore to valid packet
-$packet{$header_index} = 0xa5f00f5a;
-calculate_checksum_and_incorporate_into_packet();
-write_packet("$subdir/packet-with-wrong-header.packet");
-#parse_packet();
-
-%packet = %proper_packet; # restore to valid packet
-$packet{$number_of_words_in_packet_index} = 0x00000067;
-calculate_checksum_and_incorporate_into_packet();
-write_packet("$subdir/packet-with-wrong-quoted-number-of-words.too-few.packet");
-#parse_packet();
-
-%packet = %proper_packet; # restore to valid packet
-$packet{$number_of_words_in_packet_index} = 0x00670000;
-calculate_checksum_and_incorporate_into_packet();
-write_packet("$subdir/packet-with-wrong-quoted-number-of-words.too-many.packet");
-#parse_packet();
-
-%packet = %proper_packet; # restore to valid packet
-$packet{$protocol_freeze_date_index} = 0x20100708;
-calculate_checksum_and_incorporate_into_packet();
-write_packet("$subdir/packet-with-wrong-protocol-freeze-date.packet");
-#parse_packet();
-
-%packet = %proper_packet; # restore to valid packet
-$packet{$packet_type_index} = 0x000ab0de;
-#$packet{$packet_type_index} = 0x00c0ffee;
-#$packet{$packet_type_index} = 0xce11b10c;
-#$packet{$packet_type_index} = 0xb01dface;
-calculate_checksum_and_incorporate_into_packet();
-write_packet("$subdir/packet-with-wrong-packet-type.packet");
-#parse_packet();
-
-%packet = %proper_packet; # restore to valid packet
-#$packet{$intended_SCROD_index} = 0x000a0001;
-#$packet{$intended_SCROD_index} = 0x000a0012;
-$packet{$intended_SCROD_index} = 0x000b0001;
-#$packet{$intended_SCROD_index} = 0xfff5fffe;
-calculate_checksum_and_incorporate_into_packet();
-write_packet("$subdir/packet-with-wrong-intended-SCROD.packet");
-#parse_packet();
-
-%packet = %proper_packet; # restore to valid packet
-$packet{$checksum_index} = 0x0f5aa5f0;
-write_packet("$subdir/packet-with-invalid-checksum.packet");
-#parse_packet();
-
-%packet = %proper_packet; # restore to valid packet
-$packet{$footer_index} = 0xa5f00f5a;
-calculate_checksum_and_incorporate_into_packet();
-write_packet("$subdir/packet-with-wrong-footer.packet");
-#parse_packet();
-
-#read_single_packet("$subdir/matt.file", 1);
-#parse_packet();
-
-#read_single_packet("$subdir/mza.file", 1);
-#parse_packet();
-
-#read_single_packet("$subdir/event_header.packet", 1);
-#parse_packet();
-
-}
-
-#read_all_packets("logdir/card1.channel1.rawdata");
-#read_all_packets("logdir/card2.channel0.rawdata");
-#read_all_packets("logdir/card2.channel1.rawdata");
-#read_all_packets("logdir/card2.channel2.rawdata");
-#read_all_packets("logdir/card2.channel3.rawdata");
-#read_multiple_packets("logdir/card1.channel1.rawdata", 3000);
-#read_multiple_packets("logdir/2011-09-11.card1.channel1.with-errors.rawdata", 3000);
-
-#parse_coffee_packet();
-#read_single_packet("logdir/card1.channel2.rawdata", 1);
-#new_parse_packet();
-#read_single_packet("logdir/card1.channel2.rawdata", 1);
-
-#$verbosity = 5;
-
-#read_quarter_event("logdir/card1.channel2.rawdata.1eventwithgoodcoffeedata");
-#read_quarter_event("logdir/card1.channel2.rawdata.2eventswithgoodcoffeedataand2cellblockpackets");
-#read_quarter_event("logdir/card1.channel2.rawdata");
-
-read_all_quarter_events("logdir/card1.channel2.rawdata");
-#read_all_quarter_events("logdir/card1.channel2.rawdata.4eventswith24extrabytes");
-#read_all_quarter_events("logdir/card1.channel2.rawdata.1000-quarter-events");
+read_config_file();
+my $filename = "logdir/card" . $card . ".channel" . $channel . ".rawdata";
+print "reading from file \"$filename\" for data from channel $channel from card $card...\n";
+read_all_quarter_events($filename);
 
