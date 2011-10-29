@@ -1,12 +1,28 @@
 #!/bin/bash -e
 
 declare filename_prefix filename channels
-declare -i card
 declare total_readout_size_in_bytes single_chunk_size_in_bytes
 
+declare -i card
 declare channels # "0123" for all four or "2" just for channel two, etc
-channels="1"
-card=2
+declare config_file=".config"
+if [ -e ${config_file} ]; then
+	. ${config_file}
+else
+	(
+	echo '# config file for IDLAB fiber optic readout software'
+	echo ''
+	echo '# DSP_cPCI card id number:'
+	echo 'card=2'
+	echo ''
+	echo '# which channels are enabled:'
+	echo '# (channels="0123" for all four or channels="2" just for channel two, etc)'
+	echo 'channels="1"'
+	echo ''
+	) > ${config_file}
+	. ${config_file}
+fi
+
 #declare total_readout_size_in_bytes="600M"
 declare total_readout_size_in_bytes="1450M"
 #declare total_readout_size_in_bytes="60G"
