@@ -10,7 +10,7 @@ use fiber_readout_swigwrapper;
 use Tk;
 #use Tk::PNG;
 #use Tk::Photo;
-use debug_info_warning_error;
+#use debug_info_warning_error;
 
 my $window;
 my ($attempt_to_open_card_button, $attempt_to_close_card_button);
