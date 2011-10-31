@@ -5,7 +5,7 @@
 
 unsigned long int header = 0x00be11e2;
 unsigned long int protocol_freeze_date = 0x20111016;
-unsigned long int packet_type[NUMBER_OF_PACKET_TYPES] = { 0x00c0ffee, 0x0000eada, 0x000f00da };
+unsigned long int packet_type[NUMBER_OF_PACKET_TYPES] = { 0x00c0ffee, 0x0000eada, 0x000f00da, 0xce11b10c };
 unsigned long int footer = 0x62504944;
 unsigned long int packet[NUMBER_OF_WORDS_IN_A_PACKET];
 unsigned long int number_of_errors_for_this_quarter_event[NUMBER_OF_SCRODS_TO_READOUT];
@@ -315,7 +315,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 	}
 //	if (error_string[channel].length() && packet_number == 0) {
 	if (error_string[channel].length()) {
-//		printf("%s%s", event_fiber_packet_string.c_str(), error_string[channel].c_str());
+		printf("%s%s", event_fiber_packet_string.c_str(), error_string[channel].c_str());
 		error_string[channel] = "";
 	}
 	if (info_string[channel].length()) {
