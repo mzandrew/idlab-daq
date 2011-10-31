@@ -1,8 +1,7 @@
 #!/bin/bash -e
 
+declare total_number_of_quarter_events_to_read_per_fiber_channel
 declare filename_prefix filename channels
-declare total_readout_size_in_bytes single_chunk_size_in_bytes
-
 declare -i card
 declare channels # "0123" for all four or "2" just for channel two, etc
 declare config_file=".config"
@@ -19,14 +18,16 @@ else
 	echo '# (channels="0123" for all four or channels="2" just for channel two, etc)'
 	echo 'channels="1"'
 	echo ''
+	echo '# how verbose to be (3=normal; 5=very verbose):'
+	echo 'verbosity=3'
+	echo ''
+	echo '# how many quarter events to read (per channel):'
+	echo 'total_number_of_quarter_events_to_read_per_fiber_channel=100'
+	echo ''
 	) > ${config_file}
 	. ${config_file}
 fi
 
-#declare total_readout_size_in_bytes="600M"
-declare total_readout_size_in_bytes="1450M"
-#declare total_readout_size_in_bytes="60G"
-declare single_chunk_size_in_bytes="72800"
 filename_prefix="logdir/card${card}.channel"
 #filename_prefix="/tmp/ramdisk/card${card}.channel"
 
@@ -44,12 +45,10 @@ sync
 
 time (./bin/cosmic \
 	${card} \
-	-v \
-	-f \
-	-c ${channels} \
-	-t ${total_readout_size_in_bytes} \
-	-b ${single_chunk_size_in_bytes} \
-	-p ${filename_prefix} \
+	--chan ${channels} \
+	-n ${total_number_of_quarter_events_to_read_per_fiber_channel} \
+	--verbose \
+	--logprefix ${filename_prefix} \
 	; sync;)
 
 # # # # # # actual readout ends here # # # # # # #
@@ -60,9 +59,8 @@ for i in $(seq 0 3); do
 	if [ -e "${filename}" ]; then
 		ls -lart "${filename}"
 		if [ 1 -eq 0 ]; then
-			./analyze_packet "${filename}" > "${filename_analysis}"
+			./scripts/packet-builder-and-parser > "${filename_analysis}"
 		fi
 	fi
 done
-
 

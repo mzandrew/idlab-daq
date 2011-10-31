@@ -568,6 +568,10 @@ sub read_config_file {
 			print "using channels $1\n";
 			$channels = $1;
 		}
+		if ($line =~ m/verbosity="([0-9])"/) {
+			print "using verbosity $1\n";
+			$verbosity = $1;
+		}
 	}
 	$channel = $channels;
 	$channel =~ s/([0-9])+/$1/;

@@ -17,8 +17,8 @@ work/%.o : src/%.cpp
 bin/readout_all_pending_data : work/readout_all_pending_data.o contrib/stdPCI.o contrib/libaltix.so
 	g++ -o $@ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib work/readout_all_pending_data.o contrib/stdPCI.o
 
-bin/cosmic: work/cosmic.o contrib/stdPCI.o contrib/libaltix.so
-	g++  -o $@ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib work/cosmic.o contrib/stdPCI.o
+bin/cosmic: work/pci.o work/cosmic.o contrib/stdPCI.o contrib/libaltix.so
+	g++  -o $@ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib work/pci.o work/cosmic.o contrib/stdPCI.o
 
 bin/reset_trigger_flip_flop : work/reset_trigger_flip_flop.o contrib/stdPCI.o contrib/libaltix.so
 	g++ -o $@ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib work/reset_trigger_flip_flop.o contrib/stdPCI.o

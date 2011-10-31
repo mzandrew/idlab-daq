@@ -267,7 +267,7 @@ int main(int argc, char** argv) {
 			}
 		}
 		if (total_bytes_read_so_far > 0) {
-			printf("\nchannel %d had %d bytes to read", i, total_bytes_read_so_far);
+			printf("\nchannel %d had %ld bytes to read", i, total_bytes_read_so_far);
 		}
 	}
 	printf("\n\n");

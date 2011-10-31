@@ -1,7 +1,6 @@
 // 2011-?? Andrew Wong
 // 2011-?? mza
 
-#include "../contrib/stdPCI.h"
 #include "pci.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -102,23 +101,6 @@ unsigned long int calculate_checksum_and_insert_into_packet(unsigned long int* p
 		}
 	}
 	packet[138] = checksum;
-}
-
-int setup_pci(int id) {
-	// open the PCI handles
-	fprintf(stderr, "opening %s\n", device_name);
-	if (pci.createHandles(device_name) < 0) {
-		fprintf(stderr, "open PCI handles failed.  Is the driver loaded?\n");
-		exit(-1);
-	}
-	// lock the desired card
-	fprintf(stderr, "locking card %d\n", id);
-	if (pci.lockCard(id) < 0) {
-		fprintf(stderr, "lock card failed\n");
-		if (id == 0)
-			fprintf(stderr, "\ncard ID is set to zero.  Did you forgot to specify the card ID on the command line?\n\n");
-		exit(-1);
-	}
 }
 
 void generate_skeleton_command_packet(void) {
@@ -268,27 +250,26 @@ int main(int argc, char** argv) {
 	int blocksize = 2048;                        // # of bytes to read before changing channels
 	bool verbose = false;                        // verbose mode
 	char logprefix[100] = "log";                 // prefix of log files generated
-	long long target = (long long)1048576*1024;  // # of bytes to read
+//	long long target = (long long)1048576*1024;  // # of bytes to read
 	bool ch_en[4] = {true, true, true, true};    // enable flag for each channel
 	int stdout_ch = -1;			     // specified channel to go to stdout, if any
 	// getopt parsing
     int c;
     int digit_optind = 0;
+	unsigned long int total_number_of_quarter_events_to_read_per_fiber_channel = 0;
 
 	while (1) {
 		int this_option_optind = optind ? optind : 1;
 		int option_index = 0;
 		static struct option long_options[] = {
-		    {"total", 1, 0, 't'},
-		    {"blocksize", 1, 0, 'b'},
 		    {"logprefix", 1, 0, 'p'},
 		    {"verbose", 0, 0, 'v'},
 		    {"help", 0, 0, 'h'},
 		    {"chan", 1, 0, 'c'},
+		    {"number", 1, 0, 'c'},
 		    {0, 0, 0, 0}
 		};
-		c = getopt_long (argc, argv, "o:c:fht:b:p:v",
-		         long_options, &option_index);
+		c = getopt_long (argc, argv, "c:n:h:p:v", long_options, &option_index);
 		if (c == -1)
 		    break;
 			switch (c) {
@@ -317,51 +298,29 @@ int main(int argc, char** argv) {
 			verbose = true;
 		    break;
 
-		case 't':
-			target = (long long)atoi(optarg);
-			if (optarg[strlen(optarg) - 1] == 'G') { target *= 1000000000; }
-			if (optarg[strlen(optarg) - 1] == 'M') { target *= 1000000; }
-			if (optarg[strlen(optarg) - 1] == 'k') { target *= 1000; }
-			
-			if (optarg[0] == '*') {
-				target = (long long)1 << (sizeof(long long)* 8 - 2);
-			}
-
-		    fprintf (stderr, "option total with value '%lld'\n", target);
-
-		    break;
-
-		case 'b':
-			blocksize = atoi(optarg);
-		    fprintf (stderr, "option blocksize with value '%d'\n", blocksize);
-			if (blocksize > BUFFER_SIZE) {
-				fprintf(stderr, "  WARNING: blocksize is too large, setting to %d", BUFFER_SIZE);
-				blocksize = BUFFER_SIZE;
-			}
-
-		    break;
+		case 'n':
+			total_number_of_quarter_events_to_read_per_fiber_channel = atoi(optarg);
+			fprintf(stdout, "acquiring %ld quarter events per enabled fiber channel\n", total_number_of_quarter_events_to_read_per_fiber_channel);
+			break;
 
 		case 'p':
 			strncpy(logprefix, optarg, 100);
-		    fprintf (stderr, "option prefix with value '%s'\n", optarg);
+		    fprintf (stdout, "using log file prefix \"%s\"\n", optarg);
 		    break;
 
-		case 'o':
-			stdout_ch = atoi(optarg);
-			fprintf(stderr, "sending channel %d data to stdout\n", stdout_ch);
-			break;
+//		case 'o':
+//			stdout_ch = atoi(optarg);
+//			fprintf(stdout, "sending channel %d data to stdout\n", stdout_ch);
+//			break;
 
 		case 'h':
-	       case '?':
+		case '?':
 			fprintf(stderr, "options: \n"
 				"         -c 0123: sets channels to read; default is all enabled\n"
-                        	"         -t [size]: sets total size of data to read\n"
-				"         -b [size]: sets size to transfer per operation\n"
 				"         -p [prefix]: sets prefix of log files generated (default 'log')\n"
 				"         -h: help: prints this help screen\n"
-				"         -o [channel]: outputs a specific channel to stdout (binary)\n"
 				"         -v: verbose mode: prints updates when data is transmitted\n\n"
-				"long versions of these parameters also exist: --total, --blocksize,\n"
+				"long versions of these parameters also exist:\n"
 				"--chan, --logprefix, --verbose, --help\n\n"
 			);
 
@@ -375,8 +334,11 @@ int main(int argc, char** argv) {
 
 	if (optind < argc) {
 		id = atoi(argv[optind]);
+	} else {
+		fprintf(stderr, "please specify a card id # on the command line\n");
 	}
 	// end parsing command-line arguments
+	fprintf(stdout, "\n");
 
 	// other variables
 	int fd[4];				// file descriptors for output logs
@@ -384,14 +346,10 @@ int main(int argc, char** argv) {
 	char* buffer = new char[BUFFER_SIZE];	// buffer for sent data
 	char* buffer2 = new char[BUFFER_SIZE];	// buffer for incoming data
 
-	device_name = default_device_name;			// device name "/dev/altixpci0"
-
-	long long total[4] = {0,0,0,0};		// total # of bytes read
+//	long long total[4] = {0,0,0,0};		// total # of bytes read
 	int val2;				// tmp value for # of bytes read in last operation
 	int read[4];				// # of bytes read on most recent xfer (per chan)
-	bool readdata[4] = {false, false, false, false};	// flag if data was read and flow
-								// control should be sent on 0 bytes
-								// read
+	bool readdata[4] = {false, false, false, false};	// flag if data was read and flow control should be sent on 0 bytes read
 
 	// check if proposed output files exist.  Note that we don't open any yet, because
 	// if they are opened, the files get created.  If any of the files exist, we do not
@@ -416,7 +374,7 @@ int main(int argc, char** argv) {
 		sprintf(filename, "%s%d.rawdata", logprefix, i);
 		//sprintf(filename, "%s", logprefix);
 		if (ch_en[i]) {
-			printf("%d %d\n", stdout_ch, i);
+//			printf("%d %d\n", stdout_ch, i);
 			if (stdout_ch == i) continue;
 			fd[i] = open(filename, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (fd[i] < 0) 
@@ -430,9 +388,9 @@ int main(int argc, char** argv) {
 	long long readtime[4] = {0,0,0,0}, writetime[4] = {0,0,0,0};  // time to read/write, rolling
 
 	// set totals for unused channels so they don't hold up readout process
-	for(int i=0; i < 4; i++)
-		if (ch_en[i] == false)
-			total[i] = target;
+//	for(int i=0; i < 4; i++)
+//		if (ch_en[i] == false)
+//			total[i] = target;
 
 	setup_pci(id);
 
@@ -481,10 +439,7 @@ int main(int argc, char** argv) {
 //	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
 
 //	while (1) {
-//	for (unsigned long int i=0; i<1000000; i++) {
-//	for (unsigned long int i=0; i<26000; i++) {
-//	for (unsigned long int i=0; i<1000; i++) {
-	for (unsigned long int i=0; i<100; i++) {
+	for (unsigned long int i=0; i<total_number_of_quarter_events_to_read_per_fiber_channel; i++) {
 		event_number++;
 		read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 		reset_trigger_flip_flop();
@@ -504,7 +459,7 @@ int main(int argc, char** argv) {
 					return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
 					//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
 					if (return_value == -1) {
-						printf("\nerror %d writing to disk", return_value);
+						printf("\nerror %ld writing to disk", return_value);
 					} else if (return_value > 0) {
 //						printf("\nwrote %d bytes to file", return_value);
 					}
@@ -517,8 +472,8 @@ int main(int argc, char** argv) {
 	}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	printf("\n");
-	printf("\ntotal number of readout events = %d", total_number_of_readout_events);
-	printf("\n        total number of errors = %d", total_number_of_errors);
+	printf("\ntotal number of readout events = %ld", total_number_of_readout_events);
+	printf("\n        total number of errors = %ld", total_number_of_errors);
 	//printf("\nnumber of times exactly one packet was missing = %d", histogram_of_incomplete_events_560);
 	//printf("\nnumber of times some other number of words was missing = %d", histogram_of_incomplete_events_other);
 	printf("\n");
@@ -531,7 +486,7 @@ int main(int argc, char** argv) {
 		if (ch_en[i] == false)
 			continue;
 
-		fprintf(stderr, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);
+//		fprintf(stderr, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);
 		close(fd[i]);
 	}
 
@@ -573,7 +528,7 @@ inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned s
 			index = i;
 			if (index > 0) {
 				char temp[256];
-				sprintf(temp, " skipped ahead %d words to find header;", index);
+				sprintf(temp, " skipped ahead %ld words to find header;", index);
 				error_string[channel] += temp;
 			}
 			return index;
@@ -628,7 +583,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 	if (packet_number==0) {
 		//info_string[channel] += packet[EVENT_NUMBER_INDEX];
 		char temp[256];
-		sprintf(temp, "event_number[%09d]: ", packet[EVENT_NUMBER_INDEX]);
+		sprintf(temp, "event_number[%09ld]: ", packet[EVENT_NUMBER_INDEX]);
 		info_string[channel] += temp;
 	} else {
 		if (event_number_from_most_recent_packet[channel] != packet[EVENT_NUMBER_INDEX]) {
@@ -652,15 +607,15 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 		char temp[256];
 //		error_string[channel] += " checksums do not match;";
 //		error_string[channel] += " checksum is ";
-		sprintf(temp, "0x%08x", packet[PACKET_CHECKSUM_INDEX]);
+		sprintf(temp, "0x%08lx", packet[PACKET_CHECKSUM_INDEX]);
 		error_string[channel] += temp;
 		error_string[channel] += " - ";
 //		error_string[channel] += " but should be ";
-		sprintf(temp, "0x%08x", checksum);
+		sprintf(temp, "0x%08lx", checksum);
 		error_string[channel] += temp;
 		error_string[channel] += " = ";
 //		error_string[channel] += " the difference is ";
-		sprintf(temp, "0x%08x", packet[PACKET_CHECKSUM_INDEX]-checksum);
+		sprintf(temp, "0x%08lx", packet[PACKET_CHECKSUM_INDEX]-checksum);
 		error_string[channel] += temp;
 		error_string[channel] += ";";
 //		printf(" checksums do not match");
@@ -800,12 +755,12 @@ inline unsigned int read_quarter_events_from_all_enabled_channels(unsigned char 
 			for (unsigned long int j=0; j<NUMBER_OF_PACKETS_IN_A_QUARTER_EVENT; j++) {
 				copy_packet(word_buffer[i] + word_position_of_first_header[i] + j * NUMBER_OF_WORDS_IN_A_PACKET);
 				char temp[256];
-				sprintf(temp, "\nevent[%d] fiber_ch[%d] packet[%3d]: ", event_number, i, j);
+				sprintf(temp, "\nevent[%ld] fiber_ch[%d] packet[%3ld]: ", event_number, i, j);
 				event_fiber_packet_string = temp;
 				analyze_packet(j, i);
 			}
 			if (number_of_errors_for_this_quarter_event[i]) {
-				printf(" %d errors in that quarter event; ", number_of_errors_for_this_quarter_event[i]);
+				printf(" %ld errors in that quarter event; ", number_of_errors_for_this_quarter_event[i]);
 			}
 			printf(" Q ");
 		}
