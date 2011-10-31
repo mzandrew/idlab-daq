@@ -208,8 +208,11 @@ int main(int argc, char** argv) {
 //	usleep(10000);
 //	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
 
-//	read_quarter_events_from_all_enabled_channels(channel_bitmask, false); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
-//	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+	usleep(10000);
+	readout_all_pending_data();
+	usleep(10000);
+	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+	usleep(10000);
 
 //	while (1) {
 	for (unsigned long int i=0; i<total_number_of_quarter_events_to_read_per_fiber_channel; i++) {
@@ -238,7 +241,9 @@ int main(int argc, char** argv) {
 					}
 				}
 			}
-//			send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+			if (i<total_number_of_quarter_events_to_read_per_fiber_channel-1) {
+				send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+			}
 		}
 //		printf("\n");
 		usleep(NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS);

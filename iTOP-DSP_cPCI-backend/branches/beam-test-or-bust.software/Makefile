@@ -1,4 +1,4 @@
-OBJS = bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data
+OBJS = bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules 
 CXXFLAGS = -D_FILE_OFFSET_BITS=64
 
 default :
@@ -14,13 +14,16 @@ all : $(OBJS)
 work/%.o : src/%.cpp
 	g++ -c $< -o $@
 
-bin/cosmic                   : work/cosmic.o                   contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
+bin/cosmic                                             : work/cosmic.o                                             contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
 	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
 
-bin/readout_all_pending_data : work/readout_all_pending_data.o contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
+bin/readout_all_pending_data                           : work/readout_all_pending_data.o                           contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
 	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
 
-bin/reset_trigger_flip_flop  : work/reset_trigger_flip_flop.o  contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
+bin/reset_trigger_flip_flop                            : work/reset_trigger_flip_flop.o                            contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
+	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
+
+bin/trigger_a_quarter_event_from_all_connected_modules : work/trigger_a_quarter_event_from_all_connected_modules.o contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
 	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
 
 #contrib/libaltix.so:
