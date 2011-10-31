@@ -50,6 +50,11 @@ extern          char     byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_
 extern unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
 extern unsigned long int total_number_of_errors;
 extern string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
+extern unsigned short int channel_bitmask;
+extern int fd[4]; // file descriptors for output datafiles
+extern unsigned long int total_number_of_readout_events;
+extern char logprefix[100];                 // prefix of log files generated
+extern bool ch_en[4];    // enable flag for each channel
 
 #define NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME (100256)
 void readout_all_pending_data(void);
@@ -74,6 +79,8 @@ void set_event_number(unsigned long int event_number);
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
 void global_reset(void);
 void clear_scaler_counters(void);
+void readout_N_events(unsigned long int N);
+int open_files_for_output_and_read_N_events(unsigned long int N);
 
 #endif
 
