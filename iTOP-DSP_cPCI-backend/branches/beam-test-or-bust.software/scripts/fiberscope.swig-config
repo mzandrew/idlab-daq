@@ -10,6 +10,8 @@ extern void set_event_number(unsigned long int event_number);
 extern void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
 extern void global_reset(void);
 extern void clear_scaler_counters(void);
+extern int open_files_for_output_and_read_N_events(char *logprefix, unsigned long int N);
+extern unsigned short int channel_bitmask;
 %}
 
 extern int setup_pci(int id);
@@ -19,4 +21,6 @@ extern void set_event_number(unsigned long int event_number);
 extern void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
 extern void global_reset(void);
 extern void clear_scaler_counters(void);
+extern int open_files_for_output_and_read_N_events(char *logprefix, unsigned long int N);
+extern unsigned short int channel_bitmask;
 
