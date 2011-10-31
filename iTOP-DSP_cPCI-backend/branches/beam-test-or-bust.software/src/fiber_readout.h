@@ -54,7 +54,7 @@ extern string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT
 #define NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME (100256)
 void readout_all_pending_data(void);
 
-#define NUMBER_OF_PACKET_TYPES (3)
+#define NUMBER_OF_PACKET_TYPES (4)
 
 #include <sys/time.h>
 void start_timer();
