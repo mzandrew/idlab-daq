@@ -21,6 +21,49 @@ my ($event_number, $event_number_entry, $set_event_number_button) = (5, 0, 0);
 my ($start_window, $end_window, $start_window_entry, $end_window_entry, $set_start_and_end_windows_button) = (0, 511, 0, 0, 0);
 my ($global_reset_button) = (0);
 my ($clear_scaler_counters_button) = (0);
+my ($channel, $channels) = (0, 0);
+my $verbosity = 0;
+
+sub read_config_file {
+	my $config_file = ".config";
+	open(CONFIGFILE, $config_file) || return;
+	while (my $line = <CONFIGFILE>) {
+		chomp($line);
+		$line =~ s/#.*//;
+		next if ($line =~ /^$/);
+#		print "$line\n";
+		if ($line =~ m/card=([0-9]+)/) {
+			print "using card #$1\n";
+			$card_id = $1;
+		}
+		if ($line =~ m/channels="([0-9]+)"/) {
+			print "using channels $1\n";
+			$channels = $1;
+		}
+		if ($line =~ m/verbosity="([0-9])"/) {
+			print "using verbosity $1\n";
+			$verbosity = $1;
+		}
+	}
+	$channel = $channels;
+	$channel =~ s/([0-9])+/$1/;
+	close(CONFIGFILE) || return;
+}
+
+read_config_file();
+
+my @channel_enable;
+for (my $i=0; $i<4; $i++) {
+	$channel_enable[$i] = 0;
+}
+for (my $i=0; $i<4; $i++) {
+	if ($channels =~ m/$i/) { $channel_enable[$i] = 1; }
+}
+$fiber_readout_swigwrapper::channel_bitmask = 0;
+for (my $i=0; $i<4; $i++) {
+	$fiber_readout_swigwrapper::channel_bitmask |= $channel_enable[$i] << $i;
+	print $channel_enable[$i];
+}
 
 sub setup_pci {
 	fiber_readout_swigwrapper::setup_pci($card_id);
@@ -57,10 +100,12 @@ sub soft_trigger_once {
 }
 
 sub soft_trigger_N_times {
-	for (my $i=0; $i<$N; $i++) {
-		usleep(10000);
-		soft_trigger();
-	}
+	my $string = "logdir/card" . $card_id . ".channel";
+	fiber_readout_swigwrapper::open_files_for_output_and_read_N_events($string, $N);
+#	for (my $i=0; $i<$N; $i++) {
+#		usleep(10000);
+#		soft_trigger();
+#	}
 }
 
 sub set_event_number {
@@ -133,6 +178,7 @@ sub setup_main_window {
 }
 
 sub quit {
+	close_pci($card_id);
 	exit(0);
 }
 

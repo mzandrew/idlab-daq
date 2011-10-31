@@ -24,6 +24,9 @@ int main(int argc, char** argv) {
     int digit_optind = 0;
 	unsigned long int total_number_of_quarter_events_to_read_per_fiber_channel = 0;
 
+	char logprefix[100] = "log";                 // prefix of log files generated
+	bool ch_en[4] = {true, true, true, true};    // enable flag for each channel
+
 	while (1) {
 		int this_option_optind = optind ? optind : 1;
 		int option_index = 0;
@@ -111,8 +114,15 @@ int main(int argc, char** argv) {
 //	int read[4];				// # of bytes read on most recent xfer (per chan)
 //	bool readdata[4] = {false, false, false, false};	// flag if data was read and flow control should be sent on 0 bytes read
 
+	channel_bitmask = 0;
+	for(int i=0; i<4; i++) {
+		if (ch_en[i]) {
+			channel_bitmask |= 1<<i;
+		}
+	}
+
 	setup_pci(id);
-	open_files_for_output_and_read_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
+	open_files_for_output_and_read_N_events(logprefix, total_number_of_quarter_events_to_read_per_fiber_channel);
 	close_pci(id);
 
 	return 0;
