@@ -1,4 +1,4 @@
 #!/bin/bash -e 
 
-./packet-builder-and-parser | grep "event number:  " | uniq
+./scripts/packet-builder-and-parser | grep "event number:  " | uniq
 
