@@ -1,0 +1,12 @@
+%module fiber_readout_swigwrapper
+%{
+#include "../src/pci.h"
+#include "../src/fiber_readout.h"
+#include "../src/command_packet_builder.h"
+extern int setup_pci(int id);
+extern void send_soft_trigger_request_command_packet(void);
+%}
+
+extern int setup_pci(int id);
+extern void send_soft_trigger_request_command_packet(void);
+
