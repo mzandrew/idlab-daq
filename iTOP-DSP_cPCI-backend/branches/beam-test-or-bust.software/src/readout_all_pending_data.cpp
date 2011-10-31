@@ -129,7 +129,7 @@ int main(int argc, char** argv) {
 
 	setup_pci(id);
 	readout_all_pending_data();
-	close_pci();
+	close_pci(id);
 	
 	return 0;
 }
