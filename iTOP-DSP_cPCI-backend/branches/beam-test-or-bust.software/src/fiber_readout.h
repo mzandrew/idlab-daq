@@ -68,6 +68,7 @@ inline void copy_byte_buffer_to_word_buffer(unsigned short int channel);
 void copy_packet(unsigned long int *source);
 void analyze_packet(unsigned long int packet_number, unsigned short int channel);
 inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned short int channel, unsigned long last_word_position_to_look_in_buffer);
+
 void send_soft_trigger_request_command_packet(void);
 void set_event_number(unsigned long int event_number);
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);

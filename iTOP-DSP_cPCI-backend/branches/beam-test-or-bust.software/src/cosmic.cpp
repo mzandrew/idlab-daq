@@ -247,7 +247,7 @@ int main(int argc, char** argv) {
 	//printf("\nnumber of times some other number of words was missing = %d", histogram_of_incomplete_events_other);
 	printf("\n");
 
-	close_pci();
+	close_pci(id);
 	
 	for(int i=0; i<4; i++) {
 		if (ch_en[i] == true) {

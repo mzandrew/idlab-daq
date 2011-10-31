@@ -5,8 +5,8 @@
 
 extern stdPCI pci;
 
-int setup_pci(int);
-void close_pci(void);
+int setup_pci(int id);
+void close_pci(int id);
 
 #endif
 
