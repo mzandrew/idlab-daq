@@ -21,8 +21,12 @@ int setup_pci(int id) {
 	if (pci.lockCard(id) < 0) {
 		fprintf(stderr, "lock card failed\n");
 		if (id == 0)
-			fprintf(stderr, "\ncard ID is set to zero.  Did you forgot to specify the card ID on the command line?\n\n");
+			fprintf(stderr, "\ncard ID is set to zero.  Did you forgot to specify the card ID?\n\n");
 		exit(-3);
 	}
+}
+
+void close_pci(void) {
+	pci.freeHandles();
 }
 

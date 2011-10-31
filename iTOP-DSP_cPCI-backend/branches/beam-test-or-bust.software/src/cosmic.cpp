@@ -179,7 +179,6 @@ int main(int argc, char** argv) {
 
 //	send_command_packet_to_all_enabled_channels(0x33333333, 0x00000000); // global reset
 //	usleep(500000); // wait for FPGA to reset everything and bring fiber link up again
-//	send_command_packet_to_all_enabled_channels(0xe0000000, 0x00000008); // set event number
 //	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
 //	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x00000000); // set trigger thresholds for all channels
 //	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x0000077b); // set trigger thresholds for all channels
@@ -197,8 +196,8 @@ int main(int argc, char** argv) {
 //	send_command_packet_to_all_enabled_channels(0x000101ff, 0x00000003); // set end window
 
 //	usleep(10000);
-//	send_command_packet_to_all_enabled_channels(0x000001ff, 0x00000010); // set start window
-//	send_command_packet_to_all_enabled_channels(0x000101ff, 0x00000013); // set end window
+	set_start_and_end_windows(0x00000010, 0x00000013);
+	set_event_number(0x00000008);
 
 	usleep(10000);
 	readout_all_pending_data();
@@ -248,16 +247,13 @@ int main(int argc, char** argv) {
 	//printf("\nnumber of times some other number of words was missing = %d", histogram_of_incomplete_events_other);
 	printf("\n");
 
-	pci.freeHandles();
+	close_pci();
 	
-	fprintf(stderr, "\ndone!\n");
-
-	for(int i=0; i < 4; i++) {
-		if (ch_en[i] == false)
-			continue;
-
-//		fprintf(stderr, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);
-		close(fd[i]);
+	for(int i=0; i<4; i++) {
+		if (ch_en[i] == true) {
+//			fprintf(stderr, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);
+			close(fd[i]);
+		}
 	}
 
 	return 0;
