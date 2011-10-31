@@ -15,7 +15,7 @@ use Time::HiRes qw(usleep);
 
 my $window;
 
-my ($card_id, $attempt_to_open_card_button, $attempt_to_close_card_button) = (5, 0, 0);
+my ($card_id, $card_id_entry, $attempt_to_open_card_button, $attempt_to_close_card_button) = (5, 0, 0);
 my ($soft_trigger_once_button, $N, $N_entry, $soft_trigger_N_times_button) = (0, 100, 0, 0);
 my ($event_number, $event_number_entry, $set_event_number_button) = (5, 0, 0);
 my ($start_window, $end_window, $start_window_entry, $end_window_entry, $set_start_and_end_windows_button) = (0, 511, 0, 0, 0);
@@ -23,6 +23,7 @@ my ($start_window, $end_window, $start_window_entry, $end_window_entry, $set_sta
 sub setup_pci {
 	fiber_readout_swigwrapper::setup_pci($card_id);
 	$attempt_to_open_card_button     ->configure(-state=>'disable');
+	$card_id_entry                   ->configure(-state=>'disable');
 	$attempt_to_close_card_button    ->configure(-state=>'normal');
 	$soft_trigger_once_button        ->configure(-state=>'normal');
 	$soft_trigger_N_times_button     ->configure(-state=>'normal');
@@ -31,7 +32,9 @@ sub setup_pci {
 }
 
 sub close_pci {
+	fiber_readout_swigwrapper::close_pci($card_id);
 	$attempt_to_open_card_button     ->configure(-state=>'normal');
+	$card_id_entry                   ->configure(-state=>'normal');
 	$attempt_to_close_card_button    ->configure(-state=>'disable');
 	$soft_trigger_once_button        ->configure(-state=>'disable');
 	$soft_trigger_N_times_button     ->configure(-state=>'disable');
@@ -69,7 +72,7 @@ sub setup_main_window {
 	$window = new MainWindow(-title=>"iTOP electronics module / fiber readout", -height=>480, -width=>640);
 	$window->bind('<Key-Escape>', \&quit);
 #	my $default_color = "#d9d9d9";
-	my $card_id_entry                 = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$card_id);
+	$card_id_entry                    = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$card_id);
 	$attempt_to_open_card_button      = $window->Button(-text=>"open DSP_cPCI card #", -command=>\&setup_pci);
 	$attempt_to_close_card_button     = $window->Button(-text=>"close card", -command=>\&close_pci, -state=>'disable');
 	$attempt_to_open_card_button      ->grid(-row=>0, -column=>0);

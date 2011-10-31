@@ -137,7 +137,7 @@ int main(int argc, char** argv) {
 	usleep(10000);
 	send_soft_trigger_request_command_packet();
 	usleep(10000);
-	close_pci();
+	close_pci(id);
 
 	return 0;
 }

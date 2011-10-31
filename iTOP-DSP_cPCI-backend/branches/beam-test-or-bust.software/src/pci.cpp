@@ -26,7 +26,8 @@ int setup_pci(int id) {
 	}
 }
 
-void close_pci(void) {
+void close_pci(int id) {
+	pci.unlockCard(id);
 	pci.freeHandles();
 }
 
