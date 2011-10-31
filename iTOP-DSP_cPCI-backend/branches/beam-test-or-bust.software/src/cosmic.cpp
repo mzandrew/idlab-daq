@@ -195,23 +195,15 @@ int main(int argc, char** argv) {
 
 //	send_command_packet_to_all_enabled_channels(0x000001ff, 0x00000000); // set start window
 //	send_command_packet_to_all_enabled_channels(0x000101ff, 0x00000003); // set end window
-//	usleep(10000);
-//	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
-//	usleep(10000);
-//	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
 
 //	usleep(10000);
 //	send_command_packet_to_all_enabled_channels(0x000001ff, 0x00000010); // set start window
 //	send_command_packet_to_all_enabled_channels(0x000101ff, 0x00000013); // set end window
-//	usleep(10000);
-//	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
-//	usleep(10000);
-//	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
 
 	usleep(10000);
 	readout_all_pending_data();
 	usleep(10000);
-	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+	send_soft_trigger_request_command_packet();
 	usleep(10000);
 
 //	while (1) {
@@ -242,7 +234,7 @@ int main(int argc, char** argv) {
 				}
 			}
 			if (i<total_number_of_quarter_events_to_read_per_fiber_channel-1) {
-				send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+				send_soft_trigger_request_command_packet();
 			}
 		}
 //		printf("\n");
