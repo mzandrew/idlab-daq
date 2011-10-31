@@ -355,3 +355,12 @@ void set_start_and_end_windows(unsigned long int start_window, unsigned long int
 	send_command_packet_to_all_enabled_channels(0x000101ff, end_window); // set end window
 }
 
+void global_reset(void) {
+	send_command_packet_to_all_enabled_channels(0x33333333, 0x00000000); // global reset
+	usleep(500000); // wait for FPGA to reset everything and bring fiber link up again
+}
+
+void clear_scaler_counters(void) {
+	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
+}
+

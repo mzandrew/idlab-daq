@@ -72,6 +72,8 @@ inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned s
 void send_soft_trigger_request_command_packet(void);
 void set_event_number(unsigned long int event_number);
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
+void global_reset(void);
+void clear_scaler_counters(void);
 
 #endif
 

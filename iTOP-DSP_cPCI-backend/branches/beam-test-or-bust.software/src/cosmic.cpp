@@ -177,9 +177,6 @@ int main(int argc, char** argv) {
 	}
 	unsigned long int total_number_of_readout_events = 0;
 
-//	send_command_packet_to_all_enabled_channels(0x33333333, 0x00000000); // global reset
-//	usleep(500000); // wait for FPGA to reset everything and bring fiber link up again
-//	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
 //	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x00000000); // set trigger thresholds for all channels
 //	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x0000077b); // set trigger thresholds for all channels
 //	send_command_packet_to_all_enabled_channels(0x5555b1a5, 0x00000000); // set Vbias values for all channels
@@ -192,12 +189,11 @@ int main(int argc, char** argv) {
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000003ff); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000005ff); // set all DACs to given argument
 
-//	send_command_packet_to_all_enabled_channels(0x000001ff, 0x00000000); // set start window
-//	send_command_packet_to_all_enabled_channels(0x000101ff, 0x00000003); // set end window
-
-//	usleep(10000);
-	set_start_and_end_windows(0x00000010, 0x00000013);
+//	global_reset();
+//	clear_scaler_counters();
 	set_event_number(0x00000008);
+	set_start_and_end_windows(0x00000000, 0x00000003);
+//	set_start_and_end_windows(0x00000110, 0x00000113);
 
 	usleep(10000);
 	readout_all_pending_data();
