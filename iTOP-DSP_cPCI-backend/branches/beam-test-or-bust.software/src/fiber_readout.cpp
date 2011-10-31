@@ -416,8 +416,9 @@ int open_files_for_output_and_read_N_events(char *logprefix, unsigned long int N
 		if (channel_bitmask & (1<<i)) {
 			struct stat st;
 			if(stat(filename ,&st) == 0) {
-			        fprintf(stderr, "ERROR: %s already exists, bailing\n", filename);
-				return 0;
+			        //fprintf(stderr, "ERROR: %s already exists, bailing\n", filename);
+			        fprintf(stdout, "WARNING: %s already exists; overwriting\n", filename);
+				//return 0;
 			}
 		}
 	}
@@ -461,8 +462,8 @@ int open_files_for_output_and_read_N_events(char *logprefix, unsigned long int N
 
 //	global_reset();
 //	clear_scaler_counters();
-	set_event_number(0x00000008);
-	set_start_and_end_windows(0x00000000, 0x00000003);
+//	set_event_number(0x00000008);
+//	set_start_and_end_windows(0x00000000, 0x00000003);
 //	set_start_and_end_windows(0x00000110, 0x00000113);
 
 	usleep(10000);
