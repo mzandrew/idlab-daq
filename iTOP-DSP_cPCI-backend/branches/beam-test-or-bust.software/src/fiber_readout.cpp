@@ -17,6 +17,11 @@ unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_
 unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned long int total_number_of_errors;
 string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
+unsigned short int channel_bitmask = 0;
+int fd[4]; // file descriptors for output datafiles
+unsigned long int total_number_of_readout_events = 0;
+char logprefix[100] = "log";                 // prefix of log files generated
+bool ch_en[4] = {true, true, true, true};    // enable flag for each channel
 
 unsigned long int histogram_of_incomplete_events_560 = 0;
 unsigned long int histogram_of_incomplete_events_other = 0;
@@ -362,5 +367,139 @@ void global_reset(void) {
 
 void clear_scaler_counters(void) {
 	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
+}
+
+void readout_N_events(unsigned long int N) {
+//	while (1) {
+	for (unsigned long int i=0; i<N; i++) {
+		event_number++;
+		read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+		reset_trigger_flip_flop();
+		time_for_single_event_readout = (long long) stop_timer();
+//		printf("\napproximate time for last readout = %d us", time_for_single_event_readout);
+		total_number_of_readout_events++;
+		//write_quarter_events_to_disk();
+		long int return_value;
+		for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+			if (
+				((i==3) && (channel_bitmask & 0x8)) ||
+				((i==2) && (channel_bitmask & 0x4)) ||
+				((i==1) && (channel_bitmask & 0x2)) ||
+				((i==0) && (channel_bitmask & 0x1))
+				) {
+				if (number_of_bytes_read_so_far[i]) {
+					return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
+					//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
+					if (return_value == -1) {
+						printf("\nerror %ld writing to disk", return_value);
+					} else if (return_value > 0) {
+//						printf("\nwrote %d bytes to file", return_value);
+					}
+				}
+			}
+			if (i<N-1) {
+//				send_soft_trigger_request_command_packet();
+			}
+		}
+//		printf("\n");
+		usleep(NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS);
+	}
+}
+
+int open_files_for_output_and_read_N_events(unsigned long int N) {
+	// check if proposed output files exist.  Note that we don't open any yet, because
+	// if they are opened, the files get created.  If any of the files exist, we do not
+	// want to create any of the other files.
+	for(int i=0; i < 4; i++) {
+		char filename[105] = "";
+		sprintf(filename, "%s%d.rawdata", logprefix, i);
+//		sprintf(filename, "%s", logprefix);
+//		if (stdout_ch == i) continue;
+		if (ch_en[i]) {
+			struct stat st;
+			if(stat(filename ,&st) == 0) {
+			        fprintf(stderr, "ERROR: %s already exists, bailing\n", filename);
+				return 0;
+			}
+		}
+	}
+
+	// open and create the log files
+	for(int i=0; i < 4; i++) {
+		char filename[105] = "";
+		sprintf(filename, "%s%d.rawdata", logprefix, i);
+		//sprintf(filename, "%s", logprefix);
+		if (ch_en[i]) {
+//			printf("%d %d\n", stdout_ch, i);
+//			if (stdout_ch == i) continue;
+			fd[i] = open(filename, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+			if (fd[i] < 0) 
+				fprintf(stderr, "warning: failed to create file %s\n", filename);
+		}
+	}
+
+//	if (stdout_ch != -1)
+//		fd[stdout_ch] = STDOUT_FILENO;
+
+//	long long readtime[4] = {0,0,0,0}, writetime[4] = {0,0,0,0};  // time to read/write, rolling
+
+	// set totals for unused channels so they don't hold up readout process
+//	for(int i=0; i < 4; i++)
+//		if (ch_en[i] == false)
+//			total[i] = target;
+
+	channel_bitmask = 0;
+	for(int i=0; i<4; i++) {
+		if (ch_en[i]) {
+			channel_bitmask |= 1<<i;
+		}
+	}
+
+	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+		number_of_errors_for_this_quarter_event[i] = 0;
+	}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x00000000); // set trigger thresholds for all channels
+//	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x0000077b); // set trigger thresholds for all channels
+//	send_command_packet_to_all_enabled_channels(0x5555b1a5, 0x00000000); // set Vbias values for all channels
+//	send_command_packet_to_all_enabled_channels(0x5555b1a5, 0x0000044c); // set Vbias values for all channels
+//	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
+//	setup_default_DAC_settings(); // just initialize the array locally
+//	send_DAC_setting_command();
+//	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x00000000); // set all DACs to given argument
+//	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000001ff); // set all DACs to given argument
+//	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000003ff); // set all DACs to given argument
+//	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000005ff); // set all DACs to given argument
+
+//	global_reset();
+//	clear_scaler_counters();
+	set_event_number(0x00000008);
+	set_start_and_end_windows(0x00000000, 0x00000003);
+//	set_start_and_end_windows(0x00000110, 0x00000113);
+
+	usleep(10000);
+	readout_all_pending_data();
+	usleep(10000);
+	send_soft_trigger_request_command_packet();
+	usleep(10000);
+
+	readout_N_events(N);
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	printf("\n");
+	printf("\ntotal number of readout events = %ld", total_number_of_readout_events);
+	printf("\n        total number of errors = %ld", total_number_of_errors);
+	//printf("\nnumber of times exactly one packet was missing = %d", histogram_of_incomplete_events_560);
+	//printf("\nnumber of times some other number of words was missing = %d", histogram_of_incomplete_events_other);
+	printf("\n");
+	
+	for(int i=0; i<4; i++) {
+		if (ch_en[i] == true) {
+//			fprintf(stderr, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);
+			close(fd[i]);
+		}
+	}
 }
 
