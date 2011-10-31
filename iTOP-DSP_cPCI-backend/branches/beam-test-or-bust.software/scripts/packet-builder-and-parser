@@ -540,7 +540,6 @@ sub read_all_quarter_events {
 		for (my $i=1; $i<=$number_of_packets_to_read; $i++) {
 			inner_read_packet(1);
 			if ($eof_reached) { print "\n\nreached end of file\n\n"; $should_count_this_quarter_event_in_error_accounting = 0; last; }
-			print "blahblah\n";
 			$errors_for_this_quarter_event += new_parse_packet();
 			if ($i == $number_of_packets_to_read) { $number_of_quarter_events_read++; }
 		}
