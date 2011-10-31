@@ -10,29 +10,56 @@ use fiber_readout_swigwrapper;
 use Tk;
 #use Tk::PNG;
 #use Tk::Photo;
-#use debug_info_warning_error;
+use Time::HiRes qw(usleep);
+use debug_info_warning_error;
 
 my $window;
-my ($attempt_to_open_card_button, $attempt_to_close_card_button);
-my ($soft_trigger_button);
 
-my $card_id = 5;
+my ($card_id, $attempt_to_open_card_button, $attempt_to_close_card_button) = (5, 0, 0);
+my ($soft_trigger_once_button, $N, $N_entry, $soft_trigger_N_times_button) = (0, 100, 0, 0);
+my ($event_number, $event_number_entry, $set_event_number_button) = (5, 0, 0);
+my ($start_window, $end_window, $start_window_entry, $end_window_entry, $set_start_and_end_windows_button) = (0, 511, 0, 0, 0);
 
 sub setup_pci {
 	fiber_readout_swigwrapper::setup_pci($card_id);
-	$attempt_to_open_card_button ->configure(-state=>'disable');
-	$attempt_to_close_card_button->configure(-state=>'normal');
-	$soft_trigger_button         ->configure(-state=>'normal');
+	$attempt_to_open_card_button     ->configure(-state=>'disable');
+	$attempt_to_close_card_button    ->configure(-state=>'normal');
+	$soft_trigger_once_button        ->configure(-state=>'normal');
+	$soft_trigger_N_times_button     ->configure(-state=>'normal');
+	$set_event_number_button         ->configure(-state=>'normal');
+	$set_start_and_end_windows_button->configure(-state=>'normal');
 }
 
 sub close_pci {
-	$attempt_to_open_card_button ->configure(-state=>'normal');
-	$attempt_to_close_card_button->configure(-state=>'disable');
-	$soft_trigger_button         ->configure(-state=>'disable');
+	$attempt_to_open_card_button     ->configure(-state=>'normal');
+	$attempt_to_close_card_button    ->configure(-state=>'disable');
+	$soft_trigger_once_button        ->configure(-state=>'disable');
+	$soft_trigger_N_times_button     ->configure(-state=>'disable');
+	$set_event_number_button         ->configure(-state=>'disable');
+	$set_start_and_end_windows_button->configure(-state=>'disable');
 }
 
 sub soft_trigger {
 	fiber_readout_swigwrapper::send_soft_trigger_request_command_packet();
+}
+
+sub soft_trigger_once {
+	soft_trigger();
+}
+
+sub soft_trigger_N_times {
+	for (my $i=0; $i<$N; $i++) {
+		usleep(10000);
+		soft_trigger();
+	}
+}
+
+sub set_event_number {
+	fiber_readout_swigwrapper::set_event_number($event_number);
+}
+
+sub set_start_and_end_windows {
+	fiber_readout_swigwrapper::set_start_and_end_windows($start_window, $end_window);
 }
 
 #my $string = sprintf("\"%s\"\n", $fiber_readout::default_device_name);
@@ -42,14 +69,28 @@ sub setup_main_window {
 	$window = new MainWindow(-title=>"iTOP electronics module / fiber readout", -height=>480, -width=>640);
 	$window->bind('<Key-Escape>', \&quit);
 #	my $default_color = "#d9d9d9";
-	my $card_id_entry             = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$card_id);
-	$attempt_to_open_card_button  = $window->Button(-text=>"open DSP_cPCI card #", -command=>\&setup_pci);
-	$attempt_to_close_card_button = $window->Button(-text=>"close card", -command=>\&close_pci, -state=>'disable');
-	$attempt_to_open_card_button ->grid(-row=>0, -column=>0);
-	$card_id_entry               ->grid(-row=>0, -column=>1);
-	$attempt_to_close_card_button->grid(-row=>0, -column=>2);
-	$soft_trigger_button          = $window->Button(-text=>"soft trigger", -command=>\&soft_trigger, -state=>'disable');
-	$soft_trigger_button         ->grid(-row=>1, -column=>0);
+	my $card_id_entry                 = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$card_id);
+	$attempt_to_open_card_button      = $window->Button(-text=>"open DSP_cPCI card #", -command=>\&setup_pci);
+	$attempt_to_close_card_button     = $window->Button(-text=>"close card", -command=>\&close_pci, -state=>'disable');
+	$attempt_to_open_card_button      ->grid(-row=>0, -column=>0);
+	$card_id_entry                    ->grid(-row=>0, -column=>1);
+	$attempt_to_close_card_button     ->grid(-row=>0, -column=>2);
+	$soft_trigger_once_button         = $window->Button(-text=>"soft trigger once", -command=>\&soft_trigger_once, -state=>'disable');
+	$soft_trigger_N_times_button      = $window->Button(-text=>"soft trigger N times", -command=>\&soft_trigger_N_times, -state=>'disable');
+	$N_entry                          = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$N);
+	$soft_trigger_once_button         ->grid(-row=>1, -column=>0);
+	$N_entry                          ->grid(-row=>1, -column=>1);
+	$soft_trigger_N_times_button      ->grid(-row=>1, -column=>2);
+	$event_number_entry               = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$event_number);
+	$set_event_number_button          = $window->Button(-text=>"set event number", -command=>\&set_event_number, -state=>'disable');
+	$event_number_entry               ->grid(-row=>2, -column=>0);
+	$set_event_number_button          ->grid(-row=>2, -column=>1);
+	$start_window_entry               = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$start_window);
+	$end_window_entry                 = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$end_window);
+	$set_start_and_end_windows_button = $window->Button(-text=>"set start and end windows", -command=>\&set_start_and_end_windows, -state=>'disable');
+	$start_window_entry               ->grid(-row=>3, -column=>0);
+	$end_window_entry                 ->grid(-row=>3, -column=>1);
+	$set_start_and_end_windows_button ->grid(-row=>3, -column=>2);
 
 	# here are examples of doing things in Perl/Tk:
 	#$filter_slide_frame  = $window->Frame(-borderwidth=>15, -background=>$filter_slide_frame_background_color);
