@@ -1,4 +1,4 @@
-OBJS = bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules 
+OBJS = bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules work/fiber_readout_swigwrapper.so 
 CXXFLAGS = -D_FILE_OFFSET_BITS=64
 
 default :
@@ -25,6 +25,9 @@ bin/reset_trigger_flip_flop                            : work/reset_trigger_flip
 
 bin/trigger_a_quarter_event_from_all_connected_modules : work/trigger_a_quarter_event_from_all_connected_modules.o contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
 	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
+
+work/fiber_readout_swigwrapper.o work/fiber_readout_swigwrapper.so : scripts/fiberscope.swig-config work/pci.o work/fiber_readout.o work/command_packet_builder.o
+	./scripts/fiberscope.swig-build
 
 #contrib/libaltix.so:
 #	cp ${HOME}/ku/libaltix/libaltix.so work/

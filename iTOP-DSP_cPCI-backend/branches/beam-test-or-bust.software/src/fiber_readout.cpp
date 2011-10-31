@@ -2,6 +2,7 @@
 
 #include "pci.h"
 #include "fiber_readout.h"
+#include "command_packet_builder.h"
 
 unsigned long int header = 0x00be11e2;
 unsigned long int protocol_freeze_date = 0x20111016;
@@ -339,5 +340,9 @@ int stop_timer(struct timeval* begin) {
 	sec = end.tv_sec - begin->tv_sec;
 	usec = end.tv_usec - begin->tv_usec;
 	return sec*1000000+usec;
+}
+
+void send_soft_trigger_request_command_packet(void) {
+	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
 }
 
