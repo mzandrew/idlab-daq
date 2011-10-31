@@ -61,8 +61,7 @@ my ($start_meat, $end_meat) = (4, 136); # magic numbers correspond to protocol f
 my $number_of_quarter_events_read = 0;
 my $current_event_number = 0;
 my $total_errors_for_all_packets = 0;
-my $number_of_quarter_events_unsuccessfully_parsed = 0;
-my $number_of_quarter_events_successfully_parsed = 0;
+my ($number_of_quarter_events_successfully_parsed, $number_of_quarter_events_unsuccessfully_parsed) = (0, 0);
 
 my @verbosity;
 my ($number_of_packets_successfully_parsed, $number_of_packets_unsuccessfully_parsed);
@@ -533,19 +532,24 @@ sub read_all_quarter_events {
 	my $number_of_packets_to_read = $number_of_packets_in_a_quarter_event;
 	$number_of_quarter_events_unsuccessfully_parsed = 0;
 	$number_of_quarter_events_successfully_parsed = 0;
+	my $should_count_this_quarter_event_in_error_accounting;
 	while (!$eof_reached) {
 		#$found_the_start_of_a_new_quarter_event = 0;
 		$errors_for_this_quarter_event = 0;
+		$should_count_this_quarter_event_in_error_accounting = 1;
 		for (my $i=1; $i<=$number_of_packets_to_read; $i++) {
 			inner_read_packet(1);
-			if ($eof_reached) { print "\n\nreached end of file\n\n"; last; }
+			if ($eof_reached) { print "\n\nreached end of file\n\n"; $should_count_this_quarter_event_in_error_accounting = 0; last; }
+			print "blahblah\n";
 			$errors_for_this_quarter_event += new_parse_packet();
 			if ($i == $number_of_packets_to_read) { $number_of_quarter_events_read++; }
 		}
-		if ($errors_for_this_quarter_event) {
-			$number_of_quarter_events_unsuccessfully_parsed++;
-		} else {
-			$number_of_quarter_events_successfully_parsed++;
+		if ($should_count_this_quarter_event_in_error_accounting) {
+			if ($errors_for_this_quarter_event) {
+				$number_of_quarter_events_unsuccessfully_parsed++;
+			} else {
+				$number_of_quarter_events_successfully_parsed++;
+			}
 		}
 	}
 	close_packet_file();
