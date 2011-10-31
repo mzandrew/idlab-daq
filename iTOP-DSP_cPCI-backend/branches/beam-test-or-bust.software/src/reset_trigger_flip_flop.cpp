@@ -129,7 +129,7 @@ int main(int argc, char** argv) {
 
 	setup_pci(id);
 	pci.sendVetoClear();
-	pci.freeHandles();
+	close_pci();
 
 	return 0;
 }

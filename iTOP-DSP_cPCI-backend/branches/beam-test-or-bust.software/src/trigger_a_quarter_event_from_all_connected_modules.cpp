@@ -129,15 +129,15 @@ int main(int argc, char** argv) {
 
 	setup_pci(id);
 	usleep(10000);
-	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+	send_soft_trigger_request_command_packet();
 	usleep(10000);
-	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+	send_soft_trigger_request_command_packet();
 	usleep(10000);
-	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+	send_soft_trigger_request_command_packet();
 	usleep(10000);
-	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
+	send_soft_trigger_request_command_packet();
 	usleep(10000);
-	pci.freeHandles();
+	close_pci();
 
 	return 0;
 }

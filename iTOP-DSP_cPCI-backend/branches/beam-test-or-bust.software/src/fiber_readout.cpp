@@ -346,3 +346,12 @@ void send_soft_trigger_request_command_packet(void) {
 	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
 }
 
+void set_event_number(unsigned long int event_number) {
+	send_command_packet_to_all_enabled_channels(0xe0000000, event_number); // set event number
+}
+
+void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window) {
+	send_command_packet_to_all_enabled_channels(0x000001ff, start_window); // set start window
+	send_command_packet_to_all_enabled_channels(0x000101ff, end_window); // set end window
+}
+

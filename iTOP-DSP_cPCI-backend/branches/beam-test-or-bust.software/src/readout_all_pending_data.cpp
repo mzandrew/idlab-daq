@@ -129,8 +129,8 @@ int main(int argc, char** argv) {
 
 	setup_pci(id);
 	readout_all_pending_data();
-	pci.freeHandles();
-
+	close_pci();
+	
 	return 0;
 }
 
