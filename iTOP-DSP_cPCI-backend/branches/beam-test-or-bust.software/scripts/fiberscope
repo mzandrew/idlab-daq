@@ -186,7 +186,7 @@ sub readout_all_pending_data {
 #print $string;
 
 sub setup_main_window {
-	$window = new MainWindow(-title=>"iTOP electronics module / fiber readout", -height=>480, -width=>640);
+	$window = new MainWindow(-title=>"fiberscope:  iTOP electronics module fiber readout software", -height=>480, -width=>640);
 	$window->bind('<Key-Escape>', \&quit);
 #	my $default_color = "#d9d9d9";
 	$card_id_entry                    = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$card_id);
