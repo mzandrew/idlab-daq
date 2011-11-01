@@ -463,7 +463,7 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 void setup_default_log_filenames(void) {
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		char temp[15];
-		filename[i] = "";
+		filename[i] = "logdir/";
 		filename[i] += "card";
 		sprintf(temp, "%d", card_id);
 		filename[i] += temp;
