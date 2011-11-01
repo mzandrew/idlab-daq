@@ -100,6 +100,8 @@ int main(int argc, char** argv) {
 	}
 
 	setup_pci(card_id);
+	should_soft_trigger = true;
+	readout_all_pending_data();
 	setup_default_log_filenames();
 	open_files_for_output_and_read_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
 	close_pci();

@@ -55,6 +55,8 @@ extern int fd[NUMBER_OF_SCRODS_TO_READOUT]; // file descriptors for output dataf
 extern unsigned long int total_number_of_readout_events;
 //extern char logprefix[100];                 // prefix of log files generated
 extern string filename[NUMBER_OF_SCRODS_TO_READOUT];
+extern bool files_are_open;
+extern bool should_soft_trigger;
 
 #define NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME (100256)
 void readout_all_pending_data(void);

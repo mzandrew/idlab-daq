@@ -17,6 +17,7 @@ extern void setup_default_log_filenames(void);
 extern std::string filename[4];
 extern void open_logfiles_for_all_enabled_channels(void);
 extern void close_all_logfiles(void);
+extern void readout_all_pending_data(void);
 %}
 
 extern int setup_pci(int id);
@@ -32,4 +33,5 @@ extern void setup_default_log_filenames(void);
 extern std::string filename[4];
 extern void open_logfiles_for_all_enabled_channels(void);
 extern void close_all_logfiles(void);
+extern void readout_all_pending_data(void);
 

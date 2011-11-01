@@ -21,6 +21,8 @@ unsigned short int channel_bitmask = 0;
 int fd[NUMBER_OF_SCRODS_TO_READOUT]; // file descriptors for output datafiles
 unsigned long int total_number_of_readout_events = 0;
 string filename[NUMBER_OF_SCRODS_TO_READOUT];
+bool files_are_open = false;
+bool should_soft_trigger = false;
 
 unsigned long int histogram_of_incomplete_events_560 = 0;
 unsigned long int histogram_of_incomplete_events_other = 0;
@@ -386,17 +388,17 @@ void readout_N_events(unsigned long int N) {
 				((i==1) && (channel_bitmask & 0x2)) ||
 				((i==0) && (channel_bitmask & 0x1))
 				) {
-				if (number_of_bytes_read_so_far[i]) {
+				if (number_of_bytes_read_so_far[i] && files_are_open) {
 					return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
 					//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
 					if (return_value == -1) {
-						printf("\nerror %ld writing to disk", return_value);
+						fprintf(stderr, "\nerror %ld writing to disk", return_value);
 					} else if (return_value > 0) {
 //						printf("\nwrote %d bytes to file", return_value);
 					}
 				}
 			}
-			if (i<N-1) {
+			if (i<N-1 && should_soft_trigger) {
 				send_soft_trigger_request_command_packet();
 			}
 		}
@@ -440,8 +442,10 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 //	usleep(10000);
 //	readout_all_pending_data();
 //	usleep(10000);
-	send_soft_trigger_request_command_packet();
-	usleep(10000);
+	if (should_soft_trigger) {
+		send_soft_trigger_request_command_packet();
+		usleep(10000);
+	}
 
 	readout_N_events(N);
 
@@ -507,6 +511,7 @@ void open_logfiles_for_all_enabled_channels(void) {
 			if (fd[i] < 0) fprintf(stderr, "WARNING: failed to create file \"%s\"\n", filename[i].c_str());
 		}
 	}
+	files_are_open = true;
 }
 
 void close_all_logfiles(void) {
@@ -520,5 +525,6 @@ void close_all_logfiles(void) {
 			close(fd[i]);
 		}
 	}
+	files_are_open = false;
 }
 
