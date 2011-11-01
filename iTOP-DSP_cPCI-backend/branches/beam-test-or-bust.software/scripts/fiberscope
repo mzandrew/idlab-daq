@@ -125,14 +125,16 @@ sub soft_trigger_once {
 	soft_trigger();
 }
 
-sub soft_trigger_N_times {
+sub readout_N_events {
 	fiber_readout_swigwrapper::readout_N_events($N);
+}
+
+#sub soft_trigger_N_times {
 #	fiber_readout_swigwrapper::open_files_for_output_and_read_N_events($N);
 #	for (my $i=0; $i<$N; $i++) {
 #		usleep(10000);
 #		soft_trigger();
 #	}
-}
 
 sub setup_filenames {
 #	my $string = "logdir/card" . $card_id . ".channel" . $i . ".rawdata";
@@ -194,7 +196,7 @@ sub setup_main_window {
 	$card_id_entry                    ->grid(-row=>0, -column=>1);
 	$attempt_to_close_card_button     ->grid(-row=>0, -column=>2);
 	$soft_trigger_once_button         = $window->Button(-text=>"soft trigger once", -command=>\&soft_trigger_once, -state=>'disable');
-	$soft_trigger_N_times_button      = $window->Button(-text=>"soft trigger N times", -command=>\&soft_trigger_N_times, -state=>'disable');
+	$soft_trigger_N_times_button      = $window->Button(-text=>"readout N events", -command=>\&readout_N_events, -state=>'disable');
 	$N_entry                          = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$N);
 	$soft_trigger_once_button         ->grid(-row=>1, -column=>0);
 	$N_entry                          ->grid(-row=>1, -column=>1);
@@ -219,7 +221,7 @@ sub setup_main_window {
 	$close_files_button               = $window->Button(-text=>"close logfiles", -command=>\&close_files, -state=>'disable');
 	$open_files_button                ->grid(-row=>5, -column=>0);
 	$close_files_button               ->grid(-row=>5, -column=>1);
-	$should_self_trigger_checkbutton  = $window->Checkbutton(-text=>"should self trigger", -variable=>\$should_self_trigger, -command=>\&check_status_of_self_triggering);
+	$should_self_trigger_checkbutton  = $window->Checkbutton(-text=>"should self trigger during normal readout", -variable=>\$should_self_trigger, -command=>\&check_status_of_self_triggering);
 	$should_self_trigger_checkbutton  ->grid(-row=>6, -column=>0);
 
 	# here are examples of doing things in Perl/Tk:
