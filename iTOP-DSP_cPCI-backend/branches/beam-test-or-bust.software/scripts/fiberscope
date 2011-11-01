@@ -23,6 +23,8 @@ my ($global_reset_button) = (0);
 my ($clear_scaler_counters_button) = (0);
 my ($channel, $channels) = (0, 0);
 my $verbosity = 0;
+my ($open_files_button, $close_files_button) = (0, 0);
+my $files_are_open = 0;
 
 sub read_config_file {
 	my $config_file = ".config";
@@ -37,7 +39,7 @@ sub read_config_file {
 			$card_id = $1;
 		}
 		if ($line =~ m/channels="([0-9]+)"/) {
-			print "using channels $1\n";
+			print "channel(s) $1 enabled\n";
 			$channels = $1;
 		}
 		if ($line =~ m/verbosity="([0-9])"/) {
@@ -62,11 +64,12 @@ for (my $i=0; $i<4; $i++) {
 $fiber_readout_swigwrapper::channel_bitmask = 0;
 for (my $i=0; $i<4; $i++) {
 	$fiber_readout_swigwrapper::channel_bitmask |= $channel_enable[$i] << $i;
-	print $channel_enable[$i];
+#	print $channel_enable[$i];
 }
 
 sub setup_pci {
 	fiber_readout_swigwrapper::setup_pci($card_id);
+	setup_filenames();
 	$attempt_to_open_card_button      ->configure(-state=>'disable');
 	$card_id_entry                    ->configure(-state=>'disable');
 	$attempt_to_close_card_button     ->configure(-state=>'normal');
@@ -76,10 +79,17 @@ sub setup_pci {
 	$set_start_and_end_windows_button ->configure(-state=>'normal');
 	$global_reset_button              ->configure(-state=>'normal');
 	$clear_scaler_counters_button     ->configure(-state=>'normal');
+	if ($files_are_open) {
+		$open_files_button                ->configure(-state=>'disable');
+		$close_files_button               ->configure(-state=>'normal');
+	} else {
+		$open_files_button                ->configure(-state=>'normal');
+		$close_files_button               ->configure(-state=>'disable');
+	}
 }
 
 sub close_pci {
-	fiber_readout_swigwrapper::close_pci($card_id);
+	fiber_readout_swigwrapper::close_pci();
 	$attempt_to_open_card_button      ->configure(-state=>'normal');
 	$card_id_entry                    ->configure(-state=>'normal');
 	$attempt_to_close_card_button     ->configure(-state=>'disable');
@@ -89,6 +99,8 @@ sub close_pci {
 	$set_start_and_end_windows_button ->configure(-state=>'disable');
 	$global_reset_button              ->configure(-state=>'disable');
 	$clear_scaler_counters_button     ->configure(-state=>'disable');
+	$open_files_button                ->configure(-state=>'disable');
+	$close_files_button               ->configure(-state=>'disable');
 }
 
 sub soft_trigger {
@@ -100,12 +112,37 @@ sub soft_trigger_once {
 }
 
 sub soft_trigger_N_times {
-	my $string = "logdir/card" . $card_id . ".channel";
-	fiber_readout_swigwrapper::open_files_for_output_and_read_N_events($string, $N);
+	fiber_readout_swigwrapper::open_files_for_output_and_read_N_events($N);
 #	for (my $i=0; $i<$N; $i++) {
 #		usleep(10000);
 #		soft_trigger();
 #	}
+}
+
+sub setup_filenames {
+#	my $string = "logdir/card" . $card_id . ".channel" . $i . ".rawdata";
+	fiber_readout_swigwrapper::setup_default_log_filenames();
+#	for (my $i=0; $i<4; $i++) {
+#		print $fiber_readout_swigwrapper::filename[$i] . "\n";
+#	}
+#	$fiber_readout_swigwrapper::filename[0] = "asdf";
+#	for (my $i=0; $i<4; $i++) {
+#		print $fiber_readout_swigwrapper::filename[$i] . "\n";
+#	}
+}
+
+sub open_files {
+	fiber_readout_swigwrapper::open_logfiles_for_all_enabled_channels();
+	$open_files_button                ->configure(-state=>'disable');
+	$close_files_button               ->configure(-state=>'normal');
+	$files_are_open = 1;
+}
+
+sub close_files {
+	fiber_readout_swigwrapper::close_all_logfiles();
+	$open_files_button                ->configure(-state=>'normal');
+	$close_files_button               ->configure(-state=>'disable');
+	$files_are_open = 0;
 }
 
 sub set_event_number {
@@ -157,6 +194,10 @@ sub setup_main_window {
 	$clear_scaler_counters_button     = $window->Button(-text=>"clear scaler counters", -command=>\&clear_scaler_counters, -state=>'disable');
 	$global_reset_button              ->grid(-row=>4, -column=>0);
 	$clear_scaler_counters_button     ->grid(-row=>4, -column=>1);
+	$open_files_button                = $window->Button(-text=>"open logfiles", -command=>\&open_files, -state=>'disable');
+	$close_files_button               = $window->Button(-text=>"close logfiles", -command=>\&close_files, -state=>'disable');
+	$open_files_button                ->grid(-row=>5, -column=>0);
+	$close_files_button               ->grid(-row=>5, -column=>1);
 
 	# here are examples of doing things in Perl/Tk:
 	#$filter_slide_frame  = $window->Frame(-borderwidth=>15, -background=>$filter_slide_frame_background_color);
@@ -174,11 +215,10 @@ sub setup_main_window {
 	#$frame_canvas->create('image', 0, 0, '-anchor' => 'nw', '-image' => $image);
 	#$frame_canvas->grid(-row=>0, -column=>0);
 	#$frame_canvas->Tk::bind('<ButtonRelease-1>', \&grid_button_release);
-
 }
 
 sub quit {
-	close_pci($card_id);
+	close_pci();
 	exit(0);
 }
 
