@@ -19,6 +19,7 @@ extern void open_logfiles_for_all_enabled_channels(void);
 extern void close_all_logfiles(void);
 extern void readout_all_pending_data(void);
 extern void readout_N_events(unsigned long int N);
+extern bool should_soft_trigger;
 %}
 
 extern int setup_pci(int id);
@@ -36,4 +37,5 @@ extern void open_logfiles_for_all_enabled_channels(void);
 extern void close_all_logfiles(void);
 extern void readout_all_pending_data(void);
 extern void readout_N_events(unsigned long int N);
+extern bool should_soft_trigger;
 
