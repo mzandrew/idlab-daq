@@ -245,6 +245,7 @@ sub quit {
 	exit(0);
 }
 
+check_status_of_self_triggering();
 setup_main_window();
 MainLoop;
 
