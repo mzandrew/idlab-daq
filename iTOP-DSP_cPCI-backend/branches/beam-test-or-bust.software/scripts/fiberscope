@@ -25,6 +25,7 @@ my ($channel, $channels) = (0, 0);
 my $verbosity = 0;
 my ($open_files_button, $close_files_button) = (0, 0);
 my $files_are_open = 0;
+my $readout_all_pending_data_button;
 
 sub read_config_file {
 	my $config_file = ".config";
@@ -86,6 +87,7 @@ sub setup_pci {
 		$open_files_button                ->configure(-state=>'normal');
 		$close_files_button               ->configure(-state=>'disable');
 	}
+	$readout_all_pending_data_button  ->configure(-state=>'normal');
 }
 
 sub close_pci {
@@ -101,6 +103,7 @@ sub close_pci {
 	$clear_scaler_counters_button     ->configure(-state=>'disable');
 	$open_files_button                ->configure(-state=>'disable');
 	$close_files_button               ->configure(-state=>'disable');
+	$readout_all_pending_data_button  ->configure(-state=>'disable');
 }
 
 sub soft_trigger {
@@ -161,6 +164,10 @@ sub clear_scaler_counters {
 	fiber_readout_swigwrapper::clear_scaler_counters();
 }
 
+sub readout_all_pending_data {
+	fiber_readout_swigwrapper::readout_all_pending_data();
+}
+
 #my $string = sprintf("\"%s\"\n", $fiber_readout::default_device_name);
 #print $string;
 
@@ -192,8 +199,10 @@ sub setup_main_window {
 	$set_start_and_end_windows_button ->grid(-row=>3, -column=>2);
 	$global_reset_button              = $window->Button(-text=>"request global reset", -command=>\&global_reset, -state=>'disable');
 	$clear_scaler_counters_button     = $window->Button(-text=>"clear scaler counters", -command=>\&clear_scaler_counters, -state=>'disable');
+	$readout_all_pending_data_button  = $window->Button(-text=>"readout all pending data", -command=>\&readout_all_pending_data, -state=>'disable');
 	$global_reset_button              ->grid(-row=>4, -column=>0);
 	$clear_scaler_counters_button     ->grid(-row=>4, -column=>1);
+	$readout_all_pending_data_button  ->grid(-row=>4, -column=>2);
 	$open_files_button                = $window->Button(-text=>"open logfiles", -command=>\&open_files, -state=>'disable');
 	$close_files_button               = $window->Button(-text=>"close logfiles", -command=>\&close_files, -state=>'disable');
 	$open_files_button                ->grid(-row=>5, -column=>0);
