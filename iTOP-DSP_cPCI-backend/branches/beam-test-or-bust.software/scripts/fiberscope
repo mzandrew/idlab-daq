@@ -115,7 +115,8 @@ sub soft_trigger_once {
 }
 
 sub soft_trigger_N_times {
-	fiber_readout_swigwrapper::open_files_for_output_and_read_N_events($N);
+	fiber_readout_swigwrapper::readout_N_events($N);
+#	fiber_readout_swigwrapper::open_files_for_output_and_read_N_events($N);
 #	for (my $i=0; $i<$N; $i++) {
 #		usleep(10000);
 #		soft_trigger();
