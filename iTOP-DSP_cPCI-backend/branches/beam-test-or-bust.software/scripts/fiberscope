@@ -26,6 +26,7 @@ my $verbosity = 0;
 my ($open_files_button, $close_files_button) = (0, 0);
 my $files_are_open = 0;
 my $readout_all_pending_data_button;
+my ($should_self_trigger, $should_self_trigger_checkbutton) = (1, 0);
 
 sub read_config_file {
 	my $config_file = ".config";
@@ -88,6 +89,7 @@ sub setup_pci {
 		$close_files_button               ->configure(-state=>'disable');
 	}
 	$readout_all_pending_data_button  ->configure(-state=>'normal');
+	$should_self_trigger_checkbutton  ->configure(-state=>'normal');
 }
 
 sub close_pci {
@@ -104,6 +106,15 @@ sub close_pci {
 	$open_files_button                ->configure(-state=>'disable');
 	$close_files_button               ->configure(-state=>'disable');
 	$readout_all_pending_data_button  ->configure(-state=>'disable');
+	$should_self_trigger_checkbutton  ->configure(-state=>'disable');
+}
+
+sub check_status_of_self_triggering {
+	if ($should_self_trigger) {
+		$fiber_readout_swigwrapper::should_soft_trigger = 1;
+	} else {
+		$fiber_readout_swigwrapper::should_soft_trigger = 0;
+	}
 }
 
 sub soft_trigger {
@@ -208,6 +219,8 @@ sub setup_main_window {
 	$close_files_button               = $window->Button(-text=>"close logfiles", -command=>\&close_files, -state=>'disable');
 	$open_files_button                ->grid(-row=>5, -column=>0);
 	$close_files_button               ->grid(-row=>5, -column=>1);
+	$should_self_trigger_checkbutton  = $window->Checkbutton(-text=>"should self trigger", -variable=>\$should_self_trigger, -command=>\&check_status_of_self_triggering);
+	$should_self_trigger_checkbutton  ->grid(-row=>6, -column=>0);
 
 	# here are examples of doing things in Perl/Tk:
 	#$filter_slide_frame  = $window->Frame(-borderwidth=>15, -background=>$filter_slide_frame_background_color);
