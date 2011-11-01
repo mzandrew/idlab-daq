@@ -471,7 +471,7 @@ void setup_default_log_filenames(void) {
 		sprintf(temp, "%d", i);
 		filename[i] += temp;
 		filename[i] += ".rawdata";
-		printf("filename[%d] = \"%s\"\n", i, filename[i].c_str());
+//		printf("filename[%d] = \"%s\"\n", i, filename[i].c_str());
 //		sprintf(filename[i], "%s%d.rawdata", logprefix, i);
 	}
 }
