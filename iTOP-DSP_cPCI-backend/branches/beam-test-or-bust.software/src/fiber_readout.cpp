@@ -18,8 +18,9 @@ unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned long int total_number_of_errors;
 string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned short int channel_bitmask = 0;
-int fd[4]; // file descriptors for output datafiles
+int fd[NUMBER_OF_SCRODS_TO_READOUT]; // file descriptors for output datafiles
 unsigned long int total_number_of_readout_events = 0;
+string filename[NUMBER_OF_SCRODS_TO_READOUT];
 
 unsigned long int histogram_of_incomplete_events_560 = 0;
 unsigned long int histogram_of_incomplete_events_other = 0;
@@ -404,38 +405,8 @@ void readout_N_events(unsigned long int N) {
 	}
 }
 
-int open_files_for_output_and_read_N_events(char *logprefix, unsigned long int N) {
-	// check if proposed output files exist.  Note that we don't open any yet, because
-	// if they are opened, the files get created.  If any of the files exist, we do not
-	// want to create any of the other files.
-	for(int i=0; i < 4; i++) {
-		char filename[105] = "";
-		sprintf(filename, "%s%d.rawdata", logprefix, i);
-//		sprintf(filename, "%s", logprefix);
-//		if (stdout_ch == i) continue;
-		if (channel_bitmask & (1<<i)) {
-			struct stat st;
-			if(stat(filename ,&st) == 0) {
-			        //fprintf(stderr, "ERROR: %s already exists, bailing\n", filename);
-			        fprintf(stdout, "WARNING: %s already exists; overwriting\n", filename);
-				//return 0;
-			}
-		}
-	}
-
-	// open and create the log files
-	for(int i=0; i < 4; i++) {
-		char filename[105] = "";
-		sprintf(filename, "%s%d.rawdata", logprefix, i);
-		//sprintf(filename, "%s", logprefix);
-		if (channel_bitmask & (1<<i)) {
-//			printf("%d %d\n", stdout_ch, i);
-//			if (stdout_ch == i) continue;
-			fd[i] = open(filename, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-			if (fd[i] < 0) 
-				fprintf(stderr, "warning: failed to create file %s\n", filename);
-		}
-	}
+int open_files_for_output_and_read_N_events(unsigned long int N) {
+	open_logfiles_for_all_enabled_channels();
 
 //	if (stdout_ch != -1)
 //		fd[stdout_ch] = STDOUT_FILENO;
@@ -466,9 +437,9 @@ int open_files_for_output_and_read_N_events(char *logprefix, unsigned long int N
 //	set_start_and_end_windows(0x00000000, 0x00000003);
 //	set_start_and_end_windows(0x00000110, 0x00000113);
 
-	usleep(10000);
-	readout_all_pending_data();
-	usleep(10000);
+//	usleep(10000);
+//	readout_all_pending_data();
+//	usleep(10000);
 	send_soft_trigger_request_command_packet();
 	usleep(10000);
 
@@ -481,10 +452,71 @@ int open_files_for_output_and_read_N_events(char *logprefix, unsigned long int N
 	//printf("\nnumber of times exactly one packet was missing = %d", histogram_of_incomplete_events_560);
 	//printf("\nnumber of times some other number of words was missing = %d", histogram_of_incomplete_events_other);
 	printf("\n");
-	
-	for(int i=0; i<4; i++) {
+
+	close_all_logfiles();
+}
+
+void setup_default_log_filenames(void) {
+	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+		char temp[15];
+		filename[i] = "";
+		filename[i] += "card";
+		sprintf(temp, "%d", card_id);
+		filename[i] += temp;
+		filename[i] += ".channel";
+		sprintf(temp, "%d", i);
+		filename[i] += temp;
+		filename[i] += ".rawdata";
+		printf("filename[%d] = \"%s\"\n", i, filename[i].c_str());
+//		sprintf(filename[i], "%s%d.rawdata", logprefix, i);
+	}
+}
+
+void open_logfiles_for_all_enabled_channels(void) {
+	/*
+	// check if proposed output files exist.  Note that we don't open any yet, because
+	// if they are opened, the files get created.  If any of the files exist, we do not
+	// want to create any of the other files.
+	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+		char filename[105] = "";
+		sprintf(filename, "%s%d.rawdata", logprefix, i);
+//		sprintf(filename, "%s", logprefix);
+//		if (stdout_ch == i) continue;
 		if (channel_bitmask & (1<<i)) {
+			struct stat st;
+			if(stat(filename ,&st) == 0) {
+				//fprintf(stderr, "ERROR: %s already exists, bailing\n", filename);
+				fprintf(stdout, "WARNING: %s already exists; overwriting\n", filename);
+				//return 0;
+			}
+		}
+	}
+	*/
+//	if (filename[i].c_str() == "") {
+//		setup_log_filenames();
+//	}
+	// open and create the log files
+	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+//		char filename[105] = "";
+//		sprintf(filename, "%s%d.rawdata", logprefix, i);
+		if (channel_bitmask & (1<<i)) {
+//			printf("%d %d\n", stdout_ch, i);
+//			if (stdout_ch == i) continue;
+			fprintf(stdout, "attempting to open file \"%s\"...\n", filename[i].c_str());
+			fd[i] = open(filename[i].c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+			if (fd[i] < 0) fprintf(stderr, "WARNING: failed to create file \"%s\"\n", filename[i].c_str());
+		}
+	}
+}
+
+void close_all_logfiles(void) {
+	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+//		if (channel_bitmask & (1<<i)) {
 //			fprintf(stderr, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);
+//			close(fd[i]);
+//		} else 
+		if (fd[i] > 0) {
+			printf("closing file \"%s\" for card #%d channel #%d\n", filename[i].c_str(), card_id, i);
 			close(fd[i]);
 		}
 	}
