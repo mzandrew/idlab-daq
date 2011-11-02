@@ -1,4 +1,5 @@
-OBJS = bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules work/fiber_readout_swigwrapper.so 
+FINAL_OBJECT_FILES = bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules work/fiber_readout_swigwrapper.so 
+INTERMEDIATE_OBJECT_FILES = contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
 CXXFLAGS = -D_FILE_OFFSET_BITS=64
 
 default :
@@ -9,10 +10,15 @@ default :
 	if [ ! -e bin     ]; then mkdir     bin; fi
 	$(MAKE) all
 
-all : $(OBJS)
+all : $(FINAL_OBJECT_FILES)
 
 work/%.o : src/%.cpp
 	g++ -c $< -o $@
+
+bin/window_profiler : work/window_profiler.o $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
+
+#bin/% : $(@:bin/%=work/%.o) $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ $(@:bin/%=work/%.o) -o $@
+
 
 bin/cosmic                                             : work/cosmic.o                                             contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
 	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@

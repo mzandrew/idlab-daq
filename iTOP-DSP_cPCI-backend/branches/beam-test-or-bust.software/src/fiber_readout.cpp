@@ -349,24 +349,31 @@ int stop_timer(struct timeval* begin) {
 }
 
 void send_soft_trigger_request_command_packet(void) {
+//	printf("sending soft trigger command\n");
 	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
 }
 
 void set_event_number(unsigned long int event_number) {
+	printf("setting event number to %d\n", event_number);
 	send_command_packet_to_all_enabled_channels(0xe0000000, event_number); // set event number
 }
 
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window) {
+	printf("setting start_window to %d\n", start_window);
 	send_command_packet_to_all_enabled_channels(0x000001ff, start_window); // set start window
+	usleep(10000);
+	printf("setting end_window to %d\n", end_window);
 	send_command_packet_to_all_enabled_channels(0x000101ff, end_window); // set end window
 }
 
 void global_reset(void) {
+	printf("sending global reset\n");
 	send_command_packet_to_all_enabled_channels(0x33333333, 0x00000000); // global reset
 	usleep(500000); // wait for FPGA to reset everything and bring fiber link up again
 }
 
 void clear_scaler_counters(void) {
+	printf("clearing scaler counters\n");
 	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
 }
 
@@ -402,9 +409,9 @@ void readout_N_events(unsigned long int N) {
 				}
 			}
 		}
-//		printf("\n");
 		usleep(NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS);
 	}
+	printf("\n");
 }
 
 int open_files_for_output_and_read_N_events(unsigned long int N) {
