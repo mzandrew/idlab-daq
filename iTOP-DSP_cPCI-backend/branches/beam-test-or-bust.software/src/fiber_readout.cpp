@@ -354,15 +354,15 @@ void send_soft_trigger_request_command_packet(void) {
 }
 
 void set_event_number(unsigned long int event_number) {
-	printf("setting event number to %d\n", event_number);
+	printf("setting event number to %ld\n", event_number);
 	send_command_packet_to_all_enabled_channels(0xe0000000, event_number); // set event number
 }
 
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window) {
-	printf("setting start_window to %d\n", start_window);
+	printf("setting start_window to %ld\n", start_window);
 	send_command_packet_to_all_enabled_channels(0x000001ff, start_window); // set start window
 	usleep(10000);
-	printf("setting end_window to %d\n", end_window);
+	printf("setting end_window to %ld\n", end_window);
 	send_command_packet_to_all_enabled_channels(0x000101ff, end_window); // set end window
 }
 
@@ -449,10 +449,10 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 //	usleep(10000);
 //	readout_all_pending_data();
 //	usleep(10000);
-	if (should_soft_trigger) {
-		send_soft_trigger_request_command_packet();
-		usleep(10000);
-	}
+//	if (should_soft_trigger) {
+//		send_soft_trigger_request_command_packet();
+//		usleep(10000);
+//	}
 
 	readout_N_events(N);
 

@@ -16,7 +16,7 @@ use Time::HiRes qw(usleep);
 my $window;
 
 my ($card_id, $card_id_entry, $attempt_to_open_card_button, $attempt_to_close_card_button) = (5, 0, 0);
-my ($soft_trigger_once_button, $N, $N_entry, $soft_trigger_N_times_button) = (0, 100, 0, 0);
+my ($soft_trigger_once_button, $readout_one_time_button, $N, $N_entry, $readout_N_times_button) = (0, 100, 0, 0);
 my ($event_number, $event_number_entry, $set_event_number_button) = (5, 0, 0);
 my ($start_window, $end_window, $start_window_entry, $end_window_entry, $set_start_and_end_windows_button) = (0, 511, 0, 0, 0);
 my ($global_reset_button) = (0);
@@ -27,6 +27,7 @@ my ($open_files_button, $close_files_button) = (0, 0);
 my $files_are_open = 0;
 my $readout_all_pending_data_button;
 my ($should_self_trigger, $should_self_trigger_checkbutton) = (1, 0);
+my ($should_actually_open_card, $card_is_actually_open) = (1, 0);
 
 sub read_config_file {
 	my $config_file = ".config";
@@ -70,13 +71,17 @@ for (my $i=0; $i<4; $i++) {
 }
 
 sub setup_pci {
-	fiber_readout_swigwrapper::setup_pci($card_id);
+	if ($should_actually_open_card) {
+		fiber_readout_swigwrapper::setup_pci($card_id);
+		$card_is_actually_open = 1;
+	}
 	setup_filenames();
 	$attempt_to_open_card_button      ->configure(-state=>'disable');
 	$card_id_entry                    ->configure(-state=>'disable');
 	$attempt_to_close_card_button     ->configure(-state=>'normal');
 	$soft_trigger_once_button         ->configure(-state=>'normal');
-	$soft_trigger_N_times_button      ->configure(-state=>'normal');
+	$readout_one_time_button          ->configure(-state=>'normal');
+	$readout_N_times_button           ->configure(-state=>'normal');
 	$set_event_number_button          ->configure(-state=>'normal');
 	$set_start_and_end_windows_button ->configure(-state=>'normal');
 	$global_reset_button              ->configure(-state=>'normal');
@@ -93,12 +98,16 @@ sub setup_pci {
 }
 
 sub close_pci {
-	fiber_readout_swigwrapper::close_pci();
+	if ($card_is_actually_open) {
+		fiber_readout_swigwrapper::close_pci();
+		$card_is_actually_open = 0;
+	}
 	$attempt_to_open_card_button      ->configure(-state=>'normal');
 	$card_id_entry                    ->configure(-state=>'normal');
 	$attempt_to_close_card_button     ->configure(-state=>'disable');
 	$soft_trigger_once_button         ->configure(-state=>'disable');
-	$soft_trigger_N_times_button      ->configure(-state=>'disable');
+	$readout_one_time_button          ->configure(-state=>'disable');
+	$readout_N_times_button           ->configure(-state=>'disable');
 	$set_event_number_button          ->configure(-state=>'disable');
 	$set_start_and_end_windows_button ->configure(-state=>'disable');
 	$global_reset_button              ->configure(-state=>'disable');
@@ -118,15 +127,25 @@ sub check_status_of_self_triggering {
 }
 
 sub soft_trigger {
-	fiber_readout_swigwrapper::send_soft_trigger_request_command_packet();
+	if ($card_is_actually_open) {
+		fiber_readout_swigwrapper::send_soft_trigger_request_command_packet();
+	}
 }
 
 sub soft_trigger_once {
 	soft_trigger();
 }
 
+sub readout_one_event {
+	if ($card_is_actually_open) {
+		fiber_readout_swigwrapper::readout_N_events(1);
+	}
+}
+
 sub readout_N_events {
-	fiber_readout_swigwrapper::readout_N_events($N);
+	if ($card_is_actually_open) {
+		fiber_readout_swigwrapper::readout_N_events($N);
+	}
 }
 
 #sub soft_trigger_N_times {
@@ -163,23 +182,33 @@ sub close_files {
 }
 
 sub set_event_number {
-	fiber_readout_swigwrapper::set_event_number($event_number);
+	if ($card_is_actually_open) {
+		fiber_readout_swigwrapper::set_event_number($event_number);
+	}
 }
 
 sub set_start_and_end_windows {
-	fiber_readout_swigwrapper::set_start_and_end_windows($start_window, $end_window);
+	if ($card_is_actually_open) {
+		fiber_readout_swigwrapper::set_start_and_end_windows($start_window, $end_window);
+	}
 }
 
 sub global_reset {
-	fiber_readout_swigwrapper::global_reset();
+	if ($card_is_actually_open) {
+		fiber_readout_swigwrapper::global_reset();
+	}
 }
 
 sub clear_scaler_counters {
-	fiber_readout_swigwrapper::clear_scaler_counters();
+	if ($card_is_actually_open) {
+		fiber_readout_swigwrapper::clear_scaler_counters();
+	}
 }
 
 sub readout_all_pending_data {
-	fiber_readout_swigwrapper::readout_all_pending_data();
+	if ($card_is_actually_open) {
+		fiber_readout_swigwrapper::readout_all_pending_data();
+	}
 }
 
 #my $string = sprintf("\"%s\"\n", $fiber_readout::default_device_name);
@@ -188,44 +217,68 @@ sub readout_all_pending_data {
 sub setup_main_window {
 	$window = new MainWindow(-title=>"fiberscope:  iTOP electronics module fiber readout software", -height=>480, -width=>640);
 	$window->bind('<Key-Escape>', \&quit);
-#	my $default_color = "#d9d9d9";
-	$card_id_entry                    = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$card_id);
-	$attempt_to_open_card_button      = $window->Button(-text=>"open DSP_cPCI card #", -command=>\&setup_pci);
-	$attempt_to_close_card_button     = $window->Button(-text=>"close card", -command=>\&close_pci, -state=>'disable');
+	my ($default_color, $alternate_color) = ("#d9d9d9", "#e3e3e3");
+
+	my $local_setup_frame             = $window->Frame(-borderwidth=>15, -background=>$alternate_color);
+	my $remote_setup_frame            = $window->Frame(-borderwidth=>15, -background=>$alternate_color);
+	my $remote_action_frame           = $window->Frame(-borderwidth=>15, -background=>$alternate_color);
+
+	$card_id_entry                    = $local_setup_frame->Entry(-width=>4, -state=>"normal", -textvariable=>\$card_id);
+	$attempt_to_open_card_button      = $local_setup_frame->Button(-text=>"open DSP_cPCI card", -command=>\&setup_pci);
+	$attempt_to_close_card_button     = $local_setup_frame->Button(-text=>"close card", -command=>\&close_pci, -state=>'disable');
 	$attempt_to_open_card_button      ->grid(-row=>0, -column=>0);
 	$card_id_entry                    ->grid(-row=>0, -column=>1);
 	$attempt_to_close_card_button     ->grid(-row=>0, -column=>2);
-	$soft_trigger_once_button         = $window->Button(-text=>"soft trigger once", -command=>\&soft_trigger_once, -state=>'disable');
-	$soft_trigger_N_times_button      = $window->Button(-text=>"readout N events", -command=>\&readout_N_events, -state=>'disable');
-	$N_entry                          = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$N);
-	$soft_trigger_once_button         ->grid(-row=>1, -column=>0);
+
+	$open_files_button                = $local_setup_frame->Button(-text=>"open logfiles", -command=>\&open_files, -state=>'disable');
+	$close_files_button               = $local_setup_frame->Button(-text=>"close logfiles", -command=>\&close_files, -state=>'disable');
+	$open_files_button                ->grid(-row=>1, -column=>0);
+	$close_files_button               ->grid(-row=>1, -column=>1);
+
+	$global_reset_button              = $remote_setup_frame->Button(-text=>"request global reset", -command=>\&global_reset, -state=>'disable');
+	$clear_scaler_counters_button     = $remote_setup_frame->Button(-text=>"clear scaler counters", -command=>\&clear_scaler_counters, -state=>'disable');
+	$global_reset_button              ->grid(-row=>0, -column=>0);
+	$clear_scaler_counters_button     ->grid(-row=>0, -column=>1);
+
+	$event_number_entry               = $remote_setup_frame->Entry(-width=>5, -state=>"normal", -textvariable=>\$event_number);
+	$set_event_number_button          = $remote_setup_frame->Button(-text=>"set event number", -command=>\&set_event_number, -state=>'disable');
+	$event_number_entry               ->grid(-row=>1, -column=>0);
+	$set_event_number_button          ->grid(-row=>1, -column=>1);
+
+	$start_window_entry               = $remote_setup_frame->Entry(-width=>5, -state=>"normal", -textvariable=>\$start_window);
+	$end_window_entry                 = $remote_setup_frame->Entry(-width=>5, -state=>"normal", -textvariable=>\$end_window);
+	$set_start_and_end_windows_button = $remote_setup_frame->Button(-text=>"set start and end windows", -command=>\&set_start_and_end_windows, -state=>'disable');
+	$start_window_entry               ->grid(-row=>2, -column=>0);
+	$end_window_entry                 ->grid(-row=>2, -column=>1);
+	$set_start_and_end_windows_button ->grid(-row=>2, -column=>2);
+
+	$soft_trigger_once_button         = $remote_action_frame->Button(-text=>"soft trigger once", -command=>\&soft_trigger_once, -state=>'disable');
+	$readout_all_pending_data_button  = $remote_action_frame->Button(-text=>"readout and discard all pending data", -command=>\&readout_all_pending_data, -state=>'disable');
+	$soft_trigger_once_button         ->grid(-row=>0, -column=>0);
+	$readout_all_pending_data_button  ->grid(-row=>0, -column=>1);
+
+	$readout_one_time_button          = $remote_action_frame->Button(-text=>"readout one event", -command=>\&readout_one_event, -state=>'disable');
+	$readout_N_times_button           = $remote_action_frame->Button(-text=>"readout N events", -command=>\&readout_N_events, -state=>'disable');
+	$N_entry                          = $remote_action_frame->Entry(-width=>8, -state=>"normal", -textvariable=>\$N);
+	$should_self_trigger_checkbutton  = $remote_action_frame->Checkbutton(-text=>"should self trigger during normal readout", -variable=>\$should_self_trigger, -command=>\&check_status_of_self_triggering);
+	$readout_one_time_button          ->grid(-row=>1, -column=>0);
 	$N_entry                          ->grid(-row=>1, -column=>1);
-	$soft_trigger_N_times_button      ->grid(-row=>1, -column=>2);
-	$event_number_entry               = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$event_number);
-	$set_event_number_button          = $window->Button(-text=>"set event number", -command=>\&set_event_number, -state=>'disable');
-	$event_number_entry               ->grid(-row=>2, -column=>0);
-	$set_event_number_button          ->grid(-row=>2, -column=>1);
-	$start_window_entry               = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$start_window);
-	$end_window_entry                 = $window->Entry(-width=>5, -state=>"normal", -textvariable=>\$end_window);
-	$set_start_and_end_windows_button = $window->Button(-text=>"set start and end windows", -command=>\&set_start_and_end_windows, -state=>'disable');
-	$start_window_entry               ->grid(-row=>3, -column=>0);
-	$end_window_entry                 ->grid(-row=>3, -column=>1);
-	$set_start_and_end_windows_button ->grid(-row=>3, -column=>2);
-	$global_reset_button              = $window->Button(-text=>"request global reset", -command=>\&global_reset, -state=>'disable');
-	$clear_scaler_counters_button     = $window->Button(-text=>"clear scaler counters", -command=>\&clear_scaler_counters, -state=>'disable');
-	$readout_all_pending_data_button  = $window->Button(-text=>"readout all pending data", -command=>\&readout_all_pending_data, -state=>'disable');
-	$global_reset_button              ->grid(-row=>4, -column=>0);
-	$clear_scaler_counters_button     ->grid(-row=>4, -column=>1);
-	$readout_all_pending_data_button  ->grid(-row=>4, -column=>2);
-	$open_files_button                = $window->Button(-text=>"open logfiles", -command=>\&open_files, -state=>'disable');
-	$close_files_button               = $window->Button(-text=>"close logfiles", -command=>\&close_files, -state=>'disable');
-	$open_files_button                ->grid(-row=>5, -column=>0);
-	$close_files_button               ->grid(-row=>5, -column=>1);
-	$should_self_trigger_checkbutton  = $window->Checkbutton(-text=>"should self trigger during normal readout", -variable=>\$should_self_trigger, -command=>\&check_status_of_self_triggering);
-	$should_self_trigger_checkbutton  ->grid(-row=>6, -column=>0);
+	$readout_N_times_button           ->grid(-row=>1, -column=>2);
+	$should_self_trigger_checkbutton  ->grid(-row=>1, -column=>3);
+
+	my $local_setup_frame_label       = $window->Label(-text=>"local setup:");
+	$local_setup_frame_label          ->grid(-row=>0, -column=>0);
+	$local_setup_frame                ->grid(-row=>0, -column=>1);
+
+	my $remote_setup_frame_label      = $window->Label(-text=>"remote setup:");
+	$remote_setup_frame_label         ->grid(-row=>2, -column=>0);
+	$remote_setup_frame               ->grid(-row=>2, -column=>1);
+
+	my $remote_action_frame_label     = $window->Label(-text=>"remote action:");
+	$remote_action_frame_label        ->grid(-row=>4, -column=>0);
+	$remote_action_frame              ->grid(-row=>4, -column=>1);
 
 	# here are examples of doing things in Perl/Tk:
-	#$filter_slide_frame  = $window->Frame(-borderwidth=>15, -background=>$filter_slide_frame_background_color);
 	#$radiobutton_filter_label = $filter_slide_frame->Label(-text=>"filter slide:", -background=>$filter_slide_frame_background_color);
 	#$radiobutton_filter_none  = $filter_slide_frame->Radiobutton(-text=>"none",  -value=>0, -variable=>\$displayed_filter_slide_macrostep_position, -command=>\&filter_slide_radiobutton_clicked, -background=>$filter_slide_frame_background_color);
 	#$radiobutton_filter_label->grid(-row=>0, -column=>0);
