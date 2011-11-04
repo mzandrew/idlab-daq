@@ -28,6 +28,7 @@ my $files_are_open = 0;
 my $readout_all_pending_data_button;
 my ($should_self_trigger, $should_self_trigger_checkbutton) = (1, 0);
 my ($should_actually_open_card, $card_is_actually_open) = (1, 0);
+my $should_expect_card_to_be_installed = 1;
 
 sub read_config_file {
 	my $config_file = ".config";
@@ -37,25 +38,35 @@ sub read_config_file {
 		$line =~ s/#.*//;
 		next if ($line =~ /^$/);
 #		print "$line\n";
-		if ($line =~ m/card=([0-9]+)/) {
-			print "using card #$1\n";
+		if ($line =~ m/^card=([0-9]+)/) {
+			print "using card_id #$1\n";
 			$card_id = $1;
 		}
-		if ($line =~ m/channels="([0-9]+)"/) {
-			print "channel(s) $1 enabled\n";
+		if ($line =~ m/^channels="([0-9]+)"/) {
+			print "using channels $1\n";
 			$channels = $1;
 		}
-		if ($line =~ m/verbosity="([0-9])"/) {
+		if ($line =~ m/^channel=([0-9]+)/) {
+			print "analysing channel $1\n";
+			$channel = $1;
+		}
+		if ($line =~ m/^verbosity=([0-9]+)/) {
 			print "using verbosity $1\n";
 			$verbosity = $1;
 		}
+		if ($line =~ m/^should_expect_card_to_be_installed=([0-9]+)/) {
+			if ($1 == 0) {
+				print "faking it\n";
+			}
+			$should_expect_card_to_be_installed = $1;
+		}
+		if ($line =~ m/^total_number_of_quarter_events_to_read_per_fiber_channel=([0-9]+)/) {
+			print "taking $1 events at a time\n";
+			$N = $1;
+		}
 	}
-	$channel = $channels;
-	$channel =~ s/([0-9])+/$1/;
 	close(CONFIGFILE) || return;
 }
-
-read_config_file();
 
 my @channel_enable;
 for (my $i=0; $i<4; $i++) {
@@ -71,6 +82,11 @@ for (my $i=0; $i<4; $i++) {
 }
 
 sub setup_pci {
+	if ($should_expect_card_to_be_installed) {
+		$should_actually_open_card = 1;
+	} else {
+		$should_actually_open_card = 0;
+	}
 	if ($should_actually_open_card) {
 		fiber_readout_swigwrapper::setup_pci($card_id);
 		$card_is_actually_open = 1;
@@ -300,6 +316,7 @@ sub quit {
 	exit(0);
 }
 
+read_config_file();
 check_status_of_self_triggering();
 setup_main_window();
 MainLoop;
