@@ -359,6 +359,18 @@ void set_event_number(unsigned long int event_number) {
 }
 
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window) {
+	if (start_window%2!=0) {
+		fprintf(stderr, "ERROR:  start_window must be even (trying to set it to %ld)\n", start_window);
+		exit(7);
+	}
+	if (end_window%2==0) {
+		fprintf(stderr, "ERROR:  end_window must be odd (trying to set it to %ld)\n", end_window);
+		exit(8);
+	}
+	if (start_window>end_window) {
+		fprintf(stderr, "ERROR:  start_window (%ld) must be less than end_window (%ld)\n", start_window, end_window);
+		exit(9);
+	}
 	printf("setting start_window to %ld\n", start_window);
 	send_command_packet_to_all_enabled_channels(0x000001ff, start_window); // set start window
 	usleep(10000);
@@ -432,10 +444,8 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 //	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x0000077b); // set trigger thresholds for all channels
 //	send_command_packet_to_all_enabled_channels(0x5555b1a5, 0x00000000); // set Vbias values for all channels
 //	send_command_packet_to_all_enabled_channels(0x5555b1a5, 0x0000044c); // set Vbias values for all channels
-//	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
 //	setup_default_DAC_settings(); // just initialize the array locally
 //	send_DAC_setting_command();
-//	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x00000000); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000001ff); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000003ff); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000005ff); // set all DACs to given argument
@@ -465,6 +475,15 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 	printf("\n");
 
 	close_all_logfiles();
+}
+
+
+void set_all_DACs_to(unsigned short int value) {
+	send_command_packet_to_all_enabled_channels(0x4bac2dac, value); // set all DACs to given argument
+}
+
+void set_all_DACs_to_built_in_nominal_values(void) {
+	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
 }
 
 void setup_default_log_filenames(void) {

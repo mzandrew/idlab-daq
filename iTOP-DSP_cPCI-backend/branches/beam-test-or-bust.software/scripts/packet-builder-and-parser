@@ -3,7 +3,7 @@
 
 use strict;
 
-my $verbosity = 5;
+my $verbosity = 4;
 my $subdir = "mypackets";
 my %packet;
 my ($card, $channels, $channel);
@@ -563,21 +563,25 @@ sub read_config_file {
 		$line =~ s/#.*//;
 		next if ($line =~ /^$/);
 #		print "$line\n";
-		if ($line =~ m/card=([0-9]+)/) {
+		if ($line =~ m/^card=([0-9]+)/) {
 			print "using card #$1\n";
 			$card = $1;
 		}
-		if ($line =~ m/channels="([0-9]+)"/) {
+		if ($line =~ m/^channels="([0-9]+)"/) {
 			print "using channels $1\n";
 			$channels = $1;
 		}
-		if ($line =~ m/verbosity="([0-9])"/) {
+		if ($line =~ m/^channel=([0-9]+)/) {
+			print "analysing channel $1\n";
+			$channel = $1;
+		}
+		if ($line =~ m/^verbosity=([0-9]+)/) {
 			print "using verbosity $1\n";
 			$verbosity = $1;
 		}
 	}
-	$channel = $channels;
-	$channel =~ s/([0-9])+/$1/;
+	#$channel = $channels;
+	#$channel =~ s/([0-9])+/$1/;
 	close(CONFIGFILE);
 }
 

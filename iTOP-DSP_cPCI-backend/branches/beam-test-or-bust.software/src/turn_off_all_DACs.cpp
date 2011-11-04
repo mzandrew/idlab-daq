@@ -100,14 +100,12 @@ int main(int argc, char** argv) {
 	}
 
 	setup_pci(card_id);
-	should_soft_trigger = false;
-	//should_soft_trigger = true;
+	should_soft_trigger = true;
 	readout_all_pending_data();
-	set_event_number(256);
-	set_all_DACs_to_built_in_nominal_values();
-	setup_default_log_filenames();
-	open_files_for_output_and_read_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
 	set_all_DACs_to(0);
+	//set_all_DACs_to_built_in_nominal_values();
+	//setup_default_log_filenames();
+	//open_files_for_output_and_read_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
 	close_pci();
 
 	return 0;
