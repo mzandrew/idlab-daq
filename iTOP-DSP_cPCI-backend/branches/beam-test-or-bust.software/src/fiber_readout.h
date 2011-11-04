@@ -13,6 +13,7 @@
 #define SUGGESTED_NUMBER_OF_PARTS_IN_WHICH_TO_READ_EACH_QUARTER_EVENT (1.8)
 
 #define NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS (1)
+//#define NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS (1000000)
 //#define NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_PARTIAL_QUARTER_EVENTS (10000)
 //#define NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS (0)
 #define NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_PARTIAL_QUARTER_EVENTS (0)
@@ -86,6 +87,8 @@ int open_files_for_output_and_read_N_events(unsigned long int N);
 void open_logfiles_for_all_enabled_channels(void);
 void close_all_logfiles(void);
 void setup_default_log_filenames(void);
+void set_all_DACs_to(unsigned short int value);
+void set_all_DACs_to_built_in_nominal_values(void);
 
 #endif
 
