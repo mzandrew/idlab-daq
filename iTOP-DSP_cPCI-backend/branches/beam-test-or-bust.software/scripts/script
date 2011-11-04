@@ -27,6 +27,9 @@ else
 	echo '# how many quarter events to read (per channel):'
 	echo 'total_number_of_quarter_events_to_read_per_fiber_channel=100'
 	echo ''
+	echo '# whether a card is really installed in this computer or not:'
+	echo 'should_expect_card_to_be_installed=1'
+	echo ''
 	) > ${config_file}
 	. ${config_file}
 fi
