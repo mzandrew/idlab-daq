@@ -348,6 +348,20 @@ int stop_timer(struct timeval* begin) {
 	return sec*1000000+usec;
 }
 
+void setup_feedback_enables_and_goals(void) {
+	printf("setting up feedback loops\n");
+	command_arguments_type command_arguments;
+	command_arguments.uint32[0] = 0;
+	command_arguments.uint32[1] = 0;
+	command_arguments.uint32[2] = 0;
+	command_arguments.uint32[3] = 0;
+//	command_arguments.uint32[4] = 0xa5a5;
+//	command_arguments.uint32[4] = 0x5a5a;
+	command_arguments.uint32[4] = 0xffff; // enable wilkinson feedback on all channels
+	command_arguments.uint32[5] = 0;
+	send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
+}
+
 void send_soft_trigger_request_command_packet(void) {
 //	printf("sending soft trigger command\n");
 	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
@@ -476,7 +490,6 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 
 	close_all_logfiles();
 }
-
 
 void set_all_DACs_to(unsigned short int value) {
 	send_command_packet_to_all_enabled_channels(0x4bac2dac, value); // set all DACs to given argument

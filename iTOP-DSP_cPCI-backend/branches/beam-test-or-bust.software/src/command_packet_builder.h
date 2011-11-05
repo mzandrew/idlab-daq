@@ -40,5 +40,12 @@ extern unsigned long int protocol_freeze_date;
 extern unsigned long int packet_type[NUMBER_OF_PACKET_TYPES];
 extern unsigned long int footer;
 
+#define NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET (14)
+struct command_arguments_type {
+	unsigned long int uint32[NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET];
+};
+void generate_complex_command_packet(unsigned long int command, command_arguments_type command_arguments);
+void send_complex_command_packet_to_all_enabled_channels(unsigned long int command, command_arguments_type command_arguments);
+
 #endif
 
