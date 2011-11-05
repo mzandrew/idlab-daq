@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	channel_bitmask = 0x6;
+	channel_bitmask = 0x4;
 
 	setup_pci(card_id);
 	should_soft_trigger = true;
@@ -107,27 +107,9 @@ int main(int argc, char** argv) {
 	setup_default_log_filenames();
 	open_logfiles_for_all_enabled_channels();
 
-//	set_start_and_end_windows(  0, 511); usleep(10000); readout_N_events(1);
-//	set_start_and_end_windows(256, 511); usleep(10000); readout_N_events(1);
-//	set_start_and_end_windows(  0, 255); usleep(10000); readout_N_events(1);
-//	set_start_and_end_windows(100, 200); usleep(10000); readout_N_events(1);
-//	set_start_and_end_windows( 10,  20); usleep(10000); readout_N_events(1);
-
-//	set_start_and_end_windows(  0,   3); usleep(10000); readout_N_events(2);
-//	set_start_and_end_windows(  0,   3); usleep(10000); readout_N_events(2);
-//	set_start_and_end_windows(  0,   3); usleep(10000); readout_N_events(2);
-//	set_start_and_end_windows(  0,   3); usleep(10000); readout_N_events(2);
-
-//	set_start_and_end_windows(508, 511); usleep(10000); readout_N_events(2);
-//	set_start_and_end_windows(510,   1); usleep(10000); readout_N_events(2);
-//	set_start_and_end_windows(511,   2); usleep(10000); readout_N_events(2);
-
-//	set_start_and_end_windows(510,   1); usleep(10000); readout_N_events(2); // this has start_window > end_window
-//	set_start_and_end_windows(  1,   7); usleep(10000); readout_N_events(2); // this has start_window set to an odd number
-//	set_start_and_end_windows(  0,   8); usleep(10000); readout_N_events(2); // this has end_window set to an even number
-
-	//set_start_and_end_windows( 16,  31); usleep(10000); readout_N_events(1);
-	set_start_and_end_windows( 16,  19); usleep(10000); readout_N_events(1);
+	setup_feedback_enables_and_goals();
+	
+	//usleep(10000); readout_N_events(1);
 
 	close_all_logfiles();
 	close_pci();

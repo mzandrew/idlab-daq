@@ -89,6 +89,7 @@ void close_all_logfiles(void);
 void setup_default_log_filenames(void);
 void set_all_DACs_to(unsigned short int value);
 void set_all_DACs_to_built_in_nominal_values(void);
+void setup_feedback_enables_and_goals(void);
 
 #endif
 

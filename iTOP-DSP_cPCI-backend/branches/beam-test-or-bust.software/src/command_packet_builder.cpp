@@ -104,6 +104,24 @@ void send_DAC_setting_command(void) {
 	}
 }
 
+void generate_complex_command_packet(unsigned long int command, command_arguments_type command_arguments) {
+	generate_skeleton_command_packet();
+ 	unsigned long int *uint32_packet = (unsigned long int *) command_packet;
+	uint32_packet[4] = command;
+	for (int i=0; i<NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET; i++) {
+		uint32_packet[5+i] = command_arguments.uint32[i];
+	}
+	calculate_checksum_and_insert_into_packet(uint32_packet);
+}
+
+void send_complex_command_packet_to_all_enabled_channels(unsigned long int command, command_arguments_type command_arguments) {
+	generate_complex_command_packet(command, command_arguments);
+	for (unsigned short int j=0; j<NUMBER_OF_SCRODS_TO_READOUT; j++) {
+		pci.selectChannel(j);
+		pci.sendData(command_packet, 560);
+	}
+}
+
 void generate_command_packet(unsigned long int command, unsigned long int argument) {
 	generate_skeleton_command_packet();
  	unsigned long int *uint32_packet = (unsigned long int *) command_packet;
