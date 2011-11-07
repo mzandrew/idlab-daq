@@ -348,17 +348,23 @@ int stop_timer(struct timeval* begin) {
 	return sec*1000000+usec;
 }
 
-void setup_feedback_enables_and_goals(void) {
+void setup_feedback_enables_and_goals(unsigned short int enable) {
 	printf("setting up feedback loops\n");
 	command_arguments_type command_arguments;
 	command_arguments.uint32[0] = 0;
-	command_arguments.uint32[1] = 0;
+	command_arguments.uint32[1] = 999;
 	command_arguments.uint32[2] = 0;
-	command_arguments.uint32[3] = 0;
+	if (enable == 0) {
+		command_arguments.uint32[3] = 0;
+		command_arguments.uint32[4] = 0x0000; // disable wilkinson feedback on all channels
+		command_arguments.uint32[5] = 0;
+	} else {
 //	command_arguments.uint32[4] = 0xa5a5;
 //	command_arguments.uint32[4] = 0x5a5a;
-	command_arguments.uint32[4] = 0xffff; // enable wilkinson feedback on all channels
-	command_arguments.uint32[5] = 0;
+		command_arguments.uint32[3] = 0;
+		command_arguments.uint32[4] = 0xffff; // enable wilkinson feedback on all channels
+		command_arguments.uint32[5] = 0;
+	}
 	send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
 }
 
