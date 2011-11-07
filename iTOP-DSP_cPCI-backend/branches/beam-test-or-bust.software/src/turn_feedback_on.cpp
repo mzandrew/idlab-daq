@@ -107,7 +107,7 @@ int main(int argc, char** argv) {
 	setup_default_log_filenames();
 	open_logfiles_for_all_enabled_channels();
 
-	setup_feedback_enables_and_goals();
+	setup_feedback_enables_and_goals(1);
 	
 	//usleep(10000); readout_N_events(1);
 
