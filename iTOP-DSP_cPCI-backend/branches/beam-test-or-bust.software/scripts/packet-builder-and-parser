@@ -15,7 +15,7 @@ my $header = 0x00be11e2;
 my $number_of_words_in_packet = 140;
 my $protocol_freeze_date_string =   20111016;
 my $protocol_freeze_date        = 0x20111016;
-my @valid_packet_types = (0xb01dface, 0x00c0ffee, 0x000ab0de, 0xce11b10c, 0x0000eada, 0x000f00da);
+my @valid_packet_types = (0xb01dface, 0x00c0ffee, 0x000ab0de, 0xce11b10c, 0x0000eada, 0x000f00da, 0x000ad0be);
 my $packet_type;
 #$packet_type = 0x00c0ffee; # raw data stream
 $packet_type = 0xb01dface; # commands from back-end to front-end
@@ -283,6 +283,7 @@ sub parse_packet_meat {
 		#print "found command packet\n";
 	} elsif ($packet{$packet_type_index} == 0x000ab0de) {
 		#print "found housekeeping packet\n";
+		$errors_for_this_packet += parse_housekeeping_packet_meat();
 	} elsif ($packet{$packet_type_index} == 0xce11b10c) {
 		#print "found trigger stream / scaler packet\n";
 		$errors_for_this_packet += parse_trigger_stream_scaler_packet_meat();
@@ -309,6 +310,28 @@ sub parse_event_header_packet_meat {
 			my ($row, $col, $packet_number, $channel_number, $window_number) = parse_origin_window_packet_number_word($word);
 			#$info .= " (packet_number=$packet_number)";
 			$info .= " (row=$row col=$col packet_number=$packet_number channel=$channel_number window=$window_number)";
+		} else {
+		}
+	}
+	$info .= "\n";
+	return $errors_for_this_packet;
+}
+
+sub parse_housekeeping_packet_meat {
+	my ($word, $hexword, $errors_for_this_packet) = (0, 0, 0);
+	for (my $i=$start_meat; $i<=$end_meat; $i++) {
+		$word = $packet{$i};
+		$hexword = sprintf("%08x", $word);
+		if ($i == $start_meat) {
+			$info .= "                   event number:  " . $hexword;
+			if ($current_event_number != $word) { $errors_for_this_packet++; $info .= " <= ERROR (should be " . sprintf("%08x", $current_event_number) . ")"; }
+			$info .= "\n";
+		} elsif ($i == $start_meat + 126-4) {
+			#$info .= "                    temperature:  " . $hexword;
+			$info .= "                    temperature:  " . (($word + 0.0) / 16.0);
+#			my ($row, $col, $packet_number, $channel_number, $window_number) = parse_origin_window_packet_number_word($word);
+			#$info .= " (packet_number=$packet_number)";
+#			$info .= " (row=$row col=$col packet_number=$packet_number channel=$channel_number window=$window_number)";
 		} else {
 		}
 	}
@@ -580,8 +603,6 @@ sub read_config_file {
 			$verbosity = $1;
 		}
 	}
-	#$channel = $channels;
-	#$channel =~ s/([0-9])+/$1/;
 	close(CONFIGFILE);
 }
 
@@ -593,8 +614,19 @@ if (! -e $subdir) {
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+my $filename;
 read_config_file();
-my $filename = "logdir/card" . $card . ".channel" . $channel . ".rawdata";
-print "reading from file \"$filename\" for data from channel $channel from card $card...\n";
-read_all_quarter_events($filename);
+#if ($channels =~ /^([0-9]){1,4}$/) {
+if ($channels =~ /^([0-9])([0-9])$/) { # this is incomplete
+	for $channel ($1, $2, $3, $4) {
+		#if ($channel =~ /^[0-9]{1}$/) {
+		if (defined $channel && ($channel == 1 || $channel == 2 || $channel == 3 || $channel == 4)) {
+			print "parsing datafile for channel $channel\n";
+			$filename = "logdir/card" . $card . ".channel" . $channel . ".rawdata";
+			print "reading from file \"$filename\" for data from channel $channel from card $card...\n";
+			read_all_quarter_events($filename);
+		}
+	}
+}
+
 
