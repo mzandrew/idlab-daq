@@ -1,4 +1,4 @@
-FINAL_OBJECT_FILES = bin/feedback_tester bin/turn_off_all_DACs bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules work/fiber_readout_swigwrapper.so 
+FINAL_OBJECT_FILES = bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules work/fiber_readout_swigwrapper.so 
 INTERMEDIATE_OBJECT_FILES = contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
 CXXFLAGS = -D_FILE_OFFSET_BITS=64
 
@@ -15,7 +15,11 @@ all : $(FINAL_OBJECT_FILES)
 work/%.o : src/%.cpp
 	g++ -c $< -o $@
 
-bin/feedback_tester : work/feedback_tester.o $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
+bin/turn_all_DACs_to_nominal : work/turn_all_DACs_to_nominal.o $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
+
+bin/turn_feedback_on  : work/turn_feedback_on.o  $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
+
+bin/turn_feedback_off : work/turn_feedback_off.o $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
 
 bin/turn_off_all_DACs : work/turn_off_all_DACs.o $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
 
