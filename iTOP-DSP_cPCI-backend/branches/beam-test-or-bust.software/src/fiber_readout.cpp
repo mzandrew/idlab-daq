@@ -352,7 +352,7 @@ void setup_feedback_enables_and_goals(unsigned short int enable) {
 	printf("setting up feedback loops\n");
 	command_arguments_type command_arguments;
 	command_arguments.uint32[0] = 0;
-	command_arguments.uint32[1] = 999;
+	command_arguments.uint32[1] = 1950;
 	command_arguments.uint32[2] = 0;
 	if (enable == 0) {
 		command_arguments.uint32[3] = 0;

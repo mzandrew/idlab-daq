@@ -4,7 +4,6 @@
 #include "pci.h"
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
-#include "read_CAMAC.h"
 #include <stdio.h>
 #include <getopt.h>
 
@@ -100,25 +99,17 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	init_camac("CAMAC_config.txt");
-	open_CAMAC_file();
+	channel_bitmask = 0x6;
 
 	setup_pci(card_id);
-	//should_soft_trigger = false;
 	should_soft_trigger = true;
 	readout_all_pending_data();
-	set_event_number(256);
-	set_all_DACs_to_built_in_nominal_values();
 	setup_default_log_filenames();
 	open_logfiles_for_all_enabled_channels();
 
-	for (int i=0; i<total_number_of_quarter_events_to_read_per_fiber_channel; i++) {
-		readout_N_events(1);
-		read_data_from_CAMAC_and_write_to_CAMAC_file();
-	}
+	readout_N_events(1);
 
 	close_all_logfiles();
-	set_all_DACs_to(0);
 	close_pci();
 
 	return 0;
