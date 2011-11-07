@@ -1,6 +1,17 @@
-FINAL_OBJECT_FILES = bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules work/fiber_readout_swigwrapper.so 
-INTERMEDIATE_OBJECT_FILES = contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
-CXXFLAGS = -D_FILE_OFFSET_BITS=64
+INTERMEDIATE_OBJECT_FILES1 = contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
+FINAL_OBJECT_FILES1 = bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules work/fiber_readout_swigwrapper.so
+
+INTERMEDIATE_OBJECT_FILES2 = contrib/stdPCI.o work/read_fiber.o work/read_CAMAC.o work/dual_readout.o
+FINAL_OBJECT_FILES2 = bin/dual_readout
+
+#INTERMEDIATE_OBJECT_FILES = $(INTERMEDIATE_OBJECT_FILES1) $(INTERMEDIATE_OBJECT_FILES2)
+FINAL_OBJECT_FILES = $(FINAL_OBJECT_FILES1) $(FINAL_OBJECT_FILES2)
+
+#INTERMEDIATE_OBJECT_FILES = $(INTERMEDIATE_OBJECT_FILES2)
+#FINAL_OBJECT_FILES = $(FINAL_OBJECT_FILES2)
+
+#CXXFLAGS = -D_FILE_OFFSET_BITS=64
+LINK_OPTIONS = -L$(shell pwd)/contrib -laltix -lxxusb -Wl,-rpath,contrib 
 
 default :
 	if [ ! -e logdir  ]; then mkdir  logdir; fi
@@ -15,33 +26,36 @@ all : $(FINAL_OBJECT_FILES)
 work/%.o : src/%.cpp
 	g++ -c $< -o $@
 
-bin/turn_all_DACs_to_nominal : work/turn_all_DACs_to_nominal.o $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
-
-bin/turn_feedback_on  : work/turn_feedback_on.o  $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
-
-bin/turn_feedback_off : work/turn_feedback_off.o $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
-
-bin/turn_off_all_DACs : work/turn_off_all_DACs.o $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
-
-bin/window_profiler : work/window_profiler.o $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
-
-#bin/% : $(@:bin/%=work/%.o) $(INTERMEDIATE_OBJECT_FILES) ; g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ $(@:bin/%=work/%.o) -o $@
+work/%.o : src/%.c
+	g++ -c $< -o $@
 
 
-bin/cosmic                                             : work/cosmic.o                                             contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
-	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
+bin/dual_readout : $(INTERMEDIATE_OBJECT_FILES2) ; g++ $^ $(LINK_OPTIONS) -o $@
 
-bin/readout_all_pending_data                           : work/readout_all_pending_data.o                           contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
-	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
+bin/cosmic : work/cosmic.o $(INTERMEDIATE_OBJECT_FILES1) work/read_CAMAC.o ; g++ $^ $(LINK_OPTIONS) -o $@
 
-bin/reset_trigger_flip_flop                            : work/reset_trigger_flip_flop.o                            contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
-	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
 
-bin/trigger_a_quarter_event_from_all_connected_modules : work/trigger_a_quarter_event_from_all_connected_modules.o contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
-	g++ -L$(shell pwd)/contrib -laltix -Wl,-rpath,contrib $^ -o $@
+bin/readout_temperature_of_all_connected_modules : work/readout_temperature_of_all_connected_modules.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
-work/fiber_readout_swigwrapper.o work/fiber_readout_swigwrapper.so : scripts/fiberscope.swig-config work/pci.o work/fiber_readout.o work/command_packet_builder.o
-	./scripts/fiberscope.swig-build
+bin/turn_all_DACs_to_nominal : work/turn_all_DACs_to_nominal.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+bin/turn_feedback_on  : work/turn_feedback_on.o  $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+bin/turn_feedback_off : work/turn_feedback_off.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+bin/turn_off_all_DACs : work/turn_off_all_DACs.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+bin/window_profiler : work/window_profiler.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+#bin/% : $(@:bin/%=work/%.o) $(INTERMEDIATE_OBJECT_FILES) ; g++ $^ $(@:bin/%=work/%.o) $(LINK_OPTIONS) -o $@
+
+bin/readout_all_pending_data : work/readout_all_pending_data.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+bin/reset_trigger_flip_flop : work/reset_trigger_flip_flop.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+bin/trigger_a_quarter_event_from_all_connected_modules : work/trigger_a_quarter_event_from_all_connected_modules.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+work/fiber_readout_swigwrapper.o work/fiber_readout_swigwrapper.so : scripts/fiberscope.swig-config $(INTERMEDIATE_OBJECT_FILES1) ; ./scripts/fiberscope.swig-build
 
 #contrib/libaltix.so:
 #	cp ${HOME}/ku/libaltix/libaltix.so work/
