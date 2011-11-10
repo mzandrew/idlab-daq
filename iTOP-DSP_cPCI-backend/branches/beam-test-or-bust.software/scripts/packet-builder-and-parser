@@ -15,7 +15,7 @@ my $header = 0x00be11e2;
 my $number_of_words_in_packet = 140;
 my $protocol_freeze_date_string =   20111016;
 my $protocol_freeze_date        = 0x20111016;
-my @valid_packet_types = (0xb01dface, 0x00c0ffee, 0x000ab0de, 0xce11b10c, 0x0000eada, 0x000f00da, 0x000ad0be);
+my @valid_packet_types = (0xb01dface, 0x00c0ffee, 0x000ab0de, 0xce11b10c, 0x0000eada, 0x000f00da, 0x000ab0de);
 my $packet_type;
 #$packet_type = 0x00c0ffee; # raw data stream
 $packet_type = 0xb01dface; # commands from back-end to front-end

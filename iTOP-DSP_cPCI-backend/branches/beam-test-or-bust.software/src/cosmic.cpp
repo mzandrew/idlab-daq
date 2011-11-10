@@ -104,13 +104,16 @@ int main(int argc, char** argv) {
 	open_CAMAC_file();
 
 	setup_pci(card_id);
-	//should_soft_trigger = false;
-	should_soft_trigger = true;
+	should_soft_trigger = false;
+	//should_soft_trigger = true;
 	readout_all_pending_data();
-	set_event_number(256);
-	set_all_DACs_to_built_in_nominal_values();
+	set_event_number(0);
+//	set_all_DACs_to_built_in_nominal_values();
 	setup_default_log_filenames();
 	open_logfiles_for_all_enabled_channels();
+
+	send_front_end_trigger_veto_clear();
+	reset_trigger_flip_flop();
 
 	for (int i=0; i<total_number_of_quarter_events_to_read_per_fiber_channel; i++) {
 		readout_N_events(1);
@@ -118,7 +121,7 @@ int main(int argc, char** argv) {
 	}
 
 	close_all_logfiles();
-	set_all_DACs_to(0);
+//	set_all_DACs_to(0);
 	close_pci();
 
 	return 0;

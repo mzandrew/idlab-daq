@@ -373,6 +373,10 @@ void send_soft_trigger_request_command_packet(void) {
 	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
 }
 
+void send_front_end_trigger_veto_clear(void) {
+	send_command_packet_to_all_enabled_channels(0x0000C1EA, 0x00000000); // clear the trigger veto
+}
+
 void set_event_number(unsigned long int event_number) {
 	printf("setting event number to %ld\n", event_number);
 	send_command_packet_to_all_enabled_channels(0xe0000000, event_number); // set event number
@@ -417,6 +421,8 @@ void readout_N_events(unsigned long int N) {
 			send_soft_trigger_request_command_packet();
 		}
 		read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+		send_front_end_trigger_veto_clear();
+		usleep(100);
 		reset_trigger_flip_flop();
 		time_for_single_event_readout = (long long) stop_timer();
 //		printf("\napproximate time for last readout = %d us", time_for_single_event_readout);
