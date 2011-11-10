@@ -159,7 +159,7 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 		//fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes):\n", CAMAC_count, count);
 		write(CAMAC_fd, (char *) &CAMAC_header, sizeof(unsigned int));
 		write(CAMAC_fd, (char *) &CAMAC_count, sizeof(unsigned int));
-		write(CAMAC_fd, buffer, 126*8);
+		write(CAMAC_fd, buffer, 116*4);
 //		for (int i=0; i<count; i++) {
 //			//fprintf(CAMAC_fd, "%u ", uint32[i]);
 //			//write(CAMAC_fd, "%u ", uint32[i]);
