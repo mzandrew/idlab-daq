@@ -1,5 +1,5 @@
 INTERMEDIATE_OBJECT_FILES1 = contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
-FINAL_OBJECT_FILES1 = bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules work/fiber_readout_swigwrapper.so
+FINAL_OBJECT_FILES1 = bin/camac_only bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules work/fiber_readout_swigwrapper.so
 
 INTERMEDIATE_OBJECT_FILES2 = contrib/stdPCI.o work/read_fiber.o work/read_CAMAC.o work/dual_readout.o
 FINAL_OBJECT_FILES2 = bin/dual_readout
@@ -34,6 +34,7 @@ bin/dual_readout : $(INTERMEDIATE_OBJECT_FILES2) ; g++ $^ $(LINK_OPTIONS) -o $@
 
 bin/cosmic : work/cosmic.o $(INTERMEDIATE_OBJECT_FILES1) work/read_CAMAC.o ; g++ $^ $(LINK_OPTIONS) -o $@
 
+bin/camac_only : work/camac_only.o $(INTERMEDIATE_OBJECT_FILES1) work/read_CAMAC.o ; g++ $^ $(LINK_OPTIONS) -o $@
 
 bin/readout_temperature_of_all_connected_modules : work/readout_temperature_of_all_connected_modules.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
