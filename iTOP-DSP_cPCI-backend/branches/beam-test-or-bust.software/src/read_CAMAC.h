@@ -32,8 +32,8 @@ int init_camac(const char* settings_file);
 int read_camac(void* target_buffer);
 int read_data_from_CAMAC_and_write_to_CAMAC_file(void);
 void open_CAMAC_file(void);
-//extern int CAMAC_fd;
-extern FILE *CAMAC_fd;
+extern int CAMAC_fd;
+//extern FILE *CAMAC_fd;
 
 #endif
 
