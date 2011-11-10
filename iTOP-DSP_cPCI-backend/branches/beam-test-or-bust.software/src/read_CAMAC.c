@@ -8,8 +8,8 @@
 struct CAMAC_crate crates[10];
 int crate_count = 0;
 
-//int CAMAC_fd;
-FILE *CAMAC_fd;
+int CAMAC_fd;
+//FILE *CAMAC_fd;
 
 //1 = display output data, 2 = display data sent and retrieved with each operation
 #define DEBUG_FLAG 1
@@ -127,23 +127,24 @@ int init_camac(const char* settings_file) {
 
 int read_camac(void* target_buffer) {
 // use this if you want to use execute, which is known to work but likely slower
-	memcpy(target_buffer, stack_cmd, 400);
+	memcpy(target_buffer, stack_cmd, 1024);
 	return xxusb_stack_execute(crates[0].hnd, (long int*)target_buffer);
 //	fprintf(stderr, ".");
 
-//	return xxusb_bulk_read(crates[0].hnd, (char*)target_buffer, 400, 1000);
+//	return xxusb_bulk_read(crates[0].hnd, (char*)target_buffer, 1024, 1000);
 }
 
 void open_CAMAC_file(void) {
-	char filename[] = "logdir/CAMAC_data.txt";
-	//CAMAC_fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	CAMAC_fd = fopen(filename, "w");
+	char filename[] = "logdir/CAMAC_data.raw";
+	CAMAC_fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	//CAMAC_fd = fopen(filename, "w");
 	if (CAMAC_fd < 0) fprintf(stderr, "WARNING: failed to create file \"%s\"\n", filename);
 }
 
 int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
-	static int CAMAC_count = 0; // number of readouts
-	char buffer[400];
+	static unsigned int CAMAC_count = 0; // number of readouts
+	static unsigned int CAMAC_header = 0x12345678;
+	char buffer[1024];
 	int count = read_camac((void*) buffer);
 //	count *= 4; // presumably it's 32 bit data?
 	unsigned long int *uint32 = (unsigned long int *) buffer;
@@ -155,12 +156,18 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 		buffer[count-1] = 0;
 //		int return_value = fprintf(CAMAC_fd, buffer, count);
 //		int return_value = fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes): \"%s\"\n", CAMAC_count, count, buffer);
-		fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes):\n", CAMAC_count, count);
-		for (int i=0; i<count; i++) {
-			fprintf(CAMAC_fd, "%u ", uint32[i]);
-			if (i%4==3) { fprintf(CAMAC_fd, " "); }
-			if (i%8==7) { fprintf(CAMAC_fd, "\n"); }
-		}
+		//fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes):\n", CAMAC_count, count);
+		write(CAMAC_fd, (char *) &CAMAC_header, sizeof(unsigned int));
+		write(CAMAC_fd, (char *) &CAMAC_count, sizeof(unsigned int));
+		write(CAMAC_fd, buffer, 126*8);
+//		for (int i=0; i<count; i++) {
+//			//fprintf(CAMAC_fd, "%u ", uint32[i]);
+//			//write(CAMAC_fd, "%u ", uint32[i]);
+//			write(CAMAC_fd, uint32[i], sizeof(unsigned int) * 4);
+//			//if (i%4==3) { fprintf(CAMAC_fd, " "); }
+//			//if (i%8==7) { fprintf(CAMAC_fd, "\n"); }
+//		}
+
 //		if (return_value == -1) {
 //			fprin
 //		}

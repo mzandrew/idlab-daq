@@ -127,7 +127,13 @@ int main(int argc, char** argv) {
 //	set_start_and_end_windows(  0,   8); usleep(10000); readout_N_events(2); // this has end_window set to an even number
 
 	//set_start_and_end_windows( 16,  31); usleep(10000); readout_N_events(1);
-	set_start_and_end_windows( 16,  19); usleep(10000); readout_N_events(1);
+
+	should_soft_trigger = true;
+	send_front_end_trigger_veto_clear();
+	usleep(10000);
+	for (int i = 0; i < 32; i += 4) {	
+		set_start_and_end_windows( i,  i+3); usleep(10000); readout_N_events(100);
+	}
 
 	close_all_logfiles();
 	close_pci();
