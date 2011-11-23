@@ -6,7 +6,7 @@
 
 unsigned long int header = 0x00be11e2;
 unsigned long int protocol_freeze_date = 0x20111016;
-unsigned long int packet_type[NUMBER_OF_PACKET_TYPES] = { 0x00c0ffee, 0x0000eada, 0x000f00da, 0xce11b10c };
+unsigned long int packet_type[NUMBER_OF_PACKET_TYPES] = { 0x00c0ffee, 0x0000eada, 0x000f00da, 0x000ab0de, 0xce11b10c };
 unsigned long int footer = 0x62504944;
 unsigned long int packet[NUMBER_OF_WORDS_IN_A_PACKET];
 unsigned long int number_of_errors_for_this_quarter_event[NUMBER_OF_SCRODS_TO_READOUT];
@@ -71,7 +71,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 	unsigned long int number_of_bytes_read_from_any_channels_for_all_loop_iterations = 0;
 	unsigned long int number_of_bytes_read_from_any_channels_for_this_loop_iteration;
 	unsigned short int dry_loop_iterations = 0;
-	unsigned short int maximum_number_of_allowed_dry_loop_iterations = 10;
+	unsigned short int maximum_number_of_allowed_dry_loop_iterations = 100;
 	bool should_synchronize_stream_with_header_and_request_more_data_to_compensate = true;
 	bool should_ensure_last_word_acquired_is_a_footer = true;
 	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
@@ -402,6 +402,11 @@ void set_start_and_end_windows(unsigned long int start_window, unsigned long int
 	send_command_packet_to_all_enabled_channels(0x000101ff, end_window); // set end window
 }
 
+void set_number_of_windows_to_look_back(unsigned long int look_back) {
+	printf("setting number of look back windows to %ld\n", look_back);
+	send_command_packet_to_all_enabled_channels(0x0100cbac, look_back);
+}
+
 void global_reset(void) {
 	printf("sending global reset\n");
 	send_command_packet_to_all_enabled_channels(0x33333333, 0x00000000); // global reset
@@ -418,11 +423,11 @@ void readout_N_events(unsigned long int N) {
 	for (unsigned long int i=0; i<N; i++) {
 		event_number++;
 		if (should_soft_trigger) {
+			usleep(1000000);
 			send_soft_trigger_request_command_packet();
 		}
 		read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 		send_front_end_trigger_veto_clear();
-		usleep(100);
 		reset_trigger_flip_flop();
 		time_for_single_event_readout = (long long) stop_timer();
 //		printf("\napproximate time for last readout = %d us", time_for_single_event_readout);
