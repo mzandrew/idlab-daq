@@ -62,7 +62,7 @@ extern bool should_soft_trigger;
 #define NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME (100256)
 void readout_all_pending_data(void);
 
-#define NUMBER_OF_PACKET_TYPES (4)
+#define NUMBER_OF_PACKET_TYPES (5)
 
 #include <sys/time.h>
 void start_timer();
@@ -81,6 +81,7 @@ void send_soft_trigger_request_command_packet(void);
 void send_front_end_trigger_veto_clear(void);
 void set_event_number(unsigned long int event_number);
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
+void set_number_of_windows_to_look_back(unsigned long int look_back);
 void global_reset(void);
 void clear_scaler_counters(void);
 void readout_N_events(unsigned long int N);
