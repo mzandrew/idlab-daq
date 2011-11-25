@@ -1,0 +1,69 @@
+#!/bin/bash -e
+
+declare total_number_of_quarter_events_to_read_per_fiber_channel
+declare filename_prefix filename channels
+declare -i card
+declare channels # "0123" for all four or "2" just for channel two, etc
+declare config_file=".config"
+if [ -e ${config_file} ]; then
+	. ${config_file}
+else
+	(
+	echo '# config file for IDLAB fiber optic readout software'
+	echo ''
+	echo '# DSP_cPCI card id number:'
+	echo 'card=2'
+	echo ''
+	echo '# which channels are enabled:'
+	echo '# (channels="0123" for all four or channels="2" just for channel two, etc)'
+	echo 'channels="1"'
+	echo ''
+	echo '# which channel to analyse:'
+	echo 'channel=1'
+	echo ''
+	echo '# how verbose to be (3=normal; 5=very verbose):'
+	echo 'verbosity=3'
+	echo ''
+	echo '# how many quarter events to read (per channel):'
+	echo 'total_number_of_quarter_events_to_read_per_fiber_channel=100'
+	echo ''
+	) > ${config_file}
+	. ${config_file}
+fi
+
+filename_prefix="logdir/card${card}.channel"
+#filename_prefix="/tmp/ramdisk/card${card}.channel"
+
+for i in $(seq 0 3); do
+	filename="${filename_prefix}${i}.rawdata"
+	if [ -e "${filename}" ]; then
+		ls -lart "${filename}"
+		rm -f "${filename}"
+	fi
+done
+
+sync
+
+# # # # # # actual readout starts here # # # # # #
+
+time (./bin/camac_only \
+	${card} \
+	--chan ${channels} \
+	-n ${total_number_of_quarter_events_to_read_per_fiber_channel} \
+	--verbose \
+	--logprefix ${filename_prefix} \
+	; sync;)
+
+# # # # # # actual readout ends here # # # # # # #
+
+for i in $(seq 0 3); do
+	filename="${filename_prefix}${i}.rawdata"
+	filename_analysis="${filename_prefix}${i}.analysis"
+	if [ -e "${filename}" ]; then
+		ls -lart "${filename}"
+		if [ 1 -eq 0 ]; then
+			./scripts/packet-builder-and-parser > "${filename_analysis}"
+		fi
+	fi
+done
+
