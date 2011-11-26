@@ -56,24 +56,24 @@ After the "beam-test-or-bust.software" project is built, there are several modes
 
 The first mode is debugging/testing features mode, which is beyond the scope of this document.  Programs that are part of this include the following:
 {{{
-bin/camac_only
-bin/dual_readout
-bin/readout_all_pending_data
-bin/readout_temperature_of_all_connected_modules
-bin/reset_trigger_flip_flop
-bin/set_look_back
-bin/threshold_tester
-bin/trigger_a_quarter_event_from_all_connected_modules
-bin/turn_all_DACs_to_nominal
-bin/turn_feedback_off
-bin/turn_feedback_on
-bin/turn_off_all_DACs
-bin/window_profiler
+./bin/camac_only
+./bin/dual_readout
+./bin/readout_all_pending_data
+./bin/readout_temperature_of_all_connected_modules
+./bin/reset_trigger_flip_flop
+./bin/set_look_back
+./bin/threshold_tester
+./bin/trigger_a_quarter_event_from_all_connected_modules
+./bin/turn_all_DACs_to_nominal
+./bin/turn_feedback_off
+./bin/turn_feedback_on
+./bin/turn_off_all_DACs
+./bin/window_profiler
 }}}
 
 Each of these programs generally needs to be run along with a command-line parameter/argument that is the ID # of the intended DSP_cPCI card (printed on a sticker on the DSP_cPCI board's bracket).  For instance,
 {{{
-bin/readout_all_pending_data 2
+./bin/readout_all_pending_data 2
 }}}
 will readout and discard all the data that's waiting in the FIFOs that came through the fiber optic link of DSP_cPCI card #2.
 
@@ -82,7 +82,14 @@ will readout and discard all the data that's waiting in the FIFOs that came thro
 {{{
 bin/cosmic
 }}}
-is the executable for taking cosmic ray muon data.  It is normally called by running a script called "scripts/script".  It will, by default, create files in a subdirectory called "logdir".
+is the executable for taking cosmic ray muon data.  It is normally called by running this:
+{{{
+./scripts/script
+}}}
+This script will parse the `.config` file
+The behavior of 
+
+It will, by default, create files in a subdirectory called "logdir".
 
 (unfinished)
 
