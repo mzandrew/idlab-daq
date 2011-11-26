@@ -169,7 +169,7 @@ sub read_word {
 sub open_packet_file {
 	my ($filename) = @_;
 	$verbosity[4] = "opening file \"$filename\"...";
-	open(IN, $filename) || die "can't open file \"$filename\"";
+	open(IN, "<$filename") || die "can't open file \"$filename\"";
 	binmode(IN);
 	$verbosity[4] .= "\n";
 	if ($verbosity >= 4) {
@@ -616,15 +616,17 @@ if (! -e $subdir) {
 
 my $filename;
 read_config_file();
-#if ($channels =~ /^([0-9]){1,4}$/) {
-if ($channels =~ /^([0-9])([0-9])$/) { # this is incomplete
+if ($channels =~ /^([0-9]){1,4}$/) {
+#if ($channels =~ /^([0-9])([0-9])$/) { # this is incomplete
 	for $channel ($1, $2, $3, $4) {
 		#if ($channel =~ /^[0-9]{1}$/) {
 		if (defined $channel && ($channel == 1 || $channel == 2 || $channel == 3 || $channel == 4)) {
 			print "parsing datafile for channel $channel\n";
 			$filename = "logdir/card" . $card . ".channel" . $channel . ".rawdata";
-			print "reading from file \"$filename\" for data from channel $channel from card $card...\n";
-			read_all_quarter_events($filename);
+			if (-e "${filename}") {
+				print "reading from file \"$filename\" for data from channel $channel from card $card...\n";
+				read_all_quarter_events($filename);
+			}
 		}
 	}
 }

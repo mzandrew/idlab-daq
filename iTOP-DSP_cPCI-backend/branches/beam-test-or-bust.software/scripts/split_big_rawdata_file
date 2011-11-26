@@ -1,0 +1,20 @@
+#!/bin/bash -e
+
+declare if="logdir/card1.channel3.rawdata"
+declare of="${if}"
+declare -i bs=73920
+declare -i count=1000
+declare -i skip size N
+
+if [ -e ${if} ]; then
+	size=$(stat -c%s ${if})
+	echo "size=${size}"
+	N=$((${size}/${bs}/${count}))
+	echo "N=${N}"
+	for i in $(seq 0 ${N}); do
+		skip=$((${i}*${count}))
+		echo "skip=${skip}"
+		dd if=${if} of="${of}.${i}" bs=${bs} count=${count} skip=${skip}
+	done
+fi
+
