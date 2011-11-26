@@ -14,7 +14,7 @@ Background information on what the front-end electronics do can be found here:  
 
 The DSP_cPCI revB board has 4 multigigabit/s fiber optic transceivers, 3 FPGAs, 4 dual-core digital signal processors (DSPs) and 256MiB of SDRAM per DSP.
 
-==software==
+==writing software==
 
 ===kernel driver===
 
@@ -39,4 +39,53 @@ as long as libaltix.so is in the library path.
 
 =How to use DAQ system=
 
+==getting a copy of the software==
+
+The first thing to do is to checkout a copy of the software repository:
+{{{
+svn checkout http://idlab-daq.googlecode.com/svn/iTOP-DSP_cPCI-backend/branches/beam-test-or-bust.software
+}}}
+
+As long as `build-essential` and `libusb-dev` are installed packages, it should be possible to simply give a `make` command to build the entire project from the "beam-test-or-bust.software" subdirectory just created.
+
+==using the software==
+
+After the "beam-test-or-bust.software" project is built, there are several modes of operation to get data from front-end module(s).
+
+===testing/debugging===
+
+The first mode is debugging/testing features mode, which is beyond the scope of this document.  Programs that are part of this include the following:
+{{{
+bin/camac_only
+bin/dual_readout
+bin/readout_all_pending_data
+bin/readout_temperature_of_all_connected_modules
+bin/reset_trigger_flip_flop
+bin/set_look_back
+bin/threshold_tester
+bin/trigger_a_quarter_event_from_all_connected_modules
+bin/turn_all_DACs_to_nominal
+bin/turn_feedback_off
+bin/turn_feedback_on
+bin/turn_off_all_DACs
+bin/window_profiler
+}}}
+
+Each of these programs generally needs to be run along with a command-line parameter/argument that is the ID # of the intended DSP_cPCI card (printed on a sticker on the DSP_cPCI board's bracket).  For instance,
+{{{
+bin/readout_all_pending_data 2
+}}}
+will readout and discard all the data that's waiting in the FIFOs that came through the fiber optic link of DSP_cPCI card #2.
+
+===cosmic===
+
+{{{
+bin/cosmic
+}}}
+is the executable for taking cosmic ray muon data.  It is normally called by running a script called "scripts/script".  It will, by default, create files in a subdirectory called "logdir".
+
 (unfinished)
+
+===beamtest===
+
+(unwritten)
