@@ -19,6 +19,6 @@ total_number_of_quarter_events_to_read_per_fiber_channel=100
 # whether a card is really installed in this computer or not:
 should_expect_card_to_be_installed=1
 
-# IP address of computer to which to rcp data
-128.171.30.126
+# IP address of computer to which to ftp data
+pc2_ip="128.171.30.126"
 
