@@ -1,0 +1,24 @@
+# config file for IDLAB fiber optic readout software
+
+# DSP_cPCI card id number:
+card=2
+
+# which channels are enabled:
+# (channels="0123" for all four or channels="2" just for channel two, etc)
+channels="1"
+
+# which channel to analyse (this item is being phased out):
+channel=1
+
+# how verbose to be (3=normal; 5=very verbose):
+verbosity=3
+
+# how many quarter events to read (per channel):
+total_number_of_quarter_events_to_read_per_fiber_channel=100
+
+# whether a card is really installed in this computer or not:
+should_expect_card_to_be_installed=1
+
+# IP address of computer to which to rcp data
+128.171.30.126
+

@@ -8,29 +8,7 @@ declare config_file=".config"
 if [ -e ${config_file} ]; then
 	. ${config_file}
 else
-	(
-	echo '# config file for IDLAB fiber optic readout software'
-	echo ''
-	echo '# DSP_cPCI card id number:'
-	echo 'card=2'
-	echo ''
-	echo '# which channels are enabled:'
-	echo '# (channels="0123" for all four or channels="2" just for channel two, etc)'
-	echo 'channels="1"'
-	echo ''
-	echo '# which channel to analyse:'
-	echo 'channel=1'
-	echo ''
-	echo '# how verbose to be (3=normal; 5=very verbose):'
-	echo 'verbosity=3'
-	echo ''
-	echo '# how many quarter events to read (per channel):'
-	echo 'total_number_of_quarter_events_to_read_per_fiber_channel=100'
-	echo ''
-	echo '# whether a card is really installed in this computer or not:'
-	echo 'should_expect_card_to_be_installed=1'
-	echo ''
-	) > ${config_file}
+	cp scripts/config.default ${config_file}
 	. ${config_file}
 fi
 
