@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+. ./scripts/read_config_files
+
+declare datestamp=$(date --utc +"%Y-%m-%d+%H:%M:%S")
+declare filename="${datestamp}.exp${experiment_number}.run${run_number}"
+
+echo -n "${filename}"
+
