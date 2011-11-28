@@ -1,0 +1,5 @@
+declare config_file="./scripts/config.default"
+if [ -e ${config_file} ]; then . ${config_file}; fi
+declare config_file=".config"
+if [ -e ${config_file} ]; then . ${config_file}; fi
+

@@ -1,5 +1,7 @@
 # config file for IDLAB fiber optic readout software
 
+# config for readout from DSP_cPCI # # # # # # # # # # # # # # # # # # # # # #
+
 # DSP_cPCI card id number:
 card=2
 
@@ -7,18 +9,32 @@ card=2
 # (channels="0123" for all four or channels="2" just for channel two, etc)
 channels="1"
 
-# which channel to analyse (this item is being phased out):
-channel=1
+# config for storage of data in files # # # # # # # # # # # # # # # # # # # #
+
+# experiment number (0 for testing; 1 for cosmic; 2... for actual data) # # #
+experiment_number=0
+
+# run number (starting from 1) # # # # # # # # # # # # # # # # # # # # # # # #
+run_number=1
+
+# whether to use datestamp in filename # # # # # # # # # # # # # # # # # # # #
+use_datestamp=1
+
+# config for transfer to pc2 # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# IP address of computer to which to ftp data
+pc2_ip="128.171.30.126"
+
+# config for analysis of data # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # how verbose to be (3=normal; 5=very verbose):
-verbosity=3
+verbosity=4
+
+# testing stuff # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # how many quarter events to read (per channel):
 total_number_of_quarter_events_to_read_per_fiber_channel=100
 
 # whether a card is really installed in this computer or not:
 should_expect_card_to_be_installed=1
-
-# IP address of computer to which to ftp data
-pc2_ip="128.171.30.126"
 
