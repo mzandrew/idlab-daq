@@ -19,6 +19,7 @@ default :
 	if [ ! -e src     ]; then mkdir     src; fi
 	if [ ! -e work    ]; then mkdir    work; fi
 	if [ ! -e bin     ]; then mkdir     bin; fi
+	if [ ! -e .config ]; then cp scripts/config.default .config; fi
 	$(MAKE) all
 
 all : $(FINAL_OBJECT_FILES)

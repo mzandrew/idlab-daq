@@ -20,6 +20,11 @@ run_number=1
 # whether to use datestamp in filename # # # # # # # # # # # # # # # # # # # #
 use_datestamp=1
 
+# datafile extensions # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+CAMAC_file_extension=".camac"
+fiber_file_extension=".fiber"
+tracker_file_extension=".tracker"
+
 # config for transfer to pc2 # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # IP address of computer to which to ftp data

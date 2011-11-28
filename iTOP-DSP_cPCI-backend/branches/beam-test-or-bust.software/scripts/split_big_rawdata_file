@@ -1,20 +1,33 @@
 #!/bin/bash -e
 
-declare if="logdir/card1.channel3.rawdata"
-declare of="${if}"
+declare if="logdir/card1.channel3.rawdata" of="${if}"
 declare -i bs=73920
 declare -i count=1000
 declare -i skip size N
 
+if [ -e "${1}" ]; then
+	if="${1}"
+	echo "${if}" > "work/split_filename"
+	of="${if}"
+else
+	echo "give name of file to split as only argument"
+	exit 7;
+fi
+
+declare i
 if [ -e ${if} ]; then
 	size=$(stat -c%s ${if})
-	echo "size=${size}"
+	#echo "size=${size}"
 	N=$((${size}/${bs}/${count}))
-	echo "N=${N}"
+	#echo "N=${N}"
+	echo "splitting file \"${if}\" into ${N} files..."
 	for i in $(seq 0 ${N}); do
 		skip=$((${i}*${count}))
-		echo "skip=${skip}"
-		dd if=${if} of="${of}.${i}" bs=${bs} count=${count} skip=${skip}
+		#echo "skip=${skip}"
+		i=$(printf "%02d" ${i})
+		ofi="${of}.${i}"
+		echo "file #${i}/${N}:  \"${ofi}\""
+		dd if=${if} of="${ofi}" bs=${bs} count=${count} skip=${skip}
 	done
 fi
 
