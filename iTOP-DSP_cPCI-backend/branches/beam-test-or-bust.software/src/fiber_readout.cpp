@@ -355,15 +355,18 @@ void setup_feedback_enables_and_goals(unsigned short int enable) {
 	command_arguments.uint32[1] = 1950;
 	command_arguments.uint32[2] = 0;
 	if (enable == 0) {
-		command_arguments.uint32[3] = 0;
+		command_arguments.uint32[3] = 0x0000; // disable sampling rate feedback on all channels
 		command_arguments.uint32[4] = 0x0000; // disable wilkinson feedback on all channels
-		command_arguments.uint32[5] = 0;
+		command_arguments.uint32[5] = 0x0000; // disable trigger width feedback on all channels
 	} else {
 //	command_arguments.uint32[4] = 0xa5a5;
 //	command_arguments.uint32[4] = 0x5a5a;
-		command_arguments.uint32[3] = 0;
-		command_arguments.uint32[4] = 0xffff; // enable wilkinson feedback on all channels
-		command_arguments.uint32[5] = 0;
+//		command_arguments.uint32[3] = 0x0000; // disable sampling rate feedback on all channels
+		command_arguments.uint32[3] = 0xffff; // enable sampling rate feedback on all channels
+//		command_arguments.uint32[4] = 0xffff; // enable wilkinson feedback on all channels
+		command_arguments.uint32[4] = 0x0000; // disable wilkinson feedback on all channels
+		command_arguments.uint32[5] = 0x0000; // disable trigger width feedback on all channels
+//		command_arguments.uint32[5] = 0xffff; // enable trigger width feedback on all channels
 	}
 	send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
 }
