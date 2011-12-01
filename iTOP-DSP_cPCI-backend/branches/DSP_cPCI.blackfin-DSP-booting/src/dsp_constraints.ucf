@@ -1,0 +1,161 @@
+#FPGA_A-A
+
+#CLOCK IN 	156.25MHz
+NET "BCLK_A" LOC = G9;  
+
+
+
+#***** FPGA  JTAG *******
+NET "EMU_A" LOC = H12;
+NET "TMS_A" LOC = G11;
+NET "TCK_A" LOC = F14;
+NET "TRST_A" LOC = F15;  #TRST_A  bar
+NET "TDI_A" LOC = E16;
+NET "TDO_A" LOC = F16;
+#
+NET "DSP_EMU_A" LOC = H13;
+#
+#NET "DSP_SLEEP_0" LOC = M16;
+
+#**** DSP0 JTAG *****
+NET "DSP_TDI_0" LOC = N15;
+NET "DSP_TMS_0" LOC = U19;
+NET "DSP_TCK_0" LOC = T20;
+#jtag reset
+NET "DSP_TRST_0" LOC = N16;
+NET "DSP_TDO_0" LOC = P16;
+#
+NET "BYPASS_0" LOC = M17;
+NET "DSP_CLK0" LOC = M18;
+NET "DSP_RST0" LOC = R15;  #DSP0 reset signal 
+
+#***** DSP1 JTAG ****** 
+NET "DSP_TDI_1" LOC = V13;
+NET "DSP_TMS_1" LOC = W13;
+NET "DSP_TCK_1" LOC = AA16;
+NET "DSP_TRST_1" LOC = AB16;  #jtag reset signal
+NET "DSP_TDO_1" LOC = W14;
+#
+NET "BYPASS_1" LOC = Y14;
+NET "DSP_CLK1" LOC = Y15;
+NET "DSP_RST1" LOC = AB15;  # DSP1 reset signal
+
+
+#FPGA_A-B
+#NET "PF_0_[0]" loc = F18;
+#NET "PF_0_[1]" loc = F19;
+#NET "PF_0_[2]" loc = H16;
+#NET "PF_0_[3]" loc = H17;
+#NET "PF_0_[4]" loc = B21;
+#NET "PF_0_[5]" loc = B22;
+#NET "PF_0_[6]" loc = J16;
+#NET "PF_0_[7]" loc = J17;
+#NET "PF_0_[8]" loc = C20;
+#NET "PF_0_[9]" loc = C22;
+#NET "PF_0_[10]" loc = L15;
+#NET "PF_0_[11]" loc = K16;
+#NET "PF_0_[12]" loc = D21;
+#NET "PF_0_[13]" loc = D22;
+#NET "PF_0_[14]" loc = G19;
+#NET "PF_0_[15]" loc = F20;
+#NET "PPI0_0_[0]" loc = H18;
+#NET "PPI0_0_[1]" loc = H19;
+#NET "PPI0_0_[2]" loc = F21;
+#NET "PPI0_0_[3]" loc = F22;
+#NET "PPI0_0_[4]" loc = E20;
+#NET "PPI0_0_[5]" loc = E22;
+#NET "PPI0_0_[6]" loc = J19;
+#NET "PPI0_0_[7]" loc = H20;
+#NET "PPI0_0_[8]" loc = K19;
+#NET "PPI0_0_[9]" loc = K18;
+#NET "PPI0_0_[10]" loc = G20;
+#NET "PPI0_0_[11]" loc = G22;
+#NET "PPI0_0_[12]" loc = K17;
+#NET "PPI0_0_[13]" loc = L17;
+#NET "PPI0_0_[14]" loc = H21;
+#NET "PPI0_0_[15]" loc = H22;
+#NET "PPI1_0_[0]" loc = K20;
+#NET "PPI1_0_[1]" loc = L19;
+#NET "PPI1_0_[2]" loc = J20;
+#NET "PPI1_0_[3]" loc = J22;
+#NET "PPI1_0_[4]" loc = M20;
+#NET "PPI1_0_[5]" loc = M19;
+#NET "PPI1_0_[6]" loc = K21;
+#NET "PPI1_0_[7]" loc = K22;
+#NET "PPI1_0_[8]" loc = P20;
+#NET "PPI1_0_[9]" loc = N19;
+#NET "PPI1_0_[10]" loc = L20;
+#NET "PPI1_0_[11]" loc = L22;
+#NET "PPI1_0_[12]" loc = M21;
+#NET "PPI1_0_[13]" loc = M22;
+#NET "PPI1_0_[14]" loc = N20;
+#NET "PPI1_0_[15]" loc = N22;
+NET "ARDY0" loc = P21;				#Hardware ready control- async - pg17
+#NET "BGH0" loc = P22;
+NET "BR0" loc = R20;			#dsp0_bus_ready
+#NET "BG0" loc = R22;
+NET "BMODE0_0" loc = T21;
+NET "BMODE1_0" loc = T22;
+NET "PPI0_CLK_0" loc = U20;		#60 MHz clock to dsp0 PPI0
+#NET "PPI0_SYNC1_0" loc = U22;
+#NET "PPI0_SYNC2_0" loc = V21;
+#NET "PPI0_SYNC3_0" loc = V22;
+NET "PPI1_CLK_0" loc = W20;		#60 MHz clock to dsp0 PPI1
+#NET "PPI1_SYNC1_0" loc = W22;
+#NET "PPI1_SYNC2_0" loc = Y21;
+#NET "PPI1_SYNC3_0" loc = Y22;
+NET "NMI0_0" loc = P19;
+NET "NMI1_0" loc = R19;
+
+
+
+#FPGA_A-c
+#NET "FTCK"	loc = A21;
+#NET "FTDI_A"	loc = E18;
+#NET "FTMS_A"	loc = D20;
+#NET "ETDI_A"	loc = G17;
+#NET "DONE_A"	loc = AB21;
+#NET "CCLK_A"	loc = Y20;
+#NET "  "	loc = V17;
+#NET "	"	loc = W18;
+#NET "FDIN_A"	loc = AA20;
+#NET "FDIN_A"   loc = AB20;
+
+
+NET "ARDY1" loc = U16;		#hardware read control - async - pg17
+#NET "BGH1" loc = V15;
+NET "BR1" loc = W17;			#dsp1_bus_ready
+#NET "BG1" loc = Y18;
+NET "BMODE0_1" loc = AA14;
+NET "BMODE1_1" loc = AB14;
+NET "PPI0_CLK_1" loc = R13;		#60 MHz clokc to dsp1 PPI0
+#NET "PPI0_SYNC1_1" loc = T14;
+#NET "GND" loc = Y19;
+#NET "PPI0_SYNC2_1" loc = AB19;
+#NET "PPI0_SYNC3_1" loc = AA18;
+NET "PPI1_CLK_1" loc = AB18;		#60 MHz clokc to dsp1 PPI1
+#NET "PPI1_SYNC1_1" loc = Y17;
+#NET "PPI1_SYNC2_1" loc = AB17;
+#NET "PPI1_SYNC3_1" loc = U14;
+NET "NMI0_1" loc = U13;
+NET "NMI1_1" loc = Y16;
+#NET "DSP_SLEEP_1" loc = W15;
+
+
+NET "MON_A0" LOC = K7;
+#NET "MON_A1" LOC = K8;
+NET "MON_A2" LOC = H4;
+#NET "MON_A3" LOC = G4;
+NET "MON_A4" LOC = D2;
+#NET "MON_A5" LOC = D1;
+NET "MON_A6" LOC = F3;
+#NET "MON_A7" LOC = E4;
+NET "MON_A8" LOC = H6;
+#NET "MON_A9" LOC = G7;
+NET "MON_A10" LOC = J7;
+#NET "MON_A11" LOC = H8;
+NET "MON_A12" LOC = F5;
+#NET "MON_A13" LOC = G6;
+#NET "MON_A14" LOC = C1;
+#NET "MON_A15" LOC = B1;
+
