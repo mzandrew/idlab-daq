@@ -22,7 +22,7 @@ module dsp_reset
 	 output reg dsp_reset_button
 	
     );
-
+ 
 	 parameter RESET_BUTTON_IDLE = 15;        //15 clocks -- DSP_CLKIN
 	 parameter RESET_BUTTON_PUSHED = 45;      //push button for 30 cycle
 	 parameter RESET_CLOCK_CYCLE = 11;		   //see data book
