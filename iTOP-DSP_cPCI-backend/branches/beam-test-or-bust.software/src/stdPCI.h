@@ -46,6 +46,7 @@ public:
 	int sendVetoClear();
 
 	vector<int> getIDList();
+	int readSignals();
 	
 private:
 	int fd;
