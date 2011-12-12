@@ -1,7 +1,7 @@
 #ifndef __READFIBER_H__
 #define __READFIBER_H__
 
-#include "../contrib/stdPCI.h"
+#include "stdPCI.h"
 
 #define DATASIZE 72800
 

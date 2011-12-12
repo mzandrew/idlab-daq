@@ -98,6 +98,7 @@ int main(int argc, char** argv) {
 			channel_bitmask |= 1<<i;
 		}
 	}
+	channel_bitmask = 0xf;
 
 	setup_pci(card_id);
 	usleep(10000);

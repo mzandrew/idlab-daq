@@ -236,9 +236,19 @@ int altix_last_transfer_status(int fd, int *stat);
  * \param int fd
  * Opened file descriptor for the driver.
  * \param int fpga
- * Monitor header to send a pulse from. Allowed values are 0 for fpga 0, anything else for fpga 1;
+ * Use monitor header to send a pulse from. Allowed values are 0 for fpga 0, anything else for fpga 1;
  */
 int altix_send_pulse(int fd, int fpga);
+
+/**
+ * Read the pulse register.
+ * \param int fd
+ * Opened file descriptor for the driver.
+ * \param int ret
+ * Return value.
+ * Read the pulse register.
+ */
+int altix_read_pulse(int fd, int* ret);
 
 /**
  * Get event size in bytes. this value is fixed. Will return 140*130*3. Placed here for your convenience. User must maintain a lock on the card.

@@ -22,7 +22,7 @@ g++ -c \
 
 g++ \
 	$(perl -MConfig -e 'print $Config{lddlflags}') \
-	work/fiber_readout_swigwrapper.o work/fiber_readout.o contrib/stdPCI.o work/pci.o work/command_packet_builder.o \
+	work/fiber_readout_swigwrapper.o work/fiber_readout.o work/stdPCI.o work/pci.o work/command_packet_builder.o \
 	-Xlinker -rpath ./contrib \
 	-L./contrib \
 	-laltix \

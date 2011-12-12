@@ -3,6 +3,8 @@
  * Version 1.101: Added channel enable/disabled ioctl. Fixed bugs with dma io returns
  * Verison 1.102: Added channel status ioctl. Check all user buffers in chardev. Inlined utill functions. O2 optimization.
  * Verison 1.103: Changed channel status to the whole register. Added monitor header ttl support.
+ * Verison 1.104: Added support for legacy systems, such as RHEL 5.
+ * Verison 1.105: Added support for reading the monitor register.
  */
 /**
  * \file altix_userland.h
@@ -14,7 +16,7 @@
 #define INT_2_STR_HELPER(x) #x
 #define INT_2_STR(x) INT_2_STR_HELPER(x)
 
-#define ALTIX_DRIVER_VERSION 103
+#define ALTIX_DRIVER_VERSION 105
 #define ALTIX_DRIVER_VERSION_STRING "1." INT_2_STR(ALTIX_DRIVER_VERSION)
 
 #ifdef __KERNEL__
@@ -35,11 +37,13 @@
 #define ALTIX_IOCTL_CHAN_ENABLE 0x88A
 #define ALTIX_IOCTL_CHAN_STATUS 0x88B
 #define ALTIX_IOCTL_FANCY	0x88C
-///Fancy command a ttl pulse on Monitor header 0;
+///Fancy command a ttl pulse on Monitor header 0.
 #define ALTIX_IOCTL_FANCY_CMD_MON_0 0
 
-///Fancy command a ttl pulse on Monitor header 1;
+///Fancy command a ttl pulse on Monitor header 1.
 #define ALTIX_IOCTL_FANCY_CMD_MON_1 1
+
+#define ALTIX_IOCTL_FANCY_CMD_PULSE_READ 2
 
 
 /**

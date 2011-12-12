@@ -4,19 +4,19 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdint.h>
-#include "altix_userland.h"
 #include <sys/ioctl.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h> 
 #include <stdint.h>
-
 #include <vector>
 using namespace std;
 
+#include "../contrib/altix_userland.h"
+
 extern "C"{
-#include "libaltix.h"
+#include "../contrib/libaltix.h"
 }
 
 #define CHECK_CARD_ID       if (card_id == -1)             \

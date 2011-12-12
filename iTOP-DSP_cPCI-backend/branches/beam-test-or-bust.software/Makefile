@@ -1,7 +1,7 @@
-INTERMEDIATE_OBJECT_FILES1 = contrib/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
+INTERMEDIATE_OBJECT_FILES1 = work/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
 FINAL_OBJECT_FILES1 = bin/camac_only bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules bin/threshold_tester bin/set_look_back
 
-INTERMEDIATE_OBJECT_FILES2 = contrib/stdPCI.o work/read_fiber.o work/read_CAMAC.o work/dual_readout.o
+INTERMEDIATE_OBJECT_FILES2 = work/stdPCI.o work/read_fiber.o work/read_CAMAC.o work/dual_readout.o
 FINAL_OBJECT_FILES2 = bin/dual_readout
 
 FINAL_OBJECT_FILES3 = work/fiber_readout_swigwrapper.so 
@@ -64,14 +64,16 @@ work/fiber_readout_swigwrapper.o work/fiber_readout_swigwrapper.so : scripts/fib
 
 #bin/% : $(@:bin/%=work/%.o) $(INTERMEDIATE_OBJECT_FILES) ; g++ $^ $(@:bin/%=work/%.o) $(LINK_OPTIONS) -o $@
 
+LOCATION_OF_ALTIX_SVN_ROOT=/root/altix2/
+
 #contrib/libaltix.so:
-#	cp ${HOME}/ku/libaltix/libaltix.so work/
-
-#contrib/altix_userland.h:
-#	cp ../libaltix/altix_userland.h contrib/
-
 #contrib/libaltix.h:
-#	cp ../libaltix/libaltix.h contrib/
+#contrib/altix_userland.h:
+
+get_new_library_files:
+	cp -a $(LOCATION_OF_ALTIX_SVN_ROOT)/uland/libaltix/altix_userland.h contrib/
+	cp -a $(LOCATION_OF_ALTIX_SVN_ROOT)/uland/libaltix/libaltix.h contrib/
+	cp -a $(LOCATION_OF_ALTIX_SVN_ROOT)/uland/libaltix/libaltix.so contrib/
 
 clean: 
 	-rm -rf work bin
