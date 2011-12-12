@@ -1,5 +1,5 @@
 INTERMEDIATE_OBJECT_FILES1 = work/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o
-FINAL_OBJECT_FILES1 = bin/camac_only bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules bin/threshold_tester bin/set_look_back
+FINAL_OBJECT_FILES1 = bin/tell_status_of_signals bin/camac_only bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/window_profiler bin/cosmic bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/trigger_a_quarter_event_from_all_connected_modules bin/threshold_tester bin/set_look_back
 
 INTERMEDIATE_OBJECT_FILES2 = work/stdPCI.o work/read_fiber.o work/read_CAMAC.o work/dual_readout.o
 FINAL_OBJECT_FILES2 = bin/dual_readout
@@ -51,6 +51,8 @@ bin/readout_all_pending_data : work/readout_all_pending_data.o $(INTERMEDIATE_OB
 bin/reset_trigger_flip_flop : work/reset_trigger_flip_flop.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
 bin/trigger_a_quarter_event_from_all_connected_modules : work/trigger_a_quarter_event_from_all_connected_modules.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+bin/tell_status_of_signals : work/tell_status_of_signals.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
 # camac:
 

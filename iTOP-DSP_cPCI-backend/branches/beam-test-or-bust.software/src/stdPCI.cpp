@@ -158,3 +158,11 @@ int stdPCI::sendVetoClear() {
 	return altix_send_pulse(fd, 1);
 }
 
+int stdPCI::readSignals() {
+	int signals = 0;
+	if (altix_read_pulse(fd, &signals) == ALTIX_OK) {
+		printf("state of signals on front-panel:  %08x\n", signals);
+	}
+	return signals;
+}
+
