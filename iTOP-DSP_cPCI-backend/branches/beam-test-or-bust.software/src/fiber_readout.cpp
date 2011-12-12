@@ -5,7 +5,7 @@
 #include "command_packet_builder.h"
 
 unsigned long int header = 0x00be11e2;
-unsigned long int protocol_freeze_date = 0x20111016;
+unsigned long int protocol_freeze_date = 0x20111213;
 unsigned long int packet_type[NUMBER_OF_PACKET_TYPES] = { 0x00c0ffee, 0x0000eada, 0x000f00da, 0x000ab0de, 0xce11b10c };
 unsigned long int footer = 0x62504944;
 unsigned long int packet[NUMBER_OF_WORDS_IN_A_PACKET];

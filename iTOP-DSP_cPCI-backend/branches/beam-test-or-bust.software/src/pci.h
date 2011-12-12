@@ -1,7 +1,7 @@
 #ifndef idlab_pci
 #define idlab_pci
 
-#include "../contrib/stdPCI.h"
+#include "stdPCI.h"
 
 extern stdPCI pci;
 extern int card_id;

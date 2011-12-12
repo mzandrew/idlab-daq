@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	channel_bitmask = 0x6;
+	channel_bitmask = 0x8;
 
 	setup_pci(card_id);
 	should_soft_trigger = true;
