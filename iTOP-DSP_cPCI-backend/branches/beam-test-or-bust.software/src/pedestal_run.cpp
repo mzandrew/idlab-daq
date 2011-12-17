@@ -107,14 +107,8 @@ int main(int argc, char** argv) {
 	setup_default_log_filenames();
 	open_logfiles_for_all_enabled_channels();
 
-	unsigned short int beginning_window = 0;
-//	beginning_window /= 2;
-//	beginning_window *= 2;
-	unsigned short int ending_window = 63;
-//	ending_window += 1; // 512
-//	ending_window /= 4; // 128
-//	ending_window *= 4; // 512
-//	ending_window -= 1; // 511
+	unsigned short int beginning_window = 0;  //This number should be at least 3 less than ending window and even
+	unsigned short int ending_window = 63;    //This number should be at least 3 more than beginning window and odd
 	for (int i=beginning_window; i<=ending_window; i+=4) {
 		unsigned short int a = i;
 		unsigned short int b = i+3;
