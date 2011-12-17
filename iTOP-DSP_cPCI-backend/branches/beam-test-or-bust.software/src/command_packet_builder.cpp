@@ -117,7 +117,7 @@ void generate_complex_command_packet(unsigned long int command, command_argument
 void send_complex_command_packet_to_all_enabled_channels(unsigned long int command, command_arguments_type command_arguments) {
 	generate_complex_command_packet(command, command_arguments);
 	for (unsigned short int j=0; j<NUMBER_OF_SCRODS_TO_READOUT; j++) {
-		pci.selectChannel(1);
+		pci.selectChannel(j);
 		pci.sendData(command_packet, 560);
 	}
 }
