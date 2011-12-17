@@ -117,6 +117,7 @@ int main(int argc, char** argv) {
 
 	for (int i=0; i<total_number_of_quarter_events_to_read_per_fiber_channel; i++) {
 		readout_N_events(1);
+		usleep(1000000);
 		read_data_from_CAMAC_and_write_to_CAMAC_file();
 	}
 

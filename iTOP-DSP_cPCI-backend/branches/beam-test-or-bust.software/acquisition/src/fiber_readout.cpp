@@ -426,7 +426,6 @@ void readout_N_events(unsigned long int N) {
 	for (unsigned long int i=0; i<N; i++) {
 		event_number++;
 		if (should_soft_trigger) {
-			usleep(1000000);
 			send_soft_trigger_request_command_packet();
 		}
 		read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
