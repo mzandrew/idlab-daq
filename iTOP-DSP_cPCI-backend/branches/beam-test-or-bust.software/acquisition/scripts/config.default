@@ -7,15 +7,14 @@ card=2
 
 # which channels are enabled:
 # (channels="0123" for all four or channels="2" just for channel two, etc)
-channels="1"
+channels="0123"
 
 # config for storage of data in files # # # # # # # # # # # # # # # # # # # #
 
-# experiment number (0 for testing; 1 for cosmic; 2... for actual data) # # #
-experiment_number=0
+location_of_raw_datafiles=../rawdata
 
-# run number (starting from 1) # # # # # # # # # # # # # # # # # # # # # # # #
-run_number=1
+# experiment number 
+experiment_number=0
 
 # whether to use datestamp in filename # # # # # # # # # # # # # # # # # # # #
 use_datestamp=1
