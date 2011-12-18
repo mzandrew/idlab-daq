@@ -319,7 +319,7 @@ void EventData::WriteConfigTree(const char *input_filename, const char *configur
 	strcpy(time_string,TimeString.c_str());
 
 	ReducedFilename = ReducedFilename.substr(20, ReducedFilename.length() );
-	int nreads = sscanf(ReducedFilename.c_str(),"exp%2i.run%4i.spill%4i.fiber%1hi",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
+	int nreads = sscanf(ReducedFilename.c_str(),"exp%2d.run%4d.spill%4d.fiber%1hd",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
 	if (nreads != 4) { 
 		cout << "Only read " << nreads << " parameter(s) from filename, but expected 5... are you using the most up to date software?" << endl; 
 		cout << "Configuration data may not be correct for this file..." << endl;
@@ -359,7 +359,7 @@ void EventData::WriteConfigTree(const char *input_filename, const char *configur
 					break;
 				}
 			}
-	}
+		}
 		if (!found_right_SCROD || !config_in) {
 			cout << "Could not find SCROD_ID in the configuration file: " << configuration_file << endl;
 			cout << "ASIC numbers may not be recorded correctly!" << endl;
@@ -367,6 +367,20 @@ void EventData::WriteConfigTree(const char *input_filename, const char *configur
 	}
 
 	ConfigTree->Fill();
+
+	cout << "Reading data from file: " << ReducedFilename << endl;
+	cout << "\texperiment    : " << ExpNumber << endl;
+	cout << "\trun number    : " << RunNumber << endl;
+	cout << "\tspill number  : " << SpillNumber << endl;
+	cout << "\tfiber channel : " << FiberChannel << endl;
+	cout << "\tSCROD serial# : " << SCROD_ID << endl;
+	cout << "\tDaughter cards: ";
+	for (int col = 0; col < 4; ++col) {
+		for (int row = 0; row < 4; ++row) {
+			cout << ASIC_ID[col][row] << " ";
+		}
+	}
+	cout << endl;
 }
 
 void EventData::AutoSave() {
