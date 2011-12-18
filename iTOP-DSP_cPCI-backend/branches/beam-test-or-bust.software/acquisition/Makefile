@@ -10,7 +10,6 @@ FINAL_OBJECT_FILES3 = work/fiber_readout_swigwrapper.so
 LINK_OPTIONS = -L$(shell pwd)/contrib -laltix -lxxusb -Wl,-rpath,contrib 
 
 default :
-	if [ ! -e logdir  ]; then mkdir  logdir; fi
 	if [ ! -e contrib ]; then mkdir contrib; fi
 	if [ ! -e src     ]; then mkdir     src; fi
 	if [ ! -e work    ]; then mkdir    work; fi
