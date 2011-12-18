@@ -12,7 +12,7 @@ default :
 	if [ ! -e bin     ]; then mkdir     bin; fi
 	$(MAKE) all
 
-all: bin/ConvertRawToDST1 bin/ConvertRawToDST1_with_DQM
+all: bin/ConvertRawToDST1 bin/ConvertRawToDST1_with_DQM bin/CalculatePedestals
 
 bin/ConvertRawToDST1: work/ConvertRawToDST1.o $(LIB_OBJS)
 	$(CC) $^ $(ROOTLIBS) -o $@ $(INC) $(ROOTCFLAGS)
@@ -20,11 +20,17 @@ bin/ConvertRawToDST1: work/ConvertRawToDST1.o $(LIB_OBJS)
 bin/ConvertRawToDST1_with_DQM: work/ConvertRawToDST1_with_DQM.o $(LIB_OBJS)
 	$(CC) $^ $(ROOTLIBS) -o $@ $(INC) $(ROOTCFLAGS)
 
+bin/CalculatePedestals: work/CalculatePedestals.o $(LIB_OBJS)
+	$(CC) $^ $(ROOTLIBS) -o $@ $(INC) $(ROOTCFLAGS)
+
 work/ConvertRawToDST1_with_DQM.o: src/ConvertRawToDST1_with_DQM.cpp
 	$(CC) $(INC) $< -c -o $@
 
 work/ConvertRawToDST1.o: src/ConvertRawToDST1.cpp
 	$(CC) $(INC) src/ConvertRawToDST1.cpp -c -o $@
+
+work/CalculatePedestals.o: src/CalculatePedestals.cpp
+	$(CC) $(INC) src/CalculatePedestals.cpp -c -o $@
 
 work/EventStructure.o: src/EventStructure.cpp src/EventStructure.h
 	$(CC) $(INC) src/EventStructure.cpp -c -o $@

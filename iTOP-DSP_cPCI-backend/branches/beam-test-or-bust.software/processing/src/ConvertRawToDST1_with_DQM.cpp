@@ -14,14 +14,16 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-	if (argc != 3) {
-		cout << "Syntax: PrerunAnalyzer [input file name (raw data)] [output file name (ROOT)]" << endl;
+	if (argc != 4) {
+		cout << "Syntax: PrerunAnalyzer [input file name (raw data)] [output file name (ROOT)] [configuration file]" << endl;
 		return 1;
 	}
 	string str_input_file;
 	string str_output_file;
+	string str_config_file;
 	str_input_file = argv[1];
 	str_output_file = argv[2];	
+	str_config_file = argv[3];
 
 	TApplication theApp("App",&argc,argv);
 
@@ -30,7 +32,7 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 	
-	int status = prerun_checks(str_input_file,str_output_file);
+	int status = prerun_checks(str_input_file,str_output_file,str_config_file);
 	cout << "Finished processing with status = " << status << endl;
 	cout << "Display is no longer updating." << endl;
 	theApp.Run();
@@ -38,7 +40,7 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
-int prerun_checks(string str_input_file, string str_output_file) {
+int prerun_checks(string str_input_file, string str_output_file, string str_config_file) {
 	//Try to open the input file and check validity
 	ifstream fin(str_input_file.c_str());
 	if (!fin) {
@@ -48,7 +50,7 @@ int prerun_checks(string str_input_file, string str_output_file) {
 	//Try to open the output file and check validity
 	EventData *test_event = new EventData();
 	E_event = test_event;
-	TFile *ROOT_file = test_event->OpenROOTFile( (char *) str_output_file.c_str() );
+	TFile *ROOT_file = test_event->OpenROOTFile(str_output_file.c_str() );
 	if (ROOT_file->IsZombie()) {
 		cout << "ERROR: could not open " << str_output_file.c_str() << " for writing." << endl;
 		return 1;
@@ -60,10 +62,15 @@ int prerun_checks(string str_input_file, string str_output_file) {
 	int nevents = 0;
 	bool continue_running = true;
 	time_t time_of_last_successful_read = time(NULL);
+	bool configuration_written = false;
 	while(continue_running) {
 		streampos starting_file_pointer = fin.tellg();
 		int this_status = test_event->ReadEvent(fin);
 		if (this_status == 1) {
+			if (!configuration_written) {
+				test_event->WriteConfigTree(str_output_file.c_str(),str_config_file.c_str());
+				configuration_written = true;
+			}
 			time_of_last_successful_read = time(NULL);
 			nevents++;
 			//Update all current graphs and other diagnostics
