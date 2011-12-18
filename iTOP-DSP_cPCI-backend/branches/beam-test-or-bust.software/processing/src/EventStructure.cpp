@@ -253,17 +253,29 @@ void EventData::Draw() {
 //	}
 }
 
-TFile* EventData::OpenROOTFile(char *filename) {
-	TFile *file_handle = new TFile(filename,"RECREATE");
+TFile* EventData::OpenROOTFile(const char *root_filename) {
+	TFile *file_handle = new TFile(root_filename,"RECREATE");
 	//A simple one-entry-per-file tree for variables that are static
 	ConfigTree = new TTree("ConfigTree","Configuration Data");
-	ConfigTree->Branch("RawFilename"   , &RawFilename    ,"RawFilename/C");
-	ConfigTree->Branch("FiberChannel"  , &FiberChannel   ,"FiberChannel/s");
-	ConfigTree->Branch("FiberCard"     , &FiberCard      ,"FiberCard/s");
-	ConfigTree->Branch("SCROD_Revision", &SCROD_Revision ,"SCROD_Revision/C");
-	ConfigTree->Branch("SCROD_ID"      , &SCROD_ID       ,"SCROD_ID/s");
-	ConfigTree->Branch("ASIC_ID"       , ASIC_ID         ,"ASIC_ID[4][4]/s");
-	ConfigTree->Branch("RunNumber"     , &RunNumber      ,"RunNumber/i");
+	ConfigTree->Branch("RawFilename"   , RawFilename_cstr     ,"RawFilename/C");
+	ConfigTree->Branch("FiberChannel"  , &FiberChannel        ,"FiberChannel/s");
+	ConfigTree->Branch("SCROD_Revision", SCROD_Revision_cstr  ,"SCROD_Revision/C");
+	ConfigTree->Branch("SCROD_ID"      , &SCROD_ID            ,"SCROD_ID/s");
+	ConfigTree->Branch("ASIC_ID"       , ASIC_ID              ,"ASIC_ID[4][4]/s");
+	ConfigTree->Branch("ExpNumber"     , &ExpNumber           ,"ExpNumber/i");
+	ConfigTree->Branch("RunNumber"     , &RunNumber           ,"RunNumber/i");
+	ConfigTree->Branch("SpillNumber"   , &SpillNumber         ,"SpillNumber/i");
+	ConfigTree->Branch("StartTime"     , &StartTime           ,"StartTime/I");
+
+	//Set a few configuration variables to default values
+	RawFilename = "Uninitialized";
+	FiberChannel = 0;
+	sprintf(SCROD_Revision_cstr,"Uninitialized");
+	SCROD_ID = 0;
+	ExpNumber = 0;
+	RunNumber = 0;
+	SpillNumber = 0;
+	StartTime = 0;
 
 	//A seperate tree for variables that get updated once per event
 	EventTree = new TTree("EventTree","Event Data");
@@ -295,6 +307,67 @@ TFile* EventData::OpenROOTFile(char *filename) {
 
 	return file_handle;
 };
+
+void EventData::WriteConfigTree(const char *input_filename, const char *configuration_file) {
+	string RawFilename_string = input_filename;
+	int str_length = RawFilename_string.length();
+	string ReducedFilename = RawFilename_string.substr(str_length-50,str_length);
+	sprintf(RawFilename_cstr,"%s",ReducedFilename.c_str());
+	
+	string TimeString = ReducedFilename.substr(0,19);
+	char time_string[36];
+	strcpy(time_string,TimeString.c_str());
+
+	ReducedFilename = ReducedFilename.substr(20, ReducedFilename.length() );
+	int nreads = sscanf(ReducedFilename.c_str(),"exp%2i.run%4i.spill%4i.fiber%1hi",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
+	if (nreads != 4) { 
+		cout << "Only read " << nreads << " parameter(s) from filename, but expected 5... are you using the most up to date software?" << endl; 
+		cout << "Configuration data may not be correct for this file..." << endl;
+	}
+	struct tm file_time;
+	char *result = strptime(time_string, "%Y-%m-%d+%H:%M:%S",&file_time);
+	time_t epoch_time = mktime(&file_time);
+	if (!result) {
+		cout << "failed to interpret time!" << endl;
+	} //else {
+		//cout << "determined time as: " <<  epoch_time << endl;
+	//}
+	StartTime = (int) epoch_time;	
+
+	//Parse the configuration file
+	ifstream config_in(configuration_file);
+	if (!config_in) {
+		cout << "Could not open configuration file: " << configuration_file << endl;
+		cout << "ASIC numbers will not be recorded correctly!" << endl;
+	} else {
+		bool found_right_SCROD = false;
+		while (config_in) {
+			if (config_in.peek() == '#' || config_in.peek() == '\n') {
+				config_in.ignore(1024,'\n');
+			} else {
+				unsigned short int this_scrod;
+				config_in >> this_scrod;
+				if (this_scrod != SCROD_ID) {
+					config_in.ignore(1024,'\n');
+				} else {
+					for (int col = 0; col < 4; ++col) {
+						for (int row = 0; row < 4; ++row) {
+							config_in >> ASIC_ID[col][row];
+						}
+					}
+					found_right_SCROD = true;
+					break;
+				}
+			}
+	}
+		if (!found_right_SCROD || !config_in) {
+			cout << "Could not find SCROD_ID in the configuration file: " << configuration_file << endl;
+			cout << "ASIC numbers may not be recorded correctly!" << endl;
+		}
+	}
+
+	ConfigTree->Fill();
+}
 
 void EventData::AutoSave() {
 	EventTree->AutoSave("SaveSelf");
@@ -460,6 +533,14 @@ int EventData::ReadEvent(ifstream &fin) {
 */
 
 	if (this_status == SUCCESS) {
+		if (!ID_is_known) {
+			sprintf(SCROD_Revision_cstr,"%X",(test_packet.scrod_id >> 16 ) & 0xFFFF);
+			SCROD_ID = test_packet.scrod_id & 0xFFFF;
+			char temp[16];
+			sprintf(temp,"%04X",SCROD_ID);
+			sscanf(temp,"%hd",&SCROD_ID);
+			ID_is_known = true;
+		}
 		EventTree->Fill();
 	}
 	if (this_status != SUCCESS) {
