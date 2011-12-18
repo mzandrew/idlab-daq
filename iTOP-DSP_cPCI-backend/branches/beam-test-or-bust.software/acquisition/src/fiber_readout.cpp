@@ -146,7 +146,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 					}
 				}
 				if (number_of_bytes_actually_read) {
-					printf(".");
+//					printf(".");
 				}
 			}
 		}
@@ -188,10 +188,10 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 			if (number_of_errors_for_this_quarter_event[i]) {
 				printf(" %ld errors in that quarter event; ", number_of_errors_for_this_quarter_event[i]);
 			}
-			printf(" Q ");
+//			printf(" Q ");
 		}
 	}
-	printf(" E ");
+//	printf(" E ");
 }
 
 //inline unsigned int read_quarter_event_from_channel(unsigned short int channel) {
@@ -292,7 +292,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 	if (packet_number==0) {
 		//info_string[channel] += packet[EVENT_NUMBER_INDEX];
 		char temp[256];
-		sprintf(temp, "event_number[%09ld]: ", packet[EVENT_NUMBER_INDEX]);
+		sprintf(temp, "event_number[%09ld] ", packet[EVENT_NUMBER_INDEX]);
 		info_string[channel] += temp;
 	} else {
 		if (event_number_from_most_recent_packet[channel] != packet[EVENT_NUMBER_INDEX]) {
@@ -345,7 +345,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 		printf("%s", info_string[channel].c_str());
 		info_string[channel] = "";
 	}
-	printf("P");
+//	printf("P");
 }
 
 struct timeval start, end, watchdog;
@@ -544,7 +544,7 @@ void setup_log_filenames_for_fiber(void) {
 	set_current_date_string();
 	if (!file_exists(location_of_raw_datafiles)) {
 		//cout << "dir \"" << location_of_raw_datafiles << "\" does not exist" << endl;
-		mkdir(location_of_raw_datafiles.c_str(), S_IRWXU | S_IRWXG);
+		mkdir(location_of_raw_datafiles.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 		if (!file_exists(location_of_raw_datafiles)) {
 			cout << "ERROR:  could not create directory \"" << location_of_raw_datafiles << "\"" << endl;
 		}
@@ -578,8 +578,7 @@ void increment_spill_number_and_change_log_filenames_for_fiber(void) {
 
 void open_files_for_all_enabled_fiber_channels(void) {
 	if (!logfile_open) {
-		logfile.open(logfile_filename.c_str());
-//, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+		logfile.open(logfile_filename.c_str(), fstream::app);
 		if (logfile) {
 			logfile_open = true;
 		} else {
@@ -597,7 +596,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 				close(fd[i]);
 			}
 			fprintf(stdout, "attempting to open file \"%s\"...\n", filename[i].c_str());
-			fd[i] = open(filename[i].c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+			fd[i] = open(filename[i].c_str(), O_WRONLY | O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (fd[i] < 0) {
 				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", filename[i].c_str());
 			} else {
