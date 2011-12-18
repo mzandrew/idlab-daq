@@ -1,8 +1,12 @@
 // 2011-?? mza
 
+using namespace std;
+#include <iostream>
+
 #include "pci.h"
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
+#include "acquisition.h"
 
 unsigned long int header = 0x00be11e2;
 unsigned long int protocol_freeze_date = 0x20111213;
@@ -17,7 +21,6 @@ unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_
 unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned long int total_number_of_errors;
 string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
-unsigned short int channel_bitmask = 0;
 int fd[NUMBER_OF_SCRODS_TO_READOUT]; // file descriptors for output datafiles
 unsigned long int total_number_of_readout_events = 0;
 string filename[NUMBER_OF_SCRODS_TO_READOUT];
@@ -518,20 +521,46 @@ void set_all_DACs_to_built_in_nominal_values(void) {
 	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
 }
 
-void setup_default_log_filenames(void) {
+bool file_exists (string filename) {
+	// borrowed from http://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c-cross-platform
+	struct stat buffer; 
+	return (stat (filename.c_str(), &buffer) == 0);
+}
+
+void setup_log_filenames_for_fiber(void) {
+	set_current_date_string();
+	if (!file_exists(location_of_raw_datafiles)) {
+		//cout << "dir \"" << location_of_raw_datafiles << "\" does not exist" << endl;
+		mkdir(location_of_raw_datafiles.c_str(), S_IRWXU | S_IRWXG);
+		if (!file_exists(location_of_raw_datafiles)) {
+			cout << "ERROR:  could not create directory \"" << location_of_raw_datafiles << "\"" << endl;
+		}
+	}
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
-		char temp[15];
-		filename[i] = "logdir/";
-		filename[i] += "card";
-		sprintf(temp, "%d", card_id);
+		char temp[25];
+		//if (channel_enabled[i]) {
+		//}
+		filename[i] = location_of_raw_datafiles;
+		filename[i] += "/";
+		sprintf(temp, "%s", current_date_string.c_str());
 		filename[i] += temp;
-		filename[i] += ".channel";
-		sprintf(temp, "%d", i);
+		sprintf(temp, ".exp%02d", experiment_number);
 		filename[i] += temp;
-		filename[i] += ".rawdata";
+		sprintf(temp, ".run%04d", run_number);
+		filename[i] += temp;
+		sprintf(temp, ".spill%04d", spill_number);
+		filename[i] += temp;
+		sprintf(temp, ".fiber%d", i);
+		filename[i] += temp;
 //		printf("filename[%d] = \"%s\"\n", i, filename[i].c_str());
 //		sprintf(filename[i], "%s%d.rawdata", logprefix, i);
 	}
+}
+
+void increment_spill_number_and_change_log_filenames_for_fiber(void) {
+	spill_number++;
+	setup_log_filenames_for_fiber();
+	open_logfiles_for_all_enabled_channels();
 }
 
 void open_logfiles_for_all_enabled_channels(void) {
@@ -564,9 +593,15 @@ void open_logfiles_for_all_enabled_channels(void) {
 		if (channel_bitmask & (1<<i)) {
 //			printf("%d %d\n", stdout_ch, i);
 //			if (stdout_ch == i) continue;
+			if (fd[i] >= 0) {
+				fprintf(stdout, "closing file \"%s\"\n", filename[i].c_str());
+				close(fd[i]);
+			}
 			fprintf(stdout, "attempting to open file \"%s\"...\n", filename[i].c_str());
 			fd[i] = open(filename[i].c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-			if (fd[i] < 0) fprintf(stderr, "WARNING: failed to create file \"%s\"\n", filename[i].c_str());
+			if (fd[i] < 0) {
+				fprintf(stderr, "WARNING: failed to create file \"%s\"\n", filename[i].c_str());
+			}
 		}
 	}
 	files_are_open = true;

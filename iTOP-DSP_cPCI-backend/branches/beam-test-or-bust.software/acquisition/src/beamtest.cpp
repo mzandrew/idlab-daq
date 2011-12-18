@@ -18,7 +18,17 @@ int main(void) {
 	setup_log_filenames_for_fiber();
 	open_logfiles_for_all_enabled_channels();
 
-	readout_N_events(1);
+	unsigned short int beginning_window = 0;
+	unsigned short int ending_window = 63;
+	while (1) {
+		usleep(4000000);
+		for (int i=0; i<40; i++) {
+			readout_N_events(1);
+			usleep(15000);
+		}
+		// wait for spill completed signal
+		increment_spill_number_and_change_log_filenames_for_fiber();
+	}
 
 	close_all_logfiles();
 	close_pci();
