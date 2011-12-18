@@ -6,7 +6,6 @@
 #include "command_packet_builder.h"
 #include "read_CAMAC.h"
 #include <stdio.h>
-#include <getopt.h>
 #include "acquisition.h"
 
 int main(void) {

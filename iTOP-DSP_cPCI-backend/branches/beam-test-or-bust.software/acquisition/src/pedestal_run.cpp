@@ -4,7 +4,6 @@
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
 #include <stdio.h>
-#include <getopt.h>
 #include "parse_config_file.h"
 #include "acquisition.h"
 
@@ -16,7 +15,15 @@ int main(void) {
 	should_soft_trigger = true;
 	readout_all_pending_data();
 	setup_log_filenames_for_fiber();
-	open_logfiles_for_all_enabled_channels();
+	open_files_for_all_enabled_fiber_channels();
+
+	set_event_number(0);
+	clear_scaler_counters();
+	set_number_of_windows_to_look_back(4);
+	set_all_DACs_to_built_in_nominal_values();
+	usleep(150000);
+	setup_feedback_enables_and_goals(1);
+	usleep(150000);
 
 	unsigned short int beginning_window = 0;  //This number should be at least 3 less than ending window and even
 	unsigned short int ending_window = 63;    //This number should be at least 3 more than beginning window and odd
@@ -25,12 +32,11 @@ int main(void) {
 		unsigned short int b = i+3;
 		set_start_and_end_windows(a, b);
 		fprintf(stdout, "obtaining pedestals for windows [%03d,%03d]...\n", a, b);
-		usleep(10000);
+		usleep(50000);
 		readout_N_events(100);
-//		increment_spill_number_and_change_log_filenames_for_fiber();
 	}
 
-	close_all_logfiles();
+	close_all_fiber_files();
 	close_pci();
 
 	return 0;
