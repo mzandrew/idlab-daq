@@ -5,13 +5,14 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-	if (argc != 3) {
-		cout << "Syntax: RawToDST1 [raw input file] [dst1 output file]" << endl;
+	if (argc != 4) {
+		cout << "Syntax: RawToDST1 [raw input file] [dst1 output file] [configuration file]" << endl;
 		return 1;
 	}
-	string str_input_filename, str_output_filename;
+	string str_input_filename, str_output_filename, str_config_filename;
 	str_input_filename = argv[1];
 	str_output_filename = argv[2];
+	str_config_filename = argv[3];
 
 	ifstream fin(str_input_filename.c_str());
 	if (!fin) {
@@ -20,7 +21,7 @@ int main(int argc, char *argv[]) {
 	}
 	
 	EventData test_event;
-	TFile *output_file = test_event.OpenROOTFile( (char *) str_output_filename.c_str());
+	TFile *output_file = test_event.OpenROOTFile(str_output_filename.c_str());
 	if (output_file->IsZombie()) {
 		cout << "Could not open output file: " << str_output_filename.c_str() << endl;
 		return 1;
@@ -31,9 +32,14 @@ int main(int argc, char *argv[]) {
 	unsigned int packet_error_flags;
 	int nevents = 0;
 	int status = 0;
+	bool configuration_written = false;
 	do {
 		status = test_event.ReadEvent(fin);
 		nevents += status;
+		if (status == 1 && !configuration_written) {
+			test_event.WriteConfigTree(str_input_filename.c_str(),str_config_filename.c_str());
+			configuration_written = true;
+		}
 		if (status == 1 && nevents % 100 == 0) {
 			cout << "Processed event " << nevents << endl;
 		}

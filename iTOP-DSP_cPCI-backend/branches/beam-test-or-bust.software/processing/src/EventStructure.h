@@ -90,7 +90,8 @@ class EventData {
 public:
 	EventData();
 	~EventData();
-	TFile* OpenROOTFile(char *filename);
+	TFile* OpenROOTFile(const char *root_filename);
+	void WriteConfigTree(const char * input_filename, const char *configuration_file);
 	void AutoSave();
 	void CloseROOTFile();
 	int ReadEvent(ifstream &fin);
@@ -103,17 +104,20 @@ public:
 	TTree *ConfigTree;
 	TTree *EventTree;
 	TCanvas *C;
+	bool ID_is_known;  //Have we read SCROD ID yet?
 
+	std::string RawFilename;                         
 	//Variables for the simple static tree
-	std::string RawFileName;
-	unsigned short int RawFilename;
-	unsigned short int FiberChannel;
-	unsigned short int FiberCard;
-	std::string SCROD_Revision;
-	unsigned short int SCROD_ID;
-	unsigned short int ASIC_ID[4][4];
-	unsigned int RunNumber;
-	//Variables for the event tree
+	char RawFilename_cstr[1024];                     //
+	char SCROD_Revision_cstr[1024];                  //
+	unsigned short int FiberChannel;                 //
+	unsigned short int SCROD_ID;                     //
+	unsigned short int ASIC_ID[4][4];                
+	unsigned int ExpNumber;                          //
+	unsigned int RunNumber;                          //
+	unsigned int SpillNumber;                        //
+	int StartTime;                                   //
+	//Variables for the event tree                   
 	unsigned int EventNumber;                        //
 	unsigned short int Temperature;                  //
 	unsigned short int ASIC_TRGbias[4][4];           //
@@ -128,8 +132,8 @@ public:
 	unsigned short int ASIC_PUbias[4][4];            //
 	unsigned short int ASIC_Vdly[4][4];              //
 	unsigned short int ASIC_TRGthreshref[4][4];      //
-	unsigned short int ASIC_WilkCounter[4][4];             
-	short int ASIC_SampRateCounter[4][4];	 
+	unsigned short int ASIC_WilkCounter[4][4];       // 
+	short int ASIC_SampRateCounter[4][4];	         //
 	unsigned int ASIC_TrigWidthCounter[4][4];        
 	unsigned short int ASIC_ADC[4][4][8][4][64];     //
 	unsigned short int ASIC_OriginWindow[4][4][8][4];//
