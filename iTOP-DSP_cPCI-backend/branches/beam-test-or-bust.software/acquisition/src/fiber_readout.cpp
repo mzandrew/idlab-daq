@@ -2,6 +2,7 @@
 
 using namespace std;
 #include <iostream>
+#include <fstream>
 
 #include "pci.h"
 #include "fiber_readout.h"
@@ -32,6 +33,17 @@ unsigned long int histogram_of_incomplete_events_other = 0;
 unsigned char unsigned_char_byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
 unsigned long int event_number_from_most_recent_packet[NUMBER_OF_SCRODS_TO_READOUT];
 
+unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel_bitmask, bool should_not_return_until_at_least_some_data_comes_through);
+inline void clear_buffer(unsigned short int channel_number);
+inline void copy_byte_buffer_to_word_buffer(unsigned short int channel);
+void copy_packet(unsigned long int *source);
+void analyze_packet(unsigned long int packet_number, unsigned short int channel);
+inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned short int channel, unsigned long last_word_position_to_look_in_buffer);
+
+ofstream logfile;
+string logfile_filename = "work/logfile";
+bool logfile_open = false;
+
 void readout_all_pending_data(void) {
 	char buffer2[NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME];
 	signed long int return_value;
@@ -49,6 +61,7 @@ void readout_all_pending_data(void) {
 			printf("\nchannel %d had %ld bytes to read", i, total_bytes_read_so_far);
 		}
 	}
+	send_front_end_trigger_veto_clear();
 	printf("\n\n");
 }
 
@@ -463,7 +476,7 @@ void readout_N_events(unsigned long int N) {
 }
 
 int open_files_for_output_and_read_N_events(unsigned long int N) {
-	open_logfiles_for_all_enabled_channels();
+	open_files_for_all_enabled_fiber_channels();
 
 //	if (stdout_ch != -1)
 //		fd[stdout_ch] = STDOUT_FILENO;
@@ -510,7 +523,7 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 	//printf("\nnumber of times some other number of words was missing = %d", histogram_of_incomplete_events_other);
 	printf("\n");
 
-	close_all_logfiles();
+	close_all_fiber_files();
 }
 
 void set_all_DACs_to(unsigned short int value) {
@@ -560,36 +573,22 @@ void setup_log_filenames_for_fiber(void) {
 void increment_spill_number_and_change_log_filenames_for_fiber(void) {
 	spill_number++;
 	setup_log_filenames_for_fiber();
-	open_logfiles_for_all_enabled_channels();
+	open_files_for_all_enabled_fiber_channels();
 }
 
-void open_logfiles_for_all_enabled_channels(void) {
-	/*
-	// check if proposed output files exist.  Note that we don't open any yet, because
-	// if they are opened, the files get created.  If any of the files exist, we do not
-	// want to create any of the other files.
-	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
-		char filename[105] = "";
-		sprintf(filename, "%s%d.rawdata", logprefix, i);
-//		sprintf(filename, "%s", logprefix);
-//		if (stdout_ch == i) continue;
-		if (channel_bitmask & (1<<i)) {
-			struct stat st;
-			if(stat(filename ,&st) == 0) {
-				//fprintf(stderr, "ERROR: %s already exists, bailing\n", filename);
-				fprintf(stdout, "WARNING: %s already exists; overwriting\n", filename);
-				//return 0;
-			}
+void open_files_for_all_enabled_fiber_channels(void) {
+	if (!logfile_open) {
+		logfile.open(logfile_filename.c_str());
+//, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+		if (logfile) {
+			logfile_open = true;
+		} else {
+			fprintf(stderr, "ERROR opening logfile %s\n", logfile_filename.c_str());
+			logfile_open = false;
 		}
 	}
-	*/
-//	if (filename[i].c_str() == "") {
-//		setup_log_filenames();
-//	}
-	// open and create the log files
+	// open and create the files
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
-//		char filename[105] = "";
-//		sprintf(filename, "%s%d.rawdata", logprefix, i);
 		if (channel_bitmask & (1<<i)) {
 //			printf("%d %d\n", stdout_ch, i);
 //			if (stdout_ch == i) continue;
@@ -600,14 +599,18 @@ void open_logfiles_for_all_enabled_channels(void) {
 			fprintf(stdout, "attempting to open file \"%s\"...\n", filename[i].c_str());
 			fd[i] = open(filename[i].c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (fd[i] < 0) {
-				fprintf(stderr, "WARNING: failed to create file \"%s\"\n", filename[i].c_str());
+				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", filename[i].c_str());
+			} else {
+				if (logfile_open) {
+					logfile << filename[i].c_str() << endl;
+				}
 			}
 		}
 	}
 	files_are_open = true;
 }
 
-void close_all_logfiles(void) {
+void close_all_fiber_files(void) {
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 //		if (channel_bitmask & (1<<i)) {
 //			fprintf(stderr, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);

@@ -68,14 +68,7 @@ void start_timer();
 int stop_timer(struct timeval* begin = NULL);
 extern struct timeval start, end, watchdog;
 
-unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel_bitmask, bool should_not_return_until_at_least_some_data_comes_through);
 void reset_trigger_flip_flop(void);
-inline void clear_buffer(unsigned short int channel_number);
-inline void copy_byte_buffer_to_word_buffer(unsigned short int channel);
-void copy_packet(unsigned long int *source);
-void analyze_packet(unsigned long int packet_number, unsigned short int channel);
-inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned short int channel, unsigned long last_word_position_to_look_in_buffer);
-
 void send_soft_trigger_request_command_packet(void);
 void send_front_end_trigger_veto_clear(void);
 void set_event_number(unsigned long int event_number);
@@ -85,8 +78,8 @@ void global_reset(void);
 void clear_scaler_counters(void);
 void readout_N_events(unsigned long int N);
 int open_files_for_output_and_read_N_events(unsigned long int N);
-void open_logfiles_for_all_enabled_channels(void);
-void close_all_logfiles(void);
+void open_files_for_all_enabled_fiber_channels(void);
+void close_all_fiber_files(void);
 void setup_log_filenames_for_fiber(void);
 void increment_spill_number_and_change_log_filenames_for_fiber(void);
 void set_all_DACs_to(unsigned short int value);

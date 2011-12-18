@@ -2,12 +2,12 @@
 
 using namespace std;
 
+#include <string>
+#include <stdio.h>
 #include "pci.h"
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
 #include "read_CAMAC.h"
-#include <string>
-#include <stdio.h>
 #include "parse_config_file.h"
 #include "acquisition.h"
 
@@ -44,4 +44,14 @@ int main(void) {
 
 	return 0;
 }
+
+//	send_soft_trigger_request_command_packet();
+//	global_reset();
+//	clear_scaler_counters();
+//	set_all_DACs_to_built_in_nominal_values();
+
+//	set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
+//	set_number_of_windows_to_look_back(unsigned long int look_back);
+//	open_files_for_output_and_read_N_events(unsigned long int N);
+//	setup_feedback_enables_and_goals(unsigned short int enable);
 
