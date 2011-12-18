@@ -46,6 +46,10 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
+	TTree *ConfigTree = (TTree *) f1->Get("ConfigTree");
+	unsigned short int ASIC_ID[4][4];
+	ConfigTree->SetBranchAddress("ASIC_ID",ASIC_ID);
+	ConfigTree->GetEntry(0);
 	TTree *EventTree = (TTree *) f1->Get("EventTree");
 	unsigned short int ASIC_ADC[4][4][8][4][64];
 	unsigned short int ASIC_OriginWindow[4][4][8][4];
@@ -72,13 +76,16 @@ int main(int argc, char *argv[]) {
 			}
 			//Calculate pedestal data
 			for (int ch = 0; ch < 8; ++ch) {
-				for (int win = 0; win < 64; ++win) {
+				for (int win = lowest_window; win <= highest_window; ++win) {
 					for (int sample = 0; sample < 64; ++sample) {
 						int n_this_window = n_entries_in_window[ch][win][sample];
 						if (n_this_window != 0) {
 							average[ch][win][sample] /= (float) n_this_window;
 						}
-						fout << col << "\t" << row << "\t" << ch << "\t" << win << "\t" << sample << "\t" << average[ch][win][sample] << endl;
+//Old style where column and row are written explicitly
+//						fout << col << "\t" << row << "\t" << ch << "\t" << win << "\t" << sample << "\t" << average[ch][win][sample] << endl;
+//New style where we reference based on ASIC_ID
+						fout << ASIC_ID[col][row] << "\t" << ch << "\t" << win << "\t" << sample << "\t" << average[ch][win][sample] << endl;
 					}
 				}
 			}

@@ -68,7 +68,7 @@ int prerun_checks(string str_input_file, string str_output_file, string str_conf
 		int this_status = test_event->ReadEvent(fin);
 		if (this_status == 1) {
 			if (!configuration_written) {
-				test_event->WriteConfigTree(str_output_file.c_str(),str_config_file.c_str());
+				test_event->WriteConfigTree(str_input_file.c_str(),str_config_file.c_str());
 				configuration_written = true;
 			}
 			time_of_last_successful_read = time(NULL);
