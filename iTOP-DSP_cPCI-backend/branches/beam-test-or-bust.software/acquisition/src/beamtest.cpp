@@ -4,7 +4,6 @@
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
 #include <stdio.h>
-#include <getopt.h>
 #include "parse_config_file.h"
 #include "acquisition.h"
 
@@ -16,7 +15,7 @@ int main(void) {
 	should_soft_trigger = true;
 	readout_all_pending_data();
 	setup_log_filenames_for_fiber();
-	open_logfiles_for_all_enabled_channels();
+	open_files_for_all_enabled_fiber_channels();
 
 	unsigned short int beginning_window = 0;
 	unsigned short int ending_window = 63;
@@ -30,7 +29,7 @@ int main(void) {
 		increment_spill_number_and_change_log_filenames_for_fiber();
 	}
 
-	close_all_logfiles();
+	close_all_fiber_files();
 	close_pci();
 
 	return 0;

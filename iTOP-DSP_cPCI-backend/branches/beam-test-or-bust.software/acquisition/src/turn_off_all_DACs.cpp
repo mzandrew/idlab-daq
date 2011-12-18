@@ -4,7 +4,6 @@
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
 #include <stdio.h>
-#include <getopt.h>
 #include "parse_config_file.h"
 #include "acquisition.h"
 
