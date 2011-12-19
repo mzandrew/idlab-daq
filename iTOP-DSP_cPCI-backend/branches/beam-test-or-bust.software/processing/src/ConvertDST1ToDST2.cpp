@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 	string str_ped_filename    = argv[2];
 	string str_output_filename = argv[3];
 
-	TFile *inDST1 = new TFile(str_input_filename.c_str());
+	TFile *inDST1 = new TFile(str_input_filename.c_str(),"READ");
 	if (inDST1->IsZombie()) {
 		cout << "Couldn't open input file: " << str_input_filename << endl;
 		return 1;
@@ -30,7 +30,9 @@ int main(int argc, char *argv[]) {
 		cout << "Couldn't open pedestal file: " << str_ped_filename << endl;
 		return 1;
 	}
-	char *pedestal_filename = (char *) str_ped_filename.c_str();
+	char pedestal_filename[1024];
+//	char *pedestal_filename = (char *) str_ped_filename.c_str();
+	sprintf(pedestal_filename,"%s",str_ped_filename.c_str());
 
 	TFile *outDST2 = new TFile(str_output_filename.c_str(),"RECREATE");
 	if (outDST2->IsZombie()) {
@@ -38,6 +40,8 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
+	cout << "About to convert..." << endl;
+	cout.flush();
 	ConvertDST1ToDST2(inDST1, fped, pedestal_filename, outDST2);
 
 	inDST1->Close();
@@ -47,10 +51,12 @@ int main(int argc, char *argv[]) {
 }
 
 void ConvertDST1ToDST2(TFile *DST1, ifstream &fped, char *PedestalFilename, TFile *outDST2) {
+	cout << "Converting..." << endl;
+	cout.flush();
 	//Set up branch addresses for DST1 file
 	//First for the configuration tree
 	TTree *ConfigTree = (TTree *) DST1->Get("ConfigTree");
-	char *RawFilename, *SCROD_Revision;
+	char RawFilename[1024], SCROD_Revision[4];
 	unsigned short int FiberChannel, SCROD_ID, ASIC_ID[4][4];
 	unsigned int ExpNumber, RunNumber, SpillNumber;
 	int StartTime;
@@ -65,8 +71,27 @@ void ConvertDST1ToDST2(TFile *DST1, ifstream &fped, char *PedestalFilename, TFil
 	ConfigTree->SetBranchAddress("StartTime"     , &StartTime);
 	ConfigTree->GetEntry(0);
 
+
 	//We should know the ASICs that we need now, open the pedestal file and read it
-	float pedestals[4][4][8][512][64] = {{{{{0}}}}};
+	//float pedestals[4][4][8][512][64] = {{{{{0}}}}};
+	float *****pedestals;
+	pedestals = new float****[4];
+	for (int col = 0; col < 4; ++col) {
+		pedestals[col] = new float***[4];
+		for (int row = 0; row < 4; ++row) {
+			pedestals[col][row] = new float**[8];
+			for (int ch = 0; ch < 8; ++ch) {
+				pedestals[col][row][ch] = new float*[512];
+				for (int win = 0; win < 512; ++win) {
+					pedestals[col][row][ch][win] = new float[64];
+					for (int sample = 0; sample < 64; ++sample) {
+						pedestals[col][row][ch][win][sample] = 0;
+					}
+				}
+			}
+		}
+	}
+
 	//parantheses just to keep dummy variables for reading out of main scope
 	{
 		unsigned short int this_ASIC;
@@ -82,7 +107,6 @@ void ConvertDST1ToDST2(TFile *DST1, ifstream &fped, char *PedestalFilename, TFil
 			}
 		}
 	}
-
 
 	//Now setup the event tree
 	TTree *EventTree = (TTree *) DST1->Get("EventTree");
@@ -153,6 +177,7 @@ void ConvertDST1ToDST2(TFile *DST1, ifstream &fped, char *PedestalFilename, TFil
 
 	//Fill trees now
 	ConfigTree->GetEntry(0);
+	outDST2->cd();
 	outConfigTree->Fill();
 	int nentries = EventTree->GetEntries();
 	for (int i = 0; i < nentries; ++i) {
@@ -171,11 +196,26 @@ void ConvertDST1ToDST2(TFile *DST1, ifstream &fped, char *PedestalFilename, TFil
 			}
 		}
 		//
+		outDST2->cd();
 		outEventTree->Fill();
 	}
 
 	outConfigTree->AutoSave();
 	outEventTree->AutoSave();
-	return;
+
+
+	for (int col = 0; col < 4; ++col) {
+		for (int row = 0; row < 4; ++row) {
+			for (int ch = 0; ch < 8; ++ch) {
+				for (int win = 0; win < 4; ++win) {
+					delete [] pedestals[col][row][ch][win];
+				}
+				delete [] pedestals[col][row][ch];
+			}
+			delete [] pedestals[col][row];
+		}
+		delete [] pedestals[col];
+	}
+	delete [] pedestals;
 
 }
