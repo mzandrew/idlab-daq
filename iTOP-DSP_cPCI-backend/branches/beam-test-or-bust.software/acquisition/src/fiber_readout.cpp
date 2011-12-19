@@ -623,3 +623,16 @@ void close_all_fiber_files(void) {
 	files_are_open = false;
 }
 
+void wait_for_start_of_spill(void) {
+	while (!spill_is_active()) {
+		usleep(50);
+	}
+}
+
+bool spill_is_active(void) {
+	unsigned long int signals = pci.readSignals();
+	bool signal_1 = signals & (1<<0);
+	bool signal_2 = signals & (1<<1);
+	return signal_1;
+}
+
