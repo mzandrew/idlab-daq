@@ -5,8 +5,8 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-	if (argc != 4) {
-		cout << "Syntax: RawToDST1 [raw input file] [dst1 output file] [configuration file]" << endl;
+	if (argc != 4 && argc != 5) {
+		cout << "Syntax: RawToDST1 [raw input file] [dst1 output file] [configuration file] [(optional) SCROD ID]" << endl;
 		return 1;
 	}
 	string str_input_filename, str_output_filename, str_config_filename;
@@ -14,6 +14,13 @@ int main(int argc, char *argv[]) {
 	str_output_filename = argv[2];
 	str_config_filename = argv[3];
 
+	bool using_manual_scrod_id = false;
+	unsigned short int manual_scrod_id = 0;
+	if (argc == 5) {
+		sscanf(argv[4],"%hi",&manual_scrod_id);
+		using_manual_scrod_id = true;
+	}
+	
 	ifstream fin(str_input_filename.c_str());
 	if (!fin) {
 		cout << "Could not open input file: " << str_input_filename.c_str() << endl;
@@ -37,7 +44,7 @@ int main(int argc, char *argv[]) {
 		status = test_event.ReadEvent(fin);
 		nevents += status;
 		if (status == 1 && !configuration_written) {
-			test_event.WriteConfigTree(str_input_filename.c_str(),str_config_filename.c_str());
+			test_event.WriteConfigTree(str_input_filename.c_str(),str_config_filename.c_str(), using_manual_scrod_id, manual_scrod_id);
 			configuration_written = true;
 		}
 		if (status == 1 && nevents % 100 == 0) {

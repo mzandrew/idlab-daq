@@ -91,7 +91,7 @@ public:
 	EventData();
 	~EventData();
 	TFile* OpenROOTFile(const char *root_filename);
-	void WriteConfigTree(const char * input_filename, const char *configuration_file);
+	void WriteConfigTree(const char * input_filename, const char *configuration_file, bool using_manual_scrod_id = false, short unsigned int manual_scrod_id = 0);
 	void AutoSave();
 	void CloseROOTFile();
 	int ReadEvent(ifstream &fin);
