@@ -14,14 +14,9 @@ int main(void) {
 	setup_pci(card_id);
 	should_soft_trigger = true;
 	readout_all_pending_data();
-	setup_log_filenames_for_fiber();
-	open_files_for_all_enabled_fiber_channels();
 
 	setup_feedback_enables_and_goals(1);
 	
-	//usleep(10000); readout_N_events(1);
-
-	close_all_fiber_files();
 	close_pci();
 
 	return 0;
