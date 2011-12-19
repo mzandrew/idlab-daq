@@ -20,10 +20,10 @@ int main(void) {
 	set_event_number(0);
 	clear_scaler_counters();
 	set_number_of_windows_to_look_back(4);
-	set_all_DACs_to_built_in_nominal_values();
-	usleep(150000);
-	setup_feedback_enables_and_goals(1);
-	usleep(150000);
+//	set_all_DACs_to_built_in_nominal_values();
+//	usleep(150000);
+//	setup_feedback_enables_and_goals(1);
+//	usleep(150000);
 
 	unsigned short int beginning_window = 0;  //This number should be at least 3 less than ending window and even
 	unsigned short int ending_window = 63;    //This number should be at least 3 more than beginning window and odd
@@ -32,7 +32,7 @@ int main(void) {
 		unsigned short int b = i+3;
 		set_start_and_end_windows(a, b);
 		fprintf(stdout, "obtaining pedestals for windows [%03d,%03d]...\n", a, b);
-		usleep(50000);
+		usleep(50000); // wait for start and end window command to be sent and interpreted
 		readout_N_events(100);
 	}
 

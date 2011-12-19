@@ -45,6 +45,11 @@ int main(void) {
 	return 0;
 }
 
+//	reset_trigger_flip_flop();
+//	send_front_end_trigger_veto_clear();
+//	wait_for_start_of_spill();
+//	while (spill_is_active()) {
+
 //	send_soft_trigger_request_command_packet();
 //	global_reset();
 //	clear_scaler_counters();
