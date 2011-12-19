@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
 							average[ch][win][sample] /= (float) n_this_window;
 						}
 //Old style where column and row are written explicitly
-//						fout << col << "\t" << row << "\t" << ch << "\t" << win << "\t" << sample << "\t" << average[ch][win][sample] << endl;
+//						fout << ASIC_ID[col][row] << "\t" << col << "\t" << row << "\t" << ch << "\t" << win << "\t" << sample << "\t" << average[ch][win][sample] << endl;
 //New style where we reference based on ASIC_ID
 						fout << ASIC_ID[col][row] << "\t" << ch << "\t" << win << "\t" << sample << "\t" << average[ch][win][sample] << endl;
 					}

@@ -2,7 +2,7 @@
 CC=g++
 ROOT_INCDIR = $(shell root-config --incdir)
 ROOTLIBS    = $(shell root-config --glibs)
-ROOTCFLAGS  = $(shell root-config --cflags)
+ROOTCFLAGS  = $(shell root-config --cflags) -g
 INC=-I${ROOT_INCDIR} -Isrc
 #######################################################################
 LIB_OBJS      =  work/EventStructure.o 
@@ -24,7 +24,7 @@ bin/CalculatePedestals: work/CalculatePedestals.o $(LIB_OBJS)
 	$(CC) $^ $(ROOTLIBS) -o $@ $(INC) $(ROOTCFLAGS)
 
 bin/ConvertDST1ToDST2: work/ConvertDST1ToDST2.o $(LIB_OBJS)
-	$(CC) $^ $(ROOTLIBS) -o $@ $(INC) $(ROOTCFLAGS)	
+	$(CC) $^ $(ROOTLIBS) -o $@ $(INC) $(ROOTCFLAGS)
 
 work/ConvertRawToDST1_with_DQM.o: src/ConvertRawToDST1_with_DQM.cpp
 	$(CC) $(INC) $< -c -o $@
