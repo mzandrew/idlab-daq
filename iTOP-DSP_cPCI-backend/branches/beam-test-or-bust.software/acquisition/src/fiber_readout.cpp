@@ -571,6 +571,7 @@ void setup_log_filenames_for_fiber(void) {
 }
 
 void increment_spill_number_and_change_log_filenames_for_fiber(void) {
+	logfile << total_number_of_readout_events << endl;
 	spill_number++;
 	setup_log_filenames_for_fiber();
 	open_files_for_all_enabled_fiber_channels();
@@ -601,7 +602,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", filename[i].c_str());
 			} else {
 				if (logfile_open) {
-					logfile << filename[i].c_str() << endl;
+					logfile << filename[i].c_str() << " ";
 				}
 			}
 		}
