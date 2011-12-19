@@ -1,4 +1,4 @@
-void DrawWaveform(char *file, int event, int col, int row, int ch) {
+void DrawWaveform(char *file, int event, int col, int row, int ch, bool common_mode_subtract = false) {
 	TFile *f1 = new TFile(file);
 	TTree *EventTree = (TTree *) f1->Get("EventTree");
 	float ASIC_ADC[4][4][8][4][64];
@@ -15,7 +15,11 @@ void DrawWaveform(char *file, int event, int col, int row, int ch) {
 		for (int i = 0; i < 4; ++i) {
 			int this_origin_window = ASIC_OriginWindow[col][row][ch][i];
 			for (int j = 0; j < 64; ++j) {
-				graph->SetPoint(i*64+j,(float) i*64+j,ASIC_ADC[col][row][ch][i][j]);
+				float value = ASIC_ADC[col][row][ch][i][j];
+				if (common_mode_subtract) {
+					value -= ASIC_ADC[col][row][(ch+1)%8][i][j];
+				}
+				graph->SetPoint(i*64+j,(float) i*64+j,value);
 			}
 		}
 		C->cd();
