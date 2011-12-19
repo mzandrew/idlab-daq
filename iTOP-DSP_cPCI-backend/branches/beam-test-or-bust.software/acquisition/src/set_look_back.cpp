@@ -12,14 +12,10 @@ int main(void) {
 
 	parse_config_file(".config");
 	setup_pci(card_id);
-	should_soft_trigger = true;
 	readout_all_pending_data();
-	setup_log_filenames_for_fiber();
-	open_files_for_all_enabled_fiber_channels();
 
 	set_number_of_windows_to_look_back(26);
 
-	close_all_fiber_files();
 	close_pci();
 
 	return 0;
