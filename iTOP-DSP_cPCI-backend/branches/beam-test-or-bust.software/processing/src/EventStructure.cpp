@@ -308,7 +308,7 @@ TFile* EventData::OpenROOTFile(const char *root_filename) {
 	return file_handle;
 };
 
-void EventData::WriteConfigTree(const char *input_filename, const char *configuration_file) {
+void EventData::WriteConfigTree(const char *input_filename, const char *configuration_file, bool using_manual_scrod_id, unsigned short int manual_scrod_id) {
 	string RawFilename_string = input_filename;
 	int str_length = RawFilename_string.length();
 	string ReducedFilename = RawFilename_string.substr(str_length-50,str_length);
@@ -321,8 +321,7 @@ void EventData::WriteConfigTree(const char *input_filename, const char *configur
 	ReducedFilename = ReducedFilename.substr(20, ReducedFilename.length() );
 	int nreads = sscanf(ReducedFilename.c_str(),"exp%2d.run%4d.spill%4d.fiber%1hd",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
 	if (nreads != 4) { 
-		cout << "Only read " << nreads << " parameter(s) from filename, but expected 5... are you using the most up to date software?" << endl; 
-		cout << "Configuration data may not be correct for this file..." << endl;
+		cout << "Only read " << nreads << " parameter(s) from filename, but expected 5... are you using the most up to date software or did you change the filenames?" << endl; 
 	}
 	struct tm file_time;
 	char *result = strptime(time_string, "%Y-%m-%d+%H:%M:%S",&file_time);
@@ -333,6 +332,11 @@ void EventData::WriteConfigTree(const char *input_filename, const char *configur
 		//cout << "determined time as: " <<  epoch_time << endl;
 	//}
 	StartTime = (int) epoch_time;	
+
+	if (using_manual_scrod_id) {
+		SCROD_ID = manual_scrod_id;
+		cout << "Overriding autodetect of SCROD ID.  Using ID: " << manual_scrod_id << endl;
+	}
 
 	//Parse the configuration file
 	ifstream config_in(configuration_file);
