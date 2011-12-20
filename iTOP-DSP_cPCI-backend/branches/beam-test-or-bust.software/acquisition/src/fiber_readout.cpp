@@ -3,6 +3,7 @@
 using namespace std;
 #include <iostream>
 #include <fstream>
+#include <sys/stat.h>
 
 #include "pci.h"
 #include "fiber_readout.h"
@@ -617,6 +618,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 		logfile.open(logfile_filename.c_str(), fstream::app);
 		if (logfile) {
 			logfile_open = true;
+			logfile << endl;
 		} else {
 			fprintf(stderr, "ERROR opening logfile %s\n", logfile_filename.c_str());
 			logfile_open = false;
@@ -632,7 +634,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 				close(fd[i]);
 			}
 			fprintf(stdout, "attempting to open file \"%s\"...\n", filename[i].c_str());
-			fd[i] = open(filename[i].c_str(), O_WRONLY | O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+			fd[i] = open(filename[i].c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (fd[i] < 0) {
 				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", filename[i].c_str());
 			} else {
@@ -652,6 +654,9 @@ void close_all_fiber_files(void) {
 //			close(fd[i]);
 //		} else 
 		if (fd[i] > 0) {
+			if (logfile_open) {
+				logfile << total_number_of_readout_events << endl;
+			}
 			printf("closing file \"%s\" for card #%d channel #%d\n", filename[i].c_str(), card_id, i);
 			close(fd[i]);
 		}
