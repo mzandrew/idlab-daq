@@ -26,9 +26,7 @@ int main(void) {
 	while (1) {
 		wait_for_start_of_spill();
 		while (spill_is_active()) {
-			readout_N_events(1);
-			send_front_end_trigger_veto_clear();
-			reset_trigger_flip_flop();
+			readout_an_event();
 		}
 		increment_spill_number_and_change_log_filenames_for_fiber();
 		usleep(250000);

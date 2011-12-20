@@ -164,7 +164,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 						histogram_of_incomplete_events_other++;
 					}
 				}
-				printf("O");
+//				printf("O");
 				break;
 			} else {
 //				printf("didn't get any data from any channels; ready to quit\n");
@@ -437,6 +437,41 @@ void clear_scaler_counters(void) {
 	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
 }
 
+void readout_an_event(void) {
+	event_number++;
+	total_number_of_readout_events++;
+	if (should_soft_trigger) {
+		send_soft_trigger_request_command_packet();
+	}
+//	read_quarter_events_from_all_enabled_channels(channel_bitmask, false); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+	read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+	send_front_end_trigger_veto_clear();
+	reset_trigger_flip_flop();
+	time_for_single_event_readout = (long long) stop_timer();
+//		printf("\napproximate time for last readout = %d us", time_for_single_event_readout);
+	//write_quarter_events_to_disk();
+	long int return_value;
+	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+		if (
+			((i==3) && (channel_bitmask & 0x8)) ||
+			((i==2) && (channel_bitmask & 0x4)) ||
+			((i==1) && (channel_bitmask & 0x2)) ||
+			((i==0) && (channel_bitmask & 0x1))
+			) {
+			if (number_of_bytes_read_so_far[i] && files_are_open) {
+				return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
+				//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
+				if (return_value == -1) {
+					fprintf(stderr, "\nerror %ld writing to disk", return_value);
+				} else if (return_value > 0) {
+//						printf("\nwrote %d bytes to file", return_value);
+				}
+			}
+		}
+	}
+//	printf("\n");
+}
+
 void readout_N_events(unsigned long int N) {
 //	while (1) {
 	for (unsigned long int i=0; i<N; i++) {
@@ -632,8 +667,8 @@ void wait_for_start_of_spill(void) {
 
 bool spill_is_active(void) {
 	unsigned long int signals = pci.readSignals();
-	bool signal_1 = signals & (1<<0);
-	bool signal_2 = signals & (1<<1);
+	bool signal_2 = signals & (1<<0);
+	bool signal_1 = signals & (1<<1);
 	return signal_1;
 }
 
