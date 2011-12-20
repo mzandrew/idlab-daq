@@ -3,6 +3,7 @@
 #include "pci.h"
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
+#include "read_CAMAC.h"
 #include <stdio.h>
 #include "parse_config_file.h"
 #include "acquisition.h"
@@ -18,6 +19,8 @@ int main(void) {
 	unsigned short int ending_window = 63;
 	set_start_and_end_windows(beginning_window, ending_window);
 	usleep(50000);
+	init_camac("CAMAC_config.txt");
+	open_CAMAC_file();
 
 	// testing:
 	should_soft_trigger = true;
@@ -27,6 +30,7 @@ int main(void) {
 		wait_for_start_of_spill();
 		while (spill_is_active()) {
 			readout_an_event();
+			read_data_from_CAMAC_and_write_to_CAMAC_file();
 		}
 		increment_spill_number_and_change_log_filenames_for_fiber();
 		usleep(250000);
