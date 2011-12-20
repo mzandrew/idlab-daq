@@ -6,6 +6,8 @@ FINAL_OBJECT_FILES2 = bin/dual_readout
 
 FINAL_OBJECT_FILES3 = work/fiber_readout_swigwrapper.so 
 
+INTERMEDIATE_OBJECT_FILES4 = work/read_CAMAC.o
+
 #CXXFLAGS = -D_FILE_OFFSET_BITS=64
 LINK_OPTIONS = -L$(shell pwd)/contrib -laltix -lxxusb -Wl,-rpath,contrib 
 
@@ -55,7 +57,7 @@ bin/tell_status_of_signals : work/tell_status_of_signals.o $(INTERMEDIATE_OBJECT
 
 bin/pedestal_run : work/pedestal_run.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
-bin/beamtest : work/beamtest.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+bin/beamtest : work/beamtest.o $(INTERMEDIATE_OBJECT_FILES1) $(INTERMEDIATE_OBJECT_FILES4) ; g++ $^ $(LINK_OPTIONS) -o $@
 
 bin/request_a_global_reset : work/request_a_global_reset.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
