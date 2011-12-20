@@ -1,6 +1,9 @@
 #List of SCRODs and associated daughter cards, listed by column (CX), and row (RY).
 #SCROD_ID C0R0 C0R1 C0R2 C0R3 C1R0 C1R1 C1R2 C1R3 C2R0 C2R1 C2R2 C2R3 C3R0 C3R1 C3R2 C3R3
 
+#"Module 0"
+12 60 17 50 31 16 81 38 51 76 62 58 75 80 89 70 91
+
 #"Module 1"
 6 24 33 46 39 28 20 26 27 44 37 42 35 48 61 22 71
 
