@@ -14,16 +14,21 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-	if (argc != 4) {
-		cout << "Syntax: PrerunAnalyzer [input file name (raw data)] [output file name (ROOT)] [configuration file]" << endl;
+	if (argc != 4 && argc != 5) {
+		cout << "Syntax: ConvertRawToDST1_with_DQM [input file name (raw data)] [output file name (ROOT)] [configuration file] [(optional) SCROD ID]" << endl;
 		return 1;
 	}
-	string str_input_file;
-	string str_output_file;
-	string str_config_file;
+	string str_input_file, str_output_file, str_config_file;
 	str_input_file = argv[1];
 	str_output_file = argv[2];	
 	str_config_file = argv[3];
+
+	bool using_manual_scrod_id = false;
+	unsigned short int manual_scrod_id = 0;
+	if (argc == 5) {
+		sscanf(argv[4],"%hi",&manual_scrod_id);
+		using_manual_scrod_id = true;
+	}
 
 	TApplication theApp("App",&argc,argv);
 
@@ -32,7 +37,7 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 	
-	int status = prerun_checks(str_input_file,str_output_file,str_config_file);
+	int status = prerun_checks(str_input_file,str_output_file,str_config_file,using_manual_scrod_id,manual_scrod_id);
 	cout << "Finished processing with status = " << status << endl;
 	cout << "Display is no longer updating." << endl;
 	theApp.Run();
@@ -40,7 +45,7 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
-int prerun_checks(string str_input_file, string str_output_file, string str_config_file) {
+int prerun_checks(string str_input_file, string str_output_file, string str_config_file, bool using_manual_scrod_id, unsigned short int manual_scrod_id) {
 	//Try to open the input file and check validity
 	ifstream fin(str_input_file.c_str());
 	if (!fin) {
@@ -68,7 +73,7 @@ int prerun_checks(string str_input_file, string str_output_file, string str_conf
 		int this_status = test_event->ReadEvent(fin);
 		if (this_status == 1) {
 			if (!configuration_written) {
-				test_event->WriteConfigTree(str_input_file.c_str(),str_config_file.c_str());
+				test_event->WriteConfigTree(str_input_file.c_str(),str_config_file.c_str(),using_manual_scrod_id,manual_scrod_id);
 				configuration_written = true;
 			}
 			time_of_last_successful_read = time(NULL);
