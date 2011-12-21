@@ -23,7 +23,7 @@ void set_current_date_string(void) {
 	timeinfo = localtime(&rawtime);
 	strftime(temp, 255, "%Y-%m-%d+%H:%M:%S", timeinfo);
 	current_date_string = temp;
-	cout << current_date_string << endl;
+//	cout << current_date_string << endl;
 }
 
 bool file_exists (string filename) {
@@ -33,7 +33,6 @@ bool file_exists (string filename) {
 }
 
 void create_directory_if_necessary(string dirname) {
-	set_current_date_string();
 	if (!file_exists(dirname)) {
 		//cout << "dir \"" << dirname << "\" does not exist" << endl;
 		mkdir(dirname.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
@@ -44,6 +43,7 @@ void create_directory_if_necessary(string dirname) {
 }
 
 void generate_new_base_filename(void) {
+	set_current_date_string();
 	char temp[25];
 	base_filename = location_of_raw_datafiles;
 	base_filename += "/";
