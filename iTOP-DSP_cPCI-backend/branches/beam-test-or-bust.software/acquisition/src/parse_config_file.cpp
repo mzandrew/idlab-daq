@@ -53,10 +53,14 @@ int parse_config_file(string filename) {
 		} else if (!strncmp(key.c_str(), "location_of_raw_datafiles", MAX_STRING_LENGTH)) {
 			location_of_raw_datafiles = value;
 			cout << "location to store raw datafiles: \"" << location_of_raw_datafiles << "\"" << endl;
+		} else if (!strncmp(key.c_str(), "location_of_status_and_log_files", MAX_STRING_LENGTH)) {
+			location_of_status_and_log_files = value;
 //		} else if (!strncmp(key.c_str(), "", MAX_STRING_LENGTH)) {
 		} else {
 			cout << "unhandled key/value pair: " << key.c_str() << " = " << value.c_str() << endl;
 		}
 	}
 }
+
+
 
