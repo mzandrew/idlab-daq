@@ -8,14 +8,18 @@
 #include "acquisition.h"
 
 int main(void) {
-	unsigned long int total_number_of_quarter_events_to_read_per_fiber_channel = 0;
+	unsigned long int total_number_of_quarter_events_to_read_per_fiber_channel = 100;
 
+	// setup:
 	parse_config_file(".config");
+	create_directory_if_necessary(location_of_raw_datafiles);
+	generate_new_base_filename();
 	setup_pci(card_id);
-	should_soft_trigger = true;
 	readout_all_pending_data();
-	setup_log_filenames_for_fiber();
+	setup_filenames_for_fiber();
 	open_files_for_all_enabled_fiber_channels();
+
+	should_soft_trigger = true;
 
 	set_event_number(0);
 	clear_scaler_counters();
@@ -33,7 +37,7 @@ int main(void) {
 		set_start_and_end_windows(a, b);
 		fprintf(stdout, "obtaining pedestals for windows [%03d,%03d]...\n", a, b);
 		usleep(50000); // wait for start and end window command to be sent and interpreted
-		readout_N_events(100);
+		readout_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
 	}
 
 	close_all_fiber_files();

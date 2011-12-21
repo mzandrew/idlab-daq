@@ -5,15 +5,18 @@
 #include "command_packet_builder.h"
 #include "read_CAMAC.h"
 #include <stdio.h>
+#include <iostream>
 #include "parse_config_file.h"
 #include "acquisition.h"
 
 int main(void) {
 	// setup:
 	parse_config_file(".config");
+	create_directory_if_necessary(location_of_raw_datafiles);
+	generate_new_base_filename();
 	setup_pci(card_id);
 	readout_all_pending_data();
-	setup_log_filenames_for_fiber();
+	setup_filenames_for_fiber();
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
 	unsigned short int ending_window = 63;
@@ -32,7 +35,10 @@ int main(void) {
 			readout_an_event();
 			read_data_from_CAMAC_and_write_to_CAMAC_file();
 		}
-		increment_spill_number_and_change_log_filenames_for_fiber();
+		increment_spill_number();
+		generate_new_base_filename();
+		split_fiber_file_to_prepare_for_next_spill();
+		split_CAMAC_file_to_prepare_for_next_spill();
 		usleep(250000);
 		sync();
 	}

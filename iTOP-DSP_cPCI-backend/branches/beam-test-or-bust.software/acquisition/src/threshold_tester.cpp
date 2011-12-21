@@ -14,7 +14,7 @@ int main(void) {
 	setup_pci(card_id);
 	should_soft_trigger = true;
 	readout_all_pending_data();
-	setup_log_filenames_for_fiber();
+	setup_filenames_for_fiber();
 //	open_files_for_all_enabled_fiber_channels();
 
 	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x0000077b); // set trigger thresholds for all channels

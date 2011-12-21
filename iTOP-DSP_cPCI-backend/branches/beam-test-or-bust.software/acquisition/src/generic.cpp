@@ -25,7 +25,7 @@ int main(void) {
 	readout_all_pending_data();
 	set_event_number(0);
 //	set_all_DACs_to_built_in_nominal_values();
-	setup_log_filenames_for_fiber();
+	setup_filenames_for_fiber();
 	open_files_for_all_enabled_fiber_channels();
 
 	send_front_end_trigger_veto_clear();
@@ -35,7 +35,7 @@ int main(void) {
 		readout_N_events(1);
 		usleep(1000000);
 		read_data_from_CAMAC_and_write_to_CAMAC_file();
-//		increment_spill_number_and_change_log_filenames_for_fiber();
+//		increment_spill_number_and_change_filenames_for_fiber();
 	}
 
 	close_all_fiber_files();
