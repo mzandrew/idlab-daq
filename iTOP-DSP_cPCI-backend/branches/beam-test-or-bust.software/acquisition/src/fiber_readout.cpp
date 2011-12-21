@@ -25,7 +25,8 @@ unsigned long int total_number_of_errors;
 string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
 int fd[NUMBER_OF_SCRODS_TO_READOUT] = {-7, -7, -7, -7}; // file descriptors for output datafiles; -7 is so it will not try to close files that seem open initially
 unsigned long int total_number_of_readout_events = 0;
-string filename[NUMBER_OF_SCRODS_TO_READOUT];
+string fiber_filename[NUMBER_OF_SCRODS_TO_READOUT];
+string old_fiber_filename[NUMBER_OF_SCRODS_TO_READOUT];
 bool files_are_open = false;
 bool should_soft_trigger = false;
 
@@ -174,7 +175,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 	}
 	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		if (desired_number_of_bytes_to_read[i]) {
-			printf("\n");
+//			printf("\n");
 		}
 		if (number_of_bytes_read_so_far[i] > 0 && number_of_bytes_read_so_far[i] == desired_number_of_bytes_to_read[i])
  {
@@ -193,6 +194,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 		}
 	}
 //	printf(" E ");
+//	printf("\n");
 }
 
 //inline unsigned int read_quarter_event_from_channel(unsigned short int channel) {
@@ -293,7 +295,8 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 	if (packet_number==0) {
 		//info_string[channel] += packet[EVENT_NUMBER_INDEX];
 		char temp[256];
-		sprintf(temp, "event_number[%09ld] ", packet[EVENT_NUMBER_INDEX]);
+		//sprintf(temp, "event_number[%09ld] ", packet[EVENT_NUMBER_INDEX]);
+		sprintf(temp, "[%06ld] ", packet[EVENT_NUMBER_INDEX]);
 		info_string[channel] += temp;
 	} else {
 		if (event_number_from_most_recent_packet[channel] != packet[EVENT_NUMBER_INDEX]) {
@@ -508,7 +511,7 @@ void readout_N_events(unsigned long int N) {
 		}
 		usleep(NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS);
 	}
-	printf("\n");
+//	printf("\n");
 }
 
 int open_files_for_output_and_read_N_events(unsigned long int N) {
@@ -571,17 +574,18 @@ void set_all_DACs_to_built_in_nominal_values(void) {
 }
 
 void setup_filenames_for_fiber(void) {
-//	printf("filename[%d] = \"%s\"\n", i, filename[i].c_str());
-//	sprintf(filename[i], "%s%d.rawdata", logprefix, i);
+//	printf("fiber_filename[%d] = \"%s\"\n", i, fiber_filename[i].c_str());
+//	sprintf(fiber_filename[i], "%s%d.rawdata", logprefix, i);
 	char temp[25];
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
-		filename[i] = base_filename;
+		fiber_filename[i] = base_filename;
 		sprintf(temp, ".fiber%d", i);
-		filename[i] += temp;
+		fiber_filename[i] += temp;
 	}
 }
 
 void split_fiber_file_to_prepare_for_next_spill(void) {
+//	printf("\n");
 	logfile << total_number_of_readout_events << endl;
 	setup_filenames_for_fiber();
 	open_files_for_all_enabled_fiber_channels();
@@ -604,16 +608,19 @@ void open_files_for_all_enabled_fiber_channels(void) {
 //			printf("%d %d\n", stdout_ch, i);
 //			if (stdout_ch == i) continue;
 			if (fd[i] >= 0) {
-				fprintf(stdout, "closing file \"%s\"\n", filename[i].c_str());
+				//fprintf(stdout, "closing file \"%s\"\n", old_fiber_filename[i].c_str());
+				fprintf(stdout, "\"%s\" closed\n", old_fiber_filename[i].c_str());
 				close(fd[i]);
 			}
-			fprintf(stdout, "attempting to open file \"%s\"...\n", filename[i].c_str());
-			fd[i] = open(filename[i].c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+			//fprintf(stdout, "attempting to open file \"%s\"...\n", fiber_filename[i].c_str());
+			fprintf(stdout, "\"%s\" open\n", fiber_filename[i].c_str());
+			fd[i] = open(fiber_filename[i].c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (fd[i] < 0) {
-				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", filename[i].c_str());
+				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", fiber_filename[i].c_str());
 			} else {
+				old_fiber_filename[i] = fiber_filename[i];
 				if (logfile_open) {
-					logfile << filename[i].c_str() << " ";
+					logfile << fiber_filename[i].c_str() << " ";
 				}
 			}
 		}
@@ -631,7 +638,8 @@ void close_all_fiber_files(void) {
 			if (logfile_open) {
 				logfile << total_number_of_readout_events << endl;
 			}
-			printf("closing file \"%s\" for card #%d channel #%d\n", filename[i].c_str(), card_id, i);
+//			printf("closing file \"%s\" for card #%d channel #%d\n", fiber_filename[i].c_str(), card_id, i);
+			printf("closing file \"%s\"\n", fiber_filename[i].c_str());
 			close(fd[i]);
 		}
 	}

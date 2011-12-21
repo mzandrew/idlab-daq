@@ -12,8 +12,9 @@ using namespace std;
 struct CAMAC_crate crates[10];
 int crate_count = 0;
 
-int CAMAC_fd;
-//FILE *CAMAC_fd;
+int CAMAC_fd = -7; // negative to avoid problem closing an unopened file
+string CAMAC_filename;
+string old_CAMAC_filename;
 
 //1 = display output data, 2 = display data sent and retrieved with each operation
 #define DEBUG_FLAG 1
@@ -139,12 +140,25 @@ int read_camac(void* target_buffer) {
 }
 
 void open_CAMAC_file(void) {
-	string filename = base_filename;
-	filename += ".camac";
-	CAMAC_fd = open(filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	if (CAMAC_fd < 0) {
-		fprintf(stderr, "ERROR: failed to create CAMAC file \"%s\"\n", filename.c_str());
+	if (CAMAC_fd >= 0) {
+		//fprintf(stdout, "closing CAMAC file \"%s\"\n", old_CAMAC_filename.c_str());
+		fprintf(stdout, "\"%s\" closed\n", old_CAMAC_filename.c_str());
+		close(CAMAC_fd);
 	}
+	CAMAC_filename = base_filename;
+	CAMAC_filename += ".camac";
+	CAMAC_fd = open(CAMAC_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	if (CAMAC_fd < 0) {
+		fprintf(stderr, "ERROR: failed to create CAMAC file \"%s\"\n", CAMAC_filename.c_str());
+	} else {
+		old_CAMAC_filename = CAMAC_filename;
+		//fprintf(stdout, "opened CAMAC file \"%s\"\n", CAMAC_filename.c_str());
+		fprintf(stdout, "\"%s\" open\n", CAMAC_filename.c_str());
+	}
+}
+
+void split_CAMAC_file_to_prepare_for_next_spill(void) {
+	open_CAMAC_file();
 }
 
 int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
@@ -158,7 +172,8 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 		return 0;
 	} else {
 		CAMAC_count++;
-		printf("read %d bytes from CAMAC\n", count);
+		//printf("read %d bytes from CAMAC\n", count);
+		printf("C ", count);
 		buffer[count-1] = 0;
 //		int return_value = fprintf(CAMAC_fd, buffer, count);
 //		int return_value = fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes): \"%s\"\n", CAMAC_count, count, buffer);
@@ -179,9 +194,5 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 //		}
 		return count;
 	}
-}
-
-void split_CAMAC_file_to_prepare_for_next_spill(void) {
-	printf("this function doesn't work yet\n");
 }
 
