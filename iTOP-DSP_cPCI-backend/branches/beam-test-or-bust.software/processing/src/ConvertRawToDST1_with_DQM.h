@@ -41,7 +41,7 @@ TCanvas *C_Temperature_and_Feedback;
 TCanvas *C_Scalers;
 TCanvas *C_ScalersVersusThreshold;
 
-int prerun_checks(std::string, std::string, std::string);
+int prerun_checks(std::string, std::string, std::string, bool using_manual_scrod_id = false, unsigned short int manual_scrod_id = 0);
 void UpdateTemperature(); 
 void UpdateWilkinsonAndVdly(); 
 void UpdateSamplingRateAndVadj();
