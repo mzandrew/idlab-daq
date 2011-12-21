@@ -13,6 +13,8 @@ channels="0123"
 
 location_of_raw_datafiles=../rawdata
 
+location_of_status_and_log_files=.
+
 # experiment number 
 experiment_number=0
 
