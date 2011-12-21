@@ -23,7 +23,7 @@ unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_
 unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned long int total_number_of_errors;
 string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
-int fd[NUMBER_OF_SCRODS_TO_READOUT]; // file descriptors for output datafiles
+int fd[NUMBER_OF_SCRODS_TO_READOUT] = {-7, -7, -7, -7}; // file descriptors for output datafiles; -7 is so it will not try to close files that seem open initially
 unsigned long int total_number_of_readout_events = 0;
 string filename[NUMBER_OF_SCRODS_TO_READOUT];
 bool files_are_open = false;
@@ -570,46 +570,20 @@ void set_all_DACs_to_built_in_nominal_values(void) {
 	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
 }
 
-bool file_exists (string filename) {
-	// borrowed from http://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c-cross-platform
-	struct stat buffer; 
-	return (stat (filename.c_str(), &buffer) == 0);
-}
-
-void setup_log_filenames_for_fiber(void) {
-	set_current_date_string();
-	if (!file_exists(location_of_raw_datafiles)) {
-		//cout << "dir \"" << location_of_raw_datafiles << "\" does not exist" << endl;
-		mkdir(location_of_raw_datafiles.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
-		if (!file_exists(location_of_raw_datafiles)) {
-			cout << "ERROR:  could not create directory \"" << location_of_raw_datafiles << "\"" << endl;
-		}
-	}
+void setup_filenames_for_fiber(void) {
+//	printf("filename[%d] = \"%s\"\n", i, filename[i].c_str());
+//	sprintf(filename[i], "%s%d.rawdata", logprefix, i);
+	char temp[25];
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
-		char temp[25];
-		//if (channel_enabled[i]) {
-		//}
-		filename[i] = location_of_raw_datafiles;
-		filename[i] += "/";
-		sprintf(temp, "%s", current_date_string.c_str());
-		filename[i] += temp;
-		sprintf(temp, ".exp%02d", experiment_number);
-		filename[i] += temp;
-		sprintf(temp, ".run%04d", run_number);
-		filename[i] += temp;
-		sprintf(temp, ".spill%04d", spill_number);
-		filename[i] += temp;
+		filename[i] = base_filename;
 		sprintf(temp, ".fiber%d", i);
 		filename[i] += temp;
-//		printf("filename[%d] = \"%s\"\n", i, filename[i].c_str());
-//		sprintf(filename[i], "%s%d.rawdata", logprefix, i);
 	}
 }
 
-void increment_spill_number_and_change_log_filenames_for_fiber(void) {
+void split_fiber_file_to_prepare_for_next_spill(void) {
 	logfile << total_number_of_readout_events << endl;
-	spill_number++;
-	setup_log_filenames_for_fiber();
+	setup_filenames_for_fiber();
 	open_files_for_all_enabled_fiber_channels();
 }
 

@@ -3,6 +3,10 @@ using namespace std;
 #include <string>
 
 void set_current_date_string(void);
+bool file_exists (string filename);
+void create_directory_if_necessary(string dirname);
+void generate_new_base_filename(void);
+void increment_spill_number(void);
 
 extern bool channel_enabled[4];
 extern string location_of_raw_datafiles;
@@ -11,4 +15,5 @@ extern unsigned short int experiment_number;
 extern unsigned short int run_number;
 extern unsigned short int spill_number;
 extern string current_date_string;
+extern string base_filename;
 

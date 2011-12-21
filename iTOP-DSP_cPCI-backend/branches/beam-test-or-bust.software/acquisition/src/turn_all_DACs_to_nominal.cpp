@@ -16,7 +16,7 @@ int main(void) {
 	readout_all_pending_data();
 	//set_all_DACs_to(0);
 	set_all_DACs_to_built_in_nominal_values();
-	//setup_log_filenames_for_fiber();
+	//setup_filenames_for_fiber();
 	//open_files_for_output_and_read_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
 	close_pci();
 

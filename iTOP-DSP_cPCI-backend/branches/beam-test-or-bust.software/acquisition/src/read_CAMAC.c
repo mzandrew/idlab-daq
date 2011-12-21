@@ -1,7 +1,11 @@
 // 2011-09 Andrew Wong
 // 2011-11 mza
 
+using namespace std;
+
+#include "acquisition.h"
 #include "read_CAMAC.h"
+#include <string>
 #include <stdio.h>
 #include <fcntl.h>
 
@@ -135,10 +139,12 @@ int read_camac(void* target_buffer) {
 }
 
 void open_CAMAC_file(void) {
-	char filename[] = "logdir/CAMAC_data.raw";
-	CAMAC_fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	//CAMAC_fd = fopen(filename, "w");
-	if (CAMAC_fd < 0) fprintf(stderr, "WARNING: failed to create file \"%s\"\n", filename);
+	string filename = base_filename;
+	filename += ".camac";
+	CAMAC_fd = open(filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	if (CAMAC_fd < 0) {
+		fprintf(stderr, "ERROR: failed to create CAMAC file \"%s\"\n", filename.c_str());
+	}
 }
 
 int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
@@ -173,5 +179,9 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 //		}
 		return count;
 	}
+}
+
+void split_CAMAC_file_to_prepare_for_next_spill(void) {
+	printf("this function doesn't work yet\n");
 }
 
