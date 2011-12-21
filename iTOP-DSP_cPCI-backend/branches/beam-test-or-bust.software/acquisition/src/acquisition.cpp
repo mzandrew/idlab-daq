@@ -8,6 +8,7 @@ using namespace std;
 
 bool channel_enabled[4];
 string location_of_raw_datafiles = "../logdir";
+string location_of_status_and_log_files = ".";
 unsigned short int channel_bitmask = 0xf;
 unsigned short int experiment_number = 7;
 unsigned short int run_number = 8;

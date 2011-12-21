@@ -24,6 +24,7 @@ unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned long int total_number_of_errors;
 string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
 int fd[NUMBER_OF_SCRODS_TO_READOUT] = {-7, -7, -7, -7}; // file descriptors for output datafiles; -7 is so it will not try to close files that seem open initially
+unsigned long int number_of_readout_events_for_this_spill = 0;
 unsigned long int total_number_of_readout_events = 0;
 string fiber_filename[NUMBER_OF_SCRODS_TO_READOUT];
 string old_fiber_filename[NUMBER_OF_SCRODS_TO_READOUT];
@@ -444,6 +445,7 @@ void clear_scaler_counters(void) {
 void readout_an_event(void) {
 	event_number++;
 	total_number_of_readout_events++;
+	number_of_readout_events_for_this_spill++;
 	if (should_soft_trigger) {
 		send_soft_trigger_request_command_packet();
 	}
@@ -586,13 +588,20 @@ void setup_filenames_for_fiber(void) {
 
 void split_fiber_file_to_prepare_for_next_spill(void) {
 //	printf("\n");
-	logfile << total_number_of_readout_events << endl;
+	if (logfile_open) {
+		logfile << number_of_readout_events_for_this_spill << endl;
+		cout << "number of events for that spill: " << number_of_readout_events_for_this_spill << endl;
+		
+	}
+	number_of_readout_events_for_this_spill = 0;
 	setup_filenames_for_fiber();
 	open_files_for_all_enabled_fiber_channels();
 }
 
 void open_files_for_all_enabled_fiber_channels(void) {
 	if (!logfile_open) {
+		logfile_filename = location_of_status_and_log_files;
+		logfile_filename += "/logfile";
 		logfile.open(logfile_filename.c_str(), fstream::app);
 		if (logfile) {
 			logfile_open = true;
