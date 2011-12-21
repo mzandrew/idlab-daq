@@ -34,6 +34,7 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void);
 void open_CAMAC_file(void);
 extern int CAMAC_fd;
 //extern FILE *CAMAC_fd;
+void split_CAMAC_file_to_prepare_for_next_spill(void);
 
 #endif
 

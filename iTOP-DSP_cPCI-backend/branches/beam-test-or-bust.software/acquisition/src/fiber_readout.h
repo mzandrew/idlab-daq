@@ -51,7 +51,7 @@ extern          char     byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_
 extern unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
 extern unsigned long int total_number_of_errors;
 extern string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
-extern int fd[NUMBER_OF_SCRODS_TO_READOUT]; // file descriptors for output datafiles
+//extern int fd[NUMBER_OF_SCRODS_TO_READOUT]; // file descriptors for output datafiles
 extern unsigned long int total_number_of_readout_events;
 //extern char logprefix[100];                 // prefix of log files generated
 extern string filename[NUMBER_OF_SCRODS_TO_READOUT];
@@ -81,13 +81,13 @@ void readout_N_events(unsigned long int N);
 int open_files_for_output_and_read_N_events(unsigned long int N);
 void open_files_for_all_enabled_fiber_channels(void);
 void close_all_fiber_files(void);
-void setup_log_filenames_for_fiber(void);
-void increment_spill_number_and_change_log_filenames_for_fiber(void);
+void setup_filenames_for_fiber(void);
 void set_all_DACs_to(unsigned short int value);
 void set_all_DACs_to_built_in_nominal_values(void);
 void setup_feedback_enables_and_goals(unsigned short int enable);
 void wait_for_start_of_spill(void);
 bool spill_is_active(void);
+void split_fiber_file_to_prepare_for_next_spill(void);
 
 #endif
 
