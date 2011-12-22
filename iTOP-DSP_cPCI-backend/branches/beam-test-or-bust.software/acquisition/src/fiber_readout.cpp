@@ -590,7 +590,7 @@ void split_fiber_file_to_prepare_for_next_spill(void) {
 //	printf("\n");
 	if (logfile_open) {
 		logfile << number_of_readout_events_for_this_spill << endl;
-		cout << "number of events for that spill: " << number_of_readout_events_for_this_spill << endl;
+		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
 		
 	}
 	number_of_readout_events_for_this_spill = 0;
