@@ -8,15 +8,19 @@
 #include <iostream>
 #include "parse_config_file.h"
 #include "acquisition.h"
+#include "status_file.h"
 
 int main(void) {
 	// setup:
 	parse_config_file(".config");
+	open_status_file_for_reading_and_writing();
+	read_status();
+write_status();
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
 	if (init_camac("CAMAC_config.txt")) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
-		exit(7);
+//		exit(7);
 	}
 	setup_pci(card_id);
 	readout_all_pending_data();
@@ -40,6 +44,7 @@ int main(void) {
 			printf("\n");
 		}
 		increment_spill_number();
+		write_status();
 		generate_new_base_filename();
 		split_fiber_file_to_prepare_for_next_spill();
 		split_CAMAC_file_to_prepare_for_next_spill();
