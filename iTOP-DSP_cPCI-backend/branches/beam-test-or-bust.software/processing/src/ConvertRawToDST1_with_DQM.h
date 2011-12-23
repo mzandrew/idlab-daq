@@ -10,7 +10,7 @@
 #include "TProfile.h"
 #include "TStyle.h"
 
-#include <string.h>
+#include <string>
 
 #define NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE (90)
 #define EVENTS_BETWEEN_UPDATE (10)
@@ -42,13 +42,13 @@ TCanvas *C_EventRate;
 TCanvas *C_Scalers;
 TCanvas *C_ScalersVersusThreshold;
 
-int prerun_checks(std::string, std::string, std::string, bool using_manual_scrod_id = false, unsigned short int manual_scrod_id = 0);
+int prerun_checks(unsigned int, unsigned int, unsigned int, std::string, bool using_manual_scrod_id = false, unsigned short int manual_scrod_id = 0);
 int this_scrod_id = 0;
 void UpdateTemperature(); 
 void UpdateWilkinsonAndVdly(); 
 void UpdateSamplingRateAndVadj();
 void RefreshDisplays();
-void CreateVisualizationObjects();
+void CreateVisualizationObjects(unsigned int fiber);
 void SetStyle();
 void AppendGraphsToROOTFile(TFile *);
 
