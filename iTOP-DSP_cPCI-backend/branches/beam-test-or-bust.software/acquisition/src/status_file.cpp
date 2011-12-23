@@ -23,7 +23,7 @@ void open_status_file_for_reading_and_writing(void) {
 	}
 }
 
-void write_status(void) {
+void write_status_file(void) {
 	status_file.clear();
 	status_file.seekg(0, fstream::beg);
 //			cout << "experiment_number = " << experiment_number << endl;
@@ -72,6 +72,7 @@ void write_status(void) {
 //			cout << "experiment_number = " << experiment_number << endl;
 //			cout << "run_number = " << run_number << endl;
 //			cout << "spill_number = " << spill_number << endl;
+	status_file.seekg(0, fstream::beg);
 	status_file.clear();
 //	status_file.close();
 //			cout << "experiment_number = " << experiment_number << endl;
@@ -79,9 +80,9 @@ void write_status(void) {
 //			cout << "spill_number = " << spill_number << endl;
 }
 
-void read_status(void) {
-	status_file.clear();
+void read_status_file(void) {
 	status_file.seekg(0, fstream::beg); // beggin' strips:  "it's bacon!"
+	status_file.clear();
 	string line, key, value;
 	int first_equals_sign_position;
 #define MAX_STRING_LENGTH (200)
@@ -109,7 +110,9 @@ void read_status(void) {
 			cout << "unhandled key/value pair: " << key.c_str() << " = " << value.c_str() << endl;
 		}
 	} // dogs don't know it's not bacon.
-	status_file.clear();
 	number_of_lines_in_status_file = i;
+	status_file.seekg(0, fstream::beg);
+	status_file.clear();
+//	status_file.close();
 }
 

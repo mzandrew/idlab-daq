@@ -6,8 +6,12 @@ using namespace std;
 #include "acquisition.h"
 #include "read_CAMAC.h"
 #include <string>
+#include <iostream>
 #include <stdio.h>
 #include <fcntl.h>
+
+#define NUMBER_OF_3377s_TO_READOUT (3)
+unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 5, 7, 9 };
 
 struct CAMAC_crate crates[10];
 int crate_count = 0;
@@ -17,20 +21,17 @@ string CAMAC_filename;
 string old_CAMAC_filename;
 
 //1 = display output data, 2 = display data sent and retrieved with each operation
-#define DEBUG_FLAG 1
+//#define DEBUG_FLAG 1
 
 long stack_cmd[1024];
 int stack_cmd_len = 1;
 
 int init_camac(const char* settings_file) {
 //  printf("init_camac\n");  
-
   bzero(&crates, sizeof(struct CAMAC_crate) * 10);
-  
   // read in CAMAC crate modules
   FILE* fconfig = fopen(settings_file, "r");
   char buffer[1024];
-  
   fscanf(fconfig, "%s", buffer);
   while (!feof(fconfig)) {
     if (buffer[0] != ':') {
@@ -67,7 +68,6 @@ int init_camac(const char* settings_file) {
       if (DEBUG_FLAG)
         printf("\tread : F%i\n",funct);
       crates[crate_count].readFunction[slot] = funct;
-
       // next value is data mask
       fscanf(fconfig, "%s", buffer);
       unsigned int mask;
@@ -75,7 +75,6 @@ int init_camac(const char* settings_file) {
       if (DEBUG_FLAG)
         printf("\tdata mask: %#x\n",mask);
       crates[crate_count].dataMask[slot] = mask;
-
       fscanf(fconfig, "%s", buffer);  // omit dummy item
       fscanf(fconfig, "%s", buffer);
     }
@@ -96,14 +95,11 @@ int init_camac(const char* settings_file) {
 	long int retval;
 	int q, x;
   }
-
 #define ENCODE_COMMAND(N, A, F)  ( 512*N + 32*A + F )
-
   // build the command stack
     for(int i=0; i < crate_count; i++) {
       for(int j=0; j < crates[i].output_order_len; j++) {
 	int slot = crates[i].output_order[j];
-
 	for(int k=0; k < crates[i].channels[slot]; k++) {
 	  if(crates[i].readFunction[slot] == 99) {	  
 		stack_cmd[stack_cmd_len++] = ENCODE_COMMAND( slot, 0, 0);
@@ -114,18 +110,14 @@ int init_camac(const char* settings_file) {
 	}
       }
     }
- 
 	stack_cmd[0] = stack_cmd_len - 1;
 	int count = xxusb_stack_write(crates[0].hnd, 2, stack_cmd);
-
 	printf("%d bytes sent to controller\n", count);
-
 	printf("stack initialized:\n");
-	for(int i=0; i < stack_cmd_len; i++)
-		printf("%08lx\n", stack_cmd[i]);
-
+	for(int i=0; i < stack_cmd_len; i++) {
+//		printf("%08lx\n", stack_cmd[i]);
+	}
 	printf("\n\n");
-
 //	xxusb_stack_write(crates[0].hnd, 2, stack_cmd);
   return 0;
 }
@@ -135,7 +127,6 @@ int read_camac(void* target_buffer) {
 	memcpy(target_buffer, stack_cmd, 1024);
 	return xxusb_stack_execute(crates[0].hnd, (long int*)target_buffer);
 //	fprintf(stderr, ".");
-
 //	return xxusb_bulk_read(crates[0].hnd, (char*)target_buffer, 1024, 1000);
 }
 
@@ -173,11 +164,13 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 	} else {
 		CAMAC_count++;
 		//printf("read %d bytes from CAMAC\n", count);
-		printf("C ", count);
+		printf("C[%d] ", count);
 		buffer[count-1] = 0;
 //		int return_value = fprintf(CAMAC_fd, buffer, count);
 //		int return_value = fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes): \"%s\"\n", CAMAC_count, count, buffer);
 		//fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes):\n", CAMAC_count, count);
+//		unsigned int temp = 0x00be11e2;
+//		write(CAMAC_fd, (char *) &temp, sizeof(unsigned int));
 		write(CAMAC_fd, (char *) &CAMAC_header, sizeof(unsigned int));
 		write(CAMAC_fd, (char *) &CAMAC_count, sizeof(unsigned int));
 		write(CAMAC_fd, buffer, 116*4);
@@ -188,11 +181,67 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 //			//if (i%4==3) { fprintf(CAMAC_fd, " "); }
 //			//if (i%8==7) { fprintf(CAMAC_fd, "\n"); }
 //		}
-
 //		if (return_value == -1) {
 //			fprin
 //		}
 		return count;
+	}
+}
+
+void CAMAC_initialize_3377s(void) {
+	long data, lam;
+	int q=0, x=0;
+	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
+		//cout << "3377 #" << i << " initialization ... " << flush;
+		cout << "initializing 3377 #" << i << "..." << endl;
+		// default program mode is common stop mode
+		CAMAC_read(crates[i].hnd,slot[i],0,30,0,&q,&x); // set program mode to common stop and resets the Xilinx gate array
+	}
+	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
+		while (1) {
+			CAMAC_read(crates[i].hnd,slot[i],0,13,0,&q,&x); // done programming flag (loop until q-1)
+			if (!q) { break; }
+		}
+		while (1) {
+			// supposed to test 25 here before 13\
+			CAMAC_read(crates[i].hnd,slot[i],0,12,0,&q,&x); // test if Xilinx ready for data
+			if (!q) { break; }
+		}
+//		cout << q << endl;
+		CAMAC_read(crates[i].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
+		CAMAC_write(crates[i].hnd,slot[i],0,17,0xA1,&q,&x); // write control registers
+		CAMAC_write(crates[i].hnd,slot[i],1,17,0x0,&q,&x); // write control registers
+		CAMAC_write(crates[i].hnd,slot[i],2,17,0x801,&q,&x); // write control registers
+		CAMAC_write(crates[i].hnd,slot[i],3,17,0x0,&q,&x); // write control registers
+//		CAMAC_read(crates[i].hnd,slot[i],0,26,0,&q,&x); // enable lam
+//		cout << " is complete." << endl;
+	}
+}
+
+void CAMAC_read_3377s(void) {
+	long data, lam;
+	int q=0, x=0;
+//	CAMAC_write_LAM_mask(crates[i].hnd,LAM_MASK);
+	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
+//		CAMAC_read(crates[i].hnd,slot[i],0,26,0,&q,&x); // enables lam
+//		CAMAC_read(crates[i].hnd,slot[i],1,26,0,&q,&x); // enables acquisition mode 
+//		for (int i=0; i<10; i++) {
+//			CAMAC_read(crates[i].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
+//			lam=0;
+//			for (int j=0; j<5; j++) {
+//			while (lam!=LAM_MASK) {
+//				cout << hex << lam << endl;
+//				sleep(1);
+//			}
+//			while (lam!=LAM_MASK) {
+//			CAMAC_read(crates[i].hnd,25,10,0,&lam,&q,&x); // check lam ???
+//			if (lam==LAM_MASK) {
+			while (1) {
+				CAMAC_read(crates[i].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
+				if (!q) { break; }
+				//cout << "Read: " << hex << data << " " << q << " " << x << endl;
+			}
+//		}
 	}
 }
 
