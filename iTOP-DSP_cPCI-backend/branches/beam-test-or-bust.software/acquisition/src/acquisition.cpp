@@ -39,6 +39,7 @@ void create_directory_if_necessary(string dirname) {
 		mkdir(dirname.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 		if (!file_exists(dirname)) {
 			cout << "ERROR:  could not create directory \"" << dirname << "\"" << endl;
+			exit(10);
 		}
 	}
 }
