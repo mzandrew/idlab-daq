@@ -5,6 +5,7 @@ using namespace std;
 #include <iostream>
 #include <sys/stat.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 bool channel_enabled[4];
 string location_of_raw_datafiles = "../logdir";
