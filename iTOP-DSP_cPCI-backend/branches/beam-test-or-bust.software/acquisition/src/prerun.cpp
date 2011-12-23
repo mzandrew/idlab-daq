@@ -32,7 +32,6 @@ int main(void) {
 	read_status_file();
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
-	setup_pci(card_id);
 	readout_all_pending_data();
 	setup_filenames_for_fiber();
 	if (init_camac("CAMAC_config.txt")) {
