@@ -641,11 +641,11 @@ void open_files_for_all_enabled_fiber_channels(void) {
 				exit(6);
 			} else {
 				old_fiber_filename[i] = fiber_filename[i];
-				if (logfile_open) {
-					logfile << fiber_filename[i].c_str() << " ";
-				}
 			}
 		}
+	}
+	if (logfile_open) {
+		logfile << base_filename.c_str() << " ";
 	}
 	files_are_open = true;
 }
@@ -657,13 +657,13 @@ void close_all_fiber_files(void) {
 //			close(fd[i]);
 //		} else 
 		if (fd[i] > 0) {
-			if (logfile_open) {
-				logfile << total_number_of_readout_events << endl;
-			}
 //			printf("closing file \"%s\" for card #%d channel #%d\n", fiber_filename[i].c_str(), card_id, i);
 			printf("closing file \"%s\"\n", fiber_filename[i].c_str());
 			close(fd[i]);
 		}
+	}
+	if (logfile_open) {
+		logfile << total_number_of_readout_events << endl;
 	}
 	files_are_open = false;
 }
