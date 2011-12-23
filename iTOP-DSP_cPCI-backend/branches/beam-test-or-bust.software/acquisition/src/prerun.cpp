@@ -38,7 +38,7 @@ int main(void) {
 	setup_filenames_for_fiber();
 	if (init_camac("CAMAC_config.txt")) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
-//		exit(7);
+		exit(7);
 	}
 //	if (CAMAC_initialized) {
 //		CAMAC_initialize_3377s();
@@ -54,13 +54,13 @@ int main(void) {
 
 	// actual running:
 	while (1) {
-		wait_for_start_of_spill();
-		while (spill_is_active()) {
+//		wait_for_start_of_spill();
+//		while (spill_is_active()) {
 			readout_an_event();
 			read_data_from_CAMAC_and_write_to_CAMAC_file();
 //			CAMAC_read_3377s();
 			printf("\n");
-		}
+//		}
 //		increment_spill_number();
 //		generate_new_base_filename();
 //		split_fiber_file_to_prepare_for_next_spill();
