@@ -2,14 +2,14 @@
 #define __READCAMAC_H__
 
 extern "C" {
-#include "../contrib/libxxusb.h"
+	#include "../contrib/libxxusb.h"
 }
 
 #include <stdio.h>
 #include <string.h>
 
-#define CAMAC_SLOTS       25
-#define DEBUG_FLAG        0
+#define CAMAC_SLOTS (25)
+#define DEBUG_FLAG   (0)
 
 struct CAMAC_crate {
   short int inUse[CAMAC_SLOTS];            // 1 if slot is used, 0 if empty
@@ -32,9 +32,12 @@ int init_camac(const char* settings_file);
 int read_camac(void* target_buffer);
 int read_data_from_CAMAC_and_write_to_CAMAC_file(void);
 void open_CAMAC_file(void);
-extern int CAMAC_fd;
-//extern FILE *CAMAC_fd;
 void split_CAMAC_file_to_prepare_for_next_spill(void);
+
+extern int CAMAC_fd;
+
+void CAMAC_initialize_3377s(void);
+void CAMAC_read_3377s(void);
 
 #endif
 
