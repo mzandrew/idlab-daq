@@ -626,6 +626,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 			fd[i] = open(fiber_filename[i].c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (fd[i] < 0) {
 				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", fiber_filename[i].c_str());
+				exit(6);
 			} else {
 				old_fiber_filename[i] = fiber_filename[i];
 				if (logfile_open) {
