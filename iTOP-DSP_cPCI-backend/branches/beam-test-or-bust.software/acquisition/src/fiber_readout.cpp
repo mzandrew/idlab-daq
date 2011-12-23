@@ -598,9 +598,21 @@ void split_fiber_file_to_prepare_for_next_spill(void) {
 	open_files_for_all_enabled_fiber_channels();
 }
 
+string experiment_number_string(void) {
+	string expNN = "exp";
+	char temp[6];
+	sprintf(temp, "%02d", experiment_number);
+	expNN += temp;
+	return expNN;
+}
+
 void open_files_for_all_enabled_fiber_channels(void) {
 	if (!logfile_open) {
 		logfile_filename = location_of_status_and_log_files;
+		create_directory_if_necessary(logfile_filename.c_str());
+		logfile_filename += "/";
+		logfile_filename += experiment_number_string();
+		create_directory_if_necessary(logfile_filename.c_str());
 		logfile_filename += "/logfile";
 		logfile.open(logfile_filename.c_str(), fstream::app);
 		if (logfile) {
