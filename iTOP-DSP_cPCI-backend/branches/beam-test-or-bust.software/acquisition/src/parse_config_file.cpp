@@ -1,7 +1,5 @@
 using namespace std;
 
-//#include <stdio.h>
-//#include <string.h>
 #include <stdlib.h>
 #include <string>
 #include <iostream>
@@ -57,10 +55,8 @@ int parse_config_file(string filename) {
 			location_of_status_and_log_files = value;
 //		} else if (!strncmp(key.c_str(), "", MAX_STRING_LENGTH)) {
 		} else {
-			cout << "unhandled key/value pair: " << key.c_str() << " = " << value.c_str() << endl;
+			cout << "unhandled key/value pair in config file: " << key.c_str() << " = " << value.c_str() << endl;
 		}
 	}
 }
-
-
 
