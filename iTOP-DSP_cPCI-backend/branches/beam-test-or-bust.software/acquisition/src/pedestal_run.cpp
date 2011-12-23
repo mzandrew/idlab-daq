@@ -15,6 +15,8 @@ int main(void) {
 	parse_config_file(".config");
 	open_status_file_for_reading_and_writing();
 	read_status_file();
+	run_number++;
+	write_status_file();
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
 	setup_pci(card_id);

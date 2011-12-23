@@ -19,7 +19,7 @@ int setup_pci(int id) {
 		exit(-2);
 	}
 	// lock the desired card
-	fprintf(stderr, "locking card %d\n", card_id);
+	fprintf(stderr, "locking DSP_cPCI revB card #%d\n", card_id);
 	if (pci.lockCard(card_id) < 0) {
 		fprintf(stderr, "lock card failed\n");
 		if (card_id == 0) fprintf(stderr, "\ncard ID is set to zero.  Did you forgot to specify the card ID?\n\n");
@@ -28,7 +28,7 @@ int setup_pci(int id) {
 }
 
 void close_pci(void) {
-	fprintf(stderr, "closing card #%d\n", card_id);
+	fprintf(stderr, "closing DSP_cPCI revB card #%d\n", card_id);
 	pci.unlockCard(card_id);
 	pci.freeHandles();
 }
