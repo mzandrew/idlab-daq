@@ -48,13 +48,13 @@ void generate_new_base_filename(void) {
 	char temp[25];
 	base_filename = location_of_raw_datafiles;
 	base_filename += "/";
-	sprintf(temp, "%s", current_date_string.c_str());
-	base_filename += temp;
-	sprintf(temp, ".exp%02d", experiment_number);
+	sprintf(temp, "exp%02d", experiment_number);
 	base_filename += temp;
 	sprintf(temp, ".run%04d", run_number);
 	base_filename += temp;
 	sprintf(temp, ".spill%04d", spill_number);
+	base_filename += temp;
+	sprintf(temp, ".%s", current_date_string.c_str());
 	base_filename += temp;
 }
 
