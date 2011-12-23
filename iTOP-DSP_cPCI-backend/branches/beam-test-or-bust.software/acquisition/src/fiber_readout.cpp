@@ -589,7 +589,7 @@ void setup_filenames_for_fiber(void) {
 void split_fiber_file_to_prepare_for_next_spill(void) {
 //	printf("\n");
 	if (logfile_open) {
-		logfile << number_of_readout_events_for_this_spill << endl;
+		logfile << number_of_readout_events_for_this_spill << endl << flush;
 		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
 		
 	}
@@ -617,7 +617,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 		logfile.open(logfile_filename.c_str(), fstream::app);
 		if (logfile) {
 			logfile_open = true;
-			logfile << endl;
+			logfile << endl << flush;
 		} else {
 			fprintf(stderr, "ERROR opening logfile %s\n", logfile_filename.c_str());
 			logfile_open = false;
@@ -645,7 +645,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 		}
 	}
 	if (logfile_open) {
-		logfile << base_filename.c_str() << " ";
+		logfile << base_filename.c_str() << " " << flush;
 	}
 	files_are_open = true;
 }
@@ -663,7 +663,7 @@ void close_all_fiber_files(void) {
 		}
 	}
 	if (logfile_open) {
-		logfile << total_number_of_readout_events << endl;
+		logfile << total_number_of_readout_events << endl << flush;
 	}
 	files_are_open = false;
 }
