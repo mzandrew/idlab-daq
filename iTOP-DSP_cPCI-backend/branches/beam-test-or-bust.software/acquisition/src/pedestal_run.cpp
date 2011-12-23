@@ -6,19 +6,31 @@
 #include <stdio.h>
 #include "parse_config_file.h"
 #include "acquisition.h"
+#include "status_file.h"
 
 int main(void) {
 	unsigned long int total_number_of_quarter_events_to_read_per_fiber_channel = 100;
 
 	// setup:
 	parse_config_file(".config");
+	open_status_file_for_reading_and_writing();
+	read_status_file();
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
 	setup_pci(card_id);
 	readout_all_pending_data();
 	setup_filenames_for_fiber();
+//	if (init_camac("CAMAC_config.txt")) {
+//		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
+//		exit(7);
+//	}
+//	if (CAMAC_initialized) {
+//		CAMAC_initialize_3377s();
+//		open_CAMAC_file();
+//	}
 	open_files_for_all_enabled_fiber_channels();
 
+	// testing:
 	should_soft_trigger = true;
 
 	set_event_number(0);
@@ -37,12 +49,16 @@ int main(void) {
 		set_start_and_end_windows(a, b);
 		fprintf(stdout, "obtaining pedestals for windows [%03d,%03d]...\n", a, b);
 		usleep(50000); // wait for start and end window command to be sent and interpreted
-		readout_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
+		for (int j=0; j<total_number_of_quarter_events_to_read_per_fiber_channel; j++) {
+			readout_an_event();
+			printf("\n");
+		}
+		//readout_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
 	}
 
+	// cleanup:
 	close_all_fiber_files();
 	close_pci();
-
 	return 0;
 }
 
