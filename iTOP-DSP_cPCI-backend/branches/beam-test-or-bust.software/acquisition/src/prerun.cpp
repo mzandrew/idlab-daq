@@ -30,6 +30,8 @@ int main(void) {
 
 	open_status_file_for_reading_and_writing();
 	read_status_file();
+	run_number++;
+	write_status_file();
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
 	readout_all_pending_data();
@@ -60,7 +62,6 @@ int main(void) {
 			printf("\n");
 		}
 //		increment_spill_number();
-//		write_status_file();
 //		generate_new_base_filename();
 //		split_fiber_file_to_prepare_for_next_spill();
 //		split_CAMAC_file_to_prepare_for_next_spill();
