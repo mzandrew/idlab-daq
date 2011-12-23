@@ -18,8 +18,16 @@ int number_of_lines_in_status_file;
 void open_status_file_for_reading_and_writing(void) {
 	if (!status_file_is_open) {
 		status_filename = location_of_status_and_log_files;
+		create_directory_if_necessary(status_filename.c_str());
+//		status_filename += "/";
+//		status_filename += experiment_number_string();
+//		create_directory_if_necessary(status_filename.c_str());
 		status_filename += "/status";
 		status_file.open(status_filename.c_str(), fstream::in | fstream::out);
+		if (!status_file) {
+			cerr << "ERROR:  cannot find status file in destination directory \"" << location_of_status_and_log_files << "\"" << endl;
+			exit(12);
+		}
 	}
 }
 
@@ -110,6 +118,7 @@ void read_status_file(void) {
 			cout << "unhandled key/value pair: " << key.c_str() << " = " << value.c_str() << endl;
 		}
 	} // dogs don't know it's not bacon.
+	//run_number++;
 	number_of_lines_in_status_file = i;
 	status_file.seekg(0, fstream::beg);
 	status_file.clear();
