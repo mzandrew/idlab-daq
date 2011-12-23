@@ -6,6 +6,7 @@ using namespace std;
 #include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "fiber_readout.h"
 
 bool channel_enabled[4];
 string location_of_raw_datafiles = "../logdir";
@@ -49,6 +50,10 @@ void generate_new_base_filename(void) {
 	set_current_date_string();
 	char temp[25];
 	base_filename = location_of_raw_datafiles;
+	//create_directory_if_necessary(base_filename.c_str());
+	base_filename += "/";
+	base_filename += experiment_number_string();
+	create_directory_if_necessary(base_filename.c_str());
 	base_filename += "/";
 	sprintf(temp, "exp%02d", experiment_number);
 	base_filename += temp;
