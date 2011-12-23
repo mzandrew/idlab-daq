@@ -88,6 +88,7 @@ void setup_feedback_enables_and_goals(unsigned short int enable);
 void wait_for_start_of_spill(void);
 bool spill_is_active(void);
 void split_fiber_file_to_prepare_for_next_spill(void);
+string experiment_number_string(void);
 
 #endif
 

@@ -8,6 +8,7 @@ card=1
 # which channels are enabled:
 # (channels="0123" for all four or channels="2" just for channel two, etc)
 channels="012"
+#channels="3"
 
 # config for storage of data in files # # # # # # # # # # # # # # # # # # # #
 
@@ -26,7 +27,8 @@ tracker_file_extension=".tracker"
 # config for transfer to pc2 # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # IP address of computer to which to ftp data
-pc2_ip="128.171.30.126"
+#pc2_ip="128.171.30.126"
+pc2_ip="192.168.0.148"
 
 # config for analysis of data # # # # # # # # # # # # # # # # # # # # # # # # #
 

@@ -21,7 +21,7 @@ default :
 	if [ ! -e status  ]; then cp scripts/status.dummy status; fi
 	$(MAKE) all
 
-all : $(FINAL_OBJECT_FILES1) $(FINAL_OBJECT_FILES2) $(FINAL_OBJECT_FILES3)
+all : $(FINAL_OBJECT_FILES1) $(FINAL_OBJECT_FILES3)
 
 work/%.o : src/%.cpp
 	g++ -c $< -o $@
@@ -69,7 +69,7 @@ bin/request_a_global_reset : work/request_a_global_reset.o $(INTERMEDIATE_OBJECT
 
 # camac:
 
-bin/dual_readout : $(INTERMEDIATE_OBJECT_FILES2) ; g++ $^ $(LINK_OPTIONS) -o $@
+bin/dual_readout : $(INTERMEDIATE_OBJECT_FILES2) work/fiber_readout.o ; g++ $^ $(LINK_OPTIONS) -o $@
 
 bin/camac_only : work/camac_only.o $(INTERMEDIATE_OBJECT_FILES1) work/read_CAMAC.o ; g++ $^ $(LINK_OPTIONS) -o $@
 
