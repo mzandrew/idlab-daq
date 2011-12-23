@@ -112,7 +112,7 @@ int init_camac(const char* settings_file) {
     }
 	stack_cmd[0] = stack_cmd_len - 1;
 	int count = xxusb_stack_write(crates[0].hnd, 2, stack_cmd);
-	printf("%d bytes sent to controller\n", count);
+	printf("sent %d bytes to CAMAC controller\n", count);
 	printf("stack initialized:\n");
 	for(int i=0; i < stack_cmd_len; i++) {
 //		printf("%08lx\n", stack_cmd[i]);
