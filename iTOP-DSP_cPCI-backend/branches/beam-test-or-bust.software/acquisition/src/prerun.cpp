@@ -68,6 +68,7 @@ int main(void) {
 //		split_CAMAC_file_to_prepare_for_next_spill();
 //		usleep(250000);
 //		sync();
+		usleep(1000000);
 	}
 
 	close_all_fiber_files();

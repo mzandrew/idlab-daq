@@ -17,7 +17,7 @@ int main(void) {
 	open_status_file_for_reading_and_writing();
 	read_status_file();
 	run_number++;
-	spill_number = 0;
+	spill_number = 1;
 	write_status_file();
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
@@ -36,6 +36,8 @@ int main(void) {
 	unsigned short int beginning_window = 0;
 	unsigned short int ending_window = 63;
 	set_start_and_end_windows(beginning_window, ending_window);
+	usleep(50000);
+	set_number_of_windows_to_look_back(32);
 	usleep(50000);
 
 	// testing:

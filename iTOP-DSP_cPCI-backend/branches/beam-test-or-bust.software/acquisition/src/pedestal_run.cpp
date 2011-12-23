@@ -16,7 +16,7 @@ int main(void) {
 	open_status_file_for_reading_and_writing();
 	read_status_file();
 	run_number++;
-	spill_number = 0;
+	spill_number = 1;
 	write_status_file();
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
