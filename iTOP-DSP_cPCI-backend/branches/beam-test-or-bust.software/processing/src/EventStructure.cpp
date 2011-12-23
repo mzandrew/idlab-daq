@@ -318,16 +318,21 @@ void EventData::WriteConfigTree(const char *input_filename, const char *configur
 	char time_string[36];
 	strcpy(time_string,TimeString.c_str());
 
-	ReducedFilename = ReducedFilename.substr(20, ReducedFilename.length() );
-	int nreads = sscanf(ReducedFilename.c_str(),"exp%2d.run%4d.spill%4d.fiber%1hd",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
+	string ExperimentInfo = ReducedFilename.substr(20, ReducedFilename.length() );
+	int nreads = sscanf(ExperimentInfo.c_str(),"exp%2d.run%4d.spill%4d.fiber%1hd",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
 	if (nreads != 4) { 
-		cout << "Only read " << nreads << " parameter(s) from filename, but expected 5... are you using the most up to date software or did you change the filenames?" << endl; 
+		cout << "Only read " << nreads << " parameter(s) from filename, but expected 5... are you using the most up to date software or did you change the filenames?" << endl;
+		cout << "Trying to read alternate file name format..." << endl; 
+		ExperimentInfo = ReducedFilename.substr(0,22);
+		nreads = sscanf(ExperimentInfo.c_str(),"exp%2d.run%4d.spill%4d.fiber%1hd",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
+		TimeString = ReducedFilename.substr(24,23+19);
+		strcpy(time_string,TimeString.c_str());
 	}
 	struct tm file_time;
 	char *result = strptime(time_string, "%Y-%m-%d+%H:%M:%S",&file_time);
 	time_t epoch_time = mktime(&file_time);
 	if (!result) {
-		cout << "failed to interpret time!" << endl;
+		cout << "failed to interpret time string: " << time_string << endl;
 	} //else {
 		//cout << "determined time as: " <<  epoch_time << endl;
 	//}
