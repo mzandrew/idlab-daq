@@ -297,7 +297,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 		//info_string[channel] += packet[EVENT_NUMBER_INDEX];
 		char temp[256];
 		//sprintf(temp, "event_number[%09ld] ", packet[EVENT_NUMBER_INDEX]);
-		sprintf(temp, "[%06ld] ", packet[EVENT_NUMBER_INDEX]);
+		sprintf(temp, "f[%06ld] ", packet[EVENT_NUMBER_INDEX]);
 		info_string[channel] += temp;
 	} else {
 		if (event_number_from_most_recent_packet[channel] != packet[EVENT_NUMBER_INDEX]) {
