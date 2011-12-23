@@ -28,6 +28,7 @@ int main(int argc, char* argv[]) {
 	if (argc == 5) {
 		sscanf(argv[4],"%hi",&manual_scrod_id);
 		using_manual_scrod_id = true;
+		this_scrod_id = manual_scrod_id;
 	}
 
 	TApplication theApp("App",&argc,argv);
@@ -63,7 +64,6 @@ int prerun_checks(string str_input_file, string str_output_file, string str_conf
 
 	//Files are open... start reading and processing
 	SetStyle();
-	CreateVisualizationObjects(); 
 	int nevents = 0;
 	bool continue_running = true;
 	time_t time_of_last_successful_read = time(NULL);
@@ -75,6 +75,10 @@ int prerun_checks(string str_input_file, string str_output_file, string str_conf
 			if (!configuration_written) {
 				test_event->WriteConfigTree(str_input_file.c_str(),str_config_file.c_str(),using_manual_scrod_id,manual_scrod_id);
 				configuration_written = true;
+				if (!using_manual_scrod_id) {
+					this_scrod_id = test_event->SCROD_ID;
+				}	
+				CreateVisualizationObjects(); 
 			}
 			time_of_last_successful_read = time(NULL);
 			nevents++;
@@ -136,9 +140,12 @@ void CreateVisualizationObjects() {
 			P_ScalersVersusThreshold[col][row] = new TProfile(name_string,title_string,4095,0,2.5);
 		}
 	}
+
+	char canvas_name[1024];
+	sprintf(canvas_name,"Temperature/Feedback - SCROD %02i",this_scrod_id);
 		
 	Float_t small = 1e-5;
-	C_Temperature_and_Feedback = new TCanvas("C_Temperature_and_Feedback","Temperature/Feedback - Module XX",640,1024);
+	C_Temperature_and_Feedback = new TCanvas("C_Temperature_and_Feedback",canvas_name,640,1024);
 	C_Temperature_and_Feedback->Divide(1,4,small,small);
 	C_Temperature_and_Feedback->cd(4)->Divide(1,2,small,small);
 	C_Temperature_and_Feedback->cd(1)->SetBottomMargin(small);
@@ -150,6 +157,9 @@ void CreateVisualizationObjects() {
 	C_Temperature_and_Feedback->cd(4)->cd(1)->SetTopMargin(small);
 	C_Temperature_and_Feedback->cd(4)->cd(1)->SetBottomMargin(small);
 	C_Temperature_and_Feedback->cd(4)->cd(2)->SetTopMargin(small);
+
+//	sprintf(canvas_name,"Event Rate","Event Rate - SCROD %02i",this_scrod_id);
+//	C_EventRate = new TCanvas("C_EventRate",canvas_name);
 
 //	C_Scalers = new TCanvas();
 //	C_ScalersVersusThreshold = new TCanvas();

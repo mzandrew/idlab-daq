@@ -38,10 +38,12 @@ TTree *T_config;
 unsigned short int B_Temperature;
 
 TCanvas *C_Temperature_and_Feedback;
+TCanvas *C_EventRate;
 TCanvas *C_Scalers;
 TCanvas *C_ScalersVersusThreshold;
 
 int prerun_checks(std::string, std::string, std::string, bool using_manual_scrod_id = false, unsigned short int manual_scrod_id = 0);
+int this_scrod_id = 0;
 void UpdateTemperature(); 
 void UpdateWilkinsonAndVdly(); 
 void UpdateSamplingRateAndVadj();
