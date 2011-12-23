@@ -28,7 +28,7 @@ int main(void) {
 //		exit(7);
 	}
 //	if (CAMAC_initialized) {
-		CAMAC_initialize_3377s();
+//		CAMAC_initialize_3377s();
 		open_CAMAC_file();
 //	}
 	open_files_for_all_enabled_fiber_channels();
