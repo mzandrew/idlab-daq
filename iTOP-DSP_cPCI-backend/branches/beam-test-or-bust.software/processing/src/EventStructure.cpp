@@ -321,7 +321,6 @@ void EventData::WriteConfigTree(const char *input_filename, const char *configur
 	string ExperimentInfo = ReducedFilename.substr(20, ReducedFilename.length() );
 	int nreads = sscanf(ExperimentInfo.c_str(),"exp%2d.run%4d.spill%4d.fiber%1hd",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
 	if (nreads != 4) { 
-		cout << "Only read " << nreads << " parameter(s) from filename, but expected 5... are you using the most up to date software or did you change the filenames?" << endl;
 		cout << "Trying to read alternate file name format..." << endl; 
 		ExperimentInfo = ReducedFilename.substr(0,22);
 		nreads = sscanf(ExperimentInfo.c_str(),"exp%2d.run%4d.spill%4d.fiber%1hd",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);

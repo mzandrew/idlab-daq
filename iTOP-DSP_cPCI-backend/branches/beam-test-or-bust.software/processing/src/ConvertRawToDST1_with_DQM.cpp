@@ -1,32 +1,42 @@
 #include "EventStructure.h"
 #include "ConvertRawToDST1_with_DQM.h"
+#include "Utility.h"
 
 #include "TROOT.h"
 #include "TSystem.h"
 #include "TFile.h"
 #include "TApplication.h"
 
+#include <sstream>
+#include <iomanip>
+#include <ios>
 #include <fstream>
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <time.h>
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
-	if (argc != 4 && argc != 5) {
-		cout << "Syntax: ConvertRawToDST1_with_DQM [input file name (raw data)] [output file name (ROOT)] [configuration file] [(optional) SCROD ID]" << endl;
+	if (argc != 5 && argc != 6) {
+		cout << "Syntax: ConvertRawToDST1_with_DQM [experiment number] [run number] [fiber #] [configuration file] [(optional) SCROD ID]" << endl;
 		return 1;
 	}
-	string str_input_file, str_output_file, str_config_file;
-	str_input_file = argv[1];
-	str_output_file = argv[2];	
-	str_config_file = argv[3];
+	unsigned int experiment_to_process = 0;
+	sscanf(argv[1],"%d",&experiment_to_process);
+	unsigned int run_to_process = 0;
+	sscanf(argv[2],"%d",&run_to_process);
+	unsigned int fiber_to_process = 0;
+	sscanf(argv[3],"%d",&fiber_to_process);
+	string str_config_file;
+	str_config_file = argv[4];
+
+	cout << "Beginning processing of data from experiment " << experiment_to_process << " ... " << endl;
 
 	bool using_manual_scrod_id = false;
 	unsigned short int manual_scrod_id = 0;
-	if (argc == 5) {
-		sscanf(argv[4],"%hi",&manual_scrod_id);
+	if (argc == 6) {
+		sscanf(argv[5],"%hi",&manual_scrod_id);
 		using_manual_scrod_id = true;
 		this_scrod_id = manual_scrod_id;
 	}
@@ -38,7 +48,7 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 	
-	int status = prerun_checks(str_input_file,str_output_file,str_config_file,using_manual_scrod_id,manual_scrod_id);
+	int status = prerun_checks(experiment_to_process, run_to_process, fiber_to_process, str_config_file,using_manual_scrod_id,manual_scrod_id);
 	cout << "Finished processing with status = " << status << endl;
 	cout << "Display is no longer updating." << endl;
 	theApp.Run();
@@ -46,14 +56,33 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
-int prerun_checks(string str_input_file, string str_output_file, string str_config_file, bool using_manual_scrod_id, unsigned short int manual_scrod_id) {
-	//Try to open the input file and check validity
-	ifstream fin(str_input_file.c_str());
-	if (!fin) {
-		cout << "ERROR: could not open " << str_input_file.c_str() << " for reading." << endl;
+int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_process, unsigned int fiber, string str_config_file, bool using_manual_scrod_id, unsigned short int manual_scrod_id) {
+	//Open the log file so we know what files to read
+	ifstream logfile_in;
+	OpenLogFile(logfile_in, experiment_to_process);
+	if (!logfile_in) {
+		cout << "ERROR: could not open experiment " << experiment_to_process << " logfile for reading." << endl;
 		return 1;
 	}
+	
+	//Find the next input raw file
+	unsigned int last_spill = 0;
+	ifstream fin;
+	string next_filename = NextRawFile(logfile_in, experiment_to_process, run_to_process, last_spill);
+	ostringstream temp1;
+	temp1 << ".fiber" << fiber;
+	next_filename += temp1.str();
+	fin.open( (char *) next_filename.c_str() );
+	//Try to open the input file and check validity
+	if (!fin) {
+		cout << "ERROR: could not open " << next_filename << " for reading." << endl;
+		return 1;
+	}
+
 	//Try to open the output file and check validity
+	ostringstream temp;
+	temp << DST_PATH << "/exp" << setw(2) << setfill('0') << experiment_to_process << "/exp" << setw(2) << setfill('0') << experiment_to_process << "run" << setw(4) << setfill('0') << run_to_process << ".root";
+	string str_output_file = temp.str();
 	EventData *test_event = new EventData();
 	E_event = test_event;
 	TFile *ROOT_file = test_event->OpenROOTFile(str_output_file.c_str() );
@@ -73,12 +102,12 @@ int prerun_checks(string str_input_file, string str_output_file, string str_conf
 		int this_status = test_event->ReadEvent(fin);
 		if (this_status == 1) {
 			if (!configuration_written) {
-				test_event->WriteConfigTree(str_input_file.c_str(),str_config_file.c_str(),using_manual_scrod_id,manual_scrod_id);
+				test_event->WriteConfigTree(next_filename.c_str(),str_config_file.c_str(),using_manual_scrod_id,manual_scrod_id);
 				configuration_written = true;
 				if (!using_manual_scrod_id) {
 					this_scrod_id = test_event->SCROD_ID;
 				}	
-				CreateVisualizationObjects(); 
+				CreateVisualizationObjects(fiber); 
 			}
 			time_of_last_successful_read = time(NULL);
 			nevents++;
@@ -94,9 +123,23 @@ int prerun_checks(string str_input_file, string str_output_file, string str_conf
 			fin.seekg(starting_file_pointer);
 			sleep(1);
 		}
+		//Checks to see if we've timed out on this file
 		time_t time_now = time(NULL);
 		if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE) {
-			continue_running = false;
+			//If we've timed out, close the file
+			fin.close();
+			fin.clear();
+			//And try to open a new file
+			next_filename = NextRawFile(logfile_in, experiment_to_process, run_to_process, last_spill);
+			next_filename += temp1.str();
+			fin.open(next_filename.c_str());
+			if (!fin) {
+				cout << "Couldn't open next spill file: " << next_filename.c_str() << endl;
+				continue_running = false;
+			} else {
+				continue_running = true;
+				configuration_written = false;
+			}
 		}
 		gSystem->ProcessEvents();	
 	}
@@ -108,13 +151,12 @@ int prerun_checks(string str_input_file, string str_output_file, string str_conf
 
 	//Clean up a bit
 	delete test_event;
-	fin.close();
 
 	return 0;
 }
 
 //Other functions to do updates and handle graphs/canvases/etc.
-void CreateVisualizationObjects() {
+void CreateVisualizationObjects(unsigned int fiber) {
 	G_Temperature = new TGraph();
 	G_Temperature->GetXaxis()->SetTitle("Event number");
 	G_Temperature->GetYaxis()->SetTitle("Temperature (#circC)");
@@ -142,7 +184,7 @@ void CreateVisualizationObjects() {
 	}
 
 	char canvas_name[1024];
-	sprintf(canvas_name,"Temperature/Feedback - SCROD %02i",this_scrod_id);
+	sprintf(canvas_name,"Fiber %02i (SCROD %02i) - Temperature/Feedback",this_scrod_id);
 		
 	Float_t small = 1e-5;
 	C_Temperature_and_Feedback = new TCanvas("C_Temperature_and_Feedback",canvas_name,640,1024);
@@ -160,6 +202,7 @@ void CreateVisualizationObjects() {
 
 //	sprintf(canvas_name,"Event Rate","Event Rate - SCROD %02i",this_scrod_id);
 //	C_EventRate = new TCanvas("C_EventRate",canvas_name);
+//	C_EventRate->Divide(1,2);
 
 //	C_Scalers = new TCanvas();
 //	C_ScalersVersusThreshold = new TCanvas();

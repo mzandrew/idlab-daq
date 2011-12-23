@@ -5,7 +5,7 @@ ROOTLIBS    = $(shell root-config --glibs)
 ROOTCFLAGS  = $(shell root-config --cflags) -g
 INC=-I${ROOT_INCDIR} -Isrc
 #######################################################################
-LIB_OBJS      =  work/EventStructure.o 
+LIB_OBJS      =  work/EventStructure.o work/Utility.o 
 #######################################################################
 default :
 	if [ ! -e work    ]; then mkdir    work; fi
@@ -40,6 +40,9 @@ work/ConvertDST1ToDST2.o: src/ConvertDST1ToDST2.cpp
 
 work/EventStructure.o: src/EventStructure.cpp src/EventStructure.h
 	$(CC) $(INC) src/EventStructure.cpp -c -o $@
+
+work/Utility.o: src/Utility.cpp src/Utility.h
+	$(CC) $(INC) src/Utility.cpp -c -o $@
 
 ######################################################################
 clean:
