@@ -21,6 +21,18 @@
 #define WILK_SCALE_FACTOR (0.32768) // (2^12 * 80) / 1e6 (in MHz)
 
 #define TEMPERATURE_LIMIT (90.0)
+#define TEMPERATURE_DISPLAY_MIN (30.0)
+#define TEMPERATURE_DISPLAY_MAX (95.0)
+#define NOMINAL_WILK_RATE (638.976) //2^12 * 80 * 1950 [1950 is target count]
+#define WILK_DISPLAY_MIN (550.0)
+#define WILK_DISPLAY_MAX (750.0)
+#define WILK_VOLTAGE_DISPLAY_MIN (1.0)
+#define WILK_VOLTAGE_DISPLAY_MAX (2.0)
+
+#define VADJN_DISPLAY_MIN 0.60
+#define VADJN_DISPLAY_MAX 0.67
+#define VADJP_DISPLAY_MIN 1.96
+#define VADJP_DISPLAY_MAX 2.02
 
 TGraph *G_Temperature;
 TGraph *G_Vdly[4][4];
@@ -45,6 +57,7 @@ TCanvas *C_EventRate;
 TCanvas *C_Scalers;
 TCanvas *C_ScalersVersusThreshold;
 TLine *TempLimitLine;
+TLine *WilkRateLine;
 
 int prerun_checks(unsigned int, unsigned int, unsigned int, std::string, bool using_manual_scrod_id = false, unsigned short int manual_scrod_id = 0);
 int this_scrod_id = 0;
@@ -52,7 +65,7 @@ void UpdateTemperature();
 void UpdateWilkinsonAndVdly(); 
 void UpdateSamplingRateAndVadj();
 void RefreshDisplays();
-void CreateVisualizationObjects(unsigned int fiber);
+void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int fiber);
 void SetStyle();
 void AppendGraphsToROOTFile(TFile *);
 
