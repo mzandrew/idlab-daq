@@ -193,6 +193,8 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 				printf(" %ld errors in that quarter event; ", number_of_errors_for_this_quarter_event[i]);
 			}
 //			printf(" Q ");
+		} else {
+			printf("        "); // corresponds to printf("f[%06ld]"... in analyze_packet()
 		}
 	}
 //	printf(" E ");

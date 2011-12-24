@@ -39,12 +39,50 @@ int main(void) {
 	usleep(50000);
 	set_number_of_windows_to_look_back(32);
 	usleep(50000);
+	reset_trigger_flip_flop();
 
 	// testing:
 //	should_soft_trigger = true;
 
 	// actual running:
+	bool spill_was_just_active = false;
+	bool first_time = true;
 	while (1) {
+		bool start_of_spill = false;
+		bool spill_is_now_active = spill_is_active();
+		bool end_of_spill = false;
+		if (spill_is_now_active && !spill_was_just_active) {
+			start_of_spill = true;
+		} else if (!spill_is_now_active && spill_was_just_active) {
+			end_of_spill = true;
+		}
+		if (start_of_spill) {
+			cout << "start of spill (red sky in morning; sailor take warning)" << endl;
+			increment_spill_number();
+			write_status_file();
+			generate_new_base_filename();
+			if (!first_time) {
+				split_fiber_file_to_prepare_for_next_spill();
+				split_CAMAC_file_to_prepare_for_next_spill();
+			}
+		} else if (end_of_spill) {
+			cout << "end of spill (red sky at night; sailor's delight)" << endl;
+		} else if (spill_is_now_active) {
+			cout << "meat of spill (a mighty wind be blowin')" << endl;
+			readout_an_event();
+			read_data_from_CAMAC_and_write_to_CAMAC_file();
+//			CAMAC_read_3377s();
+			printf("\n");
+		} else {
+			cout << "no protons (we are in irons)" << endl;
+			usleep(50);
+		}
+		if (first_time) {
+			first_time = false;
+		}
+		spill_was_just_active = spill_is_now_active;
+	}
+/*
 		wait_for_start_of_spill();
 		while (spill_is_active()) {
 			readout_an_event();
@@ -60,6 +98,7 @@ int main(void) {
 		usleep(250000);
 		sync();
 	}
+*/
 
 	// cleanup:
 	close_all_fiber_files();
