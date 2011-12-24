@@ -39,6 +39,8 @@ int main(void) {
 	usleep(50000);
 	set_number_of_windows_to_look_back(32);
 	usleep(50000);
+	set_event_number(event_number);
+	send_front_end_trigger_veto_clear();
 	reset_trigger_flip_flop();
 
 	// testing:
@@ -71,6 +73,8 @@ int main(void) {
 //			cout << "meat of spill (a mighty wind be blowin')" << endl;
 			readout_an_event();
 			read_data_from_CAMAC_and_write_to_CAMAC_file();
+			check_and_synchronize_event_numbers();
+			write_status_file();
 //			CAMAC_read_3377s();
 			printf("\n");
 //			usleep(250000);

@@ -15,6 +15,7 @@ extern unsigned short int channel_bitmask;
 extern unsigned short int experiment_number;
 extern unsigned short int run_number;
 extern unsigned short int spill_number;
+extern unsigned long int event_number;
 extern string current_date_string;
 extern string base_filename;
 

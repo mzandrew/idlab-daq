@@ -15,6 +15,7 @@ unsigned short int channel_bitmask = 0xf;
 unsigned short int experiment_number = 7;
 unsigned short int run_number = 8;
 unsigned short int spill_number = 9;
+unsigned long int event_number = 10;
 string current_date_string;
 string base_filename;
 
