@@ -138,3 +138,14 @@ void send_command_packet_to_all_enabled_channels(unsigned long int command, unsi
 	}
 }
 
+void send_command_packet_to_some_enabled_channels(unsigned long int command, unsigned long int argument, unsigned short int channel_bitmask) {
+	generate_command_packet(command, argument);
+	for (unsigned short int j=0; j<NUMBER_OF_SCRODS_TO_READOUT; j++) {
+		if (channel_bitmask & (1<<j)) {
+			//printf("would have sent this to fiber channel %d", j);
+			pci.selectChannel(j);
+			pci.sendData(command_packet, 560);
+		}
+	}
+}
+
