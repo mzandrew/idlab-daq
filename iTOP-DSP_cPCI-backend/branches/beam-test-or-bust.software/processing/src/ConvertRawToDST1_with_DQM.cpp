@@ -82,7 +82,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 
 	//Try to open the output file and check validity
 	ostringstream temp;
-	temp << DST_PATH << "/exp" << setw(2) << setfill('0') << experiment_to_process << "/e" << setw(2) << setfill('0') << experiment_to_process << "run" << setw(4) << setfill('0') << run_to_process << "m" << fiber << ".root";
+	temp << DST_PATH << "/exp" << setw(2) << setfill('0') << experiment_to_process << "/e" << setw(2) << setfill('0') << experiment_to_process << "run" << setw(4) << setfill('0') << run_to_process << "m" << fiber << ".dst1";
 	string str_output_file = temp.str();
 	EventData *test_event = new EventData();
 	E_event = test_event;
