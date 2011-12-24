@@ -677,7 +677,7 @@ void close_all_fiber_files(void) {
 
 void wait_for_start_of_spill(void) {
 	while (!spill_is_active()) {
-		usleep(50);
+		usleep(1000);
 	}
 }
 
@@ -685,6 +685,7 @@ bool spill_is_active(void) {
 	unsigned long int signals = pci.readSignals();
 	bool signal_2 = signals & (1<<0);
 	bool signal_1 = signals & (1<<1);
+	//cout << "signal_1: " << signal_1 << endl;
 	return signal_1;
 }
 
