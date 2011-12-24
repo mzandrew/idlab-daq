@@ -6,6 +6,7 @@
 #include "TSystem.h"
 #include "TFile.h"
 #include "TApplication.h"
+#include "TLine.h"
 
 #include <sstream>
 #include <iomanip>
@@ -204,6 +205,11 @@ void CreateVisualizationObjects(unsigned int fiber) {
 	C_Temperature_and_Feedback->cd(4)->cd(1)->SetBottomMargin(small);
 	C_Temperature_and_Feedback->cd(4)->cd(2)->SetTopMargin(small);
 
+	TempLimitLine = new TLine(0,0,0,0);
+	TempLimitLine->SetLineStyle(kDashed);
+	TempLimitLine->SetLineWidth(3);
+	TempLimitLine->SetLineColor(kRed);
+
 //	sprintf(canvas_name,"Event Rate","Event Rate - SCROD %02i",this_scrod_id);
 //	C_EventRate = new TCanvas("C_EventRate",canvas_name);
 //	C_EventRate->Divide(1,2);
@@ -218,6 +224,8 @@ void UpdateTemperature() {
 	int points = G_Temperature->GetN();
 	float this_temp = TEMPERATURE_SCALE_FACTOR * (float) E_event->Temperature;
 	G_Temperature->SetPoint(points,E_event->EventNumber,this_temp);
+	G_Temperature->SetMinimum(30.0);
+	G_Temperature->SetMaximum(100.0);
 }
 
 void UpdateWilkinsonAndVdly() {
@@ -257,6 +265,11 @@ void RefreshDisplays() {
 	G_Temperature->GetXaxis()->SetTitle("Event number");
 	G_Temperature->GetYaxis()->SetTitle("Temperature (#circC)");
 	G_Temperature->Draw("AL");
+	TempLimitLine->SetX1(G_Temperature->GetXaxis()->GetXmin());
+	TempLimitLine->SetX2(G_Temperature->GetXaxis()->GetXmax());
+	TempLimitLine->SetY1(TEMPERATURE_LIMIT);
+	TempLimitLine->SetY2(TEMPERATURE_LIMIT);
+	TempLimitLine->Draw();
 	//Update Vdly and Wilkinson feedback counters
 	C_Temperature_and_Feedback->cd(2);
 	for (int col = 0; col < 4; ++col) {
