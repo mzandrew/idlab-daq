@@ -110,7 +110,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 					this_scrod_id = test_event->SCROD_ID;
 				}	
 				if (!visualization_initialized) {
-					CreateVisualizationObjects(fiber); 
+					CreateVisualizationObjects(experiment_to_process,run_to_process,fiber); 
 					visualization_initialized = true;
 				}
 			}
@@ -161,7 +161,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 }
 
 //Other functions to do updates and handle graphs/canvases/etc.
-void CreateVisualizationObjects(unsigned int fiber) {
+void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int fiber) {
 	G_Temperature = new TGraph();
 	G_Temperature->GetXaxis()->SetTitle("Event number");
 	G_Temperature->GetYaxis()->SetTitle("Temperature (#circC)");
@@ -189,7 +189,7 @@ void CreateVisualizationObjects(unsigned int fiber) {
 	}
 
 	char canvas_name[1024];
-	sprintf(canvas_name,"Fiber %02i (SCROD %02i) - Temperature/Feedback",fiber,this_scrod_id);
+	sprintf(canvas_name,"Exp %02i Run %04i - Fiber %02i (SCROD %02i) - Temperature/Feedback",exp, run, fiber,this_scrod_id);
 		
 	Float_t small = 1e-5;
 	C_Temperature_and_Feedback = new TCanvas("C_Temperature_and_Feedback",canvas_name,640,1024);
@@ -210,6 +210,11 @@ void CreateVisualizationObjects(unsigned int fiber) {
 	TempLimitLine->SetLineWidth(3);
 	TempLimitLine->SetLineColor(kRed);
 
+	WilkRateLine = new TLine(0,0,0,0);
+	WilkRateLine->SetLineStyle(kDashed);
+	WilkRateLine->SetLineWidth(3);
+	WilkRateLine->SetLineColor(kRed);
+
 //	sprintf(canvas_name,"Event Rate","Event Rate - SCROD %02i",this_scrod_id);
 //	C_EventRate = new TCanvas("C_EventRate",canvas_name);
 //	C_EventRate->Divide(1,2);
@@ -224,8 +229,8 @@ void UpdateTemperature() {
 	int points = G_Temperature->GetN();
 	float this_temp = TEMPERATURE_SCALE_FACTOR * (float) E_event->Temperature;
 	G_Temperature->SetPoint(points,E_event->EventNumber,this_temp);
-	G_Temperature->SetMinimum(30.0);
-	G_Temperature->SetMaximum(100.0);
+	G_Temperature->SetMinimum(TEMPERATURE_DISPLAY_MIN);
+	G_Temperature->SetMaximum(TEMPERATURE_DISPLAY_MAX);
 }
 
 void UpdateWilkinsonAndVdly() {
@@ -277,8 +282,8 @@ void RefreshDisplays() {
 			G_WilkCounter[col][row]->SetMarkerColor(row + 1);
 			G_WilkCounter[col][row]->SetLineColor(row + 1);
 			G_WilkCounter[col][row]->SetMarkerStyle(6);
-			G_WilkCounter[col][row]->SetMinimum(550.0);
-			G_WilkCounter[col][row]->SetMaximum(750.0);
+			G_WilkCounter[col][row]->SetMinimum(WILK_DISPLAY_MIN);
+			G_WilkCounter[col][row]->SetMaximum(WILK_DISPLAY_MAX);
 			G_WilkCounter[col][row]->GetXaxis()->SetTitle("Event number");
 			G_WilkCounter[col][row]->GetYaxis()->SetTitle("Wilkinson count rate (MHz)");
 			char draw_flags[100];
@@ -290,14 +295,19 @@ void RefreshDisplays() {
 			G_WilkCounter[col][row]->Draw(draw_flags);
 		}
 	}
+	WilkRateLine->SetX1(G_WilkCounter[0][0]->GetXaxis()->GetXmin());
+	WilkRateLine->SetX2(G_WilkCounter[0][0]->GetXaxis()->GetXmax());
+	WilkRateLine->SetY1(NOMINAL_WILK_RATE);
+	WilkRateLine->SetY2(NOMINAL_WILK_RATE);
+	WilkRateLine->Draw();
 	C_Temperature_and_Feedback->cd(3);
 	for (int col = 0; col < 4; ++col) {
 		for (int row = 0; row < 4; ++row) {
 			G_Vdly[col][row]->SetMarkerColor(row + 1);
 			G_Vdly[col][row]->SetLineColor(row + 1);
 			G_Vdly[col][row]->SetMarkerStyle(6);
-			G_Vdly[col][row]->SetMinimum(1.0);
-			G_Vdly[col][row]->SetMaximum(1.5);
+			G_Vdly[col][row]->SetMinimum(WILK_VOLTAGE_DISPLAY_MIN);
+			G_Vdly[col][row]->SetMaximum(WILK_VOLTAGE_DISPLAY_MAX);
 			G_Vdly[col][row]->GetXaxis()->SetTitle("Event number");
 			G_Vdly[col][row]->GetYaxis()->SetTitle("Wilkinson control voltage (V)");
 			char draw_flags[100];
@@ -315,8 +325,8 @@ void RefreshDisplays() {
 			G_VadjP[col][row]->SetMarkerColor(row + 1);
 			G_VadjP[col][row]->SetLineColor(row + 1);
 			G_VadjP[col][row]->SetMarkerStyle(6);
-			G_VadjP[col][row]->SetMinimum(1.96);
-			G_VadjP[col][row]->SetMaximum(1.99);
+			G_VadjP[col][row]->SetMinimum(VADJP_DISPLAY_MIN);
+			G_VadjP[col][row]->SetMaximum(VADJP_DISPLAY_MAX);
 			G_VadjP[col][row]->GetXaxis()->SetTitle("Event number");
 			G_VadjP[col][row]->GetYaxis()->SetTitle("VadjP (V)");
 			G_VadjP[col][row]->GetYaxis()->SetTitleSize(0.16);
@@ -336,8 +346,8 @@ void RefreshDisplays() {
 			G_VadjN[col][row]->SetMarkerColor(row + 1);
 			G_VadjN[col][row]->SetLineColor(row + 1);
 			G_VadjN[col][row]->SetMarkerStyle(6);
-			G_VadjN[col][row]->SetMinimum(0.64);
-			G_VadjN[col][row]->SetMaximum(0.67);
+			G_VadjN[col][row]->SetMinimum(VADJN_DISPLAY_MIN);
+			G_VadjN[col][row]->SetMaximum(VADJN_DISPLAY_MAX);
 			G_VadjN[col][row]->GetXaxis()->SetTitle("Event number");
 			G_VadjN[col][row]->GetYaxis()->SetTitle("VadjN (V)");
 			G_VadjN[col][row]->GetYaxis()->SetTitleSize(0.16);
