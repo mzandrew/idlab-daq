@@ -174,6 +174,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 			}
 		}
 	}
+	printf("e%02d/r%04d/s%04d ", experiment_number, run_number, spill_number);
 	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		if (desired_number_of_bytes_to_read[i]) {
 //			printf("\n");
