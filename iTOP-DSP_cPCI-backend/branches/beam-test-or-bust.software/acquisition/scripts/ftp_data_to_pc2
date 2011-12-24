@@ -3,17 +3,21 @@
 . ./scripts/read_config_files
 
 function ftp_file {
+	dirname=$(dirname ${filename})
+	filename=$(basename ${filename})
 	ftp -v -n ${pc2_ip} <<HEREDOC
 	user anonymous idlab@beamtest
-	send logdir/${filename} idlab/${filename}
+	send ${dirname}/${filename} ${filename}
 	bye
 HEREDOC
 }
 
-declare filename=""
-for i in $(seq 0 3); do
-	filename="card${card}.channel${i}.rawdata"
-	if [ -e "logdir/${filename}" ]; then
+#declare filename=""
+#for i in $(seq 0 3); do
+#	filename="exp${experiment_number}/"
+#	filename=$(scripts/generate_filename)
+for filename; do
+	if [ -e "${filename}" ]; then
 		echo
 		echo "found file \"$filename\""
 		ftp_file ${filename}
