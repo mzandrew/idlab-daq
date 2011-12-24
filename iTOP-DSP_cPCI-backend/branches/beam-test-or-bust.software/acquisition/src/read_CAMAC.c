@@ -153,7 +153,7 @@ void split_CAMAC_file_to_prepare_for_next_spill(void) {
 }
 
 int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
-	static unsigned int CAMAC_count = 0; // number of readouts
+//	static unsigned int CAMAC_count = 0; // number of readouts
 	static unsigned int CAMAC_header = 0x12345678;
 	char buffer[1024];
 	int count = read_camac((void*) buffer);
@@ -162,7 +162,7 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 	if (count <= 0) {
 		return 0;
 	} else {
-		CAMAC_count++;
+//		CAMAC_count++;
 		//printf("read %d bytes from CAMAC\n", count);
 		printf("C[%d] ", count);
 		buffer[count-1] = 0;
@@ -172,7 +172,7 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 //		unsigned int temp = 0x00be11e2;
 //		write(CAMAC_fd, (char *) &temp, sizeof(unsigned int));
 		write(CAMAC_fd, (char *) &CAMAC_header, sizeof(unsigned int));
-		write(CAMAC_fd, (char *) &CAMAC_count, sizeof(unsigned int));
+		write(CAMAC_fd, (char *) &event_number, sizeof(unsigned int));
 		write(CAMAC_fd, buffer, 116*4);
 //		for (int i=0; i<count; i++) {
 //			//fprintf(CAMAC_fd, "%u ", uint32[i]);

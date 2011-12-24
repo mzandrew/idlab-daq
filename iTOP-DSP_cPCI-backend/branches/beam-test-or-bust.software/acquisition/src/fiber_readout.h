@@ -44,7 +44,6 @@
 
 extern unsigned long int packet[NUMBER_OF_WORDS_IN_A_PACKET];
 extern unsigned long int number_of_errors_for_this_quarter_event[NUMBER_OF_SCRODS_TO_READOUT];
-extern unsigned long int event_number;
 extern unsigned long long int time_for_single_event_readout;
 extern unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_WORDS];
 extern          char     byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
@@ -71,6 +70,7 @@ extern struct timeval start, end, watchdog;
 void reset_trigger_flip_flop(void);
 void send_soft_trigger_request_command_packet(void);
 void send_front_end_trigger_veto_clear(void);
+void check_and_synchronize_event_numbers(void);
 void set_event_number(unsigned long int event_number);
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
 void set_number_of_windows_to_look_back(unsigned long int look_back);

@@ -10,13 +10,13 @@ using namespace std;
 #include "command_packet_builder.h"
 #include "acquisition.h"
 
+unsigned long int event_number_for_fiber[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned long int header = 0x00be11e2;
 unsigned long int protocol_freeze_date = 0x20111213;
 unsigned long int packet_type[NUMBER_OF_PACKET_TYPES] = { 0x00c0ffee, 0x0000eada, 0x000f00da, 0x000ab0de, 0xce11b10c };
 unsigned long int footer = 0x62504944;
 unsigned long int packet[NUMBER_OF_WORDS_IN_A_PACKET];
 unsigned long int number_of_errors_for_this_quarter_event[NUMBER_OF_SCRODS_TO_READOUT];
-unsigned long int event_number = 0;
 unsigned long long int time_for_single_event_readout;
 unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_WORDS];
          char     byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
@@ -194,7 +194,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 			}
 //			printf(" Q ");
 		} else {
-			printf("         "); // corresponds to printf("f[%06ld]"... in analyze_packet()
+			printf("         "); // corresponds to printf("f%d[%06ld]"... in analyze_packet()
 		}
 	}
 //	printf(" E ");
@@ -301,6 +301,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 		char temp[256];
 		//sprintf(temp, "event_number[%09ld] ", packet[EVENT_NUMBER_INDEX]);
 		sprintf(temp, "f%d[%06ld] ", channel, packet[EVENT_NUMBER_INDEX]);
+		event_number_for_fiber[channel] = packet[EVENT_NUMBER_INDEX];
 		info_string[channel] += temp;
 	} else {
 		if (event_number_from_most_recent_packet[channel] != packet[EVENT_NUMBER_INDEX]) {
@@ -402,6 +403,21 @@ void send_soft_trigger_request_command_packet(void) {
 
 void send_front_end_trigger_veto_clear(void) {
 	send_command_packet_to_all_enabled_channels(0x0000C1EA, 0x00000000); // clear the trigger veto
+}
+
+void check_and_synchronize_event_numbers(void) {
+	unsigned short int need_to_set_event_number = 0;
+	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+		if (channel_bitmask & (1<<i)) {
+			if (event_number_for_fiber[i] != event_number) {
+				need_to_set_event_number++;
+			}
+		}
+	}
+	if (need_to_set_event_number) {
+		cout << endl << "error detected in event_number reported back from " << need_to_set_event_number << " SCROD(s).  resetting the event number...";
+		set_event_number(event_number);
+	}
 }
 
 void set_event_number(unsigned long int event_number) {

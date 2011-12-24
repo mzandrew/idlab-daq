@@ -69,6 +69,15 @@ void write_status_file(void) {
 					temp << spill_number;
 //					cout << "temp: : << temp << endl;
 					value = temp.str();
+				} else if (!strncmp(key.c_str(), "event_number", 45)) {
+//					char temp[256];
+//					sprintf(temp, "%d", event_number);
+//					value = temp;
+					ostringstream temp;
+//					cout << event_number;
+					temp << event_number;
+//					cout << "temp: : << temp << endl;
+					value = temp.str();
 				}
 				status_file_line[i] = key;
 				status_file_line[i] += "=";
@@ -113,6 +122,9 @@ void read_status_file(void) {
 		} else if (!strncmp(key.c_str(), "spill_number", MAX_STRING_LENGTH)) {
 			spill_number = atoi(value.c_str());
 			cout << "setting spill_number to " << spill_number << endl;
+		} else if (!strncmp(key.c_str(), "event_number", MAX_STRING_LENGTH)) {
+			event_number = atoi(value.c_str());
+			cout << "setting event_number to " << event_number << endl;
 //		} else if (!strncmp(key.c_str(), "", MAX_STRING_LENGTH)) {
 		} else {
 			cout << "unhandled key/value pair: " << key.c_str() << " = " << value.c_str() << endl;
