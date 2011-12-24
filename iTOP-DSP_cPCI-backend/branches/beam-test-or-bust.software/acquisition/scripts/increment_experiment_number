@@ -1,0 +1,40 @@
+#!/usr/bin/perl -w
+
+my $status_filename = "logdir/status";
+
+my $experiment_number;
+my $i = 0;
+my @line;
+
+open(STATUS_FILE, $status_filename);
+while ($line[$i] = <STATUS_FILE>) {
+	chomp($line[$i]);
+	#print "$line[$i]\n";
+	if ($line[$i] =~ /^experiment_number=([0-9]*)$/) {
+		$experiment_number = $1;
+		print "old experiment_number:  $experiment_number\n";
+		$experiment_number++;
+		print "new experiment_number:  $experiment_number\n";
+		#print "experiment_number=$experiment_number\n";
+	} else {
+		#print "$line[$i]\n";
+	}
+	$i++;
+}
+my $number_of_lines_in_file = $#line;
+#my $number_of_lines_in_file = $i;
+print "number of lines in file: $number_of_lines_in_file\n";
+close(STATUS_FILE);
+
+open(STATUS_FILE, ">$status_filename");
+for ($i=0; $i<$number_of_lines_in_file; $i++) {
+	if ($line[$i] =~ /^experiment_number=([0-9]*)$/) {
+		printf STATUS_FILE "experiment_number=$experiment_number\n";
+	} elsif ($line[$i] =~ /^run_number=([0-9]*)$/) {
+		printf STATUS_FILE "run_number=1\n";
+	} else {
+		printf STATUS_FILE "$line[$i]\n";
+	}
+}
+close(STATUS_FILE);
+

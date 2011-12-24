@@ -176,25 +176,26 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 	}
 	printf("exp%02d.run%04d.spill%04d ", experiment_number, run_number, spill_number);
 	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
-		if (desired_number_of_bytes_to_read[i]) {
-//			printf("\n");
-		}
-		if (number_of_bytes_read_so_far[i] > 0 && number_of_bytes_read_so_far[i] == desired_number_of_bytes_to_read[i])
- {
-//			for (unsigned long int j=0; j<((number_of_bytes_read_so_far[i])>>2); j++) {
-			for (unsigned long int j=0; j<NUMBER_OF_PACKETS_IN_A_QUARTER_EVENT; j++) {
-				copy_packet(word_buffer[i] + word_position_of_first_header[i] + j * NUMBER_OF_WORDS_IN_A_PACKET);
-				char temp[256];
-				sprintf(temp, "\nevent[%ld] fiber_ch[%d] packet[%3ld]: ", event_number, i, j);
-				event_fiber_packet_string = temp;
-				analyze_packet(j, i);
+		if (channel_bitmask & (1<<i)) {
+//			if (desired_number_of_bytes_to_read[i]) {
+//				printf("\n");
+//			}
+			if (number_of_bytes_read_so_far[i] > 0 && number_of_bytes_read_so_far[i] == desired_number_of_bytes_to_read[i]) {
+//				for (unsigned long int j=0; j<((number_of_bytes_read_so_far[i])>>2); j++) {
+				for (unsigned long int j=0; j<NUMBER_OF_PACKETS_IN_A_QUARTER_EVENT; j++) {
+					copy_packet(word_buffer[i] + word_position_of_first_header[i] + j * NUMBER_OF_WORDS_IN_A_PACKET);
+					char temp[256];
+					sprintf(temp, "\nevent[%ld] fiber_ch[%d] packet[%3ld]: ", event_number, i, j);
+					event_fiber_packet_string = temp;
+					analyze_packet(j, i);
+				}
+				if (number_of_errors_for_this_quarter_event[i]) {
+					printf(" %ld errors in that quarter event; ", number_of_errors_for_this_quarter_event[i]);
+				}
+//				printf(" Q ");
+			} else {
+				printf("         "); // corresponds to printf("f%d[%06ld]"... in analyze_packet()
 			}
-			if (number_of_errors_for_this_quarter_event[i]) {
-				printf(" %ld errors in that quarter event; ", number_of_errors_for_this_quarter_event[i]);
-			}
-//			printf(" Q ");
-		} else {
-			printf("         "); // corresponds to printf("f%d[%06ld]"... in analyze_packet()
 		}
 	}
 //	printf(" E ");
