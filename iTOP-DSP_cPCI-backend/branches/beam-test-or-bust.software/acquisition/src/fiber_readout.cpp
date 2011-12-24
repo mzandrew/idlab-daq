@@ -568,6 +568,10 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 	close_all_fiber_files();
 }
 
+void set_some_DACs_to(unsigned short int value, unsigned short int channel_bitmask) {
+	send_command_packet_to_some_enabled_channels(0x4bac2dac, value, channel_bitmask); // set all DACs to given argument
+}
+
 void set_all_DACs_to(unsigned short int value) {
 	send_command_packet_to_all_enabled_channels(0x4bac2dac, value); // set all DACs to given argument
 }

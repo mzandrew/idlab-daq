@@ -82,6 +82,7 @@ int open_files_for_output_and_read_N_events(unsigned long int N);
 void open_files_for_all_enabled_fiber_channels(void);
 void close_all_fiber_files(void);
 void setup_filenames_for_fiber(void);
+void set_some_DACs_to(unsigned short int value, unsigned short int channel_bitmask);
 void set_all_DACs_to(unsigned short int value);
 void set_all_DACs_to_built_in_nominal_values(void);
 void setup_feedback_enables_and_goals(unsigned short int enable);

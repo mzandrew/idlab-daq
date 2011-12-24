@@ -10,6 +10,7 @@ void setup_default_DAC_settings(void);
 void send_DAC_setting_command(void);
 void generate_command_packet(unsigned long int command, unsigned long int argument);
 void send_command_packet_to_all_enabled_channels(unsigned long int command, unsigned long int argument);
+void send_command_packet_to_some_enabled_channels(unsigned long int command, unsigned long int argument, unsigned short int channel_bitmask);
 
 #define NUMBER_OF_ROWS_IN_BOARD_STACK (4)
 #define NUMBER_OF_COLUMNS_IN_BOARD_STACK (4)
