@@ -44,12 +44,12 @@ string NextRawFile(ifstream &logfile, unsigned int exp, unsigned int run, unsign
 
 		size_t position_of_match = line_str.find(partial_string);
 		string exp_run_spill_info;
-		cout << "Checking line: " << line_str << endl;
+//		cout << "Checking line: " << line_str << endl;
 		if (position_of_match == string::npos ) {
 			continue;
 		} else {
 			exp_run_spill_info = line_str.substr(position_of_match,50);
-			cout << "Found a match" << endl;
+//			cout << "Found a match" << endl;
 		}
 		char parse_buffer[1024];
 		if (position_of_match != string::npos ) {
@@ -57,7 +57,7 @@ string NextRawFile(ifstream &logfile, unsigned int exp, unsigned int run, unsign
 		}
 		unsigned int this_exp, this_run, this_spill;
 		sscanf(parse_buffer,"exp%2d.run%4d.spill%4d",&this_exp,&this_run,&this_spill);
-		cout << this_exp << "\t" << this_run << "\t" << this_spill << endl;
+//		cout << this_exp << "\t" << this_run << "\t" << this_spill << endl;
 		if (this_exp == exp && this_run == run && this_spill == last_spill + 1) {
 			file_string = line_str.substr(0,position_of_match+43);
 			found_next = true;

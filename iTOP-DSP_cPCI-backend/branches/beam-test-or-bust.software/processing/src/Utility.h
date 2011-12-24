@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iostream>
 
+//#define RAWDATA_PATH "/data/mza/rawdata"
 #define RAWDATA_PATH "/data/beamtest/rawdata"
 #define LOGFILE_NAME "logfile"
 #define DST_PATH "/data/beamtest/dst1"
