@@ -81,7 +81,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 
 	//Try to open the output file and check validity
 	ostringstream temp;
-	temp << DST_PATH << "/exp" << setw(2) << setfill('0') << experiment_to_process << "/exp" << setw(2) << setfill('0') << experiment_to_process << "run" << setw(4) << setfill('0') << run_to_process << ".root";
+	temp << DST_PATH << "/exp" << setw(2) << setfill('0') << experiment_to_process << "/e" << setw(2) << setfill('0') << experiment_to_process << "run" << setw(4) << setfill('0') << run_to_process << "m" << fiber << ".root";
 	string str_output_file = temp.str();
 	EventData *test_event = new EventData();
 	E_event = test_event;
@@ -97,6 +97,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 	bool continue_running = true;
 	time_t time_of_last_successful_read = time(NULL);
 	bool configuration_written = false;
+	bool visualization_initialized = false;
 	while(continue_running) {
 		streampos starting_file_pointer = fin.tellg();
 		int this_status = test_event->ReadEvent(fin);
@@ -107,7 +108,10 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 				if (!using_manual_scrod_id) {
 					this_scrod_id = test_event->SCROD_ID;
 				}	
-				CreateVisualizationObjects(fiber); 
+				if (!visualization_initialized) {
+					CreateVisualizationObjects(fiber); 
+					visualization_initialized = true;
+				}
 			}
 			time_of_last_successful_read = time(NULL);
 			nevents++;
@@ -184,7 +188,7 @@ void CreateVisualizationObjects(unsigned int fiber) {
 	}
 
 	char canvas_name[1024];
-	sprintf(canvas_name,"Fiber %02i (SCROD %02i) - Temperature/Feedback",this_scrod_id);
+	sprintf(canvas_name,"Fiber %02i (SCROD %02i) - Temperature/Feedback",fiber,this_scrod_id);
 		
 	Float_t small = 1e-5;
 	C_Temperature_and_Feedback = new TCanvas("C_Temperature_and_Feedback",canvas_name,640,1024);
