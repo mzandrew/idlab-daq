@@ -6,6 +6,7 @@
 #include "TCanvas.h"
 #include "TTree.h"
 #include "TGraph.h"
+#include "TLine.h"
 #include "TMultiGraph.h"
 #include "TProfile.h"
 #include "TStyle.h"
@@ -18,6 +19,8 @@
 #define TEMPERATURE_SCALE_FACTOR (0.0625)
 #define DAC_SCALE_FACTOR (6.105e-4)  // 2.5 V / 4095 counts (in V)
 #define WILK_SCALE_FACTOR (0.32768) // (2^12 * 80) / 1e6 (in MHz)
+
+#define TEMPERATURE_LIMIT (90.0)
 
 TGraph *G_Temperature;
 TGraph *G_Vdly[4][4];
@@ -41,6 +44,7 @@ TCanvas *C_Temperature_and_Feedback;
 TCanvas *C_EventRate;
 TCanvas *C_Scalers;
 TCanvas *C_ScalersVersusThreshold;
+TLine *TempLimitLine;
 
 int prerun_checks(unsigned int, unsigned int, unsigned int, std::string, bool using_manual_scrod_id = false, unsigned short int manual_scrod_id = 0);
 int this_scrod_id = 0;
