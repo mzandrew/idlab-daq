@@ -57,7 +57,7 @@ int main(void) {
 			end_of_spill = true;
 		}
 		if (start_of_spill) {
-			cout << "start of spill (red sky in morning; sailor take warning)" << endl;
+//			cout << "start of spill (red sky in morning; sailor take warning)" << endl;
 			increment_spill_number();
 			write_status_file();
 			generate_new_base_filename();
@@ -66,16 +66,18 @@ int main(void) {
 				split_CAMAC_file_to_prepare_for_next_spill();
 			}
 		} else if (end_of_spill) {
-			cout << "end of spill (red sky at night; sailor's delight)" << endl;
+//			cout << "end of spill (red sky at night; sailor's delight)" << endl;
 		} else if (spill_is_now_active) {
-			cout << "meat of spill (a mighty wind be blowin')" << endl;
+//			cout << "meat of spill (a mighty wind be blowin')" << endl;
 			readout_an_event();
 			read_data_from_CAMAC_and_write_to_CAMAC_file();
 //			CAMAC_read_3377s();
 			printf("\n");
+//			usleep(250000);
 		} else {
-			cout << "no protons (we are in irons)" << endl;
+//			cout << "no protons (we are in irons)" << endl;
 			usleep(50);
+//			usleep(250000);
 		}
 		if (first_time) {
 			first_time = false;
