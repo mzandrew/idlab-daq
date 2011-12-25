@@ -162,7 +162,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 						logfile_in.clear();
 						logfile_in.seekg(logfile_pointer);
 						continue_running = true;
-						try_to_open_new_file = false;
+						try_to_open_new_file = true;
 					}
 				}
 			}
