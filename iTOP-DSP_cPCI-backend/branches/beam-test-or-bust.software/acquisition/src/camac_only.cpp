@@ -13,6 +13,8 @@ int main(void) {
 	unsigned long int total_number_of_quarter_events_to_read_per_fiber_channel = 100;
 
 	parse_config_file(".config");
+	read_status_file();
+	spill_number = 1;
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
 	init_camac("CAMAC_config.txt");
