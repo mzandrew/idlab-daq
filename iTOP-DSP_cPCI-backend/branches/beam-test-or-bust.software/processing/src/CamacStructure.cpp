@@ -71,8 +71,8 @@ TFile* CamacData::OpenROOTFile(const char *root_filename) {
 	camdata->Branch("adc005",&camac_data[31],"adc005/i");  
 	camdata->Branch("qtm2",&camac_data[32],"qtm2/i");  
 	camdata->Branch("qcp",&camac_data[33],"qcp/i");  
-	camdata->Branch("qv1",&camac_data[34],"qv1/i");  
-	camdata->Branch("qv2",&camac_data[35],"qv2/i");  
+	camdata->Branch("adc008",&camac_data[34],"adc008/i");  
+	camdata->Branch("adc009",&camac_data[35],"adc009/i");  
 	camdata->Branch("adc010",&camac_data[36],"adc010/i");  
 	camdata->Branch("adc011",&camac_data[37],"adc011/i");  
  
@@ -86,8 +86,8 @@ TFile* CamacData::OpenROOTFile(const char *root_filename) {
 	camdata->Branch("adc107",&camac_data[45],"adc107/i");  
 	camdata->Branch("adc108",&camac_data[46],"adc108/i");  
 	camdata->Branch("adc109",&camac_data[47],"adc109/i");  
-	camdata->Branch("adc110",&camac_data[48],"adc110/i");  
-	camdata->Branch("adc111",&camac_data[49],"adc111/i");  
+	camdata->Branch("qv1",&camac_data[48],"qv1/i");  
+	camdata->Branch("qv2",&camac_data[49],"qv2/i");  
 	
 	camdata->Branch("stg1",&camac_data[50],"stg1/i");
 	camdata->Branch("stg2",&camac_data[51],"stg2/i");
