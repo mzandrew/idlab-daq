@@ -327,8 +327,8 @@ void UpdateTriggerStream() {
 					int flattened_channel = (col*32 + row*8 + ch);
 					if (E_event->ASIC_TriggerStream[col][row][ch][bit]) {
 						//cout << "Found a triggered channel in: " << col << "\t" << row << "\t" << ch << "\t" << bit << endl;
-						cout << "Found a triggered channel, filling: " << flattened_channel << "\t" << bit << endl;
-						H_TriggerStreamVersusChannel->Fill(flattened_channel,bit);
+//						cout << "Found a triggered channel, filling: " << flattened_channel << "\t" << bit << endl;
+						H_TriggerStreamVersusChannel->Fill( (float) flattened_channel, (float) bit );
 					}
 				}
 			}
@@ -446,7 +446,7 @@ void RefreshDisplays() {
 	P_Scalers->Draw();
 	C_Scalers->cd(2);
 //	P_ScalersVersusThreshold->Draw("cont1");
-	H_TriggerStreamVersusChannel->Draw("colz");
+	H_TriggerStreamVersusChannel->Draw("cont1");
 	C_Scalers->Modified();
 	C_Scalers->Update();
 //	C_ScalersVersusThreshold->Modified();
