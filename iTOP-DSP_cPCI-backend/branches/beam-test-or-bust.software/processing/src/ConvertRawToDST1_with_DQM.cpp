@@ -326,7 +326,8 @@ void UpdateTriggerStream() {
 				for (int bit = 0; bit < 16; ++bit) {
 					int flattened_channel = (col*32 + row*8 + ch);
 					if (E_event->ASIC_TriggerStream[col][row][ch][bit]) {
-						cout << "Found a triggered channel in: " << col << "\t" << row << "\t" << ch << "\t" << bit << endl;
+						//cout << "Found a triggered channel in: " << col << "\t" << row << "\t" << ch << "\t" << bit << endl;
+						cout << "Found a triggered channel, filling: " << flattened_channel << "\t" << bit << endl;
 						H_TriggerStreamVersusChannel->Fill(flattened_channel,bit);
 					}
 				}
