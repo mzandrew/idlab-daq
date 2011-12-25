@@ -226,10 +226,10 @@ void CAMAC_initialize_3377s(void) {
 		CAMAC_read(crates[0].hnd,slot[i],0,30,0,&q,&x); // set program mode to common stop and resets the Xilinx gate array
 	}
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
-		while (1) {
+//		while (1) {
 			CAMAC_read(crates[0].hnd,slot[i],0,13,0,&q,&x); // done programming flag (loop until q-1)
-			if (!q) { break; }
-		}
+//			if (!q) { break; }
+//		}
 //		while (1) {
 //			// supposed to test 25 here before 13
 //			CAMAC_read(crates[0].hnd,slot[i],0,12,0,&q,&x); // test if Xilinx ready for data
@@ -248,29 +248,28 @@ void CAMAC_initialize_3377s(void) {
 }
 
 void CAMAC_read_3377s(void) {
-        static unsigned int Event_Header = 0x87654321;
+	static unsigned int Event_Header = 0x87654321;
 	long data;
 	char buffer[10000];
 	unsigned int buffer_size=0;
 	int q=0, x=0;
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
-	  for(int j=0; j<100; j++){
-	    CAMAC_read(crates[0].hnd,slot[i],2,27,0,&q,&x); // test readiness
-	    if(q){
-	      while (1) {
-		CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
-		//cout << "Read: " << hex << data << " " << q << " " << x << endl;
-		buffer[buffer_size]=(char)(data&0xFFFF);
-		buffer_size++;
-		if (!q) { break; }
-	      }
-	      break;
-	    }
-	    usleep(100);
-	  }
-	  CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
+		for(int j=0; j<100; j++){
+			CAMAC_read(crates[0].hnd,slot[i],2,27,0,&q,&x); // test readiness
+			if(q){
+				while (1) {
+					CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
+					//cout << "Read: " << hex << data << " " << q << " " << x << endl;
+					buffer[buffer_size]=(char)(data&0xFFFF);
+					buffer_size++;
+					if (!q) { break; }
+				}
+			break;
+			}
+			usleep(100);
+		}
+			CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
 	}
-
 	//write to file
 	write(CAMAC3377_fd, (char *) &Event_Header, sizeof(unsigned int));
 	write(CAMAC3377_fd, (char *) &event_number, sizeof(unsigned int));
@@ -278,3 +277,4 @@ void CAMAC_read_3377s(void) {
 	write(CAMAC3377_fd, buffer, buffer_size);
 	//cout<<"3377: buffer_size="<<buffer_size<<endl;
 }
+
