@@ -22,6 +22,9 @@ void OpenLogFile(std::ifstream &logfile, unsigned int exp);
 //Function to find the next filename for the run of interest
 std::string NextRawFile(std::ifstream &logfile, unsigned int exp, unsigned int this_run, unsigned int &last_spill);
 
+//Function to check if next run or experiment is available
+bool NextRunStarted(std::ifstream &logfile, unsigned int exp, unsigned int this_run);
+
 //Generic program that searches for "spillXXXX" in the filename
 //and increments the number by one.  Mainly used to keep processing
 //more files without running a command for each one.
