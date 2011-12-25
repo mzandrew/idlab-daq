@@ -28,9 +28,10 @@ int main(void) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 //		exit(7);
 	}
+	CAMAC_initialize_3377s();
 //	if (CAMAC_initialized) {
-//		CAMAC_initialize_3377s();
 		open_CAMAC_file();
+		open_CAMAC3377_file();
 //	}
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
@@ -66,6 +67,7 @@ int main(void) {
 			if (!first_time) {
 				split_fiber_file_to_prepare_for_next_spill();
 				split_CAMAC_file_to_prepare_for_next_spill();
+				split_CAMAC3377_file_to_prepare_for_next_spill();
 			}
 		} else if (end_of_spill) {
 //			cout << "end of spill (red sky at night; sailor's delight)" << endl;
@@ -73,9 +75,8 @@ int main(void) {
 //			cout << "meat of spill (a mighty wind be blowin')" << endl;
 			readout_an_event();
 			read_data_from_CAMAC_and_write_to_CAMAC_file();
-			check_and_synchronize_event_numbers();
-			write_status_file();
 //			CAMAC_read_3377s();
+			write_status_file();
 			printf("\n");
 //			usleep(250000);
 		} else {
