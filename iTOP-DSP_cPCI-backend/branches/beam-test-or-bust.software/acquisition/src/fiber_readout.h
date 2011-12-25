@@ -56,6 +56,7 @@ extern unsigned long int total_number_of_readout_events;
 extern string filename[NUMBER_OF_SCRODS_TO_READOUT];
 extern bool files_are_open;
 extern bool should_soft_trigger;
+extern unsigned long int number_of_readout_events_for_this_spill;
 
 #define NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME (100256)
 void readout_all_pending_data(void);
@@ -76,7 +77,7 @@ void set_start_and_end_windows(unsigned long int start_window, unsigned long int
 void set_number_of_windows_to_look_back(unsigned long int look_back);
 void global_reset(void);
 void clear_scaler_counters(void);
-void readout_an_event(void);
+int readout_an_event(void);
 void readout_N_events(unsigned long int N);
 int open_files_for_output_and_read_N_events(unsigned long int N);
 void open_files_for_all_enabled_fiber_channels(void);

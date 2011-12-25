@@ -3,13 +3,12 @@
 #include "pci.h"
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
-#include "read_CAMAC.h" // this is for all non-3377 CAMAC stuff
+#include "read_CAMAC.h"
 #include <stdio.h>
 #include <iostream>
 #include "parse_config_file.h"
 #include "acquisition.h"
 #include "status_file.h"
-//#include "camac.h" // this is the 3377-specific readout
 
 int main(void) {
 	// setup:
@@ -28,11 +27,11 @@ int main(void) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 //		exit(7);
 	}
-	CAMAC_initialize_3377s();
-//	if (CAMAC_initialized) {
+	if (CAMAC_initialized) {
 		open_CAMAC_file();
+		CAMAC_initialize_3377s();
 		open_CAMAC3377_file();
-//	}
+	}
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
 	unsigned short int ending_window = 63;
@@ -61,51 +60,40 @@ int main(void) {
 		}
 		if (start_of_spill) {
 //			cout << "start of spill (red sky in morning; sailor take warning)" << endl;
+			if (!first_time) {
+				split_fiber_file_to_prepare_for_next_spill();
+				if (CAMAC_initialized) {
+					split_CAMAC_file_to_prepare_for_next_spill();
+					split_CAMAC3377_file_to_prepare_for_next_spill();
+				}
+			}
+		} else if (end_of_spill) {
+			cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
 			increment_spill_number();
 			write_status_file();
 			generate_new_base_filename();
-			if (!first_time) {
-				split_fiber_file_to_prepare_for_next_spill();
-				split_CAMAC_file_to_prepare_for_next_spill();
-				split_CAMAC3377_file_to_prepare_for_next_spill();
+			if (first_time) {
+				first_time = false;
 			}
-		} else if (end_of_spill) {
 //			cout << "end of spill (red sky at night; sailor's delight)" << endl;
 		} else if (spill_is_now_active) {
 //			cout << "meat of spill (a mighty wind be blowin')" << endl;
-			readout_an_event();
-			read_data_from_CAMAC_and_write_to_CAMAC_file();
-//			CAMAC_read_3377s();
-			write_status_file();
-			printf("\n");
+			if (!readout_an_event()) {
+				if (CAMAC_initialized) {
+					read_data_from_CAMAC_and_write_to_CAMAC_file();
+					CAMAC_read_3377s();
+				}
+				write_status_file();
+				printf("\n");
+			}
 //			usleep(250000);
 		} else {
 //			cout << "no protons (we are in irons)" << endl;
 			usleep(50);
 //			usleep(250000);
 		}
-		if (first_time) {
-			first_time = false;
-		}
 		spill_was_just_active = spill_is_now_active;
 	}
-/*
-		wait_for_start_of_spill();
-		while (spill_is_active()) {
-			readout_an_event();
-			read_data_from_CAMAC_and_write_to_CAMAC_file();
-//			CAMAC_read_3377s();
-			printf("\n");
-		}
-		increment_spill_number();
-		write_status_file();
-		generate_new_base_filename();
-		split_fiber_file_to_prepare_for_next_spill();
-		split_CAMAC_file_to_prepare_for_next_spill();
-		usleep(250000);
-		sync();
-	}
-*/
 
 	// cleanup:
 	close_all_fiber_files();

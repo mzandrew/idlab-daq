@@ -12,6 +12,7 @@ using namespace std;
 
 struct CAMAC_crate crates[10];
 int crate_count = 0;
+bool CAMAC_initialized = false;
 
 int CAMAC_fd = -7; // negative to avoid problem closing an unopened file
 string CAMAC_filename;
@@ -130,7 +131,7 @@ int read_camac(void* target_buffer) {
 void open_CAMAC_file(void) {
 	if (CAMAC_fd >= 0) {
 		//fprintf(stdout, "closing CAMAC file \"%s\"\n", old_CAMAC_filename.c_str());
-		fprintf(stdout, "\"%s\" closed\n", old_CAMAC_filename.c_str());
+//		fprintf(stdout, "\"%s\" closed\n", old_CAMAC_filename.c_str());
 		close(CAMAC_fd);
 	}
 	CAMAC_filename = base_filename;
@@ -187,8 +188,8 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 
 //####### for 3377
 
-#define NUMBER_OF_3377s_TO_READOUT (3)
-unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19, 20 };
+#define NUMBER_OF_3377s_TO_READOUT (2)
+unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19 };
 
 int CAMAC3377_fd = -7; // negative to avoid problem closing an unopened file
 string CAMAC3377_filename;
@@ -197,12 +198,12 @@ string old_CAMAC3377_filename;
 void open_CAMAC3377_file(void) {
 	if (CAMAC3377_fd >= 0) {
 		//fprintf(stdout, "closing CAMAC3377 file \"%s\"\n", old_CAMAC3377_filename.c_str());
-		fprintf(stdout, "\"%s\" closed\n", old_CAMAC3377_filename.c_str());
+//		fprintf(stdout, "\"%s\" closed\n", old_CAMAC3377_filename.c_str());
 		close(CAMAC_fd);
 	}
 	CAMAC3377_filename = base_filename;
 	CAMAC3377_filename += ".3377";
-	CAMAC3377_fd = open(CAMAC_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	CAMAC3377_fd = open(CAMAC3377_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (CAMAC3377_fd < 0) {
 		fprintf(stderr, "ERROR: failed to create CAMAC3377 file \"%s\"\n", CAMAC3377_filename.c_str());
 	} else {
@@ -264,17 +265,18 @@ void CAMAC_read_3377s(void) {
 					buffer_size++;
 					if (!q) { break; }
 				}
-			break;
+				break;
 			}
 			usleep(100);
 		}
-			CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
+		cout<<"3377: buffer_size="<<buffer_size<<endl;
+		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
 	}
 	//write to file
 	write(CAMAC3377_fd, (char *) &Event_Header, sizeof(unsigned int));
 	write(CAMAC3377_fd, (char *) &event_number, sizeof(unsigned int));
 	write(CAMAC3377_fd, (char *) &buffer_size, sizeof(unsigned int));
 	write(CAMAC3377_fd, buffer, buffer_size);
-	//cout<<"3377: buffer_size="<<buffer_size<<endl;
+	cout<<"3377: buffer_size="<<buffer_size<<endl;
 }
 

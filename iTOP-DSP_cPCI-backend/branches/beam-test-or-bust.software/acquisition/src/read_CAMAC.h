@@ -35,6 +35,7 @@ void open_CAMAC_file(void);
 void split_CAMAC_file_to_prepare_for_next_spill(void);
 
 extern int CAMAC_fd;
+extern bool CAMAC_initialized;
 
 void open_CAMAC3377_file(void);
 void split_CAMAC3377_file_to_prepare_for_next_spill(void);
