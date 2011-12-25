@@ -83,6 +83,11 @@ bool NextRunStarted(std::ifstream &logfile, unsigned int exp, unsigned int this_
 	char line_buffer[4096];
 	logfile.getline(line_buffer,4096,'\n');
 	string line_str = line_buffer;
+	while(line_str.length() == 0) {
+		logfile.getline(line_buffer,4096,'\n');
+		line_str = line_buffer;
+	}
+
 	cout << "Next line of logfile is: " << line_str << endl;
 	size_t position_of_match = line_str.find(partial_string);
 	if (position_of_match != string::npos ) {
