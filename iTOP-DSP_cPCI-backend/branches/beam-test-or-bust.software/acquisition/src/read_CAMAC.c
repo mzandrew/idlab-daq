@@ -250,6 +250,7 @@ void CAMAC_initialize_3377s(void) {
 
 void CAMAC_read_3377s(void) {
 	static unsigned int Event_Header = 0x87654321;
+	static unsigned int Event_Footer = 0x11223344;
 	long data;
 	char buffer[10000];
 	unsigned int buffer_size=0;
@@ -277,6 +278,7 @@ void CAMAC_read_3377s(void) {
 	write(CAMAC3377_fd, (char *) &event_number, sizeof(unsigned int));
 	write(CAMAC3377_fd, (char *) &buffer_size, sizeof(unsigned int));
 	write(CAMAC3377_fd, buffer, buffer_size);
+	write(CAMAC3377_fd, (char *) &Event_Footer, sizeof(unsigned int));
 	//cout<<"3377: buffer_size="<<buffer_size<<endl;
 }
 
