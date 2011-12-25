@@ -172,7 +172,9 @@ void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int
 	G_Temperature->SetName("G_Temperature");
 #endif
 	P_Scalers = new TProfile("P_Scalers","Scalers by channel",128,-0.5,127.5);
-	P_ScalersVersusThreshold = new TProfile2D("P_ScalersVersusThreshold","Scalers vs. threshold",4095,0,2.5,128,-0.5,127.5);
+	P_Scalers->GetXaxis()->SetTitle("Channel (COL*16+ROW*4+CH)");
+	P_Scalers->GetYaxis()->SetTitle("Scaler (counts)");
+	P_ScalersVersusThreshold = new TProfile2D("P_ScalersVersusThreshold","Scalers vs. threshold",128,-0.5,127.5,4095,0,2.5);
 	P_ScalersVersusThreshold->GetXaxis()->SetTitle("Threshold (V)");
 	P_ScalersVersusThreshold->GetYaxis()->SetTitle("Channel (COL*16+ROW*4+CH)");
 	for (int col = 0; col < 4; ++col) {
@@ -287,7 +289,7 @@ void UpdateScalers() {
 				float scaler_value = E_event->ASIC_Scaler[col][row][ch];
 
 				P_Scalers->Fill(flattened_channel,scaler_value);
-				P_ScalersVersusThreshold->Fill(this_threshold,flattened_channel,scaler_value);
+				P_ScalersVersusThreshold->Fill(flattened_channel,this_threshold,scaler_value);
 			}
 		}
 	}	
@@ -402,7 +404,7 @@ void RefreshDisplays() {
 	C_Scalers->cd(1);
 	P_Scalers->Draw();
 	C_Scalers->cd(2);
-	P_ScalersVersusThreshold->Draw("contz");
+	P_ScalersVersusThreshold->Draw();
 	C_Scalers->Modified();
 	C_Scalers->Update();
 //	C_ScalersVersusThreshold->Modified();
