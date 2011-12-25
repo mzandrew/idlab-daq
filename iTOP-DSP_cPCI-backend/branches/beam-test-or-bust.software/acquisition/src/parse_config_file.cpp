@@ -54,6 +54,12 @@ int parse_config_file(string filename) {
 		} else if (!strncmp(key.c_str(), "location_of_status_and_log_files", MAX_STRING_LENGTH)) {
 			location_of_status_and_log_files = value;
 //		} else if (!strncmp(key.c_str(), "", MAX_STRING_LENGTH)) {
+		} else if (!strncmp(key.c_str(), "threshold_scan_low_limit", MAX_STRING_LENGTH)) {
+			threshold_scan_low_limit = atoi(value.c_str());
+		} else if (!strncmp(key.c_str(), "threshold_scan_high_limit", MAX_STRING_LENGTH)) {
+			threshold_scan_high_limit = atoi(value.c_str());
+		} else if (!strncmp(key.c_str(), "threshold_scan_step_size", MAX_STRING_LENGTH)) {
+			threshold_scan_step_size = atoi(value.c_str());
 		} else {
 			cout << "unhandled key/value pair in config file: " << key.c_str() << " = " << value.c_str() << endl;
 		}

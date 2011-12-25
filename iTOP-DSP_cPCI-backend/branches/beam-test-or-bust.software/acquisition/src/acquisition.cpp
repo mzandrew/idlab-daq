@@ -18,6 +18,9 @@ unsigned short int spill_number = 9;
 unsigned long int event_number = 10;
 string current_date_string;
 string base_filename;
+unsigned short int threshold_scan_low_limit;
+unsigned short int threshold_scan_high_limit;
+unsigned short int threshold_scan_step_size;
 
 void set_current_date_string(void) {
 	char temp[256];
