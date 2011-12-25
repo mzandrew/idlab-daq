@@ -22,7 +22,6 @@ int main(void) {
 	cout << "press a key after all fiber links are up (steady green)" << endl;
 	getchar();
 	readout_all_pending_data();
-	clear_scaler_counters();
 	send_front_end_trigger_veto_clear();
 	reset_trigger_flip_flop();
 	set_all_DACs_to_built_in_nominal_values();
@@ -41,10 +40,11 @@ int main(void) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 		exit(7);
 	}
-//	if (CAMAC_initialized) {
-//		CAMAC_initialize_3377s();
+	if (CAMAC_initialized) {
+		CAMAC_initialize_3377s();
 		open_CAMAC_file();
-//	}
+		open_CAMAC3377_file();
+	}
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
 	unsigned short int ending_window = 63;
@@ -55,35 +55,29 @@ int main(void) {
 
 	unsigned int threshold = threshold_scan_low_limit;
 	send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
-	usleep(1000000);
+	usleep(500000);
+	clear_scaler_counters();
+	usleep(500000);
+	set_event_number(event_number);
 
 	// actual running:
 	while (1) {
 //		wait_for_start_of_spill();
 //		while (spill_is_active()) {
 			if (!spill_is_active()) {
-				readout_an_event();
-				read_data_from_CAMAC_and_write_to_CAMAC_file();
-//			CAMAC_read_3377s();
-				printf("\n");
-			
-				clear_scaler_counters();
+				readout_an_event(true);
 				send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
 				threshold = (threshold + threshold_scan_step_size);
 				if (threshold > threshold_scan_high_limit) {
 					threshold = threshold_scan_low_limit;
 				}
+				read_data_from_CAMAC_and_write_to_CAMAC_file();
+				CAMAC_read_3377s();
+				printf("\n");
+				clear_scaler_counters();
 			} else {
 				clear_scaler_counters();
 			}
-
-//		}
-//		increment_spill_number();
-//		generate_new_base_filename();
-//		split_fiber_file_to_prepare_for_next_spill();
-//		split_CAMAC_file_to_prepare_for_next_spill();
-//		usleep(250000);
-//		sync();
 		usleep(1000000);
 	}
 

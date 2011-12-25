@@ -269,7 +269,7 @@ void CAMAC_read_3377s(void) {
 			}
 			usleep(100);
 		}
-		cout<<"3377: buffer_size="<<buffer_size<<endl;
+		//cout<<"3377: buffer_size="<<buffer_size<<endl;
 		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
 	}
 	//write to file
@@ -277,6 +277,6 @@ void CAMAC_read_3377s(void) {
 	write(CAMAC3377_fd, (char *) &event_number, sizeof(unsigned int));
 	write(CAMAC3377_fd, (char *) &buffer_size, sizeof(unsigned int));
 	write(CAMAC3377_fd, buffer, buffer_size);
-	cout<<"3377: buffer_size="<<buffer_size<<endl;
+	//cout<<"3377: buffer_size="<<buffer_size<<endl;
 }
 

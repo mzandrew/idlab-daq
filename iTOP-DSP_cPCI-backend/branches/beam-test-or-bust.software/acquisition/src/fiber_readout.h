@@ -77,7 +77,7 @@ void set_start_and_end_windows(unsigned long int start_window, unsigned long int
 void set_number_of_windows_to_look_back(unsigned long int look_back);
 void global_reset(void);
 void clear_scaler_counters(void);
-int readout_an_event(void);
+int readout_an_event(bool should_not_return_until_at_least_some_data_comes_through);
 void readout_N_events(unsigned long int N);
 int open_files_for_output_and_read_N_events(unsigned long int N);
 void open_files_for_all_enabled_fiber_channels(void);

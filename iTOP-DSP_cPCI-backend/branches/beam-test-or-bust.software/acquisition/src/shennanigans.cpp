@@ -42,7 +42,7 @@ int main(void) {
 	while (1) {
 		wait_for_start_of_spill();
 		while (spill_is_active()) {
-			readout_an_event();
+			readout_an_event(true);
 			read_data_from_CAMAC_and_write_to_CAMAC_file();
 //			CAMAC_read_3377s();
 			printf("\n");
