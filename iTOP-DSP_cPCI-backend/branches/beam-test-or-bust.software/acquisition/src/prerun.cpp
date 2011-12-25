@@ -53,14 +53,27 @@ int main(void) {
 
 	should_soft_trigger = true;
 
+	unsigned int threshold = 1900;
+	send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
+	usleep(1000000);
+
 	// actual running:
 	while (1) {
 //		wait_for_start_of_spill();
 //		while (spill_is_active()) {
-			readout_an_event();
-			read_data_from_CAMAC_and_write_to_CAMAC_file();
+			if (!spill_is_active()) {
+				readout_an_event();
+				read_data_from_CAMAC_and_write_to_CAMAC_file();
 //			CAMAC_read_3377s();
-			printf("\n");
+				printf("\n");
+			
+				clear_scaler_counters();
+				send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
+				threshold = (threshold + 10) % 2100;
+			} else {
+				clear_scaler_counters();
+			}
+
 //		}
 //		increment_spill_number();
 //		generate_new_base_filename();
