@@ -6,6 +6,7 @@
 #include "command_packet_builder.h"
 #include "read_CAMAC.h"
 #include <stdio.h>
+#include <iostream>
 #include "parse_config_file.h"
 #include "acquisition.h"
 #include "status_file.h"
