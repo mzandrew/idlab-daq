@@ -25,7 +25,7 @@ int main(void) {
 	setup_filenames_for_fiber();
 	if (init_camac("CAMAC_config.txt")) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
-//		exit(7);
+		exit(7);
 	}
 	if (CAMAC_initialized) {
 		open_CAMAC_file();
