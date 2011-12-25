@@ -80,15 +80,15 @@ int main(void) {
 			if (first_time) {
 				first_time = false;
 			}
+			send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
+			threshold = (threshold + threshold_scan_step_size);
+			if (threshold > threshold_scan_high_limit) {
+				threshold = threshold_scan_low_limit;
+			}
 //			cout << "end of spill (red sky at night; sailor's delight)" << endl;
 		} else if (spill_is_now_active) {
 //			cout << "meat of spill (a mighty wind be blowin')" << endl;
 			if (!readout_an_event(false)) {
-				send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
-				threshold = (threshold + threshold_scan_step_size);
-				if (threshold > threshold_scan_high_limit) {
-					threshold = threshold_scan_low_limit;
-				}
 				if (CAMAC_initialized) {
 					read_data_from_CAMAC_and_write_to_CAMAC_file();
 					CAMAC_read_3377s();
