@@ -98,9 +98,6 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 		error_string[i] = "";
 		total_number_of_errors += number_of_errors_for_this_quarter_event[i];
 		number_of_errors_for_this_quarter_event[i] = 0;
-				//pci.selectChannel(i);
-				//char temp[4];
-				//number_of_bytes_actually_read = pci.readData(temp, 4);
 	}
 	while (
 		// bug/future:  this is effectively hardcoding NUMBER_OF_SCRODS_TO_READOUT to 4 here:
@@ -154,7 +151,13 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 				}
 			}
 		}
-		if (should_not_return_until_at_least_some_data_comes_through && number_of_bytes_read_from_any_channels_for_all_loop_iterations == 0) {
+		//printf(".");
+		if (number_of_bytes_read_from_any_channels_for_all_loop_iterations == 0) {
+			if (should_not_return_until_at_least_some_data_comes_through) {
+			} else {
+//				printf("o");
+				return -1;
+			}
 		} else if (number_of_bytes_read_from_any_channels_for_this_loop_iteration == 0) {
 			dry_loop_iterations++;
 			if (dry_loop_iterations > maximum_number_of_allowed_dry_loop_iterations) {
@@ -163,9 +166,9 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 					unsigned long int a = desired_number_of_bytes_to_read[i] - number_of_bytes_read_so_far[i];
 					if (a == 560) {
 						histogram_of_incomplete_events_560++;
-						if (should_not_return_until_at_least_some_data_comes_through) {
-							return -1;
-						}
+//						if (should_not_return_until_at_least_some_data_comes_through) {
+//							return -1;
+//						}
 					} else if (a == desired_number_of_bytes_to_read[i]) {
 					} else if (a > 0) {
 						histogram_of_incomplete_events_other++;
@@ -467,17 +470,19 @@ void clear_scaler_counters(void) {
 	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
 }
 
-void readout_an_event(void) {
-	event_number++;
-	total_number_of_readout_events++;
-	number_of_readout_events_for_this_spill++;
+int readout_an_event(void) {
 	if (should_soft_trigger) {
 		send_soft_trigger_request_command_packet();
 	}
-//	read_quarter_events_from_all_enabled_channels(channel_bitmask, false); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
-	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
-	if (return_value==0) {
+	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, false); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+//	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+	if (return_value == 0) {
+		event_number++;
+		total_number_of_readout_events++;
+		number_of_readout_events_for_this_spill++;
 		check_and_synchronize_event_numbers();
+	} else {
+		return return_value;
 	}
 	send_front_end_trigger_veto_clear();
 	if (!should_soft_trigger) {
@@ -624,7 +629,6 @@ void split_fiber_file_to_prepare_for_next_spill(void) {
 //	printf("\n");
 	if (logfile_open) {
 		logfile << number_of_readout_events_for_this_spill << endl << flush;
-		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
 		
 	}
 	number_of_readout_events_for_this_spill = 0;
@@ -664,7 +668,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 //			if (stdout_ch == i) continue;
 			if (fd[i] >= 0) {
 				//fprintf(stdout, "closing file \"%s\"\n", old_fiber_filename[i].c_str());
-				fprintf(stdout, "\"%s\" closed\n", old_fiber_filename[i].c_str());
+//				fprintf(stdout, "\"%s\" closed\n", old_fiber_filename[i].c_str());
 				close(fd[i]);
 			}
 			//fprintf(stdout, "attempting to open file \"%s\"...\n", fiber_filename[i].c_str());
