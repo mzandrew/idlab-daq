@@ -88,6 +88,7 @@ void set_all_DACs_to(unsigned short int value);
 void set_all_DACs_to_built_in_nominal_values(void);
 void setup_feedback_enables_and_goals(unsigned short int enable);
 void wait_for_start_of_spill(void);
+void wait_for_spill_to_finish(void);
 bool spill_is_active(void);
 void split_fiber_file_to_prepare_for_next_spill(void);
 string experiment_number_string(void);

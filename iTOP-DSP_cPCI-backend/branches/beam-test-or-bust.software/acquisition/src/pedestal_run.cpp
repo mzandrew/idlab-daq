@@ -53,6 +53,7 @@ int main(void) {
 		fprintf(stdout, "obtaining pedestals for windows [%03d,%03d]...\n", a, b);
 		usleep(50000); // wait for start and end window command to be sent and interpreted
 		for (int j=0; j<total_number_of_quarter_events_to_read_per_fiber_channel; j++) {
+			wait_for_spill_to_finish();
 			readout_an_event(true);
 			printf("\n");
 		}
