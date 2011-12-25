@@ -188,9 +188,9 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 
 //####### for 3377
 
-#define NUMBER_OF_3377s_TO_READOUT (1)
-//unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19 };
-unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 22 };
+#define NUMBER_OF_3377s_TO_READOUT (2)
+unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19 };
+//unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18 };
 //#define LAM_MASK ((1<<slot[0]) | (1<<slot[1]))
 //#define LAM_MASK 0x60000
 
@@ -261,15 +261,16 @@ void CAMAC_read_3377s(void) {
 	unsigned int buffer_size=0;
 	int q=0, x=0;
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
-		cout << "  ";
+//		cout << "  ";
 		for(int j=0; j<100; j++){
 //			CAMAC_read(crates[0].hnd,25,10,0,&lam,&q,&x);
 //			if (lam==LAM_MASK) {
 				CAMAC_read(crates[0].hnd,slot[i],2,27,0,&q,&x); // test readiness
-				if(q){
-					while (1) {
+				if (q) {
+					for (int k=0; k<1000; k++) { 
+//					while (1) {
 						CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
-						cout << " " << hex << data << " q:" << q << " x:" << x;
+//						cout << " " << hex << data << " q:" << q << " x:" << x;
 						buffer[buffer_size]=(unsigned short)(data&0xFFFF);
 						buffer_size++;
 						if (!q) { break; }
@@ -289,6 +290,6 @@ void CAMAC_read_3377s(void) {
 	write(CAMAC3377_fd, buffer, sizeof(unsigned short) * buffer_size);
 	write(CAMAC3377_fd, (char *) &Event_Footer, sizeof(unsigned int));
 	//cout<<"3377: buffer_size="<<buffer_size<<endl;
-	cout << endl;
+//	cout << endl;
 }
 
