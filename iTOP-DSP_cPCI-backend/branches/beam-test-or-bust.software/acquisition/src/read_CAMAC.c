@@ -244,32 +244,38 @@ void CAMAC_initialize_3377s(void) {
 		CAMAC_write(crates[0].hnd,slot[i],3,17,0x0,&q,&x); // write control registers
 		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enable lam
 		CAMAC_read(crates[0].hnd,slot[i],1,26,0,&q,&x); // enable acquisition mode
+		CAMAC_write_LAM_mask(crates[0].hnd,LAM_MASK);
 //		cout << " is complete." << endl;
 	}
 }
 
+#define LAM_MASK 0x80000
+
 void CAMAC_read_3377s(void) {
 	static unsigned int Event_Header = 0x87654321;
 	static unsigned int Event_Footer = 0x11223344;
-	long data;
+	long data, lam;
 	unsigned short buffer[10000];
 	unsigned int buffer_size=0;
 	int q=0, x=0;
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
 		cout << "  ";
 		for(int j=0; j<100; j++){
-			CAMAC_read(crates[0].hnd,slot[i],2,27,0,&q,&x); // test readiness
-			if(q){
-				while (1) {
-					CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
-					cout << " " << hex << data << " q:" << q << " x:" << x;
-					buffer[buffer_size]=(unsigned short)(data&0xFFFF);
-					buffer_size++;
-					if (!q) { break; }
+			CAMAC_read(crates[0].hnd,25,10,0,&lam,&q,&x);
+			if (lam==LAM_MASK) {
+				CAMAC_read(crates[0].hnd,slot[i],2,27,0,&q,&x); // test readiness
+				if(q){
+					while (1) {
+						CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
+						cout << " " << hex << data << " q:" << q << " x:" << x;
+						buffer[buffer_size]=(unsigned short)(data&0xFFFF);
+						buffer_size++;
+						if (!q) { break; }
+					}
+					break;
 				}
-				break;
+				usleep(100);
 			}
-			usleep(100);
 		}
 		//cout<<"3377: buffer_size="<<buffer_size<<endl;
 		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
