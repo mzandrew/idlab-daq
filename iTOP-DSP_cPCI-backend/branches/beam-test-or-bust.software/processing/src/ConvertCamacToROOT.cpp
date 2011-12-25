@@ -147,7 +147,7 @@ int camac_conversion(unsigned int experiment_to_process, unsigned int run_to_pro
 	}
 	//Now close out the ROOT file
 	test_event->CloseROOTFile();
-	cout << "Wrote out " << nevents << " to " << str_output_file.c_str() << endl;
+	cout << "Wrote out " << nevents << " events to " << str_output_file.c_str() << endl;
 
 	//Clean up a bit
 	delete test_event;
