@@ -49,8 +49,8 @@ int main(void) {
 //	should_soft_trigger = true;
 
 	// actual running:
-	unsigned int threshold = threshold_scan_low_limit;
-	send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
+//	unsigned int threshold = threshold_scan_low_limit;
+	send_command_packet_to_all_enabled_channels(0xeeeee01a, 1835);
 	bool spill_was_just_active = false;
 	bool first_time = true;
 	while (1) {
@@ -80,11 +80,11 @@ int main(void) {
 			if (first_time) {
 				first_time = false;
 			}
-			send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
-			threshold = (threshold + threshold_scan_step_size);
-			if (threshold > threshold_scan_high_limit) {
-				threshold = threshold_scan_low_limit;
-			}
+//			send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
+//			threshold = (threshold + threshold_scan_step_size);
+//			if (threshold > threshold_scan_high_limit) {
+//				threshold = threshold_scan_low_limit;
+//			}
 //			cout << "end of spill (red sky at night; sailor's delight)" << endl;
 		} else if (spill_is_now_active) {
 //			cout << "meat of spill (a mighty wind be blowin')" << endl;
