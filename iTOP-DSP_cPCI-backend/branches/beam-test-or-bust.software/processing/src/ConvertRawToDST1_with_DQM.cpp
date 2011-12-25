@@ -155,7 +155,10 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 						continue_running = false;
 						try_to_open_new_file = false;
 					} else {
-						sleep(20);
+						for (int wait = 0; wait < 20; ++wait) {
+							RefreshDisplays();
+							sleep(1);
+						}
 						logfile_in.clear();
 						logfile_in.seekg(logfile_pointer);
 						continue_running = true;
@@ -321,7 +324,7 @@ void UpdateTriggerStream() {
 		for (int row = 0; row < 4; ++row) {
 			for (int ch = 0; ch < 8; ++ch) {
 				for (int bit = 0; bit < 16; ++bit) {
-					float flattened_channel = (float) (col*32 + row*8 + ch);
+					int flattened_channel = (col*32 + row*8 + ch);
 					if (E_event->ASIC_TriggerStream[col][row][ch][bit]) {
 						H_TriggerStreamVersusChannel->Fill(flattened_channel,bit);
 					}
