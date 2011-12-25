@@ -120,7 +120,6 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 			UpdateTemperature();
 			UpdateWilkinsonAndVdly();
 			UpdateSamplingRateAndVadj();
-			UpdateScalers();
 			if (nevents % EVENTS_BETWEEN_UPDATE == 0) {
 				RefreshDisplays();
 			}
@@ -132,19 +131,34 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 		//Checks to see if we've timed out on this file
 		time_t time_now = time(NULL);
 		if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE) {
-			//If we've timed out, close the file
+			//If we've timed out, write the scalers and close the file
+			UpdateScalers();
 			fin.close();
 			fin.clear();
 			//And try to open a new file
-			next_filename = NextRawFile(logfile_in, experiment_to_process, run_to_process, last_spill);
-			next_filename += temp1.str();
-			fin.open(next_filename.c_str());
-			if (!fin) {
-				cout << "Couldn't open next spill file: " << next_filename.c_str() << endl;
-				continue_running = false;
-			} else {
-				continue_running = true;
-				configuration_written = false;
+			bool try_to_open_new_file = true;
+			while (try_to_open_new_file) {
+				streampos logfile_pointer = logfile_in.tellg();
+				next_filename = NextRawFile(logfile_in, experiment_to_process, run_to_process, last_spill);
+				next_filename += temp1.str();
+				fin.open(next_filename.c_str());
+				if (fin) {
+					configuration_written = false;
+					continue_running = true;
+					try_to_open_new_file = false;
+				} else {
+					cout << "Couldn't open next spill file: " << next_filename.c_str() << endl;
+					cout << "Press q to quit or any other key to try again." << endl;
+					char temp_char = getchar();
+					if (temp_char == 'q') {
+						try_to_open_new_file = false;
+						continue_running = false;
+					} else {
+						try_to_open_new_file = true;	
+						logfile_in.clear();
+						logfile_in.seekg(logfile_pointer);
+					}
+				}
 			}
 		}
 		gSystem->ProcessEvents();	
