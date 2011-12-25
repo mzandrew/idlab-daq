@@ -26,6 +26,8 @@ int main(void) {
 	if (init_camac("CAMAC_config.txt")) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 		exit(7);
+	} else {
+		CAMAC_initialized = true;
 	}
 	if (CAMAC_initialized) {
 		open_CAMAC_file();
