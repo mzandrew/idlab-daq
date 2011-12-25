@@ -172,11 +172,11 @@ void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int
 	G_Temperature->SetName("G_Temperature");
 #endif
 	P_Scalers = new TProfile("P_Scalers","Scalers by channel",128,-0.5,127.5);
-	P_Scalers->GetXaxis()->SetTitle("Channel (COL*16+ROW*4+CH)");
+	P_Scalers->GetXaxis()->SetTitle("(COL*16+ROW*4+CH)");
 	P_Scalers->GetYaxis()->SetTitle("Scaler (counts)");
-	P_ScalersVersusThreshold = new TProfile2D("P_ScalersVersusThreshold","Scalers vs. threshold",128,-0.5,127.5,4095,0,2.5);
-	P_ScalersVersusThreshold->GetXaxis()->SetTitle("Threshold (V)");
-	P_ScalersVersusThreshold->GetYaxis()->SetTitle("Channel (COL*16+ROW*4+CH)");
+	P_ScalersVersusThreshold = new TProfile2D("P_ScalersVersusThreshold","Scalers vs. threshold",128,-0.5,127.5,200,0.8,1.6);
+	P_ScalersVersusThreshold->GetYaxis()->SetTitle("Threshold (V)");
+	P_ScalersVersusThreshold->GetXaxis()->SetTitle("Channel (COL*16+ROW*4+CH)");
 	for (int col = 0; col < 4; ++col) {
 		for (int row = 0; row < 4; ++row) {
 			char name_string[1024], title_string[1024];
@@ -235,7 +235,7 @@ void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int
 //	C_EventRate->Divide(1,2);
 
 	sprintf(canvas_name,"Exp %02i Run %04i - Fiber %02i (SCROD %02i) - Scalers",exp, run, fiber,this_scrod_id);
-	C_Scalers = new TCanvas("C_Scalers",canvas_name,640,480);
+	C_Scalers = new TCanvas("C_Scalers",canvas_name,480,640);
 	C_Scalers->Divide(1,2);
 //	C_ScalersVersusThreshold = new TCanvas();
 //	C_ScalersVersusThreshold->Divide(4,4);
@@ -284,10 +284,11 @@ void UpdateScalers() {
 	for (int col = 0; col < 4; ++col) {
 		for (int row = 0; row < 4; ++row) {
 			for (int ch = 0; ch < 8; ++ch) {
+				short unsigned int raw_threshold = E_event->ASIC_TRGthresh[col][row][ch];
 				float this_threshold = DAC_SCALE_FACTOR * (float) E_event->ASIC_TRGthresh[col][row][ch];
-				int flattened_channel = col*16 + row*4 + ch;
+				float flattened_channel = (float) (col*32 + row*8 + ch);
 				float scaler_value = E_event->ASIC_Scaler[col][row][ch];
-
+//				cout << flattened_channel << "\t" << raw_threshold << "\t" << this_threshold << "\t" << scaler_value << endl;
 				P_Scalers->Fill(flattened_channel,scaler_value);
 				P_ScalersVersusThreshold->Fill(flattened_channel,this_threshold,scaler_value);
 			}
@@ -404,7 +405,7 @@ void RefreshDisplays() {
 	C_Scalers->cd(1);
 	P_Scalers->Draw();
 	C_Scalers->cd(2);
-	P_ScalersVersusThreshold->Draw();
+	P_ScalersVersusThreshold->Draw("cont1");
 	C_Scalers->Modified();
 	C_Scalers->Update();
 //	C_ScalersVersusThreshold->Modified();
