@@ -149,6 +149,8 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 					try_to_open_new_file = false;
 				} else {
 					logfile_in.clear();
+					logfile_in.close();
+					OpenLogFile(logfile_in, experiment_to_process);
 					logfile_in.seekg(logfile_pointer);
 					if (NextRunStarted(logfile_in,experiment_to_process,run_to_process)) {
 						cout << "Next run appears to have started... quitting." << endl;
