@@ -673,7 +673,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 				close(fd[i]);
 			}
 			//fprintf(stdout, "attempting to open file \"%s\"...\n", fiber_filename[i].c_str());
-			fprintf(stdout, "\"%s\" open\n", fiber_filename[i].c_str());
+			fprintf(stdout, "\"%s\"\n", fiber_filename[i].c_str());
 			fd[i] = open(fiber_filename[i].c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (fd[i] < 0) {
 				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", fiber_filename[i].c_str());
