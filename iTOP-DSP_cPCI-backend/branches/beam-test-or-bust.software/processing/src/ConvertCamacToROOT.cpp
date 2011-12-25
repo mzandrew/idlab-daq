@@ -39,17 +39,17 @@ int main(int argc, char* argv[]) {
 
 	cout << "Beginning processing of CAMAC data from experiment " << experiment_to_process << " ... " << endl;
 
-	TApplication theApp("App",&argc,argv);
-
-	if (gROOT->IsBatch()) {
-		fprintf(stderr, "%s: cannot run in batch mode\n", argv[0]);
-		return 1;
-	}
-	
+//	TApplication theApp("App",&argc,argv);
+//
+//	if (gROOT->IsBatch()) {
+//		fprintf(stderr, "%s: cannot run in batch mode\n", argv[0]);
+//		return 1;
+//	}
+//	
 	int status = camac_conversion(experiment_to_process, run_to_process);
 	cout << "Finished processing with status = " << status << endl;
-	cout << "Display is no longer updating." << endl;
-	theApp.Run();
+//	cout << "Display is no longer updating." << endl;
+//	theApp.Run();
 
 	return 0;
 }
