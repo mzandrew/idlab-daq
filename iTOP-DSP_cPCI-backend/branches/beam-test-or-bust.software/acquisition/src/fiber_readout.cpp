@@ -472,7 +472,9 @@ void readout_an_event(void) {
 //	read_quarter_events_from_all_enabled_channels(channel_bitmask, false); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 	read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 	send_front_end_trigger_veto_clear();
-	reset_trigger_flip_flop();
+	if (!should_soft_trigger) {
+		reset_trigger_flip_flop();
+	}
 	time_for_single_event_readout = (long long) stop_timer();
 //		printf("\napproximate time for last readout = %d us", time_for_single_event_readout);
 	//write_quarter_events_to_disk();
