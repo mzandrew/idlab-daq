@@ -190,6 +190,7 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 
 #define NUMBER_OF_3377s_TO_READOUT (2)
 unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19 };
+//#define LAM_MASK ((1<<slot[0]) | (1<<slot[1]))
 #define LAM_MASK 0x60000
 
 int CAMAC3377_fd = -7; // negative to avoid problem closing an unopened file
@@ -226,8 +227,8 @@ void CAMAC_initialize_3377s(void) {
 		// default program mode is common stop mode
 		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x);
 		CAMAC_read(crates[0].hnd,slot[i],0,30,0,&q,&x); // set program mode to common stop and resets the Xilinx gate array
-		usleep(500000);
 	}
+	usleep(500000);
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
 //		while (1) {
 			CAMAC_read(crates[0].hnd,slot[i],0,13,0,&q,&x); // done programming flag (loop until q-1)
@@ -244,8 +245,8 @@ void CAMAC_initialize_3377s(void) {
 		CAMAC_write(crates[0].hnd,slot[i],1,17,0x0,&q,&x); // write control registers
 		CAMAC_write(crates[0].hnd,slot[i],2,17,0x804,&q,&x); // write control registers (max 4 hits, 0x80*8ns=1024ns)
 		CAMAC_write(crates[0].hnd,slot[i],3,17,0x0,&q,&x); // write control registers
-		CAMAC_write_LAM_mask(crates[0].hnd,LAM_MASK);
-		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enable lam
+//		CAMAC_write_LAM_mask(crates[0].hnd,LAM_MASK);
+//		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enable lam
 		CAMAC_read(crates[0].hnd,slot[i],1,26,0,&q,&x); // enable acquisition mode
 //		cout << " is complete." << endl;
 	}
@@ -261,8 +262,8 @@ void CAMAC_read_3377s(void) {
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
 		cout << "  ";
 		for(int j=0; j<100; j++){
-			CAMAC_read(crates[0].hnd,25,10,0,&lam,&q,&x);
-			if (lam==LAM_MASK) {
+//			CAMAC_read(crates[0].hnd,25,10,0,&lam,&q,&x);
+//			if (lam==LAM_MASK) {
 				CAMAC_read(crates[0].hnd,slot[i],2,27,0,&q,&x); // test readiness
 				if(q){
 					while (1) {
@@ -275,7 +276,7 @@ void CAMAC_read_3377s(void) {
 					break;
 				}
 				usleep(100);
-			}
+//			}
 		}
 		//cout<<"3377: buffer_size="<<buffer_size<<endl;
 		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
