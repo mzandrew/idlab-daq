@@ -53,7 +53,7 @@ int main(void) {
 
 	should_soft_trigger = true;
 
-	unsigned int threshold = 1900;
+	unsigned int threshold = threshold_scan_low_limit;
 	send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
 	usleep(1000000);
 
@@ -69,7 +69,10 @@ int main(void) {
 			
 				clear_scaler_counters();
 				send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
-				threshold = (threshold + 10) % 2100;
+				threshold = (threshold + threshold_scan_step_size);
+				if (threshold > threshold_scan_high_limit) {
+					threshold = threshold_scan_low_limit;
+				}
 			} else {
 				clear_scaler_counters();
 			}

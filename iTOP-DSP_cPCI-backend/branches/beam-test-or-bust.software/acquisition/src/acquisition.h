@@ -19,3 +19,6 @@ extern unsigned long int event_number;
 extern string current_date_string;
 extern string base_filename;
 
+extern unsigned short int threshold_scan_low_limit;
+extern unsigned short int threshold_scan_high_limit;
+extern unsigned short int threshold_scan_step_size;
