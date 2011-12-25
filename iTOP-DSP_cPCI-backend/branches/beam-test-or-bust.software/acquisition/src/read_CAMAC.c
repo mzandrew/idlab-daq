@@ -10,9 +10,6 @@ using namespace std;
 #include <stdio.h>
 #include <fcntl.h>
 
-#define NUMBER_OF_3377s_TO_READOUT (3)
-unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 5, 7, 9 };
-
 struct CAMAC_crate crates[10];
 int crate_count = 0;
 
@@ -188,13 +185,44 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 	}
 }
 
+//####### for 3377
+
+#define NUMBER_OF_3377s_TO_READOUT (3)
+unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19, 20 };
+
+int CAMAC3377_fd = -7; // negative to avoid problem closing an unopened file
+string CAMAC3377_filename;
+string old_CAMAC3377_filename;
+
+void open_CAMAC3377_file(void) {
+	if (CAMAC3377_fd >= 0) {
+		//fprintf(stdout, "closing CAMAC3377 file \"%s\"\n", old_CAMAC3377_filename.c_str());
+		fprintf(stdout, "\"%s\" closed\n", old_CAMAC3377_filename.c_str());
+		close(CAMAC_fd);
+	}
+	CAMAC3377_filename = base_filename;
+	CAMAC3377_filename += ".3377";
+	CAMAC3377_fd = open(CAMAC_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	if (CAMAC3377_fd < 0) {
+		fprintf(stderr, "ERROR: failed to create CAMAC3377 file \"%s\"\n", CAMAC3377_filename.c_str());
+	} else {
+		old_CAMAC3377_filename = CAMAC3377_filename;
+		//fprintf(stdout, "opened CAMAC3377 file \"%s\"\n", CAMAC3377_filename.c_str());
+		fprintf(stdout, "\"%s\" open\n", CAMAC3377_filename.c_str());
+	}
+}
+
+void split_CAMAC3377_file_to_prepare_for_next_spill(void) {
+	open_CAMAC3377_file();
+}
+
 void CAMAC_initialize_3377s(void) {
 	long data, lam;
 	int q=0, x=0;
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
-		//cout << "3377 #" << i << " initialization ... " << flush;
 		cout << "initializing 3377 #" << i << "..." << endl;
 		// default program mode is common stop mode
+		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x);
 		CAMAC_read(crates[0].hnd,slot[i],0,30,0,&q,&x); // set program mode to common stop and resets the Xilinx gate array
 	}
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
@@ -202,46 +230,51 @@ void CAMAC_initialize_3377s(void) {
 			CAMAC_read(crates[0].hnd,slot[i],0,13,0,&q,&x); // done programming flag (loop until q-1)
 			if (!q) { break; }
 		}
-		while (1) {
-			// supposed to test 25 here before 13
-			CAMAC_read(crates[0].hnd,slot[i],0,12,0,&q,&x); // test if Xilinx ready for data
-			if (!q) { break; }
-		}
-//		cout << q << endl;
+//		while (1) {
+//			// supposed to test 25 here before 13
+//			CAMAC_read(crates[0].hnd,slot[i],0,12,0,&q,&x); // test if Xilinx ready for data
+//			if (!q) { break; }
+//		}
+////		cout << q << endl;
 		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
-		CAMAC_write(crates[0].hnd,slot[i],0,17,0xA1,&q,&x); // write control registers
+		CAMAC_write(crates[0].hnd,slot[i],0,17,i,&q,&x); // write control registers
 		CAMAC_write(crates[0].hnd,slot[i],1,17,0x0,&q,&x); // write control registers
-		CAMAC_write(crates[0].hnd,slot[i],2,17,0x801,&q,&x); // write control registers
+		CAMAC_write(crates[0].hnd,slot[i],2,17,0x804,&q,&x); // write control registers (max 4 hits, 0x80*8ns=1024ns)
 		CAMAC_write(crates[0].hnd,slot[i],3,17,0x0,&q,&x); // write control registers
-//		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enable lam
+		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enable lam
+		CAMAC_read(crates[0].hnd,slot[i],1,26,0,&q,&x); // enable acquisition mode
 //		cout << " is complete." << endl;
 	}
 }
 
 void CAMAC_read_3377s(void) {
-	long data, lam;
+        static unsigned int Event_Header = 0x87654321;
+	long data;
+	char buffer[10000];
+	unsigned int buffer_size=0;
 	int q=0, x=0;
-//	CAMAC_write_LAM_mask(crates[0].hnd,LAM_MASK);
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
-//		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enables lam
-//		CAMAC_read(crates[0].hnd,slot[i],1,26,0,&q,&x); // enables acquisition mode 
-//		for (int i=0; i<10; i++) {
-//			CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
-//			lam=0;
-//			for (int j=0; j<5; j++) {
-//			while (lam!=LAM_MASK) {
-//				cout << hex << lam << endl;
-//				sleep(1);
-//			}
-//			while (lam!=LAM_MASK) {
-//			CAMAC_read(crates[0].hnd,25,10,0,&lam,&q,&x); // check lam ???
-//			if (lam==LAM_MASK) {
-			while (1) {
-				CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
-				if (!q) { break; }
-				//cout << "Read: " << hex << data << " " << q << " " << x << endl;
-			}
-//		}
+	  for(int j=0; j<100; j++){
+	    CAMAC_read(crates[0].hnd,slot[i],2,27,0,&q,&x); // test readiness
+	    if(q){
+	      while (1) {
+		CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
+		//cout << "Read: " << hex << data << " " << q << " " << x << endl;
+		buffer[buffer_size]=(char)(data&0xFFFF);
+		buffer_size++;
+		if (!q) { break; }
+	      }
+	      break;
+	    }
+	    usleep(100);
+	  }
+	  CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
 	}
-}
 
+	//write to file
+	write(CAMAC3377_fd, (char *) &Event_Header, sizeof(unsigned int));
+	write(CAMAC3377_fd, (char *) &event_number, sizeof(unsigned int));
+	write(CAMAC3377_fd, (char *) &buffer_size, sizeof(unsigned int));
+	write(CAMAC3377_fd, buffer, buffer_size);
+	//cout<<"3377: buffer_size="<<buffer_size<<endl;
+}

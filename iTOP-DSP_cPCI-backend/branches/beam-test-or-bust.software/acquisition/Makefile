@@ -10,7 +10,8 @@ INTERMEDIATE_OBJECT_FILES4 = work/read_CAMAC.o
 # work/camac.o
 
 #CXXFLAGS = -D_FILE_OFFSET_BITS=64
-LINK_OPTIONS = -L$(shell pwd)/contrib -laltix -lxxusb -Wl,-rpath,contrib 
+#LINK_OPTIONS = -L$(shell pwd)/contrib -laltix -lxxusb -Wl,-rpath,contrib 
+LINK_OPTIONS =  -L$(shell pwd)/contrib -laltix -lxx_usb -lusb -Wl,-rpath,$(shell pwd)/contrib
 
 default :
 	if [ ! -e contrib ]; then mkdir contrib; fi
