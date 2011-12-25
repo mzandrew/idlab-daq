@@ -120,6 +120,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 			UpdateTemperature();
 			UpdateWilkinsonAndVdly();
 			UpdateSamplingRateAndVadj();
+			UpdateScalers();
 			if (nevents % EVENTS_BETWEEN_UPDATE == 0) {
 				RefreshDisplays();
 			}
@@ -148,8 +149,10 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 		}
 		gSystem->ProcessEvents();	
 	}
+#if WRITE_GRAPHS_TO_FILE
 	//Append graphs to the saved files
 	AppendGraphsToROOTFile(ROOT_file);
+#endif
 	//Now close out the ROOT file
 	test_event->CloseROOTFile();
 	cout << "Wrote out " << nevents << " events from " << str_output_file.c_str() << " to " << str_output_file.c_str() << endl;
@@ -165,26 +168,36 @@ void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int
 	G_Temperature = new TGraph();
 	G_Temperature->GetXaxis()->SetTitle("Event number");
 	G_Temperature->GetYaxis()->SetTitle("Temperature (#circC)");
+#if WRITE_GRAPHS_TO_FILE
 	G_Temperature->SetName("G_Temperature");
+#endif
 	P_Scalers = new TProfile("P_Scalers","Scalers by channel",128,-0.5,127.5);
+	P_ScalersVersusThreshold = new TProfile2D("P_ScalersVersusThreshold","Scalers vs. threshold",4095,0,2.5,128,-0.5,127.5);
+	P_ScalersVersusThreshold->GetXaxis()->SetTitle("Threshold (V)");
+	P_ScalersVersusThreshold->GetYaxis()->SetTitle("Channel (COL*16+ROW*4+CH)");
 	for (int col = 0; col < 4; ++col) {
 		for (int row = 0; row < 4; ++row) {
 			char name_string[1024], title_string[1024];
 			sprintf(name_string,"G_Vdly_C%i_R%i",col,row);
 			G_Vdly[col][row] = new TGraph();
+#if WRITE_GRAPHS_TO_FILE
 			G_Vdly[col][row]->SetName(name_string);
+#endif
 			sprintf(name_string,"G_WilkCounter_C%i_R%i",col,row);
 			G_WilkCounter[col][row] = new TGraph();
+#if WRITE_GRAPHS_TO_FILE
 			G_WilkCounter[col][row]->SetName(name_string);
+#endif
 			sprintf(name_string,"G_VadjN_C%i_R%i",col,row);
 			G_VadjN[col][row] = new TGraph();
+#if WRITE_GRAPHS_TO_FILE
 			G_VadjN[col][row]->SetName(name_string);
+#endif
 			sprintf(name_string,"G_VadjP_C%i_R%i",col,row);
 			G_VadjP[col][row] = new TGraph();
+#if WRITE_GRAPHS_TO_FILE
 			G_VadjP[col][row]->SetName(name_string);
-			sprintf(name_string,"P_ScalersVersusThreshold_C%i_R%i",col,row);
-			sprintf(title_string,"Scalers vs. threshold (COL %i) (ROW) %i",col,row);
-			P_ScalersVersusThreshold[col][row] = new TProfile(name_string,title_string,4095,0,2.5);
+#endif
 		}
 	}
 
@@ -219,7 +232,9 @@ void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int
 //	C_EventRate = new TCanvas("C_EventRate",canvas_name);
 //	C_EventRate->Divide(1,2);
 
-//	C_Scalers = new TCanvas();
+	sprintf(canvas_name,"Exp %02i Run %04i - Fiber %02i (SCROD %02i) - Scalers",exp, run, fiber,this_scrod_id);
+	C_Scalers = new TCanvas("C_Scalers",canvas_name,640,480);
+	C_Scalers->Divide(1,2);
 //	C_ScalersVersusThreshold = new TCanvas();
 //	C_ScalersVersusThreshold->Divide(4,4);
 
@@ -263,6 +278,20 @@ void UpdateSamplingRateAndVadj() {
 	}
 }
 
+void UpdateScalers() {
+	for (int col = 0; col < 4; ++col) {
+		for (int row = 0; row < 4; ++row) {
+			for (int ch = 0; ch < 8; ++ch) {
+				float this_threshold = DAC_SCALE_FACTOR * (float) E_event->ASIC_TRGthresh[col][row][ch];
+				int flattened_channel = col*16 + row*4 + ch;
+				float scaler_value = E_event->ASIC_Scaler[col][row][ch];
+
+				P_Scalers->Fill(flattened_channel,scaler_value);
+				P_ScalersVersusThreshold->Fill(this_threshold,flattened_channel,scaler_value);
+			}
+		}
+	}	
+}
 
 void RefreshDisplays() {
 	//Update temperature
@@ -369,8 +398,13 @@ void RefreshDisplays() {
 	C_Temperature_and_Feedback->Update();
 
 
-//	C_Scalers->Modified();
-//	C_Scalers->Update();
+	//Update scaler info
+	C_Scalers->cd(1);
+	P_Scalers->Draw();
+	C_Scalers->cd(2);
+	P_ScalersVersusThreshold->Draw("contz");
+	C_Scalers->Modified();
+	C_Scalers->Update();
 //	C_ScalersVersusThreshold->Modified();
 //	C_ScalersVersusThreshold->Update();
 }
