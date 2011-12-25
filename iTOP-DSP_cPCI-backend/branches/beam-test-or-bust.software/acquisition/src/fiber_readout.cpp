@@ -707,6 +707,12 @@ void close_all_fiber_files(void) {
 	files_are_open = false;
 }
 
+void wait_for_spill_to_finish(void) {
+	while (spill_is_active()) {
+		usleep(1000);
+	}
+}
+
 void wait_for_start_of_spill(void) {
 	while (!spill_is_active()) {
 		usleep(1000);
