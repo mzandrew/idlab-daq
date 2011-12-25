@@ -120,6 +120,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 			UpdateTemperature();
 			UpdateWilkinsonAndVdly();
 			UpdateSamplingRateAndVadj();
+			UpdateTriggerStream();
 			if (nevents % EVENTS_BETWEEN_UPDATE == 0) {
 				RefreshDisplays();
 			}
@@ -188,11 +189,14 @@ void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int
 	G_Temperature->SetName("G_Temperature");
 #endif
 	P_Scalers = new TProfile("P_Scalers","Scalers by channel",128,-0.5,127.5);
-	P_Scalers->GetXaxis()->SetTitle("(COL*16+ROW*4+CH)");
+	P_Scalers->GetXaxis()->SetTitle("(COL*16+ROW*8+CH)");
 	P_Scalers->GetYaxis()->SetTitle("Scaler (counts)");
 	P_ScalersVersusThreshold = new TProfile2D("P_ScalersVersusThreshold","Scalers vs. threshold",128,-0.5,127.5,200,0.8,1.6);
 	P_ScalersVersusThreshold->GetYaxis()->SetTitle("Threshold (V)");
 	P_ScalersVersusThreshold->GetXaxis()->SetTitle("Channel (COL*16+ROW*4+CH)");
+	H_TriggerStreamVersusChannel = new TH2F("H_TriggerStreamVersusChannel","TriggerStream vs. Channel",128,-0.5,127.5,16,-0.5,15.5);
+	H_TriggerStreamVersusChannel->GetXaxis()->SetTitle("(COL*16+ROW*8+CH)");
+	H_TriggerStreamVersusChannel->GetYaxis()->SetTitle("Trigger bits");
 	for (int col = 0; col < 4; ++col) {
 		for (int row = 0; row < 4; ++row) {
 			char name_string[1024], title_string[1024];
@@ -312,6 +316,21 @@ void UpdateScalers() {
 	}	
 }
 
+void UpdateTriggerStream() {
+	for (int col = 0; col < 4; ++col) {
+		for (int row = 0; row < 4; ++row) {
+			for (int ch = 0; ch < 8; ++ch) {
+				for (int bit = 0; bit < 16; ++bit) {
+					float flattened_channel = (float) (col*32 + row*8 + ch);
+					if (E_event->ASIC_TriggerStream[col][row][ch][bit]) {
+						H_TriggerStreamVersusChannel->Fill(flattened_channel,bit);
+					}
+				}
+			}
+		}
+	}	
+}
+
 void RefreshDisplays() {
 	//Update temperature
 	C_Temperature_and_Feedback->cd(1);
@@ -421,7 +440,8 @@ void RefreshDisplays() {
 	C_Scalers->cd(1);
 	P_Scalers->Draw();
 	C_Scalers->cd(2);
-	P_ScalersVersusThreshold->Draw("cont1");
+//	P_ScalersVersusThreshold->Draw("cont1");
+	H_TriggerStreamVersusChannel->Draw("colz");
 	C_Scalers->Modified();
 	C_Scalers->Update();
 //	C_ScalersVersusThreshold->Modified();

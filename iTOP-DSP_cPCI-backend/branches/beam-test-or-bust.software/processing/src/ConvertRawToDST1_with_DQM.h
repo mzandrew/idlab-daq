@@ -8,6 +8,7 @@
 #include "TGraph.h"
 #include "TLine.h"
 #include "TMultiGraph.h"
+#include "TH2F.h"
 #include "TProfile.h"
 #include "TProfile2D.h"
 #include "TStyle.h"
@@ -42,6 +43,7 @@ TGraph *G_VadjN[4][4];
 TGraph *G_VadjP[4][4];
 TProfile *P_Scalers;
 TProfile2D *P_ScalersVersusThreshold;
+TH2F *H_TriggerStreamVersusChannel;
 TH1F *H_SampRateCounter[4][4];
 
 EventData *E_event;
@@ -65,6 +67,7 @@ void UpdateTemperature();
 void UpdateWilkinsonAndVdly(); 
 void UpdateSamplingRateAndVadj();
 void UpdateScalers();
+void UpdateTriggerStream();
 void RefreshDisplays();
 void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int fiber);
 void SetStyle();
