@@ -142,7 +142,7 @@ void open_CAMAC_file(void) {
 	} else {
 		old_CAMAC_filename = CAMAC_filename;
 		//fprintf(stdout, "opened CAMAC file \"%s\"\n", CAMAC_filename.c_str());
-		fprintf(stdout, "\"%s\"\n", CAMAC_filename.c_str());
+		fprintf(stdout, "%s\n", CAMAC_filename.c_str());
 	}
 }
 
@@ -209,7 +209,7 @@ void open_CAMAC3377_file(void) {
 	} else {
 		old_CAMAC3377_filename = CAMAC3377_filename;
 		//fprintf(stdout, "opened CAMAC3377 file \"%s\"\n", CAMAC3377_filename.c_str());
-		fprintf(stdout, "\"%s\"\n", CAMAC3377_filename.c_str());
+		fprintf(stdout, "%s\n", CAMAC3377_filename.c_str());
 	}
 }
 
