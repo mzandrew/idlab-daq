@@ -199,7 +199,7 @@ void open_CAMAC3377_file(void) {
 	if (CAMAC3377_fd >= 0) {
 		//fprintf(stdout, "closing CAMAC3377 file \"%s\"\n", old_CAMAC3377_filename.c_str());
 //		fprintf(stdout, "\"%s\" closed\n", old_CAMAC3377_filename.c_str());
-		close(CAMAC_fd);
+		close(CAMAC3377_fd);
 	}
 	CAMAC3377_filename = base_filename;
 	CAMAC3377_filename += ".3377";
