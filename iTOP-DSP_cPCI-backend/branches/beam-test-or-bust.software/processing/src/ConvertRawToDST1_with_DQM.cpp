@@ -148,8 +148,9 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 					try_to_open_new_file = false;
 				} else {
 					cout << "Couldn't open next spill file: " << next_filename.c_str() << endl;
-					cout << "Press q to quit or any other key to try again." << endl;
-					char temp_char = getchar();
+					cout << "Enter q to quit or any other character (then enter) to try again: ";
+					char temp_char;
+					cin >> temp_char;
 					if (temp_char == 'q') {
 						try_to_open_new_file = false;
 						continue_running = false;
