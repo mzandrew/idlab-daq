@@ -147,15 +147,17 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 					continue_running = true;
 					try_to_open_new_file = false;
 				} else {
-					char temp_char = 'o';
-					if (temp_char == 'q') {
-						try_to_open_new_file = false;
+					logfile_in.clear();
+					logfile_in.seekg(logfile_pointer);
+					if (NextRunStarted(logfile_in,experiment_to_process,run_to_process)) {
 						continue_running = false;
+						try_to_open_new_file = false;
 					} else {
-						try_to_open_new_file = true;	
-						sleep(60);
+						sleep(20);
 						logfile_in.clear();
 						logfile_in.seekg(logfile_pointer);
+						continue_running = true;
+						try_to_open_new_file = false;
 					}
 				}
 			}

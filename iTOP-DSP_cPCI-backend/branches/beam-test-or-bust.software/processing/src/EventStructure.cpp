@@ -322,7 +322,7 @@ void EventData::WriteConfigTree(const char *input_filename, const char *configur
 	int nreads = sscanf(ExperimentInfo.c_str(),"exp%2d.run%4d.spill%4d.fiber%1hd",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
 	if (nreads != 4) { 
 		cout << "Trying to read alternate file name format..." << endl; 
-		ExperimentInfo = ReducedFilename.substr(0,22);
+		ExperimentInfo = ReducedFilename.substr(0,23);
 		nreads = sscanf(ExperimentInfo.c_str(),"exp%2d.run%4d.spill%4d.fiber%1hd",&ExpNumber,&RunNumber,&SpillNumber,&FiberChannel);
 		TimeString = ReducedFilename.substr(24,23+19);
 		strcpy(time_string,TimeString.c_str());

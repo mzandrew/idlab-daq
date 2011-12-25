@@ -76,6 +76,21 @@ string NextRawFile(ifstream &logfile, unsigned int exp, unsigned int run, unsign
 
 }
 
+bool NextRunStarted(std::ifstream &logfile, unsigned int exp, unsigned int this_run) {
+	ostringstream temp;
+	temp << "exp" << setw(2) << setfill('0') << exp << ".run" << setw(4) << setfill('0') << this_run+1 << ".spill";
+	string partial_string = temp.str();
+	char line_buffer[4096];
+	logfile.getline(line_buffer,4096,'\n');
+	string line_str = line_buffer;
+	size_t position_of_match = line_str.find(partial_string);
+	if (position_of_match != string::npos ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 string GetFilenameForNextSpill(string original_name) {
 	string spill_string = "spill";
 	size_t position_of_match = original_name.find(spill_string);
