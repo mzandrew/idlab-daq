@@ -190,7 +190,7 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 
 #define NUMBER_OF_3377s_TO_READOUT (1)
 //unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19 };
-unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 19 };
+unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 22 };
 //#define LAM_MASK ((1<<slot[0]) | (1<<slot[1]))
 //#define LAM_MASK 0x60000
 
