@@ -50,7 +50,7 @@ int main(void) {
 
 	// actual running:
 //	unsigned int threshold = threshold_scan_low_limit;
-	send_command_packet_to_all_enabled_channels(0xeeeee01a, 1835);
+	send_command_packet_to_all_enabled_channels(0xeeeee01a, 1950);
 	bool spill_was_just_active = false;
 	bool first_time = true;
 	while (1) {
