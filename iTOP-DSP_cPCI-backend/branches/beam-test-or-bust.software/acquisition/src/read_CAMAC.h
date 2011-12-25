@@ -1,9 +1,9 @@
 #ifndef __READCAMAC_H__
 #define __READCAMAC_H__
 
-extern "C" {
-	#include "../contrib/libxxusb.h"
-}
+//extern "C" {
+	#include "../contrib/libxx_usb.h"
+//}
 
 #include <stdio.h>
 #include <string.h>
@@ -36,8 +36,12 @@ void split_CAMAC_file_to_prepare_for_next_spill(void);
 
 extern int CAMAC_fd;
 
+void open_CAMAC3377_file(void);
+void split_CAMAC3377_file_to_prepare_for_next_spill(void);
 void CAMAC_initialize_3377s(void);
 void CAMAC_read_3377s(void);
+
+extern int CAMAC3377_fd;
 
 #endif
 
