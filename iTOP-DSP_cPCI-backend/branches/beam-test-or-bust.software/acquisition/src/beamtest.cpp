@@ -49,6 +49,8 @@ int main(void) {
 //	should_soft_trigger = true;
 
 	// actual running:
+	unsigned int threshold = threshold_scan_low_limit;
+	send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
 	bool spill_was_just_active = false;
 	bool first_time = true;
 	while (1) {
@@ -62,6 +64,7 @@ int main(void) {
 		}
 		if (start_of_spill) {
 //			cout << "start of spill (red sky in morning; sailor take warning)" << endl;
+			clear_scaler_counters();
 			if (!first_time) {
 				split_fiber_file_to_prepare_for_next_spill();
 				if (CAMAC_initialized) {
@@ -81,6 +84,11 @@ int main(void) {
 		} else if (spill_is_now_active) {
 //			cout << "meat of spill (a mighty wind be blowin')" << endl;
 			if (!readout_an_event(false)) {
+				send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
+				threshold = (threshold + threshold_scan_step_size);
+				if (threshold > threshold_scan_high_limit) {
+					threshold = threshold_scan_low_limit;
+				}
 				if (CAMAC_initialized) {
 					read_data_from_CAMAC_and_write_to_CAMAC_file();
 					CAMAC_read_3377s();
