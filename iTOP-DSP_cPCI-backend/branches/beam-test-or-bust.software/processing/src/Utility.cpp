@@ -31,6 +31,7 @@ string NextRawFile(ifstream &logfile, unsigned int exp, unsigned int run, unsign
 	
 	bool found_next = false;
 	string file_string = "";
+	logfile.clear();
 	while(!found_next) {
 		if (!logfile) {
 			cout << "Giving up on this logfile." << endl;
