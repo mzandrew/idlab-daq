@@ -13,6 +13,9 @@
 #define LOGFILE_NAME "logfile"
 #define DST_PATH "/data/beamtest/dst1"
 
+#define NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE (5)
+#define EVENTS_BETWEEN_UPDATE (10)
+
 //Function to open the logfile for a given experiment
 void OpenLogFile(std::ifstream &logfile, unsigned int exp);
 

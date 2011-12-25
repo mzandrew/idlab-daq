@@ -15,9 +15,6 @@
 #include <string>
 #include <time.h>
 
-#define NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE (90)
-#define EVENTS_BETWEEN_UPDATE (10)
-
 using namespace std;
 
 CamacData *E_event;
