@@ -89,6 +89,7 @@ int main(int argc, char *argv[]) {
 					}
 				}
 			}
+            cout << "Done with column " << col << " row " << row << endl;
 		}
 	}
 
