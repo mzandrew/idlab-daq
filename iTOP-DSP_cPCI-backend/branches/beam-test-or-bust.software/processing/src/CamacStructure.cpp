@@ -119,7 +119,7 @@ void CamacData::WriteConfigTree(const char *input_filename) {
 	int nreads = sscanf(ExperimentInfo.c_str(),"exp%2d.run%4d.spill%4d.camac",&ExpNumber,&RunNumber,&SpillNumber);
 	if (nreads != 3) { 
 		cout << "Trying to read alternate file name format..." << endl; 
-		ExperimentInfo = ReducedFilename.substr(0,21);
+		ExperimentInfo = ReducedFilename.substr(0,23);
 		nreads = sscanf(ExperimentInfo.c_str(),"exp%2d.run%4d.spill%4d.camac",&ExpNumber,&RunNumber,&SpillNumber);
 		cout << "tried to parse experiment info from: " << ExperimentInfo << endl;
 		TimeString = ReducedFilename.substr(24,23+19);
