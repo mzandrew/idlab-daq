@@ -43,3 +43,7 @@ total_number_of_quarter_events_to_read_per_fiber_channel=100
 # whether a card is really installed in this computer or not:
 should_expect_card_to_be_installed=1
 
+# limits and step sizes (in DAC counts) for the prerun threshold scan
+threshold_scan_low_limit=1310
+threshold_scan_high_limit=2620
+threshold_scan_step_size=10
