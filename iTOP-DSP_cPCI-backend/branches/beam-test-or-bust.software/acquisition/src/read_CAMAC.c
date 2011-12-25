@@ -256,12 +256,13 @@ void CAMAC_read_3377s(void) {
 	unsigned int buffer_size=0;
 	int q=0, x=0;
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
+		cout << "  ";
 		for(int j=0; j<100; j++){
 			CAMAC_read(crates[0].hnd,slot[i],2,27,0,&q,&x); // test readiness
 			if(q){
 				while (1) {
 					CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
-					//cout << "Read: " << hex << data << " " << q << " " << x << endl;
+					cout << " " << hex << data << " q:" << q << " x:" << x;
 					buffer[buffer_size]=(unsigned short)(data&0xFFFF);
 					buffer_size++;
 					if (!q) { break; }
@@ -280,5 +281,6 @@ void CAMAC_read_3377s(void) {
 	write(CAMAC3377_fd, buffer, sizeof(unsigned short) * buffer_size);
 	write(CAMAC3377_fd, (char *) &Event_Footer, sizeof(unsigned int));
 	//cout<<"3377: buffer_size="<<buffer_size<<endl;
+	cout << endl;
 }
 
