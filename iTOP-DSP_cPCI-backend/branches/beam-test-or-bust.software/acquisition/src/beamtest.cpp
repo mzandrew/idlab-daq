@@ -78,7 +78,7 @@ int main(void) {
 //			cout << "end of spill (red sky at night; sailor's delight)" << endl;
 		} else if (spill_is_now_active) {
 //			cout << "meat of spill (a mighty wind be blowin')" << endl;
-			if (!readout_an_event()) {
+			if (!readout_an_event(false)) {
 				if (CAMAC_initialized) {
 					read_data_from_CAMAC_and_write_to_CAMAC_file();
 					CAMAC_read_3377s();

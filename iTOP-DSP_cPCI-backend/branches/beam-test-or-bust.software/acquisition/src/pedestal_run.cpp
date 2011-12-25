@@ -36,7 +36,7 @@ int main(void) {
 	// testing:
 	should_soft_trigger = true;
 
-	set_event_number(0);
+	set_event_number(event_number);
 	clear_scaler_counters();
 	set_number_of_windows_to_look_back(4);
 //	set_all_DACs_to_built_in_nominal_values();
@@ -53,7 +53,7 @@ int main(void) {
 		fprintf(stdout, "obtaining pedestals for windows [%03d,%03d]...\n", a, b);
 		usleep(50000); // wait for start and end window command to be sent and interpreted
 		for (int j=0; j<total_number_of_quarter_events_to_read_per_fiber_channel; j++) {
-			readout_an_event();
+			readout_an_event(true);
 			printf("\n");
 		}
 		//readout_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);

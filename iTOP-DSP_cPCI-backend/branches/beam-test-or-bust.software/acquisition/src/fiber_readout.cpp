@@ -466,15 +466,16 @@ void global_reset(void) {
 }
 
 void clear_scaler_counters(void) {
-	printf("clearing scaler counters\n");
+//	printf("clearing scaler counters\n");
 	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
 }
 
-int readout_an_event(void) {
+int readout_an_event(bool should_not_return_until_at_least_some_data_comes_through) {
 	if (should_soft_trigger) {
 		send_soft_trigger_request_command_packet();
 	}
-	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, false); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, should_not_return_until_at_least_some_data_comes_through); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+//	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, false); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 //	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 	if (return_value == 0) {
 		event_number++;

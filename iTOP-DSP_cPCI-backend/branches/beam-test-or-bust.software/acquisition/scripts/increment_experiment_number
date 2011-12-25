@@ -31,7 +31,7 @@ for ($i=0; $i<$number_of_lines_in_file; $i++) {
 	if ($line[$i] =~ /^experiment_number=([0-9]*)$/) {
 		printf STATUS_FILE "experiment_number=$experiment_number\n";
 	} elsif ($line[$i] =~ /^run_number=([0-9]*)$/) {
-		printf STATUS_FILE "run_number=1\n";
+		printf STATUS_FILE "run_number=0\n";
 	} else {
 		printf STATUS_FILE "$line[$i]\n";
 	}
