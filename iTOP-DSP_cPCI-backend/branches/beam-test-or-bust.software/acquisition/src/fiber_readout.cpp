@@ -129,10 +129,11 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 					start_timer();
 				}
 				number_of_bytes_read_from_any_channels_for_all_loop_iterations += number_of_bytes_actually_read;
-				if (should_not_return_until_at_least_some_data_comes_through && number_of_bytes_read_from_any_channels_for_all_loop_iterations == 0) {
-				} else {
+//				if (should_not_return_until_at_least_some_data_comes_through && number_of_bytes_read_from_any_channels_for_all_loop_iterations == 0) {
+//				} else {
 //					printf("\nch%d: %d / %d (%d)", i, number_of_bytes_read_so_far[i], desired_number_of_bytes_to_read[i], desired_number_of_bytes_to_read_right_now[i]);
-				}
+//					return -1;
+//				}
 				copy_byte_buffer_to_word_buffer(i);
 				if (should_synchronize_stream_with_header_and_request_more_data_to_compensate && !header_has_been_seen[i]) {
 					word_position_of_first_found_header = find_word_position_of_first_header_in_buffer(i, number_of_bytes_read_so_far[i]/NUMBER_OF_BYTES_IN_A_WORD); // bug/future:  unsure why the -1 has to be here;
@@ -162,6 +163,9 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 					unsigned long int a = desired_number_of_bytes_to_read[i] - number_of_bytes_read_so_far[i];
 					if (a == 560) {
 						histogram_of_incomplete_events_560++;
+						if (should_not_return_until_at_least_some_data_comes_through) {
+							return -1;
+						}
 					} else if (a == desired_number_of_bytes_to_read[i]) {
 					} else if (a > 0) {
 						histogram_of_incomplete_events_other++;
@@ -200,6 +204,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 	}
 //	printf(" E ");
 //	printf("\n");
+	return 0;
 }
 
 //inline unsigned int read_quarter_event_from_channel(unsigned short int channel) {
@@ -470,7 +475,10 @@ void readout_an_event(void) {
 		send_soft_trigger_request_command_packet();
 	}
 //	read_quarter_events_from_all_enabled_channels(channel_bitmask, false); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
-	read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+	if (return_value==0) {
+		check_and_synchronize_event_numbers();
+	}
 	send_front_end_trigger_veto_clear();
 	if (!should_soft_trigger) {
 		reset_trigger_flip_flop();
@@ -478,7 +486,7 @@ void readout_an_event(void) {
 	time_for_single_event_readout = (long long) stop_timer();
 //		printf("\napproximate time for last readout = %d us", time_for_single_event_readout);
 	//write_quarter_events_to_disk();
-	long int return_value;
+//	long int return_value;
 	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		if (
 			((i==3) && (channel_bitmask & 0x8)) ||
