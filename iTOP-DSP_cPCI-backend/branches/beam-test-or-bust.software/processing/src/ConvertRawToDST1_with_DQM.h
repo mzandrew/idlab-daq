@@ -9,9 +9,12 @@
 #include "TLine.h"
 #include "TMultiGraph.h"
 #include "TProfile.h"
+#include "TProfile2D.h"
 #include "TStyle.h"
 
 #include <string>
+
+#define WRITE_GRAPHS_TO_FILE 0
 
 #define NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE (90)
 #define EVENTS_BETWEEN_UPDATE (10)
@@ -41,7 +44,7 @@ TMultiGraph *G_WilkCounters = NULL;
 TGraph *G_VadjN[4][4];
 TGraph *G_VadjP[4][4];
 TProfile *P_Scalers;
-TProfile *P_ScalersVersusThreshold[4][4];
+TProfile2D *P_ScalersVersusThreshold;
 TH1F *H_SampRateCounter[4][4];
 
 EventData *E_event;
@@ -64,6 +67,7 @@ int this_scrod_id = 0;
 void UpdateTemperature(); 
 void UpdateWilkinsonAndVdly(); 
 void UpdateSamplingRateAndVadj();
+void UpdateScalers();
 void RefreshDisplays();
 void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int fiber);
 void SetStyle();
