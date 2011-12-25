@@ -7,10 +7,11 @@
 #include <iostream>
 
 //#define RAWDATA_PATH "/data/mza/rawdata"
-//#define RAWDATA_PATH "/data/beamtest/rawdata"
-#define RAWDATA_PATH "/data/kurtisn/rawdata"
+//#define RAWDATA_PATH "/data/kurtisn/rawdata"
+//#define DST_PATH "/data/kurtisn/dst1"
+#define RAWDATA_PATH "/data/beamtest/rawdata"
 #define LOGFILE_NAME "logfile"
-#define DST_PATH "/data/kurtisn/dst1"
+#define DST_PATH "/data/beamtest/dst1"
 
 //Function to open the logfile for a given experiment
 void OpenLogFile(std::ifstream &logfile, unsigned int exp);
