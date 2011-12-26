@@ -11,13 +11,13 @@ using namespace std;
 void OpenLogFile(ifstream &logfile, unsigned int exp) {
 	ostringstream temp;
 	temp << RAWDATA_PATH << "/exp" << setw(2) << setfill('0') << exp << "/" << setw(4) << LOGFILE_NAME;
-	cout << "Opening logfile at: " << temp.str() << endl;
+//	cout << "Opening logfile at: " << temp.str() << endl;
 	string filename_str = temp.str();
 	char temp_buffer[1024];
 	sprintf(temp_buffer,"%s",filename_str.c_str());
 	logfile.open( (const char *) temp_buffer , ifstream::in);
 	if (!logfile) {
-		cout << "Unable to open logfile!" << endl;
+		cout << "ERROR: Unable to open logfile: " << temp.str() << endl;
 	}
 	return;
 }
@@ -34,7 +34,7 @@ string NextRawFile(ifstream &logfile, unsigned int exp, unsigned int run, unsign
 	string file_string = "";
 	while(!found_next) {
 		if (!logfile) {
-			cout << "Giving up on this logfile for now." << endl;
+//			cout << "Giving up on this logfile for now." << endl;
 			break;
 		}
 		logfile.getline(line_buffer,4096,'\n');
