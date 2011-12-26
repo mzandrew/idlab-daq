@@ -66,17 +66,18 @@ int main(void) {
 //			cout << "start of spill (red sky in morning; sailor take warning)" << endl;
 			clear_scaler_counters();
 			if (!first_time) {
-				split_fiber_file_to_prepare_for_next_spill();
+				increment_spill_number();
+				write_status_file();
+				generate_new_base_filename();
+				open_fiber_files_to_prepare_for_next_spill();
 				if (CAMAC_initialized) {
 					split_CAMAC_file_to_prepare_for_next_spill();
 					split_CAMAC3377_file_to_prepare_for_next_spill();
 				}
 			}
 		} else if (end_of_spill) {
+			close_fiber_files_to_prepare_for_next_spill();
 			cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
-			increment_spill_number();
-			write_status_file();
-			generate_new_base_filename();
 			if (first_time) {
 				first_time = false;
 			}
