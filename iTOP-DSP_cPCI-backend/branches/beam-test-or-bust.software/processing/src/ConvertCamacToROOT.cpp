@@ -67,7 +67,12 @@ int camac_conversion(unsigned int experiment_to_process, unsigned int run_to_pro
 	//Find the next input raw file
 	unsigned int last_spill = 0;
 	ifstream fin;
-	string next_filename = NextRawFile(logfile_in, experiment_to_process, run_to_process, last_spill);
+	bool finished_spill_exists = false;
+	string next_filename = NextRawFile(logfile_in, experiment_to_process, run_to_process, last_spill, finished_spill_exists);
+	if (!finished_spill_exists) {
+		cout << "ERROR: no spills appear to be ready yet... try again soon." << endl;
+		return 1;
+	}
 	ostringstream temp1;
 	temp1 << ".camac";
 	next_filename += temp1.str();
@@ -123,22 +128,54 @@ int camac_conversion(unsigned int experiment_to_process, unsigned int run_to_pro
 			sleep(1);
 		}
 		//Checks to see if we've timed out on this file
+		//Checks to see if we've timed out on this file
 		time_t time_now = time(NULL);
-		if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE) {
-			//If we've timed out, close the file
+		if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_GIVING_UP_ON_RUN) {
+			cout << "It appears run " << run_to_process << " has ended... closing out." <<endl;
+			continue_running = false;
+		} else if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE) {
+			//If we've timed out, write the scalers and close the file
 			fin.close();
 			fin.clear();
-			//And try to open a new file
-			next_filename = NextRawFile(logfile_in, experiment_to_process, run_to_process, last_spill);
-			next_filename += temp1.str();
-			fin.open(next_filename.c_str());
-			if (!fin) {
-				cout << "Couldn't open next spill file: " << next_filename.c_str() << endl;
-				continue_running = false;
-			} else {
-				continue_running = true;
-				configuration_written = false;
+
+			bool try_to_open_new_file = true;
+			while (try_to_open_new_file) {
+				//And try to open a new file
+				logfile_in.close();
+				logfile_in.clear();
+				OpenLogFile(logfile_in, experiment_to_process);
+				finished_spill_exists = false;
+				next_filename = NextRawFile(logfile_in, experiment_to_process, run_to_process, last_spill, finished_spill_exists);
+				if (finished_spill_exists) {
+					next_filename += temp1.str();
+					cout << "Found a new completed spill at: " << next_filename << endl;
+					time_of_last_successful_read = time(NULL);
+					fin.open(next_filename.c_str());
+					if (fin) {
+						cout << next_filename << " opened and ready for reading." << endl;
+						configuration_written = false;
+						continue_running = true;
+						try_to_open_new_file = false;
+					} else {
+						cout << next_filename << " had error status on opening." << endl;
+						cout << "Closing it and trying again." << endl;
+						fin.close();
+						continue_running = true;
+						try_to_open_new_file = true;
+					} 
+				} else {
+					cout << "Waiting 20 seconds..." << endl;
+//					cout << "Last good spill was: " << last_spill << endl;
+					for (int wait = 0; wait < 20; ++wait) {
+						RefreshDisplays();
+						sleep(1);
+						gSystem->ProcessEvents();	
+					}
+					continue_running = true;
+					try_to_open_new_file = true;
+				}
 			}
+			gSystem->ProcessEvents();	
 		}
 		gSystem->ProcessEvents();	
 	}

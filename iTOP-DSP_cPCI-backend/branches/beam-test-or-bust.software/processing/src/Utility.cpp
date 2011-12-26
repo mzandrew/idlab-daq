@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <sstream>
 #include <stdio.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -21,58 +22,68 @@ void OpenLogFile(ifstream &logfile, unsigned int exp) {
 	return;
 }
 
-string NextRawFile(ifstream &logfile, unsigned int exp, unsigned int run, unsigned int &last_spill) {
+string NextRawFile(ifstream &logfile, unsigned int exp, unsigned int run, unsigned int &last_spill, bool &finished_spill_exists) {
 	ostringstream temp;
 	temp << "exp" << setw(2) << setfill('0') << exp << ".run" << setw(4) << setfill('0') << run << ".spill";
 	string partial_string = temp.str();
-	cout << "Searching for " << partial_string << endl;
+//	cout << "Searching for " << partial_string << endl;
 
 	char line_buffer[4096];
 	
 	bool found_next = false;
 	string file_string = "";
-	logfile.clear();
 	while(!found_next) {
 		if (!logfile) {
-			cout << "Giving up on this logfile." << endl;
+			cout << "Giving up on this logfile for now." << endl;
 			break;
 		}
 		logfile.getline(line_buffer,4096,'\n');
 		string line_str = line_buffer;
+		//Skip empty lines
 		if (line_str.length() == 0) {
 			continue;
 		}
-
-		size_t position_of_match = line_str.find(partial_string);
-		string exp_run_spill_info;
-//		cout << "Checking line: " << line_str << endl;
-		if (position_of_match == string::npos ) {
+		//Look for a space in the current line.  The filename should
+		//happen before the space and the number of events after.
+		string single_space = " ";
+		size_t position_of_space = line_str.find(single_space);
+		string filename_part;
+		string number_of_events_part;
+		if (position_of_space == string::npos) {
 			continue;
 		} else {
-			exp_run_spill_info = line_str.substr(position_of_match,50);
-//			cout << "Found a match" << endl;
-		}
-		char parse_buffer[1024];
-		if (position_of_match != string::npos ) {
-			sprintf(parse_buffer,"%s",exp_run_spill_info.c_str());
-		}
-		unsigned int this_exp, this_run, this_spill;
-		sscanf(parse_buffer,"exp%2d.run%4d.spill%4d",&this_exp,&this_run,&this_spill);
-//		cout << this_exp << "\t" << this_run << "\t" << this_spill << endl;
-		if (this_exp == exp && this_run == run && this_spill == last_spill + 1) {
-			file_string = line_str.substr(0,position_of_match+43);
-			found_next = true;
+			filename_part = line_str.substr(0,position_of_space);
+			number_of_events_part = line_str.substr(position_of_space+1,line_str.length());
+			
+			size_t position_of_filename_without_path = filename_part.find(partial_string);
+			if (position_of_filename_without_path == string::npos) {
+				continue;
+			}
+			string exp_run_spill_info = filename_part.substr(filename_part.length()-LENGTH_OF_FILENAMES_WITHOUT_EXTENSION);
+			char exp_run_spill_buffer[1024];
+			sprintf(exp_run_spill_buffer,"%s",exp_run_spill_info.c_str());
+			unsigned int this_exp, this_run, this_spill;
+			sscanf(exp_run_spill_buffer,"exp%2d.run%4d.spill%4d",&this_exp,&this_run,&this_spill);
+//			cout << "Parsing filepart: " << exp_run_spill_buffer << endl;
+			if (this_exp == exp && this_run == run && this_spill == last_spill + 1) {
+				int events_this_spill = -99;
+				int nmatch = sscanf(number_of_events_part.c_str(),"%d",&events_this_spill);
+				if (nmatch != 1) {
+					cout << "Exp " << exp << " run " << run << " still ongoing... not parsing it yet." << endl;
+					cout << "filename_part: " << filename_part << ";" << endl;
+					cout << "number_part  : " << number_of_events_part << ";" << endl;
+					finished_spill_exists = false;
+					found_next = true;
+				} else {
+					cout << "Exp " << this_exp << " run " << this_run << " spill " << this_spill << " has " << events_this_spill << " events." << endl;
+					finished_spill_exists = true;
+					last_spill++;
+					file_string = filename_part;
+					found_next = true;
+				}
+			}
 		}
 	}
-
-	if (found_next == false) {
-		cout << "Coudln't find another file in this run!" << endl;
-		file_string = "";
-	} else {
-		cout << "Trying to open file for spill with base name: " << file_string << endl;
-		last_spill++;
-	}
-
 	return file_string;
 
 }
