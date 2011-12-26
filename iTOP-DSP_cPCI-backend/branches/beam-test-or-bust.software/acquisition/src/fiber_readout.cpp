@@ -27,7 +27,7 @@ int fd[NUMBER_OF_SCRODS_TO_READOUT] = {-7, -7, -7, -7}; // file descriptors for 
 unsigned long int number_of_readout_events_for_this_spill = 0;
 unsigned long int total_number_of_readout_events = 0;
 string fiber_filename[NUMBER_OF_SCRODS_TO_READOUT];
-string old_fiber_filename[NUMBER_OF_SCRODS_TO_READOUT];
+//string old_fiber_filename[NUMBER_OF_SCRODS_TO_READOUT];
 bool files_are_open = false;
 bool should_soft_trigger = false;
 
@@ -626,12 +626,19 @@ void setup_filenames_for_fiber(void) {
 	}
 }
 
-void split_fiber_file_to_prepare_for_next_spill(void) {
+void close_fiber_files_to_prepare_for_next_spill(void) {
 //	printf("\n");
 	if (logfile_open) {
 		logfile << number_of_readout_events_for_this_spill << endl << flush;
-		
 	}
+	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+		if (channel_bitmask & (1<<i)) {
+				close(fd[i]);
+		}
+	}
+}
+
+void open_fiber_files_to_prepare_for_next_spill(void) {
 	number_of_readout_events_for_this_spill = 0;
 	setup_filenames_for_fiber();
 	open_files_for_all_enabled_fiber_channels();
@@ -667,19 +674,19 @@ void open_files_for_all_enabled_fiber_channels(void) {
 		if (channel_bitmask & (1<<i)) {
 //			printf("%d %d\n", stdout_ch, i);
 //			if (stdout_ch == i) continue;
-			if (fd[i] >= 0) {
+//			if (fd[i] >= 0) {
 				//fprintf(stdout, "closing file \"%s\"\n", old_fiber_filename[i].c_str());
 //				fprintf(stdout, "\"%s\" closed\n", old_fiber_filename[i].c_str());
-				close(fd[i]);
-			}
+//				close(fd[i]);
+//			}
 			//fprintf(stdout, "attempting to open file \"%s\"...\n", fiber_filename[i].c_str());
 			fprintf(stdout, "%s\n", fiber_filename[i].c_str());
 			fd[i] = open(fiber_filename[i].c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (fd[i] < 0) {
 				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", fiber_filename[i].c_str());
 				exit(6);
-			} else {
-				old_fiber_filename[i] = fiber_filename[i];
+//			} else {
+//				old_fiber_filename[i] = fiber_filename[i];
 			}
 		}
 	}
@@ -709,12 +716,14 @@ void close_all_fiber_files(void) {
 
 void wait_for_spill_to_finish(void) {
 	while (spill_is_active()) {
+		cout << "waiting for spill to finish..." << endl;
 		usleep(1000);
 	}
 }
 
 void wait_for_start_of_spill(void) {
 	while (!spill_is_active()) {
+		cout << "waiting for spill..." << endl;
 		usleep(1000);
 	}
 }
