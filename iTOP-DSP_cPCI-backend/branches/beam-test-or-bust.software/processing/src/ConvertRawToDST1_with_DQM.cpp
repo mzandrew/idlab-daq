@@ -137,10 +137,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 		}
 		//Checks to see if we've timed out on this file
 		time_t time_now = time(NULL);
-		if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_GIVING_UP_ON_RUN) {
-			cout << "It appears run " << run_to_process << " has ended... closing out." <<endl;
-			continue_running = false;
-		} else if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE) {
+		if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_CLOSING_FILE) {
 			//If we've timed out, write the scalers and close the file
 			UpdateScalers();
 			fin.close();
@@ -174,13 +171,20 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 				} else {
 					cout << "Waiting 20 seconds..." << endl;
 //					cout << "Last good spill was: " << last_spill << endl;
-					for (int wait = 0; wait < 20; ++wait) {
-						RefreshDisplays();
-						sleep(1);
-						gSystem->ProcessEvents();	
+					time_now = time(NULL);	
+					if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_GIVING_UP_ON_RUN) {
+						cout << "It appears run " << run_to_process << " has ended... closing out." << endl;
+						continue_running = false;
+						try_to_open_new_file = false;
+					} else {
+						for (int wait = 0; wait < 20; ++wait) {
+							RefreshDisplays();
+							sleep(1);
+							gSystem->ProcessEvents();	
+						}
+						continue_running = true;
+						try_to_open_new_file = true;
 					}
-					continue_running = true;
-					try_to_open_new_file = true;
 				}
 			}
 			gSystem->ProcessEvents();	
