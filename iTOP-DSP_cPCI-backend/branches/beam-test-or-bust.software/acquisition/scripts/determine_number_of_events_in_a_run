@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+. .config
+cd ${location_of_raw_datafiles}
+. ./status
+
+if [ ! -z $1 ]; then
+	experiment_number=${1}
+fi
+if [ ! -z $2 ]; then
+	run_number=${2}
+fi
+
+run_number="run$(printf %02d ${run_number})"
+experiment_number="exp$(printf %02d ${experiment_number})"
+#echo ${experiment_number}
+#echo ${run_number}
+
+cd ${experiment_number}
+ls -l
+
+echo $(find -type f -name "${experiment_number}.${run_number}.*" -o -printf "%s+"; echo -n 0) | bc
+

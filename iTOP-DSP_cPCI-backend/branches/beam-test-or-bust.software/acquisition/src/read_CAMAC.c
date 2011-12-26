@@ -188,8 +188,8 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 
 //####### for 3377
 
-#define NUMBER_OF_3377s_TO_READOUT (2)
-unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19 };
+#define NUMBER_OF_3377s_TO_READOUT (3)
+unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19, 20 };
 //unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18 };
 //#define LAM_MASK ((1<<slot[0]) | (1<<slot[1]))
 //#define LAM_MASK 0x60000
@@ -242,9 +242,11 @@ void CAMAC_initialize_3377s(void) {
 //		}
 ////		cout << q << endl;
 		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
-		CAMAC_write(crates[0].hnd,slot[i],0,17,i,&q,&x); // write control registers
+		CAMAC_write(crates[0].hnd,slot[i],0,17,0x200+i,&q,&x); // write control registers (2ns TDC resolution)
 		CAMAC_write(crates[0].hnd,slot[i],1,17,0x0,&q,&x); // write control registers
-		CAMAC_write(crates[0].hnd,slot[i],2,17,0x804,&q,&x); // write control registers (max 4 hits, 0x80*8ns=1024ns)
+//		CAMAC_write(crates[0].hnd,slot[i],2,17,0x804,&q,&x); // write control registers (max 4 hits, 0x80*8ns=1024ns)
+//		CAMAC_write(crates[0].hnd,slot[i],2,17,0xFFF0,&q,&x); // write control registers (max 16 hits, 0xFFF*8ns)
+		CAMAC_write(crates[0].hnd,slot[i],2,17,0x1004,&q,&x); // write control registers (max 4 hits, 0x100*8ns=2048ns)
 		CAMAC_write(crates[0].hnd,slot[i],3,17,0x0,&q,&x); // write control registers
 //		CAMAC_write_LAM_mask(crates[0].hnd,LAM_MASK);
 //		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enable lam
