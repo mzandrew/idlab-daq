@@ -113,6 +113,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 		int this_status = test_event->ReadEvent(fin);
 		if (this_status == 1) {
 			if (!configuration_written) {
+				test_event->FiberChannel = fiber;
 				test_event->WriteConfigTree(next_filename.c_str(),str_config_file.c_str(),using_manual_scrod_id,manual_scrod_id);
 				configuration_written = true;
 				if (!using_manual_scrod_id) {
@@ -177,7 +178,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 						continue_running = false;
 						try_to_open_new_file = false;
 					} else {
-						for (int wait = 0; wait < 20; ++wait) {
+						for (int wait = 0; wait < SECONDS_TO_WAIT_BEFORE_TRYING_TO_REOPEN_LOGFILE; ++wait) {
 							RefreshDisplays();
 							sleep(1);
 							gSystem->ProcessEvents();	
@@ -197,7 +198,9 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 #endif
 	//Now close out the ROOT file
 	test_event->CloseROOTFile();
+	cout << "============SUMMARY================" << endl;
 	cout << "Wrote out " << nevents << " events to " << str_output_file.c_str() << endl;
+	cout << "===================================" << endl;
 
 	//Clean up a bit
 	delete test_event;
