@@ -170,7 +170,7 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 						try_to_open_new_file = true;
 					} 
 				} else {
-					cout << "Waiting 20 seconds..." << endl;
+//					cout << "Waiting 20 seconds..." << endl;
 //					cout << "Last good spill was: " << last_spill << endl;
 					time_now = time(NULL);	
 					if (time_now - time_of_last_successful_read > NUMBER_OF_SECONDS_BEFORE_GIVING_UP_ON_RUN) {
