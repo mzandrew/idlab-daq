@@ -373,8 +373,9 @@ void start_timer() {
 }
 
 int stop_timer(struct timeval* begin) {
-	if (begin == NULL)
+	if (begin == NULL) {
 		begin = &start;
+	}
 	int sec, usec;
 	gettimeofday(&end, NULL);
 	sec = end.tv_sec - begin->tv_sec;
