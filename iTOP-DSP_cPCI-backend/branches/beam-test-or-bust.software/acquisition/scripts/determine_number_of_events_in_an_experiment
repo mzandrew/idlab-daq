@@ -1,0 +1,67 @@
+#!/bin/bash -e
+
+. .config
+pushd ${location_of_raw_datafiles} > /dev/null
+. ./status
+
+if [ ! -z $1 ]; then
+	experiment_number=${1}
+fi
+
+declare numeric_experiment_number=${experiment_number}
+experiment_number="exp$(printf %02d ${experiment_number})"
+#echo ${experiment_number}
+cd ${experiment_number}
+
+declare list_of_run_number_strings
+for run_number in $(seq 0 99); do
+	run_number="run$(printf %04d ${run_number})"
+#	echo ${run_number}
+	for filename in ${experiment_number}.${run_number}.*; do
+		if [ -e ${filename} ]; then
+			list_of_run_number_strings="${list_of_run_number_strings}
+${run_number}"
+		fi
+	done
+	list_of_run_number_strings=$(echo "${list_of_run_number_strings}" | sort -u | sed -e "s,run\(0*\),,")
+done
+
+popd > /dev/null
+
+for run_number in $(echo "${list_of_run_number_strings}"); do
+#	echo ${run_number}
+#	if [ ! -z "${output}" ]; then
+		output="${output}
+$(./scripts/determine_number_of_events_in_a_run ${numeric_experiment_number} ${run_number})"
+#	fi
+done
+
+output=$(echo "${output}" | tr -s '\n')
+echo "${output}"
+
+exit 0
+
+output0=$(echo ${output} | grep fiber0)
+output1=$(echo ${output} | grep fiber1)
+output2=$(echo ${output} | grep fiber2)
+output3=$(echo ${output} | grep fiber3)
+
+for i in $(seq 0 3); do
+	if [ ${i} -eq 0 ]; then
+		echo "${output0}"
+	elif [ ${i} -eq 1 ]; then
+		echo "${output1}"
+	elif [ ${i} -eq 2 ]; then
+		echo "${output2}"
+	elif [ ${i} -eq 3 ]; then
+		echo "${output3}"
+	fi
+done
+
+echo "${output0}"
+echo "${output1}"
+echo "${output2}"
+echo "${output3}"
+
+#echo "${total_events} events from fiber${i} in ${experiment_number}"
+
