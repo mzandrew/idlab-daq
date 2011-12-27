@@ -11,13 +11,24 @@ if [ ! -z $2 ]; then
 	run_number=${2}
 fi
 
-run_number="run$(printf %02d ${run_number})"
 experiment_number="exp$(printf %02d ${experiment_number})"
+run_number="run$(printf %04d ${run_number})"
 #echo ${experiment_number}
 #echo ${run_number}
 
 cd ${experiment_number}
-ls -l
+#ls -l
 
-echo $(find -type f -name "${experiment_number}.${run_number}.*" -o -printf "%s+"; echo -n 0) | bc
+declare -i bytes number_of_bytes_in_a_quarter_event quarter_events
+for i in $(seq 0 3); do
+	#find -type f -name "${experiment_number}.${run_number}.*" -printf "%s %p \n"
+	bytes=$(echo $(find -type f -name "${experiment_number}.${run_number}.*fiber${i}" -printf "%s+"; echo -n 0) | bc)
+	if [ ${bytes} -ne 0 ]; then
+		number_of_bytes_in_a_quarter_event=$((140*132*4))
+		quarter_events=$(echo "${bytes} / ${number_of_bytes_in_a_quarter_event}" | bc)
+#		echo "${bytes} bytes from fiber${i}"
+		quarter_events_string=$(printf "%6s" ${quarter_events})
+		echo "${quarter_events_string} events from fiber${i} during ${experiment_number} ${run_number}"
+	fi
+done
 
