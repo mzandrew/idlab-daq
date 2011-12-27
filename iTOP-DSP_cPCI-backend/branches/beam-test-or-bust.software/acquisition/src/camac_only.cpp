@@ -37,7 +37,7 @@ int main(void) {
 
 	printf("starting CAMAC-only readout...\n");
 	for (int i=0; i<total_number_of_quarter_events_to_read_per_fiber_channel; i++) {
-		printf("camac-only event #%03d  ", i);
+		printf("camac-only event #%03d \n", i);
 		read_data_from_CAMAC_and_write_to_CAMAC_file();
 		CAMAC_read_3377s();
 	}
