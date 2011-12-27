@@ -228,8 +228,13 @@ void CAMAC_initialize_3377s(void) {
 		// default program mode is common stop mode
 		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x);
 		CAMAC_read(crates[0].hnd,slot[i],0,30,0,&q,&x); // set program mode to common stop and resets the Xilinx gate array
+//		CAMAC_read(crates[0].hnd,slot[i],0,25,0,&q,&x); // set program mode to common stop and resets the Xilinx gate array
+	   usleep(500000);
+//		while (1) {
+//			CAMAC_read(crates[0].hnd,slot[i],0,13,0,&q,&x); // done programming flag (loop until q-1)
+//			if (!q) { break; }
+//		}
 	}
-	usleep(500000);
 	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
 //		while (1) {
 			CAMAC_read(crates[0].hnd,slot[i],0,13,0,&q,&x); // done programming flag (loop until q-1)
@@ -249,8 +254,9 @@ void CAMAC_initialize_3377s(void) {
 		CAMAC_write(crates[0].hnd,slot[i],2,17,0x1004,&q,&x); // write control registers (max 4 hits, 0x100*8ns=2048ns)
 		CAMAC_write(crates[0].hnd,slot[i],3,17,0x0,&q,&x); // write control registers
 //		CAMAC_write_LAM_mask(crates[0].hnd,LAM_MASK);
-//		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enable lam
+		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enable lam
 		CAMAC_read(crates[0].hnd,slot[i],1,26,0,&q,&x); // enable acquisition mode
+		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
 //		cout << " is complete." << endl;
 	}
 }
@@ -273,16 +279,16 @@ void CAMAC_read_3377s(void) {
 //					while (1) {
 						CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
 //						cout << " " << hex << data << " q:" << q << " x:" << x;
+						if (!q) { break; }
 						buffer[buffer_size]=(unsigned short)(data&0xFFFF);
 						buffer_size++;
-						if (!q) { break; }
 					}
 					break;
 				}
 				usleep(100);
 //			}
 		}
-		//cout<<"3377: buffer_size="<<buffer_size<<endl;
+//		cout<<"3377: buffer_size="<<buffer_size<<endl;
 		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
 	}
 	//write to file
