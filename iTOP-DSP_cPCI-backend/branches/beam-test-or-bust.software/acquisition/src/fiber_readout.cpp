@@ -17,7 +17,7 @@ unsigned long int packet_type[NUMBER_OF_PACKET_TYPES] = { 0x00c0ffee, 0x0000eada
 unsigned long int footer = 0x62504944;
 unsigned long int packet[NUMBER_OF_WORDS_IN_A_PACKET];
 unsigned long int number_of_errors_for_this_quarter_event[NUMBER_OF_SCRODS_TO_READOUT];
-unsigned long long int time_for_single_event_readout;
+//unsigned long long int time_for_single_event_readout;
 unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_WORDS];
          char     byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
 unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
@@ -122,9 +122,9 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 				number_of_bytes_actually_read = pci.readData(byte_buffer[i] + number_of_bytes_read_so_far[i], desired_number_of_bytes_to_read_right_now[i]);
 				number_of_bytes_read_so_far[i] += number_of_bytes_actually_read;
 				number_of_bytes_read_from_any_channels_for_this_loop_iteration += number_of_bytes_actually_read;
-				if (number_of_bytes_read_from_any_channels_for_all_loop_iterations == 0 && number_of_bytes_actually_read > 0) {
-					start_timer();
-				}
+//				if (number_of_bytes_read_from_any_channels_for_all_loop_iterations == 0 && number_of_bytes_actually_read > 0) {
+//					start_timer();
+//				}
 				number_of_bytes_read_from_any_channels_for_all_loop_iterations += number_of_bytes_actually_read;
 //				if (should_not_return_until_at_least_some_data_comes_through && number_of_bytes_read_from_any_channels_for_all_loop_iterations == 0) {
 //				} else {
@@ -368,7 +368,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 
 struct timeval start, end, watchdog;
 
-void start_timer() {
+void start_timer(void) {
 	gettimeofday(&start, NULL);	
 }
 
@@ -381,6 +381,11 @@ int stop_timer(struct timeval* begin) {
 	sec = end.tv_sec - begin->tv_sec;
 	usec = end.tv_usec - begin->tv_usec;
 	return sec*1000000+usec;
+}
+
+int stop_timer_in_seconds(void) {
+	gettimeofday(&end, NULL);
+	return end.tv_sec - start.tv_sec;
 }
 
 void setup_feedback_enables_and_goals(unsigned short int enable) {
@@ -490,7 +495,7 @@ int readout_an_event(bool should_not_return_until_at_least_some_data_comes_throu
 	if (!should_soft_trigger) {
 		reset_trigger_flip_flop();
 	}
-	time_for_single_event_readout = (long long) stop_timer();
+//	time_for_single_event_readout = (long long) stop_timer();
 //		printf("\napproximate time for last readout = %d us", time_for_single_event_readout);
 	//write_quarter_events_to_disk();
 //	long int return_value;
@@ -525,7 +530,7 @@ void readout_N_events(unsigned long int N) {
 		read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 		send_front_end_trigger_veto_clear();
 		reset_trigger_flip_flop();
-		time_for_single_event_readout = (long long) stop_timer();
+//		time_for_single_event_readout = (long long) stop_timer();
 //		printf("\napproximate time for last readout = %d us", time_for_single_event_readout);
 		total_number_of_readout_events++;
 		//write_quarter_events_to_disk();

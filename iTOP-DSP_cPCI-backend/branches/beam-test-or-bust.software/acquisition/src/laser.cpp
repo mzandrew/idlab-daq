@@ -48,7 +48,7 @@ int main(void) {
 	// testing:
 //	should_soft_trigger = true;
 
-#define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (1000)
+#define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (500)
 #define MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL (30)
 	// actual running:
 //	unsigned int threshold = threshold_scan_low_limit;
@@ -58,65 +58,48 @@ int main(void) {
 	int number_of_seconds_this_spill_has_been_active = 0;
 	start_timer();
 	while (1) {
-//		bool start_of_spill = false;
-//		bool spill_is_now_active = spill_is_active();
-//		bool end_of_spill = false;
-//		if (spill_is_now_active && !spill_was_just_active) {
-//			start_of_spill = true;
-//		} else if (!spill_is_now_active && spill_was_just_active) {
-//			end_of_spill = true;
-//		}
-//		if (start_of_spill) {
-//			cout << "start of spill (red sky in morning; sailor take warning)" << endl;
-//			clear_scaler_counters();
-//		} else if (end_of_spill) {
 
-			if (!first_time) {
-				increment_spill_number();
-				write_status_file();
-				generate_new_base_filename();
-				open_fiber_files_to_prepare_for_next_spill();
+		if (!first_time) {
+			increment_spill_number();
+			write_status_file();
+			generate_new_base_filename();
+			open_fiber_files_to_prepare_for_next_spill();
+			if (CAMAC_initialized) {
+				split_CAMAC_file_to_prepare_for_next_spill();
+				split_CAMAC3377_file_to_prepare_for_next_spill();
+			}
+//			cout << "restarting timer" << endl;
+			start_timer();
+			number_of_seconds_this_spill_has_been_active = 0;
+		}
+
+		while (number_of_readout_events_for_this_spill < MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL &&
+		       number_of_seconds_this_spill_has_been_active < MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL) {
+			if (!readout_an_event(true)) {
 				if (CAMAC_initialized) {
-					split_CAMAC_file_to_prepare_for_next_spill();
-					split_CAMAC3377_file_to_prepare_for_next_spill();
+					read_data_from_CAMAC_and_write_to_CAMAC_file();
+					CAMAC_read_3377s();
 				}
-				start_timer();
+				write_status_file();
+//				cout << endl << flush;
+//				printf("\n");
 			}
+			printf("\n");
+			number_of_seconds_this_spill_has_been_active = stop_timer_in_seconds();
+//			cout << "time for this spill so far: " << number_of_seconds_this_spill_has_been_active << " s" << endl;
+//			cout << "     events for this spill: " << number_of_readout_events_for_this_spill << endl;
+//			usleep(100000);
+		}
 
-			while (number_of_readout_events_for_this_spill <= MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL && number_of_seconds_this_spill_has_been_active <= MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL) {
-				if (!readout_an_event(false)) {
-					if (CAMAC_initialized) {
-						read_data_from_CAMAC_and_write_to_CAMAC_file();
-						CAMAC_read_3377s();
-					}
-					write_status_file();
-					printf("\n");
-				}
-				number_of_seconds_this_spill_has_been_active = stop_timer() / 1000000;
-			}
+		close_fiber_files_to_prepare_for_next_spill();
+		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
+		if (first_time) {
+			first_time = false;
+		}
 
-			close_fiber_files_to_prepare_for_next_spill();
-			cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
-			if (first_time) {
-				first_time = false;
-			}
+		cout << "press ctrl-c now to end laser run" << endl;
+		usleep(3000000);
 
-			usleep(3000000);
-
-//			send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
-//			threshold = (threshold + threshold_scan_step_size);
-//			if (threshold > threshold_scan_high_limit) {
-//				threshold = threshold_scan_low_limit;
-//			}
-//			cout << "end of spill (red sky at night; sailor's delight)" << endl;
-//		} else if (spill_is_now_active) {
-//			cout << "meat of spill (a mighty wind be blowin')" << endl;
-//			usleep(250000);
-//		} else {
-//			cout << "no protons (we are in irons)" << endl;
-//			usleep(50);
-//		}
-//		spill_was_just_active = spill_is_now_active;
 	}
 
 	// cleanup:
