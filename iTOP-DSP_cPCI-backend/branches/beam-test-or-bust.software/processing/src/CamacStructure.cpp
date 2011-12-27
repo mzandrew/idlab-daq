@@ -84,9 +84,9 @@ TFile* CamacData::OpenROOTFile(const char *root_filename) {
 	camdata->Branch("adc105",&camac_data[43],"adc105/i");  
 	camdata->Branch("adc106",&camac_data[44],"adc106/i");  
 	camdata->Branch("adc107",&camac_data[45],"adc107/i");  
-	camdata->Branch("adc108",&camac_data[46],"adc108/i");  
+	camdata->Branch("qv1",&camac_data[46],"qv1/i");  
 	camdata->Branch("adc109",&camac_data[47],"adc109/i");  
-	camdata->Branch("qv1",&camac_data[48],"qv1/i");  
+	camdata->Branch("adc110",&camac_data[48],"adc110/i");  
 	camdata->Branch("qv2",&camac_data[49],"qv2/i");  
 	
 	camdata->Branch("stg1",&camac_data[50],"stg1/i");
