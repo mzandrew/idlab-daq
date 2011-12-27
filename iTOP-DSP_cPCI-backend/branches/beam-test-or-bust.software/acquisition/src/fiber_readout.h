@@ -64,8 +64,9 @@ void readout_all_pending_data(void);
 #define NUMBER_OF_PACKET_TYPES (5)
 
 #include <sys/time.h>
-void start_timer();
+void start_timer(void);
 int stop_timer(struct timeval* begin = NULL);
+int stop_timer_in_seconds(void);
 extern struct timeval start, end, watchdog;
 
 void reset_trigger_flip_flop(void);
