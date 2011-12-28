@@ -318,6 +318,7 @@ void CAMAC_read_3377s(void) {
 	write(CAMAC3377_fd, buffer, sizeof(unsigned short) * buffer_size);
 	write(CAMAC3377_fd, (char *) &Event_Footer, sizeof(unsigned int));
 	//cout<<"3377: buffer_size="<<buffer_size<<endl;
+	printf("3[%d] ", buffer_size);
 //	cout << endl;
 }
 
