@@ -152,6 +152,11 @@ int camac_conversion(unsigned int experiment_to_process, unsigned int run_to_pro
 						configuration_written = false;
 						continue_running = true;
 						try_to_open_new_file = false;
+					} else if ( NextRunStarted(logfile_in, experiment_to_process, run_to_process) ) {
+						cout << "Done with all finished spills and next run appears to have started." << endl;
+						cout << "Closing out... " << endl;
+						continue_running = false;
+						try_to_open_new_file = false;	
 					} else {
 						cout << next_filename << " had error status on opening." << endl;
 						cout << "Closing it and trying again." << endl;
