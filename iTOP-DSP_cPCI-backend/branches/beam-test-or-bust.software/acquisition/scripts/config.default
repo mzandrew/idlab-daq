@@ -28,7 +28,10 @@ tracker_file_extension=".tracker"
 
 # IP address of computer to which to ftp data
 #pc2_ip="128.171.30.126"
-pc2_ip="192.168.0.148"
+pc2_ip="192.168.0.102"
+
+# desination directory for raw data on pc2
+pc2_destination=/data/beamtest/rawdata/
 
 # config for analysis of data # # # # # # # # # # # # # # # # # # # # # # # # #
 
