@@ -73,8 +73,17 @@ int main(void) {
 				if (threshold > threshold_scan_high_limit) {
 					threshold = threshold_scan_low_limit;
 				}
-				read_data_from_CAMAC_and_write_to_CAMAC_file();
-				CAMAC_read_3377s();
+				if (CAMAC_initialized) {
+					read_data_from_CAMAC_and_write_to_CAMAC_file();
+					CAMAC_read_3377s();
+				}
+				for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+					if (channel_bitmask & (1<<i)) {
+						unsigned short int t = temperature_float[i];
+						cout << t << "C ";
+					}
+				}
+				cout << endl;
 				printf("\n");
 				clear_scaler_counters();
 			} else {
