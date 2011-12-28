@@ -77,7 +77,8 @@ int main(void) {
 			}
 		} else if (end_of_spill) {
 			close_fiber_files_to_prepare_for_next_spill();
-			cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
+			cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << setw(6) << setfill('0') << number_of_readout_events_for_this_spill << " for this run)" << endl;
+	printf(" (%06d for run%04d)", number_of_readout_events_for_this_spill, run_number);
 			if (first_time) {
 				first_time = false;
 			}
