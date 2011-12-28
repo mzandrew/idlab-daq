@@ -4,6 +4,7 @@ using namespace std;
 
 #include <string>
 #include <stdio.h>
+#include <fstream>
 #include <iostream>
 #include "pci.h"
 #include "fiber_readout.h"
@@ -65,11 +66,15 @@ int main(void) {
 	usleep(500000);
 	set_event_number(event_number);
 
+	bool first_time = true;
 	// actual running:
 	while (1) {
 //		wait_for_start_of_spill();
 //		while (spill_is_active()) {
 			if (!spill_is_active()) {
+				if (first_time) {
+					update_logfile_with_the_number_of_readout_events_for_this_spill("prerun");
+				}
 				readout_an_event(true);
 				send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
 				threshold = (threshold + threshold_scan_step_size);
@@ -92,6 +97,9 @@ int main(void) {
 				clear_scaler_counters();
 			}
 		usleep(1000000);
+		if (first_time) {
+			first_time = false;
+		}
 	}
 
 	close_all_fiber_files();

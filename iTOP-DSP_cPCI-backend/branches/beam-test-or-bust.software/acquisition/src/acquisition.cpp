@@ -77,9 +77,9 @@ void increment_spill_number(void) {
 	spill_number++;
 }
 
-void update_logfile_with_the_number_of_readout_events_for_this_spill(void) {
+void update_logfile_with_the_number_of_readout_events_for_this_spill(string type) {
 	if (logfile_open) {
-		logfile << number_of_readout_events_for_this_spill << endl << flush;
+		logfile << number_of_readout_events_for_this_spill << " " << type.c_str() << endl << flush;
 	}
 }
 
@@ -99,6 +99,12 @@ void open_logfile(void) {
 			fprintf(stderr, "ERROR opening logfile %s\n", logfile_filename.c_str());
 			logfile_open = false;
 		}
+	}
+}
+
+void update_logfile_with_base_filename(void) {
+	if (logfile_open) {
+		logfile << base_filename.c_str() << " " << flush;
 	}
 }
 

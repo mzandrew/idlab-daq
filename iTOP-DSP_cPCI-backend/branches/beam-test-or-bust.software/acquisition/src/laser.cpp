@@ -93,7 +93,7 @@ int main(void) {
 //			usleep(100000);
 		}
 
-		update_logfile_with_the_number_of_readout_events_for_this_spill();
+		update_logfile_with_the_number_of_readout_events_for_this_spill("laser");
 		close_fiber_files_to_prepare_for_next_spill();
 		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << total_number_of_readout_events << " for this run)" << endl;
 		for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {

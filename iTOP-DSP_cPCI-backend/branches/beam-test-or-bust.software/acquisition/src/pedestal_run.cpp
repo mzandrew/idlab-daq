@@ -69,6 +69,7 @@ int main(void) {
 	}
 
 	// cleanup:
+	update_logfile_with_the_number_of_readout_events_for_this_spill("pedestal");
 	close_all_fiber_files();
 	close_pci();
 	return 0;

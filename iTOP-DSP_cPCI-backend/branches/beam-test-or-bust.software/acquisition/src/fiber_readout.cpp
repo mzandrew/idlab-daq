@@ -700,9 +700,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 			}
 		}
 	}
-	if (logfile_open) {
-		logfile << base_filename.c_str() << " " << flush;
-	}
+	update_logfile_with_base_filename();
 	files_are_open = true;
 }
 
@@ -717,9 +715,6 @@ void close_all_fiber_files(void) {
 			printf("closing file \"%s\"\n", fiber_filename[i].c_str());
 			close(fd[i]);
 		}
-	}
-	if (logfile_open) {
-		logfile << total_number_of_readout_events << endl << flush;
 	}
 	files_are_open = false;
 }
