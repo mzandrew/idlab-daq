@@ -743,3 +743,11 @@ bool spill_is_active(void) {
 	return signal_1;
 }
 
+float temperature(unsigned short int fiber_channel) {
+	unsigned short int temperature = word_buffer[fiber_channel][140*129+5] & 0x00003fff;
+	printf("temperature: %d\n", temperature);
+	float ftemperature = temperature/16.0;
+	printf("temperature of module %d: %3.4f degrees C\n", fiber_channel, ftemperature);
+	return ftemperature;
+}
+
