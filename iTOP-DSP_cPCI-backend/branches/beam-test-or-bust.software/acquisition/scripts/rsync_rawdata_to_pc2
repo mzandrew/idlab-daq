@@ -6,5 +6,5 @@
 cd ${location_of_raw_datafiles}
 declare experiment_number_string=$(printf "exp%02d" ${experiment_number})
 
-rsync -av ${experiment_number_string} 192.168.0.102:/data/beamtest/rawdata/
+rsync -av ${experiment_number_string} ${pc2_ip}:${pc2_destination}
 
