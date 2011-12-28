@@ -92,7 +92,7 @@ int main(void) {
 		}
 
 		close_fiber_files_to_prepare_for_next_spill();
-		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
+		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << total_number_of_readout_events << " for this run)" << endl;
 		for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 			if (channel_bitmask & (1<<i)) {
 				cout << "module" << i << " = " << temperature(i) << " degrees C  ";
