@@ -138,7 +138,6 @@ void close_CAMAC_file(void) {
 }
 
 void open_CAMAC_file(void) {
-	close_CAMAC_file();
 	cout << "opening CAMAC file" << endl;
 	CAMAC_filename = base_filename;
 	CAMAC_filename += ".camac";
@@ -218,7 +217,6 @@ void close_CAMAC3377_file(void) {
 }
 
 void open_CAMAC3377_file(void) {
-	close_CAMAC3377_file();
 	cout << "opening CAMAC3377 file" << endl;
 	CAMAC3377_filename = base_filename;
 	CAMAC3377_filename += ".3377";
@@ -318,7 +316,7 @@ void CAMAC_read_3377s(void) {
 	write(CAMAC3377_fd, buffer, sizeof(unsigned short) * buffer_size);
 	write(CAMAC3377_fd, (char *) &Event_Footer, sizeof(unsigned int));
 	//cout<<"3377: buffer_size="<<buffer_size<<endl;
-	printf("3[%d] ", buffer_size);
+	printf("3[%2d] ", buffer_size);
 //	cout << endl;
 }
 
