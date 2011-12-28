@@ -169,6 +169,11 @@ int prerun_checks(unsigned int experiment_to_process, unsigned int run_to_proces
 						continue_running = true;
 						try_to_open_new_file = true;
 					} 
+				} else if ( NextRunStarted(logfile_in, experiment_to_process, run_to_process) ) {
+					cout << "Done with all finished spills and next run appears to have started." << endl;
+					cout << "Closing out... " << endl;
+					continue_running = false;
+					try_to_open_new_file = false;
 				} else {
 //					cout << "Waiting 20 seconds..." << endl;
 //					cout << "Last good spill was: " << last_spill << endl;
@@ -282,9 +287,9 @@ void CreateVisualizationObjects(unsigned int exp, unsigned int run, unsigned int
 //	C_EventRate = new TCanvas("C_EventRate",canvas_name);
 //	C_EventRate->Divide(1,2);
 
-	sprintf(canvas_name,"Exp %02i Run %04i - Fiber %02i (SCROD %02i) - Scalers",exp, run, fiber,this_scrod_id);
-	C_Scalers = new TCanvas("C_Scalers",canvas_name,480,640);
-	C_Scalers->Divide(1,2);
+//	sprintf(canvas_name,"Exp %02i Run %04i - Fiber %02i (SCROD %02i) - Scalers",exp, run, fiber,this_scrod_id);
+//	C_Scalers = new TCanvas("C_Scalers",canvas_name,480,640);
+//	C_Scalers->Divide(1,2);
 //	C_ScalersVersusThreshold = new TCanvas();
 //	C_ScalersVersusThreshold->Divide(4,4);
 
@@ -467,13 +472,13 @@ void RefreshDisplays() {
 
 
 	//Update scaler info
-	C_Scalers->cd(1);
-	P_Scalers->Draw();
-	C_Scalers->cd(2);
+//	C_Scalers->cd(1);
+//	P_Scalers->Draw();
+//	C_Scalers->cd(2);
 //	P_ScalersVersusThreshold->Draw("cont1");
-	H_TriggerStreamVersusChannel->Draw("cont1");
-	C_Scalers->Modified();
-	C_Scalers->Update();
+//	H_TriggerStreamVersusChannel->Draw("cont1");
+//	C_Scalers->Modified();
+//	C_Scalers->Update();
 //	C_ScalersVersusThreshold->Modified();
 //	C_ScalersVersusThreshold->Update();
 }
