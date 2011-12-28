@@ -43,6 +43,7 @@ void copy_packet(unsigned long int *source);
 void analyze_packet(unsigned long int packet_number, unsigned short int channel);
 inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned short int channel, unsigned long last_word_position_to_look_in_buffer);
 float temperature_float[NUMBER_OF_SCRODS_TO_READOUT];
+unsigned short int feedback_enables_and_goals[6] = { 0, 1950, 0, 0, 0, 0};
 
 ofstream logfile;
 string logfile_filename = "work/logfile";
@@ -390,25 +391,43 @@ int stop_timer_in_seconds(void) {
 	return end.tv_sec - start.tv_sec;
 }
 
-void setup_feedback_enables_and_goals(unsigned short int enable) {
-	printf("setting up feedback loops\n");
+void enable_sampling_rate_feedback(void) {
+	printf("enabling sampling rate feedback\n");
+	feedback_enables_and_goals[3] = 0xffff;
 	command_arguments_type command_arguments;
-	command_arguments.uint32[0] = 0;
-	command_arguments.uint32[1] = 1950;
-	command_arguments.uint32[2] = 0;
+	for (int i=0; i<6; i++) {
+		command_arguments.uint32[i] = feedback_enables_and_goals[i];
+	}
+	send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
+}
+
+void disable_sampling_rate_feedback(void) {
+	printf("disabling sampling rate feedback\n");
+	feedback_enables_and_goals[3] = 0;
+	command_arguments_type command_arguments;
+	for (int i=0; i<6; i++) {
+		command_arguments.uint32[i] = feedback_enables_and_goals[i];
+	}
+	send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
+}
+
+void setup_feedback_enables_and_goals(unsigned short int enable) {
+// [3] = enable/disable sampling rate feedback (one bit per ASIC)
+// [4] = wilkinson feedback (one bit per ASIC)
+// [5] = trigger width feedback (one bit per ASIC)
+	printf("setting up feedback loops\n");
 	if (enable == 0) {
-		command_arguments.uint32[3] = 0x0000; // disable sampling rate feedback on all channels
-		command_arguments.uint32[4] = 0x0000; // disable wilkinson feedback on all channels
-		command_arguments.uint32[5] = 0x0000; // disable trigger width feedback on all channels
+		for (int i=3; i<6; i++) {
+			feedback_enables_and_goals[i] = 0x0000;
+		}
 	} else {
-//	command_arguments.uint32[4] = 0xa5a5;
-//	command_arguments.uint32[4] = 0x5a5a;
-		command_arguments.uint32[3] = 0xffff; // enable sampling rate feedback on all channels
-		command_arguments.uint32[4] = 0xffff; // enable wilkinson feedback on all channels
-		command_arguments.uint32[5] = 0xffff; // enable trigger width feedback on all channels
-//		command_arguments.uint32[3] = 0x0000; // disable sampling rate feedback on all channels
-//		command_arguments.uint32[4] = 0x0000; // disable wilkinson feedback on all channels
-//		command_arguments.uint32[5] = 0x0000; // disable trigger width feedback on all channels
+		for (int i=3; i<6; i++) {
+			feedback_enables_and_goals[i] = 0xffff;
+		}
+	}
+	command_arguments_type command_arguments;
+	for (int i=0; i<6; i++) {
+		command_arguments.uint32[i] = feedback_enables_and_goals[i];
 	}
 	send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
 }
