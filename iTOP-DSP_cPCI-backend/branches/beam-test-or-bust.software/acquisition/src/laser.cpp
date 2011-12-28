@@ -25,7 +25,7 @@ int main(void) {
 	setup_filenames_for_fiber();
 	if (init_camac("CAMAC_config.txt")) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
-//		exit(7);
+		exit(7);
 	} else {
 		CAMAC_initialized = true;
 	}
@@ -46,7 +46,7 @@ int main(void) {
 	reset_trigger_flip_flop();
 
 	// testing:
-	should_soft_trigger = true;
+//	should_soft_trigger = true;
 
 #define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (500)
 #define MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL (30)
