@@ -68,6 +68,7 @@ void start_timer(void);
 int stop_timer(struct timeval* begin = NULL);
 int stop_timer_in_seconds(void);
 extern struct timeval start, end, watchdog;
+extern float temperature_float[NUMBER_OF_SCRODS_TO_READOUT];
 
 void reset_trigger_flip_flop(void);
 void send_soft_trigger_request_command_packet(void);
