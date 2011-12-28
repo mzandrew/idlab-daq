@@ -39,6 +39,18 @@ done
 output=$(echo "${output}" | tr -s '\n')
 echo "${output}"
 
+declare total_0=$(echo $(echo "${output}" | grep fiber0 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for fiber0 during ${experiment_number}\n" ${total_0}
+
+declare total_1=$(echo $(echo "${output}" | grep fiber1 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for fiber1 during ${experiment_number}\n" ${total_1}
+
+declare total_2=$(echo $(echo "${output}" | grep fiber2 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for fiber2 during ${experiment_number}\n" ${total_2}
+
+declare total_3=$(echo $(echo "${output}" | grep fiber3 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for fiber3 during ${experiment_number}\n" ${total_3}
+
 exit 0
 
 output0=$(echo ${output} | grep fiber0)
