@@ -7,9 +7,9 @@
 #include <iostream>
 
 //#define RAWDATA_PATH "/data/kurtisn/rawdata"
-//#define DST_PATH "/data/kurtisn/dst1"
+#define DST_PATH "/data/kurtisn/dst1"
 #define RAWDATA_PATH "/data/beamtest/rawdata"
-#define DST_PATH "/data/beamtest/dst1"
+//#define DST_PATH "/data/beamtest/dst1"
 #define LOGFILE_NAME "logfile"
 
 #define LENGTH_OF_FILENAMES_WITHOUT_EXTENSION (43)
