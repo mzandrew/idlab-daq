@@ -25,7 +25,7 @@ int main(void) {
 	setup_filenames_for_fiber();
 	if (init_camac("CAMAC_config.txt")) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
-		exit(7);
+//		exit(7);
 	} else {
 		CAMAC_initialized = true;
 	}
@@ -46,7 +46,7 @@ int main(void) {
 	reset_trigger_flip_flop();
 
 	// testing:
-//	should_soft_trigger = true;
+	should_soft_trigger = true;
 
 #define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (500)
 #define MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL (30)
@@ -93,6 +93,12 @@ int main(void) {
 
 		close_fiber_files_to_prepare_for_next_spill();
 		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << endl;
+		for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+			if (channel_bitmask & (1<<i)) {
+				cout << "module" << i << " = " << temperature(i) << " degrees C  ";
+			}
+		}
+		cout << endl;
 		if (first_time) {
 			first_time = false;
 		}
