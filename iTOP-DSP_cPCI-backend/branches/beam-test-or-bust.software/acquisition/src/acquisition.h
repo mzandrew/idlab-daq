@@ -8,7 +8,8 @@ void create_directory_if_necessary(string dirname);
 void generate_new_base_filename(void);
 void increment_spill_number(void);
 void open_logfile(void);
-void update_logfile_with_the_number_of_readout_events_for_this_spill(void);
+void update_logfile_with_the_number_of_readout_events_for_this_spill(string type);
+void update_logfile_with_base_filename(void);
 
 extern bool channel_enabled[4];
 extern string location_of_raw_datafiles;

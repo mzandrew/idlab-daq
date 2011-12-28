@@ -78,7 +78,7 @@ int main(void) {
 				}
 			}
 		} else if (end_of_spill) {
-			update_logfile_with_the_number_of_readout_events_for_this_spill();
+			update_logfile_with_the_number_of_readout_events_for_this_spill("beam");
 			close_fiber_files_to_prepare_for_next_spill();
 			cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << total_number_of_readout_events << " for this run)" << endl;
 			//setw(6) << setfill('0') << 
