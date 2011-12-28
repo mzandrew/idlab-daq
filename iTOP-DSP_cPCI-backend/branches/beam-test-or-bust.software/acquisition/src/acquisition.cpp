@@ -3,6 +3,7 @@
 using namespace std;
 
 #include <iostream>
+#include <fstream>
 #include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,6 +22,9 @@ string base_filename;
 unsigned short int threshold_scan_low_limit;
 unsigned short int threshold_scan_high_limit;
 unsigned short int threshold_scan_step_size;
+ofstream logfile;
+string logfile_filename = "work/logfile";
+bool logfile_open = false;
 
 void set_current_date_string(void) {
 	char temp[256];
@@ -71,5 +75,30 @@ void generate_new_base_filename(void) {
 
 void increment_spill_number(void) {
 	spill_number++;
+}
+
+void update_logfile_with_the_number_of_readout_events_for_this_spill(void) {
+	if (logfile_open) {
+		logfile << number_of_readout_events_for_this_spill << endl << flush;
+	}
+}
+
+void open_logfile(void) {
+	if (!logfile_open) {
+		logfile_filename = location_of_status_and_log_files;
+		create_directory_if_necessary(logfile_filename.c_str());
+		logfile_filename += "/";
+		logfile_filename += experiment_number_string();
+		create_directory_if_necessary(logfile_filename.c_str());
+		logfile_filename += "/logfile";
+		logfile.open(logfile_filename.c_str(), fstream::app);
+		if (logfile) {
+			logfile_open = true;
+			logfile << endl << flush;
+		} else {
+			fprintf(stderr, "ERROR opening logfile %s\n", logfile_filename.c_str());
+			logfile_open = false;
+		}
+	}
 }
 
