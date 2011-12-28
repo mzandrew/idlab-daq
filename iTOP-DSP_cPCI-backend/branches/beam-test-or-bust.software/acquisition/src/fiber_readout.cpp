@@ -42,6 +42,7 @@ inline void copy_byte_buffer_to_word_buffer(unsigned short int channel);
 void copy_packet(unsigned long int *source);
 void analyze_packet(unsigned long int packet_number, unsigned short int channel);
 inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned short int channel, unsigned long last_word_position_to_look_in_buffer);
+float temperature_float[NUMBER_OF_SCRODS_TO_READOUT];
 
 ofstream logfile;
 string logfile_filename = "work/logfile";
@@ -489,6 +490,11 @@ int readout_an_event(bool should_not_return_until_at_least_some_data_comes_throu
 		total_number_of_readout_events++;
 		number_of_readout_events_for_this_spill++;
 		check_and_synchronize_event_numbers();
+		for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+			if (channel_bitmask & (1<<i)) {
+				temperature_float[i] = temperature(i);
+			}
+		}
 	} else {
 		return return_value;
 	}
