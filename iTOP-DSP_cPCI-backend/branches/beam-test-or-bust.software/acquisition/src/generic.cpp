@@ -26,6 +26,7 @@ int main(void) {
 	set_event_number(0);
 //	set_all_DACs_to_built_in_nominal_values();
 	setup_filenames_for_fiber();
+	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
 	send_front_end_trigger_veto_clear();

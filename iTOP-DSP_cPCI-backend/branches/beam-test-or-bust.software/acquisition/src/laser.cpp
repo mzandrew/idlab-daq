@@ -34,6 +34,7 @@ int main(void) {
 		CAMAC_initialize_3377s();
 		open_CAMAC3377_file();
 	}
+	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
 	unsigned short int ending_window = 63;
@@ -92,11 +93,12 @@ int main(void) {
 //			usleep(100000);
 		}
 
+		update_logfile_with_the_number_of_readout_events_for_this_spill();
 		close_fiber_files_to_prepare_for_next_spill();
 		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << total_number_of_readout_events << " for this run)" << endl;
 		for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 			if (channel_bitmask & (1<<i)) {
-				cout << "module" << i << " = " << temperature(i) << " degrees C  ";
+				cout << "mod" << i << "=" << temperature(i) << "C  ";
 			}
 		}
 		cout << endl;

@@ -4,6 +4,7 @@
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
 #include <stdio.h>
+#include <iostream>
 #include "parse_config_file.h"
 #include "acquisition.h"
 #include "status_file.h"
@@ -31,6 +32,7 @@ int main(void) {
 //		CAMAC_initialize_3377s();
 //		open_CAMAC_file();
 //	}
+	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
 	// testing:
@@ -55,6 +57,12 @@ int main(void) {
 		for (int j=0; j<total_number_of_quarter_events_to_read_per_fiber_channel; j++) {
 			wait_for_spill_to_finish();
 			readout_an_event(true);
+			for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+				if (channel_bitmask & (1<<i)) {
+					unsigned short int t = temperature_float[i];
+					cout << t << "C ";
+				}
+			}
 			printf("\n");
 		}
 		//readout_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);

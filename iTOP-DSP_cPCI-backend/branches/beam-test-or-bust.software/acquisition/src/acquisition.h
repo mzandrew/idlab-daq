@@ -7,6 +7,8 @@ bool file_exists (string filename);
 void create_directory_if_necessary(string dirname);
 void generate_new_base_filename(void);
 void increment_spill_number(void);
+void open_logfile(void);
+void update_logfile_with_the_number_of_readout_events_for_this_spill(void);
 
 extern bool channel_enabled[4];
 extern string location_of_raw_datafiles;
@@ -18,7 +20,10 @@ extern unsigned short int spill_number;
 extern unsigned long int event_number;
 extern string current_date_string;
 extern string base_filename;
+extern ofstream logfile;
+extern bool logfile_open;
 
 extern unsigned short int threshold_scan_low_limit;
 extern unsigned short int threshold_scan_high_limit;
 extern unsigned short int threshold_scan_step_size;
+

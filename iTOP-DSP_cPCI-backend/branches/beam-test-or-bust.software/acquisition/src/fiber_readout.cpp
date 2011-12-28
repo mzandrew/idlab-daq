@@ -45,10 +45,6 @@ inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned s
 float temperature_float[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned short int feedback_enables_and_goals[6] = { 0, 1950, 0, 0, 0, 0};
 
-ofstream logfile;
-string logfile_filename = "work/logfile";
-bool logfile_open = false;
-
 void readout_all_pending_data(void) {
 	char buffer2[NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME];
 	signed long int return_value;
@@ -585,6 +581,7 @@ void readout_N_events(unsigned long int N) {
 }
 
 int open_files_for_output_and_read_N_events(unsigned long int N) {
+	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
 //	if (stdout_ch != -1)
@@ -660,9 +657,6 @@ void setup_filenames_for_fiber(void) {
 
 void close_fiber_files_to_prepare_for_next_spill(void) {
 //	printf("\n");
-	if (logfile_open) {
-		logfile << number_of_readout_events_for_this_spill << endl << flush;
-	}
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		if (channel_bitmask & (1<<i)) {
 				close(fd[i]);
@@ -685,22 +679,6 @@ string experiment_number_string(void) {
 }
 
 void open_files_for_all_enabled_fiber_channels(void) {
-	if (!logfile_open) {
-		logfile_filename = location_of_status_and_log_files;
-		create_directory_if_necessary(logfile_filename.c_str());
-		logfile_filename += "/";
-		logfile_filename += experiment_number_string();
-		create_directory_if_necessary(logfile_filename.c_str());
-		logfile_filename += "/logfile";
-		logfile.open(logfile_filename.c_str(), fstream::app);
-		if (logfile) {
-			logfile_open = true;
-			logfile << endl << flush;
-		} else {
-			fprintf(stderr, "ERROR opening logfile %s\n", logfile_filename.c_str());
-			logfile_open = false;
-		}
-	}
 	// open and create the files
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		if (channel_bitmask & (1<<i)) {

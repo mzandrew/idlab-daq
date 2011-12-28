@@ -29,6 +29,7 @@ int main(void) {
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
 	setup_filenames_for_fiber();
+	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
 	send_front_end_trigger_veto_clear();
