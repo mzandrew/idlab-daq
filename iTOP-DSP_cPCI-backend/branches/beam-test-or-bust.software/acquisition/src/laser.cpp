@@ -34,6 +34,8 @@ int main(void) {
 		CAMAC_initialize_3377s();
 		open_CAMAC3377_file();
 	}
+	setup_run_type("laser");
+	setup_to_catch_ctrl_c(update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files);
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
@@ -60,6 +62,7 @@ int main(void) {
 	start_timer();
 	while (1) {
 
+		setup_to_catch_ctrl_c(update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files);
 		if (!first_time) {
 			increment_spill_number();
 			write_status_file();
@@ -93,7 +96,7 @@ int main(void) {
 //			usleep(100000);
 		}
 
-		update_logfile_with_the_number_of_readout_events_for_this_spill("laser");
+		update_logfile_with_the_number_of_readout_events_for_this_spill();
 		close_fiber_files_to_prepare_for_next_spill();
 		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << total_number_of_readout_events << " for this run)" << endl;
 		for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
@@ -106,14 +109,14 @@ int main(void) {
 			first_time = false;
 		}
 
+		setup_to_catch_ctrl_c(close_all_files);
 		cout << "press ctrl-c now to end laser run" << endl;
 		usleep(3000000);
 
 	}
 
 	// cleanup:
-	close_all_fiber_files();
-	close_pci();
+	close_all_files();
 	return 0;
 }
 

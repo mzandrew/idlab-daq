@@ -3,13 +3,12 @@
 #include "pci.h"
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
-#include "read_CAMAC.h" // this is for all non-3377 CAMAC stuff
+#include "read_CAMAC.h"
 #include <stdio.h>
 #include <iostream>
 #include "parse_config_file.h"
 #include "acquisition.h"
 #include "status_file.h"
-//#include "camac.h" // this is the 3377-specific readout
 
 int main(void) {
 	// setup:
@@ -29,6 +28,7 @@ int main(void) {
 //		CAMAC_initialize_3377s();
 		open_CAMAC_file();
 //	}
+	setup_to_catch_ctrl_c(close_all_files);
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
@@ -58,8 +58,7 @@ int main(void) {
 	}
 
 	// cleanup:
-	close_all_fiber_files();
-	close_pci();
+	close_all_files();
 	return 0;
 }
 

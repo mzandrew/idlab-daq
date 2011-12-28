@@ -32,6 +32,8 @@ int main(void) {
 //		CAMAC_initialize_3377s();
 //		open_CAMAC_file();
 //	}
+	setup_run_type("pedestal");
+	setup_to_catch_ctrl_c(update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files);
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
@@ -69,9 +71,8 @@ int main(void) {
 	}
 
 	// cleanup:
-	update_logfile_with_the_number_of_readout_events_for_this_spill("pedestal");
-	close_all_fiber_files();
-	close_pci();
+	update_logfile_with_the_number_of_readout_events_for_this_spill();
+	close_all_files();
 	return 0;
 }
 

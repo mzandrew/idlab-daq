@@ -128,12 +128,18 @@ int read_camac(void* target_buffer) {
 //	return xxusb_bulk_read(crates[0].hnd, (char*)target_buffer, 1024, 1000);
 }
 
-void open_CAMAC_file(void) {
+void close_CAMAC_file(void) {
 	if (CAMAC_fd >= 0) {
+		cout << "closing CAMAC file" << endl;
 		//fprintf(stdout, "closing CAMAC file \"%s\"\n", old_CAMAC_filename.c_str());
 //		fprintf(stdout, "\"%s\" closed\n", old_CAMAC_filename.c_str());
 		close(CAMAC_fd);
 	}
+}
+
+void open_CAMAC_file(void) {
+	close_CAMAC_file();
+	cout << "opening CAMAC file" << endl;
 	CAMAC_filename = base_filename;
 	CAMAC_filename += ".camac";
 	CAMAC_fd = open(CAMAC_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
@@ -198,12 +204,18 @@ int CAMAC3377_fd = -7; // negative to avoid problem closing an unopened file
 string CAMAC3377_filename;
 string old_CAMAC3377_filename;
 
-void open_CAMAC3377_file(void) {
+void close_CAMAC3377_file(void) {
 	if (CAMAC3377_fd >= 0) {
+		cout << "closing CAMAC3377 file" << endl;
 		//fprintf(stdout, "closing CAMAC3377 file \"%s\"\n", old_CAMAC3377_filename.c_str());
 //		fprintf(stdout, "\"%s\" closed\n", old_CAMAC3377_filename.c_str());
 		close(CAMAC3377_fd);
 	}
+}
+
+void open_CAMAC3377_file(void) {
+	close_CAMAC3377_file();
+	cout << "opening CAMAC3377 file" << endl;
 	CAMAC3377_filename = base_filename;
 	CAMAC3377_filename += ".3377";
 	CAMAC3377_fd = open(CAMAC3377_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
