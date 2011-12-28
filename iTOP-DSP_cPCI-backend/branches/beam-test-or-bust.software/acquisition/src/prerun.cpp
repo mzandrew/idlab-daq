@@ -26,6 +26,8 @@ int main(void) {
 	reset_trigger_flip_flop();
 	set_all_DACs_to_built_in_nominal_values();
 	setup_feedback_enables_and_goals(1);
+	usleep(50000);
+	disable_sampling_rate_feedback();
 
 	open_status_file_for_reading_and_writing();
 	read_status_file();
@@ -83,7 +85,6 @@ int main(void) {
 						cout << t << "C ";
 					}
 				}
-				cout << endl;
 				printf("\n");
 				clear_scaler_counters();
 			} else {
