@@ -81,6 +81,9 @@ int main(void) {
 			cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << total_number_of_readout_events << " for this run)" << endl;
 			//setw(6) << setfill('0') << 
 			//printf(" (%06d for run%04d)", number_of_readout_events_for_this_spill, run_number);
+			temperature(0);
+			temperature(1);
+			temperature(2);
 			if (first_time) {
 				first_time = false;
 			}

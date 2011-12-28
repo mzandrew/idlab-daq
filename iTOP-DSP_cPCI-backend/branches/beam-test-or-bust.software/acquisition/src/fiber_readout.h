@@ -94,6 +94,7 @@ bool spill_is_active(void);
 void close_fiber_files_to_prepare_for_next_spill(void);
 void open_fiber_files_to_prepare_for_next_spill(void);
 string experiment_number_string(void);
+float temperature(unsigned short int fiber_channel);
 
 #endif
 
