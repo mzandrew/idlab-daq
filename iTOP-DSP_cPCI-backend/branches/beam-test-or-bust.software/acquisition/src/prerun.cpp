@@ -19,9 +19,9 @@ int main(void) {
 	setup_pci(card_id);
 
 	global_reset();
-	usleep(350000);
-	cout << "press a key after all fiber links are up (steady green)" << endl;
-	getchar();
+	usleep(500000);
+//	cout << "press a key after all fiber links are up (steady green)" << endl;
+//	getchar();
 	readout_all_pending_data();
 	send_front_end_trigger_veto_clear();
 	reset_trigger_flip_flop();
@@ -41,7 +41,7 @@ int main(void) {
 	setup_filenames_for_fiber();
 	if (init_camac("CAMAC_config.txt")) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
-		exit(7);
+//		exit(7);
 	} else {
 		CAMAC_initialized = true;
 	}
@@ -50,6 +50,8 @@ int main(void) {
 		CAMAC_initialize_3377s();
 		open_CAMAC3377_file();
 	}
+	setup_run_type("prerun");
+	setup_to_catch_ctrl_c(close_all_files);
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
@@ -73,7 +75,7 @@ int main(void) {
 //		while (spill_is_active()) {
 			if (!spill_is_active()) {
 				if (first_time) {
-					update_logfile_with_the_number_of_readout_events_for_this_spill("prerun");
+					update_logfile_with_the_number_of_readout_events_for_this_spill();
 				}
 				readout_an_event(true);
 				send_command_packet_to_all_enabled_channels(0xeeeee01a,threshold);
@@ -102,8 +104,8 @@ int main(void) {
 		}
 	}
 
-	close_all_fiber_files();
-	close_pci();
+	// cleanup:
+	close_all_files();
 	return 0;
 }
 

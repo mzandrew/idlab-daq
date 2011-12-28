@@ -15,6 +15,7 @@ int main(void) {
 	should_soft_trigger = true;
 	readout_all_pending_data();
 	setup_filenames_for_fiber();
+//	setup_to_catch_ctrl_c(close_all_files);
 //	open_logfile();
 //	open_files_for_all_enabled_fiber_channels();
 

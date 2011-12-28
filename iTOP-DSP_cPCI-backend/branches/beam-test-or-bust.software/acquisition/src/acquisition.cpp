@@ -1,5 +1,3 @@
-#include "acquisition.h"
-
 using namespace std;
 
 #include <iostream>
@@ -7,7 +5,13 @@ using namespace std;
 #include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h> // to catch ctrl-c
+#include "acquisition.h"
 #include "fiber_readout.h"
+#include "pci.h"
+#include "read_CAMAC.h"
+
+void (*call_this_on_ctrl_c)(void);
 
 bool channel_enabled[4];
 string location_of_raw_datafiles = "../logdir";
@@ -25,6 +29,7 @@ unsigned short int threshold_scan_step_size;
 ofstream logfile;
 string logfile_filename = "work/logfile";
 bool logfile_open = false;
+string run_type = "unknown";
 
 void set_current_date_string(void) {
 	char temp[256];
@@ -77,14 +82,38 @@ void increment_spill_number(void) {
 	spill_number++;
 }
 
-void update_logfile_with_the_number_of_readout_events_for_this_spill(string type) {
+void update_logfile_with_the_number_of_readout_events_for_this_spill(void) {
 	if (logfile_open) {
-		logfile << number_of_readout_events_for_this_spill << " " << type.c_str() << endl << flush;
+		logfile << number_of_readout_events_for_this_spill << " " << run_type.c_str() << endl << flush;
 	}
+}
+
+void update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files(void) {
+	update_logfile_with_the_number_of_readout_events_for_this_spill();
+	close_all_files();
+}
+
+void close_all_files(void) {
+	cout << "closing all files" << endl;
+	close_logfile();
+	close_CAMAC_file();
+	close_CAMAC3377_file();
+	close_all_fiber_files();
+	close_pci();
+}
+
+void close_logfile(void) {
+	if (logfile_open) {
+		cout << "closing logfile" << endl;
+		logfile << endl << flush;
+		logfile.close();
+	}
+	logfile_open = false;
 }
 
 void open_logfile(void) {
 	if (!logfile_open) {
+		cout << "opening logfile" << endl;
 		logfile_filename = location_of_status_and_log_files;
 		create_directory_if_necessary(logfile_filename.c_str());
 		logfile_filename += "/";
@@ -106,5 +135,22 @@ void update_logfile_with_base_filename(void) {
 	if (logfile_open) {
 		logfile << base_filename.c_str() << " " << flush;
 	}
+}
+
+void setup_run_type(string type) {
+	run_type = type;
+}
+
+void setup_to_catch_ctrl_c(void (*callback)(void)) {
+	//call_this_on_ctrl_c = (void *) close_all_files;
+	call_this_on_ctrl_c = callback;
+	(void) signal(SIGINT, caught_ctrl_c);
+}
+
+void caught_ctrl_c(int sig) {
+	cout << endl << "caught ctrl-c" << endl;
+	call_this_on_ctrl_c();
+	(void) signal(SIGINT, SIG_DFL);
+	exit(0);
 }
 

@@ -29,6 +29,7 @@ int main(void) {
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
 	setup_filenames_for_fiber();
+	setup_to_catch_ctrl_c(update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files);
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
@@ -42,9 +43,9 @@ int main(void) {
 //		increment_spill_number_and_change_filenames_for_fiber();
 	}
 
-	close_all_fiber_files();
+	// cleanup:
+	close_all_files();
 //	set_all_DACs_to(0);
-	close_pci();
 
 	return 0;
 }
