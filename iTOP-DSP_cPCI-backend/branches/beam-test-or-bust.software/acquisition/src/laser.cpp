@@ -75,6 +75,7 @@ int main(void) {
 
 		while (number_of_readout_events_for_this_spill < MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL &&
 		       number_of_seconds_this_spill_has_been_active < MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL) {
+			wait_for_spill_to_finish();
 			if (!readout_an_event(true)) {
 				if (CAMAC_initialized) {
 					read_data_from_CAMAC_and_write_to_CAMAC_file();
