@@ -104,6 +104,8 @@ string NextRawFile(ifstream &logfile, unsigned int exp, unsigned int run, unsign
 }
 
 bool NextRunStarted(std::ifstream &logfile, unsigned int exp, unsigned int this_run) {
+	logfile.clear();
+	logfile.seekg(ios::beg);
 	ostringstream temp;
 	temp << "exp" << setw(2) << setfill('0') << exp << ".run" << setw(4) << setfill('0') << this_run+1 << ".spill";
 	string partial_string = temp.str();
