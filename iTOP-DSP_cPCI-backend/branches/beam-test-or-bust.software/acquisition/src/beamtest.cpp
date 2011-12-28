@@ -81,9 +81,12 @@ int main(void) {
 			cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << total_number_of_readout_events << " for this run)" << endl;
 			//setw(6) << setfill('0') << 
 			//printf(" (%06d for run%04d)", number_of_readout_events_for_this_spill, run_number);
-			temperature(0);
-			temperature(1);
-			temperature(2);
+			for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+				if (channel_bitmask & (1<<i)) {
+					cout << "module" << i << " = " << temperature(i) << " degrees C  ";
+				}
+			}
+			cout << endl;
 			if (first_time) {
 				first_time = false;
 			}
