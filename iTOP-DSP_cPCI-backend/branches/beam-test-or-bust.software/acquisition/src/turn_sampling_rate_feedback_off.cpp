@@ -13,8 +13,7 @@ int main(void) {
 	readout_all_pending_data();
 
 //	enable_sampling_rate_feedback();
-//	disable_sampling_rate_feedback();
-	setup_feedback_enables_and_goals(0);
+	disable_sampling_rate_feedback();
 	
 	close_pci();
 	return 0;

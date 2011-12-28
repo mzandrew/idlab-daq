@@ -57,6 +57,7 @@ extern string filename[NUMBER_OF_SCRODS_TO_READOUT];
 extern bool files_are_open;
 extern bool should_soft_trigger;
 extern unsigned long int number_of_readout_events_for_this_spill;
+extern unsigned short int feedback_enables_and_goals[6];
 
 #define NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME (100256)
 void readout_all_pending_data(void);
@@ -88,6 +89,8 @@ void setup_filenames_for_fiber(void);
 void set_some_DACs_to(unsigned short int value, unsigned short int channel_bitmask);
 void set_all_DACs_to(unsigned short int value);
 void set_all_DACs_to_built_in_nominal_values(void);
+void enable_sampling_rate_feedback(void);
+void disable_sampling_rate_feedback(void);
 void setup_feedback_enables_and_goals(unsigned short int enable);
 void wait_for_start_of_spill(void);
 void wait_for_spill_to_finish(void);
