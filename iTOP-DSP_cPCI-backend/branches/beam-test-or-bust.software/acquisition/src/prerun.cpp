@@ -19,7 +19,8 @@ int main(void) {
 	setup_pci(card_id);
 
 	global_reset();
-	usleep(500000);
+	cout << "waiting 16 seconds for eeprom to be read" << endl;
+	usleep(16000000);
 //	cout << "press a key after all fiber links are up (steady green)" << endl;
 //	getchar();
 	readout_all_pending_data();

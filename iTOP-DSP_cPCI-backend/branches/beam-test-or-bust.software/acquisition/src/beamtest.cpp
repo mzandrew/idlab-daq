@@ -89,7 +89,8 @@ int main(void) {
 			//printf(" (%06d for run%04d)", number_of_readout_events_for_this_spill, run_number);
 			for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 				if (channel_bitmask & (1<<i)) {
-					cout << "module" << i << " = " << temperature_float[i] << " degrees C  ";
+					//cout << "module" << i << " = " << temperature_float[i] << " degrees C  ";
+					cout << "mod" << i << " = " << temperature_float[i] << "C  ";
 				}
 			}
 			cout << endl;
