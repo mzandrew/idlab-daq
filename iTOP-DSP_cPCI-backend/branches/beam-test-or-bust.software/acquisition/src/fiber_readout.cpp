@@ -679,6 +679,7 @@ string experiment_number_string(void) {
 }
 
 void open_files_for_all_enabled_fiber_channels(void) {
+	cout << "opening fiber files" << endl;
 	// open and create the files
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		if (channel_bitmask & (1<<i)) {
@@ -705,6 +706,7 @@ void open_files_for_all_enabled_fiber_channels(void) {
 }
 
 void close_all_fiber_files(void) {
+	cout << "closing fiber files" << endl;
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 //		if (channel_bitmask & (1<<i)) {
 //			fprintf(stderr, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);
@@ -712,7 +714,7 @@ void close_all_fiber_files(void) {
 //		} else 
 		if (fd[i] > 0) {
 //			printf("closing file \"%s\" for card #%d channel #%d\n", fiber_filename[i].c_str(), card_id, i);
-			printf("closing file \"%s\"\n", fiber_filename[i].c_str());
+//			printf("%s closed\n", fiber_filename[i].c_str());
 			close(fd[i]);
 		}
 	}

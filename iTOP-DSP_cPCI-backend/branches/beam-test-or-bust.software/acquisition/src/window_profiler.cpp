@@ -15,6 +15,7 @@ int main(void) {
 	should_soft_trigger = true;
 	readout_all_pending_data();
 	setup_filenames_for_fiber();
+	setup_to_catch_ctrl_c(update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files);
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
@@ -46,9 +47,8 @@ int main(void) {
 		set_start_and_end_windows( i,  i+3); usleep(10000); readout_N_events(100);
 	}
 
-	close_all_fiber_files();
-	close_pci();
-
+	// cleanup:
+	close_all_files();
 	return 0;
 }
 
