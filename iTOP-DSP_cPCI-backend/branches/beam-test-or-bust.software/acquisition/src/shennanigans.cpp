@@ -29,6 +29,7 @@ int main(void) {
 //		CAMAC_initialize_3377s();
 		open_CAMAC_file();
 //	}
+	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
 	unsigned short int ending_window = 63;
