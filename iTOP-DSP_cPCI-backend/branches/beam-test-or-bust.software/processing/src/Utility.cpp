@@ -48,13 +48,28 @@ string NextRawFile(ifstream &logfile, unsigned int exp, unsigned int run, unsign
 		string single_space = " ";
 		size_t position_of_space = line_str.find(single_space);
 		string filename_part;
+		string number_of_events_and_run_type_part;
 		string number_of_events_part;
+		string run_type_part;
 		if (position_of_space == string::npos) {
 			continue;
 		} else {
 			filename_part = line_str.substr(0,position_of_space);
-			number_of_events_part = line_str.substr(position_of_space+1,line_str.length());
-			
+			number_of_events_and_run_type_part = line_str.substr(position_of_space+1,line_str.length()-1);
+//			cout << "full string: " << line_str << ";" << endl;
+//			cout << "filename   : " << filename_part << ";" << endl;
+//			cout << "other junk : " << number_of_events_and_run_type_part << ";" << endl;
+			position_of_space = number_of_events_and_run_type_part.find(single_space);
+			if (position_of_space == string::npos) {
+				number_of_events_part = number_of_events_and_run_type_part;
+				run_type_part = "unknown";
+			} else {
+				number_of_events_part = number_of_events_and_run_type_part.substr(0,position_of_space);
+				run_type_part = number_of_events_and_run_type_part.substr(position_of_space+1,number_of_events_and_run_type_part.length()-1);
+			}
+//			cout << "num events : " << number_of_events_part << ";" << endl;
+//			cout << "run type   : " << run_type_part << ";" << endl;
+
 			size_t position_of_filename_without_path = filename_part.find(partial_string);
 			if (position_of_filename_without_path == string::npos) {
 				continue;
