@@ -152,8 +152,12 @@ void open_CAMAC_file(void) {
 	}
 }
 
-void split_CAMAC_file_to_prepare_for_next_spill(void) {
+void open_CAMAC_file_to_prepare_for_next_spill(void) {
 	open_CAMAC_file();
+}
+
+void close_CAMAC_file_to_prepare_for_next_spill(void) {
+	close_CAMAC_file();
 }
 
 int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
@@ -228,8 +232,12 @@ void open_CAMAC3377_file(void) {
 	}
 }
 
-void split_CAMAC3377_file_to_prepare_for_next_spill(void) {
+void open_CAMAC3377_file_to_prepare_for_next_spill(void) {
 	open_CAMAC3377_file();
+}
+
+void close_CAMAC3377_file_to_prepare_for_next_spill(void) {
+	close_CAMAC3377_file();
 }
 
 void CAMAC_initialize_3377s(void) {
