@@ -32,3 +32,13 @@ for i in $(seq 0 3); do
 	fi
 done
 
+declare -i number_of_bytes_in_a_camac_file number_of_camac_events
+bytes=$(echo $(find -type f -name "${experiment_number}.${run_number}.*camac" -printf "%s+"; echo -n 0) | bc)
+if [ ${bytes} -ne 0 ]; then
+#	echo "${bytes} bytes from camac"
+	number_of_bytes_in_a_camac_file=$((472))
+	number_of_camac_events=$(echo "${bytes} / ${number_of_bytes_in_a_camac_file}" | bc)
+	camac_events_string=$(printf "%6s" ${number_of_camac_events})
+	echo "${camac_events_string} events from camac  during ${experiment_number} ${run_number}"
+fi
+

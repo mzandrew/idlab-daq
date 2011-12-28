@@ -37,7 +37,7 @@ $(./scripts/determine_number_of_events_in_a_run ${numeric_experiment_number} ${r
 done
 
 output=$(echo "${output}" | tr -s '\n')
-echo "${output}"
+echo "${output}" | sort -k 7
 
 declare total_0=$(echo $(echo "${output}" | grep fiber0 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
 printf "%6d total events for fiber0 during ${experiment_number}\n" ${total_0}
@@ -51,29 +51,6 @@ printf "%6d total events for fiber2 during ${experiment_number}\n" ${total_2}
 declare total_3=$(echo $(echo "${output}" | grep fiber3 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
 printf "%6d total events for fiber3 during ${experiment_number}\n" ${total_3}
 
-exit 0
-
-output0=$(echo ${output} | grep fiber0)
-output1=$(echo ${output} | grep fiber1)
-output2=$(echo ${output} | grep fiber2)
-output3=$(echo ${output} | grep fiber3)
-
-for i in $(seq 0 3); do
-	if [ ${i} -eq 0 ]; then
-		echo "${output0}"
-	elif [ ${i} -eq 1 ]; then
-		echo "${output1}"
-	elif [ ${i} -eq 2 ]; then
-		echo "${output2}"
-	elif [ ${i} -eq 3 ]; then
-		echo "${output3}"
-	fi
-done
-
-echo "${output0}"
-echo "${output1}"
-echo "${output2}"
-echo "${output3}"
-
-#echo "${total_events} events from fiber${i} in ${experiment_number}"
+declare total_c=$(echo $(echo "${output}" | grep camac | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for camac  during ${experiment_number}\n" ${total_c}
 
