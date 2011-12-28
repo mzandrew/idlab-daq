@@ -75,13 +75,15 @@ int main(void) {
 				generate_new_base_filename();
 				open_fiber_files_to_prepare_for_next_spill();
 				if (CAMAC_initialized) {
-					split_CAMAC_file_to_prepare_for_next_spill();
-					split_CAMAC3377_file_to_prepare_for_next_spill();
+					open_CAMAC_file_to_prepare_for_next_spill();
+					open_CAMAC3377_file_to_prepare_for_next_spill();
 				}
 			}
 		} else if (end_of_spill) {
 			update_logfile_with_the_number_of_readout_events_for_this_spill();
 			close_fiber_files_to_prepare_for_next_spill();
+			close_CAMAC_file_to_prepare_for_next_spill();
+			close_CAMAC3377_file_to_prepare_for_next_spill();
 			cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << total_number_of_readout_events << " for this run)" << endl;
 			//setw(6) << setfill('0') << 
 			//printf(" (%06d for run%04d)", number_of_readout_events_for_this_spill, run_number);
