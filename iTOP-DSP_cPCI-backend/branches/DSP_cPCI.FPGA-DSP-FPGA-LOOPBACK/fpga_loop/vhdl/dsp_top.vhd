@@ -39,7 +39,8 @@ entity dsp_top is
 		DSP0_BUS_RDY		: std_logic := '1';
 		NON_MASKABLE		: std_logic_vector(1 downto 0) := "00"; --Enable/Disable Core A/B
 		BYPASS				: std_logic := '1';
-		PACKET_SIZE			: std_logic_vector(11 downto 0) := X"118";
+		PACKET_SIZE			: integer := 140; --140 32-bit
+		PACKET_QEV			: integer := 132; --132 Packets Per Quarter Event
 		DATA16_IN			: ram_type := data16
 	);
 
@@ -130,13 +131,13 @@ architecture Behavioral of dsp_top is
 
 	end component;
 	-------------------------------------End ChipScope------------------------------
+	constant QEV_SIZE		: integer := PACKET_SIZE * PACKET_QEV;
 
-	signal PPI_CLK		: std_logic;	--20MHz
+	signal PPI_CLK			: std_logic;	--20MHz
 	signal DSP_CLK			: std_logic;	--40MHz
 	signal WR_EN			: std_logic := '0';
 	signal WR_EN_r			: std_logic := '0';
 	signal RD_EN			: std_logic := '0';
-	signal RD_EN_r			: std_logic := '0';
 	signal LOCKED			: std_logic;
 
 	signal DSP_RESET		: std_logic := '0';
@@ -145,7 +146,8 @@ architecture Behavioral of dsp_top is
 	type FIFO_WE_STATE_TYPE is(
 			start_we_state,
 			wait_we_state,
-			stop_we_state
+			stop_we_state,
+			reset_we_state
 		);
 	signal FIFO_WE_STATE	: FIFO_WE_STATE_TYPE := start_we_state;
 	signal FIFO_IN_DATA	: std_logic_vector(15 downto 0);
@@ -208,28 +210,28 @@ begin
 	end process;
 
 	--Send Data
-	process(PPI_CLK)
-		variable data	: std_logic_vector(15 downto 0) := x"0000";
+	process(PPI_CLK,OUTDATA)
+		variable rd_addr	: integer range 0 to 2*QEV_SIZE := 0;
 		variable wait0 : std_logic := '0';
 	begin
 		if rising_edge(PPI_CLK) then
 			if wait0 = '1' then
 				PPI0_SYNC1_0 <= '1';
-				if data < PACKET_SIZE then
-					data := std_logic_vector(unsigned(data) + 1);
+				if rd_addr < 2*QEV_SIZE then
+					rd_addr := rd_addr + 1;
 				end if;
 			else
 				PPI0_SYNC1_0 <= '0';
-				data := x"0000";
+				rd_addr := 0;
 			end if;
 			wait0 := PF_0_1;
 		end if;
-		OUTDATA <= DATA16_IN(to_integer(unsigned(data)));
+		OUTDATA <= DATA16_IN(rd_addr);
 		PPI0_0 <= OUTDATA;
 	end process;
 	
 	--Simple FIFO
-	example_fifo : rx_fifo
+	example_fifo : rx_fifo			--IN: 16-bit x 256, OUT: 32-bit x 128
 	  PORT MAP (
 		 rst => PF_0_2,
 		 wr_clk => PPI_CLK,
@@ -240,7 +242,7 @@ begin
 		 dout => FIFO_DATA_OUT,
 		 full => open,--FIFO_FULL,
 		 empty => FIFO_EMPTY,
-		 prog_full => FIFO_FULL--FIFO_PROG_FULL
+		 prog_full => FIFO_FULL
 	  );	
 	
 	--WR_EN Logic
@@ -248,11 +250,42 @@ begin
 	begin
 		if rising_edge(PPI_CLK) then
 			FIFO_IN_DATA <= PPI1_0;
-			WR_EN_r <= PPI1_SYNC2_0;
 			WR_EN <= WR_EN_r;
+			case FIFO_WE_STATE is
+				when start_we_state =>		--Wait for PF[0] to be asserted
+					if PF_0_0 = '1' then
+						FIFO_WE_STATE <= wait_we_state;
+					else
+						FIFO_WE_STATE <= start_we_state;
+					end if;
+					WR_EN_r <= '0';
+				when wait_we_state =>		--Once PF[0] is asserted, wait for PPI_FS2
+					if PPI1_SYNC2_0 = '1' then
+						FIFO_WE_STATE <= stop_we_state;
+						WR_EN_r <= '1';
+					else
+						FIFO_WE_STATE <= wait_we_state;
+						WR_EN_r <= '0';
+					end if;
+				when stop_we_state =>		--While PPI_FS2 is asserted take data
+					if PPI1_SYNC2_0 = '0' then
+						FIFO_WE_STATE <= reset_we_state;
+					else
+						FIFO_WE_STATE <= stop_we_state;
+					end if;
+					WR_EN_r <= PPI1_SYNC2_0;
+				when reset_we_state =>		--Take data only for the first PPI_FS2 assertion 
+					if PF_0_0 = '0' then		--then wait till PF[0] is deasserted
+						FIFO_WE_STATE <= start_we_state;
+					else
+						FIFO_WE_STATE <= reset_we_state;
+					end if;
+					WR_EN_r <= '0';
+				when others => FIFO_WE_STATE <= reset_we_state;
+			end case;
 		end if;
 	end process;
-		
+
 	--RD_EN Logic
 	process(PPI_CLK)
 	begin
@@ -264,23 +297,29 @@ begin
 				else
 					RD_EN <= RD_EN;
 				end if;
-				RD_EN_r <= RD_EN;
 		end if;
 	end process;
 	
-	--CheckSum
-	process(PPI_CLK)
+	--Check Sum
+	process(PPI_CLK,FIFO_DATA_OUT)
 		variable temp_data	: std_logic_vector(31 downto 0);
+		variable count			: integer range 0 to QEV_SIZE := 0;
 	begin
 		if rising_edge(PPI_CLK) then
 			if PF_0_2 = '1' then
 				SUM <= x"00000000";
 			end if;
 			if RD_EN = '1' then
-				SUM <= std_logic_vector(unsigned(SUM) + unsigned(temp_data));
+				if count < QEV_SIZE + 1 then
+					SUM <= std_logic_vector(unsigned(SUM) + unsigned(temp_data));
+					count := count + 1;
+				end if;
+			else
+				SUM <= X"00000000";
+				count := 0;
 			end if;
 		end if;
-		temp_data := FIFO_DATA_OUT(15 downto 0) & FIFO_DATA_OUT(31 downto 16);
+		temp_data := FIFO_DATA_OUT(15 downto 0) & FIFO_DATA_OUT(31 downto 16);	--Byte Swap
 	end process;
 
 	---------------------------------------ChipScope--------------------------------
@@ -294,8 +333,8 @@ begin
 		 CONTROL => CHIPSCOPE_CONTROL,
 		 CLK => PPI_CLK,
 		 TRIG0 => (WR_EN & RD_EN & FIFO_FULL & FIFO_EMPTY & PF_0_0 & PF_0_1 & PF_0_2 & PPI1_SYNC1_0 &
-						PPI1_SYNC2_0 & PPI1_0 & FIFO_DATA_OUT & OUTDATA & FIFO_IN_DATA & SUM & 
-						(6 downto 0 => '0'))
+						PPI1_SYNC2_0 & PPI1_0 & FIFO_DATA_OUT(15 downto 0) & FIFO_DATA_OUT(31 downto 16) &
+						OUTDATA & FIFO_IN_DATA & SUM & (6 downto 0 => '0'))
 		);
 	-------------------------------------End ChipScope------------------------------
 

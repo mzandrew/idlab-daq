@@ -1,8 +1,7 @@
 #include "system.h"
 
-volatile short buffer0[];
-volatile short buffer1[];
-volatile short buffer2[];
-volatile short buffer3[];
+volatile unsigned short *buffer16;
+volatile unsigned int buffer32[][];
+volatile short term;
 
 volatile bool buffer_full;

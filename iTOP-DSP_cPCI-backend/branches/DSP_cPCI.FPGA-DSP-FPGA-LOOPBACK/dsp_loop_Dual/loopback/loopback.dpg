@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding='ISO-8859-1'?>
-<visualdsp-project-group generated="Mon Jan 09 13:51:24 2012" version="1.0.0.0" active-project="loopback">
+<visualdsp-project-group generated="Wed Jan 11 10:47:10 2012" version="1.0.0.0" active-project="loopback">
 	<project name="loopback" file=".\loopback.dpj">
 		<dependencies>
 			<dependent-project>coreA</dependent-project>
