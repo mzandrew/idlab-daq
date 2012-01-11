@@ -11,26 +11,25 @@ int main(void)
 	int j;
 	int chk_sum = 0;
 	int temp = 0;
-	
+	unsigned int *test_buffer[2];
+
 	*pFIO0_DIR = 0x0007; //Initialize PF[0], PF[1], PF[2] as output
 	ssync();
 	adi_core_b_enable(); //Call on Core B to sit idle
 	ssync();
 
 //----------Set up descriptors
-	tDMA_descriptor DMA_PPI1[NUM_PACKET_QEV+1];
-	for(j=0;j<NUM_PACKET_QEV;j++){
-		DMA_PPI1[j].NDPL = ((unsigned long int)&DMA_PPI1[j+1]) & 0xffff;
-		DMA_PPI1[j].NDPH = (((unsigned long int)&DMA_PPI1[j+1]) & 0xffff0000)>>16;
-		DMA_PPI1[j].SAL = ((unsigned long int)buffer16) & 0xffff;
-		DMA_PPI1[j].SAH = (((unsigned long int)buffer16) & 0xffff0000)>>16;
-		DMA_PPI1[j].DMACFG = DMA1_CONF|0x1;
-	}
-	DMA_PPI1[NUM_PACKET_QEV].NDPL = ((unsigned long int)&DMA_PPI1[NUM_PACKET_QEV]) & 0xffff;
-	DMA_PPI1[NUM_PACKET_QEV].NDPH = (((unsigned long int)&DMA_PPI1[NUM_PACKET_QEV]) & 0xffff0000)>>16;
-	DMA_PPI1[NUM_PACKET_QEV].SAL = ((unsigned long int)&term) & 0xffff;
-	DMA_PPI1[NUM_PACKET_QEV].SAH = (((unsigned long int)&term) & 0xffff0000)>>16;
-	DMA_PPI1[NUM_PACKET_QEV].DMACFG = (DMA1_CONF|0x1)&0x00FF;
+	tDMA_descriptor DMA_PPI1[2];
+	DMA_PPI1[0].NDPL = ((unsigned long int)&DMA_PPI1[1]) & 0xffff;
+	DMA_PPI1[0].NDPH = (((unsigned long int)&DMA_PPI1[1]) & 0xffff0000)>>16;
+	DMA_PPI1[0].SAL = ((unsigned long int)buffer16) & 0xffff;
+	DMA_PPI1[0].SAH = (((unsigned long int)buffer16) & 0xffff0000)>>16;
+	DMA_PPI1[0].DMACFG = DMA1_CONF|0x1;
+	DMA_PPI1[1].NDPL = ((unsigned long int)&DMA_PPI1[1]) & 0xffff;
+	DMA_PPI1[1].NDPH = (((unsigned long int)&DMA_PPI1[1]) & 0xffff0000)>>16;
+	DMA_PPI1[1].SAL = ((unsigned long int)&term) & 0xffff;
+	DMA_PPI1[1].SAH = (((unsigned long int)&term) & 0xffff0000)>>16;
+	DMA_PPI1[1].DMACFG = (DMA1_CONF|0x1)&0x00FF;
 //-----------------------------
 
 /*
@@ -64,12 +63,16 @@ int main(void)
 
 	printf("PPI1 Disabled\n");
 
-	for(j=0;j<TWICE_NUM_WORD_PACKET/2;j++){
+	for(j=0;j<SIZE_QEV/2;j++){
 		chk_sum = chk_sum + buffer32[j];
 	}
 
 	printf("Chk_Sum: 0x%x\n",chk_sum);
-	
+/*	
+	test_buffer[0] = (unsigned int)&buffer32[NUM_PACKET_QEV];
+	test_buffer[1] = (unsigned int)&buffer32[TWICE_NUM_WORD_PACKET];
+	printf("test: 0x%x\n",test_buffer[1][0]);
+*/	
 	return 0;
 }
 

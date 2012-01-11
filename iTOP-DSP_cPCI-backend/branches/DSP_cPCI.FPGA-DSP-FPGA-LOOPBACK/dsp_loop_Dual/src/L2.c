@@ -20,7 +20,7 @@
 
 #pragma file_attr("sharing=MustShare")
 #pragma section("l2_sram") 
-volatile unsigned int buffer32[TWICE_NUM_WORD_PACKET/2];
+volatile unsigned int buffer32[SIZE_QEV/2];
 
 #pragma file_attr("sharing=MustShare")
 #pragma section("l2_sram") 
