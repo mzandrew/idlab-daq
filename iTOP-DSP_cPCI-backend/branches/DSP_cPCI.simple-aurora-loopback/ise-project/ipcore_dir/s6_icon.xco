@@ -1,7 +1,7 @@
 ##############################################################
 #
-# Xilinx Core Generator version 12.2
-# Date: Thu Jun 30 07:41:27 2011
+# Xilinx Core Generator version 13.2
+# Date: Thu Jan 12 03:18:58 2012
 #
 ##############################################################
 #
@@ -9,6 +9,10 @@
 #  Xilinx CORE Generator IP GUI. It is strongly recommended
 #  that you do not manually alter this file as it may cause
 #  unexpected and unsupported behavior.
+#
+##############################################################
+#
+#  Generated from component: xilinx.com:ip:chipscope_icon:1.04.a
 #
 ##############################################################
 #
@@ -28,7 +32,7 @@ SET package = fgg484
 SET removerpms = false
 SET simulationfiles = Structural
 SET speedgrade = -3
-SET verilogsim = true
+SET verilogsim = false
 SET vhdlsim = true
 # END Project Options
 # BEGIN Select
@@ -44,4 +48,4 @@ CSET use_unused_bscan=false
 CSET user_scan_chain=USER1
 # END Parameters
 GENERATE
-# CRC: 61267674
+# CRC: 78ff78f7
