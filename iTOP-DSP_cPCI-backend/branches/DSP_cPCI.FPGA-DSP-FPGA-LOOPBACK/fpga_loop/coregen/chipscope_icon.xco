@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 13.2
-# Date: Mon Dec 12 01:13:11 2011
+# Date: Wed Jan 11 20:26:55 2012
 #
 ##############################################################
 #
@@ -22,13 +22,13 @@ SET asysymbol = true
 SET busformat = BusFormatAngleBracketNotRipped
 SET createndf = false
 SET designentry = VHDL
-SET device = xc6slx150t
+SET device = xc6slx45t
 SET devicefamily = spartan6
 SET flowvendor = Foundation_ISE
 SET formalverification = false
 SET foundationsym = false
 SET implementationfiletype = Ngc
-SET package = fgg676
+SET package = fgg484
 SET removerpms = false
 SET simulationfiles = Behavioral
 SET speedgrade = -3
@@ -49,4 +49,4 @@ CSET use_unused_bscan=false
 CSET user_scan_chain=USER1
 # END Parameters
 GENERATE
-# CRC: 4d637b6a
+# CRC: d4177a00
