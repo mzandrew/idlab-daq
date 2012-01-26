@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding='ISO-8859-1'?>
+<visualdsp-project-group generated="Wed Jan 25 14:52:58 2012" version="1.0.0.0" active-project="EBIUSystemServices">
+	<project name="EBIUSystemServices" file=".\EBIUSystemServices.dpj">
+		<dependencies>
+			<dependent-project>CoreA</dependent-project>
+			<dependent-project>CoreB</dependent-project>
+			<dependent-project>sml2</dependent-project>
+			<dependent-project>sml3</dependent-project>
+		</dependencies>
+	</project>
+	<project name="CoreA" file=".\CoreA\CoreA.dpj">
+	</project>
+	<project name="CoreB" file=".\CoreB\CoreB.dpj">
+	</project>
+	<project name="sml2" file=".\sml2\sml2.dpj">
+	</project>
+	<project name="sml3" file=".\sml3\sml3.dpj">
+	</project>
+</visualdsp-project-group>

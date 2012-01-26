@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<custom-visualdsp-proc-xml
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="\Program Files\Analog Devices\VisualDSP 5.0\System\ArchDef\ADSP-custom-board.xsd"
+     processor-family="BLACKFIN"
+     file="MCP_DSP_FIN.xml">
+<!-- ************************************************************************* -->
+<!-- ******* Custom register reset definitions for Getting Started example.    -->
+<!-- *******       <custom-register-reset-definitions>                         -->
+<!-- ******* These are customizations to be made against the standard shipped  -->
+<!-- ******* version in VisualDSP++ located in the installation directory:     -->
+<!-- ******* install-dir\System\ArchDef\ADSP-BF561-proc.xml                    -->
+<!-- ******* Copyright 2006-2007 Analog Devices, Inc.  All rights reserved.    -->
+<!-- ************************************************************************* -->
+	<custom-register-reset-definitions>
+		<!-- <register name="EBIU_SDRRC"  reset-value="0x01D0"     core="Common" /> -->
+		<!-- <register name="EBIU_SDBCTL" reset-value="0x00000015" core="Common" /> -->
+		<!-- <register name="EBIU_SDGCTL" reset-value="0x0091998d" core="Common" /> -->
+		     <register name="EBIU_SDRRC"  reset-value="0x012c"     core="Common" />
+		     <register name="EBIU_SDBCTL" reset-value="0x35353535" core="Common" />
+		     <register name="EBIU_SDGCTL" reset-value="0x0211998c" core="Common" />
+	</custom-register-reset-definitions>
+</custom-visualdsp-proc-xml> 

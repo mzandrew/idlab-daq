@@ -1,0 +1,2 @@
+ARCHITECTURE(ADSP-BF561)
+#include "ezkitBF5xx_initcode.ldf"

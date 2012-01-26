@@ -1,0 +1,56 @@
+/******************************************************************************
+*                                                                             *
+*  LDF for ADSP-BF5xx EZ-KIT Lite Initcode Example                            *
+*                                                                             *
+*  (c) Analog Devices Inc. 2007                                               *
+*                                                                             *
+******************************************************************************/
+
+
+#define     CODE_BASE       0xFFA00000
+
+#define     DATA_BASE       0xFF804000
+
+#define     BANK_LENGTH     0x4000
+
+
+$OBJECTS = $COMMAND_LINE_OBJECTS;
+$LIBRARIES = $COMMAND_LINE_OBJECTS, libdsp532y.dlb;
+
+
+MEMORY
+{
+    MEM_INITCODE { TYPE(RAM) WIDTH(8) START(CODE_BASE) LENGTH(BANK_LENGTH) }
+    MEM_INITDATA { TYPE(RAM) WIDTH(8) START(DATA_BASE) LENGTH(BANK_LENGTH) }
+}
+
+
+PROCESSOR p0
+{
+    RESOLVE( _initcode, CODE_BASE )
+    KEEP(_initcode)
+
+    OUTPUT( $COMMAND_LINE_OUTPUT_FILE )
+
+    SECTIONS
+    {
+        L1_CODE
+        {
+            INPUT_SECTION_ALIGN(4)
+            INPUT_SECTIONS( $OBJECTS(L1_code) $LIBRARIES(L1_code) )
+            INPUT_SECTIONS( $OBJECTS(program) $LIBRARIES(program) )
+        } > MEM_INITCODE
+
+        L1_DATA
+        {
+            INPUT_SECTION_ALIGN(4)       
+            INPUT_SECTIONS( $OBJECTS(L1_data) $LIBRARIES(L1_data) )
+            INPUT_SECTIONS( $OBJECTS(data1)   $LIBRARIES(data1) )
+        } > MEM_INITDATA
+    }
+}
+
+
+/***************************************************************
+ EOF
+***************************************************************/

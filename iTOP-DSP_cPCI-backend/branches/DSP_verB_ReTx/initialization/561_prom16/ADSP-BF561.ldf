@@ -1,0 +1,37 @@
+ARCHITECTURE(ADSP-BF561)
+
+SEARCH_DIR( $ADI_DSP\Blackfin\lib )
+
+$OBJECTS = $COMMAND_LINE_OBJECTS;
+
+MEMORY
+{	
+	JMP_LDR     { TYPE(RAM) START(0xFFA00000) END(0xFFA0000F) WIDTH(8) } 
+	SEG_LDR		{ TYPE(RAM) START(0xFEB1FD00) END(0xFEB1FFE7) WIDTH(8) } 	
+}
+
+
+PROCESSOR p0
+{
+    OUTPUT( $COMMAND_LINE_OUTPUT_FILE )
+
+    SECTIONS
+    {
+        JMP_LDR
+        {
+           	INPUT_SECTION_ALIGN(4)
+        	INPUT_SECTIONS( $OBJECTS(JMP_LDR) )
+		}>JMP_LDR
+		
+
+	SEG_LDR
+        {
+        	INPUT_SECTION_ALIGN(4)
+        	INPUT_SECTIONS( $OBJECTS(SEG_LDR))
+        	INPUT_SECTIONS( $OBJECTS(program))        	
+        	INPUT_SECTIONS( $OBJECTS(data1))        	
+         	INPUT_SECTIONS( $OBJECTS(constdata))        	
+	}>SEG_LDR
+    }
+}
+

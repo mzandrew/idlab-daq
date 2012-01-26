@@ -1,0 +1,59 @@
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/Program Files/Analog Devices/VisualDSP 5.0/System/linker_map_ss1.xsl"?>
+<!DOCTYPE DOCUMENT SYSTEM "file:///C:/Program Files/Analog Devices/VisualDSP 5.0/System/linker_map.dtd">
+<DOCUMENT>
+<LINKPROJECT guid='28579f3db6884fda6' id='0131EAC0' name='p0' orig_file_name='.\Debug\bf561_prom16.dxe' architecture='ADSP-BF561' >
+<FILE_NAME><![CDATA[.\Debug\bf561_prom16.dxe]]></FILE_NAME>
+<MEMORY id='0131CE48' name='JMP_LDR' start_address='0xffa00000' end_address='0xffa0000f' type='' qualifier='RAM' width='0x8' words_used='0xa' words_unused='0x6' >
+<OUTPUT_SECTIONS>
+<OUTPUT_SECTION name='JMP_LDR' id='013344A8' memory_id='0131CE48' type='SHT_PROGBITS' start_address='0xffa00000' word_size='0xa' word_size_unmapped='0x0' word_size_reserved='0x0' >
+<INPUT_SECTIONS>
+<INPUT_SECTION id='01334070' name='JMP_LDR' start_address='0xffa00000' size='0xa' element_at='0x0' >
+<INPUT_FILE><![CDATA[.\Debug\bf561_prom16.doj]]></INPUT_FILE>
+</INPUT_SECTION>
+</INPUT_SECTIONS>
+</OUTPUT_SECTION>
+</OUTPUT_SECTIONS>
+</MEMORY>
+<MEMORY id='0131CED8' name='SEG_LDR' start_address='0xfeb1fd00' end_address='0xfeb1ffe7' type='' qualifier='RAM' width='0x8' words_used='0x248' words_unused='0xa0' >
+<OUTPUT_SECTIONS>
+<OUTPUT_SECTION name='SEG_LDR' id='013344F0' memory_id='0131CED8' type='SHT_PROGBITS' start_address='0xfeb1fd00' word_size='0x248' word_size_unmapped='0x0' word_size_reserved='0x0' >
+<INPUT_SECTIONS>
+<INPUT_SECTION id='013342F8' name='SEG_LDR' start_address='0xfeb1fd00' size='0x222' element_at='0x0' >
+<INPUT_FILE><![CDATA[.\Debug\bf561_prom16.doj]]></INPUT_FILE>
+<SYMBOL name='MEM_DMA' address='0xfeb1fd00' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='START_ERASE' address='0xfeb1fd00' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='SETUP_SDRAM' address='0xfeb1fd22' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='START_OF_LOADER' address='0xfeb1fd22' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='CLEAR_L_REG' address='0xfeb1fd66' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='_SECOND_STAGE_LOADER' address='0xfeb1fd98' size='0x0' binding='GLOBAL'><DEMANGLED_NAME><![CDATA[SECOND_STAGE_LOADER]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='COMMAND_ERROR' address='0xfeb1fdf8' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='LOAD_PROGRAM' address='0xfeb1fe02' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='SKIP_DXE' address='0xfeb1fe0c' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='FGRAB_HEADER' address='0xfeb1fe36' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='FCHECK_ZERO_FILL_BIT' address='0xfeb1fe60' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='FDO_DMA' address='0xfeb1fe6c' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='GET_DMA_CURR_PTR' address='0xfeb1fe80' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='GET_NEXT_FLASH_PTR' address='0xfeb1fe84' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='F_CHECK_FOR_LAST_SECTION' address='0xfeb1fe86' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='DMA_ERROR_OR_EXCEPT' address='0xfeb1fe96' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='ZERO' address='0xfeb1feac' size='0x4' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='JUMP_USER_PROGRAM' address='0xfeb1feb0' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='end_ldr' address='0xfeb1ff18' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='_SECOND_STAGE_LOADER.end' address='0xfeb1ff22' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[SECOND_STAGE_LOADER.end]]></DEMANGLED_NAME></SYMBOL>
+</INPUT_SECTION>
+<INPUT_SECTION id='01334460' name='program' start_address='0xfeb1ff24' size='0x24' element_at='0x0' >
+<INPUT_FILE><![CDATA[.\Debug\cmd.doj]]></INPUT_FILE>
+<SYMBOL name='.LN_loader_commands' address='0xfeb1ff24' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='.epctext' address='0xfeb1ff24' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='_loader_commands' address='0xfeb1ff24' size='0x24' binding='GLOBAL'><DEMANGLED_NAME><![CDATA[loader_commands]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='.LN._loader_commands.end' address='0xfeb1ff48' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='._loader_commands.end' address='0xfeb1ff48' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+<SYMBOL name='.epctext.end' address='0xfeb1ff48' size='0x0' binding='LOCAL'><DEMANGLED_NAME><![CDATA[]]></DEMANGLED_NAME></SYMBOL>
+</INPUT_SECTION>
+</INPUT_SECTIONS>
+</OUTPUT_SECTION>
+</OUTPUT_SECTIONS>
+</MEMORY>
+</LINKPROJECT>
+</DOCUMENT>
