@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/Program Files/Analog Devices/VisualDSP 5.0/System/linker_log.xsl"?>
+<DOCUMENT gen_time='Thu Feb 24 15:37:10 2011
+'>
+<MSG id='01355640' mid='li2153' type='Warning' suppressed=''>
+<TEXT><![CDATA[Input sections have inconsistent qualifiers as follows.
+unknown   | .\Debug\bf561_prom16.doj(JMP_LDR)
+unknown   | .\Debug\bf561_prom16.doj(SEG_LDR)
+DOUBLE32  | .\Debug\cmd.doj(program)]]></TEXT>
+</MSG>
+</DOCUMENT>
