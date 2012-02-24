@@ -1,0 +1,13 @@
+# Output products list for <Aurora_FPGA_icon>
+Aurora_FPGA_icon.asy
+Aurora_FPGA_icon.gise
+Aurora_FPGA_icon.ngc
+Aurora_FPGA_icon.sym
+Aurora_FPGA_icon.v
+Aurora_FPGA_icon.veo
+Aurora_FPGA_icon.xco
+Aurora_FPGA_icon.xise
+Aurora_FPGA_icon_flist.txt
+Aurora_FPGA_icon_readme.txt
+Aurora_FPGA_icon_xmdf.tcl
+_xmsgs\pn_parser.xmsgs

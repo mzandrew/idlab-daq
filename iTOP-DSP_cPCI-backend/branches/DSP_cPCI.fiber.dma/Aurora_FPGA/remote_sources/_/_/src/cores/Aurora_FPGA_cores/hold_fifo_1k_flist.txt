@@ -1,0 +1,13 @@
+# Output products list for <hold_fifo_1k>
+_xmsgs/pn_parser.xmsgs
+fifo_generator_readme.txt
+fifo_generator_ug175.pdf
+hold_fifo_1k.asy
+hold_fifo_1k.gise
+hold_fifo_1k.ngc
+hold_fifo_1k.v
+hold_fifo_1k.veo
+hold_fifo_1k.xco
+hold_fifo_1k.xise
+hold_fifo_1k_flist.txt
+hold_fifo_1k_xmdf.tcl

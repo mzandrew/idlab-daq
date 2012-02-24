@@ -1,0 +1,3 @@
+`define CTRL_HEAD 4'hA
+`define DATA_HEAD 4'h5
+`define AURORA_PACKET_LENGTH 256
