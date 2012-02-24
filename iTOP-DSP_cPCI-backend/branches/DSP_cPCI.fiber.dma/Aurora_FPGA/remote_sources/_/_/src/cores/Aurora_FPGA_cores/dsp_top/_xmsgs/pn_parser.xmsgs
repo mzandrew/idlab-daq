@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated   -->
+<!--     by the Xilinx ISE software.  Any direct editing or        -->
+<!--     changes made to this file may result in unpredictable     -->
+<!--     behavior or data corruption.  It is strongly advised that -->
+<!--     users do not edit the contents of this file.              -->
+<!--                                                               -->
+<!-- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.    -->
+
+<messages>
+<msg type="info" file="ProjectMgmt" num="1835" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/IDLAB/Desktop/2011-12-07.DSP_cPCI/projects/Aurora_FPGA/remote_sources/_/_/src/cores/Aurora_FPGA_cores/dsp_top/pll_DSP.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1835" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/IDLAB/Desktop/2011-12-07.DSP_cPCI/projects/Aurora_FPGA/remote_sources/_/_/src/cores/Aurora_FPGA_cores/dsp_top/pll_DSP/example_design/pll_DSP_exdes.v&quot; into library work</arg>
+</msg>
+
+</messages>
+

@@ -1,0 +1,9 @@
+run
+-ifmt MIXED
+-top pll_DSP_exdes
+-p xc6slx45t-fgg484-2
+-ifn xst.prj
+-ofn pll_DSP_exdes
+-keep_hierarchy soft 
+-equivalent_register_removal no 
+-max_fanout 65535

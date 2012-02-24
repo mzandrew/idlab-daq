@@ -1,0 +1,2 @@
+verilog work ../../pll_PPI.v
+verilog work ../example_design/pll_PPI_exdes.v

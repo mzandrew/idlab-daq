@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symbol version="7" name="dsp_top">
+    <symboltype>BLOCK</symboltype>
+    <timestamp>2012-2-23T22:40:59</timestamp>
+    <pin polarity="Input" x="0" y="-992" name="CLK" />
+    <pin polarity="Input" x="0" y="-832" name="TMS_A" />
+    <pin polarity="Input" x="0" y="-672" name="TCK_A" />
+    <pin polarity="Input" x="0" y="-512" name="TDI_A" />
+    <pin polarity="Input" x="0" y="-352" name="TRST_A" />
+    <pin polarity="Input" x="0" y="-192" name="DSP_TDO_0" />
+    <pin polarity="Input" x="0" y="-32" name="DSP_EMU_A" />
+    <pin polarity="Output" x="480" y="-992" name="DSP_CLK0" />
+    <pin polarity="Output" x="480" y="-928" name="PPI0_CLK_0" />
+    <pin polarity="Output" x="480" y="-864" name="PPI0_CLK_r" />
+    <pin polarity="Output" x="480" y="-800" name="PPI1_CLK_0" />
+    <pin polarity="Output" x="480" y="-736" name="PPI1_CLK_r" />
+    <pin polarity="Output" x="480" y="-672" name="TDO_A" />
+    <pin polarity="Output" x="480" y="-608" name="EMU_A" />
+    <pin polarity="Output" x="480" y="-544" name="DSP_TMS_0" />
+    <pin polarity="Output" x="480" y="-480" name="DSP_TCK_0" />
+    <pin polarity="Output" x="480" y="-416" name="DSP_TDI_0" />
+    <pin polarity="Output" x="480" y="-352" name="DSP_TRST_0" />
+    <pin polarity="Output" x="480" y="-288" name="DSP_RST0" />
+    <pin polarity="Output" x="480" y="-224" name="ARDY0" />
+    <pin polarity="Output" x="480" y="-160" name="BR0" />
+    <pin polarity="Output" x="480" y="-96" name="BYPASS_0" />
+    <pin polarity="Output" x="480" y="-32" name="DSP0_BMODE(1:0)" />
+    <pin polarity="Output" x="480" y="32" name="NMI0(1:0)" />
+    <graph>
+        <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="240" y="-1032" type="symbol" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-992" type="pin CLK" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-832" type="pin TMS_A" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-672" type="pin TCK_A" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-512" type="pin TDI_A" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-352" type="pin TRST_A" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-192" type="pin DSP_TDO_0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-32" type="pin DSP_EMU_A" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-992" type="pin DSP_CLK0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-928" type="pin PPI0_CLK_0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-864" type="pin PPI0_CLK_r" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-800" type="pin PPI1_CLK_0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-736" type="pin PPI1_CLK_r" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-672" type="pin TDO_A" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-608" type="pin EMU_A" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-544" type="pin DSP_TMS_0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-480" type="pin DSP_TCK_0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-416" type="pin DSP_TDI_0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-352" type="pin DSP_TRST_0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-288" type="pin DSP_RST0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-224" type="pin ARDY0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-160" type="pin BR0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-96" type="pin BYPASS_0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="-32" type="pin DSP0_BMODE(1:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="408" y="32" type="pin NMI0(1:0)" />
+        <line x2="0" y1="-992" y2="-992" x1="64" />
+        <line x2="0" y1="-832" y2="-832" x1="64" />
+        <line x2="0" y1="-672" y2="-672" x1="64" />
+        <line x2="0" y1="-512" y2="-512" x1="64" />
+        <line x2="0" y1="-352" y2="-352" x1="64" />
+        <line x2="0" y1="-192" y2="-192" x1="64" />
+        <line x2="0" y1="-32" y2="-32" x1="64" />
+        <line x2="480" y1="-992" y2="-992" x1="416" />
+        <line x2="480" y1="-928" y2="-928" x1="416" />
+        <line x2="480" y1="-864" y2="-864" x1="416" />
+        <line x2="480" y1="-800" y2="-800" x1="416" />
+        <rect width="352" x="64" y="-1024" height="1088" />
+        <line x2="480" y1="-672" y2="-672" x1="416" />
+        <line x2="480" y1="-608" y2="-608" x1="416" />
+        <line x2="480" y1="-544" y2="-544" x1="416" />
+        <line x2="480" y1="-480" y2="-480" x1="416" />
+        <line x2="480" y1="-416" y2="-416" x1="416" />
+        <line x2="480" y1="-352" y2="-352" x1="416" />
+        <line x2="480" y1="-288" y2="-288" x1="416" />
+        <line x2="480" y1="-224" y2="-224" x1="416" />
+        <line x2="480" y1="-160" y2="-160" x1="416" />
+        <line x2="480" y1="-96" y2="-96" x1="416" />
+        <rect width="64" x="416" y="-44" height="24" />
+        <line x2="480" y1="-32" y2="-32" x1="416" />
+        <rect width="64" x="416" y="20" height="24" />
+        <line x2="480" y1="32" y2="32" x1="416" />
+        <line x2="480" y1="-736" y2="-736" x1="416" />
+    </graph>
+</symbol>
