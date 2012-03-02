@@ -1,0 +1,88 @@
+# 2011-06-21 mza, originally from SCROD by kan
+#
+# differences from SCROD version:
+# xc6slx45t-3fgg484
+# dual #0 instead of #2
+# single-ended clock input
+# clock output as differential on GPIO pins and fed back into GTP dual
+# fewer LEDs
+# many pin LOC changes
+
+#NET "GTPD2_left_i" TNM_NET = GT_REFCLK; 
+NET "GTPD0_left_i" TNM_NET = GT_REFCLK; 
+TIMESPEC TS_GTPD0_LEFT_I = PERIOD "GT_REFCLK" 156.25 MHz HIGH 50%;
+
+# User Clock Contraint: Value is selected based on the line rate (3.125 Gbps) and lane width (4-Byte)
+NET "user_clk_i" TNM_NET = USER_CLK;
+TIMESPEC TS_USER_CLK_I = PERIOD "USER_CLK" 12.8 ns HIGH 50%;
+
+# Sync Clock Contraint: Value is selected based on the line rate (3.125 Gbps) and lane width (4-Byte)
+NET "sync_clk_i" TNM_NET = SYNC_CLK;
+TIMESPEC TS_SYNC_CLK_I = PERIOD "SYNC_CLK" 3.2 ns HIGH 50%;
+
+# GT REFCLK 
+#NET GTPD2_P  LOC=B10; 
+NET GTPD0_P  LOC=A10; 
+#NET GTPD2_N  LOC=A10; 
+NET GTPD0_N  LOC=B10; 
+
+NET RXP	LOC=D7;
+NET RXN	LOC=C7;
+NET TXP	LOC=B6;
+NET TXN	LOC=A6;
+#NET TX_DISCONNECT1 LOC=B14  | IOSTANDARD = LVCMOS33;
+#NET TX_DISCONNECT1 LOC=E6  | IOSTANDARD = LVCMOS25;
+#NET BOARD_CLOCKP	LOC=U25;
+#NET BOARD_CLOCKN	LOC=U26;
+NET BOARD_CLOCK    LOC=G9;
+NET MGTCLK1_P LOC = B2  | IOSTANDARD = LVDS_25; #MGTCLK1+
+NET MGTCLK1_N LOC = A2  | IOSTANDARD = LVDS_25; #MGTCLK1-
+NET MGTCLK0_P LOC = B20 | IOSTANDARD = LVDS_25; #MGTCLK0+
+NET MGTCLK0_N LOC = A20 | IOSTANDARD = LVDS_25; #MGTCLK0-
+#NET LEDS<0>		LOC = "f18"  | IOSTANDARD = LVCMOS33;
+NET LEDS<0>		LOC = "d17"; # "led_green_0" / "led_green_2"
+#NET LEDS<1>		LOC = "e18"  | IOSTANDARD = LVCMOS33;
+NET LEDS<1>		LOC = "c18"; # "led_red_0" / "led_red_2"
+#NET LEDS<2>		LOC = "g16"  | IOSTANDARD = LVCMOS33;
+NET LEDS<2>		LOC = "d4"; # "led_green_1" / "led_green_3"
+#NET LEDS<3>		LOC = "f17"  | IOSTANDARD = LVCMOS33;
+NET LEDS<3>		LOC = "d5"; # "led_red_1" / "led_red_3"
+#NET LEDS<4>		LOC = "f20"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<5>		LOC = "e20"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<6>		LOC = "h17"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<7>		LOC = "g17"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<8>		LOC = "c21"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<9>		LOC = "b21"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<10>	LOC = "h18"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<11>	LOC = "h19"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<12>	LOC = "b22"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<13>	LOC = "a22"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<14>	LOC = "g19"  | IOSTANDARD = LVCMOS33;
+#NET LEDS<15>	LOC = "f19"  | IOSTANDARD = LVCMOS33;
+
+NET MON_A0		LOC = "K7";
+
+NET FIBER_TRANSCEIVER_0_MODULE_DEFINITION_0_LOW_IF_PRESENT LOC = "c19";
+NET FIBER_TRANSCEIVER_1_MODULE_DEFINITION_0_LOW_IF_PRESENT LOC = "c4";
+#NET TX_DISCONNECT0 LOC = "E14"  | IOSTANDARD = LVCMOS33;
+NET FIBER_TRANSCEIVER_0_DISABLE_MODULE LOC = "d19"  | IOSTANDARD = LVCMOS25;
+NET FIBER_TRANSCEIVER_1_DISABLE_MODULE LOC = "e6"  | IOSTANDARD = LVCMOS25;
+#NET TX_FAULT0 LOC = "g13" | IOSTANDARD = LVCMOS33;
+NET FIBER_TRANSCEIVER_0_LASER_FAULT_DETECTED_IN_TRANSMITTER LOC = "d18" | IOSTANDARD = LVCMOS33;
+NET FIBER_TRANSCEIVER_1_LASER_FAULT_DETECTED_IN_TRANSMITTER LOC = "e5" | IOSTANDARD = LVCMOS33;
+#NET RX_LOS0 LOC = "b5" | IOSTANDARD = LVCMOS33;
+NET FIBER_TRANSCEIVER_0_LOSS_OF_SIGNAL_DETECTED_BY_RECEIVER LOC = "a19" | IOSTANDARD = LVCMOS33;
+NET FIBER_TRANSCEIVER_1_LOSS_OF_SIGNAL_DETECTED_BY_RECEIVER LOC = "a4" | IOSTANDARD = LVCMOS33;
+
+#The following line should be removed once the core is working.
+#user_clk toggling means that the transceiver initialized correctly.
+PIN "clock_module_i/user_clk_net_i.O" CLOCK_DEDICATED_ROUTE = FALSE;
+
+# 50MHz board Clock Constraint  
+#NET "reset_logic_i/init_clk_i" TNM_NET = INIT_CLK;
+#TIMESPEC TS_INIT_CLK = PERIOD "INIT_CLK" 20 ns HIGH 50%;
+
+###### No cross clock domain analysis. Domains are not related ############## 
+TIMESPEC "TS_TIG1" = FROM "INIT_CLK" TO "USER_CLK" TIG; 
+#INST aurora_module_i/gtp_wrapper_i/gtp_tile_inst/gtpa1_dual_i LOC=GTPA1_DUAL_X0Y1;
+INST aurora_module_i/gtp_wrapper_i/gtp_tile_inst/gtpa1_dual_i LOC=GTPA1_DUAL_X0Y0;
