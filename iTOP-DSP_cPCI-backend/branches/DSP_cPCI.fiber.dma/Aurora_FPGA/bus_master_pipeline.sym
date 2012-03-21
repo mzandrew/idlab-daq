@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symbol version="7" name="bus_master_pipeline">
+    <symboltype>BLOCK</symboltype>
+    <timestamp>2011-6-21T0:6:21</timestamp>
+    <attr value="bus_master_pipeline" name="VeriModel" />
+    <pin polarity="Input" x="0" y="-608" name="reset" />
+    <pin polarity="Input" x="0" y="-544" name="clk" />
+    <pin polarity="Input" x="0" y="-480" name="ack" />
+    <pin polarity="Input" x="0" y="-416" name="req_w_1" />
+    <pin polarity="Input" x="0" y="-352" name="req_w_2" />
+    <pin polarity="Input" x="0" y="-288" name="req_r_1" />
+    <pin polarity="Input" x="0" y="-224" name="req_r_2" />
+    <pin polarity="Input" x="0" y="-160" name="s_rdy" />
+    <pin polarity="Input" x="0" y="-96" name="abort" />
+    <pin polarity="Input" x="0" y="-32" name="ad_in(31:0)" />
+    <pin polarity="Output" x="448" y="-608" name="ack_pipe" />
+    <pin polarity="Output" x="448" y="-512" name="req_w_1_pipe" />
+    <pin polarity="Output" x="448" y="-416" name="req_w_2_pipe" />
+    <pin polarity="Output" x="448" y="-320" name="req_r_1_pipe" />
+    <pin polarity="Output" x="448" y="-224" name="req_r_2_pipe" />
+    <pin polarity="Output" x="448" y="-128" name="s_rdy_pipe" />
+    <pin polarity="Output" x="448" y="-32" name="ad_in_pipe(31:0)" />
+    <pin polarity="Input" x="0" y="32" name="ad_o_enable" />
+    <pin polarity="Input" x="0" y="96" name="stb" />
+    <pin polarity="Input" x="0" y="160" name="we" />
+    <pin polarity="Input" x="0" y="224" name="m_rdy" />
+    <pin polarity="Input" x="0" y="288" name="ad_o(31:0)" />
+    <pin polarity="Output" x="448" y="32" name="abort_pipe" />
+    <pin polarity="Output" x="448" y="96" name="ad_o_enable_pipe" />
+    <pin polarity="Output" x="448" y="160" name="stb_pipe" />
+    <pin polarity="Output" x="448" y="224" name="we_pipe" />
+    <pin polarity="Output" x="448" y="288" name="m_rdy_pipe" />
+    <pin polarity="Output" x="448" y="352" name="ad_o_pipe(31:0)" />
+    <graph>
+        <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="224" y="-648" type="symbol" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-608" type="pin reset" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-544" type="pin clk" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-480" type="pin ack" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-416" type="pin req_w_1" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-352" type="pin req_w_2" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-288" type="pin req_r_1" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-224" type="pin req_r_2" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-160" type="pin s_rdy" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-96" type="pin abort" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-32" type="pin ad_in(31:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="-608" type="pin ack_pipe" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="-512" type="pin req_w_1_pipe" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="-416" type="pin req_w_2_pipe" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="-320" type="pin req_r_1_pipe" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="-224" type="pin req_r_2_pipe" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="-128" type="pin s_rdy_pipe" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="-32" type="pin ad_in_pipe(31:0)" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="32" type="pin ad_o_enable" />
+        <line x2="0" y1="32" y2="32" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="96" type="pin stb" />
+        <line x2="0" y1="96" y2="96" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="160" type="pin we" />
+        <line x2="0" y1="160" y2="160" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="224" type="pin m_rdy" />
+        <line x2="0" y1="224" y2="224" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="288" type="pin ad_o(31:0)" />
+        <rect width="64" x="0" y="276" height="24" />
+        <line x2="0" y1="288" y2="288" x1="64" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="32" type="pin abort_pipe" />
+        <line x2="448" y1="32" y2="32" x1="384" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="96" type="pin ad_o_enable_pipe" />
+        <line x2="448" y1="96" y2="96" x1="384" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="160" type="pin stb_pipe" />
+        <line x2="448" y1="160" y2="160" x1="384" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="224" type="pin we_pipe" />
+        <line x2="448" y1="224" y2="224" x1="384" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="288" type="pin m_rdy_pipe" />
+        <line x2="448" y1="288" y2="288" x1="384" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="376" y="352" type="pin ad_o_pipe(31:0)" />
+        <rect width="64" x="384" y="340" height="24" />
+        <line x2="448" y1="352" y2="352" x1="384" />
+        <line x2="0" y1="-608" y2="-608" x1="64" />
+        <line x2="0" y1="-544" y2="-544" x1="64" />
+        <line x2="0" y1="-480" y2="-480" x1="64" />
+        <line x2="0" y1="-416" y2="-416" x1="64" />
+        <line x2="0" y1="-352" y2="-352" x1="64" />
+        <line x2="0" y1="-288" y2="-288" x1="64" />
+        <line x2="0" y1="-224" y2="-224" x1="64" />
+        <line x2="0" y1="-160" y2="-160" x1="64" />
+        <line x2="0" y1="-96" y2="-96" x1="64" />
+        <rect width="64" x="0" y="-44" height="24" />
+        <line x2="0" y1="-32" y2="-32" x1="64" />
+        <line x2="448" y1="-608" y2="-608" x1="384" />
+        <line x2="448" y1="-512" y2="-512" x1="384" />
+        <line x2="448" y1="-416" y2="-416" x1="384" />
+        <line x2="448" y1="-320" y2="-320" x1="384" />
+        <line x2="448" y1="-224" y2="-224" x1="384" />
+        <line x2="448" y1="-128" y2="-128" x1="384" />
+        <rect width="64" x="384" y="-44" height="24" />
+        <line x2="448" y1="-32" y2="-32" x1="384" />
+        <rect width="320" x="64" y="-640" height="1024" />
+    </graph>
+</symbol>

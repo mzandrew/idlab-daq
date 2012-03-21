@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symbol version="7" name="upstream_fifo_ctrl">
+    <symboltype>BLOCK</symboltype>
+    <timestamp>2011-6-9T2:23:52</timestamp>
+    <attr value="upstream_fifo_ctrl" name="VeriModel" />
+    <pin polarity="Input" x="0" y="-480" name="reset_i" />
+    <pin polarity="Input" x="0" y="-416" name="clk_i" />
+    <pin polarity="Input" x="0" y="-352" name="fifo_almost_full_1" />
+    <pin polarity="Input" x="0" y="-288" name="fifo_almost_full_2" />
+    <pin polarity="Input" x="0" y="-224" name="DMA_fifo_data_valid" />
+    <pin polarity="Input" x="0" y="-160" name="fifo_cnt_1(27:0)" />
+    <pin polarity="Input" x="0" y="-96" name="fifo_cnt_2(27:0)" />
+    <pin polarity="Input" x="0" y="-32" name="DMA_fifo_data(32:0)" />
+    <pin polarity="Output" x="560" y="-480" name="fifo_wr_data_valid_1" />
+    <pin polarity="Output" x="560" y="-368" name="fifo_wr_data_valid_2" />
+    <pin polarity="Output" x="560" y="-256" name="DMA_fifo_rd" />
+    <pin polarity="Output" x="560" y="-144" name="fifo_wr_data_1(31:0)" />
+    <pin polarity="Output" x="560" y="-32" name="fifo_wr_data_2(31:0)" />
+    <graph>
+        <rect width="432" x="64" y="-512" height="512" />
+        <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="280" y="-520" type="symbol" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-480" type="pin reset_i" />
+        <line x2="0" y1="-480" y2="-480" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-416" type="pin clk_i" />
+        <line x2="0" y1="-416" y2="-416" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-352" type="pin fifo_almost_full_1" />
+        <line x2="0" y1="-352" y2="-352" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-288" type="pin fifo_almost_full_2" />
+        <line x2="0" y1="-288" y2="-288" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-224" type="pin DMA_fifo_data_valid" />
+        <line x2="0" y1="-224" y2="-224" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-160" type="pin fifo_cnt_1(27:0)" />
+        <rect width="64" x="0" y="-172" height="24" />
+        <line x2="0" y1="-160" y2="-160" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-96" type="pin fifo_cnt_2(27:0)" />
+        <rect width="64" x="0" y="-108" height="24" />
+        <line x2="0" y1="-96" y2="-96" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-32" type="pin DMA_fifo_data(32:0)" />
+        <rect width="64" x="0" y="-44" height="24" />
+        <line x2="0" y1="-32" y2="-32" x1="64" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="488" y="-480" type="pin fifo_wr_data_valid_1" />
+        <line x2="560" y1="-480" y2="-480" x1="496" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="488" y="-368" type="pin fifo_wr_data_valid_2" />
+        <line x2="560" y1="-368" y2="-368" x1="496" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="488" y="-256" type="pin DMA_fifo_rd" />
+        <line x2="560" y1="-256" y2="-256" x1="496" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="488" y="-144" type="pin fifo_wr_data_1(31:0)" />
+        <rect width="64" x="496" y="-156" height="24" />
+        <line x2="560" y1="-144" y2="-144" x1="496" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="488" y="-32" type="pin fifo_wr_data_2(31:0)" />
+        <rect width="64" x="496" y="-44" height="24" />
+        <line x2="560" y1="-32" y2="-32" x1="496" />
+    </graph>
+</symbol>
