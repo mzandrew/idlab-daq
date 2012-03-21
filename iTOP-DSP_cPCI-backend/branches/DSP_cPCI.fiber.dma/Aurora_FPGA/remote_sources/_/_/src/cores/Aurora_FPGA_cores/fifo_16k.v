@@ -43,11 +43,13 @@ module fifo_16k(
   din,
   wr_en,
   rd_en,
+  prog_full_thresh,
   dout,
   full,
   almost_full,
   empty,
-  almost_empty
+  almost_empty,
+  prog_full
 );
 
 input rst;
@@ -56,11 +58,13 @@ input rd_clk;
 input [31 : 0] din;
 input wr_en;
 input rd_en;
+input [13 : 0] prog_full_thresh;
 output [15 : 0] dout;
 output full;
 output almost_full;
 output empty;
 output almost_empty;
+output prog_full;
 
 // synthesis translate_off
 
@@ -197,7 +201,7 @@ output almost_empty;
     .C_PROG_FULL_THRESH_ASSERT_VAL_WDCH(1023),
     .C_PROG_FULL_THRESH_ASSERT_VAL_WRCH(1023),
     .C_PROG_FULL_THRESH_NEGATE_VAL(16380),
-    .C_PROG_FULL_TYPE(0),
+    .C_PROG_FULL_TYPE(3),
     .C_PROG_FULL_TYPE_AXIS(5),
     .C_PROG_FULL_TYPE_RACH(5),
     .C_PROG_FULL_TYPE_RDCH(5),
@@ -261,11 +265,13 @@ output almost_empty;
     .DIN(din),
     .WR_EN(wr_en),
     .RD_EN(rd_en),
+    .PROG_FULL_THRESH(prog_full_thresh),
     .DOUT(dout),
     .FULL(full),
     .ALMOST_FULL(almost_full),
     .EMPTY(empty),
     .ALMOST_EMPTY(almost_empty),
+    .PROG_FULL(prog_full),
     .BACKUP(),
     .BACKUP_MARKER(),
     .CLK(),
@@ -275,7 +281,6 @@ output almost_empty;
     .PROG_EMPTY_THRESH(),
     .PROG_EMPTY_THRESH_ASSERT(),
     .PROG_EMPTY_THRESH_NEGATE(),
-    .PROG_FULL_THRESH(),
     .PROG_FULL_THRESH_ASSERT(),
     .PROG_FULL_THRESH_NEGATE(),
     .INT_CLK(),
@@ -288,7 +293,6 @@ output almost_empty;
     .DATA_COUNT(),
     .RD_DATA_COUNT(),
     .WR_DATA_COUNT(),
-    .PROG_FULL(),
     .PROG_EMPTY(),
     .SBITERR(),
     .DBITERR(),

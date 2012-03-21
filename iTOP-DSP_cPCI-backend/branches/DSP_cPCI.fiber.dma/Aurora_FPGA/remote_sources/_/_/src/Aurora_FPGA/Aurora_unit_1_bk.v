@@ -30,6 +30,7 @@ module Aurora_unit_1(
 		
 		//user reset, used by the users to reset channel and clr fifos
 		input user_reset, //reset channel and fifos
+		input rx_fifo_rst, //resets rx fifo
 		
 		//other user interface signals
 		  output reg HARD_ERR,
@@ -54,9 +55,9 @@ module Aurora_unit_1(
 		  output user_clk,
 		  output transceiver_dis_out,
 		  
-		  output reg rst_fifo,
+		  output reg rst_fifo
 		  
-		  inout [35:0] CONTROL
+//		  inout [35:0] CONTROL
     );
 
 reg [7:0] init_cnt;
@@ -299,6 +300,7 @@ assign transceiver_dis_out=transceiver_dis;
 			   .user_clk(user_clk_i),
 			   .pll_not_locked(pll_not_locked_i),
 			   .rst(aurora_rst),
+				.rx_fifo_rst(rx_fifo_rst),				
 				.channel_rdy(channel_up_i),
 
 			   .fifo_dat_i(fifo_dat_i),
@@ -359,11 +361,11 @@ assign transceiver_dis_out=transceiver_dis;
 	end
 	
 	
-	Aurora_ctrl_ila u_Aurora_ctrl_ila (
-    .CONTROL(CONTROL), // INOUT BUS [35:0]
-    .CLK(user_clk_i), // IN
-    .TRIG0(debug_bus_p2) // IN BUS [159:0]
-	);
+//	Aurora_ctrl_ila u_Aurora_ctrl_ila (
+//    .CONTROL(CONTROL), // INOUT BUS [35:0]
+//    .CLK(user_clk_i), // IN
+//    .TRIG0(debug_bus_p2[155:0]) // IN BUS [155:0]
+//	);
 	
 
 endmodule

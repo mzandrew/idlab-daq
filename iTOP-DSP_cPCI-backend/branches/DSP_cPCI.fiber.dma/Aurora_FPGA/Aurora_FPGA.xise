@@ -29,11 +29,11 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_clock.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="24"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="25"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_fifo_rd.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="49"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="50"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA_iobuf.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
@@ -42,14 +42,6 @@
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA_debug.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="67"/>
-    </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="22"/>
-    </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="23"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/BUS/data_repeater.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
@@ -65,31 +57,19 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/Aurora_ctrl/Aurora_receiver.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="39"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="42"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="43"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/Aurora_ctrl/Aurora_transmitter.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="38"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="41"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="42"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/Aurora_ctrl/hold_fifo.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="37"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="40"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="41"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/Aurora_ctrl/prefetch_fifo.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="36"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="39"/>
-    </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="2"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="2"/>
-    </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/hold_fifo_1k.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="3"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="3"/>
-    </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="40"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="50"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="40"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/test_aurora.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="53"/>
@@ -101,17 +81,9 @@
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="72"/>
     </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_16k.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="44"/>
-    </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/Aurora_ctrl/vio_wrapper.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="80"/>
-    </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_vio.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="47"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/example_design/clock_module/aurora_8b10b_1_clock_module.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="45"/>
@@ -143,7 +115,7 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_ll_to_axi.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="31"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="34"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="35"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_channel_init_sm.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="19"/>
@@ -151,7 +123,7 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_axi_to_ll.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="33"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="36"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="37"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_err_detect_4byte.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="17"/>
@@ -159,7 +131,7 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_global_logic.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="32"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="35"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="36"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_lane_init_sm_4byte.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="15"/>
@@ -167,7 +139,7 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_aurora_lane_4byte.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="34"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="37"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="38"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_chbond_count_dec_4byte.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="18"/>
@@ -179,11 +151,11 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_tx_stream.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="29"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="32"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="33"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/src/aurora_8b10b_1_rx_stream.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="30"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="33"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="34"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/example_design/aurora_8b10b_1.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="48"/>
@@ -211,7 +183,7 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/example_design/gt/aurora_8b10b_2_transceiver_wrapper.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="28"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="31"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="32"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_sym_gen_4byte.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="4"/>
@@ -219,15 +191,15 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_rx_stream.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="23"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="26"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="27"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_aurora_lane_4byte.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="27"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="30"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="31"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_tx_stream.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="22"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="25"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="26"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_channel_err_detect.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="11"/>
@@ -243,7 +215,7 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_axi_to_ll.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="26"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="29"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="30"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_sym_dec_4byte.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="5"/>
@@ -259,11 +231,11 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_ll_to_axi.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="24"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="27"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="28"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_global_logic.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="25"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="28"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="29"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_2/src/aurora_8b10b_2_lane_init_sm_4byte.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="6"/>
@@ -275,7 +247,7 @@
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/aurora_8b10b_1/example_design/gt/aurora_8b10b_1_transceiver_wrapper.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="35"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="38"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="39"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/fo_io.sch" xil_pn:type="FILE_SCHEMATIC">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
@@ -288,10 +260,6 @@
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA_LED_driver.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="78"/>
-    </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_4k.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="43"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/Aurora_unit_1_bk.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="209"/>
@@ -324,21 +292,13 @@
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="182"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="71"/>
     </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/dsp_top/pll_DSP.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="142"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="45"/>
-    </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/chipscope_ila.xco" xil_pn:type="FILE_COREGEN">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="193"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="46"/>
-    </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/dsp_top/ppi_bus.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="409"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="70"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_fifo_wr.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="267"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="48"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="49"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/Aurora_FPGA/down_fifo_interface_debug.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="208"/>
@@ -348,23 +308,45 @@
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="211"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="64"/>
     </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.xise" xil_pn:type="FILE_COREGENISE">
-      <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/dsp_top/chk_sum.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="294"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="47"/>
     </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/hold_fifo_1k.xise" xil_pn:type="FILE_COREGENISE">
-      <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="96"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="2"/>
     </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.xise" xil_pn:type="FILE_COREGENISE">
-      <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/hold_fifo_1k.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="97"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="3"/>
     </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_16k.xise" xil_pn:type="FILE_COREGENISE">
-      <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_16k.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="98"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="45"/>
     </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_vio.xise" xil_pn:type="FILE_COREGENISE">
-      <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_4k.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="99"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="44"/>
     </file>
-    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_4k.xise" xil_pn:type="FILE_COREGENISE">
-      <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/chipscope_ila.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="100"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="22"/>
+    </file>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_vio.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="101"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="48"/>
+    </file>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_small_icon.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="102"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="23"/>
+    </file>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/dsp_top/pll_DSP.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="91"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="46"/>
+    </file>
+    <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="126"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="24"/>
     </file>
     <file xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/dsp_top/pll_DSP.xise" xil_pn:type="FILE_COREGENISE">
       <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
@@ -447,8 +429,8 @@
     <property xil_pn:name="Enable Internal Done Pipe" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Enable Message Filtering" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Enable Multi-Pin Wake-Up Suspend Mode spartan6" xil_pn:value="false" xil_pn:valueState="default"/>
-    <property xil_pn:name="Enable Multi-Threading" xil_pn:value="Off" xil_pn:valueState="default"/>
-    <property xil_pn:name="Enable Multi-Threading par spartan6" xil_pn:value="Off" xil_pn:valueState="default"/>
+    <property xil_pn:name="Enable Multi-Threading" xil_pn:value="2" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Enable Multi-Threading par spartan6" xil_pn:value="2" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Enable Outputs (Output Events)" xil_pn:value="Default (5)" xil_pn:valueState="default"/>
     <property xil_pn:name="Enable Suspend/Wake Global Set/Reset spartan6" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Encrypt Bitstream spartan6" xil_pn:value="false" xil_pn:valueState="default"/>

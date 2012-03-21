@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 13.3
-# Date: Tue Feb 21 22:17:52 2012
+# Date: Thu Mar 08 23:35:42 2012
 #
 ##############################################################
 #
@@ -31,7 +31,7 @@ SET implementationfiletype = Ngc
 SET package = fgg484
 SET removerpms = false
 SET simulationfiles = Behavioral
-SET speedgrade = -2
+SET speedgrade = -3
 SET verilogsim = true
 SET vhdlsim = false
 # END Project Options
@@ -113,9 +113,9 @@ CSET match_units_8=1
 CSET match_units_9=1
 CSET max_sequence_levels=1
 CSET number_of_trigger_ports=1
-CSET sample_data_depth=2048
+CSET sample_data_depth=1024
 CSET sample_on=Rising
-CSET trigger_port_width_1=22
+CSET trigger_port_width_1=194
 CSET trigger_port_width_10=8
 CSET trigger_port_width_11=8
 CSET trigger_port_width_12=8
@@ -134,4 +134,4 @@ CSET trigger_port_width_9=8
 CSET use_rpms=false
 # END Parameters
 GENERATE
-# CRC: 59c299de
+# CRC: 5c3ff216

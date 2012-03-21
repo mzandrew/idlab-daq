@@ -28,6 +28,7 @@ module fifo_pool(
 		input [31:0] fifo_wr_data,
 		output fifo_wr_full,
 		output fifo_wr_almost_full,
+		output packet_full,				//Full when 140x32bit words are in FIFO
 		//
 		input fifo_rd_en,
 		output fifo_rd_empty,
@@ -53,11 +54,13 @@ fifo_16k u_fifo_16k (
   .din({fifo_wr_data_in[15:0],fifo_wr_data_in[31:16]}), // input [31 : 0] din
   .wr_en(fifo_wr_en_in), // input wr_en
   .rd_en(fifo_rd_en), // input rd_en
+  .prog_full_thresh({6'b0,8'h8B}), // input [13 : 0] prog_full_thresh
   .dout(fifo_rd_data), // output [15 : 0] dout
   .full(), // output full
   .empty(fifo_empty_big),//fifo_rd_empty), // output empty
   .almost_full(fifo_wr_almost_full_in),
-  .almost_empty()
+  .almost_empty(),
+  .prog_full(packet_full) // output prog_full
 );
 
 always@(posedge clk) begin
