@@ -148,7 +148,7 @@ assign bus_final[95:66]=30'b0;
 Aurora_FPGA_ila u_Aurora_FPGA_ila  (
     .CONTROL(control), // INOUT BUS [35:0]
     .CLK(clk_i), // IN
-    .TRIG0(bus) // IN BUS [95:0]
+    .TRIG0(bus_reg[67:0]) // IN BUS [67:0]
 );
 
 `endif

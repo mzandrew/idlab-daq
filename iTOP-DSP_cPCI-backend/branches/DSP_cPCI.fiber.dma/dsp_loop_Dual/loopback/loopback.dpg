@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding='ISO-8859-1'?>
+<visualdsp-project-group generated="Tue Mar 20 12:31:33 2012" version="1.0.0.0" active-project="loopback">
+	<project name="loopback" file=".\loopback.dpj">
+		<dependencies>
+			<dependent-project>coreA</dependent-project>
+			<dependent-project>coreB</dependent-project>
+			<dependent-project>sml2</dependent-project>
+			<dependent-project>sml3</dependent-project>
+		</dependencies>
+	</project>
+	<project name="coreA" file=".\coreA.dpj">
+	</project>
+	<project name="coreB" file=".\coreB.dpj">
+	</project>
+	<project name="sml2" file=".\sml2.dpj">
+	</project>
+	<project name="sml3" file=".\sml3.dpj">
+	</project>
+</visualdsp-project-group>
