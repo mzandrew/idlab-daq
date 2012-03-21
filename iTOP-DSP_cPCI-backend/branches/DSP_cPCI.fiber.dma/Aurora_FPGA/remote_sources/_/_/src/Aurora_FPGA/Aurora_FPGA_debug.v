@@ -36,9 +36,9 @@ module Aurora_FPGA_debug(
 		inout [35:0] control1,
 		inout [35:0] control2,
 		inout [35:0] control3,
-		inout [35:0] control4,
-		inout [35:0] control5,
-		inout [35:0] control6
+		inout [35:0] control4
+//		inout [35:0] control5,
+//		inout [35:0] control6
     );
 //`define SIMULATION_ONLY_X_G
 `ifndef SIMULATION_ONLY_X_G
@@ -111,20 +111,20 @@ always@(posedge clk) begin
 	debug_bus_reg_3<=debug_bus_reg_2;
 end
 
-Aurora_FPGA_icon u_Aurora_FPGA_icon (
+Aurora_FPGA_small_icon u_Aurora_FPGA_icon (
     .CONTROL0(control), // INOUT BUS [35:0]
 	 .CONTROL1(control1),
 	 .CONTROL2(control2),
 	 .CONTROL3(control3),
-	 .CONTROL4(control4),
-	 .CONTROL5(control5),
-	 .CONTROL6(control6)
+	 .CONTROL4(control4)
+//	 .CONTROL5(control5),
+//	 .CONTROL6(control6)
 );
 
 Aurora_FPGA_ila u_Aurora_FPGA_ila (
     .CONTROL(control), // INOUT BUS [35:0]
     .CLK(clk), // IN
-    .TRIG0(debug_bus_final) // IN BUS [95:0]
+    .TRIG0(debug_bus_reg[75:0]) // IN BUS [75:0]
 );
 
 assign debug_bus_final[73:0] = debug_bus_reg_3[73:0];

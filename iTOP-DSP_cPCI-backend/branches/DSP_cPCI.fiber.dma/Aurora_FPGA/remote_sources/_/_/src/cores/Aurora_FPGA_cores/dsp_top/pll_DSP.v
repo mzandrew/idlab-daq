@@ -55,9 +55,9 @@
 // "Output    Output      Phase     Duty      Pk-to-Pk        Phase"
 // "Clock    Freq (MHz) (degrees) Cycle (%) Jitter (ps)  Error (ps)"
 //----------------------------------------------------------------------------
-// CLK_OUT1____39.993______0.000______50.0______288.445____344.452
-// CLK_OUT2____19.996______0.000______50.0______333.665____344.452
-// CLK_OUT3____19.996______0.000______50.0______333.665____344.452
+// CLK_OUT1___149.740______0.000______50.0______197.066____183.293
+// CLK_OUT2____74.870______0.000______50.0______227.645____183.293
+// CLK_OUT3____74.870______0.000______50.0______227.645____183.293
 //
 //----------------------------------------------------------------------------
 // "Input Clock   Freq (MHz)    Input Jitter (UI)"
@@ -100,16 +100,16 @@ module pll_DSP
   #(.BANDWIDTH              ("OPTIMIZED"),
     .CLK_FEEDBACK           ("CLKFBOUT"),
     .COMPENSATION           ("SYSTEM_SYNCHRONOUS"),
-    .DIVCLK_DIVIDE          (4),
-    .CLKFBOUT_MULT          (43),
+    .DIVCLK_DIVIDE          (2),
+    .CLKFBOUT_MULT          (23),
     .CLKFBOUT_PHASE         (0.000),
-    .CLKOUT0_DIVIDE         (21),
+    .CLKOUT0_DIVIDE         (6),
     .CLKOUT0_PHASE          (0.000),
     .CLKOUT0_DUTY_CYCLE     (0.500),
-    .CLKOUT1_DIVIDE         (42),
+    .CLKOUT1_DIVIDE         (12),
     .CLKOUT1_PHASE          (0.000),
     .CLKOUT1_DUTY_CYCLE     (0.500),
-    .CLKOUT2_DIVIDE         (42),
+    .CLKOUT2_DIVIDE         (12),
     .CLKOUT2_PHASE          (0.000),
     .CLKOUT2_DUTY_CYCLE     (0.500),
     .CLKIN_PERIOD           (12.800),

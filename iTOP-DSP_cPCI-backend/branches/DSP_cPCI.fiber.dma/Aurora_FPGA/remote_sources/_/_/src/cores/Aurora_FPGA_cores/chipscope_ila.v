@@ -8,7 +8,7 @@
 // \   \   \/     Version    : 13.3
 //  \   \         Application: Xilinx CORE Generator
 //  /   /         Filename   : chipscope_ila.v
-// /___/   /\     Timestamp  : Tue Feb 21 12:19:39 Hawaiian Standard Time 2012
+// /___/   /\     Timestamp  : Thu Mar 08 13:37:40 Hawaiian Standard Time 2012
 // \   \  /  \
 //  \___\/\___\
 //
@@ -26,6 +26,6 @@ module chipscope_ila(
 
 inout [35 : 0] CONTROL;
 input CLK;
-input [21 : 0] TRIG0;
+input [193 : 0] TRIG0;
 
 endmodule

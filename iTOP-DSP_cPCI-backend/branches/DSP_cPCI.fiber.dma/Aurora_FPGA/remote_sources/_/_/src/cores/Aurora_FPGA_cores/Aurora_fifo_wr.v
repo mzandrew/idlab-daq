@@ -48,7 +48,8 @@ module Aurora_fifo_wr(
   almost_full,
   empty,
   almost_empty,
-  valid
+  valid,
+  prog_full
 );
 
 input rst;
@@ -63,6 +64,7 @@ output almost_full;
 output empty;
 output almost_empty;
 output valid;
+output prog_full;
 
 // synthesis translate_off
 
@@ -191,15 +193,15 @@ output valid;
     .C_PROG_EMPTY_TYPE_WACH(5),
     .C_PROG_EMPTY_TYPE_WDCH(5),
     .C_PROG_EMPTY_TYPE_WRCH(5),
-    .C_PROG_FULL_THRESH_ASSERT_VAL(1021),
+    .C_PROG_FULL_THRESH_ASSERT_VAL(279),
     .C_PROG_FULL_THRESH_ASSERT_VAL_AXIS(1023),
     .C_PROG_FULL_THRESH_ASSERT_VAL_RACH(1023),
     .C_PROG_FULL_THRESH_ASSERT_VAL_RDCH(1023),
     .C_PROG_FULL_THRESH_ASSERT_VAL_WACH(1023),
     .C_PROG_FULL_THRESH_ASSERT_VAL_WDCH(1023),
     .C_PROG_FULL_THRESH_ASSERT_VAL_WRCH(1023),
-    .C_PROG_FULL_THRESH_NEGATE_VAL(1020),
-    .C_PROG_FULL_TYPE(0),
+    .C_PROG_FULL_THRESH_NEGATE_VAL(278),
+    .C_PROG_FULL_TYPE(1),
     .C_PROG_FULL_TYPE_AXIS(5),
     .C_PROG_FULL_TYPE_RACH(5),
     .C_PROG_FULL_TYPE_RDCH(5),
@@ -269,6 +271,7 @@ output valid;
     .EMPTY(empty),
     .ALMOST_EMPTY(almost_empty),
     .VALID(valid),
+    .PROG_FULL(prog_full),
     .BACKUP(),
     .BACKUP_MARKER(),
     .CLK(),
@@ -290,7 +293,6 @@ output valid;
     .DATA_COUNT(),
     .RD_DATA_COUNT(),
     .WR_DATA_COUNT(),
-    .PROG_FULL(),
     .PROG_EMPTY(),
     .SBITERR(),
     .DBITERR(),

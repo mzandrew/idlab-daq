@@ -1,0 +1,2564 @@
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/Program Files (x86)/Analog Devices/VisualDSP 5.0/System/linker_log.xsl"?>
+<DOCUMENT gen_time='Tue Mar 20 10:41:19 2012
+'>
+<MSG id='05A7EE80' mid='li3140' type='Informational' >
+<TEXT><![CDATA[Your license to use this tool will expire in 2 days.]]></TEXT>
+</MSG>
+<MSG id='01E00148' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_btowc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[btowc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06699778' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_clearerr' is defined in more than one library.
+        Defined in:     libio561mty.dlb[clearerr.doj]
+        Redefined in:   libc561mty.dlb[clearerr.doj]
+        Definition from libio561mty.dlb[clearerr.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='066999A8' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fclose' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fclose.doj]
+        Redefined in:   libc561mty.dlb[fclose.doj]
+        Definition from libio561mty.dlb[fclose.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C76EC8' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_feof' is defined in more than one library.
+        Defined in:     libio561mty.dlb[eof.doj]
+        Redefined in:   libc561mty.dlb[feof.doj]
+        Definition from libio561mty.dlb[eof.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='062AAA38' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ferror' is defined in more than one library.
+        Defined in:     libio561mty.dlb[ferror.doj]
+        Redefined in:   libc561mty.dlb[ferror.doj]
+        Definition from libio561mty.dlb[ferror.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C7F3D8' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fflush' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fflush.doj]
+        Redefined in:   libc561mty.dlb[fflush.doj]
+        Definition from libio561mty.dlb[fflush.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C7F608' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fgetc.doj]
+        Redefined in:   libc561mty.dlb[fgetc.doj]
+        Definition from libio561mty.dlb[fgetc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C7F838' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetpos' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fgetpos.doj]
+        Redefined in:   libc561mty.dlb[fgetpos.doj]
+        Definition from libio561mty.dlb[fgetpos.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C7FA68' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgets' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fgets.doj]
+        Redefined in:   libc561mty.dlb[fgets.doj]
+        Definition from libio561mty.dlb[fgets.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C7FC98' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fgetwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C7FEC8' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetws' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fgetws.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C800F8' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fopen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fopen.doj]
+        Redefined in:   libc561mty.dlb[fopen.doj]
+        Definition from libio561mty.dlb[fopen.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C80328' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fprintf_32.doj]
+        Redefined in:   libc561mty.dlb[fprintf32.doj]
+        Definition from libio561mty.dlb[fprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C80558' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fprintf_64.doj]
+        Redefined in:   libc561mty.dlb[fprintf64.doj]
+        Definition from libio561mty.dlb[fprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C80788' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fputc.doj]
+        Redefined in:   libc561mty.dlb[fputc.doj]
+        Definition from libio561mty.dlb[fputc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C809B8' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputs' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fputs.doj]
+        Redefined in:   libc561mty.dlb[fputs.doj]
+        Definition from libio561mty.dlb[fputs.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C80E30' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fputwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C80F00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputws' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fputws.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C80FD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fread' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fread.doj]
+        Redefined in:   libc561mty.dlb[fread.doj]
+        Definition from libio561mty.dlb[fread.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C810A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_freopen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[freopen.doj]
+        Redefined in:   libc561mty.dlb[freopen.doj]
+        Definition from libio561mty.dlb[freopen.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81170' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fscanf_32.doj]
+        Redefined in:   libc561mty.dlb[fscanf32.doj]
+        Definition from libio561mty.dlb[fscanf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81240' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fscanf_64.doj]
+        Redefined in:   libc561mty.dlb[fscanf64.doj]
+        Definition from libio561mty.dlb[fscanf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81310' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fseek' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fseek.doj]
+        Redefined in:   libc561mty.dlb[fseek.doj]
+        Definition from libio561mty.dlb[fseek.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C813E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fsetpos' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fsetpos.doj]
+        Redefined in:   libc561mty.dlb[fsetpos.doj]
+        Definition from libio561mty.dlb[fsetpos.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C814B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ftell' is defined in more than one library.
+        Defined in:     libio561mty.dlb[ftell.doj]
+        Redefined in:   libc561mty.dlb[ftell.doj]
+        Definition from libio561mty.dlb[ftell.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81580' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwide' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwide.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81650' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81720' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fwprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C817F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwrite' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fwrite.doj]
+        Redefined in:   libc561mty.dlb[fwrite.doj]
+        Definition from libio561mty.dlb[fwrite.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C818C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwscanf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81990' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fwscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwscanf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81A60' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[getc.doj]
+        Redefined in:   libc561mty.dlb[getc.doj]
+        Definition from libio561mty.dlb[getc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81B30' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[getchar.doj]
+        Redefined in:   libc561mty.dlb[getchar.doj]
+        Definition from libio561mty.dlb[getchar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81C00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_gets' is defined in more than one library.
+        Defined in:     libio561mty.dlb[gets.doj]
+        Redefined in:   libc561mty.dlb[gets.doj]
+        Definition from libio561mty.dlb[gets.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81CD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[getwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81DA0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getwchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[getwchar.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81E70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbrlen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbrlen.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C81F40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbrtowc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbrtowc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82010' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbsinit' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbsinit.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C820E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbsrtowcs' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbsrtowc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C821B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_printf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[printf_32.doj]
+        Redefined in:   libc561mty.dlb[printf32.doj]
+        Definition from libio561mty.dlb[printf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82280' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__printf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[printf_64.doj]
+        Redefined in:   libc561mty.dlb[printf64.doj]
+        Definition from libio561mty.dlb[printf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82350' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[putc.doj]
+        Redefined in:   libc561mty.dlb[putc.doj]
+        Definition from libio561mty.dlb[putc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82420' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[putchar.doj]
+        Redefined in:   libc561mty.dlb[putchar.doj]
+        Definition from libio561mty.dlb[putchar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C824F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_puts' is defined in more than one library.
+        Defined in:     libio561mty.dlb[puts.doj]
+        Redefined in:   libc561mty.dlb[puts.doj]
+        Definition from libio561mty.dlb[puts.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C825C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[putwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82690' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putwchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[putwchar.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82760' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_raise' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[raise_s.doj]
+        Redefined in:   libc561mty.dlb[raise.doj]
+        Definition from libsmall561y.dlb[raise_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82830' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_remove' is defined in more than one library.
+        Defined in:     libio561mty.dlb[remove.doj]
+        Redefined in:   libc561mty.dlb[remove.doj]
+        Definition from libio561mty.dlb[remove.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82900' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_rename' is defined in more than one library.
+        Defined in:     libio561mty.dlb[rename.doj]
+        Redefined in:   libc561mty.dlb[rename.doj]
+        Definition from libio561mty.dlb[rename.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C829D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_rewind' is defined in more than one library.
+        Defined in:     libio561mty.dlb[rewind.doj]
+        Redefined in:   libc561mty.dlb[rewind.doj]
+        Definition from libio561mty.dlb[rewind.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82AA0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_scanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[scanf_32.doj]
+        Redefined in:   libc561mty.dlb[scanf32.doj]
+        Definition from libio561mty.dlb[scanf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82B70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__scanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[scanf_64.doj]
+        Redefined in:   libc561mty.dlb[scanf64.doj]
+        Definition from libio561mty.dlb[scanf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82C40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_setbuf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[setbuf.doj]
+        Redefined in:   libc561mty.dlb[setbuf.doj]
+        Definition from libio561mty.dlb[setbuf.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C82D10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_setvbuf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[setvbuf.doj]
+        Redefined in:   libc561mty.dlb[setvbuf.doj]
+        Definition from libio561mty.dlb[setvbuf.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87450' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_interrupt' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[signal_s.doj]
+        Redefined in:   libc561mty.dlb[signal.doj]
+        Definition from libsmall561y.dlb[signal_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87520' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_signal' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[signal_s.doj]
+        Redefined in:   libc561mty.dlb[signal.doj]
+        Definition from libsmall561y.dlb[signal_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C875F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_snprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[snprintf_32.doj]
+        Redefined in:   libc561mty.dlb[snprintf32.doj]
+        Definition from libio561mty.dlb[snprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C876C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__snprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[snprintf_64.doj]
+        Redefined in:   libc561mty.dlb[snprintf64.doj]
+        Definition from libio561mty.dlb[snprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87790' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_sprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sprintf_32.doj]
+        Redefined in:   libc561mty.dlb[sprintf32.doj]
+        Definition from libio561mty.dlb[sprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87860' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__sprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sprintf_64.doj]
+        Redefined in:   libc561mty.dlb[sprintf64.doj]
+        Definition from libio561mty.dlb[sprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87930' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_sscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sscanf_32.doj]
+        Redefined in:   libc561mty.dlb[sscanf32.doj]
+        Definition from libio561mty.dlb[sscanf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87A00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__sscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sscanf_64.doj]
+        Redefined in:   libc561mty.dlb[sscanf64.doj]
+        Definition from libio561mty.dlb[sscanf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87AD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_swprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87BA0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__swprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87C70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_swscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swscanf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87D40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__swscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swscanf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87E10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ungetc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[ungetc.doj]
+        Redefined in:   libc561mty.dlb[ungetc.doj]
+        Definition from libio561mty.dlb[ungetc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87EE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ungetwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[ungetwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C87FB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcstod' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[v35_wstod.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88080' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_lock_globals' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_globals_lock.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88150' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_unlock_globals' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_globals_lock.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88220' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_acquire_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C882F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_deinit_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C883C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_init_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88490' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_release_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88560' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_get_tls_ptr' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_tls.doj]
+        Redefined in:   libc561mty.dlb[vdk_tls.doj]
+        Definition from libmc561y.dlb[mc_tls.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88630' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vfprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vfprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vfprintf32.doj]
+        Definition from libio561mty.dlb[vfprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88700' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vfprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vfprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vfprintf64.doj]
+        Definition from libio561mty.dlb[vfprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C887D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vfwprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vfwprint32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C888A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vfwprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vfwprint64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88970' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vprintf32.doj]
+        Definition from libio561mty.dlb[vprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88A40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vprintf64.doj]
+        Definition from libio561mty.dlb[vprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88B10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vsnprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsnprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vsnprint32.doj]
+        Definition from libio561mty.dlb[vsnprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88BE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vsnprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsnprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vsnprint64.doj]
+        Definition from libio561mty.dlb[vsnprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88CB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vsprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vsprintf32.doj]
+        Definition from libio561mty.dlb[vsprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88D80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vsprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vsprintf64.doj]
+        Definition from libio561mty.dlb[vsprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88E50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vswprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vswprint32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88F20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vswprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vswprint64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C88FF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vwprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vwprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C890C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vwprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vwprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C89190' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcrtomb' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcrtomb.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C89260' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscat' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscat.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C89330' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscmp' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscmp.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8D450' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscoll' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscoll.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8D520' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscpy' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscpy.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8D5F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscspn' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscspn.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8D6C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcslen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcslen.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8D790' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsncat' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsncat.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8D860' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsncpy' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsncpy.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8D930' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsrtombs' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsrtomb.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8DA00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcstol' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcstol.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8DAD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcstoul' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcstoul.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8DBA0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsxfrm' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsxfrm.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8DC70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wctob' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wctob.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8DD40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemcmp' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemcmp.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8DE10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemcpy' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemcpy.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8DEE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemmove' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemmove.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8DFB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemset' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemset.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E080' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E150' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__wprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E220' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wscanf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E2F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__wscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wscanf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E3C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Files' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E490' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Files_mutex' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E560' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Stderr' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E630' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Stdin' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E700' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Stdout' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E7D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vector_table' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[xsignal_s.doj]
+        Redefined in:   libc561mty.dlb[xsignal.doj]
+        Definition from libsmall561y.dlb[xsignal_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E8A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_raise_interrupt' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[raiseint_s.doj]
+        Redefined in:   libevent561mty.dlb[raiseint.doj]
+        Definition from libsmall561y.dlb[raiseint_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8E970' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_register_handler' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[reghdlr_s.doj]
+        Redefined in:   libevent561mty.dlb[reghdlr.doj]
+        Definition from libsmall561y.dlb[reghdlr_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8EA40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_to_float64' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f32tof64.doj]
+        Redefined in:   libsftflt561y.dlb[f32tof64.doj]
+        Definition from libf64ieee561y.dlb[f32tof64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8EB10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_to_int32_round_to_zero' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[f32toi32z.doj]
+        Redefined in:   libsftflt561y.dlb[f32toi32r.doj]
+        Definition from libdsp561y.dlb[f32toi32z.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8EBE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_to_float32' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f64tof32.doj]
+        Redefined in:   libsftflt561y.dlb[f64tof32.doj]
+        Definition from libf64ieee561y.dlb[f64tof32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8ECB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_to_int32' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f64toi32.doj]
+        Redefined in:   libsftflt561y.dlb[f64toi32.doj]
+        Definition from libf64ieee561y.dlb[f64toi32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8ED80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_to_int32_round_to_zero' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f64toi32z.doj]
+        Redefined in:   libsftflt561y.dlb[f64toi32r.doj]
+        Definition from libf64ieee561y.dlb[f64toi32z.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8EE50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_cmp' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fltcmp.doj]
+        Redefined in:   libsftflt561y.dlb[fltcmp.doj]
+        Definition from libdsp561y.dlb[fltcmp.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8EF20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_add' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[addfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64add.doj]
+        Definition from libf64ieee561y.dlb[addfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8EFF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_cmp' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[cmpfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64cmp.doj]
+        Definition from libf64ieee561y.dlb[cmpfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8F0C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_div' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[divfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64div.doj]
+        Definition from libf64ieee561y.dlb[divfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8F190' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_mul' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[mulfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64mult.doj]
+        Definition from libf64ieee561y.dlb[mulfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8F260' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_sub' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[subfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64sub.doj]
+        Definition from libf64ieee561y.dlb[subfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06C8F330' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_add' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpadd.doj]
+        Redefined in:   libsftflt561y.dlb[fpadd.doj]
+        Definition from libdsp561y.dlb[fpadd.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4070' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_div' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpdiv.doj]
+        Redefined in:   libsftflt561y.dlb[fpdiv.doj]
+        Definition from libdsp561y.dlb[fpdiv.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4140' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_mul' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpmult.doj]
+        Redefined in:   libsftflt561y.dlb[fpmult.doj]
+        Definition from libdsp561y.dlb[fpmult.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4210' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_sub' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpadd.doj]
+        Redefined in:   libsftflt561y.dlb[fpsub.doj]
+        Definition from libdsp561y.dlb[fpadd.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB42E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___int32_to_float32' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fltsif.doj]
+        Redefined in:   libsftflt561y.dlb[i32tof32.doj]
+        Definition from libdsp561y.dlb[fltsif.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB43B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___int32_to_float64' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[i32tof64.doj]
+        Redefined in:   libsftflt561y.dlb[i32tof64.doj]
+        Definition from libf64ieee561y.dlb[i32tof64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4480' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_isinf' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[isinf.doj]
+        Redefined in:   libsftflt561y.dlb[isinf.doj]
+        Definition from libdsp561y.dlb[isinf.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4550' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_isnan' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[isnan.doj]
+        Redefined in:   libsftflt561y.dlb[isnan.doj]
+        Definition from libdsp561y.dlb[isnan.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4620' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___unsigned_int32_to_float32' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fltuif.doj]
+        Redefined in:   libsftflt561y.dlb[u32tof32.doj]
+        Definition from libdsp561y.dlb[fltuif.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB46F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___unsigned_int32_to_float64' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[u32tof64.doj]
+        Redefined in:   libsftflt561y.dlb[u32tof64.doj]
+        Definition from libf64ieee561y.dlb[u32tof64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB47C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_btowc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[btowc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4890' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_clearerr' is defined in more than one library.
+        Defined in:     libio561mty.dlb[clearerr.doj]
+        Redefined in:   libc561mty.dlb[clearerr.doj]
+        Definition from libio561mty.dlb[clearerr.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4960' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fclose' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fclose.doj]
+        Redefined in:   libc561mty.dlb[fclose.doj]
+        Definition from libio561mty.dlb[fclose.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4A30' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_feof' is defined in more than one library.
+        Defined in:     libio561mty.dlb[eof.doj]
+        Redefined in:   libc561mty.dlb[feof.doj]
+        Definition from libio561mty.dlb[eof.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4B00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ferror' is defined in more than one library.
+        Defined in:     libio561mty.dlb[ferror.doj]
+        Redefined in:   libc561mty.dlb[ferror.doj]
+        Definition from libio561mty.dlb[ferror.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4BD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fflush' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fflush.doj]
+        Redefined in:   libc561mty.dlb[fflush.doj]
+        Definition from libio561mty.dlb[fflush.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4CA0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fgetc.doj]
+        Redefined in:   libc561mty.dlb[fgetc.doj]
+        Definition from libio561mty.dlb[fgetc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4D70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetpos' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fgetpos.doj]
+        Redefined in:   libc561mty.dlb[fgetpos.doj]
+        Definition from libio561mty.dlb[fgetpos.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4E40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgets' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fgets.doj]
+        Redefined in:   libc561mty.dlb[fgets.doj]
+        Definition from libio561mty.dlb[fgets.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4F10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fgetwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB4FE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetws' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fgetws.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB50B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fopen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fopen.doj]
+        Redefined in:   libc561mty.dlb[fopen.doj]
+        Definition from libio561mty.dlb[fopen.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5180' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fprintf_32.doj]
+        Redefined in:   libc561mty.dlb[fprintf32.doj]
+        Definition from libio561mty.dlb[fprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5250' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fprintf_64.doj]
+        Redefined in:   libc561mty.dlb[fprintf64.doj]
+        Definition from libio561mty.dlb[fprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5320' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fputc.doj]
+        Redefined in:   libc561mty.dlb[fputc.doj]
+        Definition from libio561mty.dlb[fputc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB53F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputs' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fputs.doj]
+        Redefined in:   libc561mty.dlb[fputs.doj]
+        Definition from libio561mty.dlb[fputs.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB54C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fputwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5590' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputws' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fputws.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5660' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fread' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fread.doj]
+        Redefined in:   libc561mty.dlb[fread.doj]
+        Definition from libio561mty.dlb[fread.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5730' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_freopen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[freopen.doj]
+        Redefined in:   libc561mty.dlb[freopen.doj]
+        Definition from libio561mty.dlb[freopen.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5800' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fscanf_32.doj]
+        Redefined in:   libc561mty.dlb[fscanf32.doj]
+        Definition from libio561mty.dlb[fscanf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB58D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fscanf_64.doj]
+        Redefined in:   libc561mty.dlb[fscanf64.doj]
+        Definition from libio561mty.dlb[fscanf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB59A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fseek' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fseek.doj]
+        Redefined in:   libc561mty.dlb[fseek.doj]
+        Definition from libio561mty.dlb[fseek.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5A70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fsetpos' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fsetpos.doj]
+        Redefined in:   libc561mty.dlb[fsetpos.doj]
+        Definition from libio561mty.dlb[fsetpos.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5B40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ftell' is defined in more than one library.
+        Defined in:     libio561mty.dlb[ftell.doj]
+        Redefined in:   libc561mty.dlb[ftell.doj]
+        Definition from libio561mty.dlb[ftell.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5C10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwide' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwide.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5CE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5DB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fwprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5E80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwrite' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fwrite.doj]
+        Redefined in:   libc561mty.dlb[fwrite.doj]
+        Definition from libio561mty.dlb[fwrite.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CB5F50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwscanf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC7FE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fwscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwscanf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC80B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[getc.doj]
+        Redefined in:   libc561mty.dlb[getc.doj]
+        Definition from libio561mty.dlb[getc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8180' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[getchar.doj]
+        Redefined in:   libc561mty.dlb[getchar.doj]
+        Definition from libio561mty.dlb[getchar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8250' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_gets' is defined in more than one library.
+        Defined in:     libio561mty.dlb[gets.doj]
+        Redefined in:   libc561mty.dlb[gets.doj]
+        Definition from libio561mty.dlb[gets.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8320' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[getwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC83F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getwchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[getwchar.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC84C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbrlen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbrlen.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8590' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbrtowc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbrtowc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8660' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbsinit' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbsinit.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8730' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbsrtowcs' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbsrtowc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8800' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_printf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[printf_32.doj]
+        Redefined in:   libc561mty.dlb[printf32.doj]
+        Definition from libio561mty.dlb[printf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC88D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__printf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[printf_64.doj]
+        Redefined in:   libc561mty.dlb[printf64.doj]
+        Definition from libio561mty.dlb[printf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC89A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[putc.doj]
+        Redefined in:   libc561mty.dlb[putc.doj]
+        Definition from libio561mty.dlb[putc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8A70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[putchar.doj]
+        Redefined in:   libc561mty.dlb[putchar.doj]
+        Definition from libio561mty.dlb[putchar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8B40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_puts' is defined in more than one library.
+        Defined in:     libio561mty.dlb[puts.doj]
+        Redefined in:   libc561mty.dlb[puts.doj]
+        Definition from libio561mty.dlb[puts.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8C10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[putwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8CE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putwchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[putwchar.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8DB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_raise' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[raise_s.doj]
+        Redefined in:   libc561mty.dlb[raise.doj]
+        Definition from libsmall561y.dlb[raise_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8E80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_remove' is defined in more than one library.
+        Defined in:     libio561mty.dlb[remove.doj]
+        Redefined in:   libc561mty.dlb[remove.doj]
+        Definition from libio561mty.dlb[remove.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC8F50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_rename' is defined in more than one library.
+        Defined in:     libio561mty.dlb[rename.doj]
+        Redefined in:   libc561mty.dlb[rename.doj]
+        Definition from libio561mty.dlb[rename.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9020' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_rewind' is defined in more than one library.
+        Defined in:     libio561mty.dlb[rewind.doj]
+        Redefined in:   libc561mty.dlb[rewind.doj]
+        Definition from libio561mty.dlb[rewind.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC90F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_scanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[scanf_32.doj]
+        Redefined in:   libc561mty.dlb[scanf32.doj]
+        Definition from libio561mty.dlb[scanf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC91C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__scanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[scanf_64.doj]
+        Redefined in:   libc561mty.dlb[scanf64.doj]
+        Definition from libio561mty.dlb[scanf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9290' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_setbuf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[setbuf.doj]
+        Redefined in:   libc561mty.dlb[setbuf.doj]
+        Definition from libio561mty.dlb[setbuf.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9360' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_setvbuf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[setvbuf.doj]
+        Redefined in:   libc561mty.dlb[setvbuf.doj]
+        Definition from libio561mty.dlb[setvbuf.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9430' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_interrupt' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[signal_s.doj]
+        Redefined in:   libc561mty.dlb[signal.doj]
+        Definition from libsmall561y.dlb[signal_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9500' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_signal' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[signal_s.doj]
+        Redefined in:   libc561mty.dlb[signal.doj]
+        Definition from libsmall561y.dlb[signal_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC95D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_snprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[snprintf_32.doj]
+        Redefined in:   libc561mty.dlb[snprintf32.doj]
+        Definition from libio561mty.dlb[snprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC96A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__snprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[snprintf_64.doj]
+        Redefined in:   libc561mty.dlb[snprintf64.doj]
+        Definition from libio561mty.dlb[snprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9770' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_sprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sprintf_32.doj]
+        Redefined in:   libc561mty.dlb[sprintf32.doj]
+        Definition from libio561mty.dlb[sprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9840' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__sprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sprintf_64.doj]
+        Redefined in:   libc561mty.dlb[sprintf64.doj]
+        Definition from libio561mty.dlb[sprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9910' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_sscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sscanf_32.doj]
+        Redefined in:   libc561mty.dlb[sscanf32.doj]
+        Definition from libio561mty.dlb[sscanf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC99E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__sscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sscanf_64.doj]
+        Redefined in:   libc561mty.dlb[sscanf64.doj]
+        Definition from libio561mty.dlb[sscanf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9AB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_swprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9B80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__swprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9C50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_swscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swscanf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9D20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__swscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swscanf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9DF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ungetc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[ungetc.doj]
+        Redefined in:   libc561mty.dlb[ungetc.doj]
+        Definition from libio561mty.dlb[ungetc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CC9EC0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ungetwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[ungetwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCC360' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcstod' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[v35_wstod.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCC430' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_lock_globals' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_globals_lock.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCC500' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_unlock_globals' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_globals_lock.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCC5D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_acquire_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCC6A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_deinit_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCC770' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_init_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCC840' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_release_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCC910' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_get_tls_ptr' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_tls.doj]
+        Redefined in:   libc561mty.dlb[vdk_tls.doj]
+        Definition from libmc561y.dlb[mc_tls.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCC9E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vfprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vfprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vfprintf32.doj]
+        Definition from libio561mty.dlb[vfprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCCAB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vfprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vfprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vfprintf64.doj]
+        Definition from libio561mty.dlb[vfprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCCB80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vfwprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vfwprint32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCCC50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vfwprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vfwprint64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCCD20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vprintf32.doj]
+        Definition from libio561mty.dlb[vprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCCDF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vprintf64.doj]
+        Definition from libio561mty.dlb[vprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCCEC0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vsnprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsnprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vsnprint32.doj]
+        Definition from libio561mty.dlb[vsnprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCCF90' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vsnprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsnprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vsnprint64.doj]
+        Definition from libio561mty.dlb[vsnprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD060' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vsprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vsprintf32.doj]
+        Definition from libio561mty.dlb[vsprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD130' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vsprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vsprintf64.doj]
+        Definition from libio561mty.dlb[vsprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD200' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vswprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vswprint32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD2D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vswprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vswprint64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD3A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vwprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vwprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD470' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vwprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vwprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD540' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcrtomb' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcrtomb.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD610' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscat' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscat.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD6E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscmp' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscmp.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD7B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscoll' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscoll.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD880' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscpy' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscpy.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCD950' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscspn' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscspn.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCDA20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcslen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcslen.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCDAF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsncat' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsncat.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCDBC0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsncpy' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsncpy.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCDC90' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsrtombs' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsrtomb.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCDD60' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcstol' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcstol.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCDE30' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcstoul' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcstoul.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCDF00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsxfrm' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsxfrm.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCDFD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wctob' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wctob.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCE0A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemcmp' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemcmp.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCE170' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemcpy' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemcpy.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CCE240' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemmove' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemmove.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3360' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemset' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemset.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3430' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3500' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__wprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD35D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wscanf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD36A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__wscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wscanf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3770' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Files' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3840' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Files_mutex' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3910' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Stderr' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD39E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Stdin' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3AB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Stdout' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3B80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vector_table' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[xsignal_s.doj]
+        Redefined in:   libc561mty.dlb[xsignal.doj]
+        Definition from libsmall561y.dlb[xsignal_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3C50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_raise_interrupt' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[raiseint_s.doj]
+        Redefined in:   libevent561mty.dlb[raiseint.doj]
+        Definition from libsmall561y.dlb[raiseint_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3D20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_register_handler' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[reghdlr_s.doj]
+        Redefined in:   libevent561mty.dlb[reghdlr.doj]
+        Definition from libsmall561y.dlb[reghdlr_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3DF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_to_float64' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f32tof64.doj]
+        Redefined in:   libsftflt561y.dlb[f32tof64.doj]
+        Definition from libf64ieee561y.dlb[f32tof64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3EC0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_to_int32_round_to_zero' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[f32toi32z.doj]
+        Redefined in:   libsftflt561y.dlb[f32toi32r.doj]
+        Definition from libdsp561y.dlb[f32toi32z.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD3F90' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_to_float32' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f64tof32.doj]
+        Redefined in:   libsftflt561y.dlb[f64tof32.doj]
+        Definition from libf64ieee561y.dlb[f64tof32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4060' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_to_int32' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f64toi32.doj]
+        Redefined in:   libsftflt561y.dlb[f64toi32.doj]
+        Definition from libf64ieee561y.dlb[f64toi32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4130' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_to_int32_round_to_zero' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f64toi32z.doj]
+        Redefined in:   libsftflt561y.dlb[f64toi32r.doj]
+        Definition from libf64ieee561y.dlb[f64toi32z.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4200' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_cmp' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fltcmp.doj]
+        Redefined in:   libsftflt561y.dlb[fltcmp.doj]
+        Definition from libdsp561y.dlb[fltcmp.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD42D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_add' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[addfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64add.doj]
+        Definition from libf64ieee561y.dlb[addfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD43A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_cmp' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[cmpfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64cmp.doj]
+        Definition from libf64ieee561y.dlb[cmpfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4470' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_div' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[divfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64div.doj]
+        Definition from libf64ieee561y.dlb[divfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4540' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_mul' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[mulfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64mult.doj]
+        Definition from libf64ieee561y.dlb[mulfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4610' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_sub' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[subfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64sub.doj]
+        Definition from libf64ieee561y.dlb[subfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD46E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_add' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpadd.doj]
+        Redefined in:   libsftflt561y.dlb[fpadd.doj]
+        Definition from libdsp561y.dlb[fpadd.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD47B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_div' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpdiv.doj]
+        Redefined in:   libsftflt561y.dlb[fpdiv.doj]
+        Definition from libdsp561y.dlb[fpdiv.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4880' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_mul' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpmult.doj]
+        Redefined in:   libsftflt561y.dlb[fpmult.doj]
+        Definition from libdsp561y.dlb[fpmult.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4950' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_sub' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpadd.doj]
+        Redefined in:   libsftflt561y.dlb[fpsub.doj]
+        Definition from libdsp561y.dlb[fpadd.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4A20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___int32_to_float32' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fltsif.doj]
+        Redefined in:   libsftflt561y.dlb[i32tof32.doj]
+        Definition from libdsp561y.dlb[fltsif.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4AF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___int32_to_float64' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[i32tof64.doj]
+        Redefined in:   libsftflt561y.dlb[i32tof64.doj]
+        Definition from libf64ieee561y.dlb[i32tof64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4BC0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_isinf' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[isinf.doj]
+        Redefined in:   libsftflt561y.dlb[isinf.doj]
+        Definition from libdsp561y.dlb[isinf.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4C90' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_isnan' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[isnan.doj]
+        Redefined in:   libsftflt561y.dlb[isnan.doj]
+        Definition from libdsp561y.dlb[isnan.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4D60' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___unsigned_int32_to_float32' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fltuif.doj]
+        Redefined in:   libsftflt561y.dlb[u32tof32.doj]
+        Definition from libdsp561y.dlb[fltuif.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4E30' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___unsigned_int32_to_float64' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[u32tof64.doj]
+        Redefined in:   libsftflt561y.dlb[u32tof64.doj]
+        Definition from libf64ieee561y.dlb[u32tof64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4F00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_btowc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[btowc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD4FD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_clearerr' is defined in more than one library.
+        Defined in:     libio561mty.dlb[clearerr.doj]
+        Redefined in:   libc561mty.dlb[clearerr.doj]
+        Definition from libio561mty.dlb[clearerr.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD50A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fclose' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fclose.doj]
+        Redefined in:   libc561mty.dlb[fclose.doj]
+        Definition from libio561mty.dlb[fclose.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD5170' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_feof' is defined in more than one library.
+        Defined in:     libio561mty.dlb[eof.doj]
+        Redefined in:   libc561mty.dlb[feof.doj]
+        Definition from libio561mty.dlb[eof.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CD5240' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ferror' is defined in more than one library.
+        Defined in:     libio561mty.dlb[ferror.doj]
+        Redefined in:   libc561mty.dlb[ferror.doj]
+        Definition from libio561mty.dlb[ferror.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CF9F80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fflush' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fflush.doj]
+        Redefined in:   libc561mty.dlb[fflush.doj]
+        Definition from libio561mty.dlb[fflush.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA050' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fgetc.doj]
+        Redefined in:   libc561mty.dlb[fgetc.doj]
+        Definition from libio561mty.dlb[fgetc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA120' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetpos' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fgetpos.doj]
+        Redefined in:   libc561mty.dlb[fgetpos.doj]
+        Definition from libio561mty.dlb[fgetpos.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA1F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgets' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fgets.doj]
+        Redefined in:   libc561mty.dlb[fgets.doj]
+        Definition from libio561mty.dlb[fgets.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA2C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fgetwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA390' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fgetws' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fgetws.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA460' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fopen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fopen.doj]
+        Redefined in:   libc561mty.dlb[fopen.doj]
+        Definition from libio561mty.dlb[fopen.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA530' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fprintf_32.doj]
+        Redefined in:   libc561mty.dlb[fprintf32.doj]
+        Definition from libio561mty.dlb[fprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA600' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fprintf_64.doj]
+        Redefined in:   libc561mty.dlb[fprintf64.doj]
+        Definition from libio561mty.dlb[fprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA6D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fputc.doj]
+        Redefined in:   libc561mty.dlb[fputc.doj]
+        Definition from libio561mty.dlb[fputc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA7A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputs' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fputs.doj]
+        Redefined in:   libc561mty.dlb[fputs.doj]
+        Definition from libio561mty.dlb[fputs.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA870' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fputwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFA940' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fputws' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fputws.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFAA10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fread' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fread.doj]
+        Redefined in:   libc561mty.dlb[fread.doj]
+        Definition from libio561mty.dlb[fread.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFAAE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_freopen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[freopen.doj]
+        Redefined in:   libc561mty.dlb[freopen.doj]
+        Definition from libio561mty.dlb[freopen.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFABB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fscanf_32.doj]
+        Redefined in:   libc561mty.dlb[fscanf32.doj]
+        Definition from libio561mty.dlb[fscanf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFAC80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fscanf_64.doj]
+        Redefined in:   libc561mty.dlb[fscanf64.doj]
+        Definition from libio561mty.dlb[fscanf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFAD50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fseek' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fseek.doj]
+        Redefined in:   libc561mty.dlb[fseek.doj]
+        Definition from libio561mty.dlb[fseek.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFAE20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fsetpos' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fsetpos.doj]
+        Redefined in:   libc561mty.dlb[fsetpos.doj]
+        Definition from libio561mty.dlb[fsetpos.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFAEF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ftell' is defined in more than one library.
+        Defined in:     libio561mty.dlb[ftell.doj]
+        Redefined in:   libc561mty.dlb[ftell.doj]
+        Definition from libio561mty.dlb[ftell.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFAFC0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwide' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwide.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB090' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB160' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fwprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB230' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwrite' is defined in more than one library.
+        Defined in:     libio561mty.dlb[fwrite.doj]
+        Redefined in:   libc561mty.dlb[fwrite.doj]
+        Definition from libio561mty.dlb[fwrite.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB300' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_fwscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwscanf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB3D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__fwscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[fwscanf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB4A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[getc.doj]
+        Redefined in:   libc561mty.dlb[getc.doj]
+        Definition from libio561mty.dlb[getc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB570' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[getchar.doj]
+        Redefined in:   libc561mty.dlb[getchar.doj]
+        Definition from libio561mty.dlb[getchar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB640' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_gets' is defined in more than one library.
+        Defined in:     libio561mty.dlb[gets.doj]
+        Redefined in:   libc561mty.dlb[gets.doj]
+        Definition from libio561mty.dlb[gets.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB710' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[getwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB7E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_getwchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[getwchar.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB8B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbrlen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbrlen.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFB980' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbrtowc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbrtowc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFBA50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbsinit' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbsinit.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFBB20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_mbsrtowcs' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[mbsrtowc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFBBF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_printf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[printf_32.doj]
+        Redefined in:   libc561mty.dlb[printf32.doj]
+        Definition from libio561mty.dlb[printf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFBCC0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__printf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[printf_64.doj]
+        Redefined in:   libc561mty.dlb[printf64.doj]
+        Definition from libio561mty.dlb[printf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFBD90' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[putc.doj]
+        Redefined in:   libc561mty.dlb[putc.doj]
+        Definition from libio561mty.dlb[putc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06CFBE60' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[putchar.doj]
+        Redefined in:   libc561mty.dlb[putchar.doj]
+        Definition from libio561mty.dlb[putchar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00270' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_puts' is defined in more than one library.
+        Defined in:     libio561mty.dlb[puts.doj]
+        Redefined in:   libc561mty.dlb[puts.doj]
+        Definition from libio561mty.dlb[puts.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00340' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[putwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00410' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_putwchar' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[putwchar.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D004E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_raise' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[raise_s.doj]
+        Redefined in:   libc561mty.dlb[raise.doj]
+        Definition from libsmall561y.dlb[raise_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D005B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_remove' is defined in more than one library.
+        Defined in:     libio561mty.dlb[remove.doj]
+        Redefined in:   libc561mty.dlb[remove.doj]
+        Definition from libio561mty.dlb[remove.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00680' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_rename' is defined in more than one library.
+        Defined in:     libio561mty.dlb[rename.doj]
+        Redefined in:   libc561mty.dlb[rename.doj]
+        Definition from libio561mty.dlb[rename.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00750' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_rewind' is defined in more than one library.
+        Defined in:     libio561mty.dlb[rewind.doj]
+        Redefined in:   libc561mty.dlb[rewind.doj]
+        Definition from libio561mty.dlb[rewind.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00820' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_scanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[scanf_32.doj]
+        Redefined in:   libc561mty.dlb[scanf32.doj]
+        Definition from libio561mty.dlb[scanf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D008F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__scanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[scanf_64.doj]
+        Redefined in:   libc561mty.dlb[scanf64.doj]
+        Definition from libio561mty.dlb[scanf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D009C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_setbuf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[setbuf.doj]
+        Redefined in:   libc561mty.dlb[setbuf.doj]
+        Definition from libio561mty.dlb[setbuf.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00A90' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_setvbuf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[setvbuf.doj]
+        Redefined in:   libc561mty.dlb[setvbuf.doj]
+        Definition from libio561mty.dlb[setvbuf.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00B60' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_interrupt' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[signal_s.doj]
+        Redefined in:   libc561mty.dlb[signal.doj]
+        Definition from libsmall561y.dlb[signal_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00C30' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_signal' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[signal_s.doj]
+        Redefined in:   libc561mty.dlb[signal.doj]
+        Definition from libsmall561y.dlb[signal_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00D00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_snprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[snprintf_32.doj]
+        Redefined in:   libc561mty.dlb[snprintf32.doj]
+        Definition from libio561mty.dlb[snprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00DD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__snprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[snprintf_64.doj]
+        Redefined in:   libc561mty.dlb[snprintf64.doj]
+        Definition from libio561mty.dlb[snprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00EA0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_sprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sprintf_32.doj]
+        Redefined in:   libc561mty.dlb[sprintf32.doj]
+        Definition from libio561mty.dlb[sprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D00F70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__sprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sprintf_64.doj]
+        Redefined in:   libc561mty.dlb[sprintf64.doj]
+        Definition from libio561mty.dlb[sprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01040' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_sscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sscanf_32.doj]
+        Redefined in:   libc561mty.dlb[sscanf32.doj]
+        Definition from libio561mty.dlb[sscanf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01110' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__sscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[sscanf_64.doj]
+        Redefined in:   libc561mty.dlb[sscanf64.doj]
+        Definition from libio561mty.dlb[sscanf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D011E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_swprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D012B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__swprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01380' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_swscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swscanf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01450' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__swscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[swscanf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01520' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ungetc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[ungetc.doj]
+        Redefined in:   libc561mty.dlb[ungetc.doj]
+        Definition from libio561mty.dlb[ungetc.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D015F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_ungetwc' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[ungetwc.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D016C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcstod' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[v35_wstod.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01790' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_lock_globals' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_globals_lock.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01860' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_unlock_globals' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_globals_lock.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01930' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_acquire_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01A00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_deinit_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01AD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_init_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01BA0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_release_mutex' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_locks.doj]
+        Redefined in:   libc561mty.dlb[vdk_mutex.doj]
+        Definition from libmc561y.dlb[mc_locks.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01C70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_adi_rtl_get_tls_ptr' is defined in more than one library.
+        Defined in:     libmc561y.dlb[mc_tls.doj]
+        Redefined in:   libc561mty.dlb[vdk_tls.doj]
+        Definition from libmc561y.dlb[mc_tls.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01D40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vfprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vfprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vfprintf32.doj]
+        Definition from libio561mty.dlb[vfprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01E10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vfprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vfprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vfprintf64.doj]
+        Definition from libio561mty.dlb[vfprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01EE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vfwprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vfwprint32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D01FB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vfwprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vfwprint64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D02080' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vprintf32.doj]
+        Definition from libio561mty.dlb[vprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D02150' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vprintf64.doj]
+        Definition from libio561mty.dlb[vprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0A350' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vsnprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsnprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vsnprint32.doj]
+        Definition from libio561mty.dlb[vsnprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0A420' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vsnprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsnprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vsnprint64.doj]
+        Definition from libio561mty.dlb[vsnprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0A4F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vsprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsprintf_32.doj]
+        Redefined in:   libc561mty.dlb[vsprintf32.doj]
+        Definition from libio561mty.dlb[vsprintf_32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0A5C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vsprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[vsprintf_64.doj]
+        Redefined in:   libc561mty.dlb[vsprintf64.doj]
+        Definition from libio561mty.dlb[vsprintf_64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0A690' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vswprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vswprint32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0A760' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vswprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vswprint64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0A830' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_vwprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vwprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0A900' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vwprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[vwprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0A9D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcrtomb' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcrtomb.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0AAA0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscat' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscat.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0AB70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscmp' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscmp.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0AC40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscoll' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscoll.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0AD10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscpy' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscpy.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0ADE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcscspn' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcscspn.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0AEB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcslen' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcslen.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0AF80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsncat' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsncat.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B050' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsncpy' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsncpy.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B120' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsrtombs' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsrtomb.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B1F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcstol' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcstol.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B2C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcstoul' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcstoul.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B390' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wcsxfrm' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wcsxfrm.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B460' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wctob' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wctob.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B530' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemcmp' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemcmp.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B600' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemcpy' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemcpy.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B6D0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemmove' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemmove.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B7A0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wmemset' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wmemset.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B870' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wprintf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wprintf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0B940' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__wprintf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wprintf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0BA10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_wscanf' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wscanf32.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0BAE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__wscanf64' is defined in more than one library.
+        Defined in:     libio561mty.dlb[widechar.doj]
+        Redefined in:   libc561mty.dlb[wscanf64.doj]
+        Definition from libio561mty.dlb[widechar.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0BBB0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Files' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0BC80' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Files_mutex' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0BD50' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Stderr' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0BE20' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Stdin' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0BEF0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__Stdout' is defined in more than one library.
+        Defined in:     libio561mty.dlb[xfiles.doj]
+        Redefined in:   libc561mty.dlb[xfiles.doj]
+        Definition from libio561mty.dlb[xfiles.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0BFC0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '__vector_table' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[xsignal_s.doj]
+        Redefined in:   libc561mty.dlb[xsignal.doj]
+        Definition from libsmall561y.dlb[xsignal_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0C090' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_raise_interrupt' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[raiseint_s.doj]
+        Redefined in:   libevent561mty.dlb[raiseint.doj]
+        Definition from libsmall561y.dlb[raiseint_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0C160' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_register_handler' is defined in more than one library.
+        Defined in:     libsmall561y.dlb[reghdlr_s.doj]
+        Redefined in:   libevent561mty.dlb[reghdlr.doj]
+        Definition from libsmall561y.dlb[reghdlr_s.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D0C230' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_to_float64' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f32tof64.doj]
+        Redefined in:   libsftflt561y.dlb[f32tof64.doj]
+        Definition from libf64ieee561y.dlb[f32tof64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D31F70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_to_int32_round_to_zero' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[f32toi32z.doj]
+        Redefined in:   libsftflt561y.dlb[f32toi32r.doj]
+        Definition from libdsp561y.dlb[f32toi32z.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32040' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_to_float32' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f64tof32.doj]
+        Redefined in:   libsftflt561y.dlb[f64tof32.doj]
+        Definition from libf64ieee561y.dlb[f64tof32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32110' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_to_int32' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f64toi32.doj]
+        Redefined in:   libsftflt561y.dlb[f64toi32.doj]
+        Definition from libf64ieee561y.dlb[f64toi32.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D321E0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_to_int32_round_to_zero' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[f64toi32z.doj]
+        Redefined in:   libsftflt561y.dlb[f64toi32r.doj]
+        Definition from libf64ieee561y.dlb[f64toi32z.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D322B0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_cmp' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fltcmp.doj]
+        Redefined in:   libsftflt561y.dlb[fltcmp.doj]
+        Definition from libdsp561y.dlb[fltcmp.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32380' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_add' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[addfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64add.doj]
+        Definition from libf64ieee561y.dlb[addfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32450' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_cmp' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[cmpfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64cmp.doj]
+        Definition from libf64ieee561y.dlb[cmpfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32520' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_div' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[divfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64div.doj]
+        Definition from libf64ieee561y.dlb[divfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D325F0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_mul' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[mulfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64mult.doj]
+        Definition from libf64ieee561y.dlb[mulfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D326C0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float64_sub' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[subfl64.doj]
+        Redefined in:   libsftflt561y.dlb[fp64sub.doj]
+        Definition from libf64ieee561y.dlb[subfl64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32790' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_add' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpadd.doj]
+        Redefined in:   libsftflt561y.dlb[fpadd.doj]
+        Definition from libdsp561y.dlb[fpadd.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32860' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_div' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpdiv.doj]
+        Redefined in:   libsftflt561y.dlb[fpdiv.doj]
+        Definition from libdsp561y.dlb[fpdiv.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32930' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_mul' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpmult.doj]
+        Redefined in:   libsftflt561y.dlb[fpmult.doj]
+        Definition from libdsp561y.dlb[fpmult.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32A00' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___float32_sub' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fpadd.doj]
+        Redefined in:   libsftflt561y.dlb[fpsub.doj]
+        Definition from libdsp561y.dlb[fpadd.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32AD0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___int32_to_float32' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fltsif.doj]
+        Redefined in:   libsftflt561y.dlb[i32tof32.doj]
+        Definition from libdsp561y.dlb[fltsif.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32BA0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___int32_to_float64' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[i32tof64.doj]
+        Redefined in:   libsftflt561y.dlb[i32tof64.doj]
+        Definition from libf64ieee561y.dlb[i32tof64.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32C70' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_isinf' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[isinf.doj]
+        Redefined in:   libsftflt561y.dlb[isinf.doj]
+        Definition from libdsp561y.dlb[isinf.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32D40' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '_isnan' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[isnan.doj]
+        Redefined in:   libsftflt561y.dlb[isnan.doj]
+        Definition from libdsp561y.dlb[isnan.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32E10' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___unsigned_int32_to_float32' is defined in more than one library.
+        Defined in:     libdsp561y.dlb[fltuif.doj]
+        Redefined in:   libsftflt561y.dlb[u32tof32.doj]
+        Definition from libdsp561y.dlb[fltuif.doj] will be used.]]></TEXT>
+</MSG>
+<MSG id='06D32EE0' mid='li2050' type='Warning' suppressed=''>
+<TEXT><![CDATA[Symbol '___unsigned_int32_to_float64' is defined in more than one library.
+        Defined in:     libf64ieee561y.dlb[u32tof64.doj]
+        Redefined in:   libsftflt561y.dlb[u32tof64.doj]
+        Definition from libf64ieee561y.dlb[u32tof64.doj] will be used.]]></TEXT>
+</MSG>
+</DOCUMENT>
