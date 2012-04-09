@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+echo $(./scripts/packet-builder-and-parser | grep window= | grep row=1 | grep col=1 | grep channel=1 | sed -e "s/.*window=\([0-9]\+\).*/\1/") | sed -e "s,\([0-9]\+ [0-9]\+ [0-9]\+ [0-9]\+\) ,\1\n,g"
+

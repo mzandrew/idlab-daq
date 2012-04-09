@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+nice rsync -av /data/beamtest/rawdata 128.171.30.123:/mnt/BeamTestData/
+

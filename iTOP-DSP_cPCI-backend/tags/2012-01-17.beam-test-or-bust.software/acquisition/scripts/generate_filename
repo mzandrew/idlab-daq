@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+declare -i spill_counter=56
+
+. ./scripts/read_config_files
+
+declare datestamp_string=$(date --utc +"%Y-%m-%d+%H:%M:%S")
+declare experiment_number_string="exp$(printf "%02d" ${experiment_number})"
+declare run_number_string="run$(printf "%04d" ${run_number})"
+declare spill_counter_string="spill$(printf "%04d" ${spill_counter})"
+declare filename="${datestamp_string}.${experiment_number_string}.${run_number_string}.${spill_counter_string}"
+
+echo -n "${filename}"
+

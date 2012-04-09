@@ -1,0 +1,56 @@
+#!/bin/bash -e
+
+. .config
+pushd ${location_of_raw_datafiles} > /dev/null
+. ./status
+
+if [ ! -z $1 ]; then
+	experiment_number=${1}
+fi
+
+declare numeric_experiment_number=${experiment_number}
+experiment_number="exp$(printf %02d ${experiment_number})"
+#echo ${experiment_number}
+cd ${experiment_number}
+
+declare list_of_run_number_strings
+for run_number in $(seq 0 99); do
+	run_number="run$(printf %04d ${run_number})"
+#	echo ${run_number}
+	for filename in ${experiment_number}.${run_number}.*; do
+		if [ -e ${filename} ]; then
+			list_of_run_number_strings="${list_of_run_number_strings}
+${run_number}"
+		fi
+	done
+	list_of_run_number_strings=$(echo "${list_of_run_number_strings}" | sort -u | sed -e "s,run\(0*\),,")
+done
+
+popd > /dev/null
+
+for run_number in $(echo "${list_of_run_number_strings}"); do
+#	echo ${run_number}
+#	if [ ! -z "${output}" ]; then
+		output="${output}
+$(./scripts/determine_number_of_events_in_a_run ${numeric_experiment_number} ${run_number})"
+#	fi
+done
+
+output=$(echo "${output}" | tr -s '\n')
+echo "${output}" | sort -k 7
+
+declare total_0=$(echo $(echo "${output}" | grep fiber0 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for fiber0 during ${experiment_number}\n" ${total_0}
+
+declare total_1=$(echo $(echo "${output}" | grep fiber1 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for fiber1 during ${experiment_number}\n" ${total_1}
+
+declare total_2=$(echo $(echo "${output}" | grep fiber2 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for fiber2 during ${experiment_number}\n" ${total_2}
+
+declare total_3=$(echo $(echo "${output}" | grep fiber3 | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for fiber3 during ${experiment_number}\n" ${total_3}
+
+declare total_c=$(echo $(echo "${output}" | grep camac | awk '{ print $1 }') | sed -e "s, ,+,g" | bc)
+printf "%6d total events for camac  during ${experiment_number}\n" ${total_c}
+

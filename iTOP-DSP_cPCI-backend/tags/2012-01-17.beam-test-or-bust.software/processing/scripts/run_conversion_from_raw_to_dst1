@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then echo "Error: please provide an experiment number and run number."; exit 17; fi
+
+EXP=$1
+RUN=$2
+
+./bin/ConvertRawToDST1_with_DQM ${EXP} ${RUN} 0 contrib/example_config.txt &
+./bin/ConvertRawToDST1_with_DQM ${EXP} ${RUN} 1 contrib/example_config.txt &
+./bin/ConvertRawToDST1_with_DQM ${EXP} ${RUN} 2 contrib/example_config.txt &
+./bin/ConvertCamacToROOT ${EXP} ${RUN} &
+
