@@ -95,4 +95,6 @@ It will, by default, create files in a subdirectory called "logdir".
 
 ===beamtest===
 
-(unwritten)
+There is a short summary of the instructions given to the DAQ operators at beam test T-1019 at Fermilab and they are posted here:
+
+http://www.phys.hawaii.edu:8080/T-1019+Beam+Test/17
