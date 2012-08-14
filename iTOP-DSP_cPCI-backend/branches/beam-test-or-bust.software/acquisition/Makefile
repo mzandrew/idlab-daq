@@ -9,14 +9,21 @@ INTERMEDIATE_OBJECT_FILES1 = work/status_file.o work/acquisition.o work/parse_co
 
 LINK_OPTIONS = -L$(shell pwd)/contrib -laltix -lxx_usb -lusb -Wl,-rpath,$(shell pwd)/contrib
 
+first_time = 0
+
 default :
-	if [ ! -e contrib ]; then mkdir contrib; fi
-	if [ ! -e src     ]; then mkdir     src; fi
-	if [ ! -e work    ]; then mkdir    work; fi
-	if [ ! -e bin     ]; then mkdir     bin; fi
-	if [ ! -e .config ]; then cp scripts/config.default .config; fi
-	#if [ ! -e status  ]; then cp scripts/status.dummy status; fi
-	$(MAKE) all
+	@if [ ! -e contrib ]; then mkdir contrib; fi
+	@if [ ! -e src     ]; then mkdir     src; fi
+	@if [ ! -e work    ]; then mkdir    work; fi
+	@if [ ! -e bin     ]; then mkdir     bin; fi
+	@$(MAKE) all
+	@echo; echo "Successfully compiled readout software."; echo
+	@$(MAKE) config --quiet
+
+config:
+	@if [ ! -e .config ]; then cp scripts/config.default .config; echo; echo "NOTICE:  customize \".config\" to control which DSP_cPCI card # is used, the enabled channels, where to keep the raw data, etc"; echo; fi
+	@if [ ! -e data    ]; then mkdir    data; fi
+	@if [ ! -e data/status  ]; then cp scripts/status.dummy data/status; echo; echo "NOTICE:  customize status file \"data/status\" to control exp. #, event #, etc"; echo; fi
 
 all : $(FINAL_OBJECT_FILES0) $(FINAL_OBJECT_FILES1)
 
