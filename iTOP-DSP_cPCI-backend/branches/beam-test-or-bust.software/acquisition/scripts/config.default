@@ -3,35 +3,34 @@
 # config for readout from DSP_cPCI # # # # # # # # # # # # # # # # # # # # # #
 
 # DSP_cPCI card id number:
-card=1
+card=5
 
 # which channels are enabled:
 # (channels="0123" for all four or channels="2" just for channel two, etc)
-channels="012"
-#channels="3"
+channels="01"
 
 # config for storage of data in files # # # # # # # # # # # # # # # # # # # #
 
-location_of_raw_datafiles=/data/beamtest/rawdata
+location_of_raw_datafiles=data
 
-location_of_status_and_log_files=/data/beamtest/rawdata
+location_of_status_and_log_files=data
 
 # whether to use datestamp in filename # # # # # # # # # # # # # # # # # # # #
-use_datestamp=1
+#use_datestamp=1
 
 # datafile extensions # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-CAMAC_file_extension=".camac"
-fiber_file_extension=".fiber"
-tracker_file_extension=".tracker"
+#CAMAC_file_extension=".camac"
+#fiber_file_extension=".fiber"
+#tracker_file_extension=".tracker"
 
 # config for transfer to pc2 # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # IP address of computer to which to ftp data
 #pc2_ip="128.171.30.126"
-pc2_ip="192.168.0.102"
+#pc2_ip="192.168.0.102"
 
 # desination directory for raw data on pc2
-pc2_destination=/data/beamtest/rawdata/
+#pc2_destination=/data/beamtest/rawdata/
 
 # config for analysis of data # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -50,3 +49,4 @@ should_expect_card_to_be_installed=1
 threshold_scan_low_limit=1310
 threshold_scan_high_limit=2620
 threshold_scan_step_size=10
+
