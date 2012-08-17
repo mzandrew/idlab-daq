@@ -1,5 +1,6 @@
 using namespace std;
 
+#include "DebugInfoWarningError.h"
 #include <string>
 
 void set_current_date_string(void);
@@ -16,6 +17,7 @@ void update_logfile_with_base_filename(void);
 void setup_to_catch_ctrl_c(void (*callback)(void));
 void caught_ctrl_c(int sig);
 void setup_run_type(string type);
+void setup_for_console_output(void);
 
 extern bool channel_enabled[4];
 extern string location_of_raw_datafiles;
@@ -29,8 +31,11 @@ extern string current_date_string;
 extern string base_filename;
 extern ofstream logfile;
 extern bool logfile_open;
+extern unsigned short int verbosity;
+extern signed short int temperature_redline;
 
 extern unsigned short int threshold_scan_low_limit;
 extern unsigned short int threshold_scan_high_limit;
 extern unsigned short int threshold_scan_step_size;
+extern char red[13], yellow[13], white[13];
 
