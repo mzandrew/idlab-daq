@@ -54,20 +54,20 @@ int main(void) {
 		unsigned short int a = i;
 		unsigned short int b = i+3;
 		set_start_and_end_windows(a, b);
-		fprintf(stdout, "obtaining pedestals for windows [%03d,%03d]...\n", a, b);
+		fprintf(debug, "obtaining pedestals for windows [%03d,%03d]...\n", a, b);
 		usleep(50000); // wait for start and end window command to be sent and interpreted
 		for (int j=0; j<total_number_of_quarter_events_to_read_per_fiber_channel; j++) {
 			wait_for_spill_to_finish();
 			readout_an_event(true);
 			for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 				if (channel_bitmask & (1<<i)) {
-					unsigned short int t = temperature_float[i];
-					cout << t << "C ";
+					show_temperature_for_channel(i);
 				}
 			}
-			printf("\n");
+			fprintf(info, "\n");
 		}
 		//readout_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
+		fprintf(info, "\n");
 	}
 
 	// cleanup:

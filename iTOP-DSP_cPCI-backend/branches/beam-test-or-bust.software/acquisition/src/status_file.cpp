@@ -8,6 +8,7 @@ using namespace std;
 #include <stdlib.h>
 #include "acquisition.h"
 #include "parse_config_file.h"
+#include "DebugInfoWarningError.h"
 
 fstream status_file;
 string status_file_line[200];
@@ -115,19 +116,24 @@ void read_status_file(void) {
 		value = line.substr(first_equals_sign_position+1);
 		if (!strncmp(key.c_str(), "experiment_number", MAX_STRING_LENGTH)) {
 			experiment_number = atoi(value.c_str());
-			cout << "setting experiment_number to " << experiment_number << endl;
+			//cout << "setting experiment_number to " << experiment_number << endl;
+			fprintf(debug, "setting experiment_number to %d", experiment_number);
 		} else if (!strncmp(key.c_str(), "run_number", MAX_STRING_LENGTH)) {
 			run_number = atoi(value.c_str());
-			cout << "setting run_number to " << run_number << endl;
+			//cout << "setting run_number to " << run_number << endl;
+			fprintf(debug, "setting run_number to %d", run_number);
 		} else if (!strncmp(key.c_str(), "spill_number", MAX_STRING_LENGTH)) {
 			spill_number = atoi(value.c_str());
-			cout << "setting spill_number to " << spill_number << endl;
+			//cout << "setting spill_number to " << spill_number << endl;
+			fprintf(debug, "setting spill_number to %d", spill_number);
 		} else if (!strncmp(key.c_str(), "event_number", MAX_STRING_LENGTH)) {
 			event_number = atoi(value.c_str());
-			cout << "setting event_number to " << event_number << endl;
+			//cout << "setting event_number to " << event_number << endl;
+			fprintf(debug, "setting event_number to %d", event_number);
 //		} else if (!strncmp(key.c_str(), "", MAX_STRING_LENGTH)) {
 		} else {
-			cout << "unhandled key/value pair: " << key.c_str() << " = " << value.c_str() << endl;
+			//cout << "unhandled key/value pair: " << key.c_str() << " = " << value.c_str() << endl;
+			fprintf(debug, "unhandled key/value pair in config file: \"%s\" = \"%s\"\n", key.c_str(), value.c_str());
 		}
 	} // dogs don't know it's not bacon.
 	//run_number++;

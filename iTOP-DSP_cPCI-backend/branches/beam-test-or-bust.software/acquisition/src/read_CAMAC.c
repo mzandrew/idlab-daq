@@ -3,12 +3,13 @@
 
 using namespace std;
 
-#include "acquisition.h"
-#include "read_CAMAC.h"
 #include <string>
 #include <iostream>
 #include <stdio.h>
 #include <fcntl.h>
+#include "acquisition.h"
+#include "read_CAMAC.h"
+#include "DebugInfoWarningError.h"
 
 struct CAMAC_crate crates[10];
 int crate_count = 0;
@@ -85,7 +86,7 @@ int init_camac(const char* settings_file) {
     crates[i].hnd = xxusb_serial_open(crates[i].serial);
     
     if (!crates[i].hnd) {
-      printf("WARNING: %s failed to open\n", crates[i].serial);
+      fprintf(warning, "WARNING: %s failed to open\n", crates[i].serial);
       return -1;
     }
     CAMAC_Z(crates[i].hnd);
@@ -143,11 +144,11 @@ void open_CAMAC_file(void) {
 	CAMAC_filename += ".camac";
 	CAMAC_fd = open(CAMAC_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (CAMAC_fd < 0) {
-		fprintf(stderr, "ERROR: failed to create CAMAC file \"%s\"\n", CAMAC_filename.c_str());
+		fprintf(error, "ERROR: failed to create CAMAC file \"%s\"\n", CAMAC_filename.c_str());
 	} else {
 		old_CAMAC_filename = CAMAC_filename;
 		//fprintf(stdout, "opened CAMAC file \"%s\"\n", CAMAC_filename.c_str());
-		fprintf(stdout, "%s\n", CAMAC_filename.c_str());
+		fprintf(debug, "%s\n", CAMAC_filename.c_str());
 	}
 }
 
@@ -171,7 +172,7 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 	} else {
 //		CAMAC_count++;
 		//printf("read %d bytes from CAMAC\n", count);
-		printf("C[%d] ", count);
+		fprintf(info, "C[%d] ", count);
 		buffer[count-1] = 0;
 //		int return_value = fprintf(CAMAC_fd, buffer, count);
 //		int return_value = fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes): \"%s\"\n", CAMAC_count, count, buffer);
@@ -222,11 +223,11 @@ void open_CAMAC3377_file(void) {
 	CAMAC3377_filename += ".3377";
 	CAMAC3377_fd = open(CAMAC3377_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (CAMAC3377_fd < 0) {
-		fprintf(stderr, "ERROR: failed to create CAMAC3377 file \"%s\"\n", CAMAC3377_filename.c_str());
+		fprintf(error, "ERROR: failed to create CAMAC3377 file \"%s\"\n", CAMAC3377_filename.c_str());
 	} else {
 		old_CAMAC3377_filename = CAMAC3377_filename;
 		//fprintf(stdout, "opened CAMAC3377 file \"%s\"\n", CAMAC3377_filename.c_str());
-		fprintf(stdout, "%s\n", CAMAC3377_filename.c_str());
+		fprintf(debug, "%s\n", CAMAC3377_filename.c_str());
 	}
 }
 

@@ -9,6 +9,7 @@ using namespace std;
 #include "fiber_readout.h"
 #include "command_packet_builder.h"
 #include "acquisition.h"
+#include "DebugInfoWarningError.h"
 
 unsigned long int event_number_for_fiber[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned long int header = 0x00be11e2;
@@ -59,11 +60,11 @@ void readout_all_pending_data(void) {
 			}
 		}
 		if (total_bytes_read_so_far > 0) {
-			printf("\nchannel %d had %ld bytes to read", i, total_bytes_read_so_far);
+			fprintf(debug, "\nchannel %d had %ld bytes to read", i, total_bytes_read_so_far);
 		}
 	}
 	send_front_end_trigger_veto_clear();
-	printf("\n\n");
+	fprintf(debug, "\n\n");
 }
 
 unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel_bitmask, bool should_not_return_until_at_least_some_data_comes_through) {
@@ -179,7 +180,8 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 			}
 		}
 	}
-	printf("exp%02d.run%04d.spill%04d ", experiment_number, run_number, spill_number);
+	//fprintf(info, "exp%02d.run%04d.spill%04d ", experiment_number, run_number, spill_number);
+	fprintf(info, "e%02d.r%04d.s%04d ", experiment_number, run_number, spill_number);
 //	printf("e%02d.r%04d.s%04d ", experiment_number, run_number, spill_number);
 	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		if (channel_bitmask & (1<<i)) {
@@ -196,11 +198,12 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 					analyze_packet(j, i);
 				}
 				if (number_of_errors_for_this_quarter_event[i]) {
-					printf(" %ld errors in that quarter event; ", number_of_errors_for_this_quarter_event[i]);
+					fprintf(error, " %ld errors in that quarter event; ", number_of_errors_for_this_quarter_event[i]);
 				}
 //				printf(" Q ");
 			} else {
-				printf("         "); // corresponds to printf("f%d[%06ld]"... in analyze_packet()
+				//fprintf(info, "          "); // corresponds to printf(" f%d[%06ld]"... in analyze_packet()
+				fprintf(info, "%sf%d[      ]%s ", red, i, white); // corresponds to printf(" f%d[%06ld]"... in analyze_packet()
 			}
 		}
 	}
@@ -308,8 +311,13 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 		//info_string[channel] += packet[EVENT_NUMBER_INDEX];
 		char temp[256];
 		//sprintf(temp, "event_number[%09ld] ", packet[EVENT_NUMBER_INDEX]);
-		sprintf(temp, "f%d[%06ld] ", channel, packet[EVENT_NUMBER_INDEX]);
 		event_number_for_fiber[channel] = packet[EVENT_NUMBER_INDEX];
+//		fprintf(warning, "{%d,%d}", event_number, event_number_for_fiber[channel]);
+		if (event_number_for_fiber[channel] == event_number + 1) {
+			sprintf(temp, "f%d[%06ld] ", channel, event_number_for_fiber[channel]);
+		} else {
+			sprintf(temp, "f%d[%s%06ld%s] ", channel, red, event_number_for_fiber[channel], white);
+		}
 		info_string[channel] += temp;
 	} else {
 		if (event_number_from_most_recent_packet[channel] != packet[EVENT_NUMBER_INDEX]) {
@@ -355,12 +363,15 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 	}
 //	if (error_string[channel].length() && packet_number == 0) {
 	if (error_string[channel].length()) {
-		printf("%s%s", event_fiber_packet_string.c_str(), error_string[channel].c_str());
+		fprintf(debug2, "%s%s", event_fiber_packet_string.c_str(), error_string[channel].c_str());
 		error_string[channel] = "";
 	}
 	if (info_string[channel].length()) {
-		printf("%s", info_string[channel].c_str());
+		fprintf(info, "%s", info_string[channel].c_str());
 		info_string[channel] = "";
+	}
+	if (number_of_errors_for_this_quarter_event[channel]) {
+		fprintf(warning, "%d errors", number_of_errors_for_this_quarter_event[channel]);
 	}
 //	printf("P");
 }
@@ -388,7 +399,7 @@ int stop_timer_in_seconds(void) {
 }
 
 void enable_sampling_rate_feedback(void) {
-	printf("enabling sampling rate feedback\n");
+	fprintf(debug, "enabling sampling rate feedback\n");
 	feedback_enables_and_goals[3] = 0xffff;
 	command_arguments_type command_arguments;
 	for (int i=0; i<6; i++) {
@@ -398,7 +409,7 @@ void enable_sampling_rate_feedback(void) {
 }
 
 void disable_sampling_rate_feedback(void) {
-	printf("disabling sampling rate feedback\n");
+	fprintf(debug, "disabling sampling rate feedback\n");
 	feedback_enables_and_goals[3] = 0;
 	command_arguments_type command_arguments;
 	for (int i=0; i<6; i++) {
@@ -411,7 +422,7 @@ void setup_feedback_enables_and_goals(unsigned short int enable) {
 // [3] = enable/disable sampling rate feedback (one bit per ASIC)
 // [4] = wilkinson feedback (one bit per ASIC)
 // [5] = trigger width feedback (one bit per ASIC)
-	printf("setting up feedback loops\n");
+	fprintf(debug, "setting up feedback loops\n");
 	if (enable == 0) {
 		for (int i=3; i<6; i++) {
 			feedback_enables_and_goals[i] = 0x0000;
@@ -447,43 +458,46 @@ void check_and_synchronize_event_numbers(void) {
 		}
 	}
 	if (need_to_set_event_number) {
-		cout << endl << "error detected in event_number reported back from " << need_to_set_event_number << " SCROD(s).  resetting the event number...";
+		//cout << endl << "error detected in event_number reported back from " << need_to_set_event_number << " SCROD(s).  resetting the event number...";
+		//fprintf(warning, "error detected in event_number from %d SCRODs. resetting...\n", need_to_set_event_number);
+//		fprintf(warning, "resetting event_number...\n");
 		set_event_number(event_number);
 	}
 }
 
 void set_event_number(unsigned long int event_number) {
-	printf("setting event number to %ld\n", event_number);
+	fprintf(debug, "setting event number to %ld\n", event_number);
 	send_command_packet_to_all_enabled_channels(0xe0000000, event_number); // set event number
+//	usleep(50000);
 }
 
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window) {
 	if (start_window%2!=0) {
-		fprintf(stderr, "ERROR:  start_window must be even (trying to set it to %ld)\n", start_window);
+		fprintf(error, "ERROR:  start_window must be even (trying to set it to %ld)\n", start_window);
 		exit(7);
 	}
 	if (end_window%2==0) {
-		fprintf(stderr, "ERROR:  end_window must be odd (trying to set it to %ld)\n", end_window);
+		fprintf(error, "ERROR:  end_window must be odd (trying to set it to %ld)\n", end_window);
 		exit(8);
 	}
 	if (start_window>end_window) {
-		fprintf(stderr, "ERROR:  start_window (%ld) must be less than end_window (%ld)\n", start_window, end_window);
+		fprintf(error, "ERROR:  start_window (%ld) must be less than end_window (%ld)\n", start_window, end_window);
 		exit(9);
 	}
-	printf("setting start_window to %ld\n", start_window);
+	fprintf(debug, "setting start_window to %ld\n", start_window);
 	send_command_packet_to_all_enabled_channels(0x000001ff, start_window); // set start window
 	usleep(10000);
-	printf("setting end_window to %ld\n", end_window);
+	fprintf(debug, "setting end_window to %ld\n", end_window);
 	send_command_packet_to_all_enabled_channels(0x000101ff, end_window); // set end window
 }
 
 void set_number_of_windows_to_look_back(unsigned long int look_back) {
-	printf("setting number of look back windows to %ld\n", look_back);
+	fprintf(debug, "setting number of look back windows to %ld\n", look_back);
 	send_command_packet_to_all_enabled_channels(0x0100cbac, look_back);
 }
 
 void global_reset(void) {
-	printf("sending global reset\n");
+	fprintf(debug, "sending global reset\n");
 	send_command_packet_to_all_enabled_channels(0x33333333, 0x00000000); // global reset
 	usleep(500000); // wait for FPGA to reset everything and bring fiber link up again
 }
@@ -532,7 +546,7 @@ int readout_an_event(bool should_not_return_until_at_least_some_data_comes_throu
 				return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
 				//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
 				if (return_value == -1) {
-					fprintf(stderr, "\nerror %ld writing to disk", return_value);
+					fprintf(error, "\nerror %ld writing to disk", return_value);
 				} else if (return_value > 0) {
 //						printf("\nwrote %d bytes to file", return_value);
 				}
@@ -568,7 +582,7 @@ void readout_N_events(unsigned long int N) {
 					return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
 					//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
 					if (return_value == -1) {
-						fprintf(stderr, "\nerror %ld writing to disk", return_value);
+						fprintf(error, "\nerror %ld writing to disk", return_value);
 					} else if (return_value > 0) {
 //						printf("\nwrote %d bytes to file", return_value);
 					}
@@ -622,12 +636,12 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 	readout_N_events(N);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	printf("\n");
-	printf("\ntotal number of readout events = %ld", total_number_of_readout_events);
-	printf("\n        total number of errors = %ld", total_number_of_errors);
+	fprintf(info, "\n");
+	fprintf(info, "\ntotal number of readout events = %ld", total_number_of_readout_events);
+	fprintf(info, "\n        total number of errors = %ld", total_number_of_errors);
 	//printf("\nnumber of times exactly one packet was missing = %d", histogram_of_incomplete_events_560);
 	//printf("\nnumber of times some other number of words was missing = %d", histogram_of_incomplete_events_other);
-	printf("\n");
+	fprintf(info, "\n");
 
 	close_all_fiber_files();
 }
@@ -679,7 +693,8 @@ string experiment_number_string(void) {
 }
 
 void open_files_for_all_enabled_fiber_channels(void) {
-	cout << "opening fiber files" << endl;
+	//cout << "opening fiber files" << endl;
+	fprintf(debug, "opening fiber files\n");
 	// open and create the files
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		if (channel_bitmask & (1<<i)) {
@@ -691,10 +706,10 @@ void open_files_for_all_enabled_fiber_channels(void) {
 //				close(fd[i]);
 //			}
 			//fprintf(stdout, "attempting to open file \"%s\"...\n", fiber_filename[i].c_str());
-			fprintf(stdout, "%s\n", fiber_filename[i].c_str());
+			fprintf(info, "%s\n", fiber_filename[i].c_str());
 			fd[i] = open(fiber_filename[i].c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			if (fd[i] < 0) {
-				fprintf(stderr, "ERROR: failed to create file \"%s\"\n", fiber_filename[i].c_str());
+				fprintf(error, "ERROR: failed to create file \"%s\"\n", fiber_filename[i].c_str());
 				exit(6);
 //			} else {
 //				old_fiber_filename[i] = fiber_filename[i];
@@ -706,10 +721,11 @@ void open_files_for_all_enabled_fiber_channels(void) {
 }
 
 void close_all_fiber_files(void) {
-	cout << "closing fiber files" << endl;
+	//cout << "closing fiber files" << endl;
+	fprintf(debug, "closing fiber files\n");
 	for(int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 //		if (channel_bitmask & (1<<i)) {
-//			fprintf(stderr, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);
+//			fprintf(error, "ch%d: %lld bytes - read: %lld us, logging %lld us, total %lld us\n", i, total[i], readtime[i], writetime[i], readtime[i] + writetime[i]);
 //			close(fd[i]);
 //		} else 
 		if (fd[i] > 0) {
@@ -749,5 +765,15 @@ float temperature(unsigned short int fiber_channel) {
 	float ftemperature = temperature/16.0;
 	//printf("temperature of module %d: %3.4f degrees C\n", fiber_channel, ftemperature);
 	return ftemperature;
+}
+
+void show_temperature_for_channel(unsigned short int channel_number) {
+	signed short int t = temperature_float[channel_number];
+	//cout << t << "C ";
+	if (t >= temperature_redline) {
+		fprintf(info, "%s%2dC%s ", red, t, white);
+	} else {
+		fprintf(info, "%2dC ", t);
+	}
 }
 
