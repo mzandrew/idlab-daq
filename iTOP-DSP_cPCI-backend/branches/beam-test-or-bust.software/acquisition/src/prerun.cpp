@@ -19,8 +19,10 @@ int main(void) {
 	setup_pci(card_id);
 
 	global_reset();
-	cout << "waiting 16 seconds for eeprom to be read" << endl;
-	usleep(16000000);
+	unsigned short int wait_duration = 10;
+	//cout << "waiting 16 seconds for eeprom to be read" << endl;
+	fprintf(info, "waiting %d seconds for eeprom to be read...\n", wait_duration);
+	usleep(wait_duration * 1000000);
 //	cout << "press a key after all fiber links are up (steady green)" << endl;
 //	getchar();
 	readout_all_pending_data();
@@ -31,6 +33,7 @@ int main(void) {
 	usleep(50000);
 	disable_sampling_rate_feedback();
 
+	wait_duration = 2;
 	open_status_file_for_reading_and_writing();
 	read_status_file();
 	run_number++;
@@ -90,16 +93,15 @@ int main(void) {
 				}
 				for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 					if (channel_bitmask & (1<<i)) {
-						unsigned short int t = temperature_float[i];
-						cout << t << "C ";
+						show_temperature_for_channel(i);
 					}
 				}
-				printf("\n");
+				fprintf(info, "\n");
 				clear_scaler_counters();
 			} else {
 				clear_scaler_counters();
 			}
-		usleep(1000000);
+		usleep(wait_duration * 1000000);
 		if (first_time) {
 			first_time = false;
 		}

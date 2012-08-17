@@ -35,7 +35,6 @@ int stop_timer(struct timeval* begin) {
 #define BENCHMARK
 
 int main() {
-
 	long long spill_timeout = 10 SECONDS;      // define spill timeout
 	int spill_number = 0;                      // spill number
 	time_t spill_timestamp;            // spill timestamp
