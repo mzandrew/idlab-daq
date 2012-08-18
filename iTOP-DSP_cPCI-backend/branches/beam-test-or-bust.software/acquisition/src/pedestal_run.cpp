@@ -1,11 +1,11 @@
 // 2011-?? mza
 
-#include "pci.h"
-#include "fiber_readout.h"
-#include "command_packet_builder.h"
 #include <stdio.h>
 #include <iostream>
-#include "parse_config_file.h"
+#include "pci.h"
+#include "fiber.h"
+#include "command_packet_builder.h"
+#include "config_file.h"
 #include "acquisition.h"
 #include "status_file.h"
 
@@ -24,7 +24,7 @@ int main(void) {
 	setup_pci(card_id);
 	readout_all_pending_data();
 	setup_filenames_for_fiber();
-//	if (init_camac("CAMAC_config.txt")) {
+//	if (init_camac()) {
 //		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 //		exit(7);
 //	}

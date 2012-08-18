@@ -7,10 +7,10 @@ using namespace std;
 #include <fstream>
 #include <iostream>
 #include "pci.h"
-#include "fiber_readout.h"
+#include "fiber.h"
 #include "command_packet_builder.h"
-#include "read_CAMAC.h"
-#include "parse_config_file.h"
+#include "CAMAC.h"
+#include "config_file.h"
 #include "acquisition.h"
 #include "status_file.h"
 
@@ -43,7 +43,7 @@ int main(void) {
 	generate_new_base_filename();
 	readout_all_pending_data();
 	setup_filenames_for_fiber();
-	if (init_camac("CAMAC_config.txt")) {
+	if (init_camac()) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 //		exit(7);
 	} else {
