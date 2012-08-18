@@ -4,7 +4,6 @@ using namespace std;
 
 #include <string>
 #include <stdio.h>
-#include <iostream>
 #include "pci.h"
 #include "fiber.h"
 #include "command_packet_builder.h"
@@ -26,10 +25,8 @@ int main(void) {
 	readout_all_pending_data();
 	set_event_number(0);
 //	set_all_DACs_to_built_in_nominal_values();
-	create_directory_if_necessary(location_of_raw_datafiles);
-	generate_new_base_filename();
 	setup_filenames_for_fiber();
-	setup_to_catch_ctrl_c(update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files);
+	setup_to_catch_ctrl_c(close_all_files);
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
@@ -46,7 +43,21 @@ int main(void) {
 	// cleanup:
 	close_all_files();
 //	set_all_DACs_to(0);
-
 	return 0;
 }
+
+//	reset_trigger_flip_flop();
+//	send_front_end_trigger_veto_clear();
+//	wait_for_start_of_spill();
+//	while (spill_is_active()) {
+
+//	send_soft_trigger_request_command_packet();
+//	global_reset();
+//	clear_scaler_counters();
+//	set_all_DACs_to_built_in_nominal_values();
+
+//	set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
+//	set_number_of_windows_to_look_back(unsigned long int look_back);
+//	open_files_for_output_and_read_N_events(unsigned long int N);
+//	setup_feedback_enables_and_goals(unsigned short int enable);
 
