@@ -7,6 +7,7 @@ FINAL_OBJECT_FILES1 = bin/turn_sampling_rate_feedback_off bin/turn_up_Vbias bin/
 # needed to link all:
 INTERMEDIATE_OBJECT_FILES1 = work/status_file.o work/acquisition.o work/parse_config_file.o work/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o work/read_CAMAC.o work/DebugInfoWarningError.o
 
+COMPILE_OPTIONS = -D_FILE_OFFSET_BITS=64
 LINK_OPTIONS = -L$(shell pwd)/contrib -laltix -lxx_usb -lusb -Wl,-rpath,$(shell pwd)/contrib
 
 first_time = 0
@@ -28,10 +29,10 @@ config:
 all : $(FINAL_OBJECT_FILES0) $(FINAL_OBJECT_FILES1)
 
 work/%.o : src/%.cpp
-	g++ -c $< -o $@
+	g++ -c $(COMPILE_OPTIONS) $< -o $@
 
 work/%.o : src/%.c
-	g++ -c $< -o $@
+	g++ -c $(COMPILE_OPTIONS) $< -o $@
 
 # fiber:
 
