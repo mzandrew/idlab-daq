@@ -43,6 +43,7 @@ void write_status_file(void) {
 	for (int i=0; i<number_of_lines_in_status_file; i++) {
 		if (status_file_line[i].length() && status_file_line[i][0] != '#') {
 			position = status_file_line[i].find('=');
+			if (position == string::npos) { continue; }
 			if (position<200) {
 				key   = status_file_line[i].substr(0, position);
 				value = status_file_line[i].substr(position+1);
@@ -112,6 +113,7 @@ void read_status_file(void) {
 		if (! line.length()) continue;
 		if (line[0] == '#') continue;
 		first_equals_sign_position = line.find('=');
+		if (first_equals_sign_position == string::npos) { continue; }
 		key   = line.substr(0, first_equals_sign_position);
 		value = line.substr(first_equals_sign_position+1);
 		if (!strncmp(key.c_str(), "experiment_number", MAX_STRING_LENGTH)) {
@@ -137,7 +139,8 @@ void read_status_file(void) {
 		}
 	} // dogs don't know it's not bacon.
 	//run_number++;
-	number_of_lines_in_status_file = i;
+	number_of_lines_in_status_file = i-1;
+	fprintf(debug, "number of lines in status file: %d\n", number_of_lines_in_status_file);
 	status_file.seekg(0, fstream::beg);
 	status_file.clear();
 //	status_file.close();
