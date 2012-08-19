@@ -181,7 +181,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 		}
 	}
 	//fprintf(info, "exp%02d.run%04d.spill%04d ", experiment_number, run_number, spill_number);
-	fprintf(info, "e%02d.r%04d.s%04d ", experiment_number, run_number, spill_number);
+	fprintf(info, "e%0*d.r%0*d.s%0*d ", NUMBER_OF_SPACES_TO_RESERVE_FOR_EXPERIMENT_NUMBER, experiment_number, NUMBER_OF_SPACES_TO_RESERVE_FOR_RUN_NUMBER, run_number, NUMBER_OF_SPACES_TO_RESERVE_FOR_SPILL_NUMBER, spill_number);
 //	printf("e%02d.r%04d.s%04d ", experiment_number, run_number, spill_number);
 	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		if (channel_bitmask & (1<<i)) {
@@ -203,7 +203,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 //				printf(" Q ");
 			} else {
 				//fprintf(info, "          "); // corresponds to printf(" f%d[%06ld]"... in analyze_packet()
-				fprintf(info, "%sf%d[      ]%s ", red, i, white); // corresponds to printf(" f%d[%06ld]"... in analyze_packet()
+				fprintf(info, "%sf%d[%*s]%s ", red, i, NUMBER_OF_SPACES_TO_RESERVE_FOR_EVENT_NUMBER_CONSOLE_OUTPUT, "", white); // corresponds to printf(" f%d[%0*ld]"... in analyze_packet()
 			}
 		}
 	}
@@ -314,9 +314,9 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 		event_number_for_fiber[channel] = packet[EVENT_NUMBER_INDEX];
 //		fprintf(warning, "{%d,%d}", event_number, event_number_for_fiber[channel]);
 		if (event_number_for_fiber[channel] == event_number + 1) {
-			sprintf(temp, "f%d[%06ld] ", channel, event_number_for_fiber[channel]);
+			sprintf(temp, "f%d[%0*ld] ", channel, NUMBER_OF_SPACES_TO_RESERVE_FOR_EVENT_NUMBER_CONSOLE_OUTPUT, event_number_for_fiber[channel]);
 		} else {
-			sprintf(temp, "f%d[%s%06ld%s] ", channel, red, event_number_for_fiber[channel], white);
+			sprintf(temp, "f%d[%s%0*ld%s] ", channel, red, NUMBER_OF_SPACES_TO_RESERVE_FOR_EVENT_NUMBER_CONSOLE_OUTPUT, event_number_for_fiber[channel], white);
 		}
 		info_string[channel] += temp;
 	} else {
@@ -682,14 +682,6 @@ void open_fiber_files_to_prepare_for_next_spill(void) {
 	number_of_readout_events_for_this_spill = 0;
 	setup_filenames_for_fiber();
 	open_files_for_all_enabled_fiber_channels();
-}
-
-string experiment_number_string(void) {
-	string expNN = "exp";
-	char temp[6];
-	sprintf(temp, "%02d", experiment_number);
-	expNN += temp;
-	return expNN;
 }
 
 void open_files_for_all_enabled_fiber_channels(void) {

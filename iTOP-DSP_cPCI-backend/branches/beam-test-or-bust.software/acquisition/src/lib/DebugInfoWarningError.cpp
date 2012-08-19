@@ -62,6 +62,13 @@ void setup_DebugInfoWarningError(void) {
 	has_been_run_through = true;
 }
 
+unsigned short int change_verbosity(unsigned short int new_verbosity = verbosity) {
+	unsigned short int old_verbosity = verbosity;
+	verbosity = new_verbosity;
+	setup_DebugInfoWarningError();
+	return old_verbosity;
+}
+
 //fprintf(debug, "\nchannel %d had %ld bytes to read", i, total_bytes_read_so_far);
 //debug("\nchannel %d had %ld bytes to read", i, total_bytes_read_so_far);
 //#include <cstdarg.h>

@@ -2,7 +2,6 @@ using namespace std;
 
 #include <iostream>
 #include <fstream>
-#include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h> // to catch ctrl-c
@@ -11,7 +10,7 @@ using namespace std;
 #include "pci.h"
 #include "CAMAC.h"
 
-void (*call_this_on_ctrl_c)(void);
+void (*call_this_on_ctrl_c)(void) = graceful_exit;
 
 bool channel_enabled[4];
 string location_of_raw_datafiles = "../logdir";
@@ -21,7 +20,6 @@ unsigned short int experiment_number = 7;
 unsigned short int run_number = 8;
 unsigned short int spill_number = 9;
 unsigned long int event_number = 10;
-string current_date_string;
 string base_filename;
 unsigned short int threshold_scan_low_limit;
 unsigned short int threshold_scan_high_limit;
@@ -33,33 +31,12 @@ string run_type = "unknown";
 unsigned short int verbosity = 3;
 signed short int temperature_redline = 50;
 
-void set_current_date_string(void) {
-	char temp[256];
-	time_t rawtime;
-	struct tm *timeinfo;
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	strftime(temp, 255, "%Y-%m-%d+%H:%M:%S", timeinfo);
-	current_date_string = temp;
-//	cout << current_date_string << endl;
-}
-
-bool file_exists (string filename) {
-	// borrowed from http://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c-cross-platform
-	struct stat buffer; 
-	return (stat (filename.c_str(), &buffer) == 0);
-}
-
-void create_directory_if_necessary(string dirname) {
-	if (!file_exists(dirname)) {
-		//cout << "dir \"" << dirname << "\" does not exist" << endl;
-		mkdir(dirname.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
-		if (!file_exists(dirname)) {
-			//cout << "ERROR:  could not create directory \"" << dirname << "\"" << endl;
-			fprintf(error, "ERROR:  could not create directory \"%s\"\n", dirname.c_str());
-			exit(10);
-		}
-	}
+string experiment_number_string(void) {
+	string expNN = "exp";
+	char temp[6];
+	sprintf(temp, "%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_EXPERIMENT_NUMBER, experiment_number);
+	expNN += temp;
+	return expNN;
 }
 
 void generate_new_base_filename(void) {
@@ -71,11 +48,11 @@ void generate_new_base_filename(void) {
 	base_filename += experiment_number_string();
 	create_directory_if_necessary(base_filename.c_str());
 	base_filename += "/";
-	sprintf(temp, "exp%02d", experiment_number);
+	sprintf(temp, "exp%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_EXPERIMENT_NUMBER, experiment_number);
 	base_filename += temp;
-	sprintf(temp, ".run%04d", run_number);
+	sprintf(temp, ".run%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_RUN_NUMBER, run_number);
 	base_filename += temp;
-	sprintf(temp, ".spill%04d", spill_number);
+	sprintf(temp, ".spill%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_SPILL_NUMBER, spill_number);
 	base_filename += temp;
 	sprintf(temp, ".%s", current_date_string.c_str());
 	base_filename += temp;
@@ -147,6 +124,11 @@ void setup_run_type(string type) {
 	run_type = type;
 }
 
+void graceful_exit(void) {
+	update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files();
+	exit(13);
+}
+
 void setup_to_catch_ctrl_c(void (*callback)(void)) {
 	setup_for_console_output();
 	//call_this_on_ctrl_c = (void *) close_all_files;
@@ -167,5 +149,19 @@ void setup_for_console_output(void) {
 	sprintf(red,    "%c[%d;%d;%dm", 0x1b, 0, 30 + 1, 40);
 	sprintf(yellow, "%c[%d;%d;%dm", 0x1b, 0, 30 + 3, 40);
 	sprintf(white,  "%c[%d;%d;%dm", 0x1b, 0, 30 + 7, 40);
+}
+
+void wait_for_all_links_to_come_up(unsigned short int bitmask) {
+	unsigned short int link_status = pci.getLinkStatus();
+	if ((link_status & bitmask) != bitmask) {
+		fprintf(warning, "waiting for all enabled channels to bring link up...");
+		fflush(warning);
+		while ((link_status & bitmask) != bitmask) {
+			link_status = pci.getLinkStatus();
+			usleep(50000);
+//		fprintf(debug, "\n");
+		}
+		fprintf(warning, "\n");
+	}
 }
 

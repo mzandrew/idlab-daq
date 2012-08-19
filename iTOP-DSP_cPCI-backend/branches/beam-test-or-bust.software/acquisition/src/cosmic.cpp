@@ -21,6 +21,7 @@ int main(void) {
 	open_CAMAC_file();
 
 	setup_pci(card_id);
+	wait_for_all_links_to_come_up(channel_bitmask);
 	//should_soft_trigger = false;
 	should_soft_trigger = true;
 	readout_all_pending_data();
@@ -29,7 +30,7 @@ int main(void) {
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
 	setup_filenames_for_fiber();
-	setup_to_catch_ctrl_c(update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files);
+	setup_to_catch_ctrl_c();
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
@@ -41,6 +42,7 @@ int main(void) {
 		usleep(1000000);
 		read_data_from_CAMAC_and_write_to_CAMAC_file();
 //		increment_spill_number_and_change_filenames_for_fiber();
+		disk_space_free(location_of_raw_datafiles);
 	}
 
 	// cleanup:
