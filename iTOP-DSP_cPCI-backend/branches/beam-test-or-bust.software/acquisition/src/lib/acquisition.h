@@ -9,6 +9,8 @@ using namespace std;
 #define NUMBER_OF_SPACES_TO_RESERVE_FOR_RUN_NUMBER        (3)
 #define NUMBER_OF_SPACES_TO_RESERVE_FOR_SPILL_NUMBER      (3)
 
+#define using_CAMAC3377 (0)
+
 string experiment_number_string(void);
 void generate_new_base_filename(void);
 void increment_spill_number(void);

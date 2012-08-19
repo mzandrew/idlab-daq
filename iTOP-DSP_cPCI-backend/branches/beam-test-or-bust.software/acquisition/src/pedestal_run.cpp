@@ -25,7 +25,7 @@ int main(void) {
 	wait_for_all_links_to_come_up(channel_bitmask);
 	readout_all_pending_data();
 	setup_filenames_for_fiber();
-//	if (init_camac()) {
+//	if (init_CAMAC_controller()) {
 //		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 //		exit(7);
 //	}
@@ -58,7 +58,7 @@ int main(void) {
 		fprintf(debug, "obtaining pedestals for windows [%03d,%03d]...\n", a, b);
 		usleep(50000); // wait for start and end window command to be sent and interpreted
 		for (int j=0; j<total_number_of_quarter_events_to_read_per_fiber_channel; j++) {
-			wait_for_spill_to_finish();
+//			wait_for_spill_to_finish(); // commented out for the fDIRC
 			readout_an_event(true);
 			for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 				if (channel_bitmask & (1<<i)) {
@@ -66,6 +66,7 @@ int main(void) {
 				}
 			}
 			fprintf(info, "\n");
+			send_front_end_trigger_veto_clear(); // for the fDIRC
 		}
 		//readout_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
 		fprintf(info, "\n");

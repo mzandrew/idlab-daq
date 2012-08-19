@@ -380,6 +380,12 @@ struct timeval start, end, watchdog;
 
 void start_timer(void) {
 	gettimeofday(&start, NULL);	
+	gettimeofday(&watchdog, NULL);	
+}
+
+int watchdog_timer_in_seconds(void) {
+	gettimeofday(&end, NULL);
+	return end.tv_sec - watchdog.tv_sec;
 }
 
 int stop_timer(struct timeval* begin) {
@@ -527,10 +533,11 @@ int readout_an_event(bool should_not_return_until_at_least_some_data_comes_throu
 	} else {
 		return return_value;
 	}
-	send_front_end_trigger_veto_clear();
-	if (!should_soft_trigger) {
-		reset_trigger_flip_flop();
-	}
+//  WHOOPS (this doesn't belong here):
+//	send_front_end_trigger_veto_clear();
+//	if (!should_soft_trigger) {
+//		reset_trigger_flip_flop();
+//	}
 //	time_for_single_event_readout = (long long) stop_timer();
 //		printf("\napproximate time for last readout = %d us", time_for_single_event_readout);
 	//write_quarter_events_to_disk();
@@ -554,6 +561,7 @@ int readout_an_event(bool should_not_return_until_at_least_some_data_comes_throu
 		}
 	}
 //	printf("\n");
+	return 0;
 }
 
 void readout_N_events(unsigned long int N) {

@@ -2,7 +2,7 @@
 FINAL_OBJECT_FILES0 = bin/prerun bin/pedestal_run bin/laser bin/beamtest
 
 # things we occasionally need:
-FINAL_OBJECT_FILES1 = bin/turn_sampling_rate_feedback_off bin/turn_up_Vbias bin/turn_down_Vbias bin/request_a_global_reset bin/tell_status_of_signals bin/camac_only bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/set_look_back
+FINAL_OBJECT_FILES1 = bin/turn_sampling_rate_feedback_off bin/turn_up_Vbias bin/turn_down_Vbias bin/request_a_global_reset bin/tell_status_of_signals bin/camac_only bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/set_look_back bin/cosmic_with_laser
 
 # needed to link all:
 INTERMEDIATE_OBJECT_FILES1 = work/generic.o work/status_file.o work/acquisition.o work/config_file.o work/pci.o work/command_packet_builder.o work/fiber.o work/CAMAC.o work/DebugInfoWarningError.o
@@ -39,13 +39,17 @@ work/%.o : src/%.c*
 
 # fiber:
 
-bin/laser : work/laser.o $(INTERMEDIATE_OBJECT_FILES1) $(INTERMEDIATE_OBJECT_FILES4); g++ $^ $(LINK_OPTIONS) -o $@
+bin/prerun            : work/prerun.o            $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
-bin/prerun : work/prerun.o $(INTERMEDIATE_OBJECT_FILES1) $(INTERMEDIATE_OBJECT_FILES4) ; g++ $^ $(LINK_OPTIONS) -o $@
+bin/pedestal_run      : work/pedestal_run.o      $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
-bin/beamtest : work/beamtest.o $(INTERMEDIATE_OBJECT_FILES1) $(INTERMEDIATE_OBJECT_FILES4) ; g++ $^ $(LINK_OPTIONS) -o $@
+bin/laser             : work/laser.o             $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
-bin/pedestal_run : work/pedestal_run.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+bin/cosmic_with_laser : work/cosmic_with_laser.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+bin/cosmic            : work/cosmic.o            $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
+
+bin/beamtest          : work/beamtest.o          $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
 # other:
 
@@ -82,8 +86,6 @@ bin/camac_only : work/camac_only.o $(INTERMEDIATE_OBJECT_FILES1) work/CAMAC.o ; 
 # other:
 
 bin/dual_readout : $(INTERMEDIATE_OBJECT_FILES2) work/fiber.o ; g++ $^ $(LINK_OPTIONS) -o $@
-
-bin/cosmic : work/cosmic.o $(INTERMEDIATE_OBJECT_FILES1) work/CAMAC.o ; g++ $^ $(LINK_OPTIONS) -o $@
 
 bin/window_profiler : work/window_profiler.o $(INTERMEDIATE_OBJECT_FILES1) ; g++ $^ $(LINK_OPTIONS) -o $@
 
