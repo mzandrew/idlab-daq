@@ -46,6 +46,7 @@ public:
 
 	vector<int> getIDList();
 	int readSignals();
+	unsigned short int getLinkStatus();
 	
 private:
 	int fd;

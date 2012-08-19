@@ -18,14 +18,16 @@ int main(void) {
 	parse_config_file(".config");
 	setup_pci(card_id);
 
+	wait_for_all_links_to_come_up(channel_bitmask);
 	global_reset();
-	float wait_duration = 20;
-	//cout << "waiting 16 seconds for eeprom to be read" << endl;
-	fprintf(info, "waiting %f seconds for eeprom to be read...\n", wait_duration);
+	float wait_duration = 10;
+	fprintf(info, "waiting %.2f seconds for eeprom to be read...\n", wait_duration);
 	usleep(wait_duration * 1000000.0);
-//	cout << "press a key after all fiber links are up (steady green)" << endl;
-//	getchar();
+	//fprintf(info, "press a key after all fiber links are up (steady green)\n");
+	//getchar();
+	wait_for_all_links_to_come_up(channel_bitmask);
 	readout_all_pending_data();
+	fprintf(info, "sending configuration commands to FEE modules...\n");
 	send_front_end_trigger_veto_clear();
 	reset_trigger_flip_flop();
 	set_all_DACs_to_built_in_nominal_values();
@@ -33,7 +35,7 @@ int main(void) {
 	usleep(50000);
 	disable_sampling_rate_feedback();
 
-	wait_duration = 0.25;
+	wait_duration = 2;
 	open_status_file_for_reading_and_writing();
 	read_status_file();
 	run_number++;
@@ -55,7 +57,7 @@ int main(void) {
 		open_CAMAC3377_file();
 	}
 	setup_run_type("prerun");
-	setup_to_catch_ctrl_c(close_all_files);
+	setup_to_catch_ctrl_c(close_all_files); // special case for prerun, which writes " 0 prerun" to the logfile when it starts acquiring data, unlike the other programs
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 	unsigned short int beginning_window = 0;
@@ -102,6 +104,12 @@ int main(void) {
 				clear_scaler_counters();
 			}
 		usleep(wait_duration * 1000000.0);
+		//unsigned short old_verbosity = change_verbosity(4);
+		disk_space_free(location_of_raw_datafiles);
+		//unsigned long long int dsf = disk_space_free(location_of_raw_datafiles);
+		//fprintf(debug, "%s bytes free\n", insert_interstitial_commas(dsf).c_str());
+		//fprintf(debug, "%llu bytes free\n", dsf);
+		//change_verbosity(old_verbosity);
 		if (first_time) {
 			first_time = false;
 		}

@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-void setup_DebugInfoWarningError(void);
-
 extern unsigned short int verbosity;
+
+void setup_DebugInfoWarningError(void);
+unsigned short int change_verbosity(unsigned short int new_verbosity);
 
 extern FILE *debug;
 extern FILE *debug2;

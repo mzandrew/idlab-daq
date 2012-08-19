@@ -200,3 +200,12 @@ int stdPCI::readSignals() {
 	return signals;
 }
 
+unsigned short int stdPCI::getLinkStatus() {
+//unsigned short int channel_bitmask) {
+	int link_status = 0;
+	if (altix_chan_status(fd, &link_status) == ALTIX_OK) {
+//		printf("state of links:  %1x\n", link_status);
+	}
+	return link_status;
+}
+

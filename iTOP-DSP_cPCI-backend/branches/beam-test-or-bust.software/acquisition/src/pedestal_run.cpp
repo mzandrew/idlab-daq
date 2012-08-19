@@ -22,6 +22,7 @@ int main(void) {
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
 	setup_pci(card_id);
+	wait_for_all_links_to_come_up(channel_bitmask);
 	readout_all_pending_data();
 	setup_filenames_for_fiber();
 //	if (init_camac()) {
@@ -33,7 +34,7 @@ int main(void) {
 //		open_CAMAC_file();
 //	}
 	setup_run_type("pedestal");
-	setup_to_catch_ctrl_c(update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files);
+	setup_to_catch_ctrl_c();
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
 
@@ -68,6 +69,7 @@ int main(void) {
 		}
 		//readout_N_events(total_number_of_quarter_events_to_read_per_fiber_channel);
 		fprintf(info, "\n");
+		disk_space_free(location_of_raw_datafiles);
 	}
 
 	// cleanup:
