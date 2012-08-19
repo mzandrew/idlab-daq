@@ -45,17 +45,21 @@ int main(void) {
 	generate_new_base_filename();
 	readout_all_pending_data();
 	setup_filenames_for_fiber();
-	if (init_camac()) {
-		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
+//	CAMAC_initialized = false;
+	// the following is commented out for the fDIRC:
+//	if (init_CAMAC_controller()) {
+//		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 //		exit(7);
-	} else {
-		CAMAC_initialized = true;
-	}
-	if (CAMAC_initialized) {
-		open_CAMAC_file();
-		CAMAC_initialize_3377s();
-		open_CAMAC3377_file();
-	}
+//	} else {
+//		CAMAC_initialized = true;
+//	}
+//	if (CAMAC_initialized) {
+//		open_CAMAC_file();
+//		if (using_CAMAC3377) {
+//			CAMAC_initialize_3377s();
+//			open_CAMAC3377_file();
+//		}
+//	}
 	setup_run_type("prerun");
 	setup_to_catch_ctrl_c(close_all_files); // special case for prerun, which writes " 0 prerun" to the logfile when it starts acquiring data, unlike the other programs
 	open_logfile();
@@ -79,7 +83,8 @@ int main(void) {
 	while (1) {
 //		wait_for_start_of_spill();
 //		while (spill_is_active()) {
-			if (!spill_is_active()) {
+//			if (!spill_is_active()) { // for the fDIRC
+			if (1) {
 				if (first_time) {
 					update_logfile_with_the_number_of_readout_events_for_this_spill();
 				}
@@ -89,10 +94,14 @@ int main(void) {
 				if (threshold > threshold_scan_high_limit) {
 					threshold = threshold_scan_low_limit;
 				}
-				if (CAMAC_initialized) {
-					read_data_from_CAMAC_and_write_to_CAMAC_file();
-					CAMAC_read_3377s();
-				}
+				// the following is commented out for the fDIRC:
+//				if (CAMAC_initialized) {
+//					read_data_from_CAMAC_and_write_to_CAMAC_file();
+//					if (using_CAMAC3377) {
+//						CAMAC_read_3377s();
+//					}
+//				}
+				send_front_end_trigger_veto_clear();
 				for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 					if (channel_bitmask & (1<<i)) {
 						show_temperature_for_channel(i);

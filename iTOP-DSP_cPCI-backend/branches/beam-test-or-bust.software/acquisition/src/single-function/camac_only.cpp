@@ -20,7 +20,7 @@ int main(void) {
 	spill_number = 1;
 	create_directory_if_necessary(location_of_raw_datafiles);
 	generate_new_base_filename();
-	if (init_camac()) {
+	if (init_CAMAC_controller()) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 		exit(7);
 	} else {
@@ -28,8 +28,10 @@ int main(void) {
 	}
 	if (CAMAC_initialized) {
 		open_CAMAC_file();
-		CAMAC_initialize_3377s();
-		open_CAMAC3377_file();
+		if (using_CAMAC3377) {
+			CAMAC_initialize_3377s();
+			open_CAMAC3377_file();
+		}
 	}
 
 //	printf("waiting for spill...\n");
@@ -39,7 +41,9 @@ int main(void) {
 	for (int i=0; i<total_number_of_quarter_events_to_read_per_fiber_channel; i++) {
 		printf("camac-only event #%03d \n", i);
 		read_data_from_CAMAC_and_write_to_CAMAC_file();
-		CAMAC_read_3377s();
+		if (using_CAMAC3377) {
+			CAMAC_read_3377s();
+		}
 	}
 
 	return 0;

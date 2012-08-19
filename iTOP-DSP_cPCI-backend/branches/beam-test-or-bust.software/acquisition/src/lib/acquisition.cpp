@@ -77,8 +77,13 @@ void close_all_files(void) {
 	//cout << "closing all files" << endl;
 	fprintf(debug, "closing all files\n");
 	close_logfile();
-	close_CAMAC_file();
-	close_CAMAC3377_file();
+	if (CAMAC_initialized) {
+		close_CAMAC_controller();
+		close_CAMAC_file();
+		if (using_CAMAC3377) {
+			close_CAMAC3377_file();
+		}
+	}
 	close_all_fiber_files();
 	close_pci();
 }

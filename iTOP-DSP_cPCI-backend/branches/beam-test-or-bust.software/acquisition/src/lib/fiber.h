@@ -66,6 +66,7 @@ void readout_all_pending_data(void);
 
 #include <sys/time.h>
 void start_timer(void);
+int watchdog_timer_in_seconds(void);
 int stop_timer(struct timeval* begin = NULL);
 int stop_timer_in_seconds(void);
 extern struct timeval start, end, watchdog;

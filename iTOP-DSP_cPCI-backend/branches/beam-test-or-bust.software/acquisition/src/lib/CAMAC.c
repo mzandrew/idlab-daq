@@ -1,141 +1,102 @@
 // 2011-09 Andrew Wong
-// 2011-11 mza
+// 2011-11 mza, Inami, Kurtis
+// 2012 Kurtis
 
 using namespace std;
 
-#include <string>
-#include <iostream>
-#include <stdio.h>
-#include <fcntl.h>
 #include "acquisition.h"
 #include "CAMAC.h"
-#include "DebugInfoWarningError.h"
+#include <string>
+#include <iostream>
+#include <iomanip>
+#include <stdio.h>
+#include <fcntl.h>
 
-struct CAMAC_crate crates[10];
-int crate_count = 0;
+int N_crates = 2;
+string crate_serial_number[2] = {"CC0132", "CC0131"};
+unsigned int crate_serial_number_hex[2] = {0x00CC0132, 0x00CC0131};
+CC_USB *camac_crate[2];
+
 bool CAMAC_initialized = false;
 
 int CAMAC_fd = -7; // negative to avoid problem closing an unopened file
 string CAMAC_filename;
 string old_CAMAC_filename;
 
-//1 = display output data, 2 = display data sent and retrieved with each operation
-//#define DEBUG_FLAG 1
-
-long stack_cmd[1024];
-int stack_cmd_len = 1;
-
-int init_camac(const char* settings_file) {
-//  printf("init_camac\n");  
-  bzero(&crates, sizeof(struct CAMAC_crate) * 10);
-  // read in CAMAC crate modules
-  FILE* fconfig = fopen(settings_file, "r");
-  if (!fconfig) {
-    fprintf(warning, "WARNING:  could not open CAMAC config file \"%s\"\n", settings_file);
-  }
-  char buffer[1024];
-  fscanf(fconfig, "%s", buffer);
-  while (!feof(fconfig)) {
-    if (buffer[0] != ':') {
-      printf("ERROR: expected ':' at beginning of word\n");
-      return 1;
-    }
-    
-    strcpy(crates[crate_count].serial, buffer+1);   // +1 because  : is the first character
-    
-    // this is where we read in the modules
-    fscanf(fconfig, "%s", buffer);
-    while (!feof(fconfig) && buffer[0] != ':') {
-      // first value is slot number
-      int slot = atoi(buffer);
-      if (DEBUG_FLAG)
-        printf("slot: %i\n",slot);
-      crates[crate_count].inUse[slot] = 1;
-      
-      // update output order length
-      crates[crate_count].output_order[crates[crate_count].output_order_len] = slot;
-      crates[crate_count].output_order_len++;
-      
-      // second value is number of channels
-      fscanf(fconfig, "%s", buffer);
-      int ch = atoi(buffer);
-      if (DEBUG_FLAG)
-        printf("\t#channels: %i\n",ch);
-      crates[crate_count].channels[slot] = ch;
-      
-      // next value is F function used
-      fscanf(fconfig, "%s", buffer);
-      int funct;
-      sscanf(buffer,"%i",&funct);
-      if (DEBUG_FLAG)
-        printf("\tread : F%i\n",funct);
-      crates[crate_count].readFunction[slot] = funct;
-      // next value is data mask
-      fscanf(fconfig, "%s", buffer);
-      unsigned int mask;
-      sscanf(buffer, "%x", &mask);
-      if (DEBUG_FLAG)
-        printf("\tdata mask: %#x\n",mask);
-      crates[crate_count].dataMask[slot] = mask;
-      fscanf(fconfig, "%s", buffer);  // omit dummy item
-      fscanf(fconfig, "%s", buffer);
-    }
-    
-    crate_count++;
-  }
-  
-  // open our handles
-  for(int i=0; i < crate_count; i++) {
-    crates[i].hnd = xxusb_serial_open(crates[i].serial);
-    
-    if (!crates[i].hnd) {
-      fprintf(warning, "WARNING: %s failed to open\n", crates[i].serial);
-      return -1;
-    }
-    CAMAC_Z(crates[i].hnd);
-    CAMAC_C(crates[i].hnd);
-	long int retval;
-	int q, x;
-  }
-#define ENCODE_COMMAND(N, A, F)  ( 512*N + 32*A + F )
-  // build the command stack
-    for(int i=0; i < crate_count; i++) {
-      for(int j=0; j < crates[i].output_order_len; j++) {
-	int slot = crates[i].output_order[j];
-	for(int k=0; k < crates[i].channels[slot]; k++) {
-	  if(crates[i].readFunction[slot] == 99) {	  
-		stack_cmd[stack_cmd_len++] = ENCODE_COMMAND( slot, 0, 0);
-	  }
-	  else {
-		stack_cmd[stack_cmd_len++] = ENCODE_COMMAND( slot, k, crates[i].readFunction[slot] );
-	  }
+int init_CAMAC_controller() {
+	// Create the crates
+	camac_crate[0] = new CC_USB(crate_serial_number[0]);
+	camac_crate[1] = new CC_USB(crate_serial_number[1]);
+        //Make sure the crate isn't still in "trigger on I1" mode
+	cout << "Turning off autotrigger mode...";
+	for (int i = 0; i < N_crates; ++i) {
+		camac_crate[i]->TriggerOnI1(false);
 	}
-      }
-    }
-	stack_cmd[0] = stack_cmd_len - 1;
-	int count = xxusb_stack_write(crates[0].hnd, 2, stack_cmd);
-	printf("sent %d bytes to CAMAC controller\n", count);
-	printf("stack initialized:\n");
-	for(int i=0; i < stack_cmd_len; i++) {
-//		printf("%08lx\n", stack_cmd[i]);
+	cout << "done." << endl;
+	//Read out everything leftover from the CAMAC module over USB
+	for (int i = 0; i < N_crates; ++i) {
+		int n_old_events = 0;
+		while(camac_crate[i]->ReadAndDiscard() > 0) {
+			n_old_events++;
+			if (n_old_events == 1) {
+				cout << "Found old events in the buffer... trying to clear it now." << endl;
+			}
+		}
+		if (n_old_events > 0) {
+			cout << "Read out " << dec << n_old_events << hex << " left over in crate " << i << "." << endl;
+		}
 	}
+	// read in CAMAC crate modules
+	//Add modules for upper crate
+	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(), 7)); //Phillips 7186, slot 7, 16 ch (4 ch bits, 12 data bits)  //Added 2012-08-01, trigger phase TDC to ch16
+	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(), 8, 4, false)); //Jorway Model 84 QUAD Scaler, slot  8, 4 ch (24-bit), nonclearing
+	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(), 9)); //Phillips 7186, slot  9, 16 ch, 16-bit (4 ch bits, 12 data bits)
+	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),10)); //Phillips 7186, slot 10, 16 ch, 16-bit (4 ch bits, 12 data bits)
+	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),11)); //Phillips 7186, slot 11, 16 ch, 16-bit (4 ch bits, 12 data bits)
+	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),12)); //Phillips 7186, slot 12, 16 ch, 16-bit (4 ch bits, 12 data bits)
+	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),13,12,true)); //Lecroy 2249W, slot 13, 12 channels (12-bit), clearing
+	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),14,12,true)); //Lecroy 2249W, slot 14, 12 channels (12-bit), clearing
+	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),16,12,true)); //Lecroy 2551, slot 16, 12 channels (24-bit), clearing
+	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),17,12,true)); //Lecroy 2551, slot 17, 12 channels (24-bit), clearing
+	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),19, 8,true)); //Lecroy 2228A, slot 19, 8 channels (11-bit), clearing
+	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),20, 8,true)); //Lecroy 2228A, slot 20, 8 channels (11-bit), clearing
+	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),21, 8,true)); //Lecroy 2228A, slot 21, 8 channels (11-bit), clearing
+	//Add modules for lower crate
+	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 1));   //Actually a LeCroy 2277, TODO: double check commands & format
+	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 3));   //as above
+	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 5));   //as above
+	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 7));   //as above
+	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 9));   //as above
+	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(),11));   //as above
+	camac_crate[1]->AddModule(new Phillips_7186(camac_crate[1]->GetHandle(),16)); //Actually a Phillips 7166, but commands & format appear same
+	camac_crate[1]->AddModule(new Phillips_7186(camac_crate[1]->GetHandle(),18)); //Actually a Phillips 7166, but commands & format appear same
+ 
+	// build the command stack
+	for (int i = 0; i < N_crates; ++i) {
+	        camac_crate[i]->LoadPrimaryCommandStack();
+	        camac_crate[i]->SetTriggerDelay(20);
+	        camac_crate[i]->SetSingleEventMode();
+	        camac_crate[i]->TriggerOnI1(true);
+	}
+
+	printf("stack initialized and single event mode set");
 	printf("\n\n");
-//	xxusb_stack_write(crates[0].hnd, 2, stack_cmd);
-  return 0;
+	return 0;
 }
 
-int read_camac(void* target_buffer) {
-// use this if you want to use execute, which is known to work but likely slower
-	memcpy(target_buffer, stack_cmd, 1024);
-	return xxusb_stack_execute(crates[0].hnd, (long int*)target_buffer);
-//	fprintf(stderr, ".");
-//	return xxusb_bulk_read(crates[0].hnd, (char*)target_buffer, 1024, 1000);
+void close_CAMAC_controller() {
+	for (int i = 0; i < N_crates; ++i) {
+		camac_crate[i]->TriggerOnI1(false);
+	}
+	for (int i = 0; i < N_crates; ++i) {
+		camac_crate[i]->Close();
+	}
 }
 
 void close_CAMAC_file(void) {
 	if (CAMAC_fd >= 0) {
 		cout << "closing CAMAC file" << endl;
-		//fprintf(stdout, "closing CAMAC file \"%s\"\n", old_CAMAC_filename.c_str());
+//		fprintf(stdout, "closing CAMAC file \"%s\"\n", old_CAMAC_filename.c_str());
 //		fprintf(stdout, "\"%s\" closed\n", old_CAMAC_filename.c_str());
 		close(CAMAC_fd);
 	}
@@ -147,11 +108,11 @@ void open_CAMAC_file(void) {
 	CAMAC_filename += ".camac";
 	CAMAC_fd = open(CAMAC_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (CAMAC_fd < 0) {
-		fprintf(error, "ERROR: failed to create CAMAC file \"%s\"\n", CAMAC_filename.c_str());
+		fprintf(stderr, "ERROR: failed to create CAMAC file \"%s\"\n", CAMAC_filename.c_str());
 	} else {
 		old_CAMAC_filename = CAMAC_filename;
 		//fprintf(stdout, "opened CAMAC file \"%s\"\n", CAMAC_filename.c_str());
-		fprintf(debug, "%s\n", CAMAC_filename.c_str());
+		fprintf(stdout, "%s\n", CAMAC_filename.c_str());
 	}
 }
 
@@ -164,163 +125,538 @@ void close_CAMAC_file_to_prepare_for_next_spill(void) {
 }
 
 int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
-//	static unsigned int CAMAC_count = 0; // number of readouts
-	static unsigned int CAMAC_header = 0x12345678;
-	char buffer[1024];
-	int count = read_camac((void*) buffer);
-//	count *= 4; // presumably it's 32 bit data?
-	unsigned long int *uint32 = (unsigned long int *) buffer;
-	if (count <= 0) {
+
+	int bytes_out = 0;
+	for (int i = 0; i < N_crates; ++i) {
+		write(CAMAC_fd, (char *) &crate_serial_number_hex[i], sizeof(unsigned int));
+		int number_of_short_uint_data_words = camac_crate[i]->ReadFcntl(BINARY_FILE, CAMAC_fd);
+		number_of_short_uint_data_words += 2;  //Add 2 for the crate serial number
+		printf("C%d[%d] ", i, number_of_short_uint_data_words*sizeof(unsigned short int));
+		bytes_out += number_of_short_uint_data_words*sizeof(unsigned short int);
+	}
+
+	if (bytes_out <= 0) {
 		return 0;
 	} else {
-//		CAMAC_count++;
-		//printf("read %d bytes from CAMAC\n", count);
-		fprintf(info, "C[%d] ", count);
-		buffer[count-1] = 0;
-//		int return_value = fprintf(CAMAC_fd, buffer, count);
-//		int return_value = fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes): \"%s\"\n", CAMAC_count, count, buffer);
-		//fprintf(CAMAC_fd, "CAMAC readout #%d (%d bytes):\n", CAMAC_count, count);
-//		unsigned int temp = 0x00be11e2;
-//		write(CAMAC_fd, (char *) &temp, sizeof(unsigned int));
-		write(CAMAC_fd, (char *) &CAMAC_header, sizeof(unsigned int));
-		write(CAMAC_fd, (char *) &event_number, sizeof(unsigned int));
-		write(CAMAC_fd, buffer, 116*4);
-//		for (int i=0; i<count; i++) {
-//			//fprintf(CAMAC_fd, "%u ", uint32[i]);
-//			//write(CAMAC_fd, "%u ", uint32[i]);
-//			write(CAMAC_fd, uint32[i], sizeof(unsigned int) * 4);
-//			//if (i%4==3) { fprintf(CAMAC_fd, " "); }
-//			//if (i%8==7) { fprintf(CAMAC_fd, "\n"); }
-//		}
-//		if (return_value == -1) {
-//			fprin
-//		}
-		return count;
+		return bytes_out;
 	}
 }
 
-//####### for 3377
+// --------------------------------------------------------------------------
 
-#define NUMBER_OF_3377s_TO_READOUT (3)
-unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18, 19, 20 };
-//unsigned short int slot[NUMBER_OF_3377s_TO_READOUT] = { 18 };
-//#define LAM_MASK ((1<<slot[0]) | (1<<slot[1]))
-//#define LAM_MASK 0x60000
-
-int CAMAC3377_fd = -7; // negative to avoid problem closing an unopened file
-string CAMAC3377_filename;
-string old_CAMAC3377_filename;
-
-void close_CAMAC3377_file(void) {
-	if (CAMAC3377_fd >= 0) {
-		cout << "closing CAMAC3377 file" << endl;
-		//fprintf(stdout, "closing CAMAC3377 file \"%s\"\n", old_CAMAC3377_filename.c_str());
-//		fprintf(stdout, "\"%s\" closed\n", old_CAMAC3377_filename.c_str());
-		close(CAMAC3377_fd);
+CC_USB::CC_USB(string sn) {
+	serial_number = sn;
+	crate_handle = NULL;
+	for (int i = 0; i < 24; ++i) {
+		modules[i] = NULL;
 	}
+	this->Open();
 }
 
-void open_CAMAC3377_file(void) {
-	cout << "opening CAMAC3377 file" << endl;
-	CAMAC3377_filename = base_filename;
-	CAMAC3377_filename += ".3377";
-	CAMAC3377_fd = open(CAMAC3377_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	if (CAMAC3377_fd < 0) {
-		fprintf(error, "ERROR: failed to create CAMAC3377 file \"%s\"\n", CAMAC3377_filename.c_str());
-	} else {
-		old_CAMAC3377_filename = CAMAC3377_filename;
-		//fprintf(stdout, "opened CAMAC3377 file \"%s\"\n", CAMAC3377_filename.c_str());
-		fprintf(debug, "%s\n", CAMAC3377_filename.c_str());
-	}
-}
-
-void open_CAMAC3377_file_to_prepare_for_next_spill(void) {
-	open_CAMAC3377_file();
-}
-
-void close_CAMAC3377_file_to_prepare_for_next_spill(void) {
-	close_CAMAC3377_file();
-}
-
-void CAMAC_initialize_3377s(void) {
-	long data, lam;
-	int q=0, x=0;
-	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
-		cout << "initializing 3377 #" << i << "..." << endl;
-		// default program mode is common stop mode
-		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x);
-		CAMAC_read(crates[0].hnd,slot[i],0,30,0,&q,&x); // set program mode to common stop and resets the Xilinx gate array
-//		CAMAC_read(crates[0].hnd,slot[i],0,25,0,&q,&x); // set program mode to common stop and resets the Xilinx gate array
-	   usleep(500000);
-//		while (1) {
-//			CAMAC_read(crates[0].hnd,slot[i],0,13,0,&q,&x); // done programming flag (loop until q-1)
-//			if (!q) { break; }
-//		}
-	}
-	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
-//		while (1) {
-			CAMAC_read(crates[0].hnd,slot[i],0,13,0,&q,&x); // done programming flag (loop until q-1)
-//			if (!q) { break; }
-//		}
-//		while (1) {
-//			// supposed to test 25 here before 13
-//			CAMAC_read(crates[0].hnd,slot[i],0,12,0,&q,&x); // test if Xilinx ready for data
-//			if (!q) { break; }
-//		}
-////		cout << q << endl;
-		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
-		CAMAC_write(crates[0].hnd,slot[i],0,17,0x200+i,&q,&x); // write control registers (2ns TDC resolution)
-		CAMAC_write(crates[0].hnd,slot[i],1,17,0x0,&q,&x); // write control registers
-//		CAMAC_write(crates[0].hnd,slot[i],2,17,0x804,&q,&x); // write control registers (max 4 hits, 0x80*8ns=1024ns)
-//		CAMAC_write(crates[0].hnd,slot[i],2,17,0xFFF0,&q,&x); // write control registers (max 16 hits, 0xFFF*8ns)
-		CAMAC_write(crates[0].hnd,slot[i],2,17,0x1004,&q,&x); // write control registers (max 4 hits, 0x100*8ns=2048ns)
-		CAMAC_write(crates[0].hnd,slot[i],3,17,0x0,&q,&x); // write control registers
-//		CAMAC_write_LAM_mask(crates[0].hnd,LAM_MASK);
-		CAMAC_read(crates[0].hnd,slot[i],0,26,0,&q,&x); // enable lam
-		CAMAC_read(crates[0].hnd,slot[i],1,26,0,&q,&x); // enable acquisition mode
-		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
-//		cout << " is complete." << endl;
-	}
-}
-
-void CAMAC_read_3377s(void) {
-	static unsigned int Event_Header = 0x87654321;
-	static unsigned int Event_Footer = 0x11223344;
-	long data, lam;
-	unsigned short buffer[10000];
-	unsigned int buffer_size=0;
-	int q=0, x=0;
-	for (int i=0; i<NUMBER_OF_3377s_TO_READOUT; i++) {
-//		cout << "  ";
-		for(int j=0; j<100; j++){
-//			CAMAC_read(crates[0].hnd,25,10,0,&lam,&q,&x);
-//			if (lam==LAM_MASK) {
-				CAMAC_read(crates[0].hnd,slot[i],2,27,0,&q,&x); // test readiness
-				if (q) {
-					for (int k=0; k<1000; k++) { 
-//					while (1) {
-						CAMAC_read(crates[0].hnd,slot[i],0,0,&data,&q,&x); // read multi-hit fifo
-//						cout << " " << hex << data << " q:" << q << " x:" << x;
-						if (!q) { break; }
-						buffer[buffer_size]=(unsigned short)(data&0xFFFF);
-						buffer_size++;
-					}
-					break;
-				}
-				usleep(100);
-//			}
+CC_USB::~CC_USB() {
+	for (int i = 0; i < N_SLOTS; ++i) {
+		if (modules[i]) {
+			delete modules[i];
 		}
-//		cout<<"3377: buffer_size="<<buffer_size<<endl;
-		CAMAC_read(crates[0].hnd,slot[i],0,9,0,&q,&x); // clears all data and events
 	}
-	//write to file
-	write(CAMAC3377_fd, (char *) &Event_Header, sizeof(unsigned int));
-	write(CAMAC3377_fd, (char *) &event_number, sizeof(unsigned int));
-	write(CAMAC3377_fd, (char *) &buffer_size, sizeof(unsigned int));
-	write(CAMAC3377_fd, buffer, sizeof(unsigned short) * buffer_size);
-	write(CAMAC3377_fd, (char *) &Event_Footer, sizeof(unsigned int));
-	//cout<<"3377: buffer_size="<<buffer_size<<endl;
-	printf("3[%2d] ", buffer_size);
-//	cout << endl;
+	if (crate_handle) {
+		Close();
+	}
+}
+
+string CC_USB::GetSerialNumber() {
+	return serial_number;
+}
+
+usb_dev_handle *CC_USB::GetHandle() {
+	return crate_handle;
+}
+
+void CC_USB::Open() {
+	if (crate_handle != NULL) {
+		cout << "Crate already appears to be open!  Ignoring command." << endl;
+	} else {
+		crate_handle = xxusb_serial_open((char *) serial_number.c_str());
+		if (!crate_handle) {
+			cout << "Couldn't open communications with CC_USB " << serial_number << endl;
+			exit(14);
+		}
+	}
+}
+
+void CC_USB::Close() {
+	if (!crate_handle) {
+		cout << "Crate already appears to be closed!  Ignoring command." << endl;
+	} else {
+		int closed = xxusb_device_close(crate_handle);
+		if (!closed) {
+			cout << "Couldn't close crate!" << endl;
+		} else {
+			crate_handle = NULL;
+		}
+	}
+}
+
+void CC_USB::AddModule(CAMAC_module *module_to_add) {
+	int new_slot = module_to_add->GetSlot();  //CAMAC slots are numbered starting from 1...
+	if (modules[new_slot-1] != NULL) {
+		cout << "Error!  Slot " << new_slot << " is already occupied!  Ignoring request." << endl;
+		return;
+	} else {
+		modules[new_slot-1] = module_to_add; //TODO: double check the indexing on this
+	}
+}
+
+void CC_USB::ReadAndClearAllModulesOnce(OUTPUT_METHOD output_type, ofstream *fout) {
+	for (int i = 0; i < N_SLOTS; ++i) {
+		if (modules[i]) {
+			modules[i]->ClearingRead(output_type, fout);
+		}
+	}
+}
+
+void CC_USB::LoadPrimaryCommandStack() {
+	short stack_address = 2; //This is the "regular" stack
+	//First grab all the commands for the modules that we're reading out
+	vector<long> command_list;
+	//Calculate the expected buffer size as we go
+	buffer_size = 0;
+	for (int i = 0; i < N_SLOTS; ++i) {
+		if (modules[i]) {
+			modules[i]->AddReadToStack(command_list);
+			buffer_size += modules[i]->GetNChannels() * 4; //4 since it will be a char buffer and we're reading 32-bits at a time
+		}
+	}
+	//Double the buffer just for good measure?  TODO: check this
+	buffer_size *= 2;
+	//Add one command for writing the end marker (see p. 28 of CC_USB manual)
+	command_list.push_back( CreateSimpleCommand(0,16,0,false) );
+
+	//Now use those commands to build the stack
+	long *command_stack = new long[command_list.size()+2];
+	//First word in the stack is the number of words, not including this one, but including the footer
+	int word = 0;
+	command_stack[word++] = command_list.size()+1; 
+	for (vector<long>::iterator i = command_list.begin(); i != command_list.end(); ++i) {
+		command_stack[word++] = (*i);
+	}
+	//Last word is the stack end marker 
+	command_stack[word++] = STACK_END_MARKER;
+	
+	//Now actually send the stack to the module
+	int stack_write_return = xxusb_stack_write(crate_handle, stack_address, command_stack);
+	
+	//Now read back the command stack to verify that it matches
+	long *verification_stack = new long[command_list.size()+2];
+	int stack_read_return = xxusb_stack_read(crate_handle,2,verification_stack);
+	bool success = true; 
+	if (stack_read_return <= 0 || stack_write_return <= 0) {
+		cout << "xxusb_stack_write_returned: " << stack_write_return << endl;
+		cout << "xxusb_stack_read returned : " << stack_read_return << endl;
+		success = false;
+	} else {
+		cout << "=======COMMAND STACK========" << endl;
+		cout << "\tWRITTEN\tREAD_BACK" << endl;
+		for (int i = 0; i < command_list.size()+2; ++i) {
+			cout << "\t0x" << hex << setw(4) << setfill('0') << command_stack[i];
+			cout << "\t0x" << hex << setw(4) << setfill('0') << verification_stack[i]; 
+			cout << dec << endl;
+			if (command_stack[i] != verification_stack[i]) {
+//				cout << "Mismatch during readback of stack!" << endl;
+				success = false;
+			}
+		}
+	}
+
+	//Clean up
+	delete command_stack;	
+	delete verification_stack;
+
+	if (!success) {
+		cout << "Failed to verify CC_USB command stack!  Trying to load again..." << endl;
+		sleep(1);
+		CAMAC_Z(this->GetHandle());
+		sleep(1);
+		this->LoadPrimaryCommandStack();
+	} else {
+		cout << "Verified CC_USB command stack." << endl;
+	}
+}
+
+void CC_USB::TriggerOnI1(bool trigger_setting) {
+	long address = 0x1;
+	long data = 0x0;
+	if (trigger_setting) {
+		data |= 0x1;
+	}
+	xxusb_register_write(crate_handle, address, data);
+
+	//Somehow reading back the command register never works properly...
+	//Is it a write only register?  TODO: Check manual to verify.
+/*
+	long data_readback;
+	xxusb_register_read(crate_handle, address, &data_readback);
+
+	cout << "Action register: " << hex << data << "\t" << data_readback << dec << endl;
+	if (data != data_readback) {
+		cout << "Failed to verify action register.  Trying again..." << endl;
+		this->TriggerOnI1(trigger_setting);
+	} else {
+		cout << "Trigger on I1: " << (trigger_setting?"true":"false") << endl;
+	}
+*/	
+}
+
+void CC_USB::SetTriggerDelay(unsigned short int delay) {
+	if (delay > 255) {
+		cout << "Invalid trigger delay value!  Terminating execution!" << endl;
+		exit(1);
+	}
+	//N=25,F=16,A=2 (lowest 8 bits are the delay in us)
+	int N = 25, F = 16, A = 2;
+	long data = 0x0;
+	data |= delay;
+	int Q, X;
+	CAMAC_write(crate_handle,N,A,F,data,&Q,&X);
+
+	//Read back the delay (N=25,F=0,A=2)
+	F = 0;
+	long data_readback;
+	CAMAC_read(crate_handle,N,A,F,&data_readback,&Q,&X);
+	
+	if (data != data_readback) {
+		cout << "Failed to verify trigger delay.  Trying again..." << endl;
+		this->SetTriggerDelay(delay);
+	} else {
+		cout << "Trigger delay set to: " << delay << " us." << endl;
+	}	
+	
+}
+
+void CC_USB::SetSingleEventMode() {
+	long data = 0x7; //Sets single event mode readout
+//	data |= 0x100;   //Adds the second optional header word
+	//N=25,F=16,A=1 (see p. 15 of CC_USB manual)
+	int N = 25, F = 16, A = 1;
+	int Q, X;
+	CAMAC_write(crate_handle,N,A,F,data,&Q,&X);
+	
+	//Read back the data
+	F = 0;
+	long data_readback;
+	CAMAC_read(crate_handle,N,A,F,&data_readback,&Q,&X);
+
+	if (data != data_readback) {
+		cout << "Failed to verify single event mode readout.  Trying again..." << endl;
+		sleep(1);
+		this->SetSingleEventMode();
+	} else {
+		cout << "Single event mode readout set." << endl;
+	}	
+
+}
+
+int CC_USB::ReadAndDiscard() {
+	unsigned int *buffer = new unsigned int[DEFAULT_BUFFER_SIZE]();
+	int bytes_read = xxusb_bulk_read(crate_handle,(char *) buffer,DEFAULT_BUFFER_SIZE,STACK_READ_AND_DISCARD_TIMEOUT);
+	delete buffer;
+	return bytes_read;
+}
+
+int CC_USB::Read(OUTPUT_METHOD output_type, ofstream *fout) {
+	//TODO: The buffer size elsewhere in the code is in "words," which we consider an unsigned int
+	//      However, the crate controller uses unsigned short ints as a more fundamental unit.
+	unsigned short int *buffer = new unsigned short int[buffer_size*2]();
+	int bytes_read = xxusb_bulk_read(crate_handle,(char *) buffer,buffer_size*sizeof(unsigned int),STACK_READ_TIMEOUT);
+
+	if (bytes_read <= 0) {
+		cout << "xxusb_bulk_read returned: " << bytes_read << endl;
+		delete buffer;
+		return 0;
+	}
+
+	int number_of_short_uint_data_words = 0;
+	for (int i = 0; i < buffer_size*2 - 1; ++i) {
+		//Check for the end of event marker
+		if (buffer[i] == 0xFFFF && buffer[i+1] == 0xFFFF) {
+			number_of_short_uint_data_words = i+1+1; //+1 to get the last footer word, and +1 since we start from 0
+			break;
+		} 
+	}
+	if (number_of_short_uint_data_words == 0) {
+		cout << "Couldn't find end of event marker!" << endl;
+	}
+	if (output_type == STDOUT) {
+		for (int i = 0; i < number_of_short_uint_data_words; ++i) {
+			cout << "0x" << hex << setw(4) << setfill('0') << buffer[i] << " " << dec;
+		}
+		cout << endl;
+	} else if (output_type == ASCII_FILE) {
+		//TODO
+	} else if (output_type == BINARY_FILE) {
+		//TODO
+	} else if (output_type == NONE) {
+		//Don't do anything
+	}
+
+	delete[] buffer;
+	return bytes_read;
+
+}
+
+int CC_USB::ReadFcntl(OUTPUT_METHOD output_type, int fd) {
+	//TODO: The buffer size elsewhere in the code is in "words," which we consider an unsigned int
+	//      However, the crate controller uses unsigned short ints as a more fundamental unit.
+	unsigned short int *buffer = new unsigned short int[buffer_size*2]();
+	int bytes_read = xxusb_bulk_read(crate_handle,(char *) buffer,buffer_size*sizeof(unsigned int),STACK_READ_TIMEOUT);
+
+	if (bytes_read <= 0) {
+		cout << "xxusb_bulk_read returned: " << bytes_read << endl;
+		delete buffer;
+		return 0;
+	}
+
+	int number_of_short_uint_data_words = 0;
+	for (int i = 0; i < buffer_size*2 - 1; ++i) {
+		//Check for the end of event marker
+		if (buffer[i] == 0xFFFF && buffer[i+1] == 0xFFFF) {
+			number_of_short_uint_data_words = i+1+1; //+1 to get the last footer word, and +1 since we start from 0
+			break;
+		} 
+	}
+	if (number_of_short_uint_data_words == 0) {
+		cout << "Couldn't find end of event marker!" << endl;
+	}
+
+	if (output_type == STDOUT) {
+		for (int i = 0; i < number_of_short_uint_data_words; ++i) {
+			cout << hex << buffer[i] << " ";
+		}
+		cout << endl;
+	} else if (output_type == ASCII_FILE) {
+		//TODO
+	} else if (output_type == BINARY_FILE) {
+		write(fd, (char *) buffer, number_of_short_uint_data_words * sizeof(unsigned short int));
+	} else if (output_type == NONE) {
+		//Don't do anything
+	}
+
+	delete[] buffer;
+	return number_of_short_uint_data_words;
+}
+
+/////////////////////
+
+CAMAC_module::CAMAC_module(usb_dev_handle *hnd, int in_N, int in_ch, bool in_use_clearing_read) : crate_handle(hnd), N(in_N), channels(in_ch), use_clearing_read(in_use_clearing_read) {}
+
+CAMAC_module::~CAMAC_module() {}
+
+int CAMAC_module::GetNChannels() {
+	return channels;
+}
+
+int CAMAC_module::GetSlot() {
+	return N;
+}
+
+void CAMAC_module::ClearingRead(OUTPUT_METHOD output_type, ofstream *fout) {
+	int F = 2;
+	vector<long> data;
+	vector<int> Q, X;
+	this->ClearingRead(data,Q,X);
+
+	if (output_type == STDOUT) {
+		cout << this->GetSlot() << " " << this->GetNChannels();
+		for (vector<long>::iterator i = data.begin(); i != data.end(); ++i) {
+			cout << " " << (*i);
+		}
+		cout << endl;
+	} else if (output_type == ASCII_FILE) {
+		(*fout) << this->GetSlot() << " " << this->GetNChannels();
+		for (vector<long>::iterator i = data.begin(); i != data.end(); ++i) {
+			(*fout) << " " << (*i);
+		}
+		(*fout) << endl;
+	} else if (output_type == BINARY_FILE) {
+		fout->write( (char *) &N, sizeof(int) );
+		fout->write( (char *) &channels, sizeof(int) );
+		for (vector<long>::iterator i = data.begin(); i != data.end(); ++i) {
+			fout->write( (char *) &(*i), sizeof(long) );
+		}
+	} else if (output_type == NONE) {
+		//Do nothing
+	}
+}
+
+void CAMAC_module::NonClearingRead(OUTPUT_METHOD output_type, ofstream *fout) {
+	int F = 0;
+	vector<long> data;
+	vector<int> Q, X;
+	this->ClearingRead(data,Q,X);
+
+	if (output_type == STDOUT) {
+		cout << this->GetSlot() << " " << this->GetNChannels();
+		for (vector<long>::iterator i = data.begin(); i != data.end(); ++i) {
+			cout << " " << (*i);
+		}
+		cout << endl;
+	} else if (output_type == ASCII_FILE) {
+		(*fout) << this->GetSlot() << " " << this->GetNChannels();
+		for (vector<long>::iterator i = data.begin(); i != data.end(); ++i) {
+			(*fout) << " " << (*i);
+		}
+		(*fout) << endl;
+	} else if (output_type == BINARY_FILE) {
+		fout->write( (char *) &N, sizeof(int) );
+		fout->write( (char *) &channels, sizeof(int) );
+		for (vector<long>::iterator i = data.begin(); i != data.end(); ++i) {
+			fout->write( (char *) &(*i), sizeof(long) );
+		}
+	} else if (output_type == NONE) {
+		//Do nothing
+	}
+}
+
+void CAMAC_module::AddReadToStack(vector<long> &current_stack) {
+	//Add a marker that says what slot we're reading
+	current_stack.push_back( CreateSimpleCommand(0,16,0,false) ); //N0, A0, F16 (write marker word), see p. 23
+	current_stack.push_back( this->GetSlot() );
+	if (use_clearing_read) {
+		this->AddClearingReadToStack(current_stack);
+	} else {
+		this->AddNonClearingReadToStack(current_stack);
+	}
+	//Add a marker that says this slot is done 
+	current_stack.push_back( CreateSimpleCommand(0,16,0,false) ); //N0, A0, F16 (write marker word), see p. 23
+	current_stack.push_back( 0xDDDD );
+}
+
+void generic_CAMAC_module::ClearingRead(vector<long> &data, vector<int> &Q, vector<int> &X) {
+	int F = 2;
+	long this_data;
+	int this_Q, this_X;
+	for (int A = 0; A < channels; ++A) {
+		CAMAC_read(crate_handle,N,A,F,&this_data,&this_Q,&this_X);
+		data.push_back(this_data);
+		Q.push_back(this_Q);
+		X.push_back(this_X);
+	}
+}
+
+void generic_CAMAC_module::NonClearingRead(vector<long> &data, vector<int> &Q, vector<int> &X) {
+	int F = 0;
+	long this_data;
+	int this_Q, this_X;
+	for (int A = 0; A < channels; ++A) {
+		CAMAC_read(crate_handle,N,A,F,&this_data,&this_Q,&this_X);
+		data.push_back(this_data);
+		Q.push_back(this_Q);
+		X.push_back(this_X);
+	}
+}
+
+void generic_CAMAC_module::AddClearingReadToStack(vector<long> &current_stack) {
+	//Normal read is an F(2), starting at A(0)
+	long word1 = CreateSimpleCommand(N,2,0);
+	word1 |= CONTINUATION_BIT; 
+	current_stack.push_back(word1);
+	//This sets up address scan mode to automatically step through commands
+	long word2 = CONTINUATION_BIT | ADDRESS_SCAN_BIT;
+	current_stack.push_back(word2);
+	//Defines the number of times to repeat the command
+	long word3 = (long) channels; //Maybe this should be channels - 1?
+	current_stack.push_back(word3);
+}
+
+void generic_CAMAC_module::AddNonClearingReadToStack(vector<long> &current_stack) {
+	//Normal read is an F(2), starting at A(0)
+	long word1 = CreateSimpleCommand(N,0,0);
+	word1 |= CONTINUATION_BIT; 
+	current_stack.push_back(word1);
+	//This sets up address scan mode to automatically step through commands
+	long word2 = CONTINUATION_BIT | ADDRESS_SCAN_BIT;
+	current_stack.push_back(word2);
+	//Defines the number of times to repeat the command
+	long word3 = (long) channels; //Maybe this should be channels - 1?
+	current_stack.push_back(word3);
+}
+
+void Phillips_7186::NonClearingRead(vector<long> &data, vector<int> &Q, vector<int> &X) {
+	//Readout all 16 channels with F(0)A(0-15)
+	int F = 0;
+	long this_data;
+	int this_Q, this_X;
+	for (int A = 0; A < channels; ++A) {
+		CAMAC_read(crate_handle,N,A,F,&this_data,&this_Q,&this_X);
+		//Data is of the format 0xNTTT, where N is channel number and TTT is the TDC value
+		this_data &= 0x0FFF;
+		data.push_back(this_data);
+		Q.push_back(this_Q);
+		X.push_back(this_X);
+	}
+}
+
+void Phillips_7186::ClearingRead(vector<long> &data, vector<int> &Q, vector<int> &X) {
+	//Readout all 16 channels with F(0)A(0-15)
+	int F = 0;
+	long this_data;
+	int this_Q, this_X;
+	for (int A = 0; A < channels; ++A) {
+		CAMAC_read(crate_handle,N,A,F,&this_data,&this_Q,&this_X);
+		//Data is of the format 0xNTTT, where N is channel number and TTT is the TDC value
+		this_data &= 0x0FFF;
+		data.push_back(this_data);
+		Q.push_back(this_Q);
+		X.push_back(this_X);
+	}
+	//And clear manually
+	F = 9; //F(9)A(any) does a clear
+	CAMAC_read(crate_handle,N,0,F,&this_data,&this_Q,&this_X);
+}
+
+void Phillips_7186::AddClearingReadToStack(vector<long> &current_stack) {
+	//Read sparse data is F(4)A(0)
+	long word1 = CreateSimpleCommand(N,4,0);
+	word1 |= CONTINUATION_BIT;
+	current_stack.push_back(word1);
+	//Read in Q-stop mode, continue until Q = 0;
+	long word2 = CONTINUATION_BIT | Q_STOP_BIT;
+	current_stack.push_back(word2);
+	//Maximum number of times to repeat command.  There's no buffering, so max # of hits is # of channels.
+	long word3 = (long) channels;
+	current_stack.push_back(word3);	
+}
+
+void LeCroy_3377::ClearingRead(vector<long> &data, vector<int> &Q, vector<int> &X) {
+	//Readout all 32 channels with F(0)A(0) [repeat until Q = 0)
+	int F = 0;
+	int A = 0;
+	long this_data;
+	int this_Q, this_X;
+	do {
+		CAMAC_read(crate_handle,N,A,F,&this_data,&this_Q,&this_X);
+		if (this_Q == 1) {
+			data.push_back(this_data); //TODO: unmask the data here, implement multihit per channel
+		}
+	} while (this_Q == 1);
+}
+
+void LeCroy_3377::AddClearingReadToStack(vector<long> &current_stack) {
+        //Read event FIFO is F(0)A(0)
+        long word1 = CreateSimpleCommand(N,0,0);
+        word1 |= CONTINUATION_BIT;
+        current_stack.push_back(word1);
+        //Read in Q-stop mode, continue until Q = 0;
+        long word2 = CONTINUATION_BIT | Q_STOP_BIT;
+        current_stack.push_back(word2);
+        //Maximum number of times to repeat command.  
+	//TODO: There IS buffering on this module, so we can potentially get more words.
+        long word3 = (long) channels;
+        current_stack.push_back(word3);
+}
+
+long CreateSimpleCommand(int N, int F, int A, bool long_mode) {	
+	long word = F + 32*A + 512*N + 16384*( int(long_mode) );
+	return word;
 }
 

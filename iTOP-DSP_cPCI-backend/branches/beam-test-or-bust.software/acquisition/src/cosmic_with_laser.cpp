@@ -28,16 +28,19 @@ int main(void) {
 		cerr << "ERROR:  could not connect to CAMAC crate" << endl;
 		exit(7);
 	} else {
+		cout << "CAMAC initialized." << endl;
 		CAMAC_initialized = true;
 	}
+	exit(2);
 	if (CAMAC_initialized) {
+		cout << "opening CAMAC files..." << endl;
 		open_CAMAC_file();
 		if (using_CAMAC3377) {
 			CAMAC_initialize_3377s();
 			open_CAMAC3377_file();
 		}
 	}
-	setup_run_type("laser");
+	setup_run_type("cosmic_with_laser");
 	setup_to_catch_ctrl_c();
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
@@ -45,23 +48,26 @@ int main(void) {
 	unsigned short int ending_window = 63;
 	set_start_and_end_windows(beginning_window, ending_window);
 	usleep(50000);
-	set_number_of_windows_to_look_back(32);
+	set_number_of_windows_to_look_back(6);
 	usleep(50000);
 	set_event_number(event_number);
 	send_front_end_trigger_veto_clear();
 	reset_trigger_flip_flop();
 
-	// testing:
-//	should_soft_trigger = true;
+	// Cosmic running should not require a software trigger
+	should_soft_trigger = false;
 
-#define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (500)
-#define MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL (30)
+#define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (5000)
+#define MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL (43200)
+#define MAXIMUM_NUMBER_OF_SECONDS_BEFORE_FORCING_CLEAR (60)
+
 	// actual running:
 //	unsigned int threshold = threshold_scan_low_limit;
 	send_command_packet_to_all_enabled_channels(0xeeeee01a, 1950);
 //	bool spill_was_just_active = false;
 	bool first_time = true;
 	int number_of_seconds_this_spill_has_been_active = 0;
+	int number_of_seconds_since_last_event = 0;
 	start_timer();
 	while (1) {
 
@@ -84,8 +90,8 @@ int main(void) {
 
 		while (number_of_readout_events_for_this_spill < MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL &&
 		       number_of_seconds_this_spill_has_been_active < MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL) {
-			wait_for_spill_to_finish();
-			if (!readout_an_event(true)) {
+//			wait_for_spill_to_finish(); // commented out for the fDIRC
+			if (!readout_an_event(true)) { // Kurtis changed this to rig for cosmic running
 				if (CAMAC_initialized) {
 					read_data_from_CAMAC_and_write_to_CAMAC_file();
 					if (using_CAMAC3377) {
@@ -95,19 +101,32 @@ int main(void) {
 				write_status_file();
 //				cout << endl << flush;
 //				printf("\n");
+				gettimeofday(&watchdog, NULL);
+				send_front_end_trigger_veto_clear();
+				cout << endl;
 			}
-			printf("\n");
+//			printf("\n");
 			number_of_seconds_this_spill_has_been_active = stop_timer_in_seconds();
 //			cout << "time for this spill so far: " << number_of_seconds_this_spill_has_been_active << " s" << endl;
 //			cout << "     events for this spill: " << number_of_readout_events_for_this_spill << endl;
 //			usleep(100000);
+
+			// force a reset of the front-end trigger veto if we haven't seen an event in a while
+			number_of_seconds_since_last_event = watchdog_timer_in_seconds();
+			if (number_of_seconds_since_last_event > MAXIMUM_NUMBER_OF_SECONDS_BEFORE_FORCING_CLEAR) {
+				cout << "No events seen in " << MAXIMUM_NUMBER_OF_SECONDS_BEFORE_FORCING_CLEAR << " seconds... clearing." << endl;
+				send_front_end_trigger_veto_clear();
+				gettimeofday(&watchdog, NULL);
+			}
 		}
 
 		update_logfile_with_the_number_of_readout_events_for_this_spill();
 		close_fiber_files_to_prepare_for_next_spill();
-		close_CAMAC_file_to_prepare_for_next_spill();
-		if (using_CAMAC3377) {
-			close_CAMAC3377_file_to_prepare_for_next_spill();
+		if (CAMAC_initialized) {
+			close_CAMAC_file_to_prepare_for_next_spill();
+			if (using_CAMAC3377) {
+				close_CAMAC3377_file_to_prepare_for_next_spill();
+			}
 		}
 		cout << "number of events for experiment " << experiment_number << " / run " << run_number << " / spill " << spill_number << ": " << number_of_readout_events_for_this_spill << " (" << total_number_of_readout_events << " for this run)" << endl;
 		for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
