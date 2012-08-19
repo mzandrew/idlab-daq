@@ -16,7 +16,7 @@ int main(void) {
 
 	parse_config_file(".config");
 
-	init_camac();
+	init_CAMAC_controller();
 	open_CAMAC_file();
 
 	setup_pci(card_id);
