@@ -31,7 +31,6 @@ int main(void) {
 		cout << "CAMAC initialized." << endl;
 		CAMAC_initialized = true;
 	}
-	exit(2);
 	if (CAMAC_initialized) {
 		cout << "opening CAMAC files..." << endl;
 		open_CAMAC_file();
@@ -48,7 +47,8 @@ int main(void) {
 	unsigned short int ending_window = 63;
 	set_start_and_end_windows(beginning_window, ending_window);
 	usleep(50000);
-	set_number_of_windows_to_look_back(6);
+//	set_number_of_windows_to_look_back(6);
+	set_number_of_windows_to_look_back(32);
 	usleep(50000);
 	set_event_number(event_number);
 	send_front_end_trigger_veto_clear();
@@ -103,7 +103,8 @@ int main(void) {
 //				printf("\n");
 				gettimeofday(&watchdog, NULL);
 				send_front_end_trigger_veto_clear();
-				cout << endl;
+				fprintf(info, "\n");
+				//cout << endl;
 			}
 //			printf("\n");
 			number_of_seconds_this_spill_has_been_active = stop_timer_in_seconds();

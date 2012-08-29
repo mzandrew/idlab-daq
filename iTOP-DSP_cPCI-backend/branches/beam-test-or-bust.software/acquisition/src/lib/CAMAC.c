@@ -12,21 +12,30 @@ using namespace std;
 #include <stdio.h>
 #include <fcntl.h>
 
-int N_crates = 2;
-string crate_serial_number[2] = {"CC0132", "CC0131"};
-unsigned int crate_serial_number_hex[2] = {0x00CC0132, 0x00CC0131};
-CC_USB *camac_crate[2];
-
 bool CAMAC_initialized = false;
 
 int CAMAC_fd = -7; // negative to avoid problem closing an unopened file
 string CAMAC_filename;
 string old_CAMAC_filename;
 
+#ifdef CAMAC_SLAC_SCANNING
+int N_crates = 1;
+string crate_serial_number[1] = {"CC0163"};
+unsigned int crate_serial_number_hex[1] = {0x00CC0163};
+CC_USB *camac_crate[1];
+#endif
+#ifdef CAMAC_SLAC_CRT
+int N_crates = 2;
+string crate_serial_number[2] = {"CC0132", "CC0131"};
+unsigned int crate_serial_number_hex[2] = {0x00CC0132, 0x00CC0131};
+CC_USB *camac_crate[2];
+#endif
+
 int init_CAMAC_controller() {
 	// Create the crates
-	camac_crate[0] = new CC_USB(crate_serial_number[0]);
-	camac_crate[1] = new CC_USB(crate_serial_number[1]);
+	for (int i = 0; i < N_crates; ++i) {
+		camac_crate[i] = new CC_USB(crate_serial_number[i]);
+	}
         //Make sure the crate isn't still in "trigger on I1" mode
 	cout << "Turning off autotrigger mode...";
 	for (int i = 0; i < N_crates; ++i) {
@@ -47,30 +56,34 @@ int init_CAMAC_controller() {
 		}
 	}
 	// read in CAMAC crate modules
-	//Add modules for upper crate
-	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(), 7)); //Phillips 7186, slot 7, 16 ch (4 ch bits, 12 data bits)  //Added 2012-08-01, trigger phase TDC to ch16
-	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(), 8, 4, false)); //Jorway Model 84 QUAD Scaler, slot  8, 4 ch (24-bit), nonclearing
-	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(), 9)); //Phillips 7186, slot  9, 16 ch, 16-bit (4 ch bits, 12 data bits)
-	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),10)); //Phillips 7186, slot 10, 16 ch, 16-bit (4 ch bits, 12 data bits)
-	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),11)); //Phillips 7186, slot 11, 16 ch, 16-bit (4 ch bits, 12 data bits)
-	camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),12)); //Phillips 7186, slot 12, 16 ch, 16-bit (4 ch bits, 12 data bits)
-	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),13,12,true)); //Lecroy 2249W, slot 13, 12 channels (12-bit), clearing
-	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),14,12,true)); //Lecroy 2249W, slot 14, 12 channels (12-bit), clearing
-	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),16,12,true)); //Lecroy 2551, slot 16, 12 channels (24-bit), clearing
-	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),17,12,true)); //Lecroy 2551, slot 17, 12 channels (24-bit), clearing
-	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),19, 8,true)); //Lecroy 2228A, slot 19, 8 channels (11-bit), clearing
-	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),20, 8,true)); //Lecroy 2228A, slot 20, 8 channels (11-bit), clearing
+#ifdef CAMAC_SLAC_SCANNING
 	camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),21, 8,true)); //Lecroy 2228A, slot 21, 8 channels (11-bit), clearing
-	//Add modules for lower crate
-	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 1));   //Actually a LeCroy 2277, TODO: double check commands & format
-	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 3));   //as above
-	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 5));   //as above
-	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 7));   //as above
-	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 9));   //as above
-	camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(),11));   //as above
-	camac_crate[1]->AddModule(new Phillips_7186(camac_crate[1]->GetHandle(),16)); //Actually a Phillips 7166, but commands & format appear same
-	camac_crate[1]->AddModule(new Phillips_7186(camac_crate[1]->GetHandle(),18)); //Actually a Phillips 7166, but commands & format appear same
- 
+#endif
+#ifdef CAMAC_SLAC_CRT
+        //Add modules for upper crate
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(), 7)); //Phillips 7186, slot 7, 16 ch (4 ch bits, 12 data bits)  //Added 2012-08-01, trigger phase TDC to ch16
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(), 8, 4, false)); //Jorway Model 84 QUAD Scaler, slot  8, 4 ch (24-bit), nonclearing
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(), 9)); //Phillips 7186, slot  9, 16 ch, 16-bit (4 ch bits, 12 data bits)
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),10)); //Phillips 7186, slot 10, 16 ch, 16-bit (4 ch bits, 12 data bits)
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),11)); //Phillips 7186, slot 11, 16 ch, 16-bit (4 ch bits, 12 data bits)
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),12)); //Phillips 7186, slot 12, 16 ch, 16-bit (4 ch bits, 12 data bits)
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),13,12,true)); //Lecroy 2249W, slot 13, 12 channels (12-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),14,12,true)); //Lecroy 2249W, slot 14, 12 channels (12-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),16,12,true)); //Lecroy 2551, slot 16, 12 channels (24-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),17,12,true)); //Lecroy 2551, slot 17, 12 channels (24-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),19, 8,true)); //Lecroy 2228A, slot 19, 8 channels (11-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),20, 8,true)); //Lecroy 2228A, slot 20, 8 channels (11-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),21, 8,true)); //Lecroy 2228A, slot 21, 8 channels (11-bit), clearing
+        //Add modules for lower crate
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 1));   //Actually a LeCroy 2277, TODO: double check commands & format
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 3));   //as above
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 5));   //as above
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 7));   //as above
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 9));   //as above
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(),11));   //as above
+        camac_crate[1]->AddModule(new Phillips_7186(camac_crate[1]->GetHandle(),16)); //Actually a Phillips 7166, but commands & format appear same
+        camac_crate[1]->AddModule(new Phillips_7186(camac_crate[1]->GetHandle(),18)); //Actually a Phillips 7166, but commands & format appear same
+#endif
 	// build the command stack
 	for (int i = 0; i < N_crates; ++i) {
 	        camac_crate[i]->LoadPrimaryCommandStack();
@@ -79,8 +92,8 @@ int init_CAMAC_controller() {
 	        camac_crate[i]->TriggerOnI1(true);
 	}
 
-	printf("stack initialized and single event mode set");
-	printf("\n\n");
+	fprintf(debug, "stack initialized and single event mode set");
+	fprintf(debug, "\n\n");
 	return 0;
 }
 
@@ -95,7 +108,8 @@ void close_CAMAC_controller() {
 
 void close_CAMAC_file(void) {
 	if (CAMAC_fd >= 0) {
-		cout << "closing CAMAC file" << endl;
+		//cout << "closing CAMAC file" << endl;
+		fprintf(debug, "closing CAMAC file\n");
 //		fprintf(stdout, "closing CAMAC file \"%s\"\n", old_CAMAC_filename.c_str());
 //		fprintf(stdout, "\"%s\" closed\n", old_CAMAC_filename.c_str());
 		close(CAMAC_fd);
@@ -103,16 +117,17 @@ void close_CAMAC_file(void) {
 }
 
 void open_CAMAC_file(void) {
-	cout << "opening CAMAC file" << endl;
+	//cout << "opening CAMAC file" << endl;
+	fprintf(debug, "opening CAMAC file\n");
 	CAMAC_filename = base_filename;
 	CAMAC_filename += ".camac";
 	CAMAC_fd = open(CAMAC_filename.c_str(), O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (CAMAC_fd < 0) {
-		fprintf(stderr, "ERROR: failed to create CAMAC file \"%s\"\n", CAMAC_filename.c_str());
+		fprintf(error, "ERROR: failed to create CAMAC file \"%s\"\n", CAMAC_filename.c_str());
 	} else {
 		old_CAMAC_filename = CAMAC_filename;
 		//fprintf(stdout, "opened CAMAC file \"%s\"\n", CAMAC_filename.c_str());
-		fprintf(stdout, "%s\n", CAMAC_filename.c_str());
+		fprintf(info, "%s\n", CAMAC_filename.c_str());
 	}
 }
 
@@ -131,7 +146,7 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 		write(CAMAC_fd, (char *) &crate_serial_number_hex[i], sizeof(unsigned int));
 		int number_of_short_uint_data_words = camac_crate[i]->ReadFcntl(BINARY_FILE, CAMAC_fd);
 		number_of_short_uint_data_words += 2;  //Add 2 for the crate serial number
-		printf("C%d[%d] ", i, number_of_short_uint_data_words*sizeof(unsigned short int));
+		fprintf(info, "C%d[%d] ", i, number_of_short_uint_data_words*sizeof(unsigned short int));
 		bytes_out += number_of_short_uint_data_words*sizeof(unsigned short int);
 	}
 
