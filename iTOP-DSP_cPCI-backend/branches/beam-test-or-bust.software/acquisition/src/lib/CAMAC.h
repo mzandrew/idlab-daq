@@ -12,6 +12,9 @@
 #include <vector>
 
 #define DEBUG_FLAG   (0)
+#define CAMAC_SLAC_SCANNING
+//#define CAMAC_SLAC_CRT
+//#define CAMAC_ITOP
 
 int init_CAMAC_controller();
 void close_CAMAC_controller();
