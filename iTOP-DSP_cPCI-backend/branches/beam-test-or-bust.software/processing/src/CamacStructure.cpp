@@ -1,18 +1,109 @@
 #include "CamacStructure.h"
 #include <iostream>
+#include <iomanip>
+#include <vector>
 
 using namespace std;
 
 CamacData::CamacData() {
 	file_handle = NULL;
 	ConfigTree = NULL;
-	camdata = NULL;
+	camac_data = NULL;
+	camac_tree = NULL;
+	camac_crate = NULL;
+	N_crates = 0;
+	this->SetupCrates();
 }
 
 CamacData::~CamacData() {
+//I know we really should delete these things but it's causing
+//trouble right now... I'm unclear on the right order, and 
+//what ROOT will delete on its own.
+/*
 	if (file_handle) delete file_handle;
 	if (ConfigTree) delete ConfigTree;
-	if (camdata) delete camdata;
+	for (int i = 0; i < N_crates; ++i) {
+		if (camac_tree[i]) delete camac_tree;
+		if (camac_crate[i]) delete camac_crate;
+		for (int j = 0; j < N_SLOTS; ++j) {
+			if (camac_data[i][j]) {
+				delete[] camac_data[i][j];
+			}
+		}
+		if (camac_data[i]) {
+			delete[] camac_data[i];
+		}
+	}
+	delete[] camac_tree;
+	delete[] camac_crate;
+	delete[] camac_data;
+*/
+}
+
+void CamacData::SetupCrates() {
+	N_crates = 1;
+	camac_tree = new TTree*[N_crates];
+	camac_crate = new CC_USB*[N_crates];
+	camac_data = new unsigned int**[N_crates];
+#ifdef CAMAC_SLAC_SCANNING
+	//Create crates but don't try to open connections with them
+	camac_crate[0] = new CC_USB("CC0163",false);
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),21, 8,true)); //Lecroy 2228A, slot 21, 8 channels (11-bit), clearing
+#endif
+#ifdef CAMAC_SLAC_CRT
+	//Create crates but don't try to open connections with them
+	camac_crate[0] = new CC_USB("CC0132",false);
+	camac_crate[1] = new CC_USB("CC0131",false);
+        //Add modules for upper crate
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(), 7)); //Phillips 7186, slot 7, 16 ch (4 ch bits, 12 data bits)  //Added 2012-08-01, trigger phase TDC to ch16
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(), 8, 4, false)); //Jorway Model 84 QUAD Scaler, slot  8, 4 ch (24-bit), nonclearing
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(), 9)); //Phillips 7186, slot  9, 16 ch, 16-bit (4 ch bits, 12 data bits)
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),10)); //Phillips 7186, slot 10, 16 ch, 16-bit (4 ch bits, 12 data bits)
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),11)); //Phillips 7186, slot 11, 16 ch, 16-bit (4 ch bits, 12 data bits)
+        camac_crate[0]->AddModule(new Phillips_7186(camac_crate[0]->GetHandle(),12)); //Phillips 7186, slot 12, 16 ch, 16-bit (4 ch bits, 12 data bits)
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),13,12,true)); //Lecroy 2249W, slot 13, 12 channels (12-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),14,12,true)); //Lecroy 2249W, slot 14, 12 channels (12-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),16,12,true)); //Lecroy 2551, slot 16, 12 channels (24-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),17,12,true)); //Lecroy 2551, slot 17, 12 channels (24-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),19, 8,true)); //Lecroy 2228A, slot 19, 8 channels (11-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),20, 8,true)); //Lecroy 2228A, slot 20, 8 channels (11-bit), clearing
+        camac_crate[0]->AddModule(new generic_CAMAC_module(camac_crate[0]->GetHandle(),21, 8,true)); //Lecroy 2228A, slot 21, 8 channels (11-bit), clearing
+        //Add modules for lower crate
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 1));   //Actually a LeCroy 2277, TODO: double check commands & format
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 3));   //as above
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 5));   //as above
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 7));   //as above
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(), 9));   //as above
+        camac_crate[1]->AddModule(new LeCroy_3377(camac_crate[1]->GetHandle(),11));   //as above
+        camac_crate[1]->AddModule(new Phillips_7186(camac_crate[1]->GetHandle(),16)); //Actually a Phillips 7166, but commands & format appear same
+        camac_crate[1]->AddModule(new Phillips_7186(camac_crate[1]->GetHandle(),18)); //Actually a Phillips 7166, but commands & format appear same
+#endif
+
+
+	for (int i = 0; i < N_crates; ++i) {
+		camac_data[i] = new unsigned int*[N_SLOTS];
+		for (int j = 1; j <= N_SLOTS; ++j) {  //Slots range from 1-26!
+			if (camac_crate[i]->GetModule(j)) {
+				camac_data[i][j-1] = new unsigned int[camac_crate[i]->GetModule(j)->GetNChannels()]();
+//				cout << "Initialized crate " << i << " slot " << j << " with " << camac_crate[i]->GetModule(j)->GetNChannels() << " channels at address " << camac_data[i][j-1] << endl;
+			} else {
+				camac_data[i][j-1] = NULL;
+			}
+		}
+	}
+
+/*
+	for (int i = 0; i < N_crates; ++i) {
+		for (int j = 0; j < N_SLOTS; ++j) {
+			if (camac_data[i][j]) {
+				for (int k = 0; k < camac_crate[i]->GetModule(j+1)->GetNChannels(); ++k) {
+					cout << i << "\t" << j << "\t" << k << "\t" << &camac_data[i][j][k] << "\t" << camac_data[i][j][k] << endl;
+				}
+			}
+		}
+	}
+*/
+
 }
 
 TFile* CamacData::OpenROOTFile(const char *root_filename) {
@@ -33,75 +124,24 @@ TFile* CamacData::OpenROOTFile(const char *root_filename) {
 	StartTime = 0;
 
 	//A seperate tree for variables that get updated once per event
-	camdata = new TTree("camdata","Event Data");
-	camdata->Branch("event",&camac_data[1],"event/i");  
+	for (int i = 0; i < N_crates; ++i) {
+		char tree_name[1024];
+		sprintf(tree_name,"camac_tree%d",i);
+		camac_tree[i] = new TTree(tree_name,camac_crate[i]->GetSerialNumber().c_str());
+		//Scan over all slots (CAMAC slots start numbering from 1!)
+		for (int j = 1; j <= N_SLOTS; ++j) {
+			if (camac_crate[i]->GetModule(j)) {
+				char branch_name[1024];
+				sprintf(branch_name,"slot%d",j);
+				char branch_data[1024];
+				sprintf(branch_data,"slot%d[%d]/i",j,camac_crate[i]->GetModule(j)->GetNChannels());
+				camac_tree[i]->Branch(branch_name,camac_data[i][j-1],branch_data);
+//				cout << "slot " << j << " starts at " << camac_data[i][j-1] << endl;
+			}
+		}
+	}
 
-	camdata->Branch("tg1",&camac_data[2],"tg1/i");  
-	camdata->Branch("tg2",&camac_data[3],"tg2/i");  
-	camdata->Branch("tc1",&camac_data[4],"tc1/i");  
-	camdata->Branch("tc2",&camac_data[5],"tc2/i");  
-	camdata->Branch("tm1",&camac_data[6],"tm1/i");  
-	camdata->Branch("tm2",&camac_data[7],"tm2/i");  
-	camdata->Branch("tdc06",&camac_data[8],"tdc06/i");  
-	camdata->Branch("tdc07",&camac_data[9],"tdc07/i");  
-
-	camdata->Branch("tm3_1",&camac_data[10],"tm3_1/i");  
-	camdata->Branch("tm3_2",&camac_data[11],"tm3_2/i");  
-	camdata->Branch("tm3_3",&camac_data[12],"tm3_3/i");  
-	camdata->Branch("tm3_4",&camac_data[13],"tm3_4/i");  
-	camdata->Branch("tdc14",&camac_data[14],"tdc14/i");  
-	camdata->Branch("v1",&camac_data[15],"v1/i");  
-	camdata->Branch("v2",&camac_data[16],"v2/i");  
-	camdata->Branch("tdc17",&camac_data[17],"tdc17/i");  
-
-	camdata->Branch("ftsw",&camac_data[18],"ftsw/i");  
-	camdata->Branch("tdc19",&camac_data[19],"tdc19/i");  
-	camdata->Branch("tdc20",&camac_data[20],"tdc20/i");  
-	camdata->Branch("tdc21",&camac_data[21],"tdc21/i");  
-	camdata->Branch("tdc22",&camac_data[22],"tdc22/i");  
-	camdata->Branch("tdc23",&camac_data[23],"tdc23/i");  
-	camdata->Branch("tdc24",&camac_data[24],"tdc24/i");  
-	camdata->Branch("tdc25",&camac_data[25],"tdc25/i");  
-	
-	camdata->Branch("qtg1",&camac_data[26],"qtg1/i");  
-	camdata->Branch("qtg2",&camac_data[27],"qtg2/i");  
-	camdata->Branch("qtc1",&camac_data[28],"qtc1/i");  
-	camdata->Branch("qtc2",&camac_data[29],"qtc2/i");  
-	camdata->Branch("qtm1",&camac_data[30],"qtm1/i");  
-	camdata->Branch("adc005",&camac_data[31],"adc005/i");  
-	camdata->Branch("qtm2",&camac_data[32],"qtm2/i");  
-	camdata->Branch("qcp",&camac_data[33],"qcp/i");  
-	camdata->Branch("adc008",&camac_data[34],"adc008/i");  
-	camdata->Branch("adc009",&camac_data[35],"adc009/i");  
-	camdata->Branch("adc010",&camac_data[36],"adc010/i");  
-	camdata->Branch("adc011",&camac_data[37],"adc011/i");  
- 
-	camdata->Branch("qtm3_1",&camac_data[38],"qtm3_1/i");  
-	camdata->Branch("adc101",&camac_data[39],"adc101/i");  
-	camdata->Branch("qtm3_3",&camac_data[40],"qtm3_3/i");  
-	camdata->Branch("adc103",&camac_data[41],"adc103/i");  
-	camdata->Branch("qtm3_2",&camac_data[42],"qtm3_2/i");  
-	camdata->Branch("qtm3_4",&camac_data[43],"qtm3_4/i");  
-	camdata->Branch("adc106",&camac_data[44],"adc106/i");  
-	camdata->Branch("adc107",&camac_data[45],"adc107/i");  
-	camdata->Branch("qv1",&camac_data[46],"qv1/i");  
-	camdata->Branch("adc109",&camac_data[47],"adc109/i");  
-	camdata->Branch("adc110",&camac_data[48],"adc110/i");  
-	camdata->Branch("qv2",&camac_data[49],"qv2/i");  
-	
-	camdata->Branch("stg1",&camac_data[50],"stg1/i");
-	camdata->Branch("stg2",&camac_data[51],"stg2/i");
-	camdata->Branch("stc1",&camac_data[52],"stc1/i");
-	camdata->Branch("stc2",&camac_data[53],"stc2/i");
-	camdata->Branch("stm1",&camac_data[54],"stm1/i");
-	camdata->Branch("stm2",&camac_data[55],"stm2/i");
-	camdata->Branch("coin1",&camac_data[56],"coin1/i");
-	camdata->Branch("scl07",&camac_data[57],"scl07/i");
-	camdata->Branch("coin3",&camac_data[58],"coin3/i");
-	camdata->Branch("scl09",&camac_data[59],"scl09/i");
-	camdata->Branch("scl10",&camac_data[60],"scl10/i");
-	camdata->Branch("att1",&camac_data[61],"att1/i");
-
+	return file_handle;
 
 };
 
@@ -144,12 +184,14 @@ void CamacData::WriteConfigTree(const char *input_filename) {
 }
 
 void CamacData::AutoSave() {
-	camdata->AutoSave("SaveSelf");
+	for (int i = 0; i < N_crates; ++i) {
+		camac_tree[i]->AutoSave("SaveSelf");
+	}
 	ConfigTree->AutoSave("SaveSelf");	
 }
 
 void CamacData::CloseROOTFile() {
-	this->AutoSave();
+//	this->AutoSave();
 	gDirectory->Write();
 
 	//I can't quite figure out what to do here to not cause a SEGV...
@@ -165,13 +207,99 @@ void CamacData::CloseROOTFile() {
 };
 
 int CamacData::ReadEvent(ifstream &fin) {
-	for (int i=0; i<WORDS_IN_CAMAC; i++) {
-		fin.read( ( char * ) &camac_data[i], sizeof( unsigned int ) );
+	unsigned int long_word = 0;
+	unsigned short int short_word = 0;
+	unsigned short int words_this_event = 0;
+	for (int i = 0; i < N_crates; ++i) {
+		fin.read( (char *) &long_word, sizeof(unsigned int));
+		fin.read( (char *) &short_word, sizeof (unsigned short int) );
+//		cout << "crate: " << hex << long_word << dec << endl;
+//		cout << "number of events: " << (short_word & MASK_HEADER_WORD_NUMBER_OF_EVENTS) << endl;
+//		cout << "watchdog buffer?: " << bool(short_word & MASK_HEADER_WATCHDOG_BUFFER_BIT) << endl;
+//		cout << "scaler buffer?  : " << bool(short_word & MASK_HEADER_SCALER_BUFFER_BIT) << endl;
+		//TODO: should do something with all this header information...
+		//One option would be to use the length (read in the following line) to read the entire
+		//event into memory, then continue as usual.
+		fin.read( (char *) &words_this_event, sizeof (unsigned short int) );
+		for (int j = 1; j <= N_SLOTS; ++j) { //CAMAC slots start from 1... I'm getting tired of this.  =P
+			if (camac_crate[i]->GetModule(j)) {
+				for (int k = 0; k < camac_crate[i]->GetModule(j)->GetNChannels(); ++k) {
+					camac_data[i][j-1][k] = 0;
+				}
+				unsigned short int slot_id;
+				fin.read( (char *) &slot_id, sizeof(unsigned short int) );
+				if (slot_id != (unsigned short int) j) {
+					cout << "Error: expected slot (" << hex << j << ")";
+					cout << " doesn't match data (" << slot_id << dec << ")!";
+					cout << " Bad data, partial event, or maybe just the end of the file." << endl;
+					while (fin) {
+						unsigned short int temp_word;
+						fin.read((char *) &temp_word, sizeof(unsigned short int));
+					}
+					return 0;
+				}
+				vector<unsigned short int> slot_data;
+				bool keep_reading_this_slot = true;
+				while (keep_reading_this_slot) {
+					fin.read( (char *) &short_word, sizeof(unsigned short int));
+					if (short_word == SLOT_END_MARKER) {
+						//Grab the current pointer position
+						int position = fin.tellg();
+						//Check the next word
+						unsigned short int next_word;
+						fin.read( (char *) &next_word, sizeof(unsigned short int) );
+						//Check what the next occupied module is
+						CAMAC_module *next_module = camac_crate[i]->GetNextOccupiedModule(j);
+						if (!next_module && next_word == CRATE_END_MARKER) {
+							keep_reading_this_slot = false;
+						} else if (next_word == (unsigned short int) next_module->GetSlot()) {
+							keep_reading_this_slot = false;
+						}
+						//Return the pointer to the previous position
+						fin.seekg(position);
+					} else {
+						slot_data.push_back(short_word);
+					}
+				}
+				for (int k = 0; k < slot_data.size(); k += 2) {
+					unsigned int full_word = 0;
+					full_word = (slot_data[k+1] << 16) | (slot_data[k]);
+					unsigned int Q = (full_word & MASK_Q_RESPONSE) >> 24;
+					unsigned int X = (full_word & MASK_X_RESPONSE) >> 25;
+					unsigned int data_24bit = full_word & MASK_DATA;
+					unsigned int channel = k/2;
+					//Interpret the data
+					if (camac_crate[i]->GetModule(j)->SimpleDataFormat()) {
+						camac_data[i][j-1][channel] = data_24bit;
+					} else {
+						camac_crate[i]->GetModule(j)->ReadDataWord(data_24bit,channel);
+						//The 2277 ReadDataWord function returns a 0 data value if the hit phase is wrong
+						//In these cases we ignore the hit
+						if (data_24bit != 0) {
+							camac_data[i][j-1][channel] = data_24bit;
+						}
+					}
+				}
+			}
+		}
+		unsigned short int footer[2];
+		fin.read( (char *) footer, sizeof(unsigned short int)*2);
 		if (!fin) {
+			cout << "Filehandle had bad status!\n";
 			return 0;
 		}
-	} 
-	camdata->Fill();
+		if (footer[0] != CRATE_END_MARKER || footer[1] != CRATE_END_MARKER) {
+			cout << "Error: Expected footers but saw: " << endl; 
+			cout << "\t0x" << hex << setw(4) << setfill('0') << footer[0];
+			cout << "\t0x" << hex << setw(4) << setfill('0') << footer[1];
+			cout << "Your data is probably being read incorrectly!" << endl;
+		}
+	}
+
+	for (int i = 0; i < N_crates; ++i) {
+		camac_tree[i]->Fill();
+	}
 	return 1;
+
 };
 

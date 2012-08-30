@@ -159,13 +159,15 @@ int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
 
 // --------------------------------------------------------------------------
 
-CC_USB::CC_USB(string sn) {
+CC_USB::CC_USB(string sn, bool open_crates) {
 	serial_number = sn;
 	crate_handle = NULL;
 	for (int i = 0; i < 24; ++i) {
 		modules[i] = NULL;
 	}
-	this->Open();
+	if (open_crates) {
+		this->Open();
+	}
 }
 
 CC_USB::~CC_USB() {
@@ -194,7 +196,6 @@ void CC_USB::Open() {
 		crate_handle = xxusb_serial_open((char *) serial_number.c_str());
 		if (!crate_handle) {
 			cout << "Couldn't open communications with CC_USB " << serial_number << endl;
-			exit(14);
 		}
 	}
 }
@@ -220,6 +221,25 @@ void CC_USB::AddModule(CAMAC_module *module_to_add) {
 	} else {
 		modules[new_slot-1] = module_to_add; //TODO: double check the indexing on this
 	}
+}
+
+CAMAC_module *CC_USB::GetModule(int slot) {
+	if (slot < 1 || slot > N_SLOTS) {
+		cout << "Error!  Bad slot number.  CAMAC slots range from 1 - " << N_SLOTS << "." << endl;
+		return NULL;
+	}
+	return modules[slot-1];
+}
+
+CAMAC_module *CC_USB::GetNextOccupiedModule(int start_slot) {
+	int current_slot = start_slot + 1;
+	while (current_slot <= N_SLOTS) {
+		if (this->GetModule(current_slot)) {
+			return this->GetModule(current_slot);
+		}
+		current_slot++;
+	}
+	return NULL;
 }
 
 void CC_USB::ReadAndClearAllModulesOnce(OUTPUT_METHOD output_type, ofstream *fout) {
@@ -642,6 +662,13 @@ void Phillips_7186::AddClearingReadToStack(vector<long> &current_stack) {
 	current_stack.push_back(word3);	
 }
 
+void Phillips_7186::ReadDataWord(unsigned int &data, unsigned int &channel) {
+	//Data format is XXXX XXXX CCCC DDDD DDDD DDDD
+	//X - don't care; C - channel; D - data
+	channel = (data & 0x00F000) >> 12;
+	data = (data & 0x000FFF);
+}
+
 void LeCroy_3377::ClearingRead(vector<long> &data, vector<int> &Q, vector<int> &X) {
 	//Readout all 32 channels with F(0)A(0) [repeat until Q = 0)
 	int F = 0;
@@ -670,8 +697,20 @@ void LeCroy_3377::AddClearingReadToStack(vector<long> &current_stack) {
         current_stack.push_back(word3);
 }
 
+void LeCroy_3377::ReadDataWord(unsigned int &data, unsigned int &channel) {
+	//2277 data format:  I'm not sure if this is compatible with 3377... it doesn't seem to be
+	//Data format is XXCC CCCP DDDD DDDD DDDD DDDD
+	//X - don't care; C - channel; P - hit phase (leading or trailing edge); D - data
+	channel = (data & 0x3E0000) >> 17;
+	unsigned int phase = (data & 0x010000) >> 16;
+	if (phase == 1) { //Leading edge
+		data = (data & 0x00FFFF);
+	} else {
+		data = 0;
+	}
+}
+
 long CreateSimpleCommand(int N, int F, int A, bool long_mode) {	
 	long word = F + 32*A + 512*N + 16384*( int(long_mode) );
 	return word;
 }
-

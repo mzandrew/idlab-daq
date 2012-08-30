@@ -8,10 +8,11 @@ RUN=$2
 PED_EXP=$3
 PED_RUN=$4
 
-for each in $(seq 0 2); do
-    IN_NAME=$(printf '/data/beamtest/dst1/exp%02i/e%02irun%04im%i.dst1' ${EXP} ${EXP} ${RUN} ${each})
-	PED_NAME=$(printf '/data/beamtest/dst1/exp%02i/e%02irun%04im%i.ped' ${PED_EXP} ${PED_EXP} ${PED_RUN} ${each})
-    OUT_NAME=$(printf '/data/beamtest/dst2/exp%02i/e%02irun%04im%i.dst2' ${EXP} ${EXP} ${RUN} ${each})
-    ./bin/ConvertDST1ToDST2 ${IN_NAME} ${PED_NAME} ${OUT_NAME}
+#for each in $(seq 0 2); do
+for each in $(seq 0 0); do
+	IN_NAME=$(printf '/daq/kurtisn/DSP_cPCI_data/dst1/exp%02i/e%02irun%04im%i.dst1' ${EXP} ${EXP} ${RUN} ${each})
+	PED_NAME=$(printf '/daq/kurtisn/DSP_cPCI_data/dst1/exp%02i/e%02irun%04im%i.ped' ${PED_EXP} ${PED_EXP} ${PED_RUN} ${each})
+	OUT_NAME=$(printf '/daq/kurtisn/DSP_cPCI_data/dst2/exp%02i/e%02irun%04im%i.dst2' ${EXP} ${EXP} ${RUN} ${each})
+	./bin/ConvertDST1ToDST2 ${IN_NAME} ${PED_NAME} ${OUT_NAME}
 done
 
