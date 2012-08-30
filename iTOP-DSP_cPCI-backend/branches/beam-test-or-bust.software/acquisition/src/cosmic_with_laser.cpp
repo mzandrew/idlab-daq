@@ -48,7 +48,7 @@ int main(void) {
 	set_start_and_end_windows(beginning_window, ending_window);
 	usleep(50000);
 //	set_number_of_windows_to_look_back(6);
-	set_number_of_windows_to_look_back(32);
+	set_number_of_windows_to_look_back(16);
 	usleep(50000);
 	set_event_number(event_number);
 	send_front_end_trigger_veto_clear();

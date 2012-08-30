@@ -23,33 +23,86 @@ TTree *T_event;
 TTree *T_config;
 TCanvas *C_Camac;
 int camac_conversion(unsigned int experiment_to_process, unsigned int run_to_process);
+int camac_conversion_single_file(string filename_in, string filename_out);
 void CreateVisualizationObjects(unsigned int exp, unsigned int run);
 void RefreshDisplays();
 void SetStyle();
 
 int main(int argc, char* argv[]) {
 	if (argc != 3) {
-		cout << "Syntax: ConvertCamacToROOT [experiment number] [run number]" << endl;
+		cout << "Syntax: ConvertCamacToROOT [raw file in] [ROOT file out]" << endl;
 		return 1;
 	}
-	unsigned int experiment_to_process = 0;
-	sscanf(argv[1],"%d",&experiment_to_process);
-	unsigned int run_to_process = 0;
-	sscanf(argv[2],"%d",&run_to_process);
+	string raw_file_in = argv[1];
+	string root_file_out = argv[2];
 
-	cout << "Beginning processing of CAMAC data from experiment " << experiment_to_process << " ... " << endl;
-
-//	TApplication theApp("App",&argc,argv);
-//
-//	if (gROOT->IsBatch()) {
-//		fprintf(stderr, "%s: cannot run in batch mode\n", argv[0]);
-//		return 1;
-//	}
-//	
-	int status = camac_conversion(experiment_to_process, run_to_process);
+	cout << "Reading raw data from : " << raw_file_in << endl;
+	cout << "Writing to output file: " << root_file_out << endl;
+	int status = camac_conversion_single_file(raw_file_in,root_file_out);
 	cout << "Finished processing with status = " << status << endl;
-//	cout << "Display is no longer updating." << endl;
-//	theApp.Run();
+
+	return 0;
+}
+
+int camac_conversion_single_file(string filename_in, string filename_out) {
+	//Find the next input raw file
+	string next_filename = filename_in;
+	ifstream fin;
+	fin.open( (char *) filename_in.c_str() );
+	//Try to open the input file and check validity
+	if (!fin) {
+		cout << "ERROR: could not open " << next_filename << " for reading." << endl;
+		return 1;
+	}
+
+	//Try to open the output file and check validity
+	CamacData *test_event = new CamacData();
+	E_event = test_event;
+	TFile *ROOT_file = test_event->OpenROOTFile(filename_out.c_str() );
+	if (ROOT_file->IsZombie()) {
+		cout << "ERROR: could not open " << filename_out.c_str() << " for writing." << endl;
+		return 1;
+	}
+
+	//Files are open... start reading and processing
+	SetStyle();
+	int nevents = 0;
+	bool continue_running = true;
+	time_t time_of_last_successful_read = time(NULL);
+	bool configuration_written = false;
+	bool visualization_initialized = false;
+	while(continue_running) {
+		streampos starting_file_pointer = fin.tellg();
+		int this_status = test_event->ReadEvent(fin);
+		if (this_status == 1) {
+			if (!configuration_written) {
+				test_event->WriteConfigTree(next_filename.c_str());
+				configuration_written = true;
+				if (!visualization_initialized) {
+//					CreateVisualizationObjects(experiment_to_process,run_to_process); 
+					visualization_initialized = true;
+				}
+			}
+			time_of_last_successful_read = time(NULL);
+			nevents++;
+			//Update all current graphs and other diagnostics
+			/*   */
+			///////
+			if (nevents % EVENTS_BETWEEN_UPDATE == 0) {
+//				RefreshDisplays();
+			}
+		} else {
+			continue_running = false;
+		}
+	}
+	//Now close out the ROOT file
+	test_event->CloseROOTFile();
+	cout << "============SUMMARY================" << endl;
+	cout << "Wrote out " << nevents << " events to " << filename_out.c_str() << endl;
+	cout << "===================================" << endl;
+
+	//Clean up a bit
+	delete test_event;
 
 	return 0;
 }

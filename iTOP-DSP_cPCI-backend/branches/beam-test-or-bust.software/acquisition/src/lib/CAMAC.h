@@ -59,7 +59,7 @@ class LeCroy_3377;
 class CC_USB {
 	public:
 		//Constructor with serial number as input
-		CC_USB(std::string sn);
+		CC_USB(std::string sn, bool open_crates = true);
 		//Destructor
 		~CC_USB();
 		//Retrieves the serial number of the module
@@ -72,6 +72,10 @@ class CC_USB {
 		void Close();
 		//Add a module to the crate
 		void AddModule(CAMAC_module *module_to_add);
+		//Return a pointer to the CAMAC module in a given slot (CAMAC slots start counting from 1!)
+		CAMAC_module *GetModule(int slot);
+		//Return a pointer to the next used slot after start_slot, or NULL pointer, if it doesn't exist.
+		CAMAC_module *GetNextOccupiedModule(int start_slot);
 		//Simple read of all modules, write to an ofstream in binary or ASCII format, or to stdout
 		void ReadAndClearAllModulesOnce(OUTPUT_METHOD output_type = STDOUT, std::ofstream *fout = NULL);
 		//Set up the primary command stack
@@ -112,6 +116,8 @@ class CAMAC_module {
 		virtual void AddReadToStack(std::vector<long> &current_stack);
 		virtual void AddClearingReadToStack(std::vector<long> &current_stack) = 0;
 		virtual void AddNonClearingReadToStack(std::vector<long> &current_stack) = 0;
+		virtual bool SimpleDataFormat() = 0;
+		virtual void ReadDataWord(unsigned int &data, unsigned int &channel) {}
 		int GetNChannels();
 		int GetSlot();
 	protected:
@@ -132,6 +138,7 @@ class generic_CAMAC_module : public CAMAC_module {
 		void NonClearingRead(std::vector<long> &data, std::vector<int> &Q, std::vector<int> &X);
 		void AddClearingReadToStack(std::vector<long> &current_stack);
 		void AddNonClearingReadToStack(std::vector<long> &current_stack);
+		bool SimpleDataFormat() {return true;}
 };
 
 //Implementation of the Phillips 7186 CAMAC module (16 channel TDC)
@@ -142,6 +149,8 @@ class Phillips_7186 : public CAMAC_module {
 		void NonClearingRead(std::vector<long> &data, std::vector<int> &Q, std::vector<int> &X);
 		void AddClearingReadToStack(std::vector<long> &current_stack);
 		void AddNonClearingReadToStack(std::vector<long> &current_stack) {} //Not implemented;
+		bool SimpleDataFormat() {return false;}
+		void ReadDataWord(unsigned int &data, unsigned int &channel);
 };
 
 //Implementation of the LeCroy 3377 CAMAC module (32 channel TDC)
@@ -152,10 +161,11 @@ class LeCroy_3377 : public CAMAC_module {
 		void NonClearingRead(std::vector<long> &data, std::vector<int> &Q, std::vector<int> &X) {} //Not implemented;
 		void AddClearingReadToStack(std::vector<long> &current_stack);
 		void AddNonClearingReadToStack(std::vector<long> &current_stack) {} //Not implemented;
+		bool SimpleDataFormat() {return false;}
+		void ReadDataWord(unsigned int &data, unsigned int &channel);
 };
 
 //Utility function to create a simple command word
 long CreateSimpleCommand(int N, int F, int A, bool long_mode = true);
 
 #endif
-
