@@ -4,11 +4,6 @@ using namespace std;
 
 #include <string>
 #include <stdio.h>
-#include "pci.h"
-#include "fiber.h"
-#include "command_packet_builder.h"
-#include "CAMAC.h"
-#include "config_file.h"
 #include "acquisition.h"
 
 int main(void) {

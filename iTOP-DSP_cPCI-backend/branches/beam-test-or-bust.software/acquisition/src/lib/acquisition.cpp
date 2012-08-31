@@ -6,9 +6,6 @@ using namespace std;
 #include <stdlib.h>
 #include <signal.h> // to catch ctrl-c
 #include "acquisition.h"
-#include "fiber.h"
-#include "pci.h"
-#include "CAMAC.h"
 
 void (*call_this_on_ctrl_c)(void) = graceful_exit;
 
@@ -30,6 +27,20 @@ bool logfile_open = false;
 string run_type = "unknown";
 unsigned short int verbosity = 3;
 signed short int temperature_redline = 50;
+unsigned long int event_number_for_fiber[NUMBER_OF_SCRODS_TO_READOUT];
+unsigned long int event_number_from_most_recent_packet[NUMBER_OF_SCRODS_TO_READOUT];
+unsigned char unsigned_char_byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
+unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_WORDS];
+         char     byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
+
+unsigned long int header = 0x00be11e2;
+unsigned long int protocol_freeze_date = 0x20111213;
+unsigned long int packet_type[NUMBER_OF_PACKET_TYPES] = { 0x00c0ffee, 0x0000eada, 0x000f00da, 0x000ab0de, 0xce11b10c };
+unsigned long int footer = 0x62504944;
+unsigned long int packet[NUMBER_OF_WORDS_IN_A_PACKET];
+
+float temperature_float[NUMBER_OF_SCRODS_TO_READOUT];
+unsigned short int feedback_enables_and_goals[6] = { 0, 1950, 0, 0, 0, 0};
 
 string experiment_number_string(void) {
 	string expNN = "exp";
@@ -77,6 +88,7 @@ void close_all_files(void) {
 	//cout << "closing all files" << endl;
 	fprintf(debug, "closing all files\n");
 	close_logfile();
+//#ifdef using_CAMAC
 	if (CAMAC_initialized) {
 		close_CAMAC_controller();
 		close_CAMAC_file();
@@ -84,6 +96,7 @@ void close_all_files(void) {
 			close_CAMAC3377_file();
 		}
 	}
+//#endif
 	close_all_fiber_files();
 	close_pci();
 }
@@ -168,5 +181,222 @@ void wait_for_all_links_to_come_up(unsigned short int bitmask) {
 		}
 		fprintf(warning, "\n");
 	}
+}
+
+// this is the stupid-monkey way of doing this:
+void copy_packet(unsigned long int *source) {
+	for (unsigned long int i=0; i<NUMBER_OF_WORDS_IN_A_PACKET; i++) {
+		packet[i] = source[i];
+	}
+}
+
+void analyze_packet(unsigned long int packet_number, unsigned short int channel) {
+	unsigned long int checksum = 0;
+	unsigned long int packet_number_from_packet;
+	if (packet[PACKET_HEADER_INDEX] != header) {
+		error_string[channel] += " bad header;";
+//		printf(" bad header"); // this should never be called, since matching against a header is how it got here
+		number_of_errors_for_this_quarter_event[channel]++;
+	}
+	if (packet[PACKET_SIZE_INDEX] != NUMBER_OF_WORDS_IN_A_PACKET) {
+		error_string[channel] += " bad packet size;";
+//		printf(" bad packet size");
+		number_of_errors_for_this_quarter_event[channel]++;
+	}
+	if (packet[PACKET_PROTOCOL_FREEZE_DATE_INDEX] != protocol_freeze_date) {
+		error_string[channel] += " bad protocol freeze date;";
+//		printf(" bad protocol freeze date");
+		number_of_errors_for_this_quarter_event[channel]++;
+	}
+	unsigned short int packet_type_is_okay = 0;
+	for (int i=0; i<NUMBER_OF_PACKET_TYPES; i++) {
+		if (packet[PACKET_TYPE_INDEX] == packet_type[i]) {
+			packet_type_is_okay++;
+		}
+	}
+	if (!packet_type_is_okay) {
+		error_string[channel] += " bad packet type;";
+//		printf(" bad packet type");
+		number_of_errors_for_this_quarter_event[channel]++;
+	}
+	packet_number_from_packet = (packet[PACKET_NUMBER_INDEX] & 0x00ff0000) >> 16;
+	if (packet_number_from_packet != packet_number) {
+		error_string[channel] += " packet_number didn't match;";
+		number_of_errors_for_this_quarter_event[channel]++;
+	}
+	if (packet_number==0) {
+		//info_string[channel] += packet[EVENT_NUMBER_INDEX];
+		char temp[256];
+		//sprintf(temp, "event_number[%09ld] ", packet[EVENT_NUMBER_INDEX]);
+		event_number_for_fiber[channel] = packet[EVENT_NUMBER_INDEX];
+//		fprintf(warning, "{%d,%d}", event_number, event_number_for_fiber[channel]);
+		if (event_number_for_fiber[channel] == event_number + 1) {
+			sprintf(temp, "f%d[%0*ld] ", channel, NUMBER_OF_SPACES_TO_RESERVE_FOR_EVENT_NUMBER_CONSOLE_OUTPUT, event_number_for_fiber[channel]);
+		} else {
+			sprintf(temp, "f%d[%s%0*ld%s] ", channel, red, NUMBER_OF_SPACES_TO_RESERVE_FOR_EVENT_NUMBER_CONSOLE_OUTPUT, event_number_for_fiber[channel], white);
+		}
+		info_string[channel] += temp;
+	} else {
+		if (event_number_from_most_recent_packet[channel] != packet[EVENT_NUMBER_INDEX]) {
+			error_string[channel] += " event_number changed in the middle of an event (";
+			error_string[channel] += event_number_from_most_recent_packet[channel];
+			error_string[channel] += " vs ";
+			error_string[channel] += packet[EVENT_NUMBER_INDEX];
+			error_string[channel] += ");";
+			number_of_errors_for_this_quarter_event[channel]++;
+		}
+	}
+	event_number_from_most_recent_packet[channel] = packet[EVENT_NUMBER_INDEX];
+	for (unsigned long int i=0; i<NUMBER_OF_WORDS_IN_A_PACKET; i++) {
+		if (i != PACKET_CHECKSUM_INDEX) {
+			checksum += packet[i];
+		}
+	}
+	checksum &= 0xffffffff;
+	if (0) {
+	if (checksum != packet[PACKET_CHECKSUM_INDEX]) {
+		char temp[256];
+//		error_string[channel] += " checksums do not match;";
+//		error_string[channel] += " checksum is ";
+		sprintf(temp, "0x%08lx", packet[PACKET_CHECKSUM_INDEX]);
+		error_string[channel] += temp;
+		error_string[channel] += " - ";
+//		error_string[channel] += " but should be ";
+		sprintf(temp, "0x%08lx", checksum);
+		error_string[channel] += temp;
+		error_string[channel] += " = ";
+//		error_string[channel] += " the difference is ";
+		sprintf(temp, "0x%08lx", packet[PACKET_CHECKSUM_INDEX]-checksum);
+		error_string[channel] += temp;
+		error_string[channel] += ";";
+//		printf(" checksums do not match");
+		number_of_errors_for_this_quarter_event[channel]++;
+	}
+	}
+	if (packet[PACKET_FOOTER_INDEX] != footer) {
+		error_string[channel] += " bad footer;";
+//		printf(" bad footer");
+		number_of_errors_for_this_quarter_event[channel]++;
+	}
+//	if (error_string[channel].length() && packet_number == 0) {
+	if (error_string[channel].length()) {
+		fprintf(debug2, "%s%s", event_fiber_packet_string.c_str(), error_string[channel].c_str());
+		error_string[channel] = "";
+	}
+	if (info_string[channel].length()) {
+		fprintf(info, "%s", info_string[channel].c_str());
+		info_string[channel] = "";
+	}
+	if (number_of_errors_for_this_quarter_event[channel]) {
+		fprintf(warning, "%ld errors", number_of_errors_for_this_quarter_event[channel]);
+	}
+//	printf("P");
+}
+
+struct timeval start, end, watchdog;
+
+void start_timer(void) {
+	gettimeofday(&start, NULL);	
+	gettimeofday(&watchdog, NULL);	
+}
+
+int watchdog_timer_in_seconds(void) {
+	gettimeofday(&end, NULL);
+	return end.tv_sec - watchdog.tv_sec;
+}
+
+int stop_timer(struct timeval* begin) {
+	if (begin == NULL) {
+		begin = &start;
+	}
+	int sec, usec;
+	gettimeofday(&end, NULL);
+	sec = end.tv_sec - begin->tv_sec;
+	usec = end.tv_usec - begin->tv_usec;
+	return sec*1000000+usec;
+}
+
+int stop_timer_in_seconds(void) {
+	gettimeofday(&end, NULL);
+	return end.tv_sec - start.tv_sec;
+}
+
+float temperature(unsigned short int fiber_channel) {
+	unsigned short int temperature = word_buffer[fiber_channel][140*130+126];
+	//printf("temperature: %d\n", temperature);
+	float ftemperature = temperature/16.0;
+	//printf("temperature of module %d: %3.4f degrees C\n", fiber_channel, ftemperature);
+	return ftemperature;
+}
+
+void show_temperature_for_channel(unsigned short int channel_number) {
+	signed short int t = temperature_float[channel_number];
+	//cout << t << "C ";
+	if (t >= temperature_redline) {
+		fprintf(info, "%s%2dC%s ", red, t, white);
+	} else {
+		fprintf(info, "%2dC ", t);
+	}
+}
+
+void check_and_synchronize_event_numbers(void) {
+	unsigned short int need_to_set_event_number = 0;
+	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+		if (channel_bitmask & (1<<i)) {
+			if (event_number_for_fiber[i] != event_number) {
+				need_to_set_event_number++;
+			}
+		}
+	}
+	if (need_to_set_event_number) {
+		//cout << endl << "error detected in event_number reported back from " << need_to_set_event_number << " SCROD(s).  resetting the event number...";
+		//fprintf(warning, "error detected in event_number from %d SCRODs. resetting...\n", need_to_set_event_number);
+//		fprintf(warning, "resetting event_number...\n");
+		set_event_number(event_number);
+	}
+}
+
+void clear_buffer(unsigned short int channel_number) {
+	for (unsigned long int i=0; i<QUARTER_EVENT_BUFFER_SIZE_IN_WORDS; i++) {
+		word_buffer[channel_number][i] = 0;
+	}
+	for (unsigned long int i=0; i<QUARTER_EVENT_BUFFER_SIZE_IN_BYTES; i++) {
+		byte_buffer[channel_number][i] = 0;
+	}
+}
+
+// this is the stupid-monkey way of doing this:
+void copy_byte_buffer_to_word_buffer(unsigned short int channel) {
+	for (unsigned long int i=0; i<QUARTER_EVENT_BUFFER_SIZE_IN_BYTES; i++) {
+		unsigned_char_byte_buffer[channel][i] = byte_buffer[channel][i];
+	}
+	for (unsigned long int i=0; i<QUARTER_EVENT_BUFFER_SIZE_IN_WORDS; i++) {
+		unsigned long int j = i * NUMBER_OF_BYTES_IN_A_WORD;
+		//if ((word_buffer[channel][i] & 0x00ff0000) >> 16 == 0xbe) {
+		word_buffer[channel][i] =
+			((unsigned_char_byte_buffer[channel][j+3]) << 24) |
+			((unsigned_char_byte_buffer[channel][j+2]) << 16) |
+			((unsigned_char_byte_buffer[channel][j+1]) <<  8) |
+			((unsigned_char_byte_buffer[channel][j+0]) <<  0);
+	}
+}
+
+unsigned long int find_word_position_of_first_header_in_buffer(unsigned short int channel, unsigned long last_word_position_to_look_in_buffer) {
+	unsigned long int index = 22222;
+	if (last_word_position_to_look_in_buffer >= QUARTER_EVENT_BUFFER_SIZE_IN_WORDS) {
+		last_word_position_to_look_in_buffer = QUARTER_EVENT_BUFFER_SIZE_IN_WORDS - 1;
+	}
+	for (unsigned long int i=0; i<=last_word_position_to_look_in_buffer; i++) {
+		if (word_buffer[channel][i] == header) {
+			index = i;
+			if (index > 0) {
+				char temp[256];
+				sprintf(temp, " skipped ahead %ld words to find header;", index);
+				error_string[channel] += temp;
+			}
+			return index;
+		}
+	}
+	return index;
 }
 

@@ -2,12 +2,12 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "pci.h"
+#include "acquisition.h"
 #include "fiber.h"
-#include "command_packet_builder.h"
+#include "packet_builder.h"
+#include "commands.h"
 #include "CAMAC.h"
 #include "config_file.h"
-#include "acquisition.h"
 #include "status_file.h"
 
 int main(void) {
