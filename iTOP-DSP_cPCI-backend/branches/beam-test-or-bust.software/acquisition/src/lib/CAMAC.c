@@ -140,16 +140,22 @@ void close_CAMAC_file_to_prepare_for_next_spill(void) {
 }
 
 int read_data_from_CAMAC_and_write_to_CAMAC_file(void) {
-
 	int bytes_out = 0;
 	for (int i = 0; i < N_crates; ++i) {
-		write(CAMAC_fd, (char *) &crate_serial_number_hex[i], sizeof(unsigned int));
-		int number_of_short_uint_data_words = camac_crate[i]->ReadFcntl(BINARY_FILE, CAMAC_fd);
-		number_of_short_uint_data_words += 2;  //Add 2 for the crate serial number
+		int number_of_short_uint_data_words = 0;
+		#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
+		if (!maybe_should_skip_writing_this_event_to_disk) {
+		#endif
+			write(CAMAC_fd, (char *) &crate_serial_number_hex[i], sizeof(unsigned int));
+			number_of_short_uint_data_words = camac_crate[i]->ReadFcntl(BINARY_FILE, CAMAC_fd);
+			number_of_short_uint_data_words += 2;  //Add 2 for the crate serial number
+			bytes_out += number_of_short_uint_data_words*sizeof(unsigned short int);
+		#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
+		}
+		#endif
 		fprintf(info, "C%d[%d] ", i, number_of_short_uint_data_words*sizeof(unsigned short int));
-		bytes_out += number_of_short_uint_data_words*sizeof(unsigned short int);
 	}
-
+	
 	if (bytes_out <= 0) {
 		return 0;
 	} else {
@@ -471,7 +477,13 @@ int CC_USB::ReadFcntl(OUTPUT_METHOD output_type, int fd) {
 	} else if (output_type == ASCII_FILE) {
 		//TODO
 	} else if (output_type == BINARY_FILE) {
-		write(fd, (char *) buffer, number_of_short_uint_data_words * sizeof(unsigned short int));
+		#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
+		if (!maybe_should_skip_writing_this_event_to_disk) {
+		#endif
+			write(fd, (char *) buffer, number_of_short_uint_data_words * sizeof(unsigned short int));
+		#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
+		}
+		#endif
 	} else if (output_type == NONE) {
 		//Don't do anything
 	}

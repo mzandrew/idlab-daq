@@ -86,6 +86,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 		total_number_of_errors += number_of_errors_for_this_quarter_event[i];
 		number_of_errors_for_this_quarter_event[i] = 0;
 	}
+	maybe_should_skip_writing_this_event_to_disk = 0;
 	while (
 		// bug/future:  this is effectively hardcoding NUMBER_OF_SCRODS_TO_READOUT to 4 here:
 		number_of_bytes_read_so_far[0] < desired_number_of_bytes_to_read[0] ||
@@ -186,7 +187,8 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 					analyze_packet(j, i);
 				}
 				if (number_of_errors_for_this_quarter_event[i]) {
-					fprintf(error, " %ld errors in that quarter event; ", number_of_errors_for_this_quarter_event[i]);
+					fprintf(error, " %ld errors in that quarter event\n", number_of_errors_for_this_quarter_event[i]);
+					maybe_should_skip_writing_this_event_to_disk++;
 				}
 //				printf(" Q ");
 			} else {
@@ -240,13 +242,19 @@ int readout_an_event(bool should_not_return_until_at_least_some_data_comes_throu
 			((i==0) && (channel_bitmask & 0x1))
 			) {
 			if (number_of_bytes_read_so_far[i] && files_are_open) {
-				return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
-				//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
-				if (return_value == -1) {
-					fprintf(error, "\nerror %ld writing to disk", return_value);
-				} else if (return_value > 0) {
-//						printf("\nwrote %d bytes to file", return_value);
+				#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
+				if (!maybe_should_skip_writing_this_event_to_disk) {
+				#endif
+					return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
+					//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
+					if (return_value == -1) {
+						fprintf(error, "\nerror %ld writing to disk", return_value);
+					} else if (return_value > 0) {
+	//						printf("\nwrote %d bytes to file", return_value);
+					}
+				#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
 				}
+				#endif
 			}
 		}
 	}
@@ -277,13 +285,19 @@ void readout_N_events(unsigned long int N) {
 				((i==0) && (channel_bitmask & 0x1))
 				) {
 				if (number_of_bytes_read_so_far[i] && files_are_open) {
-					return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
-					//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
-					if (return_value == -1) {
-						fprintf(error, "\nerror %ld writing to disk", return_value);
-					} else if (return_value > 0) {
-//						printf("\nwrote %d bytes to file", return_value);
+					#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
+					if (!maybe_should_skip_writing_this_event_to_disk) {
+					#endif
+						return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
+						//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
+						if (return_value == -1) {
+							fprintf(error, "\nerror %ld writing to disk", return_value);
+						} else if (return_value > 0) {
+//							printf("\nwrote %d bytes to file", return_value);
+						}
+					#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
 					}
+					#endif
 				}
 			}
 		}

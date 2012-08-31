@@ -1,6 +1,9 @@
 #ifndef acquisition_h
 #define acquisition_h
 
+#define NUMBER_OF_DSP_cPCI_BOARDS_TO_READOUT (1)
+#define DO_NOT_WRITE_BAD_DATA_TO_DISK
+
 using namespace std;
 #include <string>
 
@@ -17,8 +20,6 @@ using namespace std;
 #define NUMBER_OF_COLUMNS_IN_BOARD_STACK (4)
 #define NUMBER_OF_WORDS_IN_A_PACKET (140)
 #define NUMBER_OF_PACKETS_IN_A_QUARTER_EVENT (132)
-
-#define NUMBER_OF_DSP_cPCI_BOARDS_TO_READOUT (1)
 
 #if NUMBER_OF_DSP_cPCI_BOARDS_TO_READOUT==1
 	#define NUMBER_OF_SCRODS_TO_READOUT (4)
@@ -105,6 +106,7 @@ extern ofstream logfile;
 extern bool logfile_open;
 extern unsigned short int verbosity;
 extern signed short int temperature_redline;
+extern unsigned short int maybe_should_skip_writing_this_event_to_disk;
 
 extern unsigned char unsigned_char_byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
 extern unsigned long int number_of_readout_events_for_this_spill;
