@@ -5,7 +5,7 @@ FINAL_OBJECT_FILES0 = bin/prerun bin/pedestal_run bin/laser bin/beamtest
 FINAL_OBJECT_FILES1 = bin/turn_sampling_rate_feedback_off bin/turn_up_Vbias bin/turn_down_Vbias bin/request_a_global_reset bin/tell_status_of_signals bin/camac_only bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/set_look_back bin/cosmic_with_laser
 
 # needed to link all:
-INTERMEDIATE_OBJECT_FILES1 = work/generic.o work/status_file.o work/acquisition.o work/config_file.o work/pci.o work/command_packet_builder.o work/fiber.o work/CAMAC.o work/DebugInfoWarningError.o
+INTERMEDIATE_OBJECT_FILES1 = work/generic.o work/status_file.o work/acquisition.o work/config_file.o work/pci.o work/commands.o work/packet_builder.o work/fiber.o work/CAMAC.o work/DebugInfoWarningError.o
 
 COMPILE_OPTIONS = -D_FILE_OFFSET_BITS=64 -I$(shell pwd)/contrib -I$(shell pwd)/src/lib
 LINK_OPTIONS = -L$(shell pwd)/contrib -laltix -lxx_usb -lusb -Wl,-rpath,$(shell pwd)/contrib
@@ -26,7 +26,9 @@ config:
 	@if [ ! -e data    ]; then mkdir    data; fi
 	@if [ ! -e data/status  ]; then cp scripts/status.dummy data/status; echo; echo "NOTICE:  customize status file \"data/status\" to control exp. #, event #, etc"; echo; fi
 
-all : $(FINAL_OBJECT_FILES0) $(FINAL_OBJECT_FILES1)
+all : essential rest
+rest : $(FINAL_OBJECT_FILES1)
+essential : $(FINAL_OBJECT_FILES0)
 
 work/%.o : src/single-function/%.c*
 	g++ -c $(COMPILE_OPTIONS) $< -o $@

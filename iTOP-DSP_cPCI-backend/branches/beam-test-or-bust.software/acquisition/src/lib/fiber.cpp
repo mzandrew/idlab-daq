@@ -5,22 +5,10 @@ using namespace std;
 #include <fstream>
 #include <sys/stat.h>
 
-#include "pci.h"
-#include "fiber.h"
-#include "command_packet_builder.h"
 #include "acquisition.h"
-#include "DebugInfoWarningError.h"
 
-unsigned long int event_number_for_fiber[NUMBER_OF_SCRODS_TO_READOUT];
-unsigned long int header = 0x00be11e2;
-unsigned long int protocol_freeze_date = 0x20111213;
-unsigned long int packet_type[NUMBER_OF_PACKET_TYPES] = { 0x00c0ffee, 0x0000eada, 0x000f00da, 0x000ab0de, 0xce11b10c };
-unsigned long int footer = 0x62504944;
-unsigned long int packet[NUMBER_OF_WORDS_IN_A_PACKET];
 unsigned long int number_of_errors_for_this_quarter_event[NUMBER_OF_SCRODS_TO_READOUT];
 //unsigned long long int time_for_single_event_readout;
-unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_WORDS];
-         char     byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
 unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned long int total_number_of_errors;
 string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
@@ -34,17 +22,8 @@ bool should_soft_trigger = false;
 
 unsigned long int histogram_of_incomplete_events_560 = 0;
 unsigned long int histogram_of_incomplete_events_other = 0;
-unsigned char unsigned_char_byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
-unsigned long int event_number_from_most_recent_packet[NUMBER_OF_SCRODS_TO_READOUT];
 
 unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel_bitmask, bool should_not_return_until_at_least_some_data_comes_through);
-inline void clear_buffer(unsigned short int channel_number);
-inline void copy_byte_buffer_to_word_buffer(unsigned short int channel);
-void copy_packet(unsigned long int *source);
-void analyze_packet(unsigned long int packet_number, unsigned short int channel);
-inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned short int channel, unsigned long last_word_position_to_look_in_buffer);
-float temperature_float[NUMBER_OF_SCRODS_TO_READOUT];
-unsigned short int feedback_enables_and_goals[6] = { 0, 1950, 0, 0, 0, 0};
 
 void readout_all_pending_data(void) {
 	char buffer2[NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME];
@@ -215,304 +194,6 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 //inline unsigned int read_quarter_event_from_channel(unsigned short int channel) {
 //}
 
-void reset_trigger_flip_flop(void) {
-//	pci.selectChannel(i);
-//	pci.sendData(, 560);
-//	printf("\nsending signal to clear trigger flip flop");
-	pci.sendVetoClear();
-}
-
-inline void clear_buffer(unsigned short int channel_number) {
-	for (unsigned long int i=0; i<QUARTER_EVENT_BUFFER_SIZE_IN_WORDS; i++) {
-		word_buffer[channel_number][i] = 0;
-	}
-	for (unsigned long int i=0; i<QUARTER_EVENT_BUFFER_SIZE_IN_BYTES; i++) {
-		byte_buffer[channel_number][i] = 0;
-	}
-}
-
-// this is the stupid-monkey way of doing this:
-inline void copy_byte_buffer_to_word_buffer(unsigned short int channel) {
-	for (unsigned long int i=0; i<QUARTER_EVENT_BUFFER_SIZE_IN_BYTES; i++) {
-		unsigned_char_byte_buffer[channel][i] = byte_buffer[channel][i];
-	}
-	for (unsigned long int i=0; i<QUARTER_EVENT_BUFFER_SIZE_IN_WORDS; i++) {
-		unsigned long int j = i * NUMBER_OF_BYTES_IN_A_WORD;
-		//if ((word_buffer[channel][i] & 0x00ff0000) >> 16 == 0xbe) {
-		word_buffer[channel][i] =
-			((unsigned_char_byte_buffer[channel][j+3]) << 24) |
-			((unsigned_char_byte_buffer[channel][j+2]) << 16) |
-			((unsigned_char_byte_buffer[channel][j+1]) <<  8) |
-			((unsigned_char_byte_buffer[channel][j+0]) <<  0);
-	}
-}
-
-inline unsigned long int find_word_position_of_first_header_in_buffer(unsigned short int channel, unsigned long last_word_position_to_look_in_buffer) {
-	unsigned long int index = 22222;
-	if (last_word_position_to_look_in_buffer >= QUARTER_EVENT_BUFFER_SIZE_IN_WORDS) {
-		last_word_position_to_look_in_buffer = QUARTER_EVENT_BUFFER_SIZE_IN_WORDS - 1;
-	}
-	for (unsigned long int i=0; i<=last_word_position_to_look_in_buffer; i++) {
-		if (word_buffer[channel][i] == header) {
-			index = i;
-			if (index > 0) {
-				char temp[256];
-				sprintf(temp, " skipped ahead %ld words to find header;", index);
-				error_string[channel] += temp;
-			}
-			return index;
-		}
-	}
-	return index;
-}
-
-// this is the stupid-monkey way of doing this:
-void copy_packet(unsigned long int *source) {
-	for (unsigned long int i=0; i<NUMBER_OF_WORDS_IN_A_PACKET; i++) {
-		packet[i] = source[i];
-	}
-}
-
-void analyze_packet(unsigned long int packet_number, unsigned short int channel) {
-	unsigned long int checksum = 0;
-	unsigned long int packet_number_from_packet;
-	if (packet[PACKET_HEADER_INDEX] != header) {
-		error_string[channel] += " bad header;";
-//		printf(" bad header"); // this should never be called, since matching against a header is how it got here
-		number_of_errors_for_this_quarter_event[channel]++;
-	}
-	if (packet[PACKET_SIZE_INDEX] != NUMBER_OF_WORDS_IN_A_PACKET) {
-		error_string[channel] += " bad packet size;";
-//		printf(" bad packet size");
-		number_of_errors_for_this_quarter_event[channel]++;
-	}
-	if (packet[PACKET_PROTOCOL_FREEZE_DATE_INDEX] != protocol_freeze_date) {
-		error_string[channel] += " bad protocol freeze date;";
-//		printf(" bad protocol freeze date");
-		number_of_errors_for_this_quarter_event[channel]++;
-	}
-	unsigned short int packet_type_is_okay = 0;
-	for (int i=0; i<NUMBER_OF_PACKET_TYPES; i++) {
-		if (packet[PACKET_TYPE_INDEX] == packet_type[i]) {
-			packet_type_is_okay++;
-		}
-	}
-	if (!packet_type_is_okay) {
-		error_string[channel] += " bad packet type;";
-//		printf(" bad packet type");
-		number_of_errors_for_this_quarter_event[channel]++;
-	}
-	packet_number_from_packet = (packet[PACKET_NUMBER_INDEX] & 0x00ff0000) >> 16;
-	if (packet_number_from_packet != packet_number) {
-		error_string[channel] += " packet_number didn't match;";
-		number_of_errors_for_this_quarter_event[channel]++;
-	}
-	if (packet_number==0) {
-		//info_string[channel] += packet[EVENT_NUMBER_INDEX];
-		char temp[256];
-		//sprintf(temp, "event_number[%09ld] ", packet[EVENT_NUMBER_INDEX]);
-		event_number_for_fiber[channel] = packet[EVENT_NUMBER_INDEX];
-//		fprintf(warning, "{%d,%d}", event_number, event_number_for_fiber[channel]);
-		if (event_number_for_fiber[channel] == event_number + 1) {
-			sprintf(temp, "f%d[%0*ld] ", channel, NUMBER_OF_SPACES_TO_RESERVE_FOR_EVENT_NUMBER_CONSOLE_OUTPUT, event_number_for_fiber[channel]);
-		} else {
-			sprintf(temp, "f%d[%s%0*ld%s] ", channel, red, NUMBER_OF_SPACES_TO_RESERVE_FOR_EVENT_NUMBER_CONSOLE_OUTPUT, event_number_for_fiber[channel], white);
-		}
-		info_string[channel] += temp;
-	} else {
-		if (event_number_from_most_recent_packet[channel] != packet[EVENT_NUMBER_INDEX]) {
-			error_string[channel] += " event_number changed in the middle of an event (";
-			error_string[channel] += event_number_from_most_recent_packet[channel];
-			error_string[channel] += " vs ";
-			error_string[channel] += packet[EVENT_NUMBER_INDEX];
-			error_string[channel] += ");";
-			number_of_errors_for_this_quarter_event[channel]++;
-		}
-	}
-	event_number_from_most_recent_packet[channel] = packet[EVENT_NUMBER_INDEX];
-	for (unsigned long int i=0; i<NUMBER_OF_WORDS_IN_A_PACKET; i++) {
-		if (i != PACKET_CHECKSUM_INDEX) {
-			checksum += packet[i];
-		}
-	}
-	checksum &= 0xffffffff;
-	if (0) {
-	if (checksum != packet[PACKET_CHECKSUM_INDEX]) {
-		char temp[256];
-//		error_string[channel] += " checksums do not match;";
-//		error_string[channel] += " checksum is ";
-		sprintf(temp, "0x%08lx", packet[PACKET_CHECKSUM_INDEX]);
-		error_string[channel] += temp;
-		error_string[channel] += " - ";
-//		error_string[channel] += " but should be ";
-		sprintf(temp, "0x%08lx", checksum);
-		error_string[channel] += temp;
-		error_string[channel] += " = ";
-//		error_string[channel] += " the difference is ";
-		sprintf(temp, "0x%08lx", packet[PACKET_CHECKSUM_INDEX]-checksum);
-		error_string[channel] += temp;
-		error_string[channel] += ";";
-//		printf(" checksums do not match");
-		number_of_errors_for_this_quarter_event[channel]++;
-	}
-	}
-	if (packet[PACKET_FOOTER_INDEX] != footer) {
-		error_string[channel] += " bad footer;";
-//		printf(" bad footer");
-		number_of_errors_for_this_quarter_event[channel]++;
-	}
-//	if (error_string[channel].length() && packet_number == 0) {
-	if (error_string[channel].length()) {
-		fprintf(debug2, "%s%s", event_fiber_packet_string.c_str(), error_string[channel].c_str());
-		error_string[channel] = "";
-	}
-	if (info_string[channel].length()) {
-		fprintf(info, "%s", info_string[channel].c_str());
-		info_string[channel] = "";
-	}
-	if (number_of_errors_for_this_quarter_event[channel]) {
-		fprintf(warning, "%ld errors", number_of_errors_for_this_quarter_event[channel]);
-	}
-//	printf("P");
-}
-
-struct timeval start, end, watchdog;
-
-void start_timer(void) {
-	gettimeofday(&start, NULL);	
-	gettimeofday(&watchdog, NULL);	
-}
-
-int watchdog_timer_in_seconds(void) {
-	gettimeofday(&end, NULL);
-	return end.tv_sec - watchdog.tv_sec;
-}
-
-int stop_timer(struct timeval* begin) {
-	if (begin == NULL) {
-		begin = &start;
-	}
-	int sec, usec;
-	gettimeofday(&end, NULL);
-	sec = end.tv_sec - begin->tv_sec;
-	usec = end.tv_usec - begin->tv_usec;
-	return sec*1000000+usec;
-}
-
-int stop_timer_in_seconds(void) {
-	gettimeofday(&end, NULL);
-	return end.tv_sec - start.tv_sec;
-}
-
-void enable_sampling_rate_feedback(void) {
-	fprintf(debug, "enabling sampling rate feedback\n");
-	feedback_enables_and_goals[3] = 0xffff;
-	command_arguments_type command_arguments;
-	for (int i=0; i<6; i++) {
-		command_arguments.uint32[i] = feedback_enables_and_goals[i];
-	}
-	send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
-}
-
-void disable_sampling_rate_feedback(void) {
-	fprintf(debug, "disabling sampling rate feedback\n");
-	feedback_enables_and_goals[3] = 0;
-	command_arguments_type command_arguments;
-	for (int i=0; i<6; i++) {
-		command_arguments.uint32[i] = feedback_enables_and_goals[i];
-	}
-	send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
-}
-
-void setup_feedback_enables_and_goals(unsigned short int enable) {
-// [3] = enable/disable sampling rate feedback (one bit per ASIC)
-// [4] = wilkinson feedback (one bit per ASIC)
-// [5] = trigger width feedback (one bit per ASIC)
-	fprintf(debug, "setting up feedback loops\n");
-	if (enable == 0) {
-		for (int i=3; i<6; i++) {
-			feedback_enables_and_goals[i] = 0x0000;
-		}
-	} else {
-		for (int i=3; i<6; i++) {
-			feedback_enables_and_goals[i] = 0xffff;
-		}
-	}
-	command_arguments_type command_arguments;
-	for (int i=0; i<6; i++) {
-		command_arguments.uint32[i] = feedback_enables_and_goals[i];
-	}
-	send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
-}
-
-void send_soft_trigger_request_command_packet(void) {
-//	printf("sending soft trigger command\n");
-	send_command_packet_to_all_enabled_channels(0x19321965, 0x00000000); // force trigger
-}
-
-void send_front_end_trigger_veto_clear(void) {
-	send_command_packet_to_all_enabled_channels(0x0000C1EA, 0x00000000); // clear the trigger veto
-}
-
-void check_and_synchronize_event_numbers(void) {
-	unsigned short int need_to_set_event_number = 0;
-	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
-		if (channel_bitmask & (1<<i)) {
-			if (event_number_for_fiber[i] != event_number) {
-				need_to_set_event_number++;
-			}
-		}
-	}
-	if (need_to_set_event_number) {
-		//cout << endl << "error detected in event_number reported back from " << need_to_set_event_number << " SCROD(s).  resetting the event number...";
-		//fprintf(warning, "error detected in event_number from %d SCRODs. resetting...\n", need_to_set_event_number);
-//		fprintf(warning, "resetting event_number...\n");
-		set_event_number(event_number);
-	}
-}
-
-void set_event_number(unsigned long int event_number) {
-	fprintf(debug, "setting event number to %ld\n", event_number);
-	send_command_packet_to_all_enabled_channels(0xe0000000, event_number); // set event number
-//	usleep(50000);
-}
-
-void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window) {
-	if (start_window%2!=0) {
-		fprintf(error, "ERROR:  start_window must be even (trying to set it to %ld)\n", start_window);
-		exit(7);
-	}
-	if (end_window%2==0) {
-		fprintf(error, "ERROR:  end_window must be odd (trying to set it to %ld)\n", end_window);
-		exit(8);
-	}
-	if (start_window>end_window) {
-		fprintf(error, "ERROR:  start_window (%ld) must be less than end_window (%ld)\n", start_window, end_window);
-		exit(9);
-	}
-	fprintf(debug, "setting start_window to %ld\n", start_window);
-	send_command_packet_to_all_enabled_channels(0x000001ff, start_window); // set start window
-	usleep(10000);
-	fprintf(debug, "setting end_window to %ld\n", end_window);
-	send_command_packet_to_all_enabled_channels(0x000101ff, end_window); // set end window
-}
-
-void set_number_of_windows_to_look_back(unsigned long int look_back) {
-	fprintf(debug, "setting number of look back windows to %ld\n", look_back);
-	send_command_packet_to_all_enabled_channels(0x0100cbac, look_back);
-}
-
-void global_reset(void) {
-	fprintf(debug, "sending global reset\n");
-	send_command_packet_to_all_enabled_channels(0x33333333, 0x00000000); // global reset
-	usleep(500000); // wait for FPGA to reset everything and bring fiber link up again
-}
-
-void clear_scaler_counters(void) {
-//	printf("clearing scaler counters\n");
-	send_command_packet_to_all_enabled_channels(0x01001500, 0x00000000); // clear scaler counters
-}
-
 int readout_an_event(bool should_not_return_until_at_least_some_data_comes_through) {
 	if (should_soft_trigger) {
 		send_soft_trigger_request_command_packet();
@@ -605,18 +286,18 @@ void readout_N_events(unsigned long int N) {
 int open_files_for_output_and_read_N_events(unsigned long int N) {
 	open_logfile();
 	open_files_for_all_enabled_fiber_channels();
-
+	
 //	if (stdout_ch != -1)
 //		fd[stdout_ch] = STDOUT_FILENO;
-
+	
 //	long long readtime[4] = {0,0,0,0}, writetime[4] = {0,0,0,0};  // time to read/write, rolling
-
+	
 	for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
 		number_of_errors_for_this_quarter_event[i] = 0;
 	}
-
+	
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+	
 //	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x00000000); // set trigger thresholds for all channels
 //	send_command_packet_to_all_enabled_channels(0xeeeee01a, 0x0000077b); // set trigger thresholds for all channels
 //	send_command_packet_to_all_enabled_channels(0x5555b1a5, 0x00000000); // set Vbias values for all channels
@@ -626,13 +307,13 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000001ff); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000003ff); // set all DACs to given argument
 //	send_command_packet_to_all_enabled_channels(0x4bac2dac, 0x000005ff); // set all DACs to given argument
-
+	
 //	global_reset();
 //	clear_scaler_counters();
 //	set_event_number(0x00000008);
 //	set_start_and_end_windows(0x00000000, 0x00000003);
 //	set_start_and_end_windows(0x00000110, 0x00000113);
-
+	
 //	usleep(10000);
 //	readout_all_pending_data();
 //	usleep(10000);
@@ -640,9 +321,9 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 //		send_soft_trigger_request_command_packet();
 //		usleep(10000);
 //	}
-
+	
 	readout_N_events(N);
-
+	
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	fprintf(info, "\n");
 	fprintf(info, "\ntotal number of readout events = %ld", total_number_of_readout_events);
@@ -650,20 +331,8 @@ int open_files_for_output_and_read_N_events(unsigned long int N) {
 	//printf("\nnumber of times exactly one packet was missing = %d", histogram_of_incomplete_events_560);
 	//printf("\nnumber of times some other number of words was missing = %d", histogram_of_incomplete_events_other);
 	fprintf(info, "\n");
-
+	
 	close_all_fiber_files();
-}
-
-void set_some_DACs_to(unsigned short int value, unsigned short int channel_bitmask) {
-	send_command_packet_to_some_enabled_channels(0x4bac2dac, value, channel_bitmask); // set all DACs to given argument
-}
-
-void set_all_DACs_to(unsigned short int value) {
-	send_command_packet_to_all_enabled_channels(0x4bac2dac, value); // set all DACs to given argument
-}
-
-void set_all_DACs_to_built_in_nominal_values(void) {
-	send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
 }
 
 void setup_filenames_for_fiber(void) {
@@ -737,6 +406,13 @@ void close_all_fiber_files(void) {
 	files_are_open = false;
 }
 
+void reset_trigger_flip_flop(void) {
+//	pci.selectChannel(i);
+//	pci.sendData(, 560);
+//	printf("\nsending signal to clear trigger flip flop");
+	pci.sendVetoClear();
+}
+
 void wait_for_spill_to_finish(void) {
 	while (spill_is_active()) {
 		cout << "waiting for spill to finish..." << endl;
@@ -757,23 +433,5 @@ bool spill_is_active(void) {
 	bool signal_1 = signals & (1<<1);
 	//cout << "signal_1: " << signal_1 << endl;
 	return signal_1;
-}
-
-float temperature(unsigned short int fiber_channel) {
-	unsigned short int temperature = word_buffer[fiber_channel][140*130+126];
-	//printf("temperature: %d\n", temperature);
-	float ftemperature = temperature/16.0;
-	//printf("temperature of module %d: %3.4f degrees C\n", fiber_channel, ftemperature);
-	return ftemperature;
-}
-
-void show_temperature_for_channel(unsigned short int channel_number) {
-	signed short int t = temperature_float[channel_number];
-	//cout << t << "C ";
-	if (t >= temperature_redline) {
-		fprintf(info, "%s%2dC%s ", red, t, white);
-	} else {
-		fprintf(info, "%2dC ", t);
-	}
 }
 

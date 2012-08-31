@@ -1,8 +1,7 @@
-#ifndef command_packet_builder
-#define command_packet_builder
+#ifndef packet_builder_h
+#define packet_builder_h
 
-#include "pci.h"
-#include "fiber.h"
+#include "acquisition.h"
 
 void generate_skeleton_command_packet(void);
 unsigned long int calculate_checksum_and_insert_into_packet(unsigned long int* packet);
@@ -11,9 +10,6 @@ void send_DAC_setting_command(void);
 void generate_command_packet(unsigned long int command, unsigned long int argument);
 void send_command_packet_to_all_enabled_channels(unsigned long int command, unsigned long int argument);
 void send_command_packet_to_some_enabled_channels(unsigned long int command, unsigned long int argument, unsigned short int channel_bitmask);
-
-#define NUMBER_OF_ROWS_IN_BOARD_STACK (4)
-#define NUMBER_OF_COLUMNS_IN_BOARD_STACK (4)
 
 struct DAC_settings_type {
 	unsigned short trigger_test_channel_threshold  [NUMBER_OF_ROWS_IN_BOARD_STACK][NUMBER_OF_COLUMNS_IN_BOARD_STACK];
@@ -34,6 +30,7 @@ struct DAC_settings_type {
 //	unsigned short spare                           [NUMBER_OF_ROWS_IN_BOARD_STACK][NUMBER_OF_COLUMNS_IN_BOARD_STACK];
 };
 
+#define NUMBER_OF_PACKET_TYPES (5)
 extern DAC_settings_type DAC_settings;
 extern char *command_packet;
 extern unsigned long int header;
