@@ -371,7 +371,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 		info_string[channel] = "";
 	}
 	if (number_of_errors_for_this_quarter_event[channel]) {
-		fprintf(warning, "%d errors", number_of_errors_for_this_quarter_event[channel]);
+		fprintf(warning, "%ld errors", number_of_errors_for_this_quarter_event[channel]);
 	}
 //	printf("P");
 }
