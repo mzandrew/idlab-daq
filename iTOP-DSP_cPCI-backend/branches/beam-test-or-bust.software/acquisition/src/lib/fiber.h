@@ -1,15 +1,9 @@
-#ifndef fiber_readout
-#define fiber_readout
+#ifndef fiber_h
+#define fiber_h
 
 #include <string>
+#include "pci.h"
 
-// defined here so there aren't a bunch of magic fours hanging around in the code:
-#define NUMBER_OF_BYTES_IN_A_WORD (4)
-
-// configuration input for our system:
-#define NUMBER_OF_WORDS_IN_A_PACKET (140)
-#define NUMBER_OF_PACKETS_IN_A_QUARTER_EVENT (132)
-#define NUMBER_OF_SCRODS_TO_READOUT (4)
 #define SUGGESTED_NUMBER_OF_PARTS_IN_WHICH_TO_READ_EACH_QUARTER_EVENT (1.8)
 
 #define NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS (1)
@@ -18,29 +12,10 @@
 //#define NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_EVENTS (0)
 #define NUMBER_OF_MICROSECONDS_TO_WAIT_INBETWEEN_PARTIAL_QUARTER_EVENTS (0)
 
-// calculated (values in units of BYTES are calculated from those given in WORDS):
-#define QUARTER_EVENT_SIZE_IN_WORDS (NUMBER_OF_WORDS_IN_A_PACKET*NUMBER_OF_PACKETS_IN_A_QUARTER_EVENT)
-#define QUARTER_EVENT_SIZE_IN_BYTES (QUARTER_EVENT_SIZE_IN_WORDS*NUMBER_OF_BYTES_IN_A_WORD)
-#define WHOLE_EVENT_SIZE_IN_WORDS (NUMBER_OF_SCRODS_TO_READOUT*QUARTER_EVENT_SIZE_IN_BYTES)
-#define WHOLE_EVENT_SIZE_IN_BYTES (WHOLE_EVENT_SIZE_IN_WORDS*NUMBER_OF_BYTES_IN_A_WORD)
 #define MAXIMUM_SIZE_TO_TRY_TO_READ_AT_ONE_TIME_IN_WORDS (25067) // measured with readout_all_pending_data.cpp
 #define MAXIMUM_SIZE_TO_TRY_TO_READ_AT_ONE_TIME_IN_BYTES (MAXIMUM_SIZE_TO_TRY_TO_READ_AT_ONE_TIME_IN_WORDS*NUMBER_OF_BYTES_IN_A_WORD)
 #define PREFERRED_SIZE_TO_TRY_TO_READ_AT_ONE_TIME_IN_WORDS (QUARTER_EVENT_SIZE_IN_WORDS/SUGGESTED_NUMBER_OF_PARTS_IN_WHICH_TO_READ_EACH_QUARTER_EVENT)
 #define PREFERRED_SIZE_TO_TRY_TO_READ_AT_ONE_TIME_IN_BYTES (PREFERRED_SIZE_TO_TRY_TO_READ_AT_ONE_TIME_IN_WORDS*NUMBER_OF_BYTES_IN_A_WORD)
-
-#define QUARTER_EVENT_BUFFER_SIZE_IN_WORDS (22000)
-#define QUARTER_EVENT_BUFFER_SIZE_IN_BYTES (QUARTER_EVENT_BUFFER_SIZE_IN_WORDS*NUMBER_OF_BYTES_IN_A_WORD)
-
-#define SINGLE_PACKET_BUFFER_SIZE_IN_BYTES (NUMBER_OF_WORDS_IN_A_PACKET*NUMBER_OF_BYTES_IN_A_WORD)
-
-#define PACKET_HEADER_INDEX (0)
-#define PACKET_SIZE_INDEX (1)
-#define PACKET_PROTOCOL_FREEZE_DATE_INDEX (2)
-#define PACKET_TYPE_INDEX (3)
-#define EVENT_NUMBER_INDEX (4)
-#define PACKET_NUMBER_INDEX (5)
-#define PACKET_CHECKSUM_INDEX (NUMBER_OF_WORDS_IN_A_PACKET-2)
-#define PACKET_FOOTER_INDEX (NUMBER_OF_WORDS_IN_A_PACKET-1)
 
 extern unsigned long int packet[NUMBER_OF_WORDS_IN_A_PACKET];
 extern unsigned long int number_of_errors_for_this_quarter_event[NUMBER_OF_SCRODS_TO_READOUT];
@@ -56,50 +31,24 @@ extern unsigned long int total_number_of_readout_events;
 extern string filename[NUMBER_OF_SCRODS_TO_READOUT];
 extern bool files_are_open;
 extern bool should_soft_trigger;
-extern unsigned long int number_of_readout_events_for_this_spill;
 extern unsigned short int feedback_enables_and_goals[6];
 
 #define NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME (100256)
 void readout_all_pending_data(void);
 
-#define NUMBER_OF_PACKET_TYPES (5)
-
-#include <sys/time.h>
-void start_timer(void);
-int watchdog_timer_in_seconds(void);
-int stop_timer(struct timeval* begin = NULL);
-int stop_timer_in_seconds(void);
-extern struct timeval start, end, watchdog;
-extern float temperature_float[NUMBER_OF_SCRODS_TO_READOUT];
-
 void reset_trigger_flip_flop(void);
-void send_soft_trigger_request_command_packet(void);
-void send_front_end_trigger_veto_clear(void);
-void check_and_synchronize_event_numbers(void);
-void set_event_number(unsigned long int event_number);
-void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
-void set_number_of_windows_to_look_back(unsigned long int look_back);
-void global_reset(void);
-void clear_scaler_counters(void);
+
 int readout_an_event(bool should_not_return_until_at_least_some_data_comes_through);
 void readout_N_events(unsigned long int N);
 int open_files_for_output_and_read_N_events(unsigned long int N);
 void open_files_for_all_enabled_fiber_channels(void);
 void close_all_fiber_files(void);
 void setup_filenames_for_fiber(void);
-void set_some_DACs_to(unsigned short int value, unsigned short int channel_bitmask);
-void set_all_DACs_to(unsigned short int value);
-void set_all_DACs_to_built_in_nominal_values(void);
-void enable_sampling_rate_feedback(void);
-void disable_sampling_rate_feedback(void);
-void setup_feedback_enables_and_goals(unsigned short int enable);
 void wait_for_start_of_spill(void);
 void wait_for_spill_to_finish(void);
 bool spill_is_active(void);
 void close_fiber_files_to_prepare_for_next_spill(void);
 void open_fiber_files_to_prepare_for_next_spill(void);
-float temperature(unsigned short int fiber_channel);
-void show_temperature_for_channel(unsigned short int channel_number);
 
 #endif
 
