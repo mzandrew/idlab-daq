@@ -13,11 +13,20 @@ using namespace std;
 #define NUMBER_OF_BYTES_IN_A_WORD (4)
 
 // configuration input for our system:
-#define NUMBER_OF_SCRODS_TO_READOUT (4)
 #define NUMBER_OF_ROWS_IN_BOARD_STACK (4)
 #define NUMBER_OF_COLUMNS_IN_BOARD_STACK (4)
 #define NUMBER_OF_WORDS_IN_A_PACKET (140)
 #define NUMBER_OF_PACKETS_IN_A_QUARTER_EVENT (132)
+
+#define NUMBER_OF_DSP_cPCI_BOARDS_TO_READOUT (1)
+
+#if NUMBER_OF_DSP_cPCI_BOARDS_TO_READOUT==1
+	#define NUMBER_OF_SCRODS_TO_READOUT (4)
+#else
+	#if NUMBER_OF_DSP_cPCI_BOARDS_TO_READOUT==2
+		#define NUMBER_OF_SCRODS_TO_READOUT (8)
+	#endif
+#endif
 
 // calculated (values in units of BYTES are calculated from those given in WORDS):
 #define QUARTER_EVENT_SIZE_IN_WORDS (NUMBER_OF_WORDS_IN_A_PACKET*NUMBER_OF_PACKETS_IN_A_QUARTER_EVENT)
