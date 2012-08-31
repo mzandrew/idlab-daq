@@ -7,12 +7,21 @@ using namespace std;
 
 #include "acquisition.h"
 
+#if NUMBER_OF_SCRODS_TO_READOUT==4
+	int fd[NUMBER_OF_SCRODS_TO_READOUT] = {-7, -7, -7, -7}; // file descriptors for output datafiles; -7 is so it will not try to close files that seem open initially
+#else
+	#if NUMBER_OF_SCRODS_TO_READOUT==8
+		int fd[NUMBER_OF_SCRODS_TO_READOUT] = {-7, -7, -7, -7, -7, -7, -7, -7}; // file descriptors for output datafiles; -7 is so it will not try to close files that seem open initially
+	#else
+		#error "can't handle that number of DSP_cPCI boards"
+	#endif
+#endif
+
 unsigned long int number_of_errors_for_this_quarter_event[NUMBER_OF_SCRODS_TO_READOUT];
 //unsigned long long int time_for_single_event_readout;
 unsigned long int number_of_bytes_read_so_far[NUMBER_OF_SCRODS_TO_READOUT];
 unsigned long int total_number_of_errors;
 string event_fiber_packet_string, info_string[NUMBER_OF_SCRODS_TO_READOUT], error_string[NUMBER_OF_SCRODS_TO_READOUT];
-int fd[NUMBER_OF_SCRODS_TO_READOUT] = {-7, -7, -7, -7}; // file descriptors for output datafiles; -7 is so it will not try to close files that seem open initially
 unsigned long int number_of_readout_events_for_this_spill = 0;
 unsigned long int total_number_of_readout_events = 0;
 string fiber_filename[NUMBER_OF_SCRODS_TO_READOUT];
