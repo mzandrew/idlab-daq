@@ -32,6 +32,7 @@ unsigned long int event_number_from_most_recent_packet[NUMBER_OF_SCRODS_TO_READO
 unsigned char unsigned_char_byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
 unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_WORDS];
          char     byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
+unsigned short int maybe_should_skip_writing_this_event_to_disk = 0;
 
 unsigned long int header = 0x00be11e2;
 unsigned long int protocol_freeze_date = 0x20111213;
@@ -288,7 +289,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 		info_string[channel] = "";
 	}
 	if (number_of_errors_for_this_quarter_event[channel]) {
-		fprintf(warning, "%ld errors", number_of_errors_for_this_quarter_event[channel]);
+		fprintf(warning, "%ld errors for this QE\n", number_of_errors_for_this_quarter_event[channel]);
 	}
 //	printf("P");
 }
