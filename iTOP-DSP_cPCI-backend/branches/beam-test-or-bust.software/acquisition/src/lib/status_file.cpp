@@ -131,7 +131,7 @@ void read_status_file(void) {
 		} else if (!strncmp(key.c_str(), "event_number", MAX_STRING_LENGTH)) {
 			event_number = atoi(value.c_str());
 			//cout << "setting event_number to " << event_number << endl;
-			fprintf(debug, "setting event_number to %d", event_number);
+			fprintf(debug, "setting event_number to %ld", event_number);
 //		} else if (!strncmp(key.c_str(), "", MAX_STRING_LENGTH)) {
 		} else {
 			//cout << "unhandled key/value pair: " << key.c_str() << " = " << value.c_str() << endl;
