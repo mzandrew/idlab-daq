@@ -331,7 +331,7 @@ float temperature(unsigned short int fiber_channel) {
 }
 
 void show_temperature_for_channel(unsigned short int channel_number) {
-	signed short int t = temperature_float[channel_number];
+	signed short int t = (signed short int) temperature_float[channel_number];
 	//cout << t << "C ";
 	if (t >= temperature_redline) {
 		fprintf(info, "%s%2dC%s ", red, t, white);

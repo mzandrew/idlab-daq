@@ -32,7 +32,7 @@ bool should_soft_trigger = false;
 unsigned long int histogram_of_incomplete_events_560 = 0;
 unsigned long int histogram_of_incomplete_events_other = 0;
 
-unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel_bitmask, bool should_not_return_until_at_least_some_data_comes_through);
+int read_quarter_events_from_all_enabled_channels(unsigned char channel_bitmask, bool should_not_return_until_at_least_some_data_comes_through);
 
 void readout_all_pending_data(void) {
 	char buffer2[NUMBER_OF_BYTES_TO_READ_AT_ONE_TIME];
@@ -55,7 +55,7 @@ void readout_all_pending_data(void) {
 	fprintf(debug, "\n\n");
 }
 
-unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel_bitmask, bool should_not_return_until_at_least_some_data_comes_through) {
+int read_quarter_events_from_all_enabled_channels(unsigned char channel_bitmask, bool should_not_return_until_at_least_some_data_comes_through) {
 	unsigned long int desired_number_of_bytes_to_read_right_now[NUMBER_OF_SCRODS_TO_READOUT];
 	unsigned long int desired_number_of_bytes_to_read[NUMBER_OF_SCRODS_TO_READOUT];
 	unsigned short int word_position_of_first_header[NUMBER_OF_SCRODS_TO_READOUT];
@@ -210,7 +210,7 @@ int readout_an_event(bool should_not_return_until_at_least_some_data_comes_throu
 	if (should_soft_trigger) {
 		send_soft_trigger_request_command_packet();
 	}
-	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, should_not_return_until_at_least_some_data_comes_through); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
+	int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, should_not_return_until_at_least_some_data_comes_through); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 //	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, false); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 //	long int return_value = read_quarter_events_from_all_enabled_channels(channel_bitmask, true); // should_wait = true for cosmic or first data from a spill/fill structure, rest should be should_wait = false
 	if (return_value == 0) {
@@ -249,7 +249,7 @@ int readout_an_event(bool should_not_return_until_at_least_some_data_comes_throu
 					return_value = write(fd[i], byte_buffer[i], number_of_bytes_read_so_far[i]);
 					//return_value = write(fd[i], byte_buffer[i], QUARTER_EVENT_SIZE_IN_BYTES);
 					if (return_value == -1) {
-						fprintf(error, "\nerror %ld writing to disk", return_value);
+						fprintf(error, "\nerror %d writing to disk", return_value);
 					} else if (return_value > 0) {
 	//						printf("\nwrote %d bytes to file", return_value);
 					}

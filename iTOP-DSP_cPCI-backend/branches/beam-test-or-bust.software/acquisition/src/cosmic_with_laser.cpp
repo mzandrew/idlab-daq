@@ -3,12 +3,6 @@
 #include <stdio.h>
 #include <iostream>
 #include "acquisition.h"
-#include "fiber.h"
-#include "packet_builder.h"
-#include "commands.h"
-#include "CAMAC.h"
-#include "config_file.h"
-#include "status_file.h"
 
 int main(void) {
 	// setup:
@@ -70,7 +64,6 @@ int main(void) {
 	int number_of_seconds_since_last_event = 0;
 	start_timer();
 	while (1) {
-
 		setup_to_catch_ctrl_c(update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files);
 		if (!first_time) {
 			increment_spill_number();
@@ -103,6 +96,11 @@ int main(void) {
 //				printf("\n");
 				gettimeofday(&watchdog, NULL);
 				send_front_end_trigger_veto_clear();
+				for (unsigned short int i=0; i<NUMBER_OF_SCRODS_TO_READOUT; i++) {
+					if (channel_bitmask & (1<<i)) {
+						show_temperature_for_channel(i);
+					}
+				}
 				fprintf(info, "\n");
 				//cout << endl;
 			}
