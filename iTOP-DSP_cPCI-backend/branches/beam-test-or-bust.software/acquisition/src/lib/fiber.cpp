@@ -194,6 +194,7 @@ unsigned int read_quarter_events_from_all_enabled_channels(unsigned char channel
 			} else {
 				//fprintf(info, "          "); // corresponds to printf(" f%d[%06ld]"... in analyze_packet()
 				fprintf(info, "%sf%d[%*s]%s ", red, i, NUMBER_OF_SPACES_TO_RESERVE_FOR_EVENT_NUMBER_CONSOLE_OUTPUT, "", white); // corresponds to printf(" f%d[%0*ld]"... in analyze_packet()
+				maybe_should_skip_writing_this_event_to_disk++;
 			}
 		}
 	}
@@ -253,6 +254,8 @@ int readout_an_event(bool should_not_return_until_at_least_some_data_comes_throu
 	//						printf("\nwrote %d bytes to file", return_value);
 					}
 				#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
+				} else {
+					fprintf(error, " event not written to disk\n");
 				}
 				#endif
 			}
@@ -296,6 +299,8 @@ void readout_N_events(unsigned long int N) {
 //							printf("\nwrote %d bytes to file", return_value);
 						}
 					#ifdef DO_NOT_WRITE_BAD_DATA_TO_DISK
+					} else {
+						fprintf(error, " event not written to disk\n");
 					}
 					#endif
 				}
