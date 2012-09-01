@@ -22,7 +22,7 @@ int main(void) {
 	global_reset();
 	float wait_duration = 10;
 	fprintf(info, "waiting %.2f seconds for eeprom to be read...\n", wait_duration);
-	usleep(wait_duration * 1000000.0);
+	usleep((unsigned int)(wait_duration * 1000000.0));
 	//fprintf(info, "press a key after all fiber links are up (steady green)\n");
 	//getchar();
 	wait_for_all_links_to_come_up(channel_bitmask);
@@ -112,7 +112,7 @@ int main(void) {
 			} else {
 				clear_scaler_counters();
 			}
-		usleep(wait_duration * 1000000.0);
+		usleep((unsigned int)(wait_duration * 1000000.0));
 		//unsigned short old_verbosity = change_verbosity(4);
 		disk_space_free(location_of_raw_datafiles);
 		//unsigned long long int dsf = disk_space_free(location_of_raw_datafiles);
