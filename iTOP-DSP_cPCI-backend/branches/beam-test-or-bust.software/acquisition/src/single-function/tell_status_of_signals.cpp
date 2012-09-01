@@ -9,6 +9,7 @@ int main(void) {
 	parse_config_file(".config");
 	setup_pci(card_id);
 	unsigned long int signals = pci.readSignals();
+	fprintf(info, "%d\n", signals);
 	close_pci();
 
 	return 0;

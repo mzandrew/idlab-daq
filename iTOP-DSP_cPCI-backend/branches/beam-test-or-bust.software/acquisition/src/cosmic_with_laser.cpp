@@ -42,11 +42,12 @@ int main(void) {
 	set_start_and_end_windows(beginning_window, ending_window);
 	usleep(50000);
 //	set_number_of_windows_to_look_back(6);
-	set_number_of_windows_to_look_back(16);
+	set_number_of_windows_to_look_back(18); //Last known working with laser triggering itself
 	usleep(50000);
 	set_event_number(event_number);
 	send_front_end_trigger_veto_clear();
 	reset_trigger_flip_flop();
+	clear_scaler_counters();
 
 	// Cosmic running should not require a software trigger
 	should_soft_trigger = false;
@@ -57,7 +58,7 @@ int main(void) {
 
 	// actual running:
 //	unsigned int threshold = threshold_scan_low_limit;
-	send_command_packet_to_all_enabled_channels(0xeeeee01a, 1950);
+	send_command_packet_to_all_enabled_channels(0xeeeee01a, 1850); // change threshold for all channels
 //	bool spill_was_just_active = false;
 	bool first_time = true;
 	int number_of_seconds_this_spill_has_been_active = 0;
@@ -101,6 +102,8 @@ int main(void) {
 						show_temperature_for_channel(i);
 					}
 				}
+				reset_trigger_flip_flop();
+				clear_scaler_counters();
 				fprintf(info, "\n");
 				//cout << endl;
 			}
@@ -115,6 +118,7 @@ int main(void) {
 			if (number_of_seconds_since_last_event > MAXIMUM_NUMBER_OF_SECONDS_BEFORE_FORCING_CLEAR) {
 				cout << "No events seen in " << MAXIMUM_NUMBER_OF_SECONDS_BEFORE_FORCING_CLEAR << " seconds... clearing." << endl;
 				send_front_end_trigger_veto_clear();
+				reset_trigger_flip_flop();
 				gettimeofday(&watchdog, NULL);
 			}
 		}
