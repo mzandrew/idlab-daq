@@ -1,0 +1,13 @@
+[Inputs]
+clk_i
+reset_i
+start_pulse_i
+end_pulse_i
+[Outputs]
+start_pulse_o
+end_pulse_o
+start_end_pulse_o
+[BiDir]
+[ATTRIBUTES]
+VeriModel monitor_pulse_start_end
+

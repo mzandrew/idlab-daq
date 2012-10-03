@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symbol version="7" name="Aurora_unit_2">
+    <symboltype>BLOCK</symboltype>
+    <timestamp>2011-12-5T3:33:7</timestamp>
+    <attr value="Aurora_unit_2" name="VeriModel" />
+    <pin polarity="Input" x="0" y="-416" name="GTPD0_P" />
+    <pin polarity="Input" x="0" y="-352" name="GTPD0_N" />
+    <pin polarity="Input" x="0" y="-288" name="rxp" />
+    <pin polarity="Input" x="0" y="-224" name="rxn" />
+    <pin polarity="Input" x="0" y="-160" name="fifo_empty_i" />
+    <pin polarity="Input" x="0" y="-96" name="fifo_full_i" />
+    <pin polarity="Input" x="0" y="-32" name="fifo_dat_i(31:0)" />
+    <pin polarity="Output" x="496" y="-544" name="HARD_ERR" />
+    <pin polarity="Output" x="496" y="-480" name="SOFT_ERR" />
+    <pin polarity="Output" x="496" y="-416" name="CHANNEL_UP" />
+    <pin polarity="Output" x="496" y="-352" name="LANE_UP" />
+    <pin polarity="Output" x="496" y="-288" name="txp" />
+    <pin polarity="Output" x="496" y="-224" name="txn" />
+    <pin polarity="Output" x="496" y="-160" name="fifo_rd_o" />
+    <pin polarity="Output" x="496" y="-96" name="fifo_wr_o" />
+    <pin polarity="Output" x="496" y="-32" name="fifo_wr_dat_o(31:0)" />
+    <pin polarity="Output" x="496" y="32" name="user_clk" />
+    <pin polarity="BiDirectional" x="0" y="32" name="CONTROL(35:0)" />
+    <pin polarity="Input" x="0" y="-592" name="user_reset" />
+    <pin polarity="Input" x="0" y="-480" name="init_clk_not_lock" />
+    <pin polarity="Input" x="0" y="-544" name="init_clk" />
+    <pin polarity="Output" x="496" y="80" name="rst_fifo" />
+    <pin polarity="Output" x="496" y="128" name="transceiver_dis_out" />
+    <graph>
+        <rect width="368" x="64" y="-624" height="768" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-416" type="pin GTPD0_P" />
+        <line x2="0" y1="-416" y2="-416" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-352" type="pin GTPD0_N" />
+        <line x2="0" y1="-352" y2="-352" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-288" type="pin rxp" />
+        <line x2="0" y1="-288" y2="-288" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-224" type="pin rxn" />
+        <line x2="0" y1="-224" y2="-224" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-160" type="pin fifo_empty_i" />
+        <line x2="0" y1="-160" y2="-160" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-96" type="pin fifo_full_i" />
+        <line x2="0" y1="-96" y2="-96" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-32" type="pin fifo_dat_i(31:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-544" type="pin HARD_ERR" />
+        <line x2="496" y1="-544" y2="-544" x1="432" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-480" type="pin SOFT_ERR" />
+        <line x2="496" y1="-480" y2="-480" x1="432" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-416" type="pin CHANNEL_UP" />
+        <line x2="496" y1="-416" y2="-416" x1="432" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-352" type="pin LANE_UP" />
+        <line x2="496" y1="-352" y2="-352" x1="432" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-288" type="pin txp" />
+        <line x2="496" y1="-288" y2="-288" x1="432" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-224" type="pin txn" />
+        <line x2="496" y1="-224" y2="-224" x1="432" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-160" type="pin fifo_rd_o" />
+        <line x2="496" y1="-160" y2="-160" x1="432" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-96" type="pin fifo_wr_o" />
+        <line x2="496" y1="-96" y2="-96" x1="432" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-32" type="pin fifo_wr_dat_o(31:0)" />
+        <rect width="64" x="432" y="-44" height="24" />
+        <line x2="496" y1="-32" y2="-32" x1="432" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="420" y="32" type="pin user_clk" />
+        <line x2="432" y1="32" y2="32" x1="496" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="32" type="pin CONTROL(35:0)" />
+        <rect width="64" x="0" y="-44" height="24" />
+        <line x2="0" y1="-32" y2="-32" x1="64" />
+        <rect width="64" x="0" y="20" height="24" />
+        <line x2="0" y1="32" y2="32" x1="64" />
+        <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="248" y="-628" type="symbol" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-592" type="pin user_reset" />
+        <line x2="0" y1="-592" y2="-592" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-480" type="pin init_clk_not_lock" />
+        <line x2="64" y1="-480" y2="-480" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-544" type="pin init_clk" />
+        <line x2="64" y1="-544" y2="-544" x1="0" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="80" type="pin rst_fifo" />
+        <line x2="432" y1="80" y2="80" x1="496" />
+        <attrtext style="alignment:RIGHT;fontsize:20;fontname:Arial" attrname="PinName" x="424" y="128" type="pin transceiver_dis_out" />
+        <line x2="432" y1="128" y2="128" x1="496" />
+    </graph>
+</symbol>

@@ -1,0 +1,13 @@
+# Output products list for <ila_wb>
+ila_wb.asy
+ila_wb.cdc
+ila_wb.ejp
+ila_wb.gise
+ila_wb.ngc
+ila_wb.v
+ila_wb.veo
+ila_wb.xco
+ila_wb.xise
+ila_wb_flist.txt
+ila_wb_readme.txt
+ila_wb_xmdf.tcl

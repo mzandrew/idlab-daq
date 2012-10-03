@@ -1,0 +1,12 @@
+D:\mza\FPGA\idlab-daq\iTOP-DSP_cPCI-backend\branches\2011-12-07.DSP_cPCI\projects\Aurora_FPGA\Aurora_FPGA.ngc 1328815705
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.ngc 1308605912
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.ngc 1309214294
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_fifo_wr.ngc 1308990681
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_fifo_rd.ngc 1308990959
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.ngc 1308990145
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/hold_fifo_1k.ngc 1308990454
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ngc 1308875549
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_vio.ngc 1309213922
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_4k.ngc 1309414535
+remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_16k.ngc 1309390891
+OK

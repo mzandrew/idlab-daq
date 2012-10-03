@@ -1,0 +1,44 @@
+xst -intstyle ise -ifn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.xst" -ofn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../../src/cores/Aurora_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf -p xc6slx45t-fgg484-3 Aurora_FPGA.ngc Aurora_FPGA.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o Aurora_FPGA_map.ncd Aurora_FPGA.ngd Aurora_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off Aurora_FPGA_map.ncd Aurora_FPGA.ncd Aurora_FPGA.pcf 
+ngdbuild -intstyle ise -dd _ngo -sd ../../src/cores/Aurora_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf -p xc6slx45t-fgg484-3 Aurora_FPGA.ngc Aurora_FPGA.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o Aurora_FPGA_map.ncd Aurora_FPGA.ngd Aurora_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off Aurora_FPGA_map.ncd Aurora_FPGA.ncd Aurora_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml Aurora_FPGA.twx Aurora_FPGA.ncd -o Aurora_FPGA.twr Aurora_FPGA.pcf 
+bitgen -intstyle ise -f Aurora_FPGA.ut Aurora_FPGA.ncd 
+ngdbuild -intstyle ise -dd _ngo -sd ../../src/cores/Aurora_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf -p xc6slx45t-fgg484-3 Aurora_FPGA.ngc Aurora_FPGA.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o Aurora_FPGA_map.ncd Aurora_FPGA.ngd Aurora_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off Aurora_FPGA_map.ncd Aurora_FPGA.ncd Aurora_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml Aurora_FPGA.twx Aurora_FPGA.ncd -o Aurora_FPGA.twr Aurora_FPGA.pcf 
+bitgen -intstyle ise -f Aurora_FPGA.ut Aurora_FPGA.ncd 
+xst -intstyle ise -ifn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.xst" -ofn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../../src/cores/Aurora_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf -p xc6slx45t-fgg484-3 Aurora_FPGA.ngc Aurora_FPGA.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o Aurora_FPGA_map.ncd Aurora_FPGA.ngd Aurora_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off Aurora_FPGA_map.ncd Aurora_FPGA.ncd Aurora_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml Aurora_FPGA.twx Aurora_FPGA.ncd -o Aurora_FPGA.twr Aurora_FPGA.pcf 
+bitgen -intstyle ise -f Aurora_FPGA.ut Aurora_FPGA.ncd 
+xst -intstyle ise -ifn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.xst" -ofn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../../src/cores/Aurora_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf -p xc6slx45t-fgg484-3 Aurora_FPGA.ngc Aurora_FPGA.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o Aurora_FPGA_map.ncd Aurora_FPGA.ngd Aurora_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off Aurora_FPGA_map.ncd Aurora_FPGA.ncd Aurora_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml Aurora_FPGA.twx Aurora_FPGA.ncd -o Aurora_FPGA.twr Aurora_FPGA.pcf 
+bitgen -intstyle ise -f Aurora_FPGA.ut Aurora_FPGA.ncd 
+xst -intstyle ise -ifn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.xst" -ofn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../../src/cores/Aurora_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf -p xc6slx45t-fgg484-3 Aurora_FPGA.ngc Aurora_FPGA.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o Aurora_FPGA_map.ncd Aurora_FPGA.ngd Aurora_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off Aurora_FPGA_map.ncd Aurora_FPGA.ncd Aurora_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml Aurora_FPGA.twx Aurora_FPGA.ncd -o Aurora_FPGA.twr Aurora_FPGA.pcf 
+bitgen -intstyle ise -f Aurora_FPGA.ut Aurora_FPGA.ncd 
+xst -intstyle ise -ifn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.xst" -ofn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../../src/cores/Aurora_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf -p xc6slx45t-fgg484-3 Aurora_FPGA.ngc Aurora_FPGA.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o Aurora_FPGA_map.ncd Aurora_FPGA.ngd Aurora_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off Aurora_FPGA_map.ncd Aurora_FPGA.ncd Aurora_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml Aurora_FPGA.twx Aurora_FPGA.ncd -o Aurora_FPGA.twr Aurora_FPGA.pcf 
+bitgen -intstyle ise -f Aurora_FPGA.ut Aurora_FPGA.ncd 
+xst -intstyle ise -ifn "D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/Aurora_FPGA/Aurora_FPGA.xst" -ofn "D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/Aurora_FPGA/Aurora_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd remote_sources/_/_/src/cores/Aurora_FPGA_cores -nt timestamp -uc remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA.ucf -p xc6slx45t-fgg484-2 Aurora_FPGA.ngc Aurora_FPGA.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-2 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o Aurora_FPGA_map.ncd Aurora_FPGA.ngd Aurora_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off Aurora_FPGA_map.ncd Aurora_FPGA.ncd Aurora_FPGA.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml Aurora_FPGA.twx Aurora_FPGA.ncd -o Aurora_FPGA.twr Aurora_FPGA.pcf 
+bitgen -intstyle ise -f Aurora_FPGA.ut Aurora_FPGA.ncd 

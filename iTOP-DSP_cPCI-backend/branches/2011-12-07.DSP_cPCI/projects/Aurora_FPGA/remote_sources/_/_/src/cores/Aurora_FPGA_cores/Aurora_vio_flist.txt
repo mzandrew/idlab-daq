@@ -1,0 +1,14 @@
+# Output products list for <Aurora_vio>
+Aurora_vio.asy
+Aurora_vio.cdc
+Aurora_vio.ejp
+Aurora_vio.gise
+Aurora_vio.ngc
+Aurora_vio.v
+Aurora_vio.veo
+Aurora_vio.xco
+Aurora_vio.xise
+Aurora_vio_flist.txt
+Aurora_vio_readme.txt
+Aurora_vio_xmdf.tcl
+_xmsgs/pn_parser.xmsgs

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;COMP &quot;PCI_DEVSEL&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33095)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;COMP &quot;PCI_FRAME&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33097)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;COMP &quot;PCI_IRDY&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33099)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;COMP &quot;PCI_PAR&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33101)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;COMP &quot;PCI_PERR&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33103)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;COMP &quot;PCI_STOP&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33105)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;COMP &quot;PCI_TRDY&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33107)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;COMP &quot;PCI_GNT&quot; OFFSET = IN 10 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33109)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;COMP &quot;PCI_IDSEL&quot; OFFSET = IN 10 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33110)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;TIMEGRP &quot;PCI_AD_GRP&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33111)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="0" >The Offset constraint &lt;TIMEGRP &quot;PCI_CBE_GRP&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;&gt; [DMA_FPGA.pcf(33113)], is specified without a duration.  This will result in a lack of hold time checks in timing reports.  If hold time checks are desired a duration value should be specified following the &apos;VALID&apos; keyword.
+</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">COMP &quot;PCI_DEVSEL&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">COMP &quot;PCI_FRAME&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">COMP &quot;PCI_IRDY&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">COMP &quot;PCI_PAR&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">COMP &quot;PCI_PERR&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">COMP &quot;PCI_STOP&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">COMP &quot;PCI_TRDY&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">COMP &quot;PCI_GNT&quot; OFFSET = IN 10 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">COMP &quot;PCI_IDSEL&quot; OFFSET = IN 10 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">TIMEGRP &quot;PCI_AD_GRP&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="warning" file="Timing" num="3391" delta="old" >Timing constraint <arg fmt="%s" index="1">TIMEGRP &quot;PCI_CBE_GRP&quot; OFFSET = IN 7 ns BEFORE COMP &quot;PCLK&quot;;</arg> does not specify a data valid duration and will not be hold checked. To enable hold checking on this offset constraint please specify a data valid duration using the VALID &lt;duration&gt; option.</msg>
+
+<msg type="info" file="Timing" num="2752" delta="old" >To get complete path coverage, use the unconstrained paths option. All paths that are not constrained will be reported in the unconstrained paths section(s) of the report.</msg>
+
+<msg type="info" file="Timing" num="3339" delta="old" >The clock-to-out numbers in this timing report are based on a 50 Ohm transmission line loading model.  For the details of this model, and for more information on accounting for different loading conditions, please see the device datasheet.</msg>
+
+</messages>
+

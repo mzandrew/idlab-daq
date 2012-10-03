@@ -1,0 +1,268 @@
+##-----------------------------------------------------------------------------
+##
+## This file contains confidential and proprietary information 
+## of Xilinx, Inc. and is protected under U.S. and             
+## international copyright and other intellectual property     
+## laws.                                                       
+##                                                             
+## DISCLAIMER                                                  
+## This disclaimer is not a license and does not grant any     
+## rights to the materials distributed herewith. Except as     
+## otherwise provided in a valid license issued to you by      
+## Xilinx, and to the maximum extent permitted by applicable   
+## law: (1) THESE MATERIALS ARE MADE AVAILABLE "AS IS" AND     
+## WITH ALL FAULTS, AND XILINX HEREBY DISCLAIMS ALL WARRANTIES 
+## AND CONDITIONS, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING   
+## BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, NON-      
+## INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE; and    
+## (2) Xilinx shall not be liable (whether in contract or tort,
+## including negligence, or under any other theory of          
+## liability) for any loss or damage of any kind or nature     
+## related to, arising under or in connection with these       
+## materials, including for any direct, or any indirect,       
+## special, incidental, or consequential loss or damage        
+## (including loss of data, profits, goodwill, or any type of  
+## loss or damage suffered as a result of any action brought   
+## by a third party) even if such damage or loss was           
+## reasonably foreseeable or Xilinx had been advised of the    
+## possibility of the same.                                    
+##                                                             
+## CRITICAL APPLICATIONS                                       
+## Xilinx products are not designed or intended to be fail-    
+## safe, or for use in any application requiring fail-safe     
+## performance, such as life-support or safety devices or      
+## systems, Class III medical devices, nuclear facilities,     
+## applications related to the deployment of airbags, or any   
+## other applications that could lead to death, personal       
+## injury, or severe property or environmental damage          
+## (individually and collectively, "Critical                   
+## Applications"). Customer assumes the sole risk and          
+## liability of any use of Xilinx products in Critical         
+## Applications, subject only to applicable laws and           
+## regulations governing limitations on product liability.     
+##                                                                                
+## THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS    
+## PART OF THIS FILE AT ALL TIMES.                             
+##-----------------------------------------------------------------------------
+## Project    : LogiCORE IP Initiator/Target for PCI
+## File       : pci32_sp_v4_13_top.ucf
+################################################################################
+# File: pci32_sp_v4_13_top.ucf
+################################################################################
+#
+# This is for generating PCI only bitstreams using a global clock.
+#
+# Use this file only with the device listed herein.  Any
+# other combination is invalid.  Do not modify this file
+# except in regions designated for "user" constraints.
+#
+################################################################################
+# Define Device, Package and Speed Grade
+################################################################################
+#
+CONFIG PART = XC6SLX45-FGG484-3 ;
+#
+################################################################################
+# I/O Assignment
+#
+# Important Note:  The PMEA_N pin is used to support power management.  Do NOT
+# connect this output pin directly to the bus PME# signal!  Consult the Getting
+# Started Guide to understand how this signal is to be interfaced to the bus.
+################################################################################
+#
+NET "PCLK"           LOC = "L4"  | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_X ;
+
+NET "INTA_N"         LOC = "H8" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_X ;
+NET "RST_N"          LOC = "J7" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_X ;
+NET "PMEA_N"         LOC = "F5" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_X ;
+NET "REQ_N"          LOC = "G6" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_G ;
+NET "GNT_N"          LOC = "C1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_G ;
+NET "IDSEL"          LOC = "C3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_C ;
+NET "AD<31>"         LOC = "D1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<30>"         LOC = "D2" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<29>"         LOC = "E1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<28>"         LOC = "E3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<27>"         LOC = "F3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<26>"         LOC = "G4" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<25>"         LOC = "F1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<24>"         LOC = "F2" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<23>"         LOC = "H5" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<22>"         LOC = "H6" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<21>"         LOC = "G1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<20>"         LOC = "G3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<19>"         LOC = "H1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<18>"         LOC = "H2" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<17>"         LOC = "H3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<16>"         LOC = "H4" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "CBE<3>"         LOC = "J6" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "CBE<2>"         LOC = "K6" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "PAR"            LOC = "J4" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_C ;
+NET "FRAME_N"        LOC = "K3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_C ;
+NET "IRDY_N"         LOC = "K4" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_C ;
+
+NET "TRDY_N"         LOC = "M3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_C ;
+NET "DEVSEL_N"       LOC = "J1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_C ;
+NET "STOP_N"         LOC = "J3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_C ;
+NET "PERR_N"         LOC = "K1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_C ;
+NET "SERR_N"         LOC = "K2" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_C ;
+NET "CBE<1>"         LOC = "L1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "CBE<0>"         LOC = "L3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<15>"         LOC = "M1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<14>"         LOC = "M2" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<13>"         LOC = "N1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<12>"         LOC = "N3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<11>"         LOC = "P1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<10>"         LOC = "P2" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<9>"          LOC = "R1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<8>"          LOC = "R3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<7>"          LOC = "T1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<6>"          LOC = "T2" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<5>"          LOC = "U1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<4>"          LOC = "U3" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<3>"          LOC = "V1" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<2>"          LOC = "V2" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<1>"          LOC = "M4" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+NET "AD<0>"          LOC = "M5" | IOSTANDARD = PCI33_3 | TNM = PADS:BUS_PADS_D ;
+
+#
+NET "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/FRAME_I_LUT_DELAY_STAGE[*]"    KEEP;
+NET "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/DEVSEL_I_LUT_DELAY_STAGE[*]"   KEEP;
+NET "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/STOP_I_LUT_DELAY_STAGE[*]"     KEEP;
+NET "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/IRDY_I_LUT_DELAY_STAGE[*]"     KEEP;
+NET "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/CBE_I*_LUT_DELAY_STAGE[*]"     KEEP;
+NET "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/GNT_IN_LUT_DELAY_STAGE[*]"     KEEP;
+
+################################################################################
+# Delay Buffer Settings
+################################################################################
+#
+INST "XPCI_WRAP/XPCI_ADD*"                                 IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_CBD*"                                 IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_PARD"                                 IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_FRAMED"                               IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_IRDYD"                                IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_TRDYD"                                IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_STOPD"                                IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_DEVSELD"                              IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_PERRD"                                IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_SERRD"                                IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_IDSELD"                               IDELAY_TYPE = FIXED ;
+INST "XPCI_WRAP/XPCI_GNTD"                                 IDELAY_TYPE = FIXED ;
+#
+INST "XPCI_WRAP/XPCI_ADD*"                                 IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_CBD*"                                 IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_PARD"                                 IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_FRAMED"                               IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_IRDYD"                                IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_TRDYD"                                IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_STOPD"                                IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_DEVSELD"                              IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_PERRD"                                IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_SERRD"                                IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_IDSELD"                               IDELAY_MODE = NORMAL ;
+INST "XPCI_WRAP/XPCI_GNTD"                                 IDELAY_MODE = NORMAL ;
+#
+INST "XPCI_WRAP/XPCI_ADD*"                                   IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_CBD*"                                   IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_PARD"                                   IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_FRAMED"                                 IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_IRDYD"                                  IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_TRDYD"                                  IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_STOPD"                                  IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_DEVSELD"                                IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_PERRD"                                  IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_SERRD"                                  IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_IDSELD"                                 IDELAY_VALUE = 50 ;
+INST "XPCI_WRAP/XPCI_GNTD"                                   IDELAY_VALUE = 50 ;
+#
+################################################################################
+# I/O Register Usage
+################################################################################
+#
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/XPCI_ADI*"                                       IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/XPCI_CBI*"                                       IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_FRAMEI"                            IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_IRDYI"                             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_TRDYI"                             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_STOPI"                             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_DEVSELI"                           IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_PERRI"                             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_SERRI"                             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/MASTER/XPCI_GNTI"                       IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_IDSELI"                            IOB = TRUE ;
+#
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_PARO"                              IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_AD/XPCI_ADO*"                       IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_ADH/XPCI_ADO*"                      IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_CBE/XPCI_CBO*"                      IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_CBEH/XPCI_CBO*"                     IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_FRAMEO"                            IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_IRDYO"                             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_TRDYO"                             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_STOPO"                             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_DEVSELO"                           IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/XPCI_PERRO"                             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/MASTER/XPCI_REQO"                       IOB = TRUE ;
+#
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/MASTER/OE_FRAME/XPCI_PART"              IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/MASTER/OE_FRAME/XPCI_PAR64T"            IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/MASTER/OE_FRAME/XPCI_FRAMET"            IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/MASTER/OE_FRAME/XPCI_IRDYT"             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_CNTL/PCI_OFCN/PCI_XOE/XPCI_TRDYT"   IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_CNTL/PCI_OFCN/PCI_XOE/XPCI_STOPT"   IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_CNTL/PCI_OFCN/PCI_XOE/XPCI_DEVSELT" IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/MASTER/OE_FRAME/XPCI_PERRT"             IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_PAR/XPCI_SERRT"                     IOB = TRUE ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/MASTER/XPCI_REQT"                       IOB = TRUE ;
+#
+################################################################################
+# Time Names and Time Groups
+################################################################################
+#
+INST "XPCI_WRAP" TNM = FFS:CORE_FFS ;
+INST "XPCI_USER" TNM = FFS:USER_FFS ;
+#
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_AD/XPCI_ADO*"   TNM = FFS:NOSTEP_FFS ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_ADH/XPCI_ADO*"  TNM = FFS:NOSTEP_FFS ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_CBE/XPCI_CBO*"  TNM = FFS:NOSTEP_FFS ;
+INST "XPCI_WRAP/XPCI_CORE/BU2/U0/pci32_inst/PCI_LC_I/PCI_CBEH/XPCI_CBO*" TNM = FFS:NOSTEP_FFS ;
+#
+TIMEGRP "FST_FFS" = "NOSTEP_FFS" ;
+TIMEGRP "ALL_FFS" = "CORE_FFS" : "USER_FFS" ;
+TIMEGRP "SLW_FFS" = "ALL_FFS" : EXCEPT : "FST_FFS" ;
+#
+TIMEGRP "CTL_BUS" = "BUS_PADS_C" ;
+TIMEGRP "DAT_BUS" = "BUS_PADS_D" ;
+TIMEGRP "PTP_BUS" = "BUS_PADS_G" ;
+#
+################################################################################
+# Time Specs for PCI Mode
+################################################################################
+#
+# The following timespec is for the period.
+#
+NET "PCLK" PERIOD = 30.000 ;
+#
+# The following timespecs are for clock to out.
+#
+TIMEGRP "CTL_BUS" OFFSET = OUT 11.000 AFTER "PCLK" TIMEGRP "ALL_FFS" ;
+TIMEGRP "DAT_BUS" OFFSET = OUT 11.000 AFTER "PCLK" TIMEGRP "FST_FFS" ;
+TIMEGRP "DAT_BUS" OFFSET = OUT 28.000 AFTER "PCLK" TIMEGRP "SLW_FFS" ;
+TIMEGRP "PTP_BUS" OFFSET = OUT 11.000 AFTER "PCLK" TIMEGRP "ALL_FFS" ;
+#
+# The following timespecs are for setup and hold.
+#
+TIMEGRP "CTL_BUS" OFFSET = IN  7.000 VALID  7.000 BEFORE "PCLK" TIMEGRP "ALL_FFS" ;
+TIMEGRP "DAT_BUS" OFFSET = IN  7.000 VALID  7.000 BEFORE "PCLK" TIMEGRP "ALL_FFS" ;
+TIMEGRP "PTP_BUS" OFFSET = IN 10.000 VALID 10.000 BEFORE "PCLK" TIMEGRP "ALL_FFS" ;
+#
+################################################################################
+# Additional User Constraints
+################################################################################
+#
+NET "FPGA_RST" LOC = "D7" | IOSTANDARD = LVTTL ;
+NET "FPGA_RTR" LOC = "D8" | IOSTANDARD = LVTTL ;
+#
+################################################################################
+# End
+################################################################################

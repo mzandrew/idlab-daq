@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="Aurora_FPGA.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="Aurora_FPGA.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="Aurora_FPGA.cmd_log"/>
+    <file xil_pn:fileType="FILE_JHD" xil_pn:name="Aurora_FPGA.jhd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="Aurora_FPGA.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_IMPACT_MISC" xil_pn:name="Aurora_FPGA.mcs"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="Aurora_FPGA.ncd" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="Aurora_FPGA.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="Aurora_FPGA.ngd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="Aurora_FPGA.ngr"/>
+    <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="Aurora_FPGA.pad"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAR_REPORT" xil_pn:name="Aurora_FPGA.par" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PCF" xil_pn:name="Aurora_FPGA.pcf" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Aurora_FPGA.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_IMPACT_MISC" xil_pn:name="Aurora_FPGA.prm"/>
+    <file xil_pn:fileType="FILE_TRCE_MISC" xil_pn:name="Aurora_FPGA.ptwx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="Aurora_FPGA.stx"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="Aurora_FPGA.sym" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="Aurora_FPGA.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_TXT_REPORT" xil_pn:name="Aurora_FPGA.twr" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_XML_REPORT" xil_pn:name="Aurora_FPGA.twx" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_UNROUTES" xil_pn:name="Aurora_FPGA.unroutes" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="Aurora_FPGA.ut" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VERILOG" xil_pn:name="Aurora_FPGA.vf"/>
+    <file xil_pn:fileType="FILE_XPI" xil_pn:name="Aurora_FPGA.xpi"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="Aurora_FPGA.xst"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VERILOG" xil_pn:name="Aurora_FPGA_BUS.vf"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="Aurora_FPGA_LED_driver.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="Aurora_FPGA_envsettings.html"/>
+    <file xil_pn:fileType="FILE_NCD" xil_pn:name="Aurora_FPGA_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="Aurora_FPGA_map.map" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="Aurora_FPGA_map.mrp" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="Aurora_FPGA_map.ncd" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGM" xil_pn:name="Aurora_FPGA_map.ngm" xil_pn:subbranch="Map"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Aurora_FPGA_map.xrpt"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Aurora_FPGA_ngdbuild.xrpt"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="Aurora_FPGA_pad.csv" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_TXT_REPORT" xil_pn:name="Aurora_FPGA_pad.txt" xil_pn:subbranch="Par"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Aurora_FPGA_par.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="Aurora_FPGA_summary.html"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="Aurora_FPGA_summary.xml"/>
+    <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="Aurora_FPGA_usage.xml"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Aurora_FPGA_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="Aurora_unit_1.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="Aurora_unit_2.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/par.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/trce.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="aurora_fpga.bgn" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BIT" xil_pn:name="aurora_fpga.bit" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_DRC" xil_pn:name="aurora_fpga.drc" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="bad_ch_detect.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="bus_master_pipeline.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="delay_unit.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="down_fifo_interface_debug.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="fifo_pool.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="fo_io.sym" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VERILOG" xil_pn:name="fo_io.vf"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="planAhead_run_1"/>
+    <file xil_pn:fileType="FILE_ASY" xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.asy" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.ngc" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_VERILOG" xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.v" xil_pn:origination="imported">
+      <branch xil_pn:name="Implementation"/>
+      <branch xil_pn:name="BehavioralSim"/>
+    </file>
+    <file xil_pn:fileType="FILE_VEO" xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.veo" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_ASY" xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.asy" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.ngc" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_VERILOG" xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.v" xil_pn:origination="imported">
+      <branch xil_pn:name="Implementation"/>
+      <branch xil_pn:name="BehavioralSim"/>
+    </file>
+    <file xil_pn:fileType="FILE_VEO" xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.veo" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="rst_flag_delay.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_VERILOG_INSTTEMPLATE" xil_pn:name="transceiver_reset.tfi"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="usage_statistics_webtalk.html"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="vio_wrapper.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="webtalk.log"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1323226643" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1323226643">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1323226644" xil_pn:name="TRAN_schematicsToHdl" xil_pn:start_ts="1323226643">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Aurora_FPGA.vf"/>
+      <outfile xil_pn:name="Aurora_FPGA_BUS.vf"/>
+      <outfile xil_pn:name="fo_io.vf"/>
+    </transform>
+    <transform xil_pn:end_ts="1328815666" xil_pn:in_ck="3546182601113553672" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="3538333179116739038" xil_pn:start_ts="1328815665">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.ngc"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.v"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.ngc"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.v"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ngc"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.v"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_vio.ngc"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_vio.v"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_16k.ngc"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_16k.v"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_4k.ngc"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_4k.v"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/hold_fifo_1k.ngc"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/hold_fifo_1k.v"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.ngc"/>
+      <outfile xil_pn:name="remote_sources/_/_/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1323226646" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1323226646">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1323226646" xil_pn:name="TRAN_xawsTohdl" xil_pn:start_ts="1323226646">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1323226646" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:start_ts="1323226646">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1328815666" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-8135057185161286680" xil_pn:start_ts="1328815666">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1328815706" xil_pn:in_ck="1460417267942409351" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-4774462175391176871" xil_pn:start_ts="1328815666">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="Aurora_FPGA.jhd"/>
+      <outfile xil_pn:name="Aurora_FPGA.lso"/>
+      <outfile xil_pn:name="Aurora_FPGA.ngc"/>
+      <outfile xil_pn:name="Aurora_FPGA.ngr"/>
+      <outfile xil_pn:name="Aurora_FPGA.prj"/>
+      <outfile xil_pn:name="Aurora_FPGA.stx"/>
+      <outfile xil_pn:name="Aurora_FPGA.syr"/>
+      <outfile xil_pn:name="Aurora_FPGA.xst"/>
+      <outfile xil_pn:name="Aurora_FPGA_xst.xrpt"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1323226718" xil_pn:name="TRAN_compileBCD2" xil_pn:start_ts="1323226718">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1328815726" xil_pn:in_ck="7721245501498601695" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-1978772331231434849" xil_pn:start_ts="1328815706">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Aurora_FPGA.bld"/>
+      <outfile xil_pn:name="Aurora_FPGA.ngd"/>
+      <outfile xil_pn:name="Aurora_FPGA_ngdbuild.xrpt"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1328815927" xil_pn:in_ck="-5478933992183606392" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="8940015765481780970" xil_pn:start_ts="1328815726">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="Aurora_FPGA.pcf"/>
+      <outfile xil_pn:name="Aurora_FPGA_map.map"/>
+      <outfile xil_pn:name="Aurora_FPGA_map.mrp"/>
+      <outfile xil_pn:name="Aurora_FPGA_map.ncd"/>
+      <outfile xil_pn:name="Aurora_FPGA_map.ngm"/>
+      <outfile xil_pn:name="Aurora_FPGA_map.xrpt"/>
+      <outfile xil_pn:name="Aurora_FPGA_summary.xml"/>
+      <outfile xil_pn:name="Aurora_FPGA_usage.xml"/>
+      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1328816120" xil_pn:in_ck="2585864163290032609" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="1233245081241504601" xil_pn:start_ts="1328815927">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Aurora_FPGA.ncd"/>
+      <outfile xil_pn:name="Aurora_FPGA.pad"/>
+      <outfile xil_pn:name="Aurora_FPGA.par"/>
+      <outfile xil_pn:name="Aurora_FPGA.ptwx"/>
+      <outfile xil_pn:name="Aurora_FPGA.unroutes"/>
+      <outfile xil_pn:name="Aurora_FPGA.xpi"/>
+      <outfile xil_pn:name="Aurora_FPGA_pad.csv"/>
+      <outfile xil_pn:name="Aurora_FPGA_pad.txt"/>
+      <outfile xil_pn:name="Aurora_FPGA_par.xrpt"/>
+      <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1328816186" xil_pn:in_ck="-2780387951797773654" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="335873702051717080" xil_pn:start_ts="1328816120">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Aurora_FPGA.ut"/>
+      <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+      <outfile xil_pn:name="aurora_fpga.bgn"/>
+      <outfile xil_pn:name="aurora_fpga.bit"/>
+      <outfile xil_pn:name="aurora_fpga.drc"/>
+      <outfile xil_pn:name="usage_statistics_webtalk.html"/>
+      <outfile xil_pn:name="webtalk.log"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+    </transform>
+    <transform xil_pn:end_ts="1323227853" xil_pn:name="TRAN_genImpactFile" xil_pn:start_ts="1323227850">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
+    </transform>
+    <transform xil_pn:end_ts="1328816120" xil_pn:in_ck="-2237578836557198844" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416184" xil_pn:start_ts="1328816097">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Aurora_FPGA.twr"/>
+      <outfile xil_pn:name="Aurora_FPGA.twx"/>
+      <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
+    </transform>
+  </transforms>
+
+</generated_project>

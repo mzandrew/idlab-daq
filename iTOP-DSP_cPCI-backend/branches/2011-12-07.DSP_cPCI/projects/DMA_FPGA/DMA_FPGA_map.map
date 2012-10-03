@@ -1,0 +1,854 @@
+Release 13.2 Map O.61xd (nt)
+Xilinx Map Application Log File for Design 'DMA_FPGA'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc6slx45-fgg484-2 -w -logic_opt on -ol
+high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off
+-detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o
+DMA_FPGA_map.ncd DMA_FPGA.ngd DMA_FPGA.pcf 
+Target Device  : xc6slx45
+Target Package : fgg484
+Target Speed   : -2
+Mapper Version : spartan6 -- $Revision: 1.55 $
+Mapped Date    : Thu Feb 09 09:45:25 2012
+
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+INFO:Security:50 - The XILINXD_LICENSE_FILE environment variable is set to
+'2100@hepflexlm.phys.hawaii.edu'.
+INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
+'2100@hepflexlm.phys.hawaii.edu'.
+INFO:Security:54 - 'xc6slx45' is a WebPack part.
+WARNING:Security:43 - No license file was found in the standard Xilinx license
+directory.
+WARNING:Security:44 - No license file was found.
+       Please run the Xilinx License Configuration Manager
+       (xlcm or "Manage Xilinx Licenses")
+       to assist in obtaining a license.
+WARNING:Security:42 - Your software subscription period has lapsed. Your current
+version of Xilinx tools will continue to function, but you no longer qualify for
+Xilinx software updates or new releases.
+----------------------------------------------------------------------
+Mapping design into LUTs...
+Running directed packing...
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<10> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<10>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[10].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<10>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<11> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<11>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[11].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<11>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<12> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<12>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[12].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<12>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<20> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<20>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[20].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<20>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<13> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<13>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[13].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<13>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<21> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<21>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[21].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<21>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<14> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<14>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[14].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<14>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<22> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<22>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[22].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<22>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<30> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<30>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[30].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<30>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<15> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<15>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[15].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<15>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<23> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<23>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[23].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<23>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<31> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<31>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[31].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<31>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<16> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<16>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[16].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<16>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<24> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<24>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[24].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<24>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<17> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<17>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[17].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<17>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<25> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<25>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[25].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<25>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<10> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<10>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[10].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<10>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<18> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<18>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[18].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<18>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<26> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<26>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[26].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<26>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<11> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<11>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[11].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<11>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<19> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<19>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[19].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<19>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<27> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<27>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[27].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<27>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<12> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<12>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[12].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<12>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<20> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<20>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[20].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<20>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<28> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<28>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[28].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<28>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<13> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<13>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[13].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<13>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<21> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<21>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[21].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<21>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<29> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<29>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[29].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<29>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<14> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<14>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[14].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<14>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<22> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<22>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[22].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<22>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<30> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<30>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[30].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<30>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<15> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<15>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[15].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<15>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<23> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<23>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[23].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<23>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<31> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<31>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[31].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<31>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<16> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<16>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[16].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<16>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<24> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<24>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[24].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<24>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<17> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<17>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[17].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<17>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<25> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<25>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[25].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<25>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<18> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<18>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[18].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<18>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<26> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<26>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[26].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<26>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<19> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<19>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[19].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<19>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<27> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<27>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[27].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<27>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<28> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<28>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[28].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<28>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<29> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<29>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[29].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<29>."
+WARNING:Pack:2693 - The I/O component BUS_REQ_R_1_PAD_A has conflicting SLEW
+   property values. The symbol "BUS_REQ_R_1_PAD_A" has property value "FAST."
+   The symbol "u_DMA_FPGA_IOBUF_A/BUS_REQ_R_1_BUF" has property value "SLOW."
+   The system will use the property value attached to symbol
+   "BUS_REQ_R_1_PAD_A."
+WARNING:Pack:2693 - The I/O component BUS_REQ_R_1_PAD_B has conflicting SLEW
+   property values. The symbol "BUS_REQ_R_1_PAD_B" has property value "FAST."
+   The symbol "u_DMA_FPGA_IOBUF_B/BUS_REQ_R_1_BUF" has property value "SLOW."
+   The system will use the property value attached to symbol
+   "BUS_REQ_R_1_PAD_B."
+WARNING:Pack:2693 - The I/O component BUS_ABORT_PAD_A has conflicting SLEW
+   property values. The symbol "BUS_ABORT_PAD_A" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_ABORT_BUF" has property value "SLOW." The
+   system will use the property value attached to symbol "BUS_ABORT_PAD_A."
+WARNING:Pack:2693 - The I/O component BUS_ABORT_PAD_B has conflicting SLEW
+   property values. The symbol "BUS_ABORT_PAD_B" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_ABORT_BUF" has property value "SLOW." The
+   system will use the property value attached to symbol "BUS_ABORT_PAD_B."
+WARNING:Pack:2693 - The I/O component BUS_REQ_R_2_PAD_A has conflicting SLEW
+   property values. The symbol "BUS_REQ_R_2_PAD_A" has property value "FAST."
+   The symbol "u_DMA_FPGA_IOBUF_A/BUS_REQ_R_2_BUF" has property value "SLOW."
+   The system will use the property value attached to symbol
+   "BUS_REQ_R_2_PAD_A."
+WARNING:Pack:2693 - The I/O component BUS_REQ_R_2_PAD_B has conflicting SLEW
+   property values. The symbol "BUS_REQ_R_2_PAD_B" has property value "FAST."
+   The symbol "u_DMA_FPGA_IOBUF_B/BUS_REQ_R_2_BUF" has property value "SLOW."
+   The system will use the property value attached to symbol
+   "BUS_REQ_R_2_PAD_B."
+WARNING:Pack:2693 - The I/O component BUS_ACK_PAD_A has conflicting SLEW
+   property values. The symbol "BUS_ACK_PAD_A" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_ACK_BUF" has property value "SLOW." The system
+   will use the property value attached to symbol "BUS_ACK_PAD_A."
+WARNING:Pack:2693 - The I/O component BUS_ACK_PAD_B has conflicting SLEW
+   property values. The symbol "BUS_ACK_PAD_B" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_ACK_BUF" has property value "SLOW." The system
+   will use the property value attached to symbol "BUS_ACK_PAD_B."
+WARNING:Pack:2693 - The I/O component BUS_REQ_W_1_PAD_A has conflicting SLEW
+   property values. The symbol "BUS_REQ_W_1_PAD_A" has property value "FAST."
+   The symbol "u_DMA_FPGA_IOBUF_A/BUS_REQ_W_1_BUF" has property value "SLOW."
+   The system will use the property value attached to symbol
+   "BUS_REQ_W_1_PAD_A."
+WARNING:Pack:2693 - The I/O component BUS_REQ_W_1_PAD_B has conflicting SLEW
+   property values. The symbol "BUS_REQ_W_1_PAD_B" has property value "FAST."
+   The symbol "u_DMA_FPGA_IOBUF_B/BUS_REQ_W_1_BUF" has property value "SLOW."
+   The system will use the property value attached to symbol
+   "BUS_REQ_W_1_PAD_B."
+WARNING:Pack:2693 - The I/O component BUS_REQ_W_2_PAD_A has conflicting SLEW
+   property values. The symbol "BUS_REQ_W_2_PAD_A" has property value "FAST."
+   The symbol "u_DMA_FPGA_IOBUF_A/BUS_REQ_W_2_BUF" has property value "SLOW."
+   The system will use the property value attached to symbol
+   "BUS_REQ_W_2_PAD_A."
+WARNING:Pack:2693 - The I/O component BUS_REQ_W_2_PAD_B has conflicting SLEW
+   property values. The symbol "BUS_REQ_W_2_PAD_B" has property value "FAST."
+   The symbol "u_DMA_FPGA_IOBUF_B/BUS_REQ_W_2_BUF" has property value "SLOW."
+   The system will use the property value attached to symbol
+   "BUS_REQ_W_2_PAD_B."
+WARNING:Pack:2693 - The I/O component BUS_S_RDY_PAD_A has conflicting SLEW
+   property values. The symbol "BUS_S_RDY_PAD_A" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_S_RDY_BUF" has property value "SLOW." The
+   system will use the property value attached to symbol "BUS_S_RDY_PAD_A."
+WARNING:Pack:2693 - The I/O component BUS_S_RDY_PAD_B has conflicting SLEW
+   property values. The symbol "BUS_S_RDY_PAD_B" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_S_RDY_BUF" has property value "SLOW." The
+   system will use the property value attached to symbol "BUS_S_RDY_PAD_B."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<0> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<0>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[0].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<0>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<1> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<1>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[1].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<1>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<2> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<2>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[2].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<2>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<3> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<3>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[3].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<3>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<0> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<0>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[0].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<0>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<4> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<4>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[4].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<4>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<1> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<1>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[1].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<1>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<5> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<5>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[5].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<5>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<2> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<2>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[2].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<2>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<6> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<6>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[6].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<6>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<3> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<3>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[3].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<3>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<7> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<7>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[7].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<7>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<4> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<4>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[4].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<4>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<8> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<8>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[8].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<8>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<5> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<5>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[5].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<5>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_A<9> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_A<9>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_A/BUS_AD_BUF_LOOP[9].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_A<9>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<6> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<6>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[6].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<6>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<7> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<7>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[7].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<7>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<8> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<8>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[8].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<8>."
+WARNING:Pack:2693 - The I/O component BUS_AD_PAD_B<9> has conflicting SLEW
+   property values. The symbol "BUS_AD_PAD_B<9>" has property value "FAST." The
+   symbol "u_DMA_FPGA_IOBUF_B/BUS_AD_BUF_LOOP[9].BUS_AD_OUT_BUF" has property
+   value "SLOW." The system will use the property value attached to symbol
+   "BUS_AD_PAD_B<9>."
+WARNING:Pack:2693 - The I/O component CLOCK_PAD_A has conflicting SLEW property
+   values. The symbol "CLOCK_PAD_A" has property value "FAST." The symbol
+   "u_DMA_FPGA_IOBUF_A/BUS_CLOCK_BUF" has property value "SLOW." The system will
+   use the property value attached to symbol "CLOCK_PAD_A."
+WARNING:Pack:2693 - The I/O component CLOCK_PAD_B has conflicting SLEW property
+   values. The symbol "CLOCK_PAD_B" has property value "FAST." The symbol
+   "u_DMA_FPGA_IOBUF_B/BUS_CLOCK_BUF" has property value "SLOW." The system will
+   use the property value attached to symbol "CLOCK_PAD_B."
+Running delay-based LUT packing...
+Updating timing models...
+WARNING:Pack:1653 - At least one timing constraint is impossible to meet because component delays alone exceed the constraint. A timing
+   constraint summary below shows the failing constraints (preceded with an Asterisk (*)). Please use the Timing Analyzer (GUI) or TRCE
+   (command line) with the Mapped NCD and PCF files to identify which constraints and paths are failing because of the component delays
+   alone. If the failing path(s) is mapped to Xilinx components as expected, consider relaxing the constraint. If it is not mapped to
+   components as expected, re-evaluate your HDL and how synthesis is optimizing the path. To allow the tools to bypass this error, set the
+   environment variable XIL_TIMING_ALLOW_IMPOSSIBLE to 1.
+
+
+   For more information about the Timing Analyzer, consult the Xilinx Timing Analyzer Reference manual; for more information on TRCE,
+   consult the Xilinx Command Line Tools User Guide "TRACE" chapter.
+INFO:Timing:3284 - This timing report was generated using estimated delay 
+   information.  For accurate numbers, please refer to the post Place and Route 
+   timing report.
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
+                                            |             |    Slack   | Achievable | Errors |    Score   
+----------------------------------------------------------------------------------------------------------
+* TS_PCLK = PERIOD TIMEGRP "PCLK" 30 ns HIG | SETUP       |    26.281ns|     3.719ns|       0|           0
+  H 50%                                     | HOLD        |    -1.165ns|            |     305|      199143
+                                            | MINLOWPULSE |    13.999ns|    16.000ns|       0|           0
+----------------------------------------------------------------------------------------------------------
+* TS_OFFSET_IN_A = MAXDELAY FROM TIMEGRP "T | SETUP       |    -0.280ns|     3.280ns|      35|        9800
+  ABUS" 3 ns DATAPATHONLY                   | HOLD        |     1.393ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+* TS_OFFSET_IN_B = MAXDELAY FROM TIMEGRP "T | SETUP       |    -0.280ns|     3.280ns|      35|        9800
+  BBUS" 3 ns DATAPATHONLY                   | HOLD        |     1.393ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+* TS_u_clk_gen_top_u_clk_gen_clk2x = PERIOD | SETUP       |    11.100ns|     3.900ns|       0|           0
+   TIMEGRP "u_clk_gen_top_u_clk_gen_clk2x"  | HOLD        |    -0.271ns|            |     361|       63347
+  TS_PCLK / 2 HIGH 50%                      |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+* TS_u_clk_gen_top_u_clk_gen_clk0 = PERIOD  | SETUP       |    13.871ns|     5.019ns|       0|           0
+  TIMEGRP "u_clk_gen_top_u_clk_gen_clk0" TS | HOLD        |    -0.232ns|            |      98|       21264
+  _PCLK HIGH 50%                            |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+* TS_TOCLKA = MAXDELAY TO TIMEGRP "TCLOCK_P | MAXDELAY    |    -0.140ns|     3.140ns|       1|         140
+  AD_A" 3 ns                                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+* TS_TOCLKB = MAXDELAY TO TIMEGRP "TCLOCK_P | MAXDELAY    |    -0.140ns|     3.140ns|       1|         140
+  AD_B" 3 ns                                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+* TS_OFFSET_OUT_A = MAXDELAY TO TIMEGRP "TA | MAXDELAY    |    -0.062ns|     3.062ns|      39|        2418
+  BUS" 3 ns DATAPATHONLY                    |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+* TS_OFFSET_OUT_B = MAXDELAY TO TIMEGRP "TB | MAXDELAY    |    -0.062ns|     3.062ns|      39|        2418
+  BUS" 3 ns DATAPATHONLY                    |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_DEVSEL" OFFSET = OUT 11 ns AFTE | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+  R COMP "PCLK"                             |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_FRAME" OFFSET = OUT 11 ns AFTER | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+   COMP "PCLK"                              |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_INTA" OFFSET = OUT 11 ns AFTER  | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+  COMP "PCLK"                               |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_IRDY" OFFSET = OUT 11 ns AFTER  | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+  COMP "PCLK"                               |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_PAR" OFFSET = OUT 11 ns AFTER C | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+  OMP "PCLK"                                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_PERR" OFFSET = OUT 11 ns AFTER  | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+  COMP "PCLK"                               |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_STOP" OFFSET = OUT 11 ns AFTER  | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+  COMP "PCLK"                               |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_TRDY" OFFSET = OUT 11 ns AFTER  | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+  COMP "PCLK"                               |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TIMEGRP "PCI_AD_GRP" OFFSET = OUT 11 ns A | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+  FTER COMP "PCLK"                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TIMEGRP "PCI_CBE_GRP" OFFSET = OUT 11 ns  | MAXDELAY    |     5.207ns|     5.793ns|       0|           0
+  AFTER COMP "PCLK"                         |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_IRDY" OFFSET = IN 7 ns BEFORE C | SETUP       |     5.591ns|     1.409ns|       0|           0
+  OMP "PCLK"                                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_FRAME" OFFSET = IN 7 ns BEFORE  | SETUP       |     5.591ns|     1.409ns|       0|           0
+  COMP "PCLK"                               |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_TRDY" OFFSET = IN 7 ns BEFORE C | SETUP       |     5.996ns|     1.004ns|       0|           0
+  OMP "PCLK"                                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_PAR" OFFSET = IN 7 ns BEFORE CO | SETUP       |     6.031ns|     0.969ns|       0|           0
+  MP "PCLK"                                 |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TIMEGRP "PCI_CBE_GRP" OFFSET = IN 7 ns BE | SETUP       |     6.031ns|     0.969ns|       0|           0
+  FORE COMP "PCLK"                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_STOP" OFFSET = IN 7 ns BEFORE C | SETUP       |     6.109ns|     0.891ns|       0|           0
+  OMP "PCLK"                                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_REQ" OFFSET = OUT 12 ns AFTER C | MAXDELAY    |     6.119ns|     5.881ns|       0|           0
+  OMP "PCLK"                                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_SERR" OFFSET = OUT 12 ns AFTER  | MAXDELAY    |     6.207ns|     5.793ns|       0|           0
+  COMP "PCLK"                               |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_DEVSEL" OFFSET = IN 7 ns BEFORE | SETUP       |     6.290ns|     0.710ns|       0|           0
+   COMP "PCLK"                              |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_PERR" OFFSET = IN 7 ns BEFORE C | SETUP       |     6.627ns|     0.373ns|       0|           0
+  OMP "PCLK"                                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TIMEGRP "PCI_AD_GRP" OFFSET = IN 7 ns BEF | SETUP       |     6.880ns|     0.120ns|       0|           0
+  ORE COMP "PCLK"                           |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_GNT" OFFSET = IN 10 ns BEFORE C | SETUP       |     8.513ns|     1.487ns|       0|           0
+  OMP "PCLK"                                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  COMP "PCI_IDSEL" OFFSET = IN 10 ns BEFORE | SETUP       |     9.880ns|     0.120ns|       0|           0
+   COMP "PCLK"                              |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_U_TO_J = MAXDELAY FROM TIMEGRP "U_CLK" | SETUP       |    13.808ns|     1.192ns|       0|           0
+   TO TIMEGRP "J_CLK" 15 ns                 | HOLD        |     0.192ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+  TS_U_TO_U = MAXDELAY FROM TIMEGRP "U_CLK" | SETUP       |    14.162ns|     0.838ns|       0|           0
+   TO TIMEGRP "U_CLK" 15 ns                 | HOLD        |     0.413ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+  TS_J_CLK = PERIOD TIMEGRP "J_CLK" 30 ns H | SETUP       |    25.909ns|     4.091ns|       0|           0
+  IGH 50%                                   | HOLD        |     0.071ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+  TS_TO_u_DMA_INTERFACEu_debugu_ila_wb_slav | MAXDELAY    |    28.974ns|     1.026ns|       0|           0
+  eU0I_NO_DU_ILAU_STATU_DIRTY_LDC = MAXDELA | HOLD        |     0.357ns|            |       0|           0
+  Y TO TIMEGRP "TO_u_DMA_INTERFACEu_debugu_ |             |            |            |        |            
+  ila_wb_slaveU0I_NO_DU_ILAU_STATU_DIRTY_LD |             |            |            |        |            
+  C" TS_J_CLK DATAPATHONLY                  |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_TO_u_DMA_INTERFACEu_debugu_ila_wb_engi | MAXDELAY    |    28.974ns|     1.026ns|       0|           0
+  neU0I_NO_DU_ILAU_STATU_DIRTY_LDC = MAXDEL | HOLD        |     0.357ns|            |       0|           0
+  AY TO TIMEGRP "TO_u_DMA_INTERFACEu_debugu |             |            |            |        |            
+  _ila_wb_engineU0I_NO_DU_ILAU_STATU_DIRTY_ |             |            |            |        |            
+  LDC" TS_J_CLK DATAPATHONLY                |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_TO_u_slave_debug_Bu_DMA_FPGA_ila_busU0 | MAXDELAY    |    28.974ns|     1.026ns|       0|           0
+  I_NO_DU_ILAU_STATU_DIRTY_LDC = MAXDELAY T | HOLD        |     0.357ns|            |       0|           0
+  O TIMEGRP "TO_u_slave_debug_Bu_DMA_FPGA_i |             |            |            |        |            
+  la_busU0I_NO_DU_ILAU_STATU_DIRTY_LDC" TS_ |             |            |            |        |            
+  J_CLK DATAPATHONLY                        |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_TO_u_slave_debug_Au_DMA_FPGA_ila_busU0 | MAXDELAY    |    28.974ns|     1.026ns|       0|           0
+  I_NO_DU_ILAU_STATU_DIRTY_LDC = MAXDELAY T | HOLD        |     0.357ns|            |       0|           0
+  O TIMEGRP "TO_u_slave_debug_Au_DMA_FPGA_i |             |            |            |        |            
+  la_busU0I_NO_DU_ILAU_STATU_DIRTY_LDC" TS_ |             |            |            |        |            
+  J_CLK DATAPATHONLY                        |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_TO_down_fifo_bus_A_debugu_fifo_busU0I_ | MAXDELAY    |    28.974ns|     1.026ns|       0|           0
+  NO_DU_ILAU_STATU_DIRTY_LDC = MAXDELAY TO  | HOLD        |     0.357ns|            |       0|           0
+  TIMEGRP "TO_down_fifo_bus_A_debugu_fifo_b |             |            |            |        |            
+  usU0I_NO_DU_ILAU_STATU_DIRTY_LDC" TS_J_CL |             |            |            |        |            
+  K DATAPATHONLY                            |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_TO_down_fifo_dma_A_debugu_fifo_busU0I_ | MAXDELAY    |    28.974ns|     1.026ns|       0|           0
+  NO_DU_ILAU_STATU_DIRTY_LDC = MAXDELAY TO  | HOLD        |     0.357ns|            |       0|           0
+  TIMEGRP "TO_down_fifo_dma_A_debugu_fifo_b |             |            |            |        |            
+  usU0I_NO_DU_ILAU_STATU_DIRTY_LDC" TS_J_CL |             |            |            |        |            
+  K DATAPATHONLY                            |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  PATH "TS_D_TO_J_path" TIG                 | SETUP       |         N/A|     1.615ns|     N/A|           0
+----------------------------------------------------------------------------------------------------------
+  PATH "TS_J_TO_D_path" TIG                 | SETUP       |         N/A|     3.478ns|     N/A|           0
+----------------------------------------------------------------------------------------------------------
+
+
+Derived Constraint Report
+Review Timing Report for more details on the following derived constraints.
+To create a Timing Report, run "trce -v 12 -fastpaths -o design_timing_report design.ncd design.pcf"
+or "Run Timing Analysis" from Timing Analyzer (timingan).
+Derived Constraints for TS_J_CLK
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+---
+----------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths
+Analyzed       |
+|           Constraint          | Requirement
+|-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    |
+Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+---
+----------+
+|TS_J_CLK                       |     30.000ns|      4.091ns|      1.026ns|            0|            0|        16414|   
+       72|
+| TS_TO_u_DMA_INTERFACEu_debugu_|     30.000ns|      1.026ns|          N/A|            0|            0|           12|   
+        0|
+| ila_wb_engineU0I_NO_DU_ILAU_ST|             |             |             |             |             |             |   
+         |
+| ATU_DIRTY_LDC                 |             |             |             |             |             |             |   
+         |
+| TS_TO_u_DMA_INTERFACEu_debugu_|     30.000ns|      1.026ns|          N/A|            0|            0|           12|   
+        0|
+| ila_wb_slaveU0I_NO_DU_ILAU_STA|             |             |             |             |             |             |   
+         |
+| TU_DIRTY_LDC                  |             |             |             |             |             |             |   
+         |
+| TS_TO_u_slave_debug_Bu_DMA_FPG|     30.000ns|      1.026ns|          N/A|            0|            0|           12|   
+        0|
+| A_ila_busU0I_NO_DU_ILAU_STATU_|             |             |             |             |             |             |   
+         |
+| DIRTY_LDC                     |             |             |             |             |             |             |   
+         |
+| TS_TO_u_slave_debug_Au_DMA_FPG|     30.000ns|      1.026ns|          N/A|            0|            0|           12|   
+        0|
+| A_ila_busU0I_NO_DU_ILAU_STATU_|             |             |             |             |             |             |   
+         |
+| DIRTY_LDC                     |             |             |             |             |             |             |   
+         |
+| TS_TO_down_fifo_bus_A_debugu_f|     30.000ns|      1.026ns|          N/A|            0|            0|           12|   
+        0|
+| ifo_busU0I_NO_DU_ILAU_STATU_DI|             |             |             |             |             |             |   
+         |
+| RTY_LDC                       |             |             |             |             |             |             |   
+         |
+| TS_TO_down_fifo_dma_A_debugu_f|     30.000ns|      1.026ns|          N/A|            0|            0|           12|   
+        0|
+| ifo_busU0I_NO_DU_ILAU_STATU_DI|             |             |             |             |             |             |   
+         |
+| RTY_LDC                       |             |             |             |             |             |             |   
+         |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+---
+----------+
+
+Derived Constraints for TS_PCLK
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+---
+----------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths
+Analyzed       |
+|           Constraint          | Requirement
+|-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    |
+Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+---
+----------+
+|TS_PCLK                        |     30.000ns|     16.000ns|      7.800ns|          305|          459|        72471|   
+   444784|
+| TS_u_clk_gen_top_u_clk_gen_clk|     15.000ns|      3.900ns|          N/A|          361|            0|        14587|   
+        0|
+| 2x                            |             |             |             |             |             |             |   
+         |
+| TS_u_clk_gen_top_u_clk_gen_clk|     30.000ns|      5.019ns|          N/A|           98|            0|       430197|   
+        0|
+| 0                             |             |             |             |             |             |             |   
+         |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+---
+----------+
+
+9 constraints not met.
+INFO:Timing:2761 - N/A entries in the Constraints List may indicate that the 
+   constraint is not analyzed due to the following: No paths covered by this 
+   constraint; Other constraints intersect with this constraint; or This 
+   constraint was disabled by a Path Tracing Control. Please run the Timespec 
+   Interaction Report (TSI) via command line (trce tsi) or Timing Analyzer GUI.
+
+
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+Running timing-driven placement...
+Total REAL time at the beginning of Placer: 39 secs 
+Total CPU  time at the beginning of Placer: 38 secs 
+
+Phase 1.1  Initial Placement Analysis
+Phase 1.1  Initial Placement Analysis (Checksum:c69ae958) REAL time: 42 secs 
+
+Phase 2.7  Design Feasibility Check
+Phase 2.7  Design Feasibility Check (Checksum:c69ae958) REAL time: 43 secs 
+
+Phase 3.31  Local Placement Optimization
+Phase 3.31  Local Placement Optimization (Checksum:7dcf56) REAL time: 43 secs 
+
+Phase 4.2  Initial Placement for Architecture Specific Features
+
+Phase 4.2  Initial Placement for Architecture Specific Features (Checksum:e2ead4fc) REAL time: 1 mins 9 secs 
+
+Phase 5.36  Local Placement Optimization
+Phase 5.36  Local Placement Optimization (Checksum:e2ead4fc) REAL time: 1 mins 9 secs 
+
+Phase 6.30  Global Clock Region Assignment
+Phase 6.30  Global Clock Region Assignment (Checksum:e2ead4fc) REAL time: 1 mins 9 secs 
+
+Phase 7.3  Local Placement Optimization
+Phase 7.3  Local Placement Optimization (Checksum:e2ead4fc) REAL time: 1 mins 9 secs 
+
+Phase 8.5  Local Placement Optimization
+Phase 8.5  Local Placement Optimization (Checksum:e2ead4fc) REAL time: 1 mins 10 secs 
+
+Phase 9.8  Global Placement
+..........................
+..................................
+............................................
+..............................
+...........
+Phase 9.8  Global Placement (Checksum:200a4bae) REAL time: 3 mins 3 secs 
+
+Phase 10.5  Local Placement Optimization
+Phase 10.5  Local Placement Optimization (Checksum:200a4bae) REAL time: 3 mins 3 secs 
+
+Phase 11.18  Placement Optimization
+Phase 11.18  Placement Optimization (Checksum:6169aeb4) REAL time: 3 mins 23 secs 
+
+Phase 12.5  Local Placement Optimization
+Phase 12.5  Local Placement Optimization (Checksum:6169aeb4) REAL time: 3 mins 24 secs 
+
+Phase 13.34  Placement Validation
+Phase 13.34  Placement Validation (Checksum:373803d8) REAL time: 3 mins 24 secs 
+
+Total REAL time to Placer completion: 3 mins 39 secs 
+Total CPU  time to Placer completion: 3 mins 38 secs 
+Running physical synthesis...
+
+Physical synthesis completed.
+Running post-placement packing...
+Writing output files...
+WARNING:PhysDesignRules:372 - Gated clock. Clock net CONTROL4<13> is sourced by a combinatorial pin. This is not good
+   design practice. Use the CE pin to control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net CONTROL1<13> is sourced by a combinatorial pin. This is not good
+   design practice. Use the CE pin to control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net CONTROL5<13> is sourced by a combinatorial pin. This is not good
+   design practice. Use the CE pin to control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net CONTROL3<13> is sourced by a combinatorial pin. This is not good
+   design practice. Use the CE pin to control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net CONTROL2<13> is sourced by a combinatorial pin. This is not good
+   design practice. Use the CE pin to control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net CONTROL0<13> is sourced by a combinatorial pin. This is not good
+   design practice. Use the CE pin to control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:2410 - This design is using one or more 9K Block RAMs (RAMB8BWER).  9K Block RAM initialization
+   data, both user defined and default, may be incorrect and should not be used.  For more information, please reference
+   Xilinx Answer Record 39999.
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      0
+Number of warnings:   88
+Slice Logic Utilization:
+  Number of Slice Registers:                 9,192 out of  54,576   16%
+    Number used as Flip Flops:               9,186
+    Number used as Latches:                      6
+    Number used as Latch-thrus:                  0
+    Number used as AND/OR logics:                0
+  Number of Slice LUTs:                      7,076 out of  27,288   25%
+    Number used as logic:                    5,107 out of  27,288   18%
+      Number using O6 output only:           2,973
+      Number using O5 output only:             599
+      Number using O5 and O6:                1,535
+      Number used as ROM:                        0
+    Number used as Memory:                     876 out of   6,408   13%
+      Number used as Dual Port RAM:              0
+      Number used as Single Port RAM:            0
+      Number used as Shift Register:           876
+        Number using O6 output only:           586
+        Number using O5 output only:             1
+        Number using O5 and O6:                289
+    Number used exclusively as route-thrus:  1,093
+      Number with same-slice register load:  1,022
+      Number with same-slice carry load:        71
+      Number with other load:                    0
+
+Slice Logic Distribution:
+  Number of occupied Slices:                 3,137 out of   6,822   45%
+  Number of LUT Flip Flop pairs used:        9,723
+    Number with an unused Flip Flop:         2,336 out of   9,723   24%
+    Number with an unused LUT:               2,647 out of   9,723   27%
+    Number of fully used LUT-FF pairs:       4,740 out of   9,723   48%
+    Number of unique control sets:             501
+    Number of slice register sites lost
+      to control set restrictions:           2,259 out of  54,576    4%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                       162 out of     316   51%
+    Number of LOCed IOBs:                      162 out of     162  100%
+    IOB Flip Flops:                            214
+
+Specific Feature Utilization:
+  Number of RAMB16BWERs:                        78 out of     116   67%
+  Number of RAMB8BWERs:                         22 out of     232    9%
+  Number of BUFIO2/BUFIO2_2CLKs:                 1 out of      32    3%
+    Number used as BUFIO2s:                      1
+    Number used as BUFIO2_2CLKs:                 0
+  Number of BUFIO2FB/BUFIO2FB_2CLKs:             1 out of      32    3%
+    Number used as BUFIO2FBs:                    1
+    Number used as BUFIO2FB_2CLKs:               0
+  Number of BUFG/BUFGMUXs:                       4 out of      16   25%
+    Number used as BUFGs:                        4
+    Number used as BUFGMUX:                      0
+  Number of DCM/DCM_CLKGENs:                     1 out of       8   12%
+    Number used as DCMs:                         1
+    Number used as DCM_CLKGENs:                  0
+  Number of ILOGIC2/ISERDES2s:                  70 out of     376   18%
+    Number used as ILOGIC2s:                    70
+    Number used as ISERDES2s:                    0
+  Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     376    0%
+  Number of OLOGIC2/OSERDES2s:                  80 out of     376   21%
+    Number used as OLOGIC2s:                    80
+    Number used as OSERDES2s:                    0
+  Number of BSCANs:                              1 out of       4   25%
+  Number of BUFHs:                               0 out of     256    0%
+  Number of BUFPLLs:                             0 out of       8    0%
+  Number of BUFPLL_MCBs:                         0 out of       4    0%
+  Number of DSP48A1s:                            0 out of      58    0%
+  Number of ICAPs:                               0 out of       1    0%
+  Number of MCBs:                                0 out of       2    0%
+  Number of PCILOGICSEs:                         0 out of       2    0%
+  Number of PLL_ADVs:                            0 out of       4    0%
+  Number of PMVs:                                0 out of       1    0%
+  Number of STARTUPs:                            0 out of       1    0%
+  Number of SUSPEND_SYNCs:                       0 out of       1    0%
+
+  Number of RPM macros:           54
+Average Fanout of Non-Clock Nets:                3.12
+
+Peak Memory Usage:  435 MB
+Total REAL time to MAP completion:  3 mins 49 secs 
+Total CPU time to MAP completion:   3 mins 48 secs 
+
+Mapping completed.
+See MAP report file "DMA_FPGA_map.mrp" for details.

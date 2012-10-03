@@ -1,0 +1,11 @@
+[Inputs]
+clk
+rst
+trig
+=interval[5:0]=
+[Outputs]
+pulse
+[BiDir]
+[ATTRIBUTES]
+VeriModel pulse_gen
+

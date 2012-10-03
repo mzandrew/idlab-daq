@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<DARoots Version="1" Minor="12">
+	<FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+		<Filter Type="Constrs"/>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.ncf">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ncf">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/fifo_4k.ncf">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/hold_fifo_1k.ncf">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/fifo_16k.ncf">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/Aurora_vio.ncf">
+		</File>
+		<File Path="$PPRDIR/../../../src/Aurora_FPGA/Aurora_FPGA.ucf">
+		</File>
+		<Config>
+			<Option Name="TargetPart" Val="xc6slx45tfgg484-3"/>
+		</Config>
+	</FileSet>
+</DARoots>
+

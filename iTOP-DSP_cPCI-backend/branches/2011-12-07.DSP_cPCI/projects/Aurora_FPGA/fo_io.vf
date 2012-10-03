@@ -1,0 +1,87 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 13.1
+//  \   \         Application : sch2hdl
+//  /   /         Filename : fo_io.vf
+// /___/   /\     Timestamp : 12/04/2011 17:39:50
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -sympath /home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores -intstyle ise -family spartan6 -verilog /home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/fo_io.vf -w /home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/fo_io.sch
+//Design Name: fo_io
+//Device: spartan6
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module fo_io(MOD0, 
+             MOD2, 
+             RX_LOSS, 
+             TX_DIS_IN, 
+             TX_FAULT, 
+             MOD1, 
+             TX_DIS, 
+             xMOD0, 
+             xMOD2, 
+             xRX_LOSS_N, 
+             xTX_FAULT);
+
+    input MOD0;
+    input MOD2;
+    input RX_LOSS;
+    input TX_DIS_IN;
+    input TX_FAULT;
+   output MOD1;
+   output TX_DIS;
+   output xMOD0;
+   output xMOD2;
+   output xRX_LOSS_N;
+   output xTX_FAULT;
+   
+   wire XLXN_11;
+   wire XLXN_32;
+   wire XLXN_33;
+   wire XLXN_34;
+   wire XLXN_35;
+   wire XLXN_38;
+   
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_1 (.I(TX_FAULT), 
+                .O(XLXN_35));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_2 (.I(TX_DIS_IN), 
+                .O(TX_DIS));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_4 (.I(RX_LOSS), 
+                .O(XLXN_38));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_5 (.I(MOD2), 
+                .O(XLXN_33));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_6 (.I(XLXN_11), 
+                .O(MOD1));
+   GND  XLXI_7 (.G(XLXN_11));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_8 (.I(MOD0), 
+                .O(XLXN_32));
+   BUF  XLXI_17 (.I(XLXN_32), 
+                .O(xMOD0));
+   BUF  XLXI_18 (.I(XLXN_33), 
+                .O(xMOD2));
+   BUF  XLXI_19 (.I(XLXN_34), 
+                .O(xRX_LOSS_N));
+   BUF  XLXI_20 (.I(XLXN_35), 
+                .O(xTX_FAULT));
+   INV  XLXI_22 (.I(XLXN_38), 
+                .O(XLXN_34));
+endmodule

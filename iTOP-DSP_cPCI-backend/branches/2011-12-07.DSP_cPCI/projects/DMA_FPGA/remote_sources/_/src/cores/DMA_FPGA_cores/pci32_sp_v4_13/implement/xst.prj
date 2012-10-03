@@ -1,0 +1,4 @@
+`include "../example_design/pci_lc.v"
+`include "../example_design/userapp.v"
+`include "../example_design/pci32_sp_v4_13.v"
+`include "../example_design/pci32_sp_v4_13_top.v"

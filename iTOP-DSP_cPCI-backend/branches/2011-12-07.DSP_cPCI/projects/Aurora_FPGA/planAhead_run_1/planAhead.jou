@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# PlanAhead v13.1
+# Build 117799 by hdbuild on Thu Feb 17 11:35:36 PST 2011
+# Start of session at: Sat Jul 16 18:21:34 2011
+# Process ID: 9124
+# Log file: /home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/planAhead_run_1/planAhead.log
+# Journal file: /home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui -source /home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/pa.fromNetlist.tcl
+startgroup
+set_property OFFCHIP_TERM {} [get_ports MGTCLK1N MGTCLK1P]
+endgroup
+startgroup
+set_property OFFCHIP_TERM {} [get_ports MGTCLK1N MGTCLK1P]
+endgroup
+set_property IOSTANDARD LVDS_33 [get_ports MGTCLK1P]
+set_property IOSTANDARD LVDS_33 [get_ports MGTCLK2N MGTCLK2P]
+exit

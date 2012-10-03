@@ -1,0 +1,13 @@
+# Output products list for <DMA_FPGA_ila_bus>
+DMA_FPGA_ila_bus.asy
+DMA_FPGA_ila_bus.cdc
+DMA_FPGA_ila_bus.ejp
+DMA_FPGA_ila_bus.gise
+DMA_FPGA_ila_bus.ngc
+DMA_FPGA_ila_bus.v
+DMA_FPGA_ila_bus.veo
+DMA_FPGA_ila_bus.xco
+DMA_FPGA_ila_bus.xise
+DMA_FPGA_ila_bus_flist.txt
+DMA_FPGA_ila_bus_readme.txt
+DMA_FPGA_ila_bus_xmdf.tcl

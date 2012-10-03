@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="info" file="sim" num="927" delta="new" >Generating component instance &apos;<arg fmt="%s" index="1">Aurora_ctrl_ila</arg>&apos; of &apos;<arg fmt="%s" index="2">xilinx.com:ip:chipscope_ila:1.04.a</arg>&apos; from &apos;<arg fmt="%s" index="3">/opt/Xilinx/13.1/ISE_DS/ISE/coregen/iprepo/Chipscope/pcores/chipscope_ila_v1_04_a/chipscope_ila_v1_04_a.xcd</arg>&apos;.
+</msg>
+
+</messages>
+

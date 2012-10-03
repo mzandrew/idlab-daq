@@ -1,0 +1,30 @@
+xst -intstyle ise -ifn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.xst" -ofn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../src/cores/DMA_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/DMA/DMA_FPGA.ucf -p xc6slx45-fgg484-3 DMA_FPGA.ngc DMA_FPGA.ngd  
+map -intstyle ise -p xc6slx45-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o DMA_FPGA_map.ncd DMA_FPGA.ngd DMA_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off DMA_FPGA_map.ncd DMA_FPGA.ncd DMA_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml DMA_FPGA.twx DMA_FPGA.ncd -o DMA_FPGA.twr DMA_FPGA.pcf 
+bitgen -intstyle ise -f DMA_FPGA.ut DMA_FPGA.ncd 
+xst -intstyle ise -ifn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.xst" -ofn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../src/cores/DMA_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/DMA/DMA_FPGA.ucf -p xc6slx45-fgg484-3 DMA_FPGA.ngc DMA_FPGA.ngd  
+map -intstyle ise -p xc6slx45-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o DMA_FPGA_map.ncd DMA_FPGA.ngd DMA_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off DMA_FPGA_map.ncd DMA_FPGA.ncd DMA_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml DMA_FPGA.twx DMA_FPGA.ncd -o DMA_FPGA.twr DMA_FPGA.pcf 
+bitgen -intstyle ise -f DMA_FPGA.ut DMA_FPGA.ncd 
+xst -intstyle ise -ifn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.xst" -ofn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../src/cores/DMA_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/DMA/DMA_FPGA.ucf -p xc6slx45-fgg484-3 DMA_FPGA.ngc DMA_FPGA.ngd  
+map -intstyle ise -p xc6slx45-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o DMA_FPGA_map.ncd DMA_FPGA.ngd DMA_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off DMA_FPGA_map.ncd DMA_FPGA.ncd DMA_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml DMA_FPGA.twx DMA_FPGA.ncd -o DMA_FPGA.twr DMA_FPGA.pcf 
+bitgen -intstyle ise -f DMA_FPGA.ut DMA_FPGA.ncd 
+xst -intstyle ise -ifn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.xst" -ofn "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../src/cores/DMA_FPGA_cores -nt timestamp -uc /home/zihangao/DATA_NT/Work/cPCI/firmware/src/DMA/DMA_FPGA.ucf -p xc6slx45-fgg484-3 DMA_FPGA.ngc DMA_FPGA.ngd  
+map -intstyle ise -p xc6slx45-fgg484-3 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o DMA_FPGA_map.ncd DMA_FPGA.ngd DMA_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off DMA_FPGA_map.ncd DMA_FPGA.ncd DMA_FPGA.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml DMA_FPGA.twx DMA_FPGA.ncd -o DMA_FPGA.twr DMA_FPGA.pcf 
+bitgen -intstyle ise -f DMA_FPGA.ut DMA_FPGA.ncd 
+xst -intstyle ise -ifn "D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/DMA_FPGA.xst" -ofn "D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/DMA_FPGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd remote_sources/_/src/cores/DMA_FPGA_cores -nt timestamp -uc remote_sources/_/src/DMA/DMA_FPGA.ucf -p xc6slx45-fgg484-2 DMA_FPGA.ngc DMA_FPGA.ngd  
+map -intstyle ise -p xc6slx45-fgg484-2 -w -logic_opt on -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -detail -ir off -ignore_keep_hierarchy -pr off -lc off -power off -o DMA_FPGA_map.ncd DMA_FPGA.ngd DMA_FPGA.pcf 
+par -w -intstyle ise -ol high -xe n -mt off DMA_FPGA_map.ncd DMA_FPGA.ncd DMA_FPGA.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml DMA_FPGA.twx DMA_FPGA.ncd -o DMA_FPGA.twr DMA_FPGA.pcf 
+bitgen -intstyle ise -f DMA_FPGA.ut DMA_FPGA.ncd 
