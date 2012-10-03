@@ -1,0 +1,16 @@
+Release 13.2 - WebTalk (O.61xd)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+Project Information
+--------------------
+ProjectID=494A42A8CA3247D24E1CED2BFD2439BC
+ProjectIteration=27
+
+WebTalk Summary
+----------------
+INFO:WebTalk:2 - WebTalk is enabled.
+
+INFO:WebTalk:8 - WebTalk Install setting is ON.
+INFO:WebTalk:6 - WebTalk User setting is ON.
+
+INFO:WebTalk:4 - D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/usage_statistics_webtalk.html WebTalk report has been successfully sent to Xilinx on 2012-02-09T09:53:19.  For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/13.2/ISE_DS/ISE/data/reports/webtalk_introduction.html

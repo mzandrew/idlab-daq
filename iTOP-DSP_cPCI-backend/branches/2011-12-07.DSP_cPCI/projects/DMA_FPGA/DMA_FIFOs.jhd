@@ -1,0 +1,17 @@
+MODULE DMA_FIFOs
+	SUBMODULE fifo_interface
+		INSTANCE u_DMA_fifo_A1
+	SUBMODULE fifo_interface
+		INSTANCE u_DMA_fifo_A2
+	SUBMODULE fifo_interface
+		INSTANCE u_DMA_fifo_B1
+	SUBMODULE fifo_interface
+		INSTANCE u_DMA_fifo_B2
+	SUBMODULE DMA_merge_fifo
+		INSTANCE u_fifo_A1
+	SUBMODULE DMA_merge_fifo
+		INSTANCE u_fifo_A2
+	SUBMODULE DMA_merge_fifo
+		INSTANCE u_fifo_B1
+	SUBMODULE DMA_merge_fifo
+		INSTANCE u_fifo_B2

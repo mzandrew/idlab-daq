@@ -1,0 +1,474 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 13.1
+//  \   \         Application : sch2hdl
+//  /   /         Filename : DMA_INTERFACE.vf
+// /___/   /\     Timestamp : 12/04/2011 14:11:22
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -sympath /home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/DMA_FPGA_cores -intstyle ise -family spartan6 -verilog /home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_INTERFACE.vf -w /home/zihangao/DATA_NT/Work/cPCI/firmware/src/DMA/DMA_INTERFACE.sch
+//Design Name: DMA_INTERFACE
+//Device: spartan6
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module DMA_INTERFACE(bc0, 
+                     bc1, 
+                     bc2, 
+                     bc3, 
+                     BOARD_IDENT, 
+                     channel_0_up, 
+                     channel_1_up, 
+                     channel_2_up, 
+                     channel_3_up, 
+                     DMA_fifo_cnt_A1, 
+                     DMA_fifo_cnt_A2, 
+                     DMA_fifo_cnt_B1, 
+                     DMA_fifo_cnt_B2, 
+                     DMA_fifo_dat_A1, 
+                     DMA_fifo_dat_A2, 
+                     DMA_fifo_dat_B1, 
+                     DMA_fifo_dat_B2, 
+                     DMA_fifo_dat_strobe_A1, 
+                     DMA_fifo_dat_strobe_A2, 
+                     DMA_fifo_dat_strobe_B1, 
+                     DMA_fifo_dat_strobe_B2, 
+                     DMA_fifo_dat_strobe_current_A1, 
+                     DMA_fifo_dat_strobe_current_A2, 
+                     DMA_fifo_dat_strobe_current_B1, 
+                     DMA_fifo_dat_strobe_current_B2, 
+                     end_pulse_A, 
+                     end_pulse_B, 
+                     fifo_length_A1, 
+                     fifo_length_A2, 
+                     fifo_length_B1, 
+                     fifo_length_B2, 
+                     fifo_prog_full_A1, 
+                     fifo_prog_full_A2, 
+                     fifo_prog_full_A3, 
+                     fifo_prog_full_A4, 
+                     PCI_CLK, 
+                     PCI_GNT, 
+                     PCI_IDSEL, 
+                     PCI_RST, 
+                     start_end_pulse_A, 
+                     start_end_pulse_B, 
+                     start_pulse_A, 
+                     start_pulse_B, 
+                     WB_CLK, 
+                     WB_RST_DELAY, 
+                     DMA_fifo_rd_A1, 
+                     DMA_fifo_rd_A2, 
+                     DMA_fifo_rd_B1, 
+                     DMA_fifo_rd_B2, 
+                     fifo_data_A1, 
+                     fifo_data_A2, 
+                     fifo_data_A3, 
+                     fifo_data_A4, 
+                     fifo_data_valid_A1, 
+                     fifo_data_valid_A2, 
+                     fifo_data_valid_A3, 
+                     fifo_data_valid_A4, 
+                     PCI_INTA, 
+                     PCI_REQ, 
+                     PCI_SERR, 
+                     pulse_A, 
+                     pulse_B, 
+                     rst_channel_0, 
+                     rst_channel_1, 
+                     rst_channel_2, 
+                     rst_channel_3, 
+                     WBS_CYC_I, 
+                     WB_PCI_RST, 
+                     CONTROL0, 
+                     CONTROL1, 
+                     PCI_AD, 
+                     PCI_CBE, 
+                     PCI_DEVSEL, 
+                     PCI_FRAME, 
+                     PCI_IRDY, 
+                     PCI_PAR, 
+                     PCI_PERR, 
+                     PCI_STOP, 
+                     PCI_TRDY);
+
+    input bc0;
+    input bc1;
+    input bc2;
+    input bc3;
+    input [5:0] BOARD_IDENT;
+    input channel_0_up;
+    input channel_1_up;
+    input channel_2_up;
+    input channel_3_up;
+    input [27:0] DMA_fifo_cnt_A1;
+    input [27:0] DMA_fifo_cnt_A2;
+    input [27:0] DMA_fifo_cnt_B1;
+    input [27:0] DMA_fifo_cnt_B2;
+    input [31:0] DMA_fifo_dat_A1;
+    input [31:0] DMA_fifo_dat_A2;
+    input [31:0] DMA_fifo_dat_B1;
+    input [31:0] DMA_fifo_dat_B2;
+    input DMA_fifo_dat_strobe_A1;
+    input DMA_fifo_dat_strobe_A2;
+    input DMA_fifo_dat_strobe_B1;
+    input DMA_fifo_dat_strobe_B2;
+    input DMA_fifo_dat_strobe_current_A1;
+    input DMA_fifo_dat_strobe_current_A2;
+    input DMA_fifo_dat_strobe_current_B1;
+    input DMA_fifo_dat_strobe_current_B2;
+    input end_pulse_A;
+    input end_pulse_B;
+    input [27:0] fifo_length_A1;
+    input [27:0] fifo_length_A2;
+    input [27:0] fifo_length_B1;
+    input [27:0] fifo_length_B2;
+    input fifo_prog_full_A1;
+    input fifo_prog_full_A2;
+    input fifo_prog_full_A3;
+    input fifo_prog_full_A4;
+    input PCI_CLK;
+    input PCI_GNT;
+    input PCI_IDSEL;
+    input PCI_RST;
+    input start_end_pulse_A;
+    input start_end_pulse_B;
+    input start_pulse_A;
+    input start_pulse_B;
+    input WB_CLK;
+    input WB_RST_DELAY;
+   output DMA_fifo_rd_A1;
+   output DMA_fifo_rd_A2;
+   output DMA_fifo_rd_B1;
+   output DMA_fifo_rd_B2;
+   output [31:0] fifo_data_A1;
+   output [31:0] fifo_data_A2;
+   output [31:0] fifo_data_A3;
+   output [31:0] fifo_data_A4;
+   output fifo_data_valid_A1;
+   output fifo_data_valid_A2;
+   output fifo_data_valid_A3;
+   output fifo_data_valid_A4;
+   output PCI_INTA;
+   output PCI_REQ;
+   output PCI_SERR;
+   output pulse_A;
+   output pulse_B;
+   output rst_channel_0;
+   output rst_channel_1;
+   output rst_channel_2;
+   output rst_channel_3;
+   output WBS_CYC_I;
+   output WB_PCI_RST;
+    inout [35:0] CONTROL0;
+    inout [35:0] CONTROL1;
+    inout [31:0] PCI_AD;
+    inout [3:0] PCI_CBE;
+    inout PCI_DEVSEL;
+    inout PCI_FRAME;
+    inout PCI_IRDY;
+    inout PCI_PAR;
+    inout PCI_PERR;
+    inout PCI_STOP;
+    inout PCI_TRDY;
+   
+   wire [15:0] CTRL;
+   wire [31:0] DMAADR;
+   wire [31:0] DMALEN;
+   wire DMA_fifo_prog_full_int_A1;
+   wire DMA_fifo_prog_full_int_A2;
+   wire DMA_fifo_prog_full_int_B1;
+   wire DMA_fifo_prog_full_int_B2;
+   wire DMA_int;
+   wire DMA_IN_USE;
+   wire fifo_prog_empty_int_A1;
+   wire fifo_prog_empty_int_A2;
+   wire fifo_prog_empty_int_B1;
+   wire fifo_prog_empty_int_B2;
+   wire pulse_A_trig;
+   wire [5:0] pulse_A_width;
+   wire pulse_B_trig;
+   wire [5:0] pulse_B_width;
+   wire rst_wb_dma;
+   wire rst_wb_dma_in;
+   wire [7:0] STAT;
+   wire STAT_VALID;
+   wire [31:0] TRANSFER_SIZE;
+   wire TRANSFER_SIZE_VALID;
+   wire [15:0] WATCH_DOG_CNT;
+   wire WBM_ACK_I;
+   wire [31:0] WBM_ADR_O;
+   wire [1:0] WBM_BTE_O;
+   wire WBM_CAB_O;
+   wire [2:0] WBM_CTI_O;
+   wire WBM_CYC_O;
+   wire [31:0] WBM_DAT_I;
+   wire [31:0] WBM_DAT_O;
+   wire WBM_ERR_I;
+   wire WBM_RTY_I;
+   wire [3:0] WBM_SEL_O;
+   wire WBM_STB_O;
+   wire WBM_WE_O;
+   wire WBS_ACK_O;
+   wire [31:0] WBS_ADR_I;
+   wire [1:0] WBS_BTE_I;
+   wire [2:0] WBS_CTI_I;
+   wire [31:0] WBS_DAT_I;
+   wire [31:0] WBS_DAT_O;
+   wire WBS_ERR_O;
+   wire WBS_RTY_O;
+   wire [3:0] WBS_SEL_I;
+   wire WBS_STB_I;
+   wire WBS_WE_I;
+   wire WB_INT;
+   wire XLXN_36;
+   wire XLXN_106;
+   wire XLXN_120;
+   wire WBS_CYC_I_DUMMY;
+   
+   assign WBS_CYC_I = WBS_CYC_I_DUMMY;
+   OR4  int2_or (.I0(fifo_prog_empty_int_B2), 
+                .I1(fifo_prog_empty_int_B1), 
+                .I2(fifo_prog_empty_int_A2), 
+                .I3(fifo_prog_empty_int_A1), 
+                .O(XLXN_106));
+   pulse_gen  pulse_gen_A (.clk(WB_CLK), 
+                          .interval(pulse_A_width[5:0]), 
+                          .rst(WB_RST_DELAY), 
+                          .trig(pulse_A_trig), 
+                          .pulse(pulse_A));
+   pulse_gen  pulse_gen_B (.clk(WB_CLK), 
+                          .interval(pulse_B_width[5:0]), 
+                          .rst(WB_RST_DELAY), 
+                          .trig(pulse_B_trig), 
+                          .pulse(pulse_B));
+   debug  u_debug (.engine_ack_i(WBS_ACK_O), 
+                  .engine_adr_i(WBS_ADR_I[31:0]), 
+                  .engine_bte_i(WBS_BTE_I[1:0]), 
+                  .engine_cti_i(WBS_CTI_I[2:0]), 
+                  .engine_cyc_i(WBS_CYC_I_DUMMY), 
+                  .engine_dat_i(WBS_DAT_I[31:0]), 
+                  .engine_dat_o(WBS_DAT_O[31:0]), 
+                  .engine_err_i(WBS_ERR_O), 
+                  .engine_rty_i(WBS_RTY_O), 
+                  .engine_sel_i(WBS_SEL_I[3:0]), 
+                  .engine_stb_i(WBS_STB_I), 
+                  .engine_we_i(WBS_WE_I), 
+                  .slave_ack_i(WBM_ACK_I), 
+                  .slave_adr_i(WBM_ADR_O[31:0]), 
+                  .slave_bte_i(WBM_BTE_O[1:0]), 
+                  .slave_cti_i(WBM_CTI_O[2:0]), 
+                  .slave_cyc_i(WBM_CYC_O), 
+                  .slave_dat_i(WBM_DAT_O[31:0]), 
+                  .slave_dat_o(WBM_DAT_I[31:0]), 
+                  .slave_err_i(WBM_ERR_I), 
+                  .slave_rty_i(WBM_RTY_I), 
+                  .slave_sel_i(WBM_SEL_O[3:0]), 
+                  .slave_stb_i(WBM_STB_O), 
+                  .slave_we_i(WBM_WE_O), 
+                  .wb_clk(WB_CLK), 
+                  .wb_int(WB_INT), 
+                  .CONTROL0(CONTROL0[35:0]), 
+                  .CONTROL1(CONTROL1[35:0]));
+   PCI_GUEST  u_PCI_GUEST (.PCI_CLK(PCI_CLK), 
+                          .PCI_GNT(PCI_GNT), 
+                          .PCI_IDSEL(PCI_IDSEL), 
+                          .PCI_RST(PCI_RST), 
+                          .WBM_ACK_I(WBM_ACK_I), 
+                          .WBM_DAT_I(WBM_DAT_I[31:0]), 
+                          .WBM_ERR_I(WBM_ERR_I), 
+                          .WBM_RTY_I(WBM_RTY_I), 
+                          .WBS_ADR_I(WBS_ADR_I[31:0]), 
+                          .WBS_BTE_I(WBS_BTE_I[1:0]), 
+                          .WBS_CAB_I(XLXN_36), 
+                          .WBS_CTI_I(WBS_CTI_I[2:0]), 
+                          .WBS_CYC_I(WBS_CYC_I_DUMMY), 
+                          .WBS_DAT_I(WBS_DAT_I[31:0]), 
+                          .WBS_SEL_I(WBS_SEL_I[3:0]), 
+                          .WBS_STB_I(WBS_STB_I), 
+                          .WBS_WE_I(WBS_WE_I), 
+                          .WB_CLK(WB_CLK), 
+                          .WB_INT(WB_INT), 
+                          .PCI_INTA(PCI_INTA), 
+                          .PCI_REQ(PCI_REQ), 
+                          .PCI_SERR(PCI_SERR), 
+                          .WBM_ADR_O(WBM_ADR_O[31:0]), 
+                          .WBM_BTE_O(WBM_BTE_O[1:0]), 
+                          .WBM_CAB_O(WBM_CAB_O), 
+                          .WBM_CTI_O(WBM_CTI_O[2:0]), 
+                          .WBM_CYC_O(WBM_CYC_O), 
+                          .WBM_DAT_O(WBM_DAT_O[31:0]), 
+                          .WBM_SEL_O(WBM_SEL_O[3:0]), 
+                          .WBM_STB_O(WBM_STB_O), 
+                          .WBM_WE_O(WBM_WE_O), 
+                          .WBS_ACK_O(WBS_ACK_O), 
+                          .WBS_DAT_O(WBS_DAT_O[31:0]), 
+                          .WBS_ERR_O(WBS_ERR_O), 
+                          .WBS_RTY_O(WBS_RTY_O), 
+                          .WB_RST(WB_PCI_RST), 
+                          .PCI_AD(PCI_AD[31:0]), 
+                          .PCI_CBE(PCI_CBE[3:0]), 
+                          .PCI_DEVSEL(PCI_DEVSEL), 
+                          .PCI_FRAME(PCI_FRAME), 
+                          .PCI_IRDY(PCI_IRDY), 
+                          .PCI_PAR(PCI_PAR), 
+                          .PCI_PERR(PCI_PERR), 
+                          .PCI_STOP(PCI_STOP), 
+                          .PCI_TRDY(PCI_TRDY));
+   dma_wb_engine  u_wb_engine (.ack_i(WBS_ACK_O), 
+                              .clk_i(WB_CLK), 
+                              .ctrl_i(CTRL[15:0]), 
+                              .dat_i(WBS_DAT_O[31:0]), 
+                              .dmaadr_i(DMAADR[31:0]), 
+                              .dmalen_i(DMALEN[31:0]), 
+                              
+         .DMA_fifo_data_strobe_current_i_A1(DMA_fifo_dat_strobe_current_A1), 
+                              
+         .DMA_fifo_data_strobe_current_i_A2(DMA_fifo_dat_strobe_current_A2), 
+                              
+         .DMA_fifo_data_strobe_current_i_B1(DMA_fifo_dat_strobe_current_B1), 
+                              
+         .DMA_fifo_data_strobe_current_i_B2(DMA_fifo_dat_strobe_current_B2), 
+                              .DMA_fifo_dat_i_A1(DMA_fifo_dat_A1[31:0]), 
+                              .DMA_fifo_dat_i_A2(DMA_fifo_dat_A2[31:0]), 
+                              .DMA_fifo_dat_i_B1(DMA_fifo_dat_B1[31:0]), 
+                              .DMA_fifo_dat_i_B2(DMA_fifo_dat_B2[31:0]), 
+                              
+         .DMA_fifo_dat_strobe_i_A1(DMA_fifo_dat_strobe_A1), 
+                              
+         .DMA_fifo_dat_strobe_i_A2(DMA_fifo_dat_strobe_A2), 
+                              
+         .DMA_fifo_dat_strobe_i_B1(DMA_fifo_dat_strobe_B1), 
+                              
+         .DMA_fifo_dat_strobe_i_B2(DMA_fifo_dat_strobe_B2), 
+                              .err_i(WBS_ERR_O), 
+                              .fifo_full_A1(fifo_prog_full_A1), 
+                              .fifo_full_A2(fifo_prog_full_A2), 
+                              .fifo_full_A3(fifo_prog_full_A3), 
+                              .fifo_full_A4(fifo_prog_full_A4), 
+                              .reset_i(rst_wb_dma_in), 
+                              .rty_i(WBS_RTY_O), 
+                              .watch_dog_cnt_i(WATCH_DOG_CNT[15:0]), 
+                              .adr_o(WBS_ADR_I[31:0]), 
+                              .bte_o(WBS_BTE_I[1:0]), 
+                              .cti_o(WBS_CTI_I[2:0]), 
+                              .cyc_o(WBS_CYC_I_DUMMY), 
+                              .dat_o(WBS_DAT_I[31:0]), 
+                              .DMA_fifo_rd_o_A1(DMA_fifo_rd_A1), 
+                              .DMA_fifo_rd_o_A2(DMA_fifo_rd_A2), 
+                              .DMA_fifo_rd_o_B1(DMA_fifo_rd_B1), 
+                              .DMA_fifo_rd_o_B2(DMA_fifo_rd_B2), 
+                              .dma_in_use(DMA_IN_USE), 
+                              .fifo_data_A1(fifo_data_A1[31:0]), 
+                              .fifo_data_A2(fifo_data_A2[31:0]), 
+                              .fifo_data_A3(fifo_data_A3[31:0]), 
+                              .fifo_data_A4(fifo_data_A4[31:0]), 
+                              .fifo_data_valid_A1(fifo_data_valid_A1), 
+                              .fifo_data_valid_A2(fifo_data_valid_A2), 
+                              .fifo_data_valid_A3(fifo_data_valid_A3), 
+                              .fifo_data_valid_A4(fifo_data_valid_A4), 
+                              .fin_o(DMA_int), 
+                              .sel_o(WBS_SEL_I[3:0]), 
+                              .stat_o(STAT[7:0]), 
+                              .stat_valid(STAT_VALID), 
+                              .stb_o(WBS_STB_I), 
+                              .transfer_size_o(TRANSFER_SIZE[31:0]), 
+                              .transfer_size_valid(TRANSFER_SIZE_VALID), 
+                              .we_o(WBS_WE_I));
+   dma_wb_slave  u_wb_slave (.adr_i(WBM_ADR_O[31:0]), 
+                            .bc0(bc0), 
+                            .bc1(bc1), 
+                            .bc2(bc2), 
+                            .bc3(bc3), 
+                            .board_ident(BOARD_IDENT[5:0]), 
+                            .bte_i(WBM_BTE_O[1:0]), 
+                            .channel_0_up(channel_0_up), 
+                            .channel_1_up(channel_1_up), 
+                            .channel_2_up(channel_2_up), 
+                            .channel_3_up(channel_3_up), 
+                            .clk_i(WB_CLK), 
+                            .cti_i(WBM_CTI_O[2:0]), 
+                            .cyc_i(WBM_CYC_O), 
+                            .dat_i(WBM_DAT_O[31:0]), 
+                            .DMA_fifo_cnt_A1(DMA_fifo_cnt_A1[27:0]), 
+                            .DMA_fifo_cnt_A2(DMA_fifo_cnt_A2[27:0]), 
+                            .DMA_fifo_cnt_B1(DMA_fifo_cnt_B1[27:0]), 
+                            .DMA_fifo_cnt_B2(DMA_fifo_cnt_B2[27:0]), 
+                            .DMA_fifo_prog_full_A1(), 
+                            .DMA_fifo_prog_full_A2(), 
+                            .DMA_fifo_prog_full_B1(), 
+                            .DMA_fifo_prog_full_B2(), 
+                            .dma_in_use(DMA_IN_USE), 
+                            .end_pulse_A(end_pulse_A), 
+                            .end_pulse_B(end_pulse_B), 
+                            .fifo_length_A1(fifo_length_A1[27:0]), 
+                            .fifo_length_A2(fifo_length_A2[27:0]), 
+                            .fifo_length_B1(fifo_length_B1[27:0]), 
+                            .fifo_length_B2(fifo_length_B2[27:0]), 
+                            .fifo_prog_empty_A1(), 
+                            .fifo_prog_empty_A2(), 
+                            .fifo_prog_empty_B1(), 
+                            .fifo_prog_empty_B2(), 
+                            .reset_i(WB_RST_DELAY), 
+                            .sel_i(WBM_SEL_O[3:0]), 
+                            .start_end_pulse_A(start_end_pulse_A), 
+                            .start_end_pulse_B(start_end_pulse_B), 
+                            .start_pulse_A(start_pulse_A), 
+                            .start_pulse_B(start_pulse_B), 
+                            .stat_i(STAT[7:0]), 
+                            .stat_valid_i(STAT_VALID), 
+                            .stb_i(WBM_STB_O), 
+                            .tranfer_size_valid_i(TRANSFER_SIZE_VALID), 
+                            .transfer_size_i(TRANSFER_SIZE[31:0]), 
+                            .we_i(WBM_WE_O), 
+                            .ack_o(WBM_ACK_I), 
+                            .ctrl_o(CTRL[15:0]), 
+                            .dat_o(WBM_DAT_I[31:0]), 
+                            .dmaadr_o(DMAADR[31:0]), 
+                            .dmalen_o(DMALEN[31:0]), 
+                            
+         .DMA_fifo_prog_full_int_A1(DMA_fifo_prog_full_int_A1), 
+                            
+         .DMA_fifo_prog_full_int_A2(DMA_fifo_prog_full_int_A2), 
+                            
+         .DMA_fifo_prog_full_int_B1(DMA_fifo_prog_full_int_B1), 
+                            
+         .DMA_fifo_prog_full_int_B2(DMA_fifo_prog_full_int_B2), 
+                            .err_o(WBM_ERR_I), 
+                            .fifo_prog_empty_int_A1(fifo_prog_empty_int_A1), 
+                            .fifo_prog_empty_int_A2(fifo_prog_empty_int_A2), 
+                            .fifo_prog_empty_int_B1(fifo_prog_empty_int_B1), 
+                            .fifo_prog_empty_int_B2(fifo_prog_empty_int_B2), 
+                            .pulse_A(pulse_A_trig), 
+                            .pulse_A_width(pulse_A_width[5:0]), 
+                            .pulse_B(pulse_B_trig), 
+                            .pulse_B_width(pulse_B_width[5:0]), 
+                            .reset_channel_0(rst_channel_0), 
+                            .reset_channel_1(rst_channel_1), 
+                            .reset_channel_2(rst_channel_2), 
+                            .reset_channel_3(rst_channel_3), 
+                            .reset_wb_dma(rst_wb_dma), 
+                            .rty_o(WBM_RTY_I), 
+                            .watch_dog_cnt_o(WATCH_DOG_CNT[15:0]));
+   GND  wbs_cab_gnd (.G(XLXN_36));
+   OR4  XLXI_16 (.I0(DMA_fifo_prog_full_int_B2), 
+                .I1(DMA_fifo_prog_full_int_B1), 
+                .I2(DMA_fifo_prog_full_int_A2), 
+                .I3(DMA_fifo_prog_full_int_A1), 
+                .O(XLXN_120));
+   OR3  XLXI_18 (.I0(XLXN_106), 
+                .I1(DMA_int), 
+                .I2(XLXN_120), 
+                .O(WB_INT));
+   OR2  XLXI_19 (.I0(rst_wb_dma), 
+                .I1(WB_RST_DELAY), 
+                .O(rst_wb_dma_in));
+endmodule

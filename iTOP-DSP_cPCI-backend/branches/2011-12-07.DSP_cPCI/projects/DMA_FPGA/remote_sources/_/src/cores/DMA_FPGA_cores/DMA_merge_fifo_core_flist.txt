@@ -1,0 +1,13 @@
+# Output products list for <DMA_merge_fifo_core>
+DMA_merge_fifo_core.asy
+DMA_merge_fifo_core.gise
+DMA_merge_fifo_core.ngc
+DMA_merge_fifo_core.v
+DMA_merge_fifo_core.veo
+DMA_merge_fifo_core.xco
+DMA_merge_fifo_core.xise
+DMA_merge_fifo_core_flist.txt
+DMA_merge_fifo_core_xmdf.tcl
+_xmsgs/pn_parser.xmsgs
+fifo_generator_readme.txt
+fifo_generator_ug175.pdf

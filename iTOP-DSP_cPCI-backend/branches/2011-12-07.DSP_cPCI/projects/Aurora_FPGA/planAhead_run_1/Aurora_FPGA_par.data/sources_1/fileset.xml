@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<DARoots Version="1" Minor="12">
+	<FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+		<Filter Type="EDIFSrcs"/>
+		<File Path="$PPRDIR/../Aurora_FPGA.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/Aurora_vio.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/fifo_16k.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/hold_fifo_1k.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/fifo_4k.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/fifo_2k.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/Aurora_fifo_wr.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/Aurora_fifo_rd.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.ngc">
+		</File>
+		<File Path="$PPRDIR/../../../src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.ngc">
+		</File>
+		<Config>
+			<Option Name="DesignMode" Val="GateLvl"/>
+			<Option Name="GateLvlMode" Val="EDIF"/>
+			<Option Name="TopFile" Val="$PPRDIR/../Aurora_FPGA.ngc"/>
+		</Config>
+	</FileSet>
+</DARoots>
+

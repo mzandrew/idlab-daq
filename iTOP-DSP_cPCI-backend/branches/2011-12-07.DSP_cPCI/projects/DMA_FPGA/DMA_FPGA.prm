@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator O.40d
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o /home/zihangao/DATA_NT/Work/cPCI/firmware/par//DMA_FPGA -x xcf16p -ver 0 /home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.bit 
+
+PROM /home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.prm map: Sun Dec  4 14:36:26 2011
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          2048K
+PROM start    0000:0000
+PROM end      001f:ffff
+PROM checksum 0a36a762
+
+        Addr1        Addr2                     Date File(s)
+    0000:0000    0016:a673     Dec  4 14:34:17 2011 /home/zihangao/DATA_NT/Work/cPCI/firmware/par/DMA_FPGA.bit

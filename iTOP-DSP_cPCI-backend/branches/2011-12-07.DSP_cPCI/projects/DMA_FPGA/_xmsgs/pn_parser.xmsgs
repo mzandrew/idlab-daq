@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated   -->
+<!--     by the Xilinx ISE software.  Any direct editing or        -->
+<!--     changes made to this file may result in unpredictable     -->
+<!--     behavior or data corruption.  It is strongly advised that -->
+<!--     users do not edit the contents of this file.              -->
+<!--                                                               -->
+<!-- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.    -->
+
+<messages>
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/BUS/bus_slave.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/DMA_FPGA_IOBUF.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/DMA_FPGA_icon_wrapper.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/DMA_LED_driver.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/DMA_merge_fifo.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/PCI_GUEST.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/bus_slave_debug.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/clk_gen_top.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/debug.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/dma_wb_engine.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/dma_wb_slave.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/down_fifo_interface_debug.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/fifo_interface.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/monitor_pulse_start_end.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/DMA/pulse_gen.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/cores/DMA_FPGA_cores/clk_gen.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_async_reset_flop.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_async_reset_flop.v</arg>&quot; Line <arg fmt="%d" index="2">73</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_async_reset_flop.v&quot; line 73
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_bridge32.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_bridge32.v</arg>&quot; Line <arg fmt="%d" index="2">107</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_bridge32.v&quot; line 107
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_cbe_en_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_conf_cyc_addr_dec.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_conf_space.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_conf_space.v</arg>&quot; Line <arg fmt="%d" index="2">94</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_conf_space.v&quot; line 94
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_cur_out_reg.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_cur_out_reg.v</arg>&quot; Line <arg fmt="%d" index="2">59</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_cur_out_reg.v&quot; line 59
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_delayed_sync.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_delayed_sync.v</arg>&quot; Line <arg fmt="%d" index="2">71</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_delayed_sync.v&quot; line 71
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_delayed_sync.v</arg>&quot; Line <arg fmt="%d" index="2">72</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/bus_commands.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_delayed_sync.v&quot; line 72
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_delayed_write_reg.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_delayed_write_reg.v</arg>&quot; Line <arg fmt="%d" index="2">56</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_delayed_write_reg.v&quot; line 56
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_frame_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_frame_en_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_frame_load_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_in_reg.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_in_reg.v</arg>&quot; Line <arg fmt="%d" index="2">62</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_in_reg.v&quot; line 62
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_io_mux.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_io_mux_ad_en_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_io_mux_ad_load_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_irdy_out_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_mas_ad_en_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_mas_ad_load_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_mas_ch_state_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_master32_sm.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_master32_sm.v</arg>&quot; Line <arg fmt="%d" index="2">64</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_master32_sm.v&quot; line 64
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_master32_sm_if.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_master32_sm_if.v</arg>&quot; Line <arg fmt="%d" index="2">68</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_master32_sm_if.v&quot; line 68
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_master32_sm_if.v</arg>&quot; Line <arg fmt="%d" index="2">69</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/bus_commands.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_master32_sm_if.v&quot; line 69
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_out_reg.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_out_reg.v</arg>&quot; Line <arg fmt="%d" index="2">56</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_out_reg.v&quot; line 56
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_par_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_parity_check.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_parity_check.v</arg>&quot; Line <arg fmt="%d" index="2">65</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_parity_check.v&quot; line 65
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_parity_check.v</arg>&quot; Line <arg fmt="%d" index="2">66</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/bus_commands.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_parity_check.v&quot; line 66
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pci_decoder.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pci_decoder.v</arg>&quot; Line <arg fmt="%d" index="2">56</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pci_decoder.v&quot; line 56
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pci_tpram.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pci_tpram.v</arg>&quot; Line <arg fmt="%d" index="2">100</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pci_tpram.v&quot; line 100
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pcir_fifo_control.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pcir_fifo_control.v</arg>&quot; Line <arg fmt="%d" index="2">85</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pcir_fifo_control.v&quot; line 85
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pciw_fifo_control.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pciw_fifo_control.v</arg>&quot; Line <arg fmt="%d" index="2">56</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pciw_fifo_control.v&quot; line 56
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pciw_pcir_fifos.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pciw_pcir_fifos.v</arg>&quot; Line <arg fmt="%d" index="2">94</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_pciw_pcir_fifos.v&quot; line 94
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_perr_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_perr_en_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_ram_16x40d.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_rst_int.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_rst_int.v</arg>&quot; Line <arg fmt="%d" index="2">54</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_rst_int.v&quot; line 54
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_serr_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_serr_en_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_spoci_ctrl.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_spoci_ctrl.v</arg>&quot; Line <arg fmt="%d" index="2">44</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_spoci_ctrl.v&quot; line 44
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_sync_module.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_synchronizer_flop.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_clk_en.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_devs_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_interface.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_interface.v</arg>&quot; Line <arg fmt="%d" index="2">80</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/bus_commands.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_interface.v&quot; line 80
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_interface.v</arg>&quot; Line <arg fmt="%d" index="2">81</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_interface.v&quot; line 81
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_sm.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_sm.v</arg>&quot; Line <arg fmt="%d" index="2">77</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_sm.v&quot; line 77
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_stop_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target32_trdy_crit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target_unit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target_unit.v</arg>&quot; Line <arg fmt="%d" index="2">98</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_target_unit.v&quot; line 98
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_addr_mux.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_addr_mux.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_addr_mux.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_decoder.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_decoder.v</arg>&quot; Line <arg fmt="%d" index="2">58</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_decoder.v&quot; line 58
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_master.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_master.v</arg>&quot; Line <arg fmt="%d" index="2">86</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/bus_commands.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_master.v&quot; line 86
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_master.v</arg>&quot; Line <arg fmt="%d" index="2">87</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_master.v&quot; line 87
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_slave.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_slave.v</arg>&quot; Line <arg fmt="%d" index="2">78</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/bus_commands.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_slave.v&quot; line 78
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_slave.v</arg>&quot; Line <arg fmt="%d" index="2">79</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_slave.v&quot; line 79
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_slave_unit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_slave_unit.v</arg>&quot; Line <arg fmt="%d" index="2">83</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_slave_unit.v&quot; line 83
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_tpram.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_tpram.v</arg>&quot; Line <arg fmt="%d" index="2">100</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wb_tpram.v&quot; line 100
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbr_fifo_control.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbr_fifo_control.v</arg>&quot; Line <arg fmt="%d" index="2">81</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbr_fifo_control.v&quot; line 81
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbs_wbb3_2_wbb2.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbw_fifo_control.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbw_fifo_control.v</arg>&quot; Line <arg fmt="%d" index="2">84</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbw_fifo_control.v&quot; line 84
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1769" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbw_wbr_fifos.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbw_wbr_fifos.v</arg>&quot; Line <arg fmt="%d" index="2">97</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_wbw_wbr_fifos.v&quot; line 97
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Include file found: &apos;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_user_constants.v&apos; in file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projects/DMA_FPGA/remote_sources/_/src/opencores/pci/trunk/rtl/verilog/pci_constants.v&quot; line 60
+</arg>
+</msg>
+
+</messages>
+

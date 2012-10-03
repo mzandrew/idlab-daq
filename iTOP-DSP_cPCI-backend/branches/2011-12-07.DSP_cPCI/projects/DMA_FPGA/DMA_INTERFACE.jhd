@@ -1,0 +1,13 @@
+MODULE DMA_INTERFACE
+	SUBMODULE PCI_GUEST
+		INSTANCE u_PCI_GUEST
+	SUBMODULE dma_wb_slave
+		INSTANCE u_wb_slave
+	SUBMODULE dma_wb_engine
+		INSTANCE u_wb_engine
+	SUBMODULE debug
+		INSTANCE u_debug
+	SUBMODULE pulse_gen
+		INSTANCE pulse_gen_A
+	SUBMODULE pulse_gen
+		INSTANCE pulse_gen_B

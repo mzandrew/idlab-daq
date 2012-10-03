@@ -1,0 +1,344 @@
+#-----------------------------------------------------------
+# PlanAhead v13.1
+# Build 117799 by hdbuild on Thu Feb 17 11:35:36 PST 2011
+# Start of session at: Sat Jul 16 18:21:34 2011
+# Process ID: 9124
+# Log file: /home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/planAhead_run_1/planAhead.log
+# Journal file: /home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+INFO: [HD-Licensing 0] Attempting to get a license: PlanAhead
+INFO: [HD-Licensing 1] Got a license: PlanAhead
+INFO: [HD-Licensing 3] Your PlanAhead license expires in -289 day(s)
+INFO: [HD-ArchReader 0] Loading parts and site information from /opt/Xilinx/13.1/ISE_DS/PlanAhead/parts/arch.xml
+INFO: [HD-RTPRIM 0] Parsing RTL primitives file '/opt/Xilinx/13.1/ISE_DS/PlanAhead/parts/xilinx/rtl/prims/rtl_prims.xml'
+INFO: [HD-RTPRIM 1] Finished Parsing RTL primitives file '/opt/Xilinx/13.1/ISE_DS/PlanAhead/parts/xilinx/rtl/prims/rtl_prims.xml'
+start_gui -source /home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/pa.fromNetlist.tcl
+# create_project -name Aurora_FPGA_par -dir "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/planAhead_run_1" -part xc6slx45tfgg484-3
+Parsing template File [/opt/Xilinx/13.1/ISE_DS/ISE/data/projnav/templates/verilog.xml].
+Finished parsing template File [/opt/Xilinx/13.1/ISE_DS/ISE/data/projnav/templates/verilog.xml].
+Parsing template File [/opt/Xilinx/13.1/ISE_DS/ISE/data/projnav/templates/vhdl.xml].
+Finished parsing template File [/opt/Xilinx/13.1/ISE_DS/ISE/data/projnav/templates/vhdl.xml].
+Parsing template File [/opt/Xilinx/13.1/ISE_DS/ISE/data/projnav/templates/ucf.xml].
+Finished parsing template File [/opt/Xilinx/13.1/ISE_DS/ISE/data/projnav/templates/ucf.xml].
+# set_property design_mode GateLvl [get_property srcset [current_run -impl]]
+# set_property edif_top_file "/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.ngc" [ get_property srcset [ current_run ] ]
+# add_files -norecurse { {/home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par} {../../src/cores/Aurora_FPGA_cores} }
+# add_files "../../src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.ncf" "../../src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ncf" "../../src/cores/Aurora_FPGA_cores/fifo_4k.ncf" "../../src/cores/Aurora_FPGA_cores/hold_fifo_1k.ncf" "../../src/cores/Aurora_FPGA_cores/fifo_16k.ncf" "../../src/cores/Aurora_FPGA_cores/Aurora_vio.ncf" -fileset [get_property constrset [current_run]]
+# set_param project.pinAheadLayout  yes
+# set_param project.paUcfFile  "/home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf"
+# add_files "/home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf" -fileset [get_property constrset [current_run]]
+# open_netlist_design
+INFO: Design is defaulting to constrset part: xc6slx45tfgg484-3
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design Aurora_FPGA.ngc ...
+WARNING:NetListWriters:298 - No output is written to Aurora_FPGA.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus v_count_r<15 : 0> on block
+   aurora_8b10b_2_CHANNEL_INIT_SM is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus rx_pad_d_r[3 : 1] on block
+   aurora_8b10b_2_SYM_DEC_4BYTE is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus rx_sp_r[7 : 0] on block
+   aurora_8b10b_2_SYM_DEC_4BYTE is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus rx_spa_r[6 : 2] on block
+   aurora_8b10b_2_SYM_DEC_4BYTE is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus debug_bus_p2<155 : 0> on block
+   Aurora_unit_2 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus v_count_r<15 : 0> on block
+   aurora_8b10b_1_CHANNEL_INIT_SM is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus rx_pad_d_r[3 : 1] on block
+   aurora_8b10b_1_SYM_DEC_4BYTE is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus rx_sp_r[7 : 0] on block
+   aurora_8b10b_1_SYM_DEC_4BYTE is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus rx_spa_r[6 : 2] on block
+   aurora_8b10b_1_SYM_DEC_4BYTE is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus debug_bus_p2<155 : 0> on block
+   Aurora_unit_1 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus debug_bus_reg<69 : 4> on block
+   Aurora_FPGA_debug is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus n0057<67 : 0> on block
+   down_fifo_interface_debug_NO1 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus n0057<67 : 0> on block
+   down_fifo_interface_debug is not reconstructed, because there are some
+   missing bus signals.
+  finished :Prep
+Writing EDIF netlist file Aurora_FPGA.edif ...
+ngc2edif: Total memory usage is 31992 kilobytes
+
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design Aurora_FPGA_ila.ngc ...
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus
+   U0/I_NO_D.U_ILA/U_RST/U_HALT_XFER/iDOUT_dly<2 : 0> on block Aurora_FPGA_ila
+   is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   U0/I_NO_D.U_ILA/U_RST/U_ARM_XFER/iDOUT_dly<4 : 0> on block Aurora_FPGA_ila is
+   not reconstructed, because there are some missing bus signals.
+  finished :Prep
+Writing EDIF netlist file Aurora_FPGA_ila.edif ...
+ngc2edif: Total memory usage is 26636 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.ngc' for (cell view 'Aurora_FPGA_ila', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_ila.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_ila.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design Aurora_FPGA_icon.ngc ...
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus U0/U_ICON/iCORE_ID_SEL<15 : 0> on block
+   Aurora_FPGA_icon is not reconstructed, because there are some missing bus
+   signals.
+  finished :Prep
+Writing EDIF netlist file Aurora_FPGA_icon.edif ...
+ngc2edif: Total memory usage is 25136 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.ngc' for (cell view 'Aurora_FPGA_icon', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_icon.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_icon.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design Aurora_fifo_wr.ngc ...
+WARNING:NetListWriters:298 - No output is written to Aurora_fifo_wr.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file Aurora_fifo_wr.edif ...
+ngc2edif: Total memory usage is 25628 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_fifo_wr.ngc' for (cell view 'Aurora_fifo_wr', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_fifo_wr.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_fifo_wr.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design Aurora_fifo_rd.ngc ...
+WARNING:NetListWriters:298 - No output is written to Aurora_fifo_rd.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file Aurora_fifo_rd.edif ...
+ngc2edif: Total memory usage is 25628 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_fifo_rd.ngc' for (cell view 'Aurora_fifo_rd', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_fifo_rd.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_fifo_rd.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design prefetch_fifo_1k.ngc ...
+WARNING:NetListWriters:298 - No output is written to prefetch_fifo_1k.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus
+   U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg<2 :
+   0> on block prefetch_fifo_1k is not reconstructed, because there are some
+   missing bus signals.
+  finished :Prep
+Writing EDIF netlist file prefetch_fifo_1k.edif ...
+ngc2edif: Total memory usage is 25404 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.ngc' for (cell view 'prefetch_fifo_1k', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/prefetch_fifo_1k.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/prefetch_fifo_1k.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design hold_fifo_1k.ngc ...
+WARNING:NetListWriters:298 - No output is written to hold_fifo_1k.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus
+   U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg<2 :
+   0> on block hold_fifo_1k is not reconstructed, because there are some missing
+   bus signals.
+  finished :Prep
+Writing EDIF netlist file hold_fifo_1k.edif ...
+ngc2edif: Total memory usage is 25404 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/hold_fifo_1k.ngc' for (cell view 'hold_fifo_1k', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/hold_fifo_1k.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/hold_fifo_1k.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design Aurora_ctrl_ila.ngc ...
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus
+   U0/I_NO_D.U_ILA/U_RST/U_HALT_XFER/iDOUT_dly<2 : 0> on block Aurora_ctrl_ila
+   is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   U0/I_NO_D.U_ILA/U_RST/U_ARM_XFER/iDOUT_dly<4 : 0> on block Aurora_ctrl_ila is
+   not reconstructed, because there are some missing bus signals.
+  finished :Prep
+Writing EDIF netlist file Aurora_ctrl_ila.edif ...
+ngc2edif: Total memory usage is 27400 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ngc' for (cell view 'Aurora_ctrl_ila', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_ctrl_ila.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_ctrl_ila.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design Aurora_vio.ngc ...
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file Aurora_vio.edif ...
+ngc2edif: Total memory usage is 24744 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_vio.ngc' for (cell view 'Aurora_vio', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_vio.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_vio.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design fifo_4k.ngc ...
+WARNING:NetListWriters:298 - No output is written to fifo_4k.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus
+   U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg<2 :
+   0> on block fifo_4k is not reconstructed, because there are some missing bus
+   signals.
+  finished :Prep
+Writing EDIF netlist file fifo_4k.edif ...
+ngc2edif: Total memory usage is 25352 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_4k.ngc' for (cell view 'fifo_4k', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/fifo_4k.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/fifo_4k.edif]
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Release 13.1 - ngc2edif O.40d (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Reading design fifo_16k.ngc ...
+WARNING:NetListWriters:298 - No output is written to fifo_16k.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus
+   U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg<2 :
+   0> on block fifo_16k is not reconstructed, because there are some missing bus
+   signals.
+  finished :Prep
+Writing EDIF netlist file fifo_16k.edif ...
+ngc2edif: Total memory usage is 26476 kilobytes
+
+Reading core file '/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_16k.ngc' for (cell view 'fifo_16k', library 'Aurora_FPGA_lib', file 'Aurora_FPGA.ngc')
+Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/fifo_16k.edif]
+Finished Parsing EDIF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/fifo_16k.edif]
+INFO: [HD-Unisim Transformer 0] Analyzing Unisim elements for replacement
+INFO: [HD-Unisim Transformer 1] No Unisim elements were transformed.
+INFO: [HD-ArchReader 7] Loading clock regions from /opt/Xilinx/13.1/ISE_DS/PlanAhead/parts/xilinx/spartan6/spartan6lxt/xc6slx45t/ClockRegion.xml
+INFO: [HD-ArchReader 8] Loading clock buffers from /opt/Xilinx/13.1/ISE_DS/PlanAhead/parts/xilinx/spartan6/spartan6lxt/xc6slx45t/ClockBuffers.xml
+INFO: [HD-ArchReader 13] Loading package pin functions from /opt/Xilinx/13.1/ISE_DS/PlanAhead/parts/xilinx/spartan6/PinFunctions.xml...
+INFO: [HD-ArchReader 3] Loading package from /opt/Xilinx/13.1/ISE_DS/PlanAhead/parts/xilinx/spartan6/spartan6lxt/xc6slx45t/fgg484/Package.xml
+INFO: [HD-ArchReader 4] Loading io standards from /opt/Xilinx/13.1/ISE_DS/PlanAhead/./parts/xilinx/spartan6/IOStandards.xml
+INFO: [HD-ArchReader 12] Loading device configuration modes from /opt/Xilinx/13.1/ISE_DS/PlanAhead/parts/xilinx/spartan6/ConfigModes.xml
+INFO: [HD-GDRC 0] Loading list of drcs for the architecture : /opt/Xilinx/13.1/ISE_DS/PlanAhead/./parts/xilinx/spartan6/drc.xml
+INFO: [HD-LIB 0] Reading timing library /opt/Xilinx/13.1/ISE_DS/PlanAhead/./parts/xilinx/spartan6/spartan6.lib .
+INFO: [HD-LIB 1] Done reading timing library /opt/Xilinx/13.1/ISE_DS/PlanAhead/./parts/xilinx/spartan6/spartan6.lib .
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.ncf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.ncf]
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ncf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ncf]
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ncf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ncf]
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_4k.ncf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_4k.ncf]
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_4k.ncf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_4k.ncf]
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/hold_fifo_1k.ncf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/hold_fifo_1k.ncf]
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_16k.ncf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_16k.ncf]
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_16k.ncf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/fifo_16k.ncf]
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_vio.ncf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores/Aurora_vio.ncf]
+Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_ila.xncf]
+Finished Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_ila.xncf]
+Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_ila.xncf]
+Finished Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_ila.xncf]
+Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_ila.xncf]
+Finished Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_ila.xncf]
+Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_icon.xncf]
+Finished Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_FPGA_icon.xncf]
+Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_ctrl_ila.xncf]
+Finished Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_ctrl_ila.xncf]
+Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_ctrl_ila.xncf]
+Finished Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_ctrl_ila.xncf]
+Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_vio.xncf]
+Finished Parsing UCF File [./.Xil-PlanAhead-9124-ICCAD/ngc2edif/Aurora_vio.xncf]
+Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf]
+Finished Parsing UCF File [/home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.ucf]
+Time (s): 45.480u 1.500s 45.870w. Memory (MB): 855.578p 119.086g
+Time (s): 52.190u 2.410s 54.540w. Memory (MB): 855.578p 133.098g
+startgroup
+set_property OFFCHIP_TERM {} [get_ports MGTCLK1N MGTCLK1P]
+endgroup
+startgroup
+set_property OFFCHIP_TERM {} [get_ports MGTCLK1N MGTCLK1P]
+endgroup
+set_property IOSTANDARD LVDS_33 [get_ports MGTCLK1P]
+set_property IOSTANDARD LVDS_33 [get_ports MGTCLK2N MGTCLK2P]
+exit
+INFO: [HD-Application 0] Exiting PlanAhead...
+INFO: [HD-Licensing 2] Releasing license: PlanAhead

@@ -1,0 +1,14 @@
+run
+-ifmt VERILOG
+-top pci32_sp_v4_13_top
+-p xc6slx45-fgg484-3
+-ifn xst.prj
+-write_timing_constraints no
+-equivalent_register_removal no
+-keep_hierarchy soft
+-uc xst.xcf
+-max_fanout 65535
+-ofn pci32_sp_v4_13_top
+-ofmt NGC
+-opt_mode speed
+-opt_level 2

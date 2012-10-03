@@ -1,0 +1,13 @@
+# Output products list for <Aurora_fifo_wr>
+Aurora_fifo_wr.asy
+Aurora_fifo_wr.gise
+Aurora_fifo_wr.ngc
+Aurora_fifo_wr.v
+Aurora_fifo_wr.veo
+Aurora_fifo_wr.xco
+Aurora_fifo_wr.xise
+Aurora_fifo_wr_flist.txt
+Aurora_fifo_wr_xmdf.tcl
+_xmsgs/pn_parser.xmsgs
+fifo_generator_readme.txt
+fifo_generator_ug175.pdf

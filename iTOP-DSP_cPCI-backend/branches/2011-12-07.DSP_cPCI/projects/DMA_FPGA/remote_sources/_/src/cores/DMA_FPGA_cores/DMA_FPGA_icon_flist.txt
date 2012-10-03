@@ -1,0 +1,12 @@
+# Output products list for <DMA_FPGA_icon>
+DMA_FPGA_icon.asy
+DMA_FPGA_icon.ejp
+DMA_FPGA_icon.gise
+DMA_FPGA_icon.ngc
+DMA_FPGA_icon.v
+DMA_FPGA_icon.veo
+DMA_FPGA_icon.xco
+DMA_FPGA_icon.xise
+DMA_FPGA_icon_flist.txt
+DMA_FPGA_icon_readme.txt
+DMA_FPGA_icon_xmdf.tcl

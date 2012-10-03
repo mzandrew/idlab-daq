@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\mza\FPGA\idlab-daq\iTOP-DSP_cPCI-backend\branches\2011-12-07.DSP_cPCI\projects\Aurora_FPGA\Aurora_FPGA.ncd
+OUTFILE=D:\mza\FPGA\idlab-daq\iTOP-DSP_cPCI-backend\branches\2011-12-07.DSP_cPCI\projects\Aurora_FPGA\Aurora_FPGA.bit
+FAMILY=Spartan6
+PART=xc6slx45t-2fgg484
+WORKINGDIR=D:\mza\FPGA\idlab-daq\iTOP-DSP_cPCI-backend\branches\2011-12-07.DSP_cPCI\projects\Aurora_FPGA
+LICENSE=ISE
+USER_INFO=176018512_200942262_200921651_304

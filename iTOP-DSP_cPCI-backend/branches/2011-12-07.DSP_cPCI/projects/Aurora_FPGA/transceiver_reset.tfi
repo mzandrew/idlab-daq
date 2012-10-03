@@ -1,0 +1,13 @@
+
+
+
+// Instantiate the module
+transceiver_reset instance_name (
+    .reset(reset), 
+    .clk(clk), 
+    .transceiver_dis(transceiver_dis), 
+    .gtp_rst(gtp_rst), 
+    .aurora_rst(aurora_rst)
+    );
+
+
