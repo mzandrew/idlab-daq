@@ -1,0 +1,80 @@
+##############################################################
+#
+# Xilinx Core Generator version 13.1
+# Date: Wed Jun 22 07:38:40 2011
+#
+##############################################################
+#
+#  This file contains the customisation parameters for a
+#  Xilinx CORE Generator IP GUI. It is strongly recommended
+#  that you do not manually alter this file as it may cause
+#  unexpected and unsupported behavior.
+#
+##############################################################
+#
+# BEGIN Project Options
+SET addpads = false
+SET asysymbol = true
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = false
+SET designentry = Verilog
+SET device = xc6slx45
+SET devicefamily = spartan6
+SET flowvendor = Other
+SET formalverification = false
+SET foundationsym = false
+SET implementationfiletype = Ngc
+SET package = fgg484
+SET removerpms = false
+SET simulationfiles = Behavioral
+SET speedgrade = -3
+SET verilogsim = true
+SET vhdlsim = false
+# END Project Options
+# BEGIN Select
+SELECT 32-bit_Initiator/Target_for_PCI_(Spartan-6_only) family Xilinx,_Inc. 4.13
+# END Select
+# BEGIN Parameters
+CSET bar0_64_bit_user_interface=false
+CSET bar0_enabled=true
+CSET bar0_prefetchable=false
+CSET bar0_scale=Megabytes
+CSET bar0_size=1
+CSET bar0_type=Memory
+CSET bar0_value=FFF00000
+CSET bar1_64_bit_user_interface=false
+CSET bar1_enabled=true
+CSET bar1_prefetchable=false
+CSET bar1_scale=Megabytes
+CSET bar1_size=1
+CSET bar1_type=Memory
+CSET bar1_value=FFF00000
+CSET bar2_64_bit_user_interface=false
+CSET bar2_enabled=false
+CSET bar2_prefetchable=false
+CSET bar2_scale=Megabytes
+CSET bar2_size=1
+CSET bar2_type=Memory
+CSET bar2_value=FFF00000
+CSET base_class=00
+CSET bus_standard=PCI_33MHz
+CSET capability_address=80
+CSET capability_list=false
+CSET cardbus_cis_pointer=00000000
+CSET class_code=000000
+CSET clock_select=Global
+CSET component_name=pci32_sp_v4_13
+CSET device_id=0050
+CSET disclaimer_accept=true
+CSET interface=00
+CSET maximum_latency=FF
+CSET minimum_grant=FF
+CSET notes=none
+CSET revision_id=00
+CSET sub_class=00
+CSET subsystem_device_id=0050
+CSET subsystem_vendor_id=10EE
+CSET vendor_id=10EE
+# END Parameters
+GENERATE
+# CRC: 1a462288

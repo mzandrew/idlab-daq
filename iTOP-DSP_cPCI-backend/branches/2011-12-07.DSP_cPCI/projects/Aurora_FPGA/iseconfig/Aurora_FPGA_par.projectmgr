@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--This is an ISE project configuration file.-->
+<!--It holds project specific layout data for the projectmgr plugin.-->
+<!--Copyright (c) 1995-2009 Xilinx, Inc.  All rights reserved.-->
+<Project version="2" owner="projectmgr" name="Aurora_FPGA_par" >
+   <!--This is an ISE project configuration file.-->
+   <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="AutoCompile" >
+      <ClosedNodes>
+         <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/XLXI_4 - vio_wrapper</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_FPGA_BUS - Aurora_FPGA_BUS</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_FPGA_BUS - Aurora_FPGA_BUS/XLXI_16 - down_fifo_interface_debug</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_FPGA_BUS - Aurora_FPGA_BUS/XLXI_17 - down_fifo_interface_debug</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_FPGA_BUS - Aurora_FPGA_BUS/u_Aurora_FPGA_debug - Aurora_FPGA_debug</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1 - MAPPED</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1 - MAPPED/aurora_8b10b_1_aurora_lane_4byte_0_i - aurora_8b10b_1_AURORA_LANE_4BYTE - RTL</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1 - MAPPED/aurora_8b10b_1_global_logic_i - aurora_8b10b_1_GLOBAL_LOGIC - MAPPED</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1/aurora_8b10b_1_global_logic_i - aurora_8b10b_1_GLOBAL_LOGIC</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1/gtp_wrapper_i - aurora_8b10b_1_GTP_WRAPPER</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/u_Aurora_ctrl - Aurora_FPGA_ctrl</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/u_Aurora_ctrl - Aurora_FPGA_ctrl/u_hold_fifo - hold_fifo</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/u_Aurora_ctrl - Aurora_FPGA_ctrl/u_prefetch_fifo - prefetch_fifo</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/u_Aurora_ctrl - Aurora_FPGA_ctrl_bk</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/u_Aurora_ctrl - Aurora_ctrl</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/u_Aurora_ctrl - Aurora_ctrl/u_hold_fifo - hold_fifo</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/u_Aurora_ctrl - Aurora_ctrl/u_prefetch_fifo - prefetch_fifo</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_2 - Aurora_unit_2</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_2 - Aurora_unit_2/aurora_module_i - aurora_8b10b_2</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_2 - Aurora_unit_2/aurora_module_i - aurora_8b10b_2 - MAPPED/aurora_8b10b_2_aurora_lane_4byte_0_i - aurora_8b10b_2_AURORA_LANE_4BYTE - RTL</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_2 - Aurora_unit_2/aurora_module_i - aurora_8b10b_2 - MAPPED/aurora_8b10b_2_global_logic_i - aurora_8b10b_2_GLOBAL_LOGIC - MAPPED</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_2 - Aurora_unit_2/u_Aurora_ctrl - Aurora_FPGA_ctrl</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_2 - Aurora_unit_2/u_Aurora_ctrl - Aurora_ctrl</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_fifo_pool_1 - fifo_pool</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_fifo_pool_2 - fifo_pool</ClosedNode>
+         <ClosedNode>/Aurora_FPGA_ctrl_bk |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA_ctrl_bk.v</ClosedNode>
+         <ClosedNode>/Aurora_ctrl |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_ctrl|Aurora_ctrl.v</ClosedNode>
+         <ClosedNode>/Aurora_unit_1 |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_ctrl|Aurora_unit_1.v</ClosedNode>
+         <ClosedNode>/Aurora_unit_1 |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_ctrl|Aurora_unit_1.v/u_Aurora_ctrl - Aurora_ctrl</ClosedNode>
+         <ClosedNode>/Aurora_unit_1_bk |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_unit_1_bk.v</ClosedNode>
+         <ClosedNode>/Aurora_unit_1_bk |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_unit_1_bk.v/aurora_module_i - aurora_8b10b_1 - MAPPED</ClosedNode>
+         <ClosedNode>/Aurora_unit_1_bk |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_unit_1_bk.v/u_Aurora_ctrl - Aurora_FPGA_ctrl_bk/u_hold_fifo - hold_fifo</ClosedNode>
+         <ClosedNode>/Aurora_unit_1_bk |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_unit_1_bk.v/u_Aurora_ctrl - Aurora_FPGA_ctrl_bk/u_prefetch_fifo - prefetch_fifo</ClosedNode>
+         <ClosedNode>/Aurora_unit_2 |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_ctrl|Aurora_unit_2.v</ClosedNode>
+         <ClosedNode>/Aurora_unit_2_bk |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_unit_2_bk.v</ClosedNode>
+         <ClosedNode>/Automatic `includes</ClosedNode>
+         <ClosedNode>/aurora_8b10b_1_AURORA_LANE_4BYTE - RTL |home|zihangao|DATA_NT|Work|cPCI|firmware|src|cores|Aurora_FPGA_cores|aurora_8b10b_1|src|aurora_8b10b_1_aurora_lane_4byte.vhd</ClosedNode>
+         <ClosedNode>/aurora_8b10b_1_GLOBAL_LOGIC - MAPPED |home|zihangao|DATA_NT|Work|cPCI|firmware|src|cores|Aurora_FPGA_cores|aurora_8b10b_1|src|aurora_8b10b_1_global_logic.vhd</ClosedNode>
+         <ClosedNode>/aurora_8b10b_2_AURORA_LANE_4BYTE |home|zihangao|DATA_NT|Work|cPCI|firmware|src|cores|Aurora_FPGA_cores|aurora_8b10b_2|src|aurora_8b10b_2_aurora_lane_4byte.v</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>Aurora_FPGA (/home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.sch)</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000039b000000020000000000000000000000000200000064ffffffff0000008100000003000000020000039b0000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
+      <CurrentItem>Aurora_FPGA (/home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.sch)</CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_SCHEMATIC" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>Design Utilities</ClosedNode>
+         <ClosedNode>Design Utilities/Compile HDL Simulation Libraries</ClosedNode>
+         <ClosedNode>Implement Design/Map</ClosedNode>
+         <ClosedNode>Implement Design/Place &amp; Route</ClosedNode>
+         <ClosedNode>Implement Design/Place &amp; Route/Back-annotate Pin Locations</ClosedNode>
+         <ClosedNode>Implement Design/Place &amp; Route/Generate IBIS Model</ClosedNode>
+         <ClosedNode>Implement Design/Place &amp; Route/Generate Post-Place &amp; Route Static Timing</ClosedNode>
+         <ClosedNode>Implement Design/Translate</ClosedNode>
+         <ClosedNode>Synthesize - XST</ClosedNode>
+         <ClosedNode>User Constraints</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>Generate Target PROM/ACE File</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >7</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000151000000010000000100000000000000000000000064ffffffff000000810000000000000001000001510000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>Generate Target PROM/ACE File</CurrentItem>
+   </ItemView>
+   <ItemView guiview="File" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems/>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000002b3000000040101000100000000000000000000000064ffffffff000000810000000000000004000000b000000001000000000000011b0000000100000000000000840000000100000000000000640000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>/home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_clk_gen_top.v</CurrentItem>
+   </ItemView>
+   <ItemView guiview="Library" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems/>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000000000000010000000000000000000000000000000000000200000000010001000100000000000000000000000064ffffffff000000810000000000000001000002000000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>work</CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>Design Utilities/Compile HDL Simulation Libraries</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem></SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001ac000000010000000100000000000000000000000064ffffffff000000810000000000000001000001ac0000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <SourceProcessView>000000ff00000000000000020000014c0000011d01000000060100000002</SourceProcessView>
+   <CurrentView>Implementation</CurrentView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_VERILOG" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>User Constraints</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem></SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001a7000000010000000100000000000000000000000064ffffffff000000810000000000000001000001a70000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
+      <ClosedNodes>
+         <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/XLXI_4 - vio_wrapper</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_FPGA_BUS - Aurora_FPGA_BUS</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1 - MAPPED/aurora_8b10b_1_global_logic_i - aurora_8b10b_1_GLOBAL_LOGIC - MAPPED</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1 - MAPPED/gtp_wrapper_i - aurora_8b10b_1_GTP_WRAPPER - BEHAVIORAL</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1/aurora_8b10b_1_aurora_lane_4byte_0_i - aurora_8b10b_1_AURORA_LANE_4BYTE</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1/gtp_wrapper_i - aurora_8b10b_1_GTP_WRAPPER</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_1 - Aurora_unit_1/u_Aurora_ctrl - Aurora_ctrl</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_Aurora_unit_2 - Aurora_unit_2</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_fifo_pool_1 - fifo_pool</ClosedNode>
+         <ClosedNode>/Aurora_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|Aurora_FPGA.sch/u_fifo_pool_2 - fifo_pool</ClosedNode>
+         <ClosedNode>/Automatic `includes</ClosedNode>
+         <ClosedNode>/test_aurora |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|test_aurora.v/u_Aurora_unit_1 - Aurora_unit_1/aurora_module_i - aurora_8b10b_1 - MAPPED</ClosedNode>
+         <ClosedNode>/test_aurora |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|test_aurora.v/u_Aurora_unit_1 - Aurora_unit_1/u_Aurora_ctrl - Aurora_ctrl</ClosedNode>
+         <ClosedNode>/test_aurora |home|zihangao|DATA_NT|Work|cPCI|firmware|src|Aurora_FPGA|test_aurora.v/u_Aurora_unit_2 - Aurora_unit_2</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>test_aurora (/home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/test_aurora.v)</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >34</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000450000000020000000000000000000000000200000064ffffffff000000810000000300000002000004500000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
+      <CurrentItem>test_aurora (/home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/test_aurora.v)</CurrentItem>
+   </ItemView>
+   <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>Design Utilities</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>Design Utilities</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000143000000010000000100000000000000000000000064ffffffff000000810000000000000001000001430000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>Design Utilities</CurrentItem>
+   </ItemView>
+   <ItemView engineview="BehavioralSim" sourcetype="DESUT_SCHEMATIC" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem/>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000135000000010000000100000000000000000000000064ffffffff000000810000000000000001000001350000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem/>
+   </ItemView>
+   <CopyAdditionalFiles/>
+   <ItemView engineview="BehavioralSim" sourcetype="DESUT_VERILOG" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>Simulate Behavioral Model</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000165000000010000000100000000000000000000000064ffffffff000000810000000000000001000001650000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>Simulate Behavioral Model</CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_XCO" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>CORE Generator</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem/>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000017a000000010000000100000000000000000000000064ffffffff0000008100000000000000010000017a0000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem/>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_VHDL_ARCHITECTURE" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>Design Utilities</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem></SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001a7000000010000000100000000000000000000000064ffffffff000000810000000000000001000001a70000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_UCF" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>User Constraints</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem></SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001a7000000010000000100000000000000000000000064ffffffff000000810000000000000001000001a70000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+</Project>

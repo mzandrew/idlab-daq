@@ -1,0 +1,1006 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 13.1
+//  \   \         Application : sch2hdl
+//  /   /         Filename : Aurora_FPGA.vf
+// /___/   /\     Timestamp : 12/06/2011 16:38:22
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -sympath /home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/Aurora_FPGA_cores -intstyle ise -family spartan6 -verilog /home/zihangao/DATA_NT/Work/cPCI/firmware/par/Aurora_FPGA_par/Aurora_FPGA.vf -w /home/zihangao/DATA_NT/Work/cPCI/firmware/src/Aurora_FPGA/Aurora_FPGA.sch
+//Design Name: Aurora_FPGA
+//Device: spartan6
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module fo_io_MUSER_Aurora_FPGA(MOD0, 
+                               MOD2, 
+                               RX_LOSS, 
+                               TX_DIS_IN, 
+                               TX_FAULT, 
+                               MOD1, 
+                               TX_DIS, 
+                               xMOD0, 
+                               xMOD2, 
+                               xRX_LOSS_N, 
+                               xTX_FAULT);
+
+    input MOD0;
+    input MOD2;
+    input RX_LOSS;
+    input TX_DIS_IN;
+    input TX_FAULT;
+   output MOD1;
+   output TX_DIS;
+   output xMOD0;
+   output xMOD2;
+   output xRX_LOSS_N;
+   output xTX_FAULT;
+   
+   wire XLXN_11;
+   wire XLXN_32;
+   wire XLXN_33;
+   wire XLXN_34;
+   wire XLXN_35;
+   wire XLXN_38;
+   
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_1 (.I(TX_FAULT), 
+                .O(XLXN_35));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_2 (.I(TX_DIS_IN), 
+                .O(TX_DIS));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_4 (.I(RX_LOSS), 
+                .O(XLXN_38));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_5 (.I(MOD2), 
+                .O(XLXN_33));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_6 (.I(XLXN_11), 
+                .O(MOD1));
+   GND  XLXI_7 (.G(XLXN_11));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_8 (.I(MOD0), 
+                .O(XLXN_32));
+   BUF  XLXI_17 (.I(XLXN_32), 
+                .O(xMOD0));
+   BUF  XLXI_18 (.I(XLXN_33), 
+                .O(xMOD2));
+   BUF  XLXI_19 (.I(XLXN_34), 
+                .O(xRX_LOSS_N));
+   BUF  XLXI_20 (.I(XLXN_35), 
+                .O(xTX_FAULT));
+   INV  XLXI_22 (.I(XLXN_38), 
+                .O(XLXN_34));
+endmodule
+`timescale 1ns / 1ps
+
+module Aurora_FPGA_BUS_MUSER_Aurora_FPGA(Aurora_rd_fifo_clk_1, 
+                                         Aurora_rd_fifo_clk_2, 
+                                         Aurora_rd_fifo_rd_en_1, 
+                                         Aurora_rd_fifo_rd_en_2, 
+                                         Aurora_wr_fifo_clk_1, 
+                                         Aurora_wr_fifo_clk_2, 
+                                         Aurora_wr_fifo_din_1, 
+                                         Aurora_wr_fifo_din_2, 
+                                         Aurora_wr_fifo_wr_en_1, 
+                                         Aurora_wr_fifo_wr_en_2, 
+                                         BUS_ABORT, 
+                                         BUS_ACK_PAD, 
+                                         BUS_REQ_R_1_PAD, 
+                                         BUS_REQ_R_2_PAD, 
+                                         BUS_REQ_W_1_PAD, 
+                                         BUS_REQ_W_2_PAD, 
+                                         BUS_S_RDY, 
+                                         rst_channel_0, 
+                                         rst_channel_1, 
+                                         WB_CLK_2x_PAD, 
+                                         Aurora_rd_fifo_almost_empty_1, 
+                                         Aurora_rd_fifo_almost_empty_2, 
+                                         Aurora_rd_fifo_dout_1, 
+                                         Aurora_rd_fifo_dout_2, 
+                                         Aurora_rd_fifo_empty_1, 
+                                         Aurora_rd_fifo_empty_2, 
+                                         Aurora_rd_fifo_prog_empty_1, 
+                                         Aurora_rd_fifo_prog_empty_2, 
+                                         Aurora_wr_fifo_almost_full_1, 
+                                         Aurora_wr_fifo_almost_full_2, 
+                                         Aurora_wr_fifo_full_1, 
+                                         Aurora_wr_fifo_full_2, 
+                                         Aurora_wr_fifo_prog_full_1, 
+                                         Aurora_wr_fifo_prog_full_2, 
+                                         BUS_M_RDY, 
+                                         BUS_STB_PAD, 
+                                         BUS_WE_PAD, 
+                                         wb_clk_divide, 
+                                         wb_clk_2x, 
+                                         wb_rst, 
+                                         wb_rst_delay, 
+                                         BUS_AD_PAD, 
+                                         control3, 
+                                         control4, 
+                                         control5);
+
+    input Aurora_rd_fifo_clk_1;
+    input Aurora_rd_fifo_clk_2;
+    input Aurora_rd_fifo_rd_en_1;
+    input Aurora_rd_fifo_rd_en_2;
+    input Aurora_wr_fifo_clk_1;
+    input Aurora_wr_fifo_clk_2;
+    input [31:0] Aurora_wr_fifo_din_1;
+    input [31:0] Aurora_wr_fifo_din_2;
+    input Aurora_wr_fifo_wr_en_1;
+    input Aurora_wr_fifo_wr_en_2;
+    input BUS_ABORT;
+    input BUS_ACK_PAD;
+    input BUS_REQ_R_1_PAD;
+    input BUS_REQ_R_2_PAD;
+    input BUS_REQ_W_1_PAD;
+    input BUS_REQ_W_2_PAD;
+    input BUS_S_RDY;
+    input rst_channel_0;
+    input rst_channel_1;
+    input WB_CLK_2x_PAD;
+   output Aurora_rd_fifo_almost_empty_1;
+   output Aurora_rd_fifo_almost_empty_2;
+   output [31:0] Aurora_rd_fifo_dout_1;
+   output [31:0] Aurora_rd_fifo_dout_2;
+   output Aurora_rd_fifo_empty_1;
+   output Aurora_rd_fifo_empty_2;
+   output Aurora_rd_fifo_prog_empty_1;
+   output Aurora_rd_fifo_prog_empty_2;
+   output Aurora_wr_fifo_almost_full_1;
+   output Aurora_wr_fifo_almost_full_2;
+   output Aurora_wr_fifo_full_1;
+   output Aurora_wr_fifo_full_2;
+   output Aurora_wr_fifo_prog_full_1;
+   output Aurora_wr_fifo_prog_full_2;
+   output BUS_M_RDY;
+   output BUS_STB_PAD;
+   output BUS_WE_PAD;
+   output wb_clk_divide;
+   output wb_clk_2x;
+   output wb_rst;
+   output wb_rst_delay;
+    inout [31:0] BUS_AD_PAD;
+    inout [35:0] control3;
+    inout [35:0] control4;
+    inout [35:0] control5;
+   
+   wire abort;
+   wire abort_pipe;
+   wire Aurora_rd_fifo_empty_1_in;
+   wire Aurora_rd_fifo_empty_2_in;
+   wire Aurora_wr_fifo_almost_full_1_in;
+   wire Aurora_wr_fifo_almost_full_2_in;
+   wire BUS_ACK;
+   wire BUS_ACK_PIPE;
+   wire [31:0] BUS_DAT_I;
+   wire [31:0] BUS_DAT_I_PIPE;
+   wire [31:0] BUS_DAT_O;
+   wire BUS_DAT_O_EN;
+   wire BUS_DAT_O_EN_PIPE;
+   wire [31:0] BUS_DAT_O_PIPE;
+   wire BUS_REQ_R_1;
+   wire BUS_REQ_R_1_pipe;
+   wire BUS_REQ_R_2;
+   wire BUS_REQ_R_2_pipe;
+   wire BUS_REQ_W_1;
+   wire BUS_REQ_W_1_pipe;
+   wire BUS_REQ_W_2;
+   wire BUS_REQ_W_2_pipe;
+   wire BUS_STB;
+   wire BUS_STB_PIPE;
+   wire BUS_WE;
+   wire BUS_WE_PIPE;
+   wire [35:0] control1;
+   wire [35:0] control2;
+   wire m_rdy;
+   wire m_rdy_pipe;
+   wire rd_fifo_prog_full_1;
+   wire rd_fifo_prog_full_1_in;
+   wire rd_fifo_prog_full_2;
+   wire rd_fifo_prog_full_2_in;
+   wire [31:0] rd_fifo_wr_data_1;
+   wire [31:0] rd_fifo_wr_data_2;
+   wire rd_fifo_wr_en_1;
+   wire rd_fifo_wr_en_2;
+   wire rst_channel_0_in;
+   wire rst_channel_1_in;
+   wire s_rdy;
+   wire s_rdy_pipe;
+   wire wb_clk_master;
+   wire wr_fifo_almost_empty_1;
+   wire wr_fifo_almost_empty_2;
+   wire wr_fifo_empty_1;
+   wire wr_fifo_empty_1_in;
+   wire wr_fifo_empty_2;
+   wire wr_fifo_empty_2_in;
+   wire [31:0] wr_fifo_rdat_1;
+   wire [31:0] wr_fifo_rdat_2;
+   wire wr_fifo_rd_1;
+   wire wr_fifo_rd_2;
+   wire XLXN_2;
+   wire [31:0] Aurora_rd_fifo_dout_1_DUMMY;
+   wire Aurora_rd_fifo_empty_1_DUMMY;
+   wire wb_rst_DUMMY;
+   wire wb_clk_2x_DUMMY;
+   wire Aurora_wr_fifo_full_1_DUMMY;
+   wire wb_rst_delay_DUMMY;
+   
+   assign Aurora_rd_fifo_dout_1[31:0] = Aurora_rd_fifo_dout_1_DUMMY[31:0];
+   assign Aurora_rd_fifo_empty_1 = Aurora_rd_fifo_empty_1_DUMMY;
+   assign Aurora_wr_fifo_full_1 = Aurora_wr_fifo_full_1_DUMMY;
+   assign wb_clk_2x = wb_clk_2x_DUMMY;
+   assign wb_rst = wb_rst_DUMMY;
+   assign wb_rst_delay = wb_rst_delay_DUMMY;
+   Aurora_fifo_rd  Aurora_rd_fifo_1 (.din(rd_fifo_wr_data_1[31:0]), 
+                                    .rd_clk(Aurora_rd_fifo_clk_1), 
+                                    .rd_en(Aurora_rd_fifo_rd_en_1), 
+                                    .rst(rst_channel_0_in), 
+                                    .wr_clk(wb_clk_2x_DUMMY), 
+                                    .wr_en(rd_fifo_wr_en_1), 
+                                    
+         .almost_empty(Aurora_rd_fifo_almost_empty_1), 
+                                    .almost_full(), 
+                                    .dout(Aurora_rd_fifo_dout_1_DUMMY[31:0]), 
+                                    .empty(Aurora_rd_fifo_empty_1_in), 
+                                    .full(), 
+                                    .prog_empty(Aurora_rd_fifo_prog_empty_1), 
+                                    .prog_full(rd_fifo_prog_full_1_in), 
+                                    .rd_data_count(), 
+                                    .valid(), 
+                                    .wr_data_count());
+   Aurora_fifo_rd  Aurora_rd_fifo_2 (.din(rd_fifo_wr_data_2[31:0]), 
+                                    .rd_clk(Aurora_rd_fifo_clk_2), 
+                                    .rd_en(Aurora_rd_fifo_rd_en_2), 
+                                    .rst(rst_channel_1_in), 
+                                    .wr_clk(wb_clk_2x_DUMMY), 
+                                    .wr_en(rd_fifo_wr_en_2), 
+                                    
+         .almost_empty(Aurora_rd_fifo_almost_empty_2), 
+                                    .almost_full(), 
+                                    .dout(Aurora_rd_fifo_dout_2[31:0]), 
+                                    .empty(Aurora_rd_fifo_empty_2_in), 
+                                    .full(), 
+                                    .prog_empty(Aurora_rd_fifo_prog_empty_2), 
+                                    .prog_full(rd_fifo_prog_full_2_in), 
+                                    .rd_data_count(), 
+                                    .valid(), 
+                                    .wr_data_count());
+   Aurora_fifo_wr  Aurora_wr_fifo_1 (.din(Aurora_wr_fifo_din_1[31:0]), 
+                                    .rd_clk(wb_clk_2x_DUMMY), 
+                                    .rd_en(wr_fifo_rd_1), 
+                                    .rst(rst_channel_0_in), 
+                                    .wr_clk(Aurora_wr_fifo_clk_1), 
+                                    .wr_en(Aurora_wr_fifo_wr_en_1), 
+                                    .almost_empty(wr_fifo_almost_empty_1), 
+                                    
+         .almost_full(Aurora_wr_fifo_almost_full_1_in), 
+                                    .dout(wr_fifo_rdat_1[31:0]), 
+                                    .empty(wr_fifo_empty_1_in), 
+                                    .full(Aurora_wr_fifo_full_1_DUMMY), 
+                                    .prog_empty(), 
+                                    .prog_full(Aurora_wr_fifo_prog_full_1), 
+                                    .rd_data_count(), 
+                                    .valid(), 
+                                    .wr_data_count());
+   Aurora_fifo_wr  Aurora_wr_fifo_2 (.din(Aurora_wr_fifo_din_2[31:0]), 
+                                    .rd_clk(wb_clk_2x_DUMMY), 
+                                    .rd_en(wr_fifo_rd_2), 
+                                    .rst(rst_channel_1_in), 
+                                    .wr_clk(Aurora_wr_fifo_clk_2), 
+                                    .wr_en(Aurora_wr_fifo_wr_en_2), 
+                                    .almost_empty(wr_fifo_almost_empty_2), 
+                                    
+         .almost_full(Aurora_wr_fifo_almost_full_2_in), 
+                                    .dout(wr_fifo_rdat_2[31:0]), 
+                                    .empty(wr_fifo_empty_2_in), 
+                                    .full(Aurora_wr_fifo_full_2), 
+                                    .prog_empty(), 
+                                    .prog_full(Aurora_wr_fifo_prog_full_2), 
+                                    .rd_data_count(), 
+                                    .valid(), 
+                                    .wr_data_count());
+   Aurora_clk_gen_top  u_Aurora_FPGA_clk_gen_top (.CLK_IN1(WB_CLK_2x_PAD), 
+                                                 .RESET(XLXN_2), 
+                                                 .CLK_OUT1(), 
+                                                 .CLK_OUT2(), 
+                                                 .LOCKED(), 
+                                                 .WB_CLK_DIVIDE(wb_clk_divide), 
+                                                 .WB_CLK_MASTER(wb_clk_master), 
+                                                 
+         .WB_CLK_SLAVE(wb_clk_2x_DUMMY), 
+                                                 .WB_RST(wb_rst_DUMMY), 
+                                                 
+         .WB_RST_DELAY(wb_rst_delay_DUMMY));
+   Aurora_FPGA_debug  u_Aurora_FPGA_debug (.abort(abort), 
+                                          .ack(BUS_ACK), 
+                                          .clk(wb_clk_2x_DUMMY), 
+                                          .dat_i(BUS_DAT_I[31:0]), 
+                                          .dat_o(BUS_DAT_O[31:0]), 
+                                          .m_rdy(m_rdy), 
+                                          .req_r_1(BUS_REQ_R_1), 
+                                          .req_r_2(BUS_REQ_R_2), 
+                                          .req_w_1(BUS_REQ_W_1), 
+                                          .req_w_2(BUS_REQ_W_2), 
+                                          .stb(BUS_STB), 
+                                          .s_rdy(s_rdy), 
+                                          .we(BUS_WE), 
+                                          .control1(control1[35:0]), 
+                                          .control2(control2[35:0]), 
+                                          .control3(control3[35:0]), 
+                                          .control4(control4[35:0]), 
+                                          .control5(control5[35:0]));
+   Aurora_FPGA_iobuf  u_Aurora_FPGA_iobuf (.ado_in(BUS_DAT_O_PIPE[31:0]), 
+                                          .ad_enable_in(BUS_DAT_O_EN_PIPE), 
+                                          .BUS_ABORT(BUS_ABORT), 
+                                          .BUS_ACK(BUS_ACK_PAD), 
+                                          .BUS_REQ_R_1(BUS_REQ_R_1_PAD), 
+                                          .BUS_REQ_R_2(BUS_REQ_R_2_PAD), 
+                                          .BUS_REQ_W_1(BUS_REQ_W_1_PAD), 
+                                          .BUS_REQ_W_2(BUS_REQ_W_2_PAD), 
+                                          .BUS_S_RDY(BUS_S_RDY), 
+                                          .clk_in(wb_clk_2x_DUMMY), 
+                                          .m_rdy_in(m_rdy_pipe), 
+                                          .stb_in(BUS_STB_PIPE), 
+                                          .we_in(BUS_WE_PIPE), 
+                                          .abort_in(abort), 
+                                          .ack_in(BUS_ACK), 
+                                          .adi_in(BUS_DAT_I[31:0]), 
+                                          .BUS_M_RDY(BUS_M_RDY), 
+                                          .BUS_STB(BUS_STB_PAD), 
+                                          .BUS_WE(BUS_WE_PAD), 
+                                          .req_r_in_1(BUS_REQ_R_1), 
+                                          .req_r_in_2(BUS_REQ_R_2), 
+                                          .req_w_in_1(BUS_REQ_W_1), 
+                                          .req_w_in_2(BUS_REQ_W_2), 
+                                          .s_rdy_in(s_rdy), 
+                                          .BUS_AD(BUS_AD_PAD[31:0]));
+   bus_master  u_bus_master (.abort_i(abort_pipe), 
+                            .ack_i(BUS_ACK_PIPE), 
+                            .clk_i(wb_clk_2x_DUMMY), 
+                            .dat_i(BUS_DAT_I_PIPE[31:0]), 
+                            .req_r_1(BUS_REQ_R_1_pipe), 
+                            .req_r_2(BUS_REQ_R_2_pipe), 
+                            .req_w_1(BUS_REQ_W_1_pipe), 
+                            .req_w_2(BUS_REQ_W_2_pipe), 
+                            .reset_i(wb_rst_delay_DUMMY), 
+                            .r_fifo_almost_empty_i_1(wr_fifo_almost_empty_1), 
+                            .r_fifo_almost_empty_i_2(wr_fifo_almost_empty_2), 
+                            .r_fifo_dat_i_1(wr_fifo_rdat_1[31:0]), 
+                            .r_fifo_dat_i_2(wr_fifo_rdat_2[31:0]), 
+                            .r_fifo_empty_i_1(wr_fifo_empty_1), 
+                            .r_fifo_empty_i_2(wr_fifo_empty_2), 
+                            .r_fifo_prog_empty_i_1(), 
+                            .r_fifo_prog_empty_i_2(), 
+                            .s_rdy_i(s_rdy_pipe), 
+                            .w_fifo_almost_full_i_1(), 
+                            .w_fifo_almost_full_i_2(), 
+                            .w_fifo_full_i_1(), 
+                            .w_fifo_full_i_2(), 
+                            .w_fifo_prog_full_i_1(rd_fifo_prog_full_1), 
+                            .w_fifo_prog_full_i_2(rd_fifo_prog_full_2), 
+                            .dat_o(BUS_DAT_O[31:0]), 
+                            .dat_o_enable_o(BUS_DAT_O_EN), 
+                            .m_rdy_o(m_rdy), 
+                            .r_fifo_rd_o_1(wr_fifo_rd_1), 
+                            .r_fifo_rd_o_2(wr_fifo_rd_2), 
+                            .stb_o(BUS_STB), 
+                            .we_o(BUS_WE), 
+                            .w_fifo_dat_o_1(rd_fifo_wr_data_1[31:0]), 
+                            .w_fifo_dat_o_2(rd_fifo_wr_data_2[31:0]), 
+                            .w_fifo_dat_valid_o_1(rd_fifo_wr_en_1), 
+                            .w_fifo_dat_valid_o_2(rd_fifo_wr_en_2));
+   bus_master_pipeline  u_bus_master_pipeline (.abort(abort), 
+                                              .ack(BUS_ACK), 
+                                              .ad_in(BUS_DAT_I[31:0]), 
+                                              .ad_o(BUS_DAT_O[31:0]), 
+                                              .ad_o_enable(BUS_DAT_O_EN), 
+                                              .clk(wb_clk_2x_DUMMY), 
+                                              .m_rdy(m_rdy), 
+                                              .req_r_1(BUS_REQ_R_1), 
+                                              .req_r_2(BUS_REQ_R_2), 
+                                              .req_w_1(BUS_REQ_W_1), 
+                                              .req_w_2(BUS_REQ_W_2), 
+                                              .reset(wb_rst_delay_DUMMY), 
+                                              .stb(BUS_STB), 
+                                              .s_rdy(s_rdy), 
+                                              .we(BUS_WE), 
+                                              .abort_pipe(abort_pipe), 
+                                              .ack_pipe(BUS_ACK_PIPE), 
+                                              
+         .ad_in_pipe(BUS_DAT_I_PIPE[31:0]), 
+                                              
+         .ad_o_enable_pipe(BUS_DAT_O_EN_PIPE), 
+                                              .ad_o_pipe(BUS_DAT_O_PIPE[31:0]), 
+                                              .m_rdy_pipe(m_rdy_pipe), 
+                                              .req_r_1_pipe(BUS_REQ_R_1_pipe), 
+                                              .req_r_2_pipe(BUS_REQ_R_2_pipe), 
+                                              .req_w_1_pipe(BUS_REQ_W_1_pipe), 
+                                              .req_w_2_pipe(BUS_REQ_W_2_pipe), 
+                                              .stb_pipe(BUS_STB_PIPE), 
+                                              .s_rdy_pipe(s_rdy_pipe), 
+                                              .we_pipe(BUS_WE_PIPE));
+   GND  u_gnd (.G(XLXN_2));
+   down_fifo_interface_debug  XLXI_16 (.clk_i(wb_clk_2x_DUMMY), 
+                                      .fifo_dat_1(rd_fifo_wr_data_1[31:0]), 
+                                      .fifo_dat_2(wr_fifo_rdat_1[31:0]), 
+                                      .fifo_empty_1(rd_fifo_prog_full_1), 
+                                      .fifo_empty_2(wr_fifo_empty_1), 
+                                      .fifo_rd_1(rd_fifo_wr_en_1), 
+                                      .fifo_rd_2(wr_fifo_rd_1), 
+                                      .reset_i(wb_rst_delay_DUMMY), 
+                                      .control(control1[35:0]));
+   down_fifo_interface_debug  XLXI_17 (.clk_i(wb_clk_2x_DUMMY), 
+                                      .fifo_dat_1(Aurora_wr_fifo_din_1[31:0]), 
+                                      
+         .fifo_dat_2(Aurora_rd_fifo_dout_1_DUMMY[31:0]), 
+                                      
+         .fifo_empty_1(Aurora_wr_fifo_full_1_DUMMY), 
+                                      
+         .fifo_empty_2(Aurora_rd_fifo_empty_1_DUMMY), 
+                                      .fifo_rd_1(Aurora_wr_fifo_wr_en_1), 
+                                      .fifo_rd_2(Aurora_rd_fifo_rd_en_1), 
+                                      .reset_i(wb_rst_delay_DUMMY), 
+                                      .control(control2[35:0]));
+   OR2  XLXI_18 (.I0(wb_rst_DUMMY), 
+                .I1(rst_channel_0), 
+                .O(rst_channel_0_in));
+   OR2  XLXI_19 (.I0(wb_rst_DUMMY), 
+                .I1(rst_channel_1), 
+                .O(rst_channel_1_in));
+   rst_flag_delay  XLXI_20 (.clk(wb_clk_2x_DUMMY), 
+                           .flag(wr_fifo_empty_1_in), 
+                           .rst(rst_channel_0_in), 
+                           .flag_delay(wr_fifo_empty_1));
+   rst_flag_delay  XLXI_24 (.clk(Aurora_wr_fifo_clk_1), 
+                           .flag(Aurora_wr_fifo_almost_full_1_in), 
+                           .rst(rst_channel_0_in), 
+                           .flag_delay(Aurora_wr_fifo_almost_full_1));
+   rst_flag_delay  XLXI_27 (.clk(Aurora_wr_fifo_clk_2), 
+                           .flag(Aurora_wr_fifo_almost_full_2_in), 
+                           .rst(rst_channel_1_in), 
+                           .flag_delay(Aurora_wr_fifo_almost_full_2));
+   rst_flag_delay  XLXI_28 (.clk(wb_clk_2x_DUMMY), 
+                           .flag(wr_fifo_empty_2_in), 
+                           .rst(rst_channel_1_in), 
+                           .flag_delay(wr_fifo_empty_2));
+   rst_flag_delay  XLXI_31 (.clk(Aurora_rd_fifo_clk_1), 
+                           .flag(Aurora_rd_fifo_empty_1_in), 
+                           .rst(rst_channel_0_in), 
+                           .flag_delay(Aurora_rd_fifo_empty_1_DUMMY));
+   rst_flag_delay  XLXI_32 (.clk(wb_clk_2x_DUMMY), 
+                           .flag(rd_fifo_prog_full_1_in), 
+                           .rst(rst_channel_0_in), 
+                           .flag_delay(rd_fifo_prog_full_1));
+   rst_flag_delay  XLXI_33 (.clk(Aurora_rd_fifo_clk_2), 
+                           .flag(Aurora_rd_fifo_empty_2_in), 
+                           .rst(rst_channel_1_in), 
+                           .flag_delay(Aurora_rd_fifo_empty_2));
+   rst_flag_delay  XLXI_34 (.clk(wb_clk_2x_DUMMY), 
+                           .flag(rd_fifo_prog_full_2_in), 
+                           .rst(rst_channel_1_in), 
+                           .flag_delay(rd_fifo_prog_full_2));
+endmodule
+`timescale 1ns / 1ps
+
+module Aurora_FPGA(BCLK, 
+                   BUS_ABORT, 
+                   BUS_ACK_PAD, 
+                   BUS_REQ_R_1_PAD, 
+                   BUS_REQ_R_2_PAD, 
+                   BUS_REQ_W_1_PAD, 
+                   BUS_REQ_W_2_PAD, 
+                   BUS_S_RDY, 
+                   end_pulse_in, 
+                   GTPD1_N, 
+                   GTPD1_P, 
+                   GTPD2_N, 
+                   GTPD2_P, 
+                   MOD0_1, 
+                   MOD0_2, 
+                   MOD2_1, 
+                   MOD2_2, 
+                   MON_IN, 
+                   rst_channel_0_pad, 
+                   rst_channel_1_pad, 
+                   RXN1, 
+                   RXN2, 
+                   RXP1, 
+                   RXP2, 
+                   RX_LOSS_1, 
+                   RX_LOSS_2, 
+                   start_pulse_in, 
+                   TX_FAULT_1, 
+                   TX_FAULT_2, 
+                   WB_CLK_2x_PAD, 
+                   bc1, 
+                   bc2, 
+                   BUS_M_RDY, 
+                   BUS_STB_PAD, 
+                   BUS_WE_PAD, 
+                   CHANNEL_UP_1_PAD, 
+                   CHANNEL_UP_2_PAD, 
+                   end_pulse_in_led, 
+                   end_pulse_out, 
+                   LED_GREEN_1, 
+                   LED_GREEN_2, 
+                   LED_RED_1, 
+                   LED_RED_2, 
+                   MGTCLK1N, 
+                   MGTCLK1P, 
+                   MGTCLK2N, 
+                   MGTCLK2P, 
+                   MOD1_1, 
+                   MOD1_2, 
+                   MON_OUT, 
+                   start_pulse_in_led, 
+                   start_pulse_out, 
+                   TXN1, 
+                   TXN2, 
+                   TXP1, 
+                   TXP2, 
+                   TX_DIS_1, 
+                   TX_DIS_2, 
+                   BUS_AD_PAD);
+
+    input BCLK;
+    input BUS_ABORT;
+    input BUS_ACK_PAD;
+    input BUS_REQ_R_1_PAD;
+    input BUS_REQ_R_2_PAD;
+    input BUS_REQ_W_1_PAD;
+    input BUS_REQ_W_2_PAD;
+    input BUS_S_RDY;
+    input end_pulse_in;
+    input GTPD1_N;
+    input GTPD1_P;
+    input GTPD2_N;
+    input GTPD2_P;
+    input MOD0_1;
+    input MOD0_2;
+    input MOD2_1;
+    input MOD2_2;
+    input MON_IN;
+    input rst_channel_0_pad;
+    input rst_channel_1_pad;
+    input RXN1;
+    input RXN2;
+    input RXP1;
+    input RXP2;
+    input RX_LOSS_1;
+    input RX_LOSS_2;
+    input start_pulse_in;
+    input TX_FAULT_1;
+    input TX_FAULT_2;
+    input WB_CLK_2x_PAD;
+   output bc1;
+   output bc2;
+   output BUS_M_RDY;
+   output BUS_STB_PAD;
+   output BUS_WE_PAD;
+   output CHANNEL_UP_1_PAD;
+   output CHANNEL_UP_2_PAD;
+   output end_pulse_in_led;
+   output end_pulse_out;
+   output LED_GREEN_1;
+   output LED_GREEN_2;
+   output LED_RED_1;
+   output LED_RED_2;
+   output MGTCLK1N;
+   output MGTCLK1P;
+   output MGTCLK2N;
+   output MGTCLK2P;
+   output MOD1_1;
+   output MOD1_2;
+   output MON_OUT;
+   output start_pulse_in_led;
+   output start_pulse_out;
+   output TXN1;
+   output TXN2;
+   output TXP1;
+   output TXP2;
+   output TX_DIS_1;
+   output TX_DIS_2;
+    inout [31:0] BUS_AD_PAD;
+   
+   wire [7:0] Aurora_ctrl_vio;
+   wire Aurora_rst;
+   wire Aurora_rst_1;
+   wire Aurora_rst_2;
+   wire BCLK_BUF;
+   wire channel_up_1;
+   wire channel_up_2;
+   wire [35:0] control3;
+   wire [35:0] control4;
+   wire [35:0] control5;
+   wire dr_full_1;
+   wire dr_full_2;
+   wire [31:0] dr_rd_data_1;
+   wire [31:0] dr_rd_data_2;
+   wire dr_rd_empty_1;
+   wire dr_rd_empty_2;
+   wire dr_rd_en_1;
+   wire dr_rd_en_2;
+   wire [31:0] dr_wr_data_1;
+   wire [31:0] dr_wr_data_2;
+   wire dr_wr_en_1;
+   wire dr_wr_en_2;
+   wire hard_error_1;
+   wire hard_error_2;
+   wire [31:0] rd_fifo_dat_1;
+   wire [31:0] rd_fifo_dat_2;
+   wire rd_fifo_empty_1;
+   wire rd_fifo_empty_2;
+   wire rd_fifo_rd_en_1;
+   wire rd_fifo_rd_en_2;
+   wire rst_channel_0;
+   wire rst_channel_1;
+   wire rst_dr_1;
+   wire rst_dr_1_in;
+   wire rst_dr_2;
+   wire rst_dr_2_in;
+   wire rst_fifo_1;
+   wire rst_fifo_2;
+   wire rst_pool_1;
+   wire rst_pool_2;
+   wire soft_error_1;
+   wire soft_error_2;
+   wire trans_dis_1;
+   wire trans_dis_2;
+   wire user_clk_1;
+   wire user_clk_2;
+   wire wb_clk_divide;
+   wire wb_clk_2x;
+   wire wb_rst;
+   wire wb_rst_delay;
+   wire wr_fifo_full_1;
+   wire wr_fifo_full_2;
+   wire [31:0] wr_fifo_wr_dat_1;
+   wire [31:0] wr_fifo_wr_dat_2;
+   wire wr_fifo_wr_en_1;
+   wire wr_fifo_wr_en_2;
+   wire XLXN_41;
+   wire XLXN_53;
+   wire XLXN_93;
+   wire XLXN_149;
+   wire XLXN_152;
+   wire XLXN_157;
+   wire XLXN_158;
+   wire XLXN_159;
+   wire XLXN_191;
+   wire XLXN_193;
+   wire XLXN_223;
+   wire XLXN_233;
+   
+   bad_ch_detect  bcd1 (.channel_up(channel_up_1), 
+                       .clk(user_clk_1), 
+                       .hard_error(hard_error_1), 
+                       .rst(Aurora_rst_1), 
+                       .soft_error(soft_error_1), 
+                       .bad_channel(XLXN_193));
+   bad_ch_detect  bcd2 (.channel_up(channel_up_2), 
+                       .clk(user_clk_2), 
+                       .hard_error(hard_error_2), 
+                       .rst(Aurora_rst_2), 
+                       .soft_error(soft_error_2), 
+                       .bad_channel(XLXN_191));
+   data_repeater  data_repeater_1 (.clk_i(user_clk_1), 
+                                  .fifo_dat_i(dr_rd_data_1[31:0]), 
+                                  .fifo_empty_i(dr_rd_empty_1), 
+                                  .fifo_full_i(dr_full_1), 
+                                  .reset_i(rst_dr_1_in), 
+                                  .fifo_dat_o(dr_wr_data_1[31:0]), 
+                                  .fifo_read_o(dr_rd_en_1), 
+                                  .fifo_write_o(dr_wr_en_1));
+   data_repeater  data_repeater_2 (.clk_i(user_clk_2), 
+                                  .fifo_dat_i(dr_rd_data_2[31:0]), 
+                                  .fifo_empty_i(dr_rd_empty_2), 
+                                  .fifo_full_i(dr_full_2), 
+                                  .reset_i(rst_dr_2_in), 
+                                  .fifo_dat_o(dr_wr_data_2[31:0]), 
+                                  .fifo_read_o(dr_rd_en_2), 
+                                  .fifo_write_o(dr_wr_en_2));
+   Aurora_FPGA_BUS_MUSER_Aurora_FPGA  u_Aurora_FPGA_BUS 
+         (.Aurora_rd_fifo_clk_1(user_clk_1), 
+                                                        
+         .Aurora_rd_fifo_clk_2(user_clk_2), 
+                                                        
+         .Aurora_rd_fifo_rd_en_1(rd_fifo_rd_en_1), 
+                                                        
+         .Aurora_rd_fifo_rd_en_2(rd_fifo_rd_en_2), 
+                                                        
+         .Aurora_wr_fifo_clk_1(user_clk_1), 
+                                                        
+         .Aurora_wr_fifo_clk_2(user_clk_2), 
+                                                        
+         .Aurora_wr_fifo_din_1(dr_wr_data_1[31:0]), 
+                                                        
+         .Aurora_wr_fifo_din_2(dr_wr_data_2[31:0]), 
+                                                        
+         .Aurora_wr_fifo_wr_en_1(dr_wr_en_1), 
+                                                        
+         .Aurora_wr_fifo_wr_en_2(dr_wr_en_2), 
+                                                        .BUS_ABORT(BUS_ABORT), 
+                                                        
+         .BUS_ACK_PAD(BUS_ACK_PAD), 
+                                                        
+         .BUS_REQ_R_1_PAD(BUS_REQ_R_1_PAD), 
+                                                        
+         .BUS_REQ_R_2_PAD(BUS_REQ_R_2_PAD), 
+                                                        
+         .BUS_REQ_W_1_PAD(BUS_REQ_W_1_PAD), 
+                                                        
+         .BUS_REQ_W_2_PAD(BUS_REQ_W_2_PAD), 
+                                                        .BUS_S_RDY(BUS_S_RDY), 
+                                                        
+         .rst_channel_0(rst_channel_0), 
+                                                        
+         .rst_channel_1(rst_channel_1), 
+                                                        
+         .WB_CLK_2x_PAD(WB_CLK_2x_PAD), 
+                                                        
+         .Aurora_rd_fifo_almost_empty_1(), 
+                                                        
+         .Aurora_rd_fifo_almost_empty_2(), 
+                                                        
+         .Aurora_rd_fifo_dout_1(rd_fifo_dat_1[31:0]), 
+                                                        
+         .Aurora_rd_fifo_dout_2(rd_fifo_dat_2[31:0]), 
+                                                        
+         .Aurora_rd_fifo_empty_1(rd_fifo_empty_1), 
+                                                        
+         .Aurora_rd_fifo_empty_2(rd_fifo_empty_2), 
+                                                        
+         .Aurora_rd_fifo_prog_empty_1(), 
+                                                        
+         .Aurora_rd_fifo_prog_empty_2(), 
+                                                        
+         .Aurora_wr_fifo_almost_full_1(dr_full_1), 
+                                                        
+         .Aurora_wr_fifo_almost_full_2(dr_full_2), 
+                                                        
+         .Aurora_wr_fifo_full_1(), 
+                                                        
+         .Aurora_wr_fifo_full_2(), 
+                                                        
+         .Aurora_wr_fifo_prog_full_1(), 
+                                                        
+         .Aurora_wr_fifo_prog_full_2(), 
+                                                        .BUS_M_RDY(BUS_M_RDY), 
+                                                        
+         .BUS_STB_PAD(BUS_STB_PAD), 
+                                                        
+         .BUS_WE_PAD(BUS_WE_PAD), 
+                                                        
+         .wb_clk_divide(wb_clk_divide), 
+                                                        .wb_clk_2x(wb_clk_2x), 
+                                                        .wb_rst(wb_rst), 
+                                                        
+         .wb_rst_delay(wb_rst_delay), 
+                                                        
+         .BUS_AD_PAD(BUS_AD_PAD[31:0]), 
+                                                        
+         .control3(control3[35:0]), 
+                                                        
+         .control4(control4[35:0]), 
+                                                        
+         .control5(control5[35:0]));
+   Aurora_unit_1  u_Aurora_unit_1 (.fifo_dat_i(rd_fifo_dat_1[31:0]), 
+                                  .fifo_empty_i(rd_fifo_empty_1), 
+                                  .fifo_full_i(wr_fifo_full_1), 
+                                  .GTPD1_N(GTPD1_N), 
+                                  .GTPD1_P(GTPD1_P), 
+                                  .init_clk(wb_clk_divide), 
+                                  .init_clk_not_lock(wb_rst), 
+                                  .rxn(RXN1), 
+                                  .rxp(RXP1), 
+                                  .user_reset(Aurora_rst_1), 
+                                  .CHANNEL_UP(channel_up_1), 
+                                  .fifo_rd_o(rd_fifo_rd_en_1), 
+                                  .fifo_wr_dat_o(wr_fifo_wr_dat_1[31:0]), 
+                                  .fifo_wr_o(wr_fifo_wr_en_1), 
+                                  .HARD_ERR(hard_error_1), 
+                                  .LANE_UP(), 
+                                  .rst_fifo(rst_fifo_1), 
+                                  .SOFT_ERR(soft_error_1), 
+                                  .transceiver_dis_out(trans_dis_1), 
+                                  .txn(TXN1), 
+                                  .txp(TXP1), 
+                                  .user_clk(user_clk_1), 
+                                  .CONTROL(control3[35:0]));
+   Aurora_unit_2  u_Aurora_unit_2 (.fifo_dat_i(rd_fifo_dat_2[31:0]), 
+                                  .fifo_empty_i(rd_fifo_empty_2), 
+                                  .fifo_full_i(wr_fifo_full_2), 
+                                  .GTPD0_N(GTPD2_N), 
+                                  .GTPD0_P(GTPD2_P), 
+                                  .init_clk(wb_clk_divide), 
+                                  .init_clk_not_lock(wb_rst), 
+                                  .rxn(RXN2), 
+                                  .rxp(RXP2), 
+                                  .user_reset(Aurora_rst_2), 
+                                  .CHANNEL_UP(channel_up_2), 
+                                  .fifo_rd_o(rd_fifo_rd_en_2), 
+                                  .fifo_wr_dat_o(wr_fifo_wr_dat_2[31:0]), 
+                                  .fifo_wr_o(wr_fifo_wr_en_2), 
+                                  .HARD_ERR(hard_error_2), 
+                                  .LANE_UP(), 
+                                  .rst_fifo(rst_fifo_2), 
+                                  .SOFT_ERR(soft_error_2), 
+                                  .transceiver_dis_out(trans_dis_2), 
+                                  .txn(TXN2), 
+                                  .txp(TXP2), 
+                                  .user_clk(user_clk_2), 
+                                  .CONTROL(control4[35:0]));
+   fifo_pool  u_fifo_pool_1 (.clk(user_clk_1), 
+                            .fifo_rd_en(dr_rd_en_1), 
+                            .fifo_wr_data(wr_fifo_wr_dat_1[31:0]), 
+                            .fifo_wr_en(wr_fifo_wr_en_1), 
+                            .rst_fifo(rst_pool_1), 
+                            .rst_logic(wb_rst_delay), 
+                            .fifo_rd_data(dr_rd_data_1[31:0]), 
+                            .fifo_rd_empty(dr_rd_empty_1), 
+                            .fifo_wr_almost_full(wr_fifo_full_1), 
+                            .fifo_wr_full());
+   fifo_pool  u_fifo_pool_2 (.clk(user_clk_2), 
+                            .fifo_rd_en(dr_rd_en_2), 
+                            .fifo_wr_data(wr_fifo_wr_dat_2[31:0]), 
+                            .fifo_wr_en(wr_fifo_wr_en_2), 
+                            .rst_fifo(rst_pool_2), 
+                            .rst_logic(wb_rst_delay), 
+                            .fifo_rd_data(dr_rd_data_2[31:0]), 
+                            .fifo_rd_empty(dr_rd_empty_2), 
+                            .fifo_wr_almost_full(wr_fifo_full_2), 
+                            .fifo_wr_full());
+   (* IOSTANDARD = "DEFAULT" *) 
+   OBUFDS  XLXI_1 (.I(BCLK_BUF), 
+                  .O(MGTCLK1P), 
+                  .OB(MGTCLK1N));
+   (* IOSTANDARD = "DEFAULT" *) 
+   OBUFDS  XLXI_2 (.I(BCLK_BUF), 
+                  .O(MGTCLK2P), 
+                  .OB(MGTCLK2N));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) 
+   IBUFG  XLXI_3 (.I(BCLK), 
+                 .O(BCLK_BUF));
+   vio_wrapper  XLXI_4 (.aurora_ctrl(Aurora_ctrl_vio[7:0]), 
+                       .control(control5[35:0]));
+   OR2  XLXI_5 (.I0(XLXN_152), 
+               .I1(Aurora_ctrl_vio[7]), 
+               .O(Aurora_rst));
+   fo_io_MUSER_Aurora_FPGA  XLXI_8 (.MOD0(MOD0_1), 
+                                   .MOD2(MOD2_1), 
+                                   .RX_LOSS(RX_LOSS_1), 
+                                   .TX_DIS_IN(trans_dis_1), 
+                                   .TX_FAULT(TX_FAULT_1), 
+                                   .MOD1(MOD1_1), 
+                                   .TX_DIS(TX_DIS_1), 
+                                   .xMOD0(), 
+                                   .xMOD2(), 
+                                   .xRX_LOSS_N(), 
+                                   .xTX_FAULT());
+   fo_io_MUSER_Aurora_FPGA  XLXI_9 (.MOD0(MOD0_2), 
+                                   .MOD2(MOD2_2), 
+                                   .RX_LOSS(RX_LOSS_2), 
+                                   .TX_DIS_IN(trans_dis_2), 
+                                   .TX_FAULT(TX_FAULT_2), 
+                                   .MOD1(MOD1_2), 
+                                   .TX_DIS(TX_DIS_2), 
+                                   .xMOD0(), 
+                                   .xMOD2(), 
+                                   .xRX_LOSS_N(), 
+                                   .xTX_FAULT());
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_10 (.I(XLXN_93), 
+                 .O(LED_GREEN_1));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_14 (.I(XLXN_41), 
+                 .O(LED_RED_1));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_23 (.I(XLXN_149), 
+                 .O(LED_GREEN_2));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_25 (.I(XLXN_53), 
+                 .O(LED_RED_2));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_26 (.I(rst_channel_0_pad), 
+                 .O(rst_channel_0));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_27 (.I(rst_channel_1_pad), 
+                 .O(rst_channel_1));
+   OR2  XLXI_32 (.I0(rst_fifo_2), 
+                .I1(rst_channel_1), 
+                .O(rst_dr_2));
+   OR2  XLXI_33 (.I0(rst_fifo_1), 
+                .I1(rst_channel_0), 
+                .O(rst_dr_1));
+   OR2  XLXI_34 (.I0(rst_fifo_1), 
+                .I1(rst_channel_0), 
+                .O(rst_pool_1));
+   OR2  XLXI_35 (.I0(rst_channel_1), 
+                .I1(rst_fifo_2), 
+                .O(rst_pool_2));
+   Aurora_FPGA_LED_driver  XLXI_47 (.clk(wb_clk_divide), 
+                                   .rdy(channel_up_1), 
+                                   .rd_en(rd_fifo_rd_en_1), 
+                                   .wr_en(wr_fifo_wr_en_1), 
+                                   .green(XLXN_93), 
+                                   .red(XLXN_41));
+   Aurora_FPGA_LED_driver  XLXI_50 (.clk(wb_clk_divide), 
+                                   .rdy(channel_up_2), 
+                                   .rd_en(rd_fifo_rd_en_2), 
+                                   .wr_en(wr_fifo_wr_en_2), 
+                                   .green(XLXN_149), 
+                                   .red(XLXN_53));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_59 (.I(channel_up_2), 
+                 .O(CHANNEL_UP_2_PAD));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_60 (.I(channel_up_1), 
+                 .O(CHANNEL_UP_1_PAD));
+   GND  XLXI_61 (.G(XLXN_152));
+   delay_unit  XLXI_67 (.clk(user_clk_1), 
+                       .rst(rst_dr_1), 
+                       .delay_rst(rst_dr_1_in));
+   delay_unit  XLXI_70 (.clk(user_clk_2), 
+                       .rst(rst_dr_2), 
+                       .delay_rst(rst_dr_2_in));
+   OR3  XLXI_71 (.I0(XLXN_157), 
+                .I1(Aurora_rst), 
+                .I2(rst_channel_0), 
+                .O(Aurora_rst_1));
+   OR3  XLXI_72 (.I0(XLXN_158), 
+                .I1(Aurora_rst), 
+                .I2(rst_channel_1), 
+                .O(Aurora_rst_2));
+   GND  XLXI_73 (.G(XLXN_157));
+   GND  XLXI_74 (.G(XLXN_158));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_75 (.I(MON_IN), 
+                 .O(XLXN_159));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_76 (.I(XLXN_159), 
+                 .O(MON_OUT));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_79 (.I(XLXN_193), 
+                 .O(bc1));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_80 (.I(XLXN_191), 
+                 .O(bc2));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_81 (.I(start_pulse_in), 
+                 .O(XLXN_223));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_82 (.I(XLXN_223), 
+                 .O(start_pulse_out));
+   (* IOSTANDARD = "DEFAULT" *) (* IBUF_DELAY_VALUE = "0" *) (* 
+         IFD_DELAY_VALUE = "AUTO" *) 
+   IBUF  XLXI_83 (.I(end_pulse_in), 
+                 .O(XLXN_233));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_84 (.I(XLXN_233), 
+                 .O(end_pulse_out));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_99 (.I(XLXN_223), 
+                 .O(start_pulse_in_led));
+   (* IOSTANDARD = "DEFAULT" *) (* SLEW = "SLOW" *) (* DRIVE = "12" *) 
+   OBUF  XLXI_106 (.I(XLXN_233), 
+                  .O(end_pulse_in_led));
+endmodule

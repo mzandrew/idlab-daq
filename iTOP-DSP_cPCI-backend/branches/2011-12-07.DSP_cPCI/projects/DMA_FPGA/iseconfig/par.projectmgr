@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--This is an ISE project configuration file.-->
+<!--It holds project specific layout data for the projectmgr plugin.-->
+<!--Copyright (c) 1995-2009 Xilinx, Inc.  All rights reserved.-->
+<Project version="2" owner="projectmgr" name="par" >
+   <!--This is an ISE project configuration file.-->
+   <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="AutoCompile" >
+      <ClosedNodes>
+         <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/Automatic `includes</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/down_fifo_bus_A_debug - down_fifo_interface_debug</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/down_fifo_dma_A_debug - down_fifo_interface_debug</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_FIFOs - DMA_FIFOs</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_FIFOs - DMA_FIFOs/u_DMA_fifo_A1 - fifo_interface</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_FIFOs - DMA_FIFOs/u_DMA_fifo_A2 - fifo_interface</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_FIFOs - DMA_FIFOs/u_DMA_fifo_B1 - fifo_interface</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_FIFOs - DMA_FIFOs/u_DMA_fifo_B2 - fifo_interface</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_FIFOs - DMA_FIFOs/u_fifo_A2 - DMA_merge_fifo</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_FIFOs - DMA_FIFOs/u_fifo_B1 - DMA_merge_fifo</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_FIFOs - DMA_FIFOs/u_fifo_B2 - DMA_merge_fifo</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/configuration - pci_conf_space</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/parity_checker - pci_parity_check</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/pci_io_mux - pci_io_mux</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/pci_resets_and_interrupts - pci_rst_int</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/pci_target_unit - pci_target_unit</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/wishbone_slave_unit - pci_wb_slave_unit</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/wishbone_slave_unit - pci_wb_slave_unit/del_sync - pci_delayed_sync</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/wishbone_slave_unit - pci_wb_slave_unit/fifos - pci_wbw_wbr_fifos/wbr_fifo_ctrl - pci_wbr_fifo_control</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/wishbone_slave_unit - pci_wb_slave_unit/fifos - pci_wbw_wbr_fifos/wbr_fifo_storage - pci_wb_tpram</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/wishbone_slave_unit - pci_wb_slave_unit/fifos - pci_wbw_wbr_fifos/wbw_fifo_ctrl - pci_wbw_fifo_control</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/wishbone_slave_unit - pci_wb_slave_unit/fifos - pci_wbw_wbr_fifos/wbw_fifo_storage - pci_wb_tpram</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/wishbone_slave_unit - pci_wb_slave_unit/pci_initiator_sm - pci_master32_sm</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/wishbone_slave_unit - pci_wb_slave_unit/wb_addr_dec - pci_wb_addr_mux</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_PCI_GUEST - PCI_GUEST/bridge - pci_bridge32/wishbone_slave_unit - pci_wb_slave_unit/wishbone_slave - pci_wb_slave</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_DMA_INTERFACE - DMA_INTERFACE/u_debug - debug</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_icon - DMA_FPGA_icon_wrapper</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_slave_debug_A - bus_slave_debug</ClosedNode>
+         <ClosedNode>/DMA_FPGA |home|zihangao|DATA_NT|Work|cPCI|firmware|src|DMA|DMA_FPGA.sch/u_slave_debug_B - bus_slave_debug</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>/home/zihangao/DATA_NT/Work/cPCI/firmware/src/DMA/DMA_FPGA.ucf (/home/zihangao/DATA_NT/Work/cPCI/firmware/src/DMA/DMA_FPGA.ucf)</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >17</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >111</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000003e6000000020000000000000000000000000200000064ffffffff000000810000000300000002000003e60000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>/home/zihangao/DATA_NT/Work/cPCI/firmware/src/DMA/DMA_FPGA.ucf (/home/zihangao/DATA_NT/Work/cPCI/firmware/src/DMA/DMA_FPGA.ucf)</CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_SCHEMATIC" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>CORE Generator</ClosedNode>
+         <ClosedNode>Design Utilities</ClosedNode>
+         <ClosedNode>Implement Design</ClosedNode>
+         <ClosedNode>Implement Design/Map</ClosedNode>
+         <ClosedNode>Implement Design/Place &amp; Route</ClosedNode>
+         <ClosedNode>Implement Design/Translate</ClosedNode>
+         <ClosedNode>Synthesize - XST</ClosedNode>
+         <ClosedNode>User Constraints</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>Manage Configuration Project (iMPACT)</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000019d000000010000000100000000000000000000000064ffffffff0000008100000000000000010000019d0000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>Manage Configuration Project (iMPACT)</CurrentItem>
+   </ItemView>
+   <ItemView guiview="File" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems/>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000002da000000040101000100000000000000000000000064ffffffff000000810000000000000004000000d700000001000000000000011b0000000100000000000000840000000100000000000000640000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>/home/zihangao/DATA_NT/Work/cPCI/firmware/src/cores/DMA_FPGA_cores/blk_mem_16_16_256.xco</CurrentItem>
+   </ItemView>
+   <ItemView guiview="Library" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems/>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000010000000000000000000000000000000000000119000000010001000100000000000000000000000064ffffffff000000810000000000000001000001190000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>work</CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_VERILOG" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem></SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000020b000000010000000100000000000000000000000064ffffffff0000008100000000000000010000020b0000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <SourceProcessView>000000ff00000000000000020000014c0000011d01000000060100000002</SourceProcessView>
+   <CurrentView>Implementation</CurrentView>
+   <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>Design Utilities</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem/>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000012f000000010000000100000000000000000000000064ffffffff0000008100000000000000010000012f0000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem/>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_XCO" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>View HDL Functional Model</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000126000000010000000100000000000000000000000064ffffffff000000810000000000000001000001260000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>View HDL Functional Model</CurrentItem>
+   </ItemView>
+   <CopyAdditionalFiles/>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_UCF" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>User Constraints</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem></SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000020b000000010000000100000000000000000000000064ffffffff0000008100000000000000010000020b0000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+</Project>

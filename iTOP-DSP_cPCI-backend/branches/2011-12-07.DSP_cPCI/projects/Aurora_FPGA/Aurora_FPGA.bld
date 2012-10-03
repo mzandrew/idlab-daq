@@ -1,0 +1,410 @@
+Release 13.2 ngdbuild O.61xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: C:\Xilinx\13.2\ISE_DS\ISE\bin\nt\unwrapped\ngdbuild.exe -intstyle
+ise -dd _ngo -sd remote_sources/_/_/src/cores/Aurora_FPGA_cores -nt timestamp
+-uc remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA.ucf -p xc6slx45t-fgg484-2
+Aurora_FPGA.ngc Aurora_FPGA.ngd
+
+Reading NGO file
+"D:/mza/FPGA/idlab-daq/iTOP-DSP_cPCI-backend/branches/2011-12-07.DSP_cPCI/projec
+ts/Aurora_FPGA/Aurora_FPGA.ngc" ...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_ila.ngc"...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_FPGA_icon.ngc"...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_fifo_wr.ngc"...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_fifo_rd.ngc"...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/prefetch_fifo_1k.ngc"...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/hold_fifo_1k.ngc"...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_ctrl_ila.ngc"...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/Aurora_vio.ngc"...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_4k.ngc"...
+Loading design module
+"remote_sources/_/_/src/cores/Aurora_FPGA_cores/fifo_16k.ngc"...
+INFO:NgdBuild:1317 - Using core chipscope_ila_v1 requires a ChipScopePro
+   license.  The following blocks are instances of core chipscope_ila_v1:
+	/Aurora_FPGA/u_Aurora_FPGA_BUS/XLXI_16/u_Aurora_FPGA_ila
+	/Aurora_FPGA/u_Aurora_FPGA_BUS/XLXI_17/u_Aurora_FPGA_ila
+	/Aurora_FPGA/u_Aurora_FPGA_BUS/u_Aurora_FPGA_debug/u_Aurora_FPGA_ila
+	/Aurora_FPGA/u_Aurora_unit_1/u_Aurora_ctrl_ila
+	/Aurora_FPGA/u_Aurora_unit_2/u_Aurora_ctrl_ila
+
+INFO:NgdBuild:1317 - Using core chipscope_vio_v1 requires a ChipScopePro
+   license.  The following blocks are instances of core chipscope_vio_v1:
+	/Aurora_FPGA/XLXI_4/u_Aurora_vioa
+
+-----------------------------------------------
+INFO:Security:50 - The XILINXD_LICENSE_FILE environment variable is set to
+'2100@hepflexlm.phys.hawaii.edu'.
+INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
+'2100@hepflexlm.phys.hawaii.edu'.
+WARNING:Security:43 - No license file was found in the standard Xilinx license
+directory.
+WARNING:Security:44 - No license file was found.
+       Please run the Xilinx License Configuration Manager
+       (xlcm or "Manage Xilinx Licenses")
+       to assist in obtaining a license.
+WARNING:Security:42 - Your software subscription period has lapsed. Your current
+version of Xilinx tools will continue to function, but you no longer qualify for
+Xilinx software updates or new releases.
+
+-----------------------------------------------
+
+-----------------------------------------------
+Gathering constraint information from source properties...
+Done.
+
+Annotating constraints to design from ucf file
+"remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA.ucf" ...
+WARNING:NgdBuild:931 - The value of SIM_DEVICE on instance
+   'u_Aurora_unit_1/clock_module_i/pll_adv_i' of type PLL_ADV has been changed
+   from 'VIRTEX5' to 'SPARTAN6' to correct post-ngdbuild and timing simulation
+   for this primitive.  In order for functional simulation to be correct, the
+   value of SIM_DEVICE should be changed in this same manner in the source
+   netlist or constraint file.
+WARNING:NgdBuild:931 - The value of SIM_DEVICE on instance
+   'u_Aurora_unit_2/clock_module_i/pll_adv_i' of type PLL_ADV has been changed
+   from 'VIRTEX5' to 'SPARTAN6' to correct post-ngdbuild and timing simulation
+   for this primitive.  In order for functional simulation to be correct, the
+   value of SIM_DEVICE should be changed in this same manner in the source
+   netlist or constraint file.
+Resolving constraint associations...
+Checking Constraint Associations...
+WARNING:ConstraintSystem - Constraint <NET "u_Aurora_unit_1/GTPD1_left_i"
+   TNM_NET = GT1_REFCLK;>
+   [remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA.ucf(128)] was not distributed
+   to the output pin GTPCLKOUT0<0> of block gtpa1_dual_i because the signal path
+   to this output pin depends upon block attribute settings. Constraint
+   distribution does not support attribute dependent distribution.
+
+WARNING:ConstraintSystem - Constraint <NET "u_Aurora_unit_1/GTPD1_left_i"
+   TNM_NET = GT1_REFCLK;>
+   [remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA.ucf(128)] was not distributed
+   to the output pin GTPCLKOUT1<0> of block gtpa1_dual_i because the signal path
+   to this output pin depends upon block attribute settings. Constraint
+   distribution does not support attribute dependent distribution.
+
+WARNING:ConstraintSystem - Constraint <NET "u_Aurora_unit_2/GTPD0_left_i"
+   TNM_NET = GT2_REFCLK;>
+   [remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA.ucf(160)] was not distributed
+   to the output pin GTPCLKOUT0<0> of block gtpa1_dual_i because the signal path
+   to this output pin depends upon block attribute settings. Constraint
+   distribution does not support attribute dependent distribution.
+
+WARNING:ConstraintSystem - Constraint <NET "u_Aurora_unit_2/GTPD0_left_i"
+   TNM_NET = GT2_REFCLK;>
+   [remote_sources/_/_/src/Aurora_FPGA/Aurora_FPGA.ucf(160)] was not distributed
+   to the output pin GTPCLKOUT1<0> of block gtpa1_dual_i because the signal path
+   to this output pin depends upon block attribute settings. Constraint
+   distribution does not support attribute dependent distribution.
+
+INFO:ConstraintSystem:178 - TNM 'WB_CLK_2x_PAD', used in period specification
+   'TS_WB_CLK_2x_PAD', was traced into DCM_SP instance dcm_sp_inst. The
+   following new TNM groups and period specifications were generated at the
+   DCM_SP output(s): 
+   CLK0: <TIMESPEC
+   TS_u_Aurora_FPGA_BUS_u_Aurora_FPGA_clk_gen_top_u_Aurora_FPGA_clock_clk0 =
+   PERIOD "u_Aurora_FPGA_BUS_u_Aurora_FPGA_clk_gen_top_u_Aurora_FPGA_clock_clk0"
+   TS_WB_CLK_2x_PAD HIGH 50%>
+
+INFO:ConstraintSystem:178 - TNM 'WB_CLK_2x_PAD', used in period specification
+   'TS_WB_CLK_2x_PAD', was traced into DCM_SP instance dcm_sp_inst. The
+   following new TNM groups and period specifications were generated at the
+   DCM_SP output(s): 
+   CLKDV: <TIMESPEC
+   TS_u_Aurora_FPGA_BUS_u_Aurora_FPGA_clk_gen_top_u_Aurora_FPGA_clock_clkdv =
+   PERIOD
+   "u_Aurora_FPGA_BUS_u_Aurora_FPGA_clk_gen_top_u_Aurora_FPGA_clock_clkdv"
+   TS_WB_CLK_2x_PAD * 2 HIGH 50%>
+
+Done...
+
+Checking expanded design ...
+WARNING:NgdBuild:443 - SFF primitive
+   'XLXI_4/u_Aurora_vioa/U0/I_VIO/reset_f_edge/I_H2L.U_DOUT' has unconnected
+   output pin
+WARNING:NgdBuild:452 - logical net 'N35' has no driver
+WARNING:NgdBuild:452 - logical net 'N36' has no driver
+WARNING:NgdBuild:452 - logical net 'N37' has no driver
+WARNING:NgdBuild:452 - logical net 'N38' has no driver
+WARNING:NgdBuild:452 - logical net 'N39' has no driver
+WARNING:NgdBuild:452 - logical net 'N40' has no driver
+WARNING:NgdBuild:452 - logical net 'N41' has no driver
+WARNING:NgdBuild:452 - logical net 'N42' has no driver
+WARNING:NgdBuild:452 - logical net 'N43' has no driver
+WARNING:NgdBuild:452 - logical net 'N44' has no driver
+WARNING:NgdBuild:452 - logical net 'N45' has no driver
+WARNING:NgdBuild:452 - logical net 'N46' has no driver
+WARNING:NgdBuild:452 - logical net 'N47' has no driver
+WARNING:NgdBuild:452 - logical net 'N48' has no driver
+WARNING:NgdBuild:452 - logical net 'N49' has no driver
+WARNING:NgdBuild:452 - logical net 'N50' has no driver
+WARNING:NgdBuild:452 - logical net 'N51' has no driver
+WARNING:NgdBuild:452 - logical net 'N52' has no driver
+WARNING:NgdBuild:452 - logical net 'N53' has no driver
+WARNING:NgdBuild:452 - logical net 'N54' has no driver
+WARNING:NgdBuild:452 - logical net 'N55' has no driver
+WARNING:NgdBuild:452 - logical net 'N56' has no driver
+WARNING:NgdBuild:452 - logical net 'N57' has no driver
+WARNING:NgdBuild:452 - logical net 'N58' has no driver
+WARNING:NgdBuild:452 - logical net 'N59' has no driver
+WARNING:NgdBuild:452 - logical net 'N60' has no driver
+WARNING:NgdBuild:452 - logical net 'N61' has no driver
+WARNING:NgdBuild:452 - logical net 'N62' has no driver
+WARNING:NgdBuild:452 - logical net 'N63' has no driver
+WARNING:NgdBuild:452 - logical net 'N64' has no driver
+WARNING:NgdBuild:452 - logical net 'N65' has no driver
+WARNING:NgdBuild:452 - logical net 'N66' has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/warn_cc_i' has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<9>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<8>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<7>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<6>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<5>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<4>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<3>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<2>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<1>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/u_Aurora_ctrl/fifo_cnt_t<0>'
+   has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<17>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<16>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<15>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<14>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<13>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<12>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<11>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<10>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<9>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<8>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<7>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<6>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<5>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<4>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<3>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<2>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<1>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots<0>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/partner_empty_slots_valid' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<17>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<16>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<15>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<14>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<13>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<12>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<11>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<10>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<9>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<8>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<7>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<6>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<5>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<4>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<3>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<2>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<1>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/u_Aurora_ctrl/empty_slots<0>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/aurora_module_i/rx_pad_striped_i<0>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/aurora_module_i/rx_pad_striped_i<1>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/aurora_module_i/rx_pe_data_v_striped_i<1>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/aurora_module_i/rx_ecp_striped_i<0>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_1/aurora_module_i/rx_ecp_striped_i<1>' has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/aurora_module_i/got_a_i<0>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/aurora_module_i/got_a_i<1>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/aurora_module_i/got_a_i<2>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_1/aurora_module_i/got_a_i<3>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/warn_cc_i' has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<9>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<8>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<7>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<6>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<5>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<4>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<3>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<2>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<1>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/u_Aurora_ctrl/fifo_cnt_t<0>'
+   has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<17>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<16>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<15>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<14>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<13>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<12>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<11>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<10>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<9>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<8>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<7>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<6>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<5>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<4>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<3>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<2>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<1>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots<0>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/partner_empty_slots_valid' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<17>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<16>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<15>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<14>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<13>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<12>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<11>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<10>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<9>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<8>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<7>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<6>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<5>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<4>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<3>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<2>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<1>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/u_Aurora_ctrl/empty_slots<0>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/aurora_module_i/rx_pad_striped_i<0>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/aurora_module_i/rx_pad_striped_i<1>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/aurora_module_i/rx_pe_data_v_striped_i<1>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/aurora_module_i/rx_ecp_striped_i<0>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'u_Aurora_unit_2/aurora_module_i/rx_ecp_striped_i<1>' has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/aurora_module_i/got_a_i<0>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/aurora_module_i/got_a_i<1>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/aurora_module_i/got_a_i<2>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'u_Aurora_unit_2/aurora_module_i/got_a_i<3>'
+   has no driver
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings: 153
+
+Total memory usage is 147364 kilobytes
+
+Writing NGD file "Aurora_FPGA.ngd" ...
+Total REAL time to NGDBUILD completion:  19 sec
+Total CPU time to NGDBUILD completion:   18 sec
+
+Writing NGDBUILD log file "Aurora_FPGA.bld"...

@@ -1,0 +1,8 @@
+D:\mza\FPGA\idlab-daq\iTOP-DSP_cPCI-backend\branches\2011-12-07.DSP_cPCI\projects\DMA_FPGA\DMA_FPGA.ngc 1328816703
+remote_sources/_/src/cores/DMA_FPGA_cores/blk_mem_16_16_256.ngc 1308561170
+remote_sources/_/src/cores/DMA_FPGA_cores/ila_wb.ngc 1308563678
+remote_sources/_/src/cores/DMA_FPGA_cores/DMA_FPGA_ila_bus.ngc 1308561945
+remote_sources/_/src/cores/DMA_FPGA_cores/fifo_32_32.ngc 1308808290
+remote_sources/_/src/cores/DMA_FPGA_cores/DMA_merge_fifo_core.ngc 1308870890
+remote_sources/_/src/cores/DMA_FPGA_cores/DMA_FPGA_icon.ngc 1308561477
+OK
