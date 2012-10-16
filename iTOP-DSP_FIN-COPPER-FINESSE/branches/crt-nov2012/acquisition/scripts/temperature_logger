@@ -1,0 +1,49 @@
+#!/usr/bin/perl
+
+my $card = "2";
+my $channels = "12";
+my $seconds_between_readouts = 10;
+my $time_at_start = time();
+
+while(1) {
+	
+	system("./bin/readout_temperature_of_all_connected_modules ${card} --chan ${channels}");
+
+	my $time_now = time();
+
+	open(DATA, "./scripts/packet-builder-and-parser | grep temperature |");
+	my @temps;
+	while(my $line = <DATA>) {
+		if ($line =~ /temperature:\s+(\d+)/) {
+			push(@temps,$1);
+		}
+	}
+	close(DATA);
+
+	my @file_sizes;
+	system("./scripts/script");
+        open(DATA_SIZES, 'ls -lart logdir/card?.channel?.rawdata | awk \'{print $5}\' | ');
+        while(my $line = <DATA_SIZES>) {
+                if ($line =~ /(\d+)/ ) {
+                        push(@file_sizes,$1);
+                        print $1."\t";
+                }
+        }
+        close(DATA_SIZES);
+
+	open(LOGFILE, ">>logdir/temperature_log");
+	my $delta_time = $time_now - $time_at_start;
+	print LOGFILE "$delta_time\t";
+	for (my $i = 0; $i < scalar(@temps); $i++) {
+		print LOGFILE "$temps[$i]\t";
+	}
+	for (my $i = 0; $i < scalar(@file_sizes); $i++) {
+		print LOGFILE "$file_sizes[$i]\t";
+	}
+	print LOGFILE "\n";
+	close(LOGFILE);
+
+	sleep($seconds_between_readouts);
+	$seconds_since_start += $seconds_between_readouts;
+}
+

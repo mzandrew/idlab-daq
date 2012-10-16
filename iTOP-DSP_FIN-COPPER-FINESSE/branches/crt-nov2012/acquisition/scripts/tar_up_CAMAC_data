@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+. .config
+cd ${location_of_raw_datafiles}
+. status
+declare source="exp$(printf "%02d" ${experiment_number})"
+declare destination="${source}-CAMAC.tar.bz2"
+tar cjf ${destination} ${source}/*.camac
+#scp ${destination} 
+
