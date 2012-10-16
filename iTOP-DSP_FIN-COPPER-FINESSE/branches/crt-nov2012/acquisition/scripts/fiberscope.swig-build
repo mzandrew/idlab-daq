@@ -1,0 +1,31 @@
+#!/bin/bash -e
+
+#set -x
+
+# 2011-10-31 mza
+# originally from http://www.swig.org/tutorial.html and http://www.swig.org/Doc1.3/Perl5.html
+
+swig \
+	-o work/fiber_readout_swigwrapper.cxx -outdir work \
+	-c++ -perl5 \
+	scripts/fiberscope.swig-config
+
+#g++ -c \
+#	$(perl -MConfig -e 'print join(" ", @Config{qw(ccflags optimize cccdlflags)}, "-I$Config{archlib}/CORE")') \
+#	src/fiber_readout.cpp \
+#	-o work/fiber_readout.o
+
+g++ -c \
+	$(perl -MConfig -e 'print join(" ", @Config{qw(ccflags optimize cccdlflags)}, "-I$Config{archlib}/CORE")') \
+	work/fiber_readout_swigwrapper.cxx \
+	-o work/fiber_readout_swigwrapper.o
+
+g++ \
+	$(perl -MConfig -e 'print $Config{lddlflags}') \
+	work/fiber_readout_swigwrapper.o work/fiber_readout.o work/stdPCI.o work/pci.o work/command_packet_builder.o \
+	-Xlinker -rpath ./contrib \
+	-L./contrib \
+	-laltix \
+	-o work/fiber_readout_swigwrapper.so
+
+

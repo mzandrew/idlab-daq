@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+declare -i size=3000000000
+declare dir="/tmp/ramdisk"
+
+if [ -e ${dir} ]; then
+#	umount ${dir}
+	rmdir ${dir}
+fi
+
+mkdir ${dir}
+chown :idlab ${dir}
+mount -t tmpfs -o size=${size} tmpfs ${dir}
+

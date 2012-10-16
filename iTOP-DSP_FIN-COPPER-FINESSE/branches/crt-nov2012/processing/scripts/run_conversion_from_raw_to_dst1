@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $# -ne 3 ]; then echo "Error: please provide: [exp# to convert] [run# to convert] [spill# to convert]."; exit 17; fi
+
+EXP=$1
+RUN=$2
+SPILL=$3
+
+#for each in $(seq 0 2); do
+for each in $(seq 0 0); do
+	SEARCH_DIR=$(printf '../DSP_cPCI_data/rawdata/exp%02i/' ${EXP})
+	SEARCH_STRING=$(printf 'exp%02i.run%04i.spill%04i.*.fiber%i' ${EXP} ${RUN} ${SPILL} ${each})
+	IN_NAME=$(find ${SEARCH_DIR} -iname "${SEARCH_STRING}")
+	OUT_NAME=$(printf '/daq/kurtisn/DSP_cPCI_data/dst1/exp%02i/e%02irun%04im%i.dst1' ${EXP} ${EXP} ${RUN} ${each})
+	./bin/ConvertRawToDST1 ${IN_NAME} ${OUT_NAME} contrib/example_config.txt
+done
+
+CAMAC_STRING=$(printf 'exp%02i.run%04i.spill%04i.*.camac' ${EXP} ${RUN} ${SPILL})
+IN_CAMAC_NAME=$(find ${SEARCH_DIR} -iname "${CAMAC_STRING}")
+OUT_CAMAC_NAME=$(printf '/daq/kurtisn/DSP_cPCI_data/dst1/exp%02i/e%02irun%04i.camac' ${EXP} ${EXP} ${RUN})
+
+./bin/ConvertCamacToROOT ${IN_CAMAC_NAME} ${OUT_CAMAC_NAME}
+
