@@ -1,0 +1,41 @@
+%module fiber_readout_swigwrapper
+%include "std_string.i"
+%{
+#include "../src/pci.h"
+#include "../src/fiber_readout.h"
+#include "../src/command_packet_builder.h"
+extern int setup_pci(int id);
+extern void close_pci(void);
+extern void send_soft_trigger_request_command_packet(void);
+extern void set_event_number(unsigned long int event_number);
+extern void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
+extern void global_reset(void);
+extern void clear_scaler_counters(void);
+extern int open_files_for_output_and_read_N_events(unsigned long int N);
+extern unsigned short int channel_bitmask;
+extern void setup_default_log_filenames(void);
+extern std::string filename[4];
+extern void open_logfiles_for_all_enabled_channels(void);
+extern void close_all_logfiles(void);
+extern void readout_all_pending_data(void);
+extern void readout_N_events(unsigned long int N);
+extern bool should_soft_trigger;
+%}
+
+extern int setup_pci(int id);
+extern void close_pci(void);
+extern void send_soft_trigger_request_command_packet(void);
+extern void set_event_number(unsigned long int event_number);
+extern void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
+extern void global_reset(void);
+extern void clear_scaler_counters(void);
+extern int open_files_for_output_and_read_N_events(unsigned long int N);
+extern unsigned short int channel_bitmask;
+extern void setup_default_log_filenames(void);
+extern std::string filename[4];
+extern void open_logfiles_for_all_enabled_channels(void);
+extern void close_all_logfiles(void);
+extern void readout_all_pending_data(void);
+extern void readout_N_events(unsigned long int N);
+extern bool should_soft_trigger;
+

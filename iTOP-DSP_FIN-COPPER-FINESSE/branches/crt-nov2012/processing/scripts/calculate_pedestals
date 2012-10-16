@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then echo "Error: please provide an experiment number and run number."; exit 17; fi
+
+EXP=$1
+RUN=$2
+
+for each in $(seq 0 0); do 
+#for each in $(seq 0 2); do 
+	IN_NAME=$(printf '/daq/kurtisn/DSP_cPCI_data/dst1/exp%02i/e%02irun%04im%i.dst1' ${EXP} ${EXP} ${RUN} ${each})
+	OUT_NAME=$(printf '/daq/kurtisn/DSP_cPCI_data/dst1/exp%02i/e%02irun%04im%i.ped' ${EXP} ${EXP} ${RUN} ${each})
+	./bin/CalculatePedestals ${IN_NAME} ${OUT_NAME}
+done

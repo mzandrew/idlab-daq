@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+. .config
+
+
+./bin/readout_temperature_of_all_connected_modules \
+	${card} \
+	--chan ${channels}
+
+./scripts/packet-builder-and-parser | grep temperature
+

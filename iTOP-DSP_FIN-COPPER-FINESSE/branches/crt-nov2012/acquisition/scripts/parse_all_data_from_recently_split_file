@@ -1,0 +1,13 @@
+#!/bin/bash -e
+
+declare split_filename="work/split_filename"
+declare root_filename=$(head -n 1 "${split_filename}");
+echo "recently split filename = \"${root_filename}\""
+
+for filename in ${root_filename}.*; do
+	if [ -e "${filename}" ]; then
+		echo "parsing ${filename}..."
+		./scripts/packet-builder-and-parser "${filename}"
+	fi
+done
+

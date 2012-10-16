@@ -1,0 +1,3 @@
+When we combine divided files *pXX.dst4,
+we need to extract RunTree from *p00.dst4
+(other *pXX.dst4 files do not contain correct RunTree).
