@@ -5,11 +5,11 @@
 #include "cprdsp-fin-daq.h"
 
 int cprdsp_fin_daq_init() {
-  _g_cprfd = open(_g_cprdevpath.c_str(), O_RDONLY);
+  _g_cprfd = open(_g_cprdevpath, O_RDONLY);
   
   if (_g_cprfd == -1) {
     fprintf(_g_error, "cprdsp_fin_daq_init(): unable to open `%s'\n", 
-	    _g_cprdevpath.c_str());
+	    _g_cprdevpath);
     abort();
   }
   
