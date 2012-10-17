@@ -27,8 +27,8 @@ extern FILE *_g_info;
 extern FILE *_g_warning;
 extern FILE *_g_error;
 
-extern const string _g_cprdevpath;
-extern int          _g_cprfd;      // Assigned in cprdsp-fin-daq.cpp
+extern const char* _g_cprdevpath;
+extern int         _g_cprfd;      // Assigned in cprdsp-fin-daq.cpp
 
 
 #endif //CRTDAQ_GLOBALS_H_

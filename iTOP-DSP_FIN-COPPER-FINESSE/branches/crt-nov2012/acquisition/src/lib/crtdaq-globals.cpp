@@ -16,7 +16,7 @@ unsigned short _g_threshold_scan_high_limit;
 unsigned short _g_threshold_scan_step_size;
 string         _g_current_date_string;
 
-string   _g_cprdevpath = "/dev/copper/copper";
+char*    _g_cprdevpath = "/dev/copper/copper";
 int      _g_cprfd;
 
 // Filled in DebugInfoWarningError.cpp
