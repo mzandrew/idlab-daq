@@ -66,7 +66,6 @@ int main(int argc, char* argv[]) {
     return -2;
   }
 
-  cprdsp_fin_daq_init();
   parse_config_file(argv[optind]);
 
 
