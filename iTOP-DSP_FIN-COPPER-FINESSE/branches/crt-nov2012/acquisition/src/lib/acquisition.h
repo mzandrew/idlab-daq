@@ -61,9 +61,9 @@ using namespace std;
 #include "fiber.h"
 //#endif
 
-//#ifdef using_CAMAC
+#ifndef NO_CAMAC
 #include "CAMAC.h"
-//#endif
+#endif
 
 #define using_CAMAC3377 (0)
 
@@ -81,50 +81,50 @@ void setup_to_catch_ctrl_c(void (*callback)(void) = graceful_exit);
 void caught_ctrl_c(int sig);
 void setup_run_type(string type);
 void setup_for_console_output(void);
-void wait_for_all_links_to_come_up(unsigned short int bitmask);
+void wait_for_all_links_to_come_up(unsigned short bitmask);
 
 #include <sys/time.h>
 void start_timer(void);
 int watchdog_timer_in_seconds(void);
 int stop_timer(struct timeval* begin = NULL);
 int stop_timer_in_seconds(void);
-extern struct timeval start, end, watchdog;
+extern struct timeval _g_start, _g_end, _g_watchdog;
 extern float temperature_float[NUMBER_OF_SCRODS_TO_READOUT];
 
-extern bool channel_enabled[4];
-extern string location_of_raw_datafiles;
-extern string location_of_status_and_log_files;
-extern unsigned short int channel_bitmask;
-extern unsigned short int experiment_number;
-extern unsigned short int run_number;
-extern unsigned short int spill_number;
-extern unsigned long int event_number;
-extern unsigned long int event_number_for_fiber[NUMBER_OF_SCRODS_TO_READOUT];
-extern unsigned long int event_number_from_most_recent_packet[NUMBER_OF_SCRODS_TO_READOUT];
+extern bool _g_fins_enabled[4];
+extern string _g_location_of_raw_datafiles;
+extern string _g_location_of_status_and_log_files;
+extern unsigned short _g_fin_bitmask;
+extern unsigned short experiment_number;
+extern unsigned short run_number;
+extern unsigned short spill_number;
+extern unsigned long event_number;
+extern unsigned long event_number_for_fiber[NUMBER_OF_SCRODS_TO_READOUT];
+extern unsigned long event_number_from_most_recent_packet[NUMBER_OF_SCRODS_TO_READOUT];
 extern string base_filename;
 extern ofstream logfile;
 extern bool logfile_open;
-extern unsigned short int verbosity;
-extern signed short int temperature_redline;
-extern unsigned short int maybe_should_skip_writing_this_event_to_disk;
+extern unsigned short _g_verbosity;
+extern signed short _g_temperature_redline;
+extern unsigned short maybe_should_skip_writing_this_event_to_disk;
 
 extern unsigned char unsigned_char_byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
-extern unsigned long int number_of_readout_events_for_this_spill;
+extern unsigned long number_of_readout_events_for_this_spill;
 
-extern unsigned short int threshold_scan_low_limit;
-extern unsigned short int threshold_scan_high_limit;
-extern unsigned short int threshold_scan_step_size;
+extern unsigned short _g_threshold_scan_low_limit;
+extern unsigned short _g_threshold_scan_high_limit;
+extern unsigned short _g_threshold_scan_step_size;
 extern char red[13], yellow[13], white[13];
 
-extern unsigned long int word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_WORDS];
+extern unsigned long word_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_WORDS];
 extern          char     byte_buffer[NUMBER_OF_SCRODS_TO_READOUT][QUARTER_EVENT_BUFFER_SIZE_IN_BYTES];
 
-void clear_buffer(unsigned short int channel_number);
-void copy_byte_buffer_to_word_buffer(unsigned short int channel);
-unsigned long int find_word_position_of_first_header_in_buffer(unsigned short int channel, unsigned long last_word_position_to_look_in_buffer);
+void clear_buffer(unsigned short channel_number);
+void copy_byte_buffer_to_word_buffer(unsigned short channel);
+unsigned long find_word_position_of_first_header_in_buffer(unsigned short channel, unsigned long last_word_position_to_look_in_buffer);
 
-void copy_packet(unsigned long int *source);
-void analyze_packet(unsigned long int packet_number, unsigned short int channel);
+void copy_packet(unsigned long *source);
+void analyze_packet(unsigned long packet_number, unsigned short channel);
 
 #endif
 

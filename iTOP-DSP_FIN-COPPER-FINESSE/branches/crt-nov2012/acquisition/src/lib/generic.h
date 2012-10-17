@@ -8,7 +8,7 @@ void graceful_exit(void);
 #define MINIMUM_DISK_SPACE_FREE_BEFORE_SHOWING_AN_ERROR   (100000000)
 #define MINIMUM_DISK_SPACE_FREE_BEFORE_QUITTING            (10000000)
 
-extern string current_date_string;
+extern string _g_current_date_string;
 
 void set_current_date_string(void);
 bool file_exists (string filename);

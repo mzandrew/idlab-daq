@@ -1,8 +1,10 @@
 // 2012-08-16 mza
 
-#include "DebugInfoWarningError.h"
 #include <fcntl.h>
 #include <stdio.h>
+
+#include "crtdaq-globals.h"
+#include "DebugInfoWarningError.h"
 
 FILE *debug   = 0;
 FILE *debug2  = 0;
@@ -22,32 +24,32 @@ void setup_DebugInfoWarningError(void) {
 		devnull_fd = open("/dev/null",   O_WRONLY);
 	}
 	
-	if (verbosity >= 1) {
+	if (_g_verbosity >= 1) {
 		error = fdopen(stderr_fd, "w");
 	} else {
 		error = fdopen(devnull_fd, "w");
 	}
 
-	if (verbosity >= 2) {
+	if (_g_verbosity >= 2) {
 		warning = fdopen(stderr_fd, "w");
 	} else {
 		warning = fdopen(devnull_fd, "w");
 	}
 
-	if (verbosity >= 3) {
+	if (_g_verbosity >= 3) {
 		info = fdopen(stdout_fd, "w");
 	} else {
 		info = fdopen(devnull_fd, "w");
 	}
 
-	if (verbosity >= 4) {
+	if (_g_verbosity >= 4) {
 		debug = fdopen(stdout_fd, "w");
 	} else {
 		debug = fdopen(devnull_fd, "w");
 	}
 
 
-	if (verbosity >= 5) {
+	if (_g_verbosity >= 5) {
 		debug2 = fdopen(stdout_fd, "w");
 	} else {
 		debug2 = fdopen(devnull_fd, "w");
@@ -62,9 +64,9 @@ void setup_DebugInfoWarningError(void) {
 	has_been_run_through = true;
 }
 
-unsigned short int change_verbosity(unsigned short int new_verbosity = verbosity) {
-	unsigned short int old_verbosity = verbosity;
-	verbosity = new_verbosity;
+unsigned short int change_verbosity(unsigned short new_verbosity = verbosity) {
+	unsigned short int old_verbosity = _g_verbosity;
+	_g_verbosity = new_verbosity;
 	setup_DebugInfoWarningError();
 	return old_verbosity;
 }
