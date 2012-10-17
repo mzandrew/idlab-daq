@@ -6,12 +6,6 @@
 #include "crtdaq-globals.h"
 #include "DebugInfoWarningError.h"
 
-FILE *debug   = 0;
-FILE *debug2  = 0;
-FILE *info    = 0;
-FILE *warning = 0;
-FILE *error   = 0;
-
 void setup_DebugInfoWarningError(void) {
 	static bool has_been_run_through;
 //	if (has_been_run_through) {
@@ -25,34 +19,34 @@ void setup_DebugInfoWarningError(void) {
 	}
 	
 	if (_g_verbosity >= 1) {
-		error = fdopen(stderr_fd, "w");
+		_g_error = fdopen(stderr_fd, "w");
 	} else {
-		error = fdopen(devnull_fd, "w");
+		_g_error = fdopen(devnull_fd, "w");
 	}
 
 	if (_g_verbosity >= 2) {
-		warning = fdopen(stderr_fd, "w");
+		_g_warning = fdopen(stderr_fd, "w");
 	} else {
-		warning = fdopen(devnull_fd, "w");
+		_g_warning = fdopen(devnull_fd, "w");
 	}
 
 	if (_g_verbosity >= 3) {
-		info = fdopen(stdout_fd, "w");
+		_g_info = fdopen(stdout_fd, "w");
 	} else {
-		info = fdopen(devnull_fd, "w");
+		_g_info = fdopen(devnull_fd, "w");
 	}
 
 	if (_g_verbosity >= 4) {
-		debug = fdopen(stdout_fd, "w");
+		_g_debug = fdopen(stdout_fd, "w");
 	} else {
-		debug = fdopen(devnull_fd, "w");
+		_g_debug = fdopen(devnull_fd, "w");
 	}
 
 
 	if (_g_verbosity >= 5) {
-		debug2 = fdopen(stdout_fd, "w");
+		_g_debug2 = fdopen(stdout_fd, "w");
 	} else {
-		debug2 = fdopen(devnull_fd, "w");
+		_g_debug2 = fdopen(devnull_fd, "w");
 	}
 
 //	fprintf(debug,   "this is the debug message\n");
@@ -64,7 +58,7 @@ void setup_DebugInfoWarningError(void) {
 	has_been_run_through = true;
 }
 
-unsigned short int change_verbosity(unsigned short new_verbosity = verbosity) {
+unsigned short int change_verbosity(unsigned short new_verbosity = _g_verbosity) {
 	unsigned short int old_verbosity = _g_verbosity;
 	_g_verbosity = new_verbosity;
 	setup_DebugInfoWarningError();
