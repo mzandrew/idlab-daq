@@ -66,8 +66,6 @@ void generate_new_base_filename(void) {
 	base_filename += temp;
 	sprintf(temp, ".spill%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_SPILL_NUMBER, spill_number);
 	base_filename += temp;
-	sprintf(temp, ".%s", current_date_string.c_str());
-	base_filename += temp;
 }
 
 void increment_spill_number(void) {
@@ -89,7 +87,7 @@ void close_all_files(void) {
 	//cout << "closing all files" << endl;
 	fprintf(debug, "closing all files\n");
 	close_logfile();
-//#ifdef using_CAMAC
+#ifndef NO_CAMAC
 	if (CAMAC_initialized) {
 		close_CAMAC_controller();
 		close_CAMAC_file();
@@ -97,7 +95,7 @@ void close_all_files(void) {
 			close_CAMAC3377_file();
 		}
 	}
-//#endif
+#endif //NO_CAMAC
 	close_all_fiber_files();
 	close_pci();
 }
