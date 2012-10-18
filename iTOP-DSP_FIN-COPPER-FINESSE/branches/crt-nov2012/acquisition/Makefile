@@ -15,15 +15,11 @@ all: $(EXES)
 
 objs: $(LIBOBJS)
 
-obj/lib/%.o: src/lib/%.cpp src/lib/%.h obj/lib
+obj/lib/%.o: src/lib/%.cpp src/lib/%.h
 	g++ -c $(CPPFLAGS) $< -o $@
 
 bin/%: src/%.cpp $(LIBOBJS)
 	g++ $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
-
-obj/lib:
-	mkdir -p $@
-
 
 .PHONY: all clean
 
