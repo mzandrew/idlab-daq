@@ -1,0 +1,15 @@
+MODULE ppi_control
+	SUBMODULE synchronous_latch
+		INSTANCE XLXI_1
+	SUBMODULE block_ram_counter
+		INSTANCE XLXI_2
+	SUBMODULE edge_to_pulse
+		INSTANCE XLXI_18
+	SUBMODULE edge_to_pulse
+		INSTANCE e2p_first
+	SUBMODULE edge_to_pulse
+		INSTANCE e2p_last
+	SUBMODULE edge_to_pulse
+		INSTANCE e2p_loadcounter
+	SUBMODULE address_comparator
+		INSTANCE XLXI_17

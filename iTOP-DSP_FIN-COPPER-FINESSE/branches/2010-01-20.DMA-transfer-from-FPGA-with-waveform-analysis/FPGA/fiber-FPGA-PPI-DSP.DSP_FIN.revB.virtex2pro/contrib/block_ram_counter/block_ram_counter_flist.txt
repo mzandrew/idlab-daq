@@ -1,0 +1,12 @@
+# Output products list for <block_ram_counter>
+block_ram_counter.asy
+block_ram_counter.gise
+block_ram_counter.ngc
+block_ram_counter.sym
+block_ram_counter.vhd
+block_ram_counter.vho
+block_ram_counter.xco
+block_ram_counter.xise
+block_ram_counter_flist.txt
+block_ram_counter_readme.txt
+block_ram_counter_xmdf.tcl

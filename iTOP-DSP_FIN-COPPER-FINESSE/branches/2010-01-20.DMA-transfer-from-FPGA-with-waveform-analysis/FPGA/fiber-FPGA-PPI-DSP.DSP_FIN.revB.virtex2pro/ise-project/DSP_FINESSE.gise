@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="DSP_FINESSE.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_USERDOC" xil_pn:name="../contrib/address_comparator/address_comparator_readme.txt"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="../contrib/address_comparator/coregen.log"/>
+    <file xil_pn:fileType="FILE_USERDOC" xil_pn:name="../contrib/block_ram_counter/block_ram_counter_readme.txt"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="../contrib/block_ram_counter/coregen.log"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="../contrib/ram16384x24/coregen.log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="TOP.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="aurora_rx_mess.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="constant_15bit.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="dsp_clocks.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="dsp_control.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="dsp_jtag.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="dsp_reset.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="fo_io.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="iobuf16.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="obuf12to16.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="ppi.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="ppi_control.vhf"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_VHDL" xil_pn:name="synchronous_latch.vhf"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1315379004" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1315379004">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1315379008" xil_pn:in_ck="4294598002664941712" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="3905582898066478053" xil_pn:start_ts="1315379004">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="TOP.vhf"/>
+      <outfile xil_pn:name="aurora_rx_mess.vhf"/>
+      <outfile xil_pn:name="constant_15bit.vhf"/>
+      <outfile xil_pn:name="dsp_clocks.vhf"/>
+      <outfile xil_pn:name="dsp_control.vhf"/>
+      <outfile xil_pn:name="dsp_jtag.vhf"/>
+      <outfile xil_pn:name="dsp_reset.vhf"/>
+      <outfile xil_pn:name="fo_io.vhf"/>
+      <outfile xil_pn:name="iobuf16.vhf"/>
+      <outfile xil_pn:name="obuf12to16.vhf"/>
+      <outfile xil_pn:name="ppi.vhf"/>
+      <outfile xil_pn:name="ppi_control.vhf"/>
+      <outfile xil_pn:name="synchronous_latch.vhf"/>
+    </transform>
+    <transform xil_pn:end_ts="1315627099" xil_pn:in_ck="8144206805045753162" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="1550088560611753327" xil_pn:start_ts="1315627004">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <outfile xil_pn:name="../contrib/address_comparator/address_comparator.ngc"/>
+      <outfile xil_pn:name="../contrib/address_comparator/address_comparator.vhd"/>
+      <outfile xil_pn:name="../contrib/block_ram_counter/block_ram_counter.ngc"/>
+      <outfile xil_pn:name="../contrib/block_ram_counter/block_ram_counter.vhd"/>
+    </transform>
+    <transform xil_pn:name="TRAN_SubProjectAbstractToPreProxy">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1315379021" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="3403743434324060121" xil_pn:start_ts="1315379021">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+  </transforms>
+
+</generated_project>

@@ -1,0 +1,3 @@
+# Output products list for <ram16384x24>
+ram16384x24.xco
+ram16384x24_flist.txt

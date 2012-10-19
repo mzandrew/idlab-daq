@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="sim" num="0" delta="new" >The IP Block Memory Generator 2.8 does not exist within the repository, and cannot be recustomized or regenerated. It is not available in CoreGen 13.2, and may have been removed or replaced. To generate Block Memory Generator 2.8 please use a previous version of ISE in which this IP is available, or add the user repository which contains this IP.
+</msg>
+
+<msg type="info" file="sim" num="0" delta="new" >Generating component instance &apos;<arg fmt="%s" index="1">ram16384x24</arg>&apos; of &apos;<arg fmt="%s" index="2">xilinx.com:ip:Block_Memory_Generator:2.8</arg>&apos; from &apos;<arg fmt="%s" index="3">D:\mza\FPGA\DSP_finesse\contrib\ram16384x24\</arg>&apos;.
+</msg>
+
+<msg type="warning" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">The chosen IP does not support an SYM schematic symbol.</arg>
+</msg>
+
+<msg type="info" file="sim" num="0" delta="new" >Finished FLIST file generation.
+</msg>
+
+</messages>
+

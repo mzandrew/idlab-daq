@@ -1,0 +1,12 @@
+# Output products list for <address_comparator>
+address_comparator.asy
+address_comparator.gise
+address_comparator.ngc
+address_comparator.sym
+address_comparator.vhd
+address_comparator.vho
+address_comparator.xco
+address_comparator.xise
+address_comparator_flist.txt
+address_comparator_readme.txt
+address_comparator_xmdf.tcl

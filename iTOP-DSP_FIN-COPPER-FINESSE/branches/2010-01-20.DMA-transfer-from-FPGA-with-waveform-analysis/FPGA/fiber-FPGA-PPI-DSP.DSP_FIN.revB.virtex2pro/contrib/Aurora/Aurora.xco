@@ -1,0 +1,83 @@
+##############################################################
+#
+# Xilinx Core Generator version K.39
+# Date: Fri Aug 28 00:39:12 2009
+#
+##############################################################
+#
+#  This file contains the customisation parameters for a
+#  Xilinx CORE Generator IP GUI. It is strongly recommended
+#  that you do not manually alter this file as it may cause
+#  unexpected and unsupported behavior.
+#
+##############################################################
+#
+# BEGIN Project Options
+SET addpads = False
+SET asysymbol = True
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = False
+SET designentry = VHDL
+SET device = xc2vp7
+SET devicefamily = virtex2p
+SET flowvendor = Foundation_iSE
+SET formalverification = False
+SET foundationsym = False
+SET implementationfiletype = Ngc
+SET package = ff672
+SET removerpms = False
+SET simulationfiles = Behavioral
+SET speedgrade = -6
+SET verilogsim = True
+SET vhdlsim = True
+# END Project Options
+# BEGIN Select
+SELECT Aurora family Xilinx,_Inc. 3.0
+# END Select
+# BEGIN Parameters
+CSET c_aurora_lanes=1
+CSET c_device=xc2vp7
+CSET c_hdl=VHDL
+CSET c_lane_width=4
+CSET c_line_rate=3
+CSET c_mgt_clock_1=none
+CSET c_mgt_clock_2=REF_CLK
+CSET c_mgt_loc_1=X
+CSET c_mgt_loc_10=X
+CSET c_mgt_loc_11=X
+CSET c_mgt_loc_12=X
+CSET c_mgt_loc_13=1
+CSET c_mgt_loc_14=X
+CSET c_mgt_loc_15=X
+CSET c_mgt_loc_16=X
+CSET c_mgt_loc_17=X
+CSET c_mgt_loc_18=X
+CSET c_mgt_loc_19=X
+CSET c_mgt_loc_2=X
+CSET c_mgt_loc_20=X
+CSET c_mgt_loc_21=X
+CSET c_mgt_loc_22=X
+CSET c_mgt_loc_23=X
+CSET c_mgt_loc_24=X
+CSET c_mgt_loc_3=X
+CSET c_mgt_loc_4=X
+CSET c_mgt_loc_5=X
+CSET c_mgt_loc_6=X
+CSET c_mgt_loc_7=X
+CSET c_mgt_loc_8=X
+CSET c_mgt_loc_9=X
+CSET c_nfc=false
+CSET c_nfc_mode=IMM
+CSET c_package=ff672
+CSET c_refclk_frequency=150.000
+CSET c_simplex=false
+CSET c_simplex_mode=TX
+CSET c_simplex_timer=false
+CSET c_stream=true
+CSET c_ufc=false
+CSET c_use_digital_cdr=false
+CSET component_name=Aurora
+# END Parameters
+GENERATE
+# CRC: dfdf89db
+

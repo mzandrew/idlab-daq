@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated   -->
+<!--     by the Xilinx ISE software.  Any direct editing or        -->
+<!--     changes made to this file may result in unpredictable     -->
+<!--     behavior or data corruption.  It is strongly advised that -->
+<!--     users do not edit the contents of this file.              -->
+<!--                                                               -->
+<!-- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.    -->
+
+<messages>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_aurora_lane_4byte.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_aurora_pkg.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_channel_error_detect.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_channel_init_sm.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_chbond_count_dec_4byte.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_error_detect_4byte.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_global_logic.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_idle_and_ver_gen.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_lane_init_sm_4byte.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_phase_align.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_rx_stream.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_sym_dec_4byte.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_sym_gen_4byte.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora/Aurora/src/Aurora_tx_stream.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_1xlane.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_MGT.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_Partition.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_RX.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_TOP.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_TX.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_TX_MESS.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_clock_module.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_reset.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_standard_cc_module.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/Aurora_interface/Aurora_user_clk.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/contrib/dsp_dcm/dsp_dcm.vhdl&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/src/DSP/blackfin_reset.vhdl&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/src/TEST_BLOCK.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/src/USB/MESS.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/src/USB/PROGRESET.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/src/USB/USB_IO.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/src/USB/USBread.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/src/USB/USBwrite.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/2010-01-20.DMA-transfer-from-FPGA-with-waveform-analysis/FPGA/FPGA-to-DSP.DSP_FIN.revB.virtex2pro/src/edge_to_pulse.vhdl&quot; into library work</arg>
+</msg>
+
+</messages>
+
