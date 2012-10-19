@@ -1,0 +1,67 @@
+##############################################################
+#
+# Xilinx Core Generator version 13.2
+# Date: Wed Sep 07 07:02:48 2011
+#
+##############################################################
+#
+#  This file contains the customisation parameters for a
+#  Xilinx CORE Generator IP GUI. It is strongly recommended
+#  that you do not manually alter this file as it may cause
+#  unexpected and unsupported behavior.
+#
+##############################################################
+#
+#  Generated from component: xilinx.com:ip:c_counter_binary:8.0
+#
+##############################################################
+#
+# BEGIN Project Options
+SET addpads = false
+SET asysymbol = true
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = false
+SET designentry = VHDL
+SET device = xc4vfx40
+SET devicefamily = virtex4
+SET flowvendor = Foundation_ISE
+SET formalverification = false
+SET foundationsym = false
+SET implementationfiletype = Ngc
+SET package = ff672
+SET removerpms = false
+SET simulationfiles = Behavioral
+SET speedgrade = -10
+SET verilogsim = false
+SET vhdlsim = true
+# END Project Options
+# BEGIN Select
+SELECT Binary_Counter family Xilinx,_Inc. 8.0
+# END Select
+# BEGIN Parameters
+CSET aclr=false
+CSET ainit=false
+CSET ainit_value=0
+CSET aset=false
+CSET async_threshold_output=false
+CSET ce=true
+CSET component_name=block_ram_counter
+CSET count_mode=DOWN
+CSET cycle_early_threshold_output=false
+CSET final_count_value=1
+CSET increment_value=1
+CSET load=true
+CSET load_ce_priority=CE_Overrides_Load
+CSET output_width=15
+CSET restrict_count=false
+CSET sclr=false
+CSET sinit=false
+CSET sinit_value=0
+CSET sset=false
+CSET sync_ce_priority=Sync_Overrides_CE
+CSET sync_threshold_output=true
+CSET syncctrlpriority=Reset_Overrides_Set
+CSET threshold_value=0
+# END Parameters
+GENERATE
+# CRC: 53ed63f8
