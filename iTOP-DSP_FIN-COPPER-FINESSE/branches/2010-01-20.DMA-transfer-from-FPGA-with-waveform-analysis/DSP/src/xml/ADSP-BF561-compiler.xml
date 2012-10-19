@@ -1,0 +1,264 @@
+<?xml version="1.0" standalone="yes"?>
+
+<?xml-stylesheet type="text/xsl" href="AnomalyDictionary.xsl"?>
+
+<visualdsp-compiler-xml schema-version="1" name="ADSP-BF561-compiler.xml">
+
+<!-- *********************************************************************** -->
+<!-- ******* ADSP-BF561-compiler.xml                                         -->
+<!-- ******* Copyright 2004-2009 Analog Devices, Inc.  All rights reserved.  -->
+<!-- *********************************************************************** -->
+
+<!-- ***************************************** -->
+<!-- ******* common information                -->
+<!-- ***************************************** -->
+
+<version file-version="0.117"/>
+
+<architecture name="ADSP-BF561" maps-to="ADSP-BF532" machine-id="34" machine-id-mnemonic="EM_21532" default-ldf="Blackfin/ldf/ADSP-BF561.ldf"/>
+
+<silicon-revisions command-line-default="0.5">
+	<silicon revision="none" lib-path="Blackfin/lib">
+	</silicon>
+	<silicon revision="0.2" chip-id="0x00" lib-path="Blackfin/lib/bf561_rev_0.2">
+		<workaround ix="1" compiler-default="N"/>
+		<workaround ix="2" compiler-default="N"/>
+		<workaround ix="3" compiler-default="N"/>
+		<workaround ix="4" compiler-default="N"/>
+		<workaround ix="5" compiler-default="N"/>
+		<workaround ix="6" compiler-default="N"/>
+		<workaround ix="7" compiler-default="N"/>
+		<workaround ix="8" compiler-default="Y"/>
+		<workaround ix="9" compiler-default="Y"/>
+		<workaround ix="10" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="11" compiler-default="Y"/>
+		<workaround ix="12" compiler-default="Y"/>
+		<workaround ix="13" compiler-default="Y" assembler-detect-default="N" assembler-workaround-default="N" />
+		<workaround ix="14" compiler-default="N"/>
+		<workaround ix="15" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="16" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="17" compiler-default="N"/>
+		<workaround ix="18" compiler-default="Y"/>
+		<workaround ix="19" compiler-default="Y"/>
+		<workaround ix="20" compiler-default="Y"/>
+		<workaround ix="21" compiler-default="N"/>
+		<workaround ix="22" compiler-default="Y"/>
+		<workaround ix="23" compiler-default="Y"/>
+		<workaround ix="24" compiler-default="Y"/>
+		<workaround ix="25" compiler-default="Y"/>
+		<workaround ix="26" compiler-default="N"/>
+		<workaround ix="27" compiler-default="N"/>
+		<workaround ix="28" compiler-default="Y" assembler-detect-default="N" />		
+		<workaround ix="29" compiler-default="N"/>
+		<workaround ix="30" compiler-default="N"/>
+		<workaround ix="44" compiler-default="Y" assembler-detect-default="Y" assembler-workaround-default="N"  />				
+		<workaround ix="45" compiler-default="Y"/>
+		<workaround ix="46" compiler-default="N"/>
+		<workaround ix="47" compiler-default="Y"/>	
+		<workaround ix="48" compiler-default="Y" assembler-detect-default="Y" />	
+		<workaround ix="53" compiler-default="Y" assembler-detect-default="Y" />
+	</silicon>
+	<silicon revision="0.3" chip-id="0x03" lib-path="Blackfin/lib/bf561_rev_0.3">
+		<workaround ix="1" compiler-default="N"/>
+		<workaround ix="2" compiler-default="N"/>
+		<workaround ix="3" compiler-default="N"/>
+		<workaround ix="4" compiler-default="N"/>
+		<workaround ix="5" compiler-default="N"/>
+		<workaround ix="6" compiler-default="N"/>
+		<workaround ix="7" compiler-default="N"/>
+		<workaround ix="8" compiler-default="N"/>
+		<workaround ix="9" compiler-default="Y"/>
+		<workaround ix="10" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="11" compiler-default="Y"/>
+		<workaround ix="12" compiler-default="Y"/>
+		<workaround ix="13" compiler-default="Y" assembler-detect-default="N" assembler-workaround-default="N" />
+		<workaround ix="14" compiler-default="N"/>
+		<workaround ix="15" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="16" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="17" compiler-default="N"/>
+		<workaround ix="18" compiler-default="Y"/>
+		<workaround ix="19" compiler-default="Y"/>
+		<workaround ix="20" compiler-default="Y"/>		
+		<workaround ix="21" compiler-default="N"/>
+		<workaround ix="22" compiler-default="Y"/>
+		<workaround ix="23" compiler-default="Y"/>
+		<workaround ix="24" compiler-default="Y"/>
+		<workaround ix="25" compiler-default="Y"/>
+		<workaround ix="26" compiler-default="N"/>
+		<workaround ix="27" compiler-default="N"/>
+		<workaround ix="28" compiler-default="Y" assembler-detect-default="N" />		
+		<workaround ix="29" compiler-default="N"/>
+		<workaround ix="30" compiler-default="N"/>
+		<workaround ix="44" compiler-default="Y" assembler-detect-default="Y" assembler-workaround-default="N"  />				
+		<workaround ix="45" compiler-default="Y"/>
+		<workaround ix="46" compiler-default="N"/>
+		<workaround ix="47" compiler-default="Y"/>
+		<workaround ix="48" compiler-default="Y" assembler-detect-default="Y" />	
+		<workaround ix="53" compiler-default="Y" assembler-detect-default="Y" />
+	</silicon>
+	<silicon revision="0.5" chip-id="0x05" lib-path="Blackfin/lib/bf561_rev_0.5">
+		<workaround ix="1" compiler-default="N"/>
+		<workaround ix="2" compiler-default="N"/>
+		<workaround ix="3" compiler-default="N"/>
+		<workaround ix="4" compiler-default="N"/>
+		<workaround ix="5" compiler-default="N"/>
+		<workaround ix="6" compiler-default="N"/>
+		<workaround ix="7" compiler-default="N"/>
+		<workaround ix="8" compiler-default="N"/>
+		<workaround ix="9" compiler-default="N"/>
+		<workaround ix="10" compiler-default="N"/>
+		<workaround ix="11" compiler-default="Y"/>
+		<workaround ix="12" compiler-default="Y"/>
+		<workaround ix="13" compiler-default="N"/>
+		<workaround ix="14" compiler-default="N"/>
+		<workaround ix="15" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="16" compiler-default="N"/>
+		<workaround ix="17" compiler-default="N"/>
+		<workaround ix="18" compiler-default="N"/>
+		<workaround ix="19" compiler-default="Y"/>
+		<workaround ix="20" compiler-default="N"/>
+		<workaround ix="21" compiler-default="N"/>
+		<workaround ix="22" compiler-default="N"/>
+		<workaround ix="23" compiler-default="N"/>
+		<workaround ix="24" compiler-default="N"/>
+		<workaround ix="25" compiler-default="Y"/>
+		<workaround ix="26" compiler-default="N"/>
+		<workaround ix="27" compiler-default="N"/>
+		<workaround ix="28" compiler-default="Y" assembler-detect-default="N" />		
+		<workaround ix="29" compiler-default="N"/>
+		<workaround ix="30" compiler-default="N"/>
+		<workaround ix="44" compiler-default="Y" assembler-detect-default="Y" assembler-workaround-default="N"  />				
+		<workaround ix="45" compiler-default="Y"/>
+		<workaround ix="46" compiler-default="Y" assembler-detect-default="Y" />
+		<workaround ix="47" compiler-default="Y"/>
+		<workaround ix="48" compiler-default="Y" assembler-detect-default="Y" />	
+		<workaround ix="53" compiler-default="Y" assembler-detect-default="Y" />
+	</silicon>
+	<silicon revision="any" lib-path="Blackfin/lib/bf561_rev_any">
+		<workaround ix="1" compiler-default="N"/>
+		<workaround ix="2" compiler-default="N"/>
+		<workaround ix="3" compiler-default="N"/>
+		<workaround ix="4" compiler-default="N"/>
+		<workaround ix="5" compiler-default="N"/>
+		<workaround ix="6" compiler-default="N"/>
+		<workaround ix="7" compiler-default="N"/>
+		<workaround ix="8" compiler-default="Y"/>
+		<workaround ix="9" compiler-default="N"/>
+		<workaround ix="10" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="11" compiler-default="Y"/>
+		<workaround ix="12" compiler-default="Y"/>
+		<workaround ix="13" compiler-default="Y" assembler-detect-default="N" assembler-workaround-default="N" />
+		<workaround ix="14" compiler-default="N"/>
+		<workaround ix="15" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="16" compiler-default="Y" assembler-detect-default="N"/>
+		<workaround ix="17" compiler-default="N"/>
+		<workaround ix="18" compiler-default="Y"/>
+		<workaround ix="19" compiler-default="Y"/>
+		<workaround ix="20" compiler-default="Y"/>
+		<workaround ix="21" compiler-default="N"/>
+		<workaround ix="22" compiler-default="Y"/>
+		<workaround ix="23" compiler-default="Y"/>
+		<workaround ix="24" compiler-default="Y"/>
+		<workaround ix="25" compiler-default="Y"/>
+		<workaround ix="26" compiler-default="N"/>
+		<workaround ix="27" compiler-default="N"/>
+		<workaround ix="28" compiler-default="Y" assembler-detect-default="N" />		
+		<workaround ix="29" compiler-default="N"/>
+		<workaround ix="30" compiler-default="N"/>
+		<workaround ix="44" compiler-default="Y" assembler-detect-default="Y" assembler-workaround-default="N"  />				
+		<workaround ix="45" compiler-default="Y"/>
+		<workaround ix="46" compiler-default="Y" assembler-detect-default="Y"/>
+		<workaround ix="47" compiler-default="Y"/>
+		<workaround ix="48" compiler-default="Y" assembler-detect-default="Y" />	
+		<workaround ix="53" compiler-default="Y" assembler-detect-default="Y" />
+	</silicon>
+</silicon-revisions>
+
+<feature-macros>
+	<macro name="__ADSPBLACKFIN__" value="1"/>
+	<macro name="__ADSPLPBLACKFIN__" value="1"/>
+	<macro name="__ADSPBF561__" value="1"/>
+	<macro name="__ADSPBF56x__" value="1"/>
+	<macro name="__ADSPBF561_FAMILY__" value="1"/>
+</feature-macros>
+
+<!-- ***************************************** -->
+<!-- ******* assembler specific information    -->
+<!-- ***************************************** -->
+<!-- ******* the flags-compiler is so the assembler knows how to invoke the  -->
+<!-- ******* C compiler when C structs in assembly features are present in   -->
+<!-- ******* an assembly program.                                            -->
+<!-- ***************************************** -->
+
+<assembler default-include-path="Blackfin/include" flags-compiler="-proc ADSP-BF561"/>
+
+
+	<!-- ***************************************************** -->
+	<!-- ** The workarounds above cross-reference to the       -->
+	<!-- ** indexes in the anomaly-dictionary that is shared   -->
+	<!-- ** among the Blackfin processors.                     -->
+	<!-- ***************************************************** -->
+
+<vdsp-anomaly-dictionary name="BLACKFIN-EDN-anomaly.xml" />
+
+
+<!-- ***************************************** -->
+<!-- ******* compiler specific information     -->
+<!-- ***************************************** -->
+
+<compiler>
+
+	<!-- *************************************************************** -->
+	<!-- ** uses <architecture>, <silicon-revisions> and              ** -->
+	<!-- ** <feature-macros> from above. (shared with assembler)      ** -->
+	<!-- *************************************************************** -->
+
+	<compiler-assertions>
+		<assertion name="system" value="embedded"/>
+		<assertion name="machine" value="adspblkfn"/>
+		<assertion name="cpu" value="adspblkfn"/>
+		<assertion name="compiler" value="ccblkfn"/>
+	</compiler-assertions>
+
+	<compiler-includes>
+		<path name="Blackfin/include"/>
+	</compiler-includes>
+
+	<compiler-reserved-registers>
+		<register name="m3" compiler-flag="-D__M3_RESERVED__" linker-flag="-MDM3_RESERVED"/>
+	</compiler-reserved-registers>
+
+	<compiler-flags-compiler>
+		<flags name="--TLI=-ADSP-BF532"/>
+	</compiler-flags-compiler>
+
+	<compiler-flags-asm>
+		<flags name="-proc"/>
+		<flags name="ADSP-BF561"/>
+		<flags name="-stallcheck=none"/>
+		<flags name="-W5500"/>
+		<flags name="-W5508"/>
+	</compiler-flags-asm>
+
+	<compiler-flags-linker>
+		<flags name="-proc"/>
+		<flags name="ADSP-BF561"/>
+	</compiler-flags-linker>
+
+	<!-- ************************************************** -->
+	<!-- ** do not include .exe suffix on tools paths as ** -->
+	<!-- ** driver will append when building for Windows ** -->
+	<!-- ************************************************** -->
+
+	<compiler-location-tools
+		driver-path="ccblkfn"
+		assembler-path="easmblkfn"
+		compiler-path="Blackfin/etc/compiler"
+		prelinker-path="Blackfin/etc/prelinker"
+		demangler-path="Blackfin/etc/demangler"
+		ipasolver-path="Blackfin/etc/ipa"
+		pgo-path="Blackfin/etc/pgo"/>
+
+</compiler>
+
+</visualdsp-compiler-xml>
