@@ -6,9 +6,13 @@ using namespace std;
 #include <sstream>
 #include <string.h>
 #include <stdlib.h>
-#include "acquisition.h"
+#include <unistd.h>
+
+#include "crtdaq-globals.h"
 #include "config_file.h"
+#include "generic.h"
 #include "DebugInfoWarningError.h"
+
 
 fstream status_file;
 string status_file_line[200];
@@ -18,18 +22,40 @@ int number_of_lines_in_status_file;
 
 void open_status_file_for_reading_and_writing(void) {
   if (!status_file_is_open) {
-    status_filename = location_of_status_and_log_files;
+    status_filename = _g_location_of_status_and_log_files;
     create_directory_if_necessary(status_filename.c_str());
     //          status_filename += "/";
-    //          status_filename += experiment_number_string();
+    //          status_filename += _g_experiment_number_string();
     //          create_directory_if_necessary(status_filename.c_str());
     status_filename += "/status";
+
     status_file.open(status_filename.c_str(), fstream::in | fstream::out);
     if (!status_file) {
-      cerr << "ERROR:  cannot find status file in destination directory \"" 
-	   << location_of_status_and_log_files << "\"" << endl;
-      exit(12);
-    }
+      status_file.close();
+      status_file.clear();
+      
+      if (access( status_filename.c_str(), F_OK ) < 0) {
+	if (_g_warning)
+	  fprintf(_g_warning, 
+		  "Cannot find status file `%s'; creating new one\n",
+		  status_filename.c_str());
+
+	ofstream temp(status_filename.c_str());
+	set_current_date_string();
+	temp << "# status file generated at " << _g_current_date_string << endl;
+	temp << "experiment_number=" << _g_experiment_number << endl;
+	temp << "run_number=" << _g_run_number << endl;
+	temp << "spill_number=" << _g_spill_number << endl;
+	temp << "event_number=" << _g_event_number << endl;
+	temp.close();
+	open_status_file_for_reading_and_writing();
+      } 
+      else {
+	cerr << "Status file `" << status_filename 
+	     << "' exists but cannot be opened" << endl;
+	exit(12);
+      }
+    }        
   }
 }
 
@@ -50,25 +76,25 @@ void write_status_file(void) {
         value = status_file_line[i].substr(position+1);
         if (key == "experiment_number") {
           ostringstream temp;
-          temp << experiment_number;
+          temp << _g_experiment_number;
           value = temp.str();
         } 
 
 	else if (key == "run_number") {
           ostringstream temp;
-          temp << run_number;
+          temp << _g_run_number;
           value = temp.str();
         } 
 
 	else if (key == "spill_number") {
           ostringstream temp;
-          temp << spill_number;
+          temp << _g_spill_number;
           value = temp.str();
         } 
 
 	else if (key == "event_number") {
           ostringstream temp;
-          temp << event_number;
+          temp << _g_event_number;
 
           value = temp.str();
         }
@@ -109,34 +135,35 @@ void read_status_file(void) {
     value = line.substr(first_equals_sign_position+1);
 
     if (key == "experiment_number") {
-      experiment_number = atoi(value.c_str());
-      fprintf(debug, "setting experiment_number to %d", experiment_number);
+      _g_experiment_number = atoi(value.c_str());
+      fprintf(_g_debug, "setting _g_experiment_number to %d\n", 
+	      _g_experiment_number);
     } 
     
     else if (key == "run_number") {
-      run_number = atoi(value.c_str());
-      fprintf(debug, "setting run_number to %d", run_number);
+      _g_run_number = atoi(value.c_str());
+      fprintf(_g_debug, "setting run_number to %d\n", _g_run_number);
     } 
 
     else if (key == "spill_number") {
-      spill_number = atoi(value.c_str());
-      fprintf(debug, "setting spill_number to %d", spill_number);
+      _g_spill_number = atoi(value.c_str());
+      fprintf(_g_debug, "setting _g_spill_number to %d\n", _g_spill_number);
     } 
 
     else if (key == "event_number") {
-      event_number = atoi(value.c_str());
-      fprintf(debug, "setting event_number to %ld", event_number);
+      _g_event_number = atoi(value.c_str());
+      fprintf(_g_debug, "setting _g_event_number to %ld\n", _g_event_number);
     } 
 
     else {
-      fprintf(debug, 
+      fprintf(_g_debug, 
 	      "unhandled key/value pair in config file: \"%s\" = \"%s\"\n", 
 	      key.c_str(), value.c_str());
     }
   } // dogs don't know it's not bacon.
 
   number_of_lines_in_status_file = i-1;
-  fprintf(debug, "number of lines in status file: %d\n", 
+  fprintf(_g_debug, "number of lines in status file: %d\n", 
 	  number_of_lines_in_status_file);
   status_file.seekg(0, fstream::beg);
   status_file.clear();

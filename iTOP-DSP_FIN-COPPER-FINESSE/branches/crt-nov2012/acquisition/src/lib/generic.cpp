@@ -1,12 +1,41 @@
+#include <algorithm> 
+#include <functional> 
+#include <cctype>
+#include <locale>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
+
+#include "crtdaq-globals.h"
+#include "cprdaq.h"
 #include "generic.h"
 #include "DebugInfoWarningError.h"
+#include "logfile.h"
 
-string _g_current_date_string;
+void close_all_files(void) {
+  //cout << "closing all files" << endl;
+  fprintf(_g_debug, "closing all files\n");
+  close_logfile();
+#ifndef NO_CAMAC
+  if (CAMAC_initialized) {
+    close_CAMAC_controller();
+    close_CAMAC_file();
+    if (using_CAMAC3377) {
+      close_CAMAC3377_file();
+    }
+  }
+#endif //NO_CAMAC
+  cprdaq_close_data_file();
+  cprdaq_term();
+}
+
+void graceful_exit(void) {
+  update_logfile_with_the_number_of_readout_events_for_this_spill();
+  close_all_files();
+  exit(13);
+}
 
 void set_current_date_string(void) {
   char temp[256];
@@ -27,7 +56,7 @@ void create_directory_if_necessary(string dirname) {
   if (!file_exists(dirname)) {
     mkdir(dirname.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
     if (!file_exists(dirname)) {
-      fprintf(error, "ERROR:  could not create directory \"%s\"\n", 
+      fprintf(_g_error, "ERROR:  could not create directory \"%s\"\n", 
 	      dirname.c_str());
       exit(10);
     }
@@ -40,32 +69,74 @@ unsigned long long int disk_space_free(string path) {
   if (statvfs(path.c_str(), &sfs) != -1) {
     dsf = (unsigned long long) sfs.f_bsize * sfs.f_bfree;
   }
-  fprintf(debug, "%llu bytes free\n", dsf);
+  fprintf(_g_debug, "%llu bytes free\n", dsf);
   if (dsf < MINIMUM_DISK_SPACE_FREE_BEFORE_QUITTING) {
-    fprintf(error, "FATAL ERROR:  %s bytes free on disk\n", 
+    fprintf(_g_error, "FATAL ERROR:  %s bytes free on disk\n", 
 	    insert_interstitial_commas(dsf).c_str());
     graceful_exit();
   } else if (dsf < MINIMUM_DISK_SPACE_FREE_BEFORE_SHOWING_AN_ERROR) {
-    fprintf(error, "ERROR:  %s bytes free on disk\n", 
+    fprintf(_g_error, "ERROR:  %s bytes free on disk\n", 
 	    insert_interstitial_commas(dsf).c_str());
   } else if (dsf < MINIMUM_DISK_SPACE_FREE_BEFORE_SHOWING_A_WARNING) {
-    fprintf(warning, "WARNING:  %s bytes free on disk\n", 
+    fprintf(_g_warning, "WARNING:  %s bytes free on disk\n", 
 	    insert_interstitial_commas(dsf).c_str());
   }
   return dsf;
 }
 
+void generate_new_base_filename(void) {
+	set_current_date_string();
+	char temp[25];
+	_g_base_filename = _g_location_of_raw_datafiles;
+	//create_directory_if_necessary(base_filename.c_str());
+	_g_base_filename += "/";
+	_g_base_filename += experiment_number_string();
+	create_directory_if_necessary(_g_base_filename.c_str());
+	_g_base_filename += "/";
+	sprintf(temp, "exp%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_EXPERIMENT_NUMBER, _g_experiment_number);
+	_g_base_filename += temp;
+	sprintf(temp, "run%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_RUN_NUMBER, _g_run_number);
+	_g_base_filename += temp;
+	sprintf(temp, "spill%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_SPILL_NUMBER, _g_spill_number);
+	_g_base_filename += temp;
+}
+
+
+// Next three are taken from question 216823 on StackExchange
+// trim from start
+string &myltrim(string &s) {
+        s.erase(s.begin(), find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace))));
+        return s;
+}
+
+// trim from end
+string &myrtrim(string &s) {
+        s.erase(find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(), s.end());
+        return s;
+}
+
+// trim from both ends
+string &mytrim(string &s) {
+        return myltrim(myrtrim(s));
+}
+
+
 string insert_interstitial_commas(unsigned long long int number) {
   char temp1[21], temp2[26];
   sprintf(temp1, "%llu", number);
-  int i_max=strlen(temp1), j_max=i_max+floor((i_max-1)/3);
-  int i=i_max-1, j=j_max;
+  int i_max = strlen(temp1);
+  int j_max = i_max + (int)floor((float)(i_max-1)/3);
+  int i = i_max-1;
+  int j = j_max;
+
   temp2[j--] = 0;
+
   for (; i>=0; i--) {
     temp2[j] = temp1[i];
     if (!((j_max-j+1)%4)) { temp2[--j] = ','; }
     j--;
   }
+
   string result = temp2;
   return result;
 }
