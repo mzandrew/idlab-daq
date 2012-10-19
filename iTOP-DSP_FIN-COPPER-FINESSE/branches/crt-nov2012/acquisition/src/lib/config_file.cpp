@@ -7,37 +7,9 @@ using namespace std;
 
 #include "crtdaq-globals.h"
 #include "config_file.h"
-#include "cprdsp-fin-daq.h"
+#include "cprdaq.h"
+#include "generic.h"
 #include "DebugInfoWarningError.h"
-
-void set_enabled_fins(const string& fins) {
-  for (int i=0; i<=3; i++) {
-    _g_fins_enabled[i] = false;
-  }
-  if (fins.find('0') != string::npos) { _g_fins_enabled[0] = true; }
-  if (fins.find('1') != string::npos) { _g_fins_enabled[1] = true; }
-  if (fins.find('2') != string::npos) { _g_fins_enabled[2] = true; }
-  if (fins.find('3') != string::npos) { _g_fins_enabled[3] = true; }
-
-  int cprfin_bitmask = cprdsp_fin_daq_enabled_fins();
-  _g_fin_bitmask = 0;  
-  
-  for(int i=0; i<=3; i++) {
-    if (!_g_fins_enabled[i])
-      continue;
-
-    _g_fin_bitmask |= 1<<i;      
-    
-    if (((cprfin_bitmask >> i) & 0x1 == 0) && 
-	(_g_fin_bitmask & 0x1 == 1))
-      {
-	fprintf(_g_error, "Request received in config file to enable"
-		" FIN %d, but this card is not enabled in the"
-		" `copper' driver configuration\n", i);
-	abort();
-      }	  
-  }      
-}
 
 int parse_config_file(string filename) {
   setup_DebugInfoWarningError();
@@ -66,7 +38,7 @@ int parse_config_file(string filename) {
     value = line.substr(first_equals_sign_position+1);
 
     if (key == "fins") {
-      set_enabled_fins(value);
+      _g_fins_requested = mytrim(value);
     } 
     
     else if (key == "dsp") {
@@ -74,13 +46,13 @@ int parse_config_file(string filename) {
     } 
     
     else if (key == "location_of_raw_datafiles") {
-      _g_location_of_raw_datafiles = value;
+      _g_location_of_raw_datafiles = mytrim(value);
       fprintf(_g_debug, "location to store raw datafiles = \"%s\"\n", 
 	      _g_location_of_raw_datafiles.c_str());
     } 
 
     else if (key == "location_of_status_and_log_files") {
-      _g_location_of_status_and_log_files = value;
+      _g_location_of_status_and_log_files = mytrim(value);
     } 
 
     else if (key == "threshold_scan_low_limit") {
