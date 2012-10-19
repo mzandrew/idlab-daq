@@ -1,0 +1,45 @@
+#!/bin/bash -e
+
+declare input_filename="Debug/EBIUSystemServices.map.xml"
+declare intermediate_filename="map"
+declare output_section_filename="output-section.map"
+declare symbol_filename="symbol.map"
+declare memory_filename="memory.map"
+#declare _filename=".map"
+#declare _filename=".map"
+
+function reorder {
+	cat /dev/stdin
+	#awk '{ print $6 " " $2 " " $7 }' | sort -n -k 3
+}
+
+function reorder_symbol         {
+	sed -e "s,',,g" \
+		| sed -e "s,name=,," \
+		| sed -e "s,address=,," \
+		| sed -e "s,size=,," \
+		| awk '{ printf("%11s %7s %s\n", $3, $4, $2) }' \
+		| sort -n -r
+}
+function reorder_memory         {
+	sed -e "s,',,g" \
+		| sed -e "s,name=,," \
+		| sed -e "s,end_address=,," \
+		| sed -e "s,start_address=,," \
+		| grep -v COMMON_MEMORY \
+		| awk '{ printf("%11s %11s %s\n", $4, $5, $3) }' \
+		| sort -n -r
+}
+function reorder_output_section {
+	sed -e "s,',,g" \
+		| sed -e "s,name=,," \
+		| sed -e "s,word_size=,," \
+		| sed -e "s,start_address=,," \
+		| awk '{ printf("%11s %7s %s\n", $6, $7, $2) }' \
+		| sort -n -r
+}
+
+cat "${input_filename}" | grep name | grep -v size=\'0x0\' | reorder > "${intermediate_filename}"
+cat "${intermediate_filename}" | grep SYMBOL         | reorder_symbol         > "${symbol_filename}"
+cat "${intermediate_filename}" | grep OUTPUT_SECTION | reorder_output_section > "${output_section_filename}"
+cat "${intermediate_filename}" | grep MEMORY         | reorder_memory         > "${memory_filename}"
