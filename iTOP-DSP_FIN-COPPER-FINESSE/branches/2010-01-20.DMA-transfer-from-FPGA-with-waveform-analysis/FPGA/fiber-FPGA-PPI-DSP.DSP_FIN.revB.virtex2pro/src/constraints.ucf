@@ -1,0 +1,234 @@
+##################################################################
+CONFIG PART = XC2VP7-FF672-6 ;
+##################################################################
+#NET "BCLK"  LOC = "AE13" | IOSTANDARD = LVCMOS33 | PERIOD = 6.666667; 
+net "BCLK" LOC = "ae13" | tnm_net = "tnm_net_BCLK" | iostandard = lvcmos33;
+timespec "ts_BCLK" = period "tnm_net_BCLK" 150MHz high 50%;
+##################################################################
+#NET "xIFCLK" TNM = "TxIFCLK";
+#TIMESPEC "TS_xIFCLK" = PERIOD "TxIFCLK" 20 ns HIGH 50 % INPUT_JITTER 300 ps;
+#net "xIFCLK" tnm = "tnm_xIFCLK";
+#timespec "ts_xIFCLK" = period "tnm_xIFCLK" 50MHz high 50% INPUT_JITTER 300ps;
+net "IFCLK" loc = "v24" | tnm_net = "tnm_net_IFCLK" | iostandard = lvcmos33 ;  
+timespec "ts_IFCLK" = period "tnm_net_IFCLK" 50MHz high 50% INPUT_JITTER 300ps;
+##################################################################
+#NET "xCLK" TNM = "TxCLK";
+#TIMESPEC "TS_xCLK" = PERIOD "TxCLK" 13.333333 ns HIGH 50 % INPUT_JITTER 300 ps;
+#net "xCLK" tnm = "tnm_xCLK";
+#timespec "ts_xCLK" = period "tnm_xCLK" "ts_BCLK" / 2 PHASE 25%;
+##################################################################
+#net "auroratop/xAurora_Partition/xAurora_CLOCK_MODULE/clkdv_i" tnm = "tnm_USER_CLK";
+#net "auroratop/xAurora_Partition/xAurora_CLOCK_MODULE/clkfx_i" tnm = "tnm_USER_CLK";
+#timespec "ts_USER_CLK" = period "tnm_USER_CLK" "ts_BCLK" / 2;
+##################################################################
+#net "auroratop/xAurora_Partition/xAurora_CLOCK_MODULE/clkfb_i" tnm = "tnm_USER_CLK_2X_N";
+#timespec "ts_USER_CLK_2X_N" = period "tnm_USER_CLK_2X_N" "ts_BCLK";
+##################################################################
+#net "auroraclocks/clock_out_dv180" tnm = "tnm_xCLK";
+##net "auroraclocks/clkdv180" tnm = "tnm_xCLK";
+#net "auroratop/xAurora_Partition/xAurora_CLOCK_MODULE/clkfx180_i" tnm = "tnm_xCLK";
+#net "auroratop/xAurora_Partition/xAurora_user_clk/clk180_i" tnm = "tnm_xCLK";
+#net "auroratop/xAurora_Partition/xAurora_user_clk/xCLK" tnm = "tnm_xCLK";
+##timespec "ts_xCLK" = period "tnm_xCLK" "ts_BCLK" / 2 PHASE + 6.666667ns;
+##################################################################
+#net "xram_clock" tnm = "tnm_xram_clock";
+#timespec "ts_xram_clock" = period "tnm_xram_clock" "ts_xCLK";
+##################################################################
+# CLOCK_DEDICATED_ROUTE=TRUE is the default
+#NET "xIFCLK" BUFG=CLK;
+#NET "xCLK" BUFG=CLK;
+#NET "auroratop/xAurora_Partition/xAurora_CLOCK_MODULE/clkfb_i" BUFG=CLK;
+#NET "buffered_BCLK" BUFG = CLK;
+#NET "auroratop/xAurora_Partition/USER_CLK" BUFG=CLK;
+#NET "auroratop/REF_CLK" BUFG=CLK;
+#NET "dspio/xDSP_CLK" BUFG=CLK;
+##################################################################
+#NET "auroratop/xAurora_Partition/xAurora_CH0/xAurora_MGT/xAurora/rx_rec_clk_i" CLOCK_DEDICATED_ROUTE=FALSE;
+#NET "auroratop/xAurora_Partition/xAurora_CH1/xAurora_MGT/xAurora/rx_rec_clk_i" CLOCK_DEDICATED_ROUTE=FALSE;
+#NET "auroratop/xAurora_Partition/xAurora_CH2/xAurora_MGT/xAurora/rx_rec_clk_i" CLOCK_DEDICATED_ROUTE=FALSE;
+#NET "auroratop/xAurora_Partition/xAurora_CH3/xAurora_MGT/xAurora/rx_rec_clk_i" CLOCK_DEDICATED_ROUTE=FALSE;
+#NET "USB_write/SLWR" BUFG=CLK | CLOCK_DEDICATED_ROUTE=TRUE;
+#NET "" BUFG=CLK | CLOCK_DEDICATED_ROUTE=TRUE;
+
+#NET "chipscope/CONTROL<0>" LOC = "BUFGMUX0S";
+#NET "auroratop/xAurora_Partition/USER_CLK" LOC="BUFGMUX4P";
+#NET "xIFCLK" LOC="BUFGMUX6P";
+#NET "XLXN_593" LOC="BUFGMUX5P";
+#NET "auroratop/REF_CLK" LOC="BUFGMUX1P";
+#NET "auroratop/xAurora_Partition/xAurora_CLOCK_MODULE/clkfb_i" LOC="BUFGMUX7S";
+#NET "xCLK" LOC="BUFGMUX2S";
+
+#timespec "timespec_general_io" = period "general_io" 250ns;
+# | TNM_NET = "general_io"
+NET "mon0"  LOC = "b3" | SLEW = FAST | IOSTANDARD = LVCMOS33 ; 
+NET "mon1"  LOC = "a3" | SLEW = FAST | IOSTANDARD = LVCMOS33 ; 
+NET "mon2"  LOC = "d6" | IOSTANDARD = LVCMOS33 ; 
+NET "mon3"  LOC = "c6" | IOSTANDARD = LVCMOS33 ; 
+NET "mon4"  LOC = "e7" | IOSTANDARD = LVCMOS33 ; 
+NET "mon5"  LOC = "d7" | IOSTANDARD = LVCMOS33 ; 
+NET "mon6"  LOC = "e8" | IOSTANDARD = LVCMOS33 ; 
+NET "mon7"  LOC = "e9" | SLEW = FAST  | IOSTANDARD = LVCMOS33 ; 
+
+NET "led_green"  LOC = "ad12"  | IOSTANDARD = LVCMOS33 ;  
+NET "led_red"  LOC = "ac12"  | IOSTANDARD = LVCMOS33 ;  
+# dsp general io with fpga
+NET "dsp0_pf0" LOC = "c1"  | IOSTANDARD = LVCMOS33;
+NET "dsp0_pf1" LOC = "c2"  | IOSTANDARD = LVCMOS33;
+NET "dsp0_pf2" LOC = "d1"  | IOSTANDARD = LVCMOS33;
+NET "dsp0_pf3" LOC = "d2"  | IOSTANDARD = LVCMOS33;
+NET "dsp0_pf4" LOC = "e3"  | IOSTANDARD = LVCMOS33;
+NET "dsp0_pf5" LOC = "e4"  | IOSTANDARD = LVCMOS33;
+NET "dsp0_pf6" LOC = "e1"  | IOSTANDARD = LVCMOS33;
+NET "dsp0_pf7" LOC = "e2"  | IOSTANDARD = LVCMOS33;
+NET "dsp1_pf0" LOC = "c26" | IOSTANDARD = LVCMOS33;
+NET "dsp1_pf1" LOC = "c25" | IOSTANDARD = LVCMOS33;
+NET "dsp1_pf2" LOC = "d26" | IOSTANDARD = LVCMOS33;
+NET "dsp1_pf3" LOC = "d25" | IOSTANDARD = LVCMOS33;
+# dsp clocks
+NET "dsp0_clock"  LOC = "B1"  | SLEW = FAST | IOSTANDARD = LVCMOS33 ; 
+NET "dsp1_clock"  LOC = "B26"  | SLEW = FAST  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp0_ppi0_clock"  LOC = "N4"  | SLEW = FAST  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp1_ppi0_clock"  LOC = "N23"  | SLEW = FAST  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp0_ppi1_clock"  LOC = "L8"  | SLEW = FAST  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp1_ppi1_clock"  LOC = "L19"  | SLEW = FAST  | IOSTANDARD = LVCMOS33 ;  
+# dsp ppi
+net "dsp0_ppi0_sync1" loc="n5" | iostandard = lvcmos33;
+net "dsp1_ppi0_sync1" loc="n22" | iostandard = lvcmos33;
+net "dsp0_ppi1_sync1" loc="k7" | iostandard = lvcmos33;
+net "dsp1_ppi1_sync1" loc="k20" | iostandard = lvcmos33;
+# dsp control
+NET "dsp0_bmode0"  LOC = "ab3"  | IOSTANDARD = LVCMOS33 ; 
+NET "dsp1_bmode0"  LOC = "y21"  | IOSTANDARD = LVCMOS33 ; 
+NET "dsp0_bmode1"  LOC = "y6"  | IOSTANDARD = LVCMOS33 ; 
+NET "dsp1_bmode1"  LOC = "y22"  | IOSTANDARD = LVCMOS33 ; 
+NET "dsp0_bypass"  LOC = "AB4"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp1_bypass"  LOC = "AB24"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp0_async_ready"  LOC = "AE3" | IOSTANDARD = LVCMOS33 ; 
+NET "dsp1_async_ready"  LOC = "AE24"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp0_bus_ready"  LOC = "A2"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp1_bus_ready"  LOC = "A25"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp0_nmi0"  LOC = "AD4"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp1_nmi0"  LOC = "AD23"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp0_nmi1"  LOC = "AC3"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp1_nmi1"  LOC = "AC24"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp0_reset"  LOC = "AF3"  | IOSTANDARD = LVCMOS33 ;  
+NET "dsp1_reset"  LOC = "AF24"  | IOSTANDARD = LVCMOS33 ; 
+# jtag header
+NET "TCK_JTAG"  LOC = "AA13"  | IOSTANDARD = LVCMOS33 ;  
+NET "TDI_JTAG"  LOC = "AC13"  | IOSTANDARD = LVCMOS33 ; 
+NET "TDO_JTAG"  LOC = "AB13"  | IOSTANDARD = LVCMOS33 ; 
+NET "TMS_JTAG"  LOC = "W12"  | IOSTANDARD = LVCMOS33 ; 
+NET "TRST_JTAG"  LOC = "Y13"  | IOSTANDARD = LVCMOS33 ; 
+NET "DSP_EMU"  LOC = "AB23"  | IOSTANDARD = LVCMOS33 ;  
+NET "EMU_JTAG"  LOC = "W13"  | IOSTANDARD = LVCMOS33 ;  
+# dsp jtag
+NET "DSP_TCK_0"  LOC = "AD1"  | IOSTANDARD = LVCMOS33 ;  
+NET "DSP_TCK_1"  LOC = "AD26"  | IOSTANDARD = LVCMOS33 ;  
+NET "DSP_TDI_0"  LOC = "AE1"  | IOSTANDARD = LVCMOS33 ;  
+NET "DSP_TDI_1"  LOC = "AF25"  | IOSTANDARD = LVCMOS33 ;  
+NET "DSP_TDO_0"  LOC = "AC1"  | IOSTANDARD = LVCMOS33 ;  
+NET "DSP_TDO_1"  LOC = "AC26"  | IOSTANDARD = LVCMOS33 ;  
+NET "DSP_TMS_0"  LOC = "AD2"  | IOSTANDARD = LVCMOS33 ;  
+NET "DSP_TMS_1"  LOC = "AD25"  | IOSTANDARD = LVCMOS33 ;  
+NET "DSP_TRST_0"  LOC = "AC2"  | IOSTANDARD = LVCMOS33 ;  
+NET "DSP_TRST_1"  LOC = "AC25"  | IOSTANDARD = LVCMOS33 ;  
+# dsp0's ppi0 data bus
+NET "dsp0_ppi0<0>"  LOC = "L5" | iostandard = lvcmos33;
+NET "dsp0_ppi0<1>"  LOC = "L6" | iostandard = lvcmos33;
+NET "dsp0_ppi0<2>"  LOC = "L3" | iostandard = lvcmos33;
+NET "dsp0_ppi0<3>"  LOC = "L4" | iostandard = lvcmos33;
+NET "dsp0_ppi0<4>"  LOC = "L1" | iostandard = lvcmos33;
+NET "dsp0_ppi0<5>"  LOC = "L2" | iostandard = lvcmos33;
+NET "dsp0_ppi0<6>"  LOC = "N8" | iostandard = lvcmos33;
+NET "dsp0_ppi0<7>"  LOC = "M8" | iostandard = lvcmos33;
+NET "dsp0_ppi0<8>"  LOC = "M5" | iostandard = lvcmos33;
+NET "dsp0_ppi0<9>"  LOC = "M6" | iostandard = lvcmos33;
+NET "dsp0_ppi0<10>" LOC = "M3" | iostandard = lvcmos33;
+NET "dsp0_ppi0<11>" LOC = "M4" | iostandard = lvcmos33;
+NET "dsp0_ppi0<12>" LOC = "M1" | iostandard = lvcmos33;
+NET "dsp0_ppi0<13>" LOC = "M2" | iostandard = lvcmos33;
+NET "dsp0_ppi0<14>" LOC = "N6" | iostandard = lvcmos33;
+NET "dsp0_ppi0<15>" LOC = "N7" | iostandard = lvcmos33;
+# 
+NET "RDY0"  LOC = "P25"  | IOSTANDARD = LVCMOS33 ; 
+NET "RDY1"  LOC = "P24"  | IOSTANDARD = LVCMOS33 ; 
+NET "CLKOUT"  LOC = "P23"  | IOSTANDARD = LVCMOS33 ;  
+NET "CTL0"  LOC = "T19"  | IOSTANDARD = LVCMOS33 ;  
+NET "CTL1"  LOC = "T20"  | IOSTANDARD = LVCMOS33 ;  
+NET "CTL2"  LOC = "R20"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<0>"  LOC = "V25"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<1>"  LOC = "U21"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<2>"  LOC = "U22"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<3>"  LOC = "U23"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<4>"  LOC = "U24"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<5>"  LOC = "V26"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<6>"  LOC = "U26"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<7>"  LOC = "U20"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<8>"  LOC = "R22"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<9>"  LOC = "R23"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<10>"  LOC = "R24"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<11>"  LOC = "R25"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<12>"  LOC = "R26"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<13>"  LOC = "P20"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<14>"  LOC = "P21"  | IOSTANDARD = LVCMOS33 ;  
+NET "FD<15>"  LOC = "P22"  | IOSTANDARD = LVCMOS33 ;  
+NET "PA0"  LOC = "T21"  | IOSTANDARD = LVCMOS33 ;  
+NET "PA1"  LOC = "T22"  | IOSTANDARD = LVCMOS33 ;  
+NET "PA2"  LOC = "T23"  | IOSTANDARD = LVCMOS33 ;  
+NET "PA3"  LOC = "T24"  | IOSTANDARD = LVCMOS33 ;  
+NET "PA4"  LOC = "T25"  | IOSTANDARD = LVCMOS33 ;  
+NET "PA5"  LOC = "T26"  | IOSTANDARD = LVCMOS33 ;  
+NET "PA6"  LOC = "R19"  | IOSTANDARD = LVCMOS33 ;  
+NET "PA7"  LOC = "P19"  | IOSTANDARD = LVCMOS33 ;  
+NET "WAKEUP"  LOC = "R21"  | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "TX_FAULT<0>"  LOC = "AA8" | IOSTANDARD = LVCMOS33 ; 
+NET "TX_FAULT<1>"  LOC = "AF8" | IOSTANDARD = LVCMOS33 ; 
+NET "TX_FAULT<2>"  LOC = "W11" | IOSTANDARD = LVCMOS33 ; 
+NET "TX_FAULT<3>"  LOC = "Y12" | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "TX_DIS<0>"  LOC = "AA7" | IOSTANDARD = LVCMOS33 ; 
+NET "TX_DIS<1>"  LOC = "AE8" | IOSTANDARD = LVCMOS33 ; 
+NET "TX_DIS<2>"  LOC = "Y10" | IOSTANDARD = LVCMOS33 ; 
+NET "TX_DIS<3>"  LOC = "Y11" | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "MOD2<0>"  LOC = "AB9" | IOSTANDARD = LVCMOS33 ; 
+NET "MOD2<1>"  LOC = "AA9" | IOSTANDARD = LVCMOS33 ; 
+NET "MOD2<2>"  LOC = "AA11" | IOSTANDARD = LVCMOS33 ; 
+NET "MOD2<3>"  LOC = "AC11" | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "MOD1<0>"  LOC = "AB8" | IOSTANDARD = LVCMOS33 ; 
+NET "MOD1<1>"  LOC = "Y9" | IOSTANDARD = LVCMOS33 ; 
+NET "MOD1<2>"  LOC = "AA10" | IOSTANDARD = LVCMOS33 ; 
+NET "MOD1<3>"  LOC = "AB11" | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "MOD0<0>"  LOC = "AD8" | IOSTANDARD = LVCMOS33 ; 
+NET "MOD0<1>"  LOC = "AD9" | IOSTANDARD = LVCMOS33 ; 
+NET "MOD0<2>"  LOC = "AC10" | IOSTANDARD = LVCMOS33 ; 
+NET "MOD0<3>"  LOC = "AB12" | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "LOSS<0>"  LOC = "AC8" | IOSTANDARD = LVCMOS33 ; 
+NET "LOSS<1>"  LOC = "AC9" | IOSTANDARD = LVCMOS33 ; 
+NET "LOSS<2>"  LOC = "AB10" | IOSTANDARD = LVCMOS33 ; 
+NET "LOSS<3>"  LOC = "AA12" | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "RXP<0>"  LOC = "AF5" | IOSTANDARD = LVCMOS33 ; 
+NET "RXP<1>"  LOC = "AF10" | IOSTANDARD = LVCMOS33 ; 
+NET "RXP<2>"  LOC = "AF16" | IOSTANDARD = LVCMOS33 ; 
+NET "RXP<3>"  LOC = "AF21" | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "RXN<0>"  LOC = "AF4" | IOSTANDARD = LVCMOS33 ; 
+NET "RXN<1>"  LOC = "AF9" | IOSTANDARD = LVCMOS33 ; 
+NET "RXN<2>"  LOC = "AF15" | IOSTANDARD = LVCMOS33 ; 
+NET "RXN<3>"  LOC = "AF20" | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "TXP<0>"  LOC = "AF6" | IOSTANDARD = LVCMOS33 ; 
+NET "TXP<1>"  LOC = "AF11" | IOSTANDARD = LVCMOS33 ; 
+NET "TXP<2>"  LOC = "AF17" | IOSTANDARD = LVCMOS33 ; 
+NET "TXP<3>"  LOC = "AF22" | IOSTANDARD = LVCMOS33 ; 
+##################################################################
+NET "TXN<0>"  LOC = "AF7" | IOSTANDARD = LVCMOS33 ; 
+NET "TXN<1>"  LOC = "AF12" | IOSTANDARD = LVCMOS33 ; 
+NET "TXN<2>"  LOC = "AF18" | IOSTANDARD = LVCMOS33 ; 
+NET "TXN<3>"  LOC = "AF23" | IOSTANDARD = LVCMOS33 ; 
+##################################################################

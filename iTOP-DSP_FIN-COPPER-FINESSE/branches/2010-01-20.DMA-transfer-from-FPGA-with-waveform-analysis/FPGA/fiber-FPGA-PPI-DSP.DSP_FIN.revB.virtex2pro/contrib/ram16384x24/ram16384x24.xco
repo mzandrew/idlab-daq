@@ -1,0 +1,84 @@
+##############################################################
+#
+# Xilinx Core Generator version 13.2
+# Date: Sat Sep 10 03:58:19 2011
+#
+##############################################################
+#
+#  This file contains the customisation parameters for a
+#  Xilinx CORE Generator IP GUI. It is strongly recommended
+#  that you do not manually alter this file as it may cause
+#  unexpected and unsupported behavior.
+#
+##############################################################
+#
+#  Generated from component: xilinx.com:ip:Block_Memory_Generator:2.8
+#
+##############################################################
+#
+# BEGIN Project Options
+SET addpads = false
+SET asysymbol = true
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = false
+SET designentry = VHDL
+SET device = xc4vfx40
+SET devicefamily = virtex4
+SET flowvendor = Foundation_ISE
+SET formalverification = false
+SET foundationsym = false
+SET implementationfiletype = Ngc
+SET package = ff672
+SET removerpms = false
+SET simulationfiles = Behavioral
+SET speedgrade = -10
+SET verilogsim = false
+SET vhdlsim = true
+# END Project Options
+# BEGIN Select
+SELECT Block_Memory_Generator xilinx.com:ip:Block_Memory_Generator:2.8
+# END Select
+# BEGIN Parameters
+CSET algorithm=Minimum_Area
+CSET assume_synchronous_clk=false
+CSET byte_size=9
+CSET coe_file=C:/mza/MCP_DSP_FIN/usb/FO_WAVEFORM_NOISE_GEN/build/waveform9.coe
+CSET collision_warnings=ALL
+CSET component_name=ram16384x24
+CSET disable_collision_warnings=false
+CSET disable_out_of_range_warnings=false
+CSET ecc=false
+CSET enable_a=Always_Enabled
+CSET enable_b=Always_Enabled
+CSET fill_remaining_memory_locations=true
+CSET load_init_file=true
+CSET memory_type=Simple_Dual_Port_RAM
+CSET operating_mode_a=READ_FIRST
+CSET operating_mode_b=READ_FIRST
+CSET output_reset_value_a=0
+CSET output_reset_value_b=0
+CSET pipeline_stages=0
+CSET primitive=8kx2
+CSET read_width_a=24
+CSET read_width_b=12
+CSET register_porta_output_of_memory_core=false
+CSET register_porta_output_of_memory_primitives=false
+CSET register_portb_output_of_memory_core=false
+CSET register_portb_output_of_memory_primitives=false
+CSET remaining_memory_locations=AAA555
+CSET single_bit_ecc=false
+CSET use_byte_write_enable=false
+CSET use_ramb16bwer_reset_behavior=false
+CSET use_regcea_pin=false
+CSET use_regceb_pin=false
+CSET use_ssra_pin=false
+CSET use_ssrb_pin=false
+CSET write_depth_a=16384
+CSET write_width_a=24
+CSET write_width_b=12
+# END Parameters
+# BEGIN Extra information
+MISC pkg_timestamp=0
+# END Extra information
+GENERATE
+# CRC: ca461af5

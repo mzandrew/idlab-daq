@@ -1,0 +1,3 @@
+MODULE clocks
+	SUBMODULE aurora_clocks
+		INSTANCE XLXI_1

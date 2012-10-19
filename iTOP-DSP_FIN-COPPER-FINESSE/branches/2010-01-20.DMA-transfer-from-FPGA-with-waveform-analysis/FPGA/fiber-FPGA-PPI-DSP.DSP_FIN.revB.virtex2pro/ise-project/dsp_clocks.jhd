@@ -1,0 +1,3 @@
+MODULE dsp_clocks
+	SUBMODULE dsp_dcm
+		INSTANCE dspdcm

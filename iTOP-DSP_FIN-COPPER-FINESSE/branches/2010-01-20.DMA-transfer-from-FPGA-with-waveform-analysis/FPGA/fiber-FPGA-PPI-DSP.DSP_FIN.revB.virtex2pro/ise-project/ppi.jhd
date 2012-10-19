@@ -1,0 +1,7 @@
+MODULE ppi
+	SUBMODULE synchronous_latch
+		INSTANCE XLXI_865
+	SUBMODULE ppi_control
+		INSTANCE ppicontrol
+	SUBMODULE constant_15bit
+		INSTANCE XLXI_866

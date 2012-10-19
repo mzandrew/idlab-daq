@@ -1,0 +1,19 @@
+CoreGen has not been configured with any user repositories.
+CoreGen has been configured with the following Xilinx repositories:
+ - 'C:\Xilinx\13.2\ISE_DS\ISE\coregen\' [reloaded]
+WARNING:sim - The IP Block Memory Generator 2.8 does not exist within the
+   repository, and cannot be recustomized or regenerated. It is not available in
+   CoreGen 13.2, and may have been removed or replaced. To generate Block Memory
+   Generator 2.8 please use a previous version of ISE in which this IP is
+   available, or add the user repository which contains this IP.
+INFO:sim - Generating component instance 'ram16384x24' of
+   'xilinx.com:ip:Block_Memory_Generator:2.8' from
+   'D:\mza\FPGA\DSP_finesse\contrib\ram16384x24\'.
+Applying current project options...
+Finished applying current project options.
+WARNING:sim - The chosen IP does not support an SYM schematic symbol.
+Generating FLIST file...
+INFO:sim - Finished FLIST file generation.
+Moving files to output directory...
+Finished moving files to output directory
+Wrote CGP file for project 'ram16384x24'.
