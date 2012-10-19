@@ -4,21 +4,29 @@ LDFLAGS=
 
 #LIBSRCS=$(filter-out src/lib/pci.%, $(wildcard src/lib/*.cpp))
 
-LIBSRCS=src/lib/config_file.cpp src/lib/DebugInfoWarningError.cpp \
-	src/lib/crtdaq-globals.cpp src/lib/cprdsp-fin-daq.cpp
-LIBOBJS=$(patsubst src/lib/%.cpp, obj/lib/%.o, $(LIBSRCS))
+#ARCH=$(shell uname -p)-$(shell uname -r)
+ARCH=
+OBJDIR=obj/$(ARCH)/lib
 
+LIBSRCS=src/lib/config_file.cpp src/lib/DebugInfoWarningError.cpp \
+	src/lib/crtdaq-globals.cpp src/lib/cprdaq.cpp \
+	src/lib/status_file.cpp src/lib/generic.cpp src/lib/logfile.cpp
+LIBOBJS=$(patsubst src/lib/%.cpp, $(OBJDIR)/%.o, $(LIBSRCS))
+
+EXEDIR=bin/$(ARCH)
 EXESRCS=src/cwl_debug.cpp
-EXES=$(patsubst src/%.cpp, bin/%, $(EXESRCS))
+EXES=$(patsubst src/%.cpp, $(EXEDIR)/%, $(EXESRCS))
 
 all: $(EXES)
 
 objs: $(LIBOBJS)
 
-obj/lib/%.o: src/lib/%.cpp src/lib/%.h
+$(OBJDIR)/%.o: src/lib/%.cpp src/lib/%.h
+	mkdir -p $(OBJDIR)
 	g++ -c $(CPPFLAGS) $< -o $@
 
-bin/%: src/%.cpp $(LIBOBJS)
+$(EXEDIR)/%: src/%.cpp $(LIBOBJS)
+	mkdir -p $(EXEDIR)
 	g++ $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: all clean
