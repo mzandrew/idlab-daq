@@ -125,7 +125,7 @@ void open_logfile(void) {
 			logfile_open = true;
 			logfile << endl << flush;
 		} else {
-			fprintf(error, "ERROR opening logfile %s\n", logfile_filename.c_str());
+			fprintf(_g_error, "ERROR opening logfile %s\n", logfile_filename.c_str());
 			logfile_open = false;
 		}
 	}
@@ -149,14 +149,14 @@ void graceful_exit(void) {
 void setup_to_catch_ctrl_c(void (*callback)(void)) {
 	setup_for_console_output();
 	//call_this_on_ctrl_c = (void *) close_all_files;
-	call_this_on_ctrl_c = callback;
+	_g_call_this_on_ctrl_c = callback;
 	(void) signal(SIGINT, caught_ctrl_c);
 }
 
 void caught_ctrl_c(int sig) {
 	//cout << endl << "caught ctrl-c" << endl;
 	fprintf(error, "caught ctrl-c\n");
-	call_this_on_ctrl_c();
+	_g_call_this_on_ctrl_c();
 	(void) signal(SIGINT, SIG_DFL);
 	exit(0);
 }

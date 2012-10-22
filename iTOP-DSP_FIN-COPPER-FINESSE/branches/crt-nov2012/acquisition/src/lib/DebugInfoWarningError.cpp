@@ -65,6 +65,14 @@ unsigned short int change_verbosity(unsigned short new_verbosity = _g_verbosity)
 	return old_verbosity;
 }
 
+void diwe_flush_all_streams() {
+  fflush(_g_debug2);
+  fflush(_g_debug);
+  fflush(_g_info);
+  fflush(_g_warning);
+  fflush(_g_error);
+}
+
 //fprintf(debug, "\nchannel %d had %ld bytes to read", i, total_bytes_read_so_far);
 //debug("\nchannel %d had %ld bytes to read", i, total_bytes_read_so_far);
 //#include <cstdarg.h>
