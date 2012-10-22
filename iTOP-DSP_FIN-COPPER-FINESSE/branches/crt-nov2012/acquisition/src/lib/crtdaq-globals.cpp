@@ -18,8 +18,14 @@ unsigned short _g_fin_bitmask     = 0;
 
 string         _g_location_of_raw_datafiles        = "/home/craigb/daqdbg/data";
 string         _g_location_of_status_and_log_files = "/home/craigb/daqdbg/log";
+string         _g_data_filename                    = "<unspecified>";
+int            _g_data_fd                          = 0;
+string         _g_camac_filename                   = "<unspecified>";
 unsigned short _g_verbosity                        = 1;
 signed short   _g_temperature_redline              = 40;
+string         _g_run_type                         = "<unspecified>";
+
+char _g_red[13], _g_yellow[13], _g_white[13];
 
 unsigned short _g_threshold_scan_low_limit         = 1310;
 unsigned short _g_threshold_scan_high_limit        = 2620;
@@ -32,7 +38,6 @@ int _g_experiment_number = 1;
 int _g_event_number      = 1;
 
 int _g_number_of_readout_events_for_this_spill = 0;
-string _g_run_type = "<unspecified>";
 
 bool _g_logfile_open = false;
 string _g_logfile_filename = "~/daqdbg/log/logfile";

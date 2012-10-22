@@ -10,5 +10,7 @@ int cprdaq_init();
 void cprdaq_term();
 void cprdaq_close_data_file();
 int cprdaq_open_data_file();
+unsigned short cprdaq_link_status();
+
 
 #endif //CPRDAQ_H_

@@ -10,7 +10,9 @@ OBJDIR=obj/$(ARCH)/lib
 
 LIBSRCS=src/lib/config_file.cpp src/lib/DebugInfoWarningError.cpp \
 	src/lib/crtdaq-globals.cpp src/lib/cprdaq.cpp \
-	src/lib/status_file.cpp src/lib/generic.cpp src/lib/logfile.cpp
+	src/lib/status_file.cpp src/lib/generic.cpp src/lib/logfile.cpp \
+	src/lib/run_control.cpp src/lib/phony_command.cpp
+
 LIBOBJS=$(patsubst src/lib/%.cpp, $(OBJDIR)/%.o, $(LIBSRCS))
 
 EXEDIR=bin/$(ARCH)
