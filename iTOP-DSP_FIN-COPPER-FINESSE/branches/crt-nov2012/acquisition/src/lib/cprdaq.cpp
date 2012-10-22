@@ -19,14 +19,63 @@ void cprdaq_reset_fifo_and_finesse()
     ioctl(_g_cprdev, CPRIOSET_FF_RST, &val, sizeof(val));
 }
 
-int cprdaq_fin_init() {
+
+int cprdaq_enable_fins(string fins_requested) {
+  _g_fin_bitmask = 0;  
   
+  for (int i=0; i < MAXNFIN; i++) {
+    _g_fins_enabled[i] = false;
+
+    char slot_num = '0' + i;
+    char slot_alpha = 'a' + i;
+    
+    if ((fins_requested.find(slot_num) == string::npos) &&
+	(fins_requested.find(slot_alpha) == string::npos))
+      continue;
+    
+    _g_findev[i] = open(_g_findevpath[i], O_RDONLY);
+
+    if (_g_findev[i] < 0) {
+      fprintf(_g_error, "Unable to open requested FIN `%c': `%s'\n",
+	      slot_alpha, strerror(-_g_findev[i]));
+      abort();
+    }
+    
+    _g_fin_bitmask |= 0x1<<i;      
+    _g_fins_enabled[i] = true;
+    
+  }
+
+  int ioctl_ret = ioctl(_g_cprdev, CPRIOSET_FINESSE_STA, &_g_fin_bitmask);
+  if (ioctl_ret < 0) {
+    fprintf(_g_error, "ioctl to copper driver to enable requested fins failed"
+	    " with status `%s'\n", strerror(-ioctl_ret));
+    abort();
+  }
+
+  int check = 0;
+  ioctl_ret = 0;
+  ioctl_ret = ioctl(_g_cprdev, CPRIOGET_FINESSE_STA, &check);
+  
+  if (ioctl_ret < 0) {
+    fprintf(_g_error, "ioctl to copper driver to check successful fin enable"
+	    " failed with status `%s'\n", strerror(-ioctl_ret));
+    abort();
+  }
+  
+  if (check != _g_fin_bitmask) {
+    fprintf(_g_error, "Attempt to enable requested fins in copper driver"
+	    " failed (requested: %x, received: %x)\n", _g_fin_bitmask, check);
+    abort();
+  }    
+  
+}
+
 
 int cprdaq_init() {
-
-  cprdaq_fin_init();
-
   _g_cprdev = open(_g_cprdevpath, O_RDONLY);
+
+  cprdaq_enable_fins(_g_fins_requested);
   
   if (_g_cprdev == -1) {
     fprintf(_g_error, "cprdaq_init(): unable to open `%s'\n", 
@@ -59,8 +108,8 @@ void cprdaq_term() {
   }
 }
 
-int cprdaq_available_fins() {
-  int avail_mask = 0;
+unsigned short cprdaq_available_fins() {
+  unsigned short avail_mask = 0;
 
   for (int i=0; i < MAXNFIN; i++) {
     if (_g_findev[i] > 0) {
@@ -80,75 +129,15 @@ int cprdaq_available_fins() {
 }
 
 
-int cprdaq_enable_fins(string fins_requested) {
-  _g_fin_bitmask = 0;  
-  
-  for (int i=0; i < MAXNFIN; i++) {
-    _g_fins_enabled[i] = false;
 
-    char slot_num = '0' + i;
-    char slot_alpha = 'a' + i;
-    
-    if ((fins_requested.find(slot_num) == string::npos) &&
-	(fins_requested.find(slot_alpha) == string::npos))
-      continue;
-    
-    _g_findev[i] = open(_g_findevpath[i], O_RDONLY);
 
-    if (_g_findev[i] < 0) {
-      fprintf(_g_error, "Unable to open requested FIN `%c': `%s'\n",
-	      slot_alpha, strerror(-_g_findev[i]));
-      abort();
-    }
-    
-    _g_fin_bitmask |= 0x1<<i;      
-    _g_fins_enabled[true];
-    
-  }
-
-  bool cprdev_was_closed = false;
-  if (!_g_cprdev) {
-    cprdaq_init();
-    cprdev_was_closed = true;
-  }
-
-  int ioctl_ret = ioctl(_g_cprdev, CPRIOSET_FINESSE_STA, &_g_fin_bitmask);
-  if (ioctl_ret < 0) {
-    fprintf(_g_error, "ioctl to copper driver to enable requested fins failed"
-	    " with status `%s'\n", strerror(-ioctl_ret));
-    abort();
-  }
-
-  int check = 0;
-  ioctl_ret = 0;
-  ioctl_ret = ioctl(_g_cprdev, CPRIOGET_FINESSE_STA, &check);
-  
-  if (ioctl_ret < 0) {
-    fprintf(_g_error, "ioctl to copper driver to check successful fin enable"
-	    " failed with status `%s'\n", strerror(-ioctl_ret));
-    abort();
-  }
-  
-  if (check != _g_fin_bitmask) {
-    fprintf(_g_error, "Attempt to enable requested fins in copper driver"
-	    " failed (requested: %x, received: %x)\n", _g_fin_bitmask, check);
-    abort();
-  }    
-
-  if (cprdev_was_closed)
-    cprdaq_term();
-
-  return 0;
-}
-
-int cprdaq_enable_fins(int enable_request) {
-  fprintf(_g_error, "Call to unimplemented function `%s'\n",
+unsigned short cprdaq_link_status() {  
+  fprintf(_g_error, "`%s' returning phony link status\n",
 	  __func__);
+  fflush(_g_error);
 
-  abort();  
+  return _g_fin_bitmask;
 }
-
-int cprdaq_link_status() {
   
 
 

@@ -9,7 +9,15 @@
 #include "cprdaq.h"
 #include "generic.h"
 #include "config_file.h"
+#include "logfile.h"
+#include "run_control.h"
 #include "status_file.h"
+#include "phony_command.h"
+#include "DebugInfoWarningError.h"
+
+#ifndef NO_CAMAC
+#include "CAMAC.h"
+#endif //NO_CAMAC
 
 using namespace std;
 
@@ -70,6 +78,8 @@ int main(int argc, char* argv[]) {
 
   parse_config_file(argv[optind]);
 
+  cprdaq_init();
+
   open_status_file_for_reading_and_writing();
   read_status_file();
   
@@ -80,11 +90,45 @@ int main(int argc, char* argv[]) {
   create_directory_if_necessary(_g_location_of_raw_datafiles);
   generate_new_base_filename();
 
-  cprdaq_init();
+  crtdaq_dump_globals();
 
   wait_for_all_links_to_come_up(_g_fin_bitmask);
   
-  crtdaq_dump_globals();
+  readout_all_pending_data();
+  
+  setup_filenames_for_data();
+
+#ifndef NO_CAMAC
+  if (init_CAMAC_controller()) {
+    cerr << "ERROR:  could not connect to CAMAC crate" << endl;
+    exit(7);
+  } else {
+    cout << "CAMAC initialized." << endl;
+    CAMAC_initialized = true;
+  }
+  if (CAMAC_initialized) {
+    cout << "opening CAMAC files..." << endl;
+    open_CAMAC_file();
+    if (using_CAMAC3377) {
+      CAMAC_initialize_3377s();
+      open_CAMAC3377_file();
+    }
+  }
+#endif //NO_CAMAC
+  
+  setup_run_type("cosmic_with_laser");
+  setup_to_catch_ctrl_c();
+  open_logfile();
+  open_data_file();
+
+  unsigned short winbeg = 0;
+  unsigned short winend = 63;
+  
+  set_start_and_end_windows(winbeg, winend);
+
+  
+
+  //  diwe_flush_all_streams();
   return EXIT_SUCCESS;
 
 }

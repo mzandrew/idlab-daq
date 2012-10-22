@@ -23,3 +23,6 @@ void generate_new_base_filename(void);
 string &myltrim(string &s);
 string &myrtrim(string &s);
 string &mytrim(string &s);
+
+void caught_ctrl_c(int sig);
+void setup_to_catch_ctrl_c(void (*callback)(void) = graceful_exit);

@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
+#include <signal.h>
 
 #include "crtdaq-globals.h"
 #include "cprdaq.h"
@@ -93,11 +94,11 @@ void generate_new_base_filename(void) {
 	_g_base_filename += experiment_number_string();
 	create_directory_if_necessary(_g_base_filename.c_str());
 	_g_base_filename += "/";
-	sprintf(temp, "exp%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_EXPERIMENT_NUMBER, _g_experiment_number);
+	sprintf(temp, "e%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_EXPERIMENT_NUMBER, _g_experiment_number);
 	_g_base_filename += temp;
-	sprintf(temp, "run%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_RUN_NUMBER, _g_run_number);
+	sprintf(temp, "r%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_RUN_NUMBER, _g_run_number);
 	_g_base_filename += temp;
-	sprintf(temp, "spill%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_SPILL_NUMBER, _g_spill_number);
+	sprintf(temp, "s%0*d", NUMBER_OF_SPACES_TO_RESERVE_FOR_SPILL_NUMBER, _g_spill_number);
 	_g_base_filename += temp;
 }
 
@@ -140,6 +141,29 @@ string insert_interstitial_commas(unsigned long long int number) {
   string result = temp2;
   return result;
 }
+
+void caught_ctrl_c(int sig) {
+	//cout << endl << "caught ctrl-c" << endl;
+	fprintf(_g_error, "caught ctrl-c\n");
+	_g_call_this_on_ctrl_c();
+	(void) signal(SIGINT, SIG_DFL);
+	exit(0);
+}
+
+void setup_for_console_output(void) {
+	sprintf(_g_red,    "%c[%d;%d;%dm", 0x1b, 0, 30 + 1, 40);
+	sprintf(_g_yellow, "%c[%d;%d;%dm", 0x1b, 0, 30 + 3, 40);
+	sprintf(_g_white,  "%c[%d;%d;%dm", 0x1b, 0, 30 + 7, 40);
+}
+
+void setup_to_catch_ctrl_c(void (*callback)(void)) {
+	setup_for_console_output();
+	//call_this_on_ctrl_c = (void *) close_all_files;
+	_g_call_this_on_ctrl_c = callback;
+	(void) signal(SIGINT, caught_ctrl_c);
+}
+
+
 
 // tested with:
 //      unsigned short old_verbosity = change_verbosity(4);
