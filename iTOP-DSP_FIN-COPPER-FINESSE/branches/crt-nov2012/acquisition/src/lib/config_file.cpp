@@ -37,12 +37,13 @@ int parse_config_file(string filename) {
     key   = line.substr(0, first_equals_sign_position);
     value = line.substr(first_equals_sign_position+1);
 
-    if (key == "fins") {
-      _g_fins_requested = mytrim(value);
-    } 
+    if (key == "fins") 
+      _g_fins_requested = tolower(mytrim(value));
+        
+    else if (key == "fibers") 
+      _g_fibers_requested = tolower(mytrim(value));
     
     else if (key == "dsp") {
-      // Need something here.
     } 
     
     else if (key == "location_of_raw_datafiles") {

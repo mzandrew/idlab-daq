@@ -1,5 +1,51 @@
-#include "acquisition.h"
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cctype>
+#include <unistd.h>
+#include <string>
 
+#include "crtdaq-globals.h"
+#include "packet_interface.h"
+#include "cprdaq.h"
+#include "commands.h"
+
+
+void read_from_scrods(unsigned int reg_id, unsigned int* buf, 
+		      int bufsize, unsigned short bitmask) 
+{
+  if (bitmask == 0x0)
+    bitmask = _g_fin_bitmask;
+
+  for (int i=0; i < MAXNFIN; i++) {
+    if (!(bitmask >> i & 0x1))
+      continue;
+    
+    // packet p;
+    // p.CreateCommandPacket();
+    // p.AddReadToPacket(reg_id);
+    
+    // int total_size_in_words; 
+    // unsigned int* packet_data = p.AssemblePacket(total_size_in_words);
+
+    // int nwords_resp = 0;
+    // nwords_resp = cprdaq_send_data(packet_data, 
+    // 				   total_size_in_words*sizeof(unsigned int),
+    // 				   buf, bufsize);
+    // delete[] packet_data;
+  }
+    
+}
+
+
+void write_to_scrods(unsigned int reg_id, unsigned int* reg_data, 
+		     int reg_data_size, unsigned short bitmask)
+{}
+  
+void ping_scrods() {}
+
+
+/*
 void setup_default_DAC_settings(void) {
   for (int i=0; i<NUMBER_OF_ROWS_IN_BOARD_STACK; i++) {
     for (int j=0; j<NUMBER_OF_COLUMNS_IN_BOARD_STACK; j++) {
@@ -81,50 +127,58 @@ void set_all_DACs_to(unsigned short int value) {
   send_command_packet_to_all_enabled_channels(0x4bac2dac, value); // set all DACs to given argument
 }
 
+*/
+
 void set_all_DACs_to_built_in_nominal_values(void) {
   send_command_packet_to_all_enabled_channels(0x1bac2dac, 0x00000000); // set DACs to default built-in values
 }
 
 void enable_sampling_rate_feedback(void) {
-  fprintf(debug, "enabling sampling rate feedback\n");
-  feedback_enables_and_goals[3] = 0xffff;
+  fprintf(_g_debug, "enabling sampling rate feedback\n");
+  _g_feedback_enables_and_goals[3] = 0xffff;
   command_arguments_type command_arguments;
   for (int i=0; i<6; i++) {
-    command_arguments.uint32[i] = feedback_enables_and_goals[i];
+    command_arguments.uint32[i] = _g_feedback_enables_and_goals[i];
   }
-  send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
+  send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, 
+						      command_arguments);
 }
 
+
 void disable_sampling_rate_feedback(void) {
-  fprintf(debug, "disabling sampling rate feedback\n");
-  feedback_enables_and_goals[3] = 0;
+  fprintf(_g_debug, "disabling sampling rate feedback\n");
+  _g_feedback_enables_and_goals[3] = 0;
   command_arguments_type command_arguments;
   for (int i=0; i<6; i++) {
-    command_arguments.uint32[i] = feedback_enables_and_goals[i];
+    command_arguments.uint32[i] = _g_feedback_enables_and_goals[i];
   }
-  send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
+  send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, 
+						      command_arguments);
 }
 
 void setup_feedback_enables_and_goals(unsigned short int enable) {
   // [3] = enable/disable sampling rate feedback (one bit per ASIC)
   // [4] = wilkinson feedback (one bit per ASIC)
   // [5] = trigger width feedback (one bit per ASIC)
-  fprintf(debug, "setting up feedback loops\n");
+  fprintf(_g_debug, "setting up feedback loops\n");
   if (enable == 0) {
     for (int i=3; i<6; i++) {
-      feedback_enables_and_goals[i] = 0x0000;
+      _g_feedback_enables_and_goals[i] = 0x0000;
     }
   } else {
     for (int i=3; i<6; i++) {
-      feedback_enables_and_goals[i] = 0xffff;
+      _g_feedback_enables_and_goals[i] = 0xffff;
     }
   }
   command_arguments_type command_arguments;
   for (int i=0; i<6; i++) {
-    command_arguments.uint32[i] = feedback_enables_and_goals[i];
+    command_arguments.uint32[i] = _g_feedback_enables_and_goals[i];
   }
-  send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, command_arguments);
+  send_complex_command_packet_to_all_enabled_channels(0xfeedbacc, 
+						      command_arguments);
 }
+
+
 
 void send_soft_trigger_request_command_packet(void) {
   //    printf("sending soft trigger command\n");
@@ -136,38 +190,38 @@ void send_front_end_trigger_veto_clear(void) {
 }
 
 void set_event_number(unsigned long int event_number) {
-  fprintf(debug, "setting event number to %ld\n", event_number);
+  fprintf(_g_debug, "setting event number to %ld\n", event_number);
   send_command_packet_to_all_enabled_channels(0xe0000000, event_number); // set event number
   //    usleep(50000);
 }
 
 void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window) {
   if (start_window%2!=0) {
-    fprintf(error, "ERROR:  start_window must be even (trying to set it to %ld)\n", start_window);
+    fprintf(_g_error, "ERROR:  start_window must be even (trying to set it to %ld)\n", start_window);
     exit(7);
   }
   if (end_window%2==0) {
-    fprintf(error, "ERROR:  end_window must be odd (trying to set it to %ld)\n", end_window);
+    fprintf(_g_error, "ERROR:  end_window must be odd (trying to set it to %ld)\n", end_window);
     exit(8);
   }
   if (start_window>end_window) {
-    fprintf(error, "ERROR:  start_window (%ld) must be less than end_window (%ld)\n", start_window, end_window);
+    fprintf(_g_error, "ERROR:  start_window (%ld) must be less than end_window (%ld)\n", start_window, end_window);
     exit(9);
   }
-  fprintf(debug, "setting start_window to %ld\n", start_window);
+  fprintf(_g_debug, "setting start_window to %ld\n", start_window);
   send_command_packet_to_all_enabled_channels(0x000001ff, start_window); // set start window
   usleep(10000);
-  fprintf(debug, "setting end_window to %ld\n", end_window);
+  fprintf(_g_debug, "setting end_window to %ld\n", end_window);
   send_command_packet_to_all_enabled_channels(0x000101ff, end_window); // set end window
 }
 
 void set_number_of_windows_to_look_back(unsigned long int look_back) {
-  fprintf(debug, "setting number of look back windows to %ld\n", look_back);
+  fprintf(_g_debug, "setting number of look back windows to %ld\n", look_back);
   send_command_packet_to_all_enabled_channels(0x0100cbac, look_back);
 }
 
 void global_reset(void) {
-  fprintf(debug, "sending global reset\n");
+  fprintf(_g_debug, "sending global reset\n");
   send_command_packet_to_all_enabled_channels(0x33333333, 0x00000000); // global reset
   usleep(500000); // wait for FPGA to reset everything and bring fiber link up again
 }
