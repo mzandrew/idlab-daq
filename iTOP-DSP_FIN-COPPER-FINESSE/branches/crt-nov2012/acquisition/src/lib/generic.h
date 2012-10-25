@@ -26,3 +26,4 @@ string &mytrim(string &s);
 
 void caught_ctrl_c(int sig);
 void setup_to_catch_ctrl_c(void (*callback)(void) = graceful_exit);
+void close_all_files();

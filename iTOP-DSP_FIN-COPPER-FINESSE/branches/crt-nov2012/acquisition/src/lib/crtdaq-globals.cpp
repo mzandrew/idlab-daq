@@ -2,19 +2,28 @@
 #include <fstream>
 #include <string>
 
+#include "crtdaq-globals.h" 
+
 using namespace std;
 
-struct timeval _g_start, _g_end, _g_watchdog;
+struct timeval _g_tstart, _g_tend, _g_watchdog;
 
 // Set in config_file.cpp
 string         _g_fins_requested  = "";
+string         _g_fibers_requested = "";
 bool           _g_fins_enabled[4] = {0, 0, 0, 0};
 int            _g_findev[4]       = {0, 0, 0, 0};
-char*          _g_findevpath[4]   = {"/dev/copper/cprdsp-fin:a",
+const char    *_g_findevpath[4]   = {"/dev/copper/cprdsp-fin:a",
 				     "/dev/copper/cprdsp-fin:b",
 				     "/dev/copper/cprdsp-fin:c",
 				     "/dev/copper/cprdsp-fin:d"};
 unsigned short _g_fin_bitmask     = 0;
+string         _g_fiber_bitmask   = 0;
+
+int            _g_nfins_enabled   = 0;
+int            _g_nfibers_enabled = 0;
+
+int            _g_nscrods_to_readout = 0; 
 
 string         _g_location_of_raw_datafiles        = "/home/craigb/daqdbg/data";
 string         _g_location_of_status_and_log_files = "/home/craigb/daqdbg/log";
@@ -24,6 +33,11 @@ string         _g_camac_filename                   = "<unspecified>";
 unsigned short _g_verbosity                        = 1;
 signed short   _g_temperature_redline              = 40;
 string         _g_run_type                         = "<unspecified>";
+
+float         *_g_temperature_float                = NULL;
+
+bool           _g_should_soft_trigger              = false;
+unsigned int   _g_feedback_enables_and_goals[6]    = {0,0,0,0,0,0};
 
 char _g_red[13], _g_yellow[13], _g_white[13];
 
@@ -37,15 +51,21 @@ int _g_spill_number      = 1;
 int _g_experiment_number = 1;
 int _g_event_number      = 1;
 
-int _g_number_of_readout_events_for_this_spill = 0;
+int _g_number_of_readout_events_for_this_spill      = 0;
+int _g_total_number_of_readout_events               = 0;
+int _g_number_of_seconds_this_spill_has_been_active = 0;
+int _g_number_of_seconds_since_last_event           = 0;
 
-bool _g_logfile_open = false;
-string _g_logfile_filename = "~/daqdbg/log/logfile";
+bool     _g_logfile_open     = false;
+string   _g_logfile_filename = "logfile";
 ofstream _g_logfile;
-string _g_base_filename = "~/daqdbg/nov2012crt";
+string   _g_base_filename    = "~/daqdbg/nov2012crt";
 
-char*    _g_cprdevpath = "/dev/copper/copper";
-int      _g_cprdev      = 0;
+int         _g_copper_subsys = 0;
+int         _g_copper_crate  = 0;
+int         _g_copper_slot   = 0;
+const char *_g_cprdevpath    = "/dev/copper/copper";
+int         _g_cprdev        = 0;
 
 // Filled in DebugInfoWarningError.cpp
 FILE *_g_debug   = 0;
@@ -54,8 +74,16 @@ FILE *_g_info    = 0;
 FILE *_g_warning = 0;
 FILE *_g_error   = 0;
 
+//struct DAC_settings_type _g_DAC_settings;
+//char             *_g_command_packet       = new char[SINGLE_PACKET_BUFFER_SIZE_IN_BYTES];
+// unsigned long     _g_packet_header        = 0;
+// unsigned long     _g_protocol_freeze_date = 0;
+// unsigned long     _g_packet_footer        = 0;
+// unsigned long     _g_packet_type[NUMBER_OF_PACKET_TYPES];
+
+
 void crtdaq_default_ctrl_c_handler() {
-  cout << "SIGINT received, exiting without flushing buffers" << endl;
+  cerr << "SIGINT received, exiting without flushing buffers" << endl;
   exit(13);
 }
 

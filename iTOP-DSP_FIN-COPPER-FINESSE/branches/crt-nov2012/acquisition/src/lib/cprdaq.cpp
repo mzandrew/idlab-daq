@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
@@ -10,19 +11,36 @@
 
 #include "crtdaq-globals.h"
 
-void cprdaq_reset_fifo_and_finesse()
-{
-    int val;
-    val = 0x1F;
-    ioctl(_g_cprdev, CPRIOSET_FF_RST, &val, sizeof(val));
-    val = 0;
-    ioctl(_g_cprdev, CPRIOSET_FF_RST, &val, sizeof(val));
+void cprdaq_reset_fifo_and_finesse() {
+  int val;
+  val = 0x1F;
+  ioctl(_g_cprdev, CPRIOSET_FF_RST, &val, sizeof(val));
+  val = 0;
+  ioctl(_g_cprdev, CPRIOSET_FF_RST, &val, sizeof(val));
+
+  ioctl(_g_cprdev, CPRIO_RESET_FINESSE, NULL);
 }
 
 
 int cprdaq_enable_fins(string fins_requested) {
   _g_fin_bitmask = 0;  
-  
+  _g_nfins_enabled = 0;
+
+  if (fins_requested.find("auto") != string::npos) {
+    _g_fin_bitmask = cprdaq_available_fins();
+    for (int i=0; i < MAXNFIN; i++) {
+      if (_g_fin_bitmask >> i & 0x1) {
+	_g_fins_enabled[i] = true;
+	_g_nfins_enabled++;
+      }
+      else
+	_g_fins_enabled[i] = false;
+    }
+    
+    return _g_nfins_enabled;
+  }
+	    
+
   for (int i=0; i < MAXNFIN; i++) {
     _g_fins_enabled[i] = false;
 
@@ -43,6 +61,7 @@ int cprdaq_enable_fins(string fins_requested) {
     
     _g_fin_bitmask |= 0x1<<i;      
     _g_fins_enabled[i] = true;
+    _g_nfins_enabled++;
     
   }
 
@@ -75,21 +94,22 @@ int cprdaq_enable_fins(string fins_requested) {
 int cprdaq_init() {
   _g_cprdev = open(_g_cprdevpath, O_RDONLY);
 
-  cprdaq_enable_fins(_g_fins_requested);
-  
   if (_g_cprdev == -1) {
     fprintf(_g_error, "cprdaq_init(): unable to open `%s'\n", 
 	    _g_cprdevpath);
     abort();
   }
+
+  cprdaq_enable_fins(_g_fins_requested);
   
-  int ret = ioctl(_g_cprdev, CPRIO_INIT_RUN, 0);
-  if (ret == -1) {
-    fprintf(_g_error, "cprdaq_init(): "
-	    "unable to initialize copper device\n");
-    abort();
-  } 
-  
+  // None of the four ioctl's below use a return value to 
+  // communicate error states
+  ioctl(_g_cprdev, CPRIO_SET_SUBSYS, &_g_copper_subsys);
+  ioctl(_g_cprdev, CPRIO_SET_CRATE, &_g_copper_crate);
+  ioctl(_g_cprdev, CPRIO_SET_SLOT, &_g_copper_slot);  
+  ioctl(_g_cprdev, CPRIO_INIT_RUN, 0); 
+
+  int ret = 0;
   for (int i=0; i<100; i++) {
     unsigned int val;
     cprdaq_reset_fifo_and_finesse();
@@ -131,29 +151,56 @@ unsigned short cprdaq_available_fins() {
 
 
 
-unsigned short cprdaq_link_status() {  
-  fprintf(_g_error, "`%s' returning phony link status\n",
+unsigned short cprdaq_link_status() {
+  fprintf(_g_warning, "`%s' just requires one active fiber on each FIN\n",
 	  __func__);
-  fflush(_g_error);
+  fflush(_g_warning);
 
   return _g_fin_bitmask;
+
+
+  const unsigned int link_status_addr = 0x79 << 2; 
+  unsigned short mask;
+  for (int i=0; i < MAXNFIN; i++) {
+    if (!_g_fins_enabled[i])
+      continue;
+    
+    unsigned short link_status = 0x0;
+    ioctl(_g_findev[i], CPRDSP_FIN_IOC_SET, &link_status_addr);
+    ioctl(_g_findev[i], CPRDSP_FIN_IOC_R, &link_status_addr);
+  
+    if (link_status != 0x0)
+      mask |= 0x1 >> i;
+
+  }
+
+  return mask;
 }
   
 
-
-void cprdaq_close_data_file() {
+int cprdaq_send_data(const char* buf, int len, unsigned short mask) {
   fprintf(_g_error, "Call to unimplemented function `%s'\n",
 	  __func__);
 
-  abort();  
-
-}
-
-int cprdaq_open_data_file() {
-  fprintf(_g_error, "Call to unimplemented function `%s'\n",
-	  __func__);
-
-  abort();  
+  _g_logfile << "Call to unimplemented function `" << __func__ << "'" << endl;
 
   return 1;
 }
+
+int cprdaq_send_veto_clear() {
+  fprintf(_g_error, "Call to unimplemented function `%s'\n",
+	  __func__);
+
+  _g_logfile << "Call to unimplemented function `" << __func__ << "'" << endl;
+
+  return 1;
+}  
+
+int cprdaq_read_event(unsigned long *buf, int bufsize) {
+  fprintf(_g_warning, "In `%s': no way to do a non-blocking read\n",
+	  __func__);
+
+  int nbytes_read = read(_g_cprdev, buf, sizeof(buf));
+  
+  return nbytes_read;
+}  

@@ -6,9 +6,9 @@
 
 int main(void) {
   // setup:
-  parse_config_file(".config");  // x 
-  open_status_file_for_reading_and_writing(); // x
-  read_status_file(); // x
+  parse_config_file(".config"); 
+  open_status_file_for_reading_and_writing(); 
+  read_status_file(); 
   run_number++;
   spill_number = 1;
   write_status_file();
