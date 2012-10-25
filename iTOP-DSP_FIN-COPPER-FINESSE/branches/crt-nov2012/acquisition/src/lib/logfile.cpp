@@ -39,19 +39,24 @@ string experiment_number_string(void) {
 void open_logfile(void) {
   if (!_g_logfile_open) {
     //cout << "opening logfile" << endl;
-    _g_logfile_filename = _g_location_of_status_and_log_files;
-    create_directory_if_necessary(_g_logfile_filename.c_str());
-    _g_logfile_filename += "/";
-    _g_logfile_filename += experiment_number_string();
-    create_directory_if_necessary(_g_logfile_filename.c_str());
-    _g_logfile_filename += "/logfile";
-    _g_logfile.open(_g_logfile_filename.c_str(), fstream::app);
+    
+    string tmp_path = _g_location_of_status_and_log_files;
+    create_directory_if_necessary(tmp_path);
+    tmp_path += "/";
+    tmp_path += experiment_number_string();
+    create_directory_if_necessary(tmp_path);
+    tmp_path += "/";
+    tmp_path += _g_logfile_filename;
+
+    _g_logfile.clear();
+    _g_logfile.open(tmp_path.c_str());
+
     if (_g_logfile) {
       _g_logfile_open = true;
       _g_logfile << endl << flush;
-      fprintf(_g_debug, "logfile `%s' opened\n", _g_logfile_filename.c_str());
+      fprintf(_g_debug, "logfile `%s' opened\n", tmp_path.c_str());
     } else {
-      fprintf(_g_error, "ERROR opening logfile %s\n", _g_logfile_filename.c_str());
+      fprintf(_g_error, "ERROR opening logfile %s\n", tmp_path.c_str());
       _g_logfile_open = false;
     }
   }
@@ -61,5 +66,10 @@ void update_logfile_with_base_filename(void) {
   if (_g_logfile_open) {
     _g_logfile << _g_base_filename << " " << flush;
   }
+}
+
+void update_logfile_with_the_number_of_readout_events_for_this_spill_and_close_all_files(void) {
+  update_logfile_with_the_number_of_readout_events_for_this_spill();
+  close_all_files();
 }
 

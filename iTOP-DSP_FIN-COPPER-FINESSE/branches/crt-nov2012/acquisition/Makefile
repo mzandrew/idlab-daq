@@ -11,12 +11,12 @@ OBJDIR=obj/$(ARCH)/lib
 LIBSRCS=src/lib/config_file.cpp src/lib/DebugInfoWarningError.cpp \
 	src/lib/crtdaq-globals.cpp src/lib/cprdaq.cpp \
 	src/lib/status_file.cpp src/lib/generic.cpp src/lib/logfile.cpp \
-	src/lib/run_control.cpp src/lib/phony_command.cpp
-
+	src/lib/run_control.cpp src/lib/packet_interface.cpp \
+	src/lib/commands.cpp
 LIBOBJS=$(patsubst src/lib/%.cpp, $(OBJDIR)/%.o, $(LIBSRCS))
 
 EXEDIR=bin/$(ARCH)
-EXESRCS=src/cwl_debug.cpp
+EXESRCS=src/cwl_debug.cpp src/prerun_debug.cpp
 EXES=$(patsubst src/%.cpp, $(EXEDIR)/%, $(EXESRCS))
 
 all: $(EXES)

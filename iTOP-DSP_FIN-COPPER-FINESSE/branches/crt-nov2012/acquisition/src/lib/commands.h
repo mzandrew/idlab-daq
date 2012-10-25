@@ -1,5 +1,20 @@
-#ifndef commands_h
-#define commands_h
+#ifndef COMMANDS_H_
+#define COMMANDS_H_
+
+#define NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET (14)
+
+struct command_arguments_type {
+  unsigned long int uint32[NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET];
+};
+
+void send_command_packet_to_some_enabled_channels(unsigned int cmd, 
+						  unsigned int argument,
+						  unsigned short bitmask);
+void send_command_packet_to_all_enabled_channels(unsigned int cmd, 
+						 unsigned int argument);
+void 
+send_complex_command_packet_to_all_enabled_channels(unsigned int cmd, 
+						    command_arguments_type args);
 
 void send_soft_trigger_request_command_packet(void);
 void send_front_end_trigger_veto_clear(void);
@@ -18,5 +33,5 @@ void setup_feedback_enables_and_goals(unsigned short int enable);
 float temperature(unsigned short int fiber_channel);
 void show_temperature_for_channel(unsigned short int channel_number);
 
-#endif
+#endif //COMMANDS_H_
 
