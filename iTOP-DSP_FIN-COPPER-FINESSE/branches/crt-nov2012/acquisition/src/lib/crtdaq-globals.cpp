@@ -6,11 +6,13 @@
 
 using namespace std;
 
-struct timeval _g_tstart, _g_tend, _g_watchdog;
+struct timeval _g_tstart;
+struct timeval _g_tend;
+struct timeval _g_watchdog;
 
 // Set in config_file.cpp
-string         _g_fins_requested  = "";
-string         _g_fibers_requested = "";
+string         _g_fins_requested  = "auto";
+string         _g_fibers_requested = "auto";
 bool           _g_fins_enabled[4] = {0, 0, 0, 0};
 int            _g_findev[4]       = {0, 0, 0, 0};
 const char    *_g_findevpath[4]   = {"/dev/copper/cprdsp-fin:a",
@@ -18,7 +20,7 @@ const char    *_g_findevpath[4]   = {"/dev/copper/cprdsp-fin:a",
 				     "/dev/copper/cprdsp-fin:c",
 				     "/dev/copper/cprdsp-fin:d"};
 unsigned short _g_fin_bitmask     = 0;
-string         _g_fiber_bitmask   = 0;
+unsigned short _g_fiber_bitmask   = 0;
 
 int            _g_nfins_enabled   = 0;
 int            _g_nfibers_enabled = 0;
@@ -61,11 +63,12 @@ string   _g_logfile_filename = "logfile";
 ofstream _g_logfile;
 string   _g_base_filename    = "~/daqdbg/nov2012crt";
 
-int         _g_copper_subsys = 0;
-int         _g_copper_crate  = 0;
-int         _g_copper_slot   = 0;
-const char *_g_cprdevpath    = "/dev/copper/copper";
-int         _g_cprdev        = 0;
+int         _g_copper_subsys      = 0;
+int         _g_copper_crate       = 0;
+int         _g_copper_slot        = 0;
+const char *_g_cprdevpath         = "/dev/copper/copper";
+int         _g_cprdev             = 0;
+int         _g_cprpoll_timeout_ms = 100;
 
 // Filled in DebugInfoWarningError.cpp
 FILE *_g_debug   = 0;
