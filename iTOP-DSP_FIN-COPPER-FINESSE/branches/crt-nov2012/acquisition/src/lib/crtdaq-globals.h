@@ -7,6 +7,7 @@ using namespace std;
 
 #define NSP_EXPNO (2)
 #define MAXNFIN   (4)
+#define MAXNFIBER (16)
 
 #define NUMBER_OF_BYTES_IN_A_WORD (4)
 #define NUMBER_OF_WORDS_IN_A_PACKET (140)
@@ -34,10 +35,12 @@ extern struct timeval _g_tstart, _g_tend, _g_watchdog;
 
 // Set in config_file.cpp
 extern string         _g_fins_requested;
+extern string         _g_fibers_requested;
 extern bool           _g_fins_enabled[MAXNFIN];
 extern int            _g_findev[MAXNFIN];
 extern const char*    _g_findevpath[MAXNFIN];
 extern unsigned short _g_fin_bitmask;
+extern unsigned short _g_fiber_bitmask;
 extern int            _g_nfins_enabled;
 
 extern string         _g_location_of_raw_datafiles;
@@ -90,6 +93,7 @@ extern int         _g_copper_crate;
 extern int         _g_copper_slot;
 extern const char* _g_cprdevpath;
 extern int         _g_cprdev;      // Assigned in cprdsp-fin-daq.cpp
+extern int         _g_cprpoll_timeout_ms;
 
 extern void (*_g_call_this_on_ctrl_c)(void);
 

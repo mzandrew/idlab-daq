@@ -20,13 +20,13 @@
 #include "CAMAC.h"
 #endif //NO_CAMAC
 
-// #define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (5000)
-// #define MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL (43200)
-// #define MAXIMUM_NUMBER_OF_SECONDS_BEFORE_FORCING_CLEAR (60)
-
-#define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (100)
+#define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (5000)
 #define MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL (43200)
 #define MAXIMUM_NUMBER_OF_SECONDS_BEFORE_FORCING_CLEAR (60)
+
+// #define MAXIMUM_NUMBER_OF_EVENTS_PER_SPILL (100)
+// #define MAXIMUM_NUMBER_OF_SECONDS_PER_SPILL (43200)
+// #define MAXIMUM_NUMBER_OF_SECONDS_BEFORE_FORCING_CLEAR (60)
 
 
 using namespace std;
@@ -102,7 +102,7 @@ int main(int argc, char* argv[]) {
 
   crtdaq_dump_globals();
 
-  wait_for_all_links_to_come_up(_g_fin_bitmask);
+  wait_for_all_links_to_come_up(_g_fibers_requested);
 
   readout_all_pending_data();
 

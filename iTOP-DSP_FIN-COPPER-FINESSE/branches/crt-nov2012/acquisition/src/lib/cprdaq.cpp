@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <fcntl.h>
+#include <poll.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <string.h>
@@ -10,6 +11,9 @@
 #include <cprdsp-fin.h>
 
 #include "crtdaq-globals.h"
+#include "logfile.h" // for graceful_exit
+
+static struct pollfd *g_pollfd = NULL;
 
 void cprdaq_reset_fifo_and_finesse() {
   int val;
@@ -19,6 +23,27 @@ void cprdaq_reset_fifo_and_finesse() {
   ioctl(_g_cprdev, CPRIOSET_FF_RST, &val, sizeof(val));
 
   ioctl(_g_cprdev, CPRIO_RESET_FINESSE, NULL);
+}
+
+
+unsigned short cprdaq_available_fins() {
+  unsigned short avail_mask = 0;
+
+  for (int i=0; i < MAXNFIN; i++) {
+    if (_g_findev[i] > 0) {
+	avail_mask |= (0x1 << i);
+	continue;
+    }
+    
+    int fd = open(_g_findevpath[i], O_RDONLY);
+    if (fd < 0)
+      continue;
+
+    avail_mask |= (0x1 << i);
+    close(fd);      
+  }
+
+  return avail_mask;
 }
 
 
@@ -118,6 +143,13 @@ int cprdaq_init() {
       break;
   }
 
+  if (g_pollfd != NULL) 
+    delete[] g_pollfd;
+  
+  g_pollfd = new pollfd[1];
+  g_pollfd[0].fd = _g_cprdev;
+  g_pollfd[0].events = POLLIN;
+        
   return ret; 
 }
 
@@ -126,39 +158,15 @@ void cprdaq_term() {
     ioctl(_g_cprdev, CPRIO_END_RUN, 0);
     close(_g_cprdev);
   }
-}
-
-unsigned short cprdaq_available_fins() {
-  unsigned short avail_mask = 0;
-
-  for (int i=0; i < MAXNFIN; i++) {
-    if (_g_findev[i] > 0) {
-	avail_mask |= (0x1 << i);
-	continue;
-    }
-    
-    int fd = open(_g_findevpath[i], O_RDONLY);
-    if (fd < 0)
-      continue;
-
-    avail_mask |= (0x1 << i);
-    close(fd);      
+  
+  if (g_pollfd != NULL) {
+    delete[] g_pollfd;
+    g_pollfd = NULL;
   }
-
-  return avail_mask;
 }
-
-
 
 
 unsigned short cprdaq_link_status() {
-  fprintf(_g_warning, "`%s' just requires one active fiber on each FIN\n",
-	  __func__);
-  fflush(_g_warning);
-
-  return _g_fin_bitmask;
-
-
   const unsigned int link_status_addr = 0x79 << 2; 
   unsigned short mask;
   for (int i=0; i < MAXNFIN; i++) {
@@ -167,25 +175,47 @@ unsigned short cprdaq_link_status() {
     
     unsigned short link_status = 0x0;
     ioctl(_g_findev[i], CPRDSP_FIN_IOC_SET, &link_status_addr);
-    ioctl(_g_findev[i], CPRDSP_FIN_IOC_R, &link_status_addr);
+    ioctl(_g_findev[i], CPRDSP_FIN_IOC_R, &link_status);
   
-    if (link_status != 0x0)
-      mask |= 0x1 >> i;
-
+    mask |= link_status << i*4; 
   }
 
   return mask;
 }
   
 
-int cprdaq_send_data(const char* buf, int len, unsigned short mask) {
-  fprintf(_g_error, "Call to unimplemented function `%s'\n",
-	  __func__);
+int cprdaq_send_data(const unsigned int* buf, int len) {
+  if (len > 255) {
+    fprintf(_g_error, "Attempt to send data with len %d; "
+	    "max length is 255\n", len);
+    graceful_exit();
+  }
+    
+  const int send_adx = 0x78 << 2;
+  const int send = 0x01;
+  const int clear = 0x00;
+  const int packet_ff = 0x74 << 2;
 
-  _g_logfile << "Call to unimplemented function `" << __func__ << "'" << endl;
+  for (int j=0; j < MAXNFIN; j++) {
+    if (_g_findev[j] <= 0) 
+      continue;
 
-  return 1;
+    ioctl(_g_findev[j], CPRDSP_FIN_IOC_SET, &send_adx);    
+    ioctl(_g_findev[j], CPRDSP_FIN_IOC_W, 0x00);
+    ioctl(_g_findev[j], CPRDSP_FIN_IOC_SET, &packet_ff);
+    for (int i=0; i < len; i++) {
+      for (int b=24; b >= 0; b-=8) {
+	unsigned char byte = buf[j] >> b; 
+	ioctl(_g_findev[j], CPRDSP_FIN_IOC_W, &byte);
+      }
+    }
+    ioctl(_g_findev[j], CPRDSP_FIN_IOC_SET, &send_adx);
+    ioctl(_g_findev[j], CPRDSP_FIN_IOC_W, &send);           
+  }
+
+  return len;
 }
+  
 
 int cprdaq_send_veto_clear() {
   fprintf(_g_error, "Call to unimplemented function `%s'\n",
@@ -196,11 +226,25 @@ int cprdaq_send_veto_clear() {
   return 1;
 }  
 
-int cprdaq_read_event(unsigned long *buf, int bufsize) {
-  fprintf(_g_warning, "In `%s': no way to do a non-blocking read\n",
-	  __func__);
 
-  int nbytes_read = read(_g_cprdev, buf, sizeof(buf));
-  
+int cprdaq_read_event(unsigned long *buf, int bufsize, bool block) {
+  int nbytes_read = 0;
+
+  if (g_pollfd == NULL) {
+    fprintf(_g_error, "Call to `%s' with NULL g_pollfd ptr\n",
+	    __func__);
+    
+    abort();
+  } 
+
+  if (!block) {    
+    if (poll(g_pollfd, 1, _g_cprpoll_timeout_ms) > 0)    
+      nbytes_read = read(_g_cprdev, buf, sizeof(buf));
+    else
+      return 0;
+  } 
+  else 
+    nbytes_read = read(_g_cprdev, buf, sizeof(buf));    
+    
   return nbytes_read;
 }  
