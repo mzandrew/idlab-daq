@@ -7,17 +7,25 @@
 #include "crtdaq-globals.h"
 #include "cprdaq.h"
 
-void wait_for_all_links_to_come_up(unsigned short bitmask) {
-  unsigned short link_status = cprdaq_link_status();
+void wait_for_all_links_to_come_up(const string& fibers_reqd) {
+
+  unsigned short link_status = cprdaq_link_status();  
+
+  if (fibers_reqd.find("auto") != string::npos) {
+    fprintf(_g_error, "Auto-detection of fibers not supported\n");
+    abort();
+  }
 
   fprintf(_g_warning, "Waiting for requested links to come up...");
 
-  if ((link_status & bitmask) != bitmask) {
+  short bitmask = _g_fiber_bitmask;
+  if ((link_status & bitmask) != _g_fiber_bitmask) {
     fflush(_g_warning);
-    while ((link_status & bitmask) != bitmask) {
+    while ((link_status & bitmask) != _g_fiber_bitmask) {
       link_status = cprdaq_link_status();
       usleep(50000);
       fprintf(_g_warning, ".");
+      fflush(_g_warning);
     }
   }
 
@@ -120,7 +128,7 @@ void show_temps() {
 bool readout_an_event(bool block) {
   unsigned long buf[1024*1024];
   
-  int nbytes_read = cprdaq_read_event(buf, sizeof(buf));
+  int nbytes_read = cprdaq_read_event(buf, sizeof(buf), block);
   int nbytes_written = write(_g_data_fd, buf, nbytes_read);
       
   if (nbytes_read > 0) {

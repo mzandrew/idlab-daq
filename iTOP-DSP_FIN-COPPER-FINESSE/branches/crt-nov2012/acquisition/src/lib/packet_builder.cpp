@@ -1,7 +1,6 @@
 #include "crtdaq-globals.h"
 #include "cprdaq.h"
 
-
 void generate_skeleton_command_packet(void) {
   unsigned long int skeleton_packet[8] = {
     _g_packet_header, 0x8c, _g_protocol_freeze_date, 0xb01dface, 0x00000000,

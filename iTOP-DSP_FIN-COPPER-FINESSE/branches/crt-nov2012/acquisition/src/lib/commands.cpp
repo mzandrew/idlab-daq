@@ -6,43 +6,90 @@
 #include <string>
 
 #include "crtdaq-globals.h"
-#include "packet_interface.h"
+#include "cmdpacket.h"
 #include "cprdaq.h"
 #include "commands.h"
 
 
-void read_from_scrods(unsigned int reg_id, unsigned int* buf, 
-		      int bufsize, unsigned short bitmask) 
+// void read_from_scrods(unsigned int reg_id, unsigned int* buf, 
+// 		      int bufsize, unsigned short bitmask) 
+// {
+//   if (bitmask == 0x0)
+//     bitmask = _g_fin_bitmask;
+
+//   for (int i=0; i < MAXNFIN; i++) {
+//     if (!(bitmask >> i & 0x1))
+//       continue;
+    
+//     packet p;
+//     p.CreateCommandPacket();
+//     p.AddReadToPacket(reg_id);
+    
+//     int total_size_in_words; 
+//     unsigned int* packet_data = p.AssemblePacket(total_size_in_words);
+
+//     int nwcprdaq_send_data(packet_data, total_size_in_words*sizeof(unsigned int),
+// 		     buf, bufsize);
+
+//     delete[] packet_data;
+//   }
+    
+// }
+
+
+// void write_to_scrods(unsigned int reg_id, unsigned int* reg_data, 
+// 		     int reg_data_size, unsigned short bitmask)
+// {}
+  
+
+// void ping_scrods() {}
+
+void send_command_packet_to_some_enabled_channels(unsigned short bitmask,
+						  unsigned int cmd, 
+						  unsigned int argument)
+						  
 {
-  if (bitmask == 0x0)
-    bitmask = _g_fin_bitmask;
+  _g_logfile << "Call to unimplemented `" << __func__
+	     << "' with command 0x" << hex << cmd << endl;
+    
+  fprintf(_g_error, "Call to unimplemented function `%s'\n",
+	  __func__);
+  
+  // for (int i=0; i < MAXNFIN; i++) {
+  //   if (!(bitmask >> i & 0x1))
+  //     continue;
 
-  for (int i=0; i < MAXNFIN; i++) {
-    if (!(bitmask >> i & 0x1))
-      continue;
-    
-    // packet p;
-    // p.CreateCommandPacket();
-    // p.AddReadToPacket(reg_id);
-    
-    // int total_size_in_words; 
-    // unsigned int* packet_data = p.AssemblePacket(total_size_in_words);
+  //   packet p;
+  //   p.CreateCommandPacket();
 
-    // int nwords_resp = 0;
-    // nwords_resp = cprdaq_send_data(packet_data, 
-    // 				   total_size_in_words*sizeof(unsigned int),
-    // 				   buf, bufsize);
-    // delete[] packet_data;
-  }
+  //   switch(cmd) {
+  //   case COMMAND_TYPE_PING:
+  //     p.AddPingToPacket();
+  //   case COMMAND_TYPE_READ:
+  //     p.AddReadToPacket(argument);
+  //   case COMMAND_TYPE_WRITE:
+  //     p.AddWriteToPacket(
     
+  // }
 }
 
+void send_command_packet_to_all_enabled_channels(unsigned int cmd, 
+						 unsigned int argument)
+{
+  send_command_packet_to_some_enabled_channels( _g_fin_bitmask, cmd, argument);
+}
 
-void write_to_scrods(unsigned int reg_id, unsigned int* reg_data, 
-		     int reg_data_size, unsigned short bitmask)
-{}
-  
-void ping_scrods() {}
+void 
+send_complex_command_packet_to_all_enabled_channels(unsigned int cmd, 
+						    command_arguments_type args)
+{
+
+  _g_logfile << "Call to unimplemented `" << __func__
+	     << "' with command 0x" << hex << cmd << endl;
+
+  fprintf(_g_error, "Call to unimplemented function `%s'\n",
+	  __func__);
+}
 
 
 /*

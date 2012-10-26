@@ -14,7 +14,7 @@ unsigned short cprdaq_link_status();
 int cprdaq_send_data(const char* buf, int len, unsigned short mask);
 int cprdaq_send_veto_clear();
 void reset_trigger_flip_flop(void);
-int cprdaq_read_event(unsigned long *buf, int bufsize);
+int cprdaq_read_event(unsigned long *buf, int bufsize, bool block);
 
 
 #endif //CPRDAQ_H_

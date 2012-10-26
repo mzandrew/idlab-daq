@@ -38,11 +38,30 @@ int parse_config_file(string filename) {
     value = line.substr(first_equals_sign_position+1);
 
     if (key == "fins") 
-      _g_fins_requested = tolower(mytrim(value));
+      _g_fins_requested = mytrim(value);
         
-    else if (key == "fibers") 
-      _g_fibers_requested = tolower(mytrim(value));
-    
+    else if (key == "fibers") {
+      _g_fibers_requested = mytrim(value);
+      _g_fiber_bitmask = 0;
+      
+      if (_g_fibers_requested.find("auto") != string::npos) {
+	fprintf(_g_error, "Auto-detection of fibers not supported\n");
+	abort();
+      }	
+      
+      string allowed_vals = "0123456789abcdef";
+      for (int i=0; i < allowed_vals.size(); i++) 
+	if ((_g_fibers_requested.find(allowed_vals[i]) != string::npos) ||
+	    (_g_fibers_requested.find(toupper(allowed_vals[i])) != string::npos))
+	 _g_fiber_bitmask |= 0x1 << i;
+     
+      if (!_g_fiber_bitmask) {
+	fprintf(_g_error, "No fibers specified in config file. Aborting...\n");
+	abort();
+      }	
+	
+
+    }    
     else if (key == "dsp") {
     } 
     
