@@ -94,6 +94,17 @@ int parse_config_file(string filename) {
     else if (key == "temperature_redline") {
       _g_temperature_redline = atoi(value.c_str());
     } 
+    else if (key == "loopbacks") {
+      _g_loopbacks_requested = mytrim(value);
+      _g_loopback_mask = 0;
+            
+      string allowed_vals = "0123456789abcdef";
+      for (int i=0; i < allowed_vals.size(); i++) 
+	if ((_g_loopbacks_requested.find(allowed_vals[i]) != string::npos) ||
+	    (_g_loopbacks_requested.find(toupper(allowed_vals[i])) != string::npos))
+	  _g_loopback_mask |= 0x1 << i;
+     	
+    }
 
     else {
       fprintf(_g_debug, 

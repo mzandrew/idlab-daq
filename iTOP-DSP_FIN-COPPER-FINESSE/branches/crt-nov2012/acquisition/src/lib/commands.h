@@ -1,27 +1,18 @@
 #ifndef COMMANDS_H_
 #define COMMANDS_H_
 
+#include <sys/types.h>
+
 #define NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET (14)
 
-struct command_arguments_type {
-  unsigned long int uint32[NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET];
-};
-
-void send_command_packet_to_some_enabled_channels(unsigned int cmd, 
-						  unsigned int argument,
-						  unsigned short bitmask);
-void send_command_packet_to_all_enabled_channels(unsigned int cmd, 
-						 unsigned int argument);
-void 
-send_complex_command_packet_to_all_enabled_channels(unsigned int cmd, 
-						    command_arguments_type args);
+#include "cmdpacket.h"
 
 void send_soft_trigger_request_command_packet(void);
 void send_front_end_trigger_veto_clear(void);
 void check_and_synchronize_event_numbers(void);
-void set_event_number(unsigned long int event_number);
-void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window);
-void set_number_of_windows_to_look_back(unsigned long int look_back);
+void set_event_number(u_int32_t event_number);
+void set_start_and_end_windows(u_int32_t start_window, u_int32_t end_window);
+void set_number_of_windows_to_look_back(u_int32_t look_back);
 void global_reset(void);
 void clear_scaler_counters(void);
 void set_some_DACs_to(unsigned short int value, unsigned short int channel_bitmask);

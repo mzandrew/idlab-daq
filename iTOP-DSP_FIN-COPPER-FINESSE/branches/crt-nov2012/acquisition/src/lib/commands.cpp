@@ -11,86 +11,6 @@
 #include "commands.h"
 
 
-// void read_from_scrods(unsigned int reg_id, unsigned int* buf, 
-// 		      int bufsize, unsigned short bitmask) 
-// {
-//   if (bitmask == 0x0)
-//     bitmask = _g_fin_bitmask;
-
-//   for (int i=0; i < MAXNFIN; i++) {
-//     if (!(bitmask >> i & 0x1))
-//       continue;
-    
-//     packet p;
-//     p.CreateCommandPacket();
-//     p.AddReadToPacket(reg_id);
-    
-//     int total_size_in_words; 
-//     unsigned int* packet_data = p.AssemblePacket(total_size_in_words);
-
-//     int nwcprdaq_send_data(packet_data, total_size_in_words*sizeof(unsigned int),
-// 		     buf, bufsize);
-
-//     delete[] packet_data;
-//   }
-    
-// }
-
-
-// void write_to_scrods(unsigned int reg_id, unsigned int* reg_data, 
-// 		     int reg_data_size, unsigned short bitmask)
-// {}
-  
-
-// void ping_scrods() {}
-
-void send_command_packet_to_some_enabled_channels(unsigned short bitmask,
-						  unsigned int cmd, 
-						  unsigned int argument)
-						  
-{
-  _g_logfile << "Call to unimplemented `" << __func__
-	     << "' with command 0x" << hex << cmd << endl;
-    
-  fprintf(_g_error, "Call to unimplemented function `%s'\n",
-	  __func__);
-  
-  // for (int i=0; i < MAXNFIN; i++) {
-  //   if (!(bitmask >> i & 0x1))
-  //     continue;
-
-  //   packet p;
-  //   p.CreateCommandPacket();
-
-  //   switch(cmd) {
-  //   case COMMAND_TYPE_PING:
-  //     p.AddPingToPacket();
-  //   case COMMAND_TYPE_READ:
-  //     p.AddReadToPacket(argument);
-  //   case COMMAND_TYPE_WRITE:
-  //     p.AddWriteToPacket(
-    
-  // }
-}
-
-void send_command_packet_to_all_enabled_channels(unsigned int cmd, 
-						 unsigned int argument)
-{
-  send_command_packet_to_some_enabled_channels( _g_fin_bitmask, cmd, argument);
-}
-
-void 
-send_complex_command_packet_to_all_enabled_channels(unsigned int cmd, 
-						    command_arguments_type args)
-{
-
-  _g_logfile << "Call to unimplemented `" << __func__
-	     << "' with command 0x" << hex << cmd << endl;
-
-  fprintf(_g_error, "Call to unimplemented function `%s'\n",
-	  __func__);
-}
-
 
 /*
 void setup_default_DAC_settings(void) {
@@ -119,7 +39,7 @@ void setup_default_DAC_settings(void) {
 void send_DAC_setting_command(void) {
   generate_skeleton_command_packet();
   unsigned short int j, k, m, n;
-  unsigned long int *uint32_packet = (unsigned long int *) command_packet;
+  u_int32_t *uint32_packet = (u_int32_t *) command_packet;
   uint32_packet[4] = 0x0bac2dac;
   //    uint32_packet[4] = 0x4bac2dac;
   //    uint32_packet[5] = 0x03ff03ff;
@@ -236,13 +156,13 @@ void send_front_end_trigger_veto_clear(void) {
   send_command_packet_to_all_enabled_channels(0x0000C1EA, 0x00000000); // clear the trigger veto
 }
 
-void set_event_number(unsigned long int event_number) {
+void set_event_number(u_int32_t event_number) {
   fprintf(_g_debug, "setting event number to %ld\n", event_number);
   send_command_packet_to_all_enabled_channels(0xe0000000, event_number); // set event number
   //    usleep(50000);
 }
 
-void set_start_and_end_windows(unsigned long int start_window, unsigned long int end_window) {
+void set_start_and_end_windows(u_int32_t start_window, u_int32_t end_window) {
   if (start_window%2!=0) {
     fprintf(_g_error, "ERROR:  start_window must be even (trying to set it to %ld)\n", start_window);
     exit(7);
@@ -262,7 +182,7 @@ void set_start_and_end_windows(unsigned long int start_window, unsigned long int
   send_command_packet_to_all_enabled_channels(0x000101ff, end_window); // set end window
 }
 
-void set_number_of_windows_to_look_back(unsigned long int look_back) {
+void set_number_of_windows_to_look_back(u_int32_t look_back) {
   fprintf(_g_debug, "setting number of look back windows to %ld\n", look_back);
   send_command_packet_to_all_enabled_channels(0x0100cbac, look_back);
 }
