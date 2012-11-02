@@ -31,7 +31,7 @@ endif
 LIBOBJS=$(patsubst src/lib/%.cpp, $(OBJDIR)/%.o, $(LIBSRCS))
 
 EXEDIR=bin/$(ARCH)
-EXESRCS=src/cwl_debug.cpp src/prerun_debug.cpp
+EXESRCS=src/cwl_debug.cpp src/prerun_debug.cpp src/single_packet.cpp
 EXES=$(patsubst src/%.cpp, $(EXEDIR)/%, $(EXESRCS))
 
 all: $(EXES)
