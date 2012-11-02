@@ -16,7 +16,6 @@ void wait_for_all_links_to_come_up(const string& fibers_reqd) {
     abort();
   }
 
-  fprintf(_g_warning, "Waiting for requested links to come up...");
 
   short bitmask = _g_fiber_bitmask;
   if ((link_status & bitmask) != _g_fiber_bitmask) {
@@ -24,27 +23,24 @@ void wait_for_all_links_to_come_up(const string& fibers_reqd) {
     while ((link_status & bitmask) != _g_fiber_bitmask) {
       link_status = cprdaq_link_status();
       usleep(50000);
-      fprintf(_g_warning, ".");
+      fprintf(_g_warning, 
+	      "Waiting for requested links to come up [%x/%x]...\r",
+	      link_status, _g_fiber_bitmask);
       fflush(_g_warning);
     }
   }
 
-  fprintf(_g_warning, "OK\n");
+  fprintf(_g_warning, "Waiting for requested links to come up [%x/%x]...OK\n",
+	  link_status, _g_fiber_bitmask);
 }
 
 void readout_all_pending_data() {
-  fprintf(_g_error, "`%s' returning after phony buffer flush\n",
-          __func__);
-  fflush(_g_error);
-
-  return;
-
   int bufsize = 1024*1024;
   u_int32_t buf[bufsize];
   int nbytes_read = 0;
 
   do
-    nbytes_read = read(_g_cprdev, (char*) buf, sizeof(buf));
+    nbytes_read = cprdaq_read_event(buf, bufsize, false);
   while(nbytes_read > 0);
 }
 
@@ -126,11 +122,14 @@ void show_temps() {
 }
 
 bool readout_an_event(bool block) {
-  unsigned long buf[1024*1024];
+  u_int32_t buf[1024*1024];
   
   int nbytes_read = cprdaq_read_event(buf, sizeof(buf), block);
   int nbytes_written = write(_g_data_fd, buf, nbytes_read);
       
+  fprintf(_g_debug, "%d bytes read from buffer of length %d\n", 
+	  nbytes_read, sizeof(buf));
+
   if (nbytes_read > 0) {
     if (nbytes_written == nbytes_read) {
       _g_event_number++;

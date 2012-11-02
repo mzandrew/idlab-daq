@@ -1,11 +1,9 @@
 #ifndef packet_builder_h
 #define packet_builder_h
 
-#define NUMBER_OF_ROWS_IN_BOARD_STACK   (4)
-#define NUMBER_OF_COLUMNS_IN_BOARD_STACK   (4)
-#define NUMBER_OF_PACKET_TYPES (5)
-#define NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET (14)
+#include <sys/types.h>
 
+#include "crtdaq-globals.h"
 
 struct DAC_settings_type {
   unsigned short trigger_test_channel_threshold  [NUMBER_OF_ROWS_IN_BOARD_STACK][NUMBER_OF_COLUMNS_IN_BOARD_STACK];
@@ -27,25 +25,25 @@ struct DAC_settings_type {
 };
 
 struct command_arguments_type {
-  unsigned long int uint32[NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET];
+  u_int32_t uint32[NUMBER_OF_ARGUMENTS_IN_COMPLEX_COMMAND_PACKET];
 };
 
 
 void generate_skeleton_command_packet(void);
-unsigned long int calculate_checksum_and_insert_into_packet(unsigned long int* packet);
+u_int32_t calculate_checksum_and_insert_into_packet(u_int32_t* packet);
 void setup_default_DAC_settings(void);
 void send_DAC_setting_command(void);
-void generate_command_packet(unsigned long int command, 
-			     unsigned long int argument);
-void send_command_packet_to_all_enabled_channels(unsigned long int command, 
-						 unsigned long int argument);
-void send_command_packet_to_some_enabled_channels(unsigned long int command, 
-						  unsigned long int argument, 
+void generate_command_packet(u_int32_t command, 
+			     u_int32_t argument);
+void send_command_packet_to_all_enabled_channels(u_int32_t command, 
+						 u_int32_t argument);
+void send_command_packet_to_some_enabled_channels(u_int32_t command, 
+						  u_int32_t argument, 
 						  unsigned short int channel_bitmask);
 
-void generate_complex_command_packet(unsigned long int command, 
+void generate_complex_command_packet(u_int32_t command, 
 				     const command_arguments_type& command_arguments);
-void send_complex_command_packet_to_all_enabled_channels(unsigned long int command, 
+void send_complex_command_packet_to_all_enabled_channels(u_int32_t command, 
 							 const command_arguments_type& command_arguments);
 
 #endif
