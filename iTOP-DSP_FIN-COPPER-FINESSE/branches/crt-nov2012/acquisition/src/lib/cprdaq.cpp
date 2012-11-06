@@ -95,10 +95,11 @@ cprdaq_enable_fins(string fins_requested)
       abort();
     }
     
+    close(_g_findev[i]);
+
     _g_fin_bitmask |= 0x1<<i;      
     _g_fins_enabled[i] = true;
-    _g_nfins_enabled++;
-    
+    _g_nfins_enabled++;    
   }
 
   int ioctl_ret = ioctl(_g_cprdev, CPRIOSET_FINESSE_STA, &_g_fin_bitmask);
@@ -132,13 +133,23 @@ int cprdaq_enable_loopback(const unsigned int mask) {
   	  __func__);
 
   for (int i=0; i < MAXNFIN; i++) {
-    if (_g_findev[i] <= 0)
+    if (_g_fins_enabled[i] <= 0)
       continue;
 
     if (!((mask >> i*4) & 0xF))
       continue;
 
+    _g_findev[i] = open(_g_findevpath[i], O_RDONLY);
+
+    if (_g_findev[i] < 0) {
+      fprintf(_g_error, "Unable to open requested FIN `%c': `%s'\n",
+	      'a' + i, strerror(-_g_findev[i]));
+      abort();
+    }
+    
     ioctl(_g_findev[i], CPRDSP_FIN_IOC_LOOPBK_ON, 0);    
+
+    close(_g_findev[i]);
   }
 
   return mask;
@@ -150,13 +161,23 @@ int cprdaq_disable_loopback(const unsigned int mask) {
 	  __func__);  
 
   for (int i=0; i < MAXNFIN; i++) {
-    if (_g_findev[i] <= 0)
+    if (_g_fins_enabled[i] <= 0)
       continue;
 
     if (!((mask >> i*4) & 0xF))
       continue;
 
+    _g_findev[i] = open(_g_findevpath[i], O_RDONLY);
+
+    if (_g_findev[i] < 0) {
+      fprintf(_g_error, "Unable to open requested FIN `%c': `%s'\n",
+	      'a' + i, strerror(-_g_findev[i]));
+      abort();
+    }
+    
     ioctl(_g_findev[i], CPRDSP_FIN_IOC_LOOPBK_OFF, 0);    
+    
+    close(_g_findev[i]);
   }
 
   return mask;
@@ -228,9 +249,19 @@ cprdaq_link_status()
     if (!_g_fins_enabled[i])
       continue;
     
+    _g_findev[i] = open(_g_findevpath[i], O_RDONLY);
+
+    if (_g_findev[i] < 0) {
+      fprintf(_g_error, "Unable to open requested FIN `%c': `%s'\n",
+	      'a' + i, strerror(-_g_findev[i]));
+      abort();
+    }
+
     unsigned link_status = 0x0;
     ioctl(_g_findev[i], CPRDSP_FIN_IOC_LINKSTAT, &link_status);
   
+    close(_g_findev[i]);
+
     mask |= link_status << i*4; 
   }
 
@@ -250,21 +281,26 @@ cprdaq_send_data(u_int32_t *buf, int len, unsigned short mask)
   fprintf(_g_warning, "%s: bitmask argument is currently ignored\n",
 	  __func__);
 
-  const unsigned send_adx = 0x78 << 2;
-  const unsigned send = 0x01;
-  const unsigned clear = 0x00;
-  const unsigned packet_ff = 0x74 << 2;
-
   for (int j=0; j < MAXNFIN; j++) {
-    if (_g_findev[j] <= 0) 
+    if (_g_fins_enabled[j] <= 0) 
       continue;
+
+    _g_findev[j] = open(_g_findevpath[j], O_RDONLY);
+
+    if (_g_findev[j] < 0) {
+      fprintf(_g_error, "Unable to open requested FIN `%c': `%s'\n",
+	      'a' + j, strerror(-_g_findev[j]));
+      abort();
+    }
 
     ioctl(_g_findev[j], CPRDSP_FIN_IOC_CMD_CLEAR, 0);
 
     for (int i=0; i < len; i++)
-      ioctl(_g_findev[j], CPRDSP_FIN_IOC_CMD_LOAD, buf[j]);
+      ioctl(_g_findev[j], CPRDSP_FIN_IOC_CMD_LOAD, buf[i]);
       
     ioctl(_g_findev[j], CPRDSP_FIN_IOC_CMD_SEND);           
+
+    close(_g_findev[j]);
   }
 
   return len;
