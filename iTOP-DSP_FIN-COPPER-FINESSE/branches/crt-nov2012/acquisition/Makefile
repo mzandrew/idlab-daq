@@ -9,7 +9,6 @@ LDFLAGS=
 
 
 
-
 #LIBSRCS=$(filter-out src/lib/pci.%, $(wildcard src/lib/*.cpp))
 
 #ARCH=$(shell uname -p)-$(shell uname -r)
@@ -19,10 +18,10 @@ OBJDIR=obj/$(ARCH)/lib
 LIBSRCS=src/lib/config_file.cpp src/lib/DebugInfoWarningError.cpp \
 	src/lib/crtdaq-globals.cpp src/lib/cprdaq.cpp \
 	src/lib/status_file.cpp src/lib/generic.cpp src/lib/logfile.cpp \
-	src/lib/run_control.cpp src/lib/commands.cpp
+	src/lib/run_control.cpp 
 
 ifeq "$(PACKET_FMT_VERSION)"  "0"
-	LIBSRCS+=src/lib/packet_builder.cpp
+	LIBSRCS+=src/lib/packet_builder.cpp src/lib/commands.cpp
 else
 	LIBSRCS+=src/lib/packet_interface.cpp
 endif
@@ -31,7 +30,8 @@ endif
 LIBOBJS=$(patsubst src/lib/%.cpp, $(OBJDIR)/%.o, $(LIBSRCS))
 
 EXEDIR=bin/$(ARCH)
-EXESRCS=src/cwl_debug.cpp src/prerun_debug.cpp src/single_packet.cpp
+EXESRCS=src/cwl_debug.cpp src/prerun_debug.cpp \
+	src/print-ping-packet.cpp src/print-single-packet-old.cpp
 EXES=$(patsubst src/%.cpp, $(EXEDIR)/%, $(EXESRCS))
 
 all: $(EXES)
@@ -45,6 +45,10 @@ $(OBJDIR)/%.o: src/lib/%.cpp src/lib/%.h
 $(EXEDIR)/%: src/%.cpp $(LIBOBJS)
 	mkdir -p $(EXEDIR)
 	g++ $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
+
+print-ping-packet: src/print-ping-packet.cpp $(LIBOBJS)
+	g++ $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
+
 
 .PHONY: all clean
 
