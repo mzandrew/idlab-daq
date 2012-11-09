@@ -1,13 +1,10 @@
 PACKET_FMT_VERSION=0
 
-
 CPPFLAGS=-g -D_FILE_OFFSET_BITS=64 -DNO_CAMAC \
-	-DPACKET_FMT_VERSION=$(PACKET_FMT_VERSION) -I$(HOME)/include \
+	-DPACKET_FMT_VERSION=$(PACKET_FMT_VERSION) -I/belle/copper/include \
 	-I./src/lib -I./contrib
 
 LDFLAGS=
-
-
 
 #LIBSRCS=$(filter-out src/lib/pci.%, $(wildcard src/lib/*.cpp))
 
@@ -47,6 +44,9 @@ $(EXEDIR)/%: src/%.cpp $(LIBOBJS)
 	g++ $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
 
 print-ping-packet: src/print-ping-packet.cpp $(LIBOBJS)
+	g++ $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
+
+read-temps: src/read-temps.cpp $(LIBOBJS)
 	g++ $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
 
 
