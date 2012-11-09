@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -87,11 +88,11 @@ u_int32_t       _g_packet[NUMBER_OF_WORDS_IN_A_PACKET];
 
 
 // Filled in DebugInfoWarningError.cpp
-FILE *_g_debug   = 0;
-FILE *_g_debug2  = 0;
-FILE *_g_info    = 0;
-FILE *_g_warning = 0;
-FILE *_g_error   = 0;
+FILE *_g_debug   = stderr;
+FILE *_g_debug2  = stderr;
+FILE *_g_info    = stdout;
+FILE *_g_warning = stdout;
+FILE *_g_error   = stderr;
 
 
 void crtdaq_default_ctrl_c_handler() {

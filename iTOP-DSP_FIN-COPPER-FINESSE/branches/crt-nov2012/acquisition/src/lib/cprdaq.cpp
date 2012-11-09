@@ -76,7 +76,6 @@ cprdaq_enable_fins(string fins_requested)
       abort();
   }
 	    
-
   for (int i=0; i < MAXNFIN; i++) {
     _g_fins_enabled[i] = false;
 
@@ -132,6 +131,9 @@ int cprdaq_enable_loopback(const unsigned int mask) {
   fprintf(_g_warning, "%s: loopback only supported on channel 0\n",
   	  __func__);
 
+  if (mask == 0x0)
+    return 0;
+
   for (int i=0; i < MAXNFIN; i++) {
     if (_g_fins_enabled[i] <= 0)
       continue;
@@ -147,7 +149,7 @@ int cprdaq_enable_loopback(const unsigned int mask) {
       abort();
     }
     
-    ioctl(_g_findev[i], CPRDSP_FIN_IOC_LOOPBK_ON, 0);    
+    ioctl(_g_findev[i], CPRDSP_FIN_IOC_LOOPBK_ON, CPRDSP_FIN_FIBERALL);    
 
     close(_g_findev[i]);
   }
@@ -196,7 +198,7 @@ cprdaq_init()
   }
 
   cprdaq_enable_fins(_g_fins_requested);
-  
+
   // None of the four ioctl's below use a return value to 
   // communicate error states
   ioctl(_g_cprdev, CPRIO_SET_SUBSYS, &_g_copper_subsys);
@@ -204,7 +206,10 @@ cprdaq_init()
   ioctl(_g_cprdev, CPRIO_SET_SLOT, &_g_copper_slot);  
   ioctl(_g_cprdev, CPRIO_INIT_RUN, 0); 
 
+  cout << "Here foo: " << __FILE__ << ": " << __LINE__ << endl;
+
   cprdaq_enable_loopback(_g_loopback_mask);
+  cout << "Here foo: " << __FILE__ << ": " << __LINE__ << endl;
 
   int ret = 0;
   for (int i=0; i<100; i++) {
@@ -215,6 +220,7 @@ cprdaq_init()
       break;
     usleep(50000);
   }
+
 
   if (g_pollfd != NULL) 
     delete[] g_pollfd;
@@ -317,7 +323,8 @@ int cprdaq_send_veto_clear() {
 }  
 
 
-int cprdaq_read_event(u_int32_t *buf, int bufsize, bool block) {
+int cprdaq_read_event(u_int32_t *buf, int bufsize, bool block) 
+{
   int nbytes_read = 0;
 
   if (g_pollfd == NULL) {
