@@ -1,0 +1,11 @@
+# PROMGEN: Xilinx Prom Generator O.61xd
+# Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+SOFTWARE_VERSION O.61xd
+DATE            12/24/2012 - 10:39
+SOURCE          C:\mza\FPGA\idlab-daq\iTOP-DSP_FIN-COPPER-FINESSE\branches\finesse_copper_local_bus_test\FPGA\finesse_copper_local_bus_test.mcs
+DEVICE          XCF16P
+DATA_WIDTH      8
+FILL_DATA       0xFF
+SIGNATURE       0x095A7A6B
+START_ADDRESS   0x00000000 END_ADDRESS 0x0016A673 DIRECTION_UP   "C:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/finesse_copper_local_bus_test/FPGA/ise-project/top.bit" 6slx45tfgg484

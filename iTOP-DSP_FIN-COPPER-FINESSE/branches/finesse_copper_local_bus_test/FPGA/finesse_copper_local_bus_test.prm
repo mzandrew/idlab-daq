@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator O.61xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o C:\mza\FPGA\idlab-daq\iTOP-DSP_FIN-COPPER-FINESSE\branches\finesse_copper_local_bus_test\FPGA//finesse_copper_local_bus_test -x xcf16p -u 00000000 C:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/finesse_copper_local_bus_test/FPGA/ise-project/top.bit 
+
+PROM C:\mza\FPGA\idlab-daq\iTOP-DSP_FIN-COPPER-FINESSE\branches\finesse_copper_local_bus_test\FPGA\finesse_copper_local_bus_test.prm map: Mon Dec 24 10:39:06 2012
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          2048K
+PROM start    0000:0000
+PROM end      001f:ffff
+PROM checksum 095a7a6b
+
+        Addr1        Addr2                     Date File(s)
+    0000:0000    0016:a673     Dec 24 10:32:13 2012 C:/mza/FPGA/idlab-daq/iTOP-DSP_FIN-COPPER-FINESSE/branches/finesse_copper_local_bus_test/FPGA/ise-project/top.bit
