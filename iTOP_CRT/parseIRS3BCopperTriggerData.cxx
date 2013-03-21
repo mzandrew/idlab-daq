@@ -28,6 +28,10 @@ void parseDataPacket(unsigned int *buffer_uint, int bufPos, int sizeInUint32);
 TTree *tree;
 UInt_t scrodId;
 UInt_t winId;
+int asicCol;
+int asicRow;
+int asicCh;
+int window;
 int samples[POINTS_PER_WAVEFORM];
 
 void parseIRS3BCopperTriggerData(){
@@ -78,8 +82,12 @@ void parseIRS3BCopperTriggerData(){
 void initializeRootTree(){
 	tree = new TTree("T","IRS3B Waveform");
 	tree->Branch("scrodId", &scrodId, "scrodId/i");		
-	tree->Branch("winId", &winId, "winId/i");		
-	tree->Branch("samples", &samples, "samples[64]/i");
+	tree->Branch("winId", &winId, "winId/i");
+	tree->Branch("asicCol", &asicCol, "asicCol/I");
+	tree->Branch("asicRow", &asicRow, "asicRow/I");
+	tree->Branch("asicCh", &asicCh, "asicCh/I");
+	tree->Branch("window", &window, "window/I");
+	tree->Branch("samples", &samples, "samples[64]/I");
 	return;
 }
 
@@ -105,14 +113,18 @@ void parseDataPacket(unsigned int *buffer_uint, int bufPos, int sizeInUint32){
 	if( buffer_uint[bufPos+2] != PACKET_TYPE_WAVEFORM )
 		return;
 
-	unsigned int numSamples = buffer_uint[bufPos+8];
 	//TEMPORARY DO NOT LEAVE - require 64 samples specifically in data packet, should be more flexible
+	unsigned int numSamples = buffer_uint[bufPos+8];
 	if(numSamples != 64 )
 		return;
 
 	//get packet header info
 	scrodId = buffer_uint[bufPos+6];	
 	winId = buffer_uint[bufPos+7];	
+	asicCol = ( buffer_uint[bufPos+7] >> 14 ) & 0x3;
+	asicRow = ( buffer_uint[bufPos+7] >> 12 ) & 0x3;
+	asicCh = ( buffer_uint[bufPos+7] >> 9 ) & 0x7;
+	window = ( buffer_uint[bufPos+7] >> 0 ) & 0x1FF;
 
 	//get samples from packet
 	for(int i = 0 ; i < numSamples/2 ; i++){
