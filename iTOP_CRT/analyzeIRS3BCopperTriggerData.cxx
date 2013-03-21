@@ -40,6 +40,10 @@ TCanvas *c0;
 TTree *tree;
 UInt_t scrodId;
 UInt_t winId;
+int asicCol;
+int asicRow;
+int asicCh;
+int window;
 int samples[POINTS_PER_WAVEFORM];
 
 //histograms
@@ -86,6 +90,14 @@ void processTree(){
 	branch_scrodId->SetAddress(&scrodId);
 	TBranch *branch_windId = tree->GetBranch("winId");
 	branch_windId->SetAddress(&winId);
+	TBranch *branch_asicCol = tree->GetBranch("asicCol");
+	branch_asicCol->SetAddress(&asicCol);
+	TBranch *branch_asicRow = tree->GetBranch("asicRow");
+	branch_asicRow->SetAddress(&asicRow);
+	TBranch *branch_asicCh = tree->GetBranch("asicCh");
+	branch_asicCh->SetAddress(&asicCh);
+	TBranch *branch_window = tree->GetBranch("window");
+	branch_window->SetAddress(&window);
 	TBranch *branch_samples = tree->GetBranch("samples");
 	branch_samples->SetAddress(samples);
 
@@ -93,8 +105,6 @@ void processTree(){
 	for (int i = 0; i < tree->GetEntries(); i++){
 		//std::cout << "event " << i << std::endl;
 		tree->GetEvent(i);
-		//std::cout << std::hex << winId << std::dec << std::endl;
-		std::cout << std::hex << samples[0] << std::dec << std::endl;
 		//draw event
 		plotSamples();
 	}
@@ -137,6 +147,12 @@ void plotSamples(){
 
 	gPad->Modified();
 	c0->Update();
+
+	std::cout << std::hex << " winId " << winId << std::endl;
+	std::cout << std::hex << " asicCol " << asicCol << std::endl;
+	std::cout << std::hex << " asicRow " << asicRow << std::endl;
+	std::cout << std::hex << " asicCh " << asicCh << std::endl;
+	std::cout << std::hex << " window " << window << std::endl;
 
 	std::cout << "Enter character to continue" << std::endl;
 	char ct;
