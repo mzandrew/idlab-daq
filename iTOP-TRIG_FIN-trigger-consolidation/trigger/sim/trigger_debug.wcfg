@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="test_trigger" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="30" />
+   <wvobject fp_name="/test_trigger/u_trigger/rdfifo_dat" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_dat[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_dat[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/rdfifo_empty" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_empty</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/wrfifo_prog_full" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_prog_full</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_prog_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/rdfifo_empty" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_empty</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/wrfifo_prog_full" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_prog_full</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_prog_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/event_overflow_reg" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">event_overflow_reg</obj_property>
+      <obj_property name="ObjectShortName">event_overflow_reg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/rdfifo_timeout_reg" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_timeout_reg</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_timeout_reg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/rdfifo_rden" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_rden</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_rden</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/current_data_reg" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">current_data_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">current_data_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/max_sum" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">max_sum[26:0]</obj_property>
+      <obj_property name="ObjectShortName">max_sum[26:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/max_sum_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">max_sum_valid</obj_property>
+      <obj_property name="ObjectShortName">max_sum_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/max_sumid" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">max_sumid[7:0]</obj_property>
+      <obj_property name="ObjectShortName">max_sumid[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/addr_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addr_i[5:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_i[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/cmd_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">cmd_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">cmd_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/sum_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sum_o[26:0]</obj_property>
+      <obj_property name="ObjectShortName">sum_o[26:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/sumid_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sumid_o[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sumid_o[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/sum_valid_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sum_valid_o</obj_property>
+      <obj_property name="ObjectShortName">sum_valid_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/data_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_in[19:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[19:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/sum_tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sum_tmp[26:0]</obj_property>
+      <obj_property name="ObjectShortName">sum_tmp[26:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/rom_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rom_addr[6:0]</obj_property>
+      <obj_property name="ObjectShortName">rom_addr[6:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/rom_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rom_data[19:0]</obj_property>
+      <obj_property name="ObjectShortName">rom_data[19:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/sum_add" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sum_add[26:0]</obj_property>
+      <obj_property name="ObjectShortName">sum_add[26:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/sum_bk" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sum_bk[26:0]</obj_property>
+      <obj_property name="ObjectShortName">sum_bk[26:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/addr_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addr_in[5:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_in[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/rom_data_reg" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rom_data_reg[19:0]</obj_property>
+      <obj_property name="ObjectShortName">rom_data_reg[19:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/sumid" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sumid[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sumid[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_trigger/u_trigger/u_trigger_data_path/u_correlator_block_6/u_correlator_3/switch_flip" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">switch_flip</obj_property>
+      <obj_property name="ObjectShortName">switch_flip</obj_property>
+   </wvobject>
+</wave_config>
