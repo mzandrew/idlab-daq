@@ -1,0 +1,13 @@
+# Output products list for <shift_ram_32x10>
+shift_ram_32x10/doc/c_shift_ram_v11_0_vinfo.html
+shift_ram_32x10/doc/ds228_shift_ram.pdf
+shift_ram_32x10.asy
+shift_ram_32x10.gise
+shift_ram_32x10.ngc
+shift_ram_32x10.v
+shift_ram_32x10.veo
+shift_ram_32x10.xco
+shift_ram_32x10.xise
+shift_ram_32x10_flist.txt
+shift_ram_32x10_readme.txt
+shift_ram_32x10_xmdf.tcl

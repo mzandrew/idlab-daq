@@ -1,0 +1,22 @@
+# Output products list for <rx_fifo>
+fifo_generator_ug175.pdf
+fifo_generator_v8_2_readme.txt
+rx_fifo.asy
+rx_fifo.gise
+rx_fifo.ngc
+rx_fifo.v
+rx_fifo.veo
+rx_fifo.xco
+rx_fifo.xise
+rx_fifo_flist.txt
+rx_fifo_ste/example_design/rx_fifo_top.ucf
+rx_fifo_ste/example_design/rx_fifo_top.vhd
+rx_fifo_ste/example_design/rx_fifo_top.xdc
+rx_fifo_ste/implement/implement.bat
+rx_fifo_ste/implement/implement.sh
+rx_fifo_ste/implement/planAhead_rdn.bat
+rx_fifo_ste/implement/planAhead_rdn.sh
+rx_fifo_ste/implement/planAhead_rdn.tcl
+rx_fifo_ste/implement/xst.prj
+rx_fifo_ste/implement/xst.scr
+rx_fifo_xmdf.tcl

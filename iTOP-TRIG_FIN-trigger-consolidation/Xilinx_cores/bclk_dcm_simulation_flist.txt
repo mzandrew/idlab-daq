@@ -1,0 +1,2 @@
+# Output products list for <bclk_dcm_simulation>
+bclk_dcm_simulation_flist.txt

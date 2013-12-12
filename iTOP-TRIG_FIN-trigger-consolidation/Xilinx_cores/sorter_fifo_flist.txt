@@ -1,0 +1,22 @@
+# Output products list for <sorter_fifo>
+fifo_generator_ug175.pdf
+fifo_generator_v8_2_readme.txt
+sorter_fifo.asy
+sorter_fifo.gise
+sorter_fifo.ngc
+sorter_fifo.v
+sorter_fifo.veo
+sorter_fifo.xco
+sorter_fifo.xise
+sorter_fifo_flist.txt
+sorter_fifo_ste/example_design/sorter_fifo_top.ucf
+sorter_fifo_ste/example_design/sorter_fifo_top.vhd
+sorter_fifo_ste/example_design/sorter_fifo_top.xdc
+sorter_fifo_ste/implement/implement.bat
+sorter_fifo_ste/implement/implement.sh
+sorter_fifo_ste/implement/planAhead_rdn.bat
+sorter_fifo_ste/implement/planAhead_rdn.sh
+sorter_fifo_ste/implement/planAhead_rdn.tcl
+sorter_fifo_ste/implement/xst.prj
+sorter_fifo_ste/implement/xst.scr
+sorter_fifo_xmdf.tcl

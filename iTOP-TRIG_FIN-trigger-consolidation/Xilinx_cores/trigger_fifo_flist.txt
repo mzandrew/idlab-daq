@@ -1,0 +1,22 @@
+# Output products list for <trigger_fifo>
+fifo_generator_ug175.pdf
+fifo_generator_v8_2_readme.txt
+trigger_fifo.asy
+trigger_fifo.gise
+trigger_fifo.ngc
+trigger_fifo.v
+trigger_fifo.veo
+trigger_fifo.xco
+trigger_fifo.xise
+trigger_fifo_flist.txt
+trigger_fifo_ste/example_design/trigger_fifo_top.ucf
+trigger_fifo_ste/example_design/trigger_fifo_top.vhd
+trigger_fifo_ste/example_design/trigger_fifo_top.xdc
+trigger_fifo_ste/implement/implement.bat
+trigger_fifo_ste/implement/implement.sh
+trigger_fifo_ste/implement/planAhead_rdn.bat
+trigger_fifo_ste/implement/planAhead_rdn.sh
+trigger_fifo_ste/implement/planAhead_rdn.tcl
+trigger_fifo_ste/implement/xst.prj
+trigger_fifo_ste/implement/xst.scr
+trigger_fifo_xmdf.tcl
