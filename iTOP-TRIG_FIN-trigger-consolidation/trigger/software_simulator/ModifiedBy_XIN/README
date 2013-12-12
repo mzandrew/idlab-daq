@@ -1,0 +1,15 @@
+The c file usage is:
+./time_estimate_time_only_background.c <PDF_filenames.txt> <timing_patterns.txt> <binning>
+
+where the PDF_filenames.txt (see the example name_time_files, that picks the
+PDFs binned in 2ns) contains the list of names of the 10 files
+that represent the timing PDFs with formats as in the tarball; timing pattern is a
+file with as many timing patterns as its lines (see the example K_C_2.5.0_WB.txt, that
+corrsponds to hits at position 0, and has background hits), and the last number is used for the binning (e.g. 2 means resolution of 2ns, or bin large 2 units)
+
+The result to the stdout is in 3 columns: the first 2 are both equal to the timing guessed by the
+simulator, the third the difference with respect to the real time of impact -
+NOTE: if you run the example you will see there is a mismatch of 1 ns with the correct answer, a bug I took into account but never corrected).
+
+When I use the simulator, I normally pipe it into  | awk '{print $3}'  | sort -n | uniq -c to see the statistics.
+

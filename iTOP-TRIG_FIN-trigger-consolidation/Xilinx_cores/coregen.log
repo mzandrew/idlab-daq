@@ -1,0 +1,26 @@
+Welcome to Xilinx CORE Generator.
+Help system initialized.
+CoreGen has not been configured with any user repositories.
+CoreGen has been configured with the following Xilinx repositories:
+ - '/opt/Xilinx/13.2/ISE_DS/ISE/coregen/' [using existing xil_index.xml]
+The IP Catalog has been reloaded.
+Opening project file
+/home/zihangao/Work/firmware/TOP_trigger/src/working/Xilinx_cores/coregen.cgp.
+Customize and GenerateINFO:sim - Generating component instance 'dcm_adv_v13_1' of
+   'xilinx.com:ip:dcm_adv:13.1' from
+   '/opt/Xilinx/13.2/ISE_DS/ISE/bin/lin64/arwz'.
+Applying current project options...
+Finished applying current project options.
+Customizing IP...
+Architecture Wizard completed successfully.
+Finished Customizing.
+Resolving generic values...
+Finished resolving generic values.
+Generating ASY schematic symbol...
+WARNING:sim - The chosen IP does not support an ASY schematic symbol.
+Generating FLIST file...
+INFO:sim - Finished FLIST file generation.
+Moving files to output directory...
+Finished moving files to output directory
+Saved CGP file for project 'coregen'.
+Closed project file.

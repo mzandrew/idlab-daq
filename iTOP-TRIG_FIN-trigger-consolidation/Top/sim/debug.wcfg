@@ -1,0 +1,1332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="test_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="50" />
+   <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sending_fifos_data[0:7,31:0]</obj_property>
+      <obj_property name="ObjectShortName">sending_fifos_data[0:7,31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_data[0]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[0,31:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_fifos_data[0,31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_data[1]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[1,31:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_fifos_data[1,31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_data[2]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[2,31:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_fifos_data[2,31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_data[3]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[3,31:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_fifos_data[3,31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_data[4]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[4,31:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_fifos_data[4,31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_data[5]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[5,31:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_fifos_data[5,31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_data[6]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[6,31:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_fifos_data[6,31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_data[7]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[7,31:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_fifos_data[7,31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_virtual_board/sending_fifos_empty" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sending_fifos_empty[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sending_fifos_empty[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_virtual_board/read_sending_fifos" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">read_sending_fifos[7:0]</obj_property>
+      <obj_property name="ObjectShortName">read_sending_fifos[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_virtual_board/sending_data_bk" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sending_data_bk[0:7,2559:0]</obj_property>
+      <obj_property name="ObjectShortName">sending_data_bk[0:7,2559:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_virtual_board/sending_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sending_data[0:7,2559:0]</obj_property>
+      <obj_property name="ObjectShortName">sending_data[0:7,2559:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_data[0]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[0,2559:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_data[0,2559:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_data[1]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[1,2559:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_data[1,2559:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_data[2]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[2,2559:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_data[2,2559:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_data[3]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[3,2559:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_data[3,2559:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_data[4]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[4,2559:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_data[4,2559:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_data[5]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[5,2559:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_data[5,2559:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_data[6]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[6,2559:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_data[6,2559:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_virtual_board/sending_data[7]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[7,2559:0]</obj_property>
+         <obj_property name="ObjectShortName">sending_data[7,2559:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_data_rx[255:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_data_rx[255:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus510" type="vbus" db_ref_id="1">
+      <obj_property name="label">fifo_rx_7</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[255]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[255]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[255]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[254]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[254]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[254]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[253]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[253]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[253]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[252]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[252]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[252]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[251]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[251]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[251]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[250]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[250]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[250]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[249]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[249]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[249]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[248]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[248]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[248]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[247]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[247]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[247]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[246]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[246]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[246]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[245]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[245]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[245]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[244]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[244]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[244]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[243]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[243]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[243]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[242]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[242]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[242]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[241]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[241]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[241]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[240]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[240]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[240]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[239]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[239]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[239]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[238]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[238]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[238]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[237]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[237]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[237]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[236]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[236]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[236]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[235]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[235]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[235]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[234]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[234]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[234]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[233]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[233]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[233]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[232]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[232]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[232]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[231]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[231]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[231]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[230]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[230]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[230]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[229]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[229]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[229]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[228]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[228]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[228]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[227]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[227]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[227]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[226]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[226]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[226]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[225]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[225]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[225]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[224]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[224]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[224]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus477" type="vbus" db_ref_id="1">
+      <obj_property name="label">fifo_rx_6</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[223]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[223]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[223]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[222]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[222]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[222]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[221]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[221]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[221]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[220]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[220]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[220]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[219]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[219]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[219]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[218]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[218]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[218]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[217]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[217]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[217]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[216]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[216]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[216]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[215]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[215]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[215]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[214]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[214]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[214]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[213]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[213]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[213]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[212]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[212]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[212]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[211]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[211]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[211]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[210]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[210]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[210]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[209]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[209]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[209]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[208]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[208]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[208]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[207]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[207]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[207]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[206]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[206]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[206]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[205]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[205]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[205]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[204]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[204]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[204]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[203]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[203]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[203]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[202]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[202]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[202]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[201]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[201]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[201]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[200]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[200]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[200]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[199]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[199]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[199]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[198]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[198]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[198]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[197]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[197]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[197]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[196]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[196]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[196]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[195]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[195]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[195]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[194]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[194]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[194]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[193]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[193]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[193]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[192]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[192]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[192]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus444" type="vbus" db_ref_id="1">
+      <obj_property name="label">fifo_rx_5</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[191]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[191]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[191]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[190]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[190]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[190]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[189]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[189]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[189]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[188]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[188]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[188]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[187]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[187]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[187]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[186]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[186]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[186]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[185]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[185]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[185]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[184]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[184]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[184]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[183]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[183]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[183]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[182]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[182]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[182]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[181]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[181]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[181]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[180]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[180]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[180]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[179]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[179]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[179]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[178]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[178]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[178]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[177]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[177]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[177]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[176]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[176]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[176]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[175]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[175]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[175]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[174]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[174]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[174]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[173]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[173]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[173]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[172]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[172]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[172]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[171]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[171]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[171]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[170]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[170]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[170]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[169]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[169]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[169]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[168]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[168]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[168]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[167]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[167]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[167]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[166]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[166]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[166]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[165]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[165]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[165]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[164]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[164]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[164]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[163]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[163]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[163]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[162]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[162]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[162]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[161]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[161]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[161]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[160]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[160]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[160]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus411" type="vbus" db_ref_id="1">
+      <obj_property name="label">fifo_rx_4</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[159]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[159]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[159]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[158]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[158]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[158]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[157]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[157]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[157]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[156]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[156]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[156]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[155]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[155]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[155]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[154]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[154]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[154]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[153]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[153]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[153]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[152]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[152]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[152]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[151]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[151]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[151]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[150]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[150]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[150]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[149]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[149]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[149]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[148]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[148]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[148]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[147]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[147]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[147]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[146]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[146]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[146]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[145]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[145]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[145]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[144]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[144]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[144]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[143]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[143]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[143]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[142]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[142]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[142]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[141]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[141]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[141]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[140]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[140]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[140]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[139]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[139]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[139]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[138]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[138]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[138]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[137]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[137]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[137]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[136]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[136]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[136]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[135]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[135]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[135]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[134]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[134]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[134]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[133]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[133]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[133]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[132]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[132]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[132]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[131]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[131]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[131]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[130]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[130]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[130]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[129]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[129]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[129]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[128]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[128]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[128]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus378" type="vbus" db_ref_id="1">
+      <obj_property name="label">fifo_rx_3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[127]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[127]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[127]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[126]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[126]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[126]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[125]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[125]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[125]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[124]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[124]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[124]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[123]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[123]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[123]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[122]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[122]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[122]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[121]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[121]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[121]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[120]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[120]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[120]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[119]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[119]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[119]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[118]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[118]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[118]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[117]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[117]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[117]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[116]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[116]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[116]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[115]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[115]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[115]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[114]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[114]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[114]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[113]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[113]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[113]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[112]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[112]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[112]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[111]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[111]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[111]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[110]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[110]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[110]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[109]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[109]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[109]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[108]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[108]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[108]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[107]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[107]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[107]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[106]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[106]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[106]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[105]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[105]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[105]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[104]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[104]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[104]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[103]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[103]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[103]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[102]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[102]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[102]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[101]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[101]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[101]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[100]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[100]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[100]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[99]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[99]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[99]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[98]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[98]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[98]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[97]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[97]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[97]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[96]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[96]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[96]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus345" type="vbus" db_ref_id="1">
+      <obj_property name="label">fifo_rx_2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[95]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[95]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[95]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[94]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[94]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[94]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[93]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[93]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[93]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[92]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[92]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[92]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[91]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[91]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[91]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[90]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[90]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[90]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[89]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[89]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[89]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[88]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[88]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[88]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[87]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[87]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[87]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[86]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[86]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[86]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[85]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[85]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[85]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[84]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[84]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[84]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[83]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[83]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[83]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[82]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[82]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[82]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[81]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[81]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[81]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[80]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[80]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[80]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[79]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[79]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[79]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[78]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[78]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[78]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[77]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[77]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[77]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[76]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[76]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[76]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[75]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[75]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[75]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[74]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[74]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[74]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[73]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[73]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[73]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[72]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[72]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[72]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[71]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[71]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[71]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[70]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[70]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[70]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[69]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[69]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[69]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[68]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[68]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[68]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[67]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[67]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[67]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[66]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[66]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[66]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[65]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[65]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[65]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[64]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[64]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[64]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus312" type="vbus" db_ref_id="1">
+      <obj_property name="label">fifo_rx_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[63]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[63]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[63]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[62]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[62]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[62]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[61]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[61]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[61]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[60]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[60]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[60]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[59]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[59]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[59]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[58]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[58]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[58]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[57]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[57]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[57]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[56]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[56]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[56]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[55]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[55]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[55]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[54]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[54]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[54]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[53]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[53]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[53]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[52]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[52]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[52]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[51]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[51]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[51]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[50]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[50]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[50]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[49]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[49]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[49]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[48]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[48]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[48]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[47]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[47]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[47]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[46]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[46]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[46]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[45]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[45]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[45]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[44]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[44]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[44]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[43]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[43]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[43]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[42]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[42]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[42]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[41]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[41]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[41]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[40]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[40]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[40]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[39]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[39]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[39]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[38]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[38]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[38]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[37]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[37]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[37]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[36]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[36]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[36]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[35]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[35]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[35]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[34]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[34]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[34]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[33]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[33]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[33]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[32]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[32]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[32]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus279" type="vbus" db_ref_id="1">
+      <obj_property name="label">fifo_rx_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[31]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[30]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[29]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[28]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[27]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[26]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[26]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[25]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[25]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[25]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[24]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[24]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[24]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[23]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[23]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[23]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[22]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[22]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[22]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[21]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[21]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[21]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[20]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[20]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[20]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[19]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[19]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[19]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[18]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[17]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[16]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[15]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[14]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[13]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[12]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[11]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[10]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[9]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[8]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[7]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[6]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[5]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[4]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[3]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[2]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[1]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_top/u_test_board/u_top/fifo_data_rx[0]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_data_rx[0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/fifo_wren_rx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_wren_rx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_wren_rx[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_virtual_board/k" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">k[31:0]</obj_property>
+      <obj_property name="ObjectShortName">k[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_virtual_board/fifo_data_rx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_data_rx[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_data_rx[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_virtual_board/fifo_wren_rx" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_wren_rx</obj_property>
+      <obj_property name="ObjectShortName">fifo_wren_rx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/rxp_rx" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxp_rx</obj_property>
+      <obj_property name="ObjectShortName">rxp_rx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/rxn_rx" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxn_rx</obj_property>
+      <obj_property name="ObjectShortName">rxn_rx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/txp_rx" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txp_rx</obj_property>
+      <obj_property name="ObjectShortName">txp_rx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/txn_rx" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txn_rx</obj_property>
+      <obj_property name="ObjectShortName">txn_rx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/rxp_tx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rxp_tx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rxp_tx[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/rxn_tx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rxn_tx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rxn_tx[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/txp_tx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">txp_tx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">txp_tx[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/txn_tx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">txn_tx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">txn_tx[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/bclk_dv" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bclk_dv</obj_property>
+      <obj_property name="ObjectShortName">bclk_dv</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/bclk_lock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bclk_lock</obj_property>
+      <obj_property name="ObjectShortName">bclk_lock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/bclk_2x" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bclk_2x</obj_property>
+      <obj_property name="ObjectShortName">bclk_2x</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/bclk_in" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bclk_in</obj_property>
+      <obj_property name="ObjectShortName">bclk_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/rst_dcm" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst_dcm</obj_property>
+      <obj_property name="ObjectShortName">rst_dcm</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/ref_clk" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ref_clk[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ref_clk[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_tx/u_tx_aurora_wrapper/\EVEN_SINGLE_MGT.u_aurora /HARD_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HARD_ERROR</obj_property>
+      <obj_property name="ObjectShortName">HARD_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_tx/u_tx_aurora_wrapper/\EVEN_SINGLE_MGT.u_aurora /SOFT_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SOFT_ERROR</obj_property>
+      <obj_property name="ObjectShortName">SOFT_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[0].EVEN_MGT.u_aurora /HARD_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HARD_ERROR</obj_property>
+      <obj_property name="ObjectShortName">HARD_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[0].EVEN_MGT.u_aurora /SOFT_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SOFT_ERROR</obj_property>
+      <obj_property name="ObjectShortName">SOFT_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[1].ODD_MGT.u_aurora /HARD_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HARD_ERROR</obj_property>
+      <obj_property name="ObjectShortName">HARD_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[1].ODD_MGT.u_aurora /SOFT_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SOFT_ERROR</obj_property>
+      <obj_property name="ObjectShortName">SOFT_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[2].ODD_MGT.u_aurora /HARD_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HARD_ERROR</obj_property>
+      <obj_property name="ObjectShortName">HARD_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[2].ODD_MGT.u_aurora /SOFT_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SOFT_ERROR</obj_property>
+      <obj_property name="ObjectShortName">SOFT_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[3].EVEN_MGT.u_aurora /HARD_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HARD_ERROR</obj_property>
+      <obj_property name="ObjectShortName">HARD_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[3].EVEN_MGT.u_aurora /SOFT_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SOFT_ERROR</obj_property>
+      <obj_property name="ObjectShortName">SOFT_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[4].ODD_MGT.u_aurora /HARD_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HARD_ERROR</obj_property>
+      <obj_property name="ObjectShortName">HARD_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[4].ODD_MGT.u_aurora /SOFT_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SOFT_ERROR</obj_property>
+      <obj_property name="ObjectShortName">SOFT_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[5].EVEN_MGT.u_aurora /HARD_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HARD_ERROR</obj_property>
+      <obj_property name="ObjectShortName">HARD_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[5].EVEN_MGT.u_aurora /SOFT_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SOFT_ERROR</obj_property>
+      <obj_property name="ObjectShortName">SOFT_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[6].ODD_MGT.u_aurora /HARD_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HARD_ERROR</obj_property>
+      <obj_property name="ObjectShortName">HARD_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[6].ODD_MGT.u_aurora /SOFT_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SOFT_ERROR</obj_property>
+      <obj_property name="ObjectShortName">SOFT_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[7].EVEN_MGT.u_aurora /HARD_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HARD_ERROR</obj_property>
+      <obj_property name="ObjectShortName">HARD_ERROR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_top/u_test_board/u_top/u_rx/u_rx_aurora_wrapper/\RX_MGT_ARRAY[7].EVEN_MGT.u_aurora /SOFT_ERROR" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SOFT_ERROR</obj_property>
+      <obj_property name="ObjectShortName">SOFT_ERROR</obj_property>
+   </wvobject>
+</wave_config>

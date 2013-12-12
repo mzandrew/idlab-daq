@@ -1,0 +1,181 @@
+#####################################################################################
+###################################### TIMING #######################################
+#####################################################################################
+
+#USER CLOCK
+
+NET "user_clk(0)" TNM_NET = "RX_CLK0";
+NET "user_clk(1)" TNM_NET = "RX_CLK1";
+NET "user_clk(2)" TNM_NET = "RX_CLK2";
+NET "user_clk(3)" TNM_NET = "RX_CLK3";
+NET "user_clk(4)" TNM_NET = "RX_CLK4";
+NET "user_clk(5)" TNM_NET = "RX_CLK5";
+NET "user_clk(6)" TNM_NET = "RX_CLK6";
+NET "user_clk(7)" TNM_NET = "RX_CLK7";
+NET "user_clk_tx" TNM_NET = "TX_CLK";
+
+TIMESPEC TS_USER_RX_CLK0 = PERIOD "RX_CLK0" 13.333 ns;
+TIMESPEC TS_USER_RX_CLK1 = PERIOD "RX_CLK1" 13.333 ns;
+TIMESPEC TS_USER_RX_CLK2 = PERIOD "RX_CLK2" 13.333 ns;
+TIMESPEC TS_USER_RX_CLK3 = PERIOD "RX_CLK3" 13.333 ns;
+TIMESPEC TS_USER_RX_CLK4 = PERIOD "RX_CLK4" 13.333 ns;
+TIMESPEC TS_USER_RX_CLK5 = PERIOD "RX_CLK5" 13.333 ns;
+TIMESPEC TS_USER_RX_CLK6 = PERIOD "RX_CLK6" 13.333 ns;
+TIMESPEC TS_USER_RX_CLK7 = PERIOD "RX_CLK7" 13.333 ns;
+TIMESPEC TS_USER_TX_CLK = PERIOD "TX_CLK" 13.333 ns;
+
+#REF CLOCK
+
+NET "ref_clk(1)" TNM_NET = "REF_CLK1";
+NET "ref_clk(2)" TNM_NET = "REF_CLK2";
+
+
+TIMESPEC TS_REF_CLK1 = PERIOD "REF_CLK1" 3.333 ns;
+TIMESPEC TS_REF_CLK2 = PERIOD "REF_CLK2" 3.333 ns;
+
+#BCLK
+
+NET "bclk" TNM_NET = "BCLK";
+TIMESPEC TS_BCLK = PERIOD "BCLK" 6.667 ns;
+
+#BCLK_2x
+
+NET "bclk_2x" TNM_NET = "BCLK_2x";
+TIMESPEC TS_BCLK_2X = PERIOD "BCLK_2x" 3.333 ns;
+
+#BCLK_DV
+
+NET "bclk_dv" TNM_NET = "BCLK_DV";
+TIMESPEC TS_BCLK_DV = PERIOD "BCLK_DV" 13.333 ns;
+
+#RST SIGNALS
+
+NET "rst_fifos" TIG;
+NET "rst_sorter" TIG;
+NET "rst_trigger" TIG;
+NET "rst_aurora" TIG;
+NET "rst_dcm" TIG;
+NET "bclk_lock" TIG;
+
+#####################################################################################
+###################################### POS    #######################################
+#####################################################################################
+
+NET "bclk" LOC = A12;
+
+#at 0
+NET "mod0_rx(0)" LOC="P24";  
+NET "mod1_rx(0)" LOC = "T22";
+NET "mod2_rx(0)" LOC = "AB17";
+NET "rx_loss_rx(0)" LOC = "J15";
+NET "tx_fault_rx(0)" LOC = "V16";
+NET "tx_dis_rx(0)" LOC = "M22";
+
+INST "u_rx/u_rx_aurora_wrapper/RX_MGT_ARRAY[0].EVEN_MGT.u_aurora/aurora_mgt_wrapper_i/MGT0" LOC=GT11_X0Y4;
+
+#at 1
+NET "mod0_rx(1)" LOC="R23";
+NET "mod1_rx(1)" LOC = "T17";
+NET "mod2_rx(1)" LOC = "AB16";
+NET "rx_loss_rx(1)" LOC = "J14";
+NET "tx_fault_rx(1)" LOC = "W16";
+NET "tx_dis_rx(1)" LOC = "N22";
+
+INST "u_rx/u_rx_aurora_wrapper/RX_MGT_ARRAY[1].ODD_MGT.u_aurora/aurora_mgt_wrapper_i/MGT0" LOC=GT11_X0Y5;
+
+#at 2
+NET "mod0_rx(2)" LOC="AB15";
+NET "mod1_rx(2)" LOC = "U17";
+NET "mod2_rx(2)" LOC = "V23";
+NET "rx_loss_rx(2)" LOC = "K13";
+NET "tx_fault_rx(2)" LOC = "Y12";
+NET "tx_dis_rx(2)" LOC = "B16";
+
+INST "u_rx/u_rx_aurora_wrapper/RX_MGT_ARRAY[2].ODD_MGT.u_aurora/aurora_mgt_wrapper_i/MGT0" LOC=GT11_X1Y5;
+
+#at 3
+NET "mod0_rx(3)" LOC="AA15";
+NET "mod1_rx(3)" LOC = "U24";
+NET "mod2_rx(3)" LOC = "V22";
+NET "rx_loss_rx(3)" LOC = "J13";
+NET "tx_fault_rx(3)" LOC = "Y11";
+NET "tx_dis_rx(3)" LOC = "C16";
+
+INST "u_rx/u_rx_aurora_wrapper/RX_MGT_ARRAY[3].EVEN_MGT.u_aurora/aurora_mgt_wrapper_i/MGT0" LOC=GT11_X1Y4;
+
+#at 4
+NET "mod0_rx(4)" LOC="R21";
+NET "mod1_rx(4)" LOC = "T24";
+NET "mod2_rx(4)" LOC = "U19";
+NET "rx_loss_rx(4)" LOC = "H14";
+NET "tx_fault_rx(4)" LOC = "U16";
+NET "tx_dis_rx(4)" LOC = "N24";
+
+INST "u_rx/u_rx_aurora_wrapper/RX_MGT_ARRAY[4].ODD_MGT.u_aurora/aurora_mgt_wrapper_i/MGT0" LOC=GT11_X1Y3;
+
+#at 5
+NET "mod0_rx(5)" LOC="R20";
+NET "mod1_rx(5)" LOC = "Y16";
+NET "mod2_rx(5)" LOC = "T18";
+NET "rx_loss_rx(5)" LOC = "G14";
+NET "tx_fault_rx(5)" LOC = "U15";
+NET "tx_dis_rx(5)" LOC = "N23";
+
+INST "u_rx/u_rx_aurora_wrapper/RX_MGT_ARRAY[5].EVEN_MGT.u_aurora/aurora_mgt_wrapper_i/MGT0" LOC=GT11_X1Y2;
+
+#at 6
+NET "mod0_rx(6)" LOC="AD16";
+NET "mod1_rx(6)" LOC = "Y15";
+NET "mod2_rx(6)" LOC = "W23";
+NET "rx_loss_rx(6)" LOC = "H13";
+NET "tx_fault_rx(6)" LOC = "W11";
+NET "tx_dis_rx(6)" LOC = "A15";
+
+INST "u_rx/u_rx_aurora_wrapper/RX_MGT_ARRAY[6].ODD_MGT.u_aurora/aurora_mgt_wrapper_i/MGT0" LOC=GT11_X1Y1;
+
+#at 7
+NET "mod0_rx(7)" LOC="AC16";
+NET "mod1_rx(7)" LOC = "W24";
+NET "mod2_rx(7)" LOC = "Y23";
+NET "rx_loss_rx(7)" LOC = "H12";
+NET "tx_fault_rx(7)" LOC = "V11";
+NET "tx_dis_rx(7)" LOC = "B15";
+
+INST "u_rx/u_rx_aurora_wrapper/RX_MGT_ARRAY[7].EVEN_MGT.u_aurora/aurora_mgt_wrapper_i/MGT0" LOC=GT11_X1Y0;
+
+#at 8
+NET "mod0_tx" LOC = "T23";
+NET "mod1_tx" LOC = "V24";
+NET "mod2_tx" LOC = "AA17";
+NET "rx_loss_tx" LOC = "J16";
+NET "tx_fault_tx" LOC = "W15";
+NET "tx_dis_tx" LOC = "Y17";
+
+INST "u_tx/u_tx_aurora_wrapper/EVEN_SINGLE_MGT.u_aurora/aurora_mgt_wrapper_i/MGT0" LOC=GT11_X0Y0;
+INST "u_tx/u_tx_aurora_wrapper/EVEN_SINGLE_MGT.u_aurora_unused/MGT0" LOC=GT11_X0Y1;
+
+INST "MGT_CLK_ARRAY[0].u_GT11CLK_MGT" LOC = GT11CLK_X0Y2;
+NET "mgtclk_p_in(0)" LOC = F26;
+NET "mgtclk_n_in(0)" LOC = G26;
+NET "mgtclk_p_out(0)" LOC = M20;
+NET "mgtclk_n_out(0)" LOC = M19;
+
+INST "MGT_CLK_ARRAY[1].u_GT11CLK_MGT" LOC = GT11CLK_X0Y0;
+NET "mgtclk_p_in(1)" LOC = AF21;
+NET "mgtclk_n_in(1)" LOC = AF20;
+NET "mgtclk_p_out(1)" LOC = R17;
+NET "mgtclk_n_out(1)" LOC = R16;
+
+INST "MGT_CLK_ARRAY[2].u_GT11CLK_MGT" LOC = GT11CLK_X1Y0;
+NET "mgtclk_p_in(2)" LOC = AF10;
+NET "mgtclk_n_in(2)" LOC = AF11;
+NET "mgtclk_p_out(2)" LOC = M10;
+NET "mgtclk_n_out(2)" LOC = M9;
+
+INST "MGT_CLK_ARRAY[3].u_GT11CLK_MGT" LOC = GT11CLK_X1Y2;
+NET "mgtclk_p_in(3)" LOC = K1;
+NET "mgtclk_n_in(3)" LOC = L1;
+NET "mgtclk_p_out(3)" LOC = P6;
+NET "mgtclk_n_out(3)" LOC = N6;
+
+

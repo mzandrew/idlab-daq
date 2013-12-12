@@ -1,0 +1,1271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="test_sorter" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="45" />
+   <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_data_i[255:0]</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_data_i[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus497" type="vbus" db_ref_id="1">
+      <obj_property name="label">rdfifo_7</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[255]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[255]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[255]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[254]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[254]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[254]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[253]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[253]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[253]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[252]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[252]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[252]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[251]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[251]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[251]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[250]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[250]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[250]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[249]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[249]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[249]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[248]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[248]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[248]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[247]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[247]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[247]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[246]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[246]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[246]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[245]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[245]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[245]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[244]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[244]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[244]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[243]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[243]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[243]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[242]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[242]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[242]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[241]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[241]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[241]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[240]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[240]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[240]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[239]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[239]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[239]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[238]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[238]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[238]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[237]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[237]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[237]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[236]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[236]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[236]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[235]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[235]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[235]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[234]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[234]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[234]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[233]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[233]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[233]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[232]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[232]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[232]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[231]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[231]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[231]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[230]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[230]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[230]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[229]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[229]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[229]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[228]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[228]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[228]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[227]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[227]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[227]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[226]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[226]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[226]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[225]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[225]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[225]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[224]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[224]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[224]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus464" type="vbus" db_ref_id="1">
+      <obj_property name="label">rdfifo_6</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[223]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[223]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[223]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[222]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[222]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[222]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[221]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[221]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[221]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[220]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[220]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[220]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[219]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[219]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[219]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[218]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[218]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[218]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[217]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[217]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[217]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[216]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[216]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[216]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[215]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[215]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[215]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[214]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[214]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[214]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[213]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[213]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[213]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[212]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[212]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[212]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[211]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[211]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[211]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[210]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[210]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[210]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[209]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[209]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[209]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[208]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[208]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[208]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[207]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[207]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[207]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[206]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[206]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[206]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[205]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[205]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[205]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[204]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[204]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[204]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[203]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[203]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[203]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[202]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[202]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[202]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[201]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[201]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[201]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[200]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[200]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[200]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[199]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[199]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[199]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[198]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[198]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[198]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[197]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[197]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[197]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[196]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[196]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[196]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[195]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[195]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[195]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[194]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[194]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[194]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[193]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[193]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[193]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[192]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[192]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[192]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus431" type="vbus" db_ref_id="1">
+      <obj_property name="label">rdfifo_5</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[191]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[191]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[191]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[190]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[190]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[190]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[189]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[189]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[189]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[188]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[188]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[188]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[187]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[187]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[187]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[186]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[186]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[186]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[185]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[185]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[185]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[184]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[184]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[184]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[183]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[183]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[183]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[182]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[182]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[182]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[181]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[181]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[181]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[180]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[180]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[180]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[179]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[179]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[179]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[178]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[178]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[178]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[177]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[177]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[177]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[176]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[176]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[176]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[175]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[175]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[175]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[174]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[174]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[174]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[173]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[173]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[173]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[172]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[172]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[172]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[171]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[171]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[171]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[170]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[170]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[170]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[169]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[169]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[169]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[168]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[168]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[168]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[167]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[167]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[167]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[166]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[166]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[166]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[165]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[165]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[165]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[164]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[164]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[164]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[163]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[163]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[163]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[162]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[162]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[162]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[161]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[161]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[161]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[160]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[160]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[160]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus398" type="vbus" db_ref_id="1">
+      <obj_property name="label">rdfifo_4</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[159]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[159]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[159]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[158]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[158]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[158]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[157]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[157]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[157]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[156]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[156]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[156]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[155]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[155]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[155]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[154]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[154]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[154]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[153]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[153]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[153]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[152]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[152]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[152]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[151]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[151]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[151]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[150]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[150]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[150]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[149]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[149]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[149]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[148]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[148]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[148]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[147]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[147]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[147]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[146]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[146]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[146]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[145]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[145]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[145]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[144]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[144]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[144]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[143]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[143]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[143]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[142]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[142]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[142]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[141]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[141]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[141]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[140]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[140]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[140]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[139]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[139]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[139]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[138]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[138]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[138]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[137]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[137]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[137]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[136]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[136]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[136]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[135]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[135]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[135]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[134]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[134]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[134]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[133]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[133]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[133]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[132]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[132]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[132]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[131]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[131]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[131]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[130]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[130]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[130]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[129]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[129]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[129]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[128]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[128]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[128]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus365" type="vbus" db_ref_id="1">
+      <obj_property name="label">rdfifo_3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[127]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[127]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[127]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[126]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[126]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[126]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[125]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[125]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[125]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[124]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[124]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[124]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[123]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[123]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[123]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[122]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[122]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[122]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[121]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[121]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[121]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[120]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[120]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[120]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[119]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[119]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[119]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[118]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[118]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[118]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[117]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[117]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[117]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[116]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[116]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[116]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[115]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[115]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[115]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[114]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[114]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[114]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[113]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[113]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[113]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[112]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[112]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[112]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[111]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[111]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[111]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[110]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[110]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[110]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[109]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[109]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[109]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[108]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[108]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[108]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[107]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[107]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[107]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[106]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[106]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[106]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[105]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[105]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[105]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[104]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[104]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[104]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[103]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[103]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[103]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[102]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[102]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[102]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[101]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[101]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[101]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[100]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[100]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[100]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[99]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[99]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[99]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[98]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[98]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[98]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[97]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[97]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[97]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[96]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[96]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[96]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus332" type="vbus" db_ref_id="1">
+      <obj_property name="label">rdfifo_2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[95]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[95]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[95]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[94]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[94]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[94]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[93]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[93]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[93]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[92]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[92]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[92]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[91]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[91]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[91]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[90]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[90]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[90]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[89]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[89]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[89]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[88]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[88]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[88]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[87]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[87]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[87]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[86]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[86]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[86]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[85]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[85]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[85]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[84]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[84]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[84]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[83]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[83]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[83]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[82]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[82]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[82]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[81]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[81]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[81]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[80]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[80]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[80]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[79]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[79]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[79]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[78]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[78]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[78]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[77]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[77]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[77]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[76]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[76]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[76]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[75]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[75]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[75]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[74]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[74]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[74]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[73]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[73]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[73]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[72]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[72]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[72]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[71]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[71]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[71]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[70]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[70]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[70]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[69]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[69]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[69]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[68]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[68]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[68]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[67]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[67]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[67]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[66]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[66]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[66]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[65]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[65]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[65]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[64]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[64]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[64]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus299" type="vbus" db_ref_id="1">
+      <obj_property name="label">rdfifo_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[63]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[63]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[63]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[62]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[62]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[62]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[61]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[61]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[61]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[60]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[60]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[60]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[59]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[59]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[59]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[58]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[58]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[58]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[57]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[57]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[57]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[56]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[56]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[56]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[55]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[55]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[55]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[54]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[54]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[54]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[53]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[53]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[53]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[52]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[52]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[52]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[51]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[51]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[51]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[50]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[50]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[50]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[49]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[49]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[49]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[48]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[48]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[48]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[47]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[47]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[47]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[46]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[46]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[46]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[45]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[45]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[45]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[44]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[44]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[44]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[43]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[43]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[43]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[42]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[42]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[42]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[41]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[41]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[41]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[40]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[40]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[40]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[39]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[39]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[39]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[38]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[38]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[38]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[37]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[37]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[37]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[36]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[36]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[36]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[35]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[35]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[35]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[34]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[34]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[34]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[33]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[33]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[33]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[32]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[32]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[32]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus266" type="vbus" db_ref_id="1">
+      <obj_property name="label">rdfifo_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[31]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[30]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[29]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[28]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[27]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[26]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[26]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[25]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[25]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[25]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[24]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[24]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[24]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[23]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[23]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[23]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[22]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[22]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[22]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[21]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[21]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[21]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[20]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[20]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[20]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[19]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[19]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[19]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[18]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[17]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[16]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[15]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[14]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[13]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[12]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[11]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[10]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[9]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[8]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[7]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[6]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[5]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[4]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[3]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[2]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[1]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/u_sorter/rdfifo_data_i[0]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">rdfifo_data_i[0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/rdfifo_empty_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_empty_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_empty_i[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/rdfifo_rden_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_rden_o[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_rden_o[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/wrfifo_prog_full_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_prog_full_i</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_prog_full_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/empty_hold" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">empty_hold[7:0]</obj_property>
+      <obj_property name="ObjectShortName">empty_hold[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/wrfifo_data_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_data_o[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/wrfifo_wren_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_wren_o</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_wren_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/read_result" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">read_result</obj_property>
+      <obj_property name="ObjectShortName">read_result</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/rdfifo_valid" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_valid[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_valid[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/rdfifo_rden" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_rden[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_rden[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/rdfifo_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rdfifo_data[255:0]</obj_property>
+      <obj_property name="ObjectShortName">rdfifo_data[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/fifo_slice" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">fifo_slice[0:7,511:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_slice[0:7,511:0]</obj_property>
+      <wvobject fp_name="/test_sorter/fifo_slice[0]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[0,511:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_slice[0,511:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/fifo_slice[1]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[1,511:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_slice[1,511:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/fifo_slice[2]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[2,511:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_slice[2,511:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/fifo_slice[3]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[3,511:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_slice[3,511:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/fifo_slice[4]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[4,511:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_slice[4,511:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/fifo_slice[5]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[5,511:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_slice[5,511:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/fifo_slice[6]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[6,511:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_slice[6,511:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_sorter/fifo_slice[7]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[7,511:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_slice[7,511:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/wrfifo_wren" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_wren</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_wren</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/wrfifo_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_data[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/wrfifo_data_delay" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_data_delay[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_data_delay[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/wrfifo_wren_delay" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_wren_delay</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_wren_delay</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/wrfifo_wren_in" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrfifo_wren_in</obj_property>
+      <obj_property name="ObjectShortName">wrfifo_wren_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[0].comp_array_width[1].u_two2one_unit /a" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">a[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[0].comp_array_width[1].u_two2one_unit /a_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">a_valid</obj_property>
+      <obj_property name="ObjectShortName">a_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[0].comp_array_width[1].u_two2one_unit /b" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">b[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[0].comp_array_width[1].u_two2one_unit /b_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">b_valid</obj_property>
+      <obj_property name="ObjectShortName">b_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[0].comp_array_width[1].u_two2one_unit /o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[0].comp_array_width[1].u_two2one_unit /o_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_valid</obj_property>
+      <obj_property name="ObjectShortName">o_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[1].comp_array_width[0].u_two2one_unit /a" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">a[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[1].comp_array_width[0].u_two2one_unit /a_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">a_valid</obj_property>
+      <obj_property name="ObjectShortName">a_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[1].comp_array_width[0].u_two2one_unit /b" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">b[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[1].comp_array_width[0].u_two2one_unit /b_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">b_valid</obj_property>
+      <obj_property name="ObjectShortName">b_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[1].comp_array_width[0].u_two2one_unit /o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[1].comp_array_width[0].u_two2one_unit /o_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_valid</obj_property>
+      <obj_property name="ObjectShortName">o_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[2].comp_array_width[0].u_two2one_unit /a" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">a[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[2].comp_array_width[0].u_two2one_unit /a_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">a_valid</obj_property>
+      <obj_property name="ObjectShortName">a_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[2].comp_array_width[0].u_two2one_unit /b" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">b[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[2].comp_array_width[0].u_two2one_unit /b_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">b_valid</obj_property>
+      <obj_property name="ObjectShortName">b_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[2].comp_array_width[0].u_two2one_unit /o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sorter/u_sorter/u_pipeline_sorting_core/\comp_array_depth[2].comp_array_width[0].u_two2one_unit /o_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_valid</obj_property>
+      <obj_property name="ObjectShortName">o_valid</obj_property>
+   </wvobject>
+</wave_config>
