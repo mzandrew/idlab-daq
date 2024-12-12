@@ -1,0 +1,17 @@
+I've made some fixes to the Makefile and libxxusb.c, both attached, for the Linux 
+version of your xxusb product.     They are: 
+
+1. Add -fPIC compiler option to make shared library happy
+
+2. Copy header to /usr/include
+
+3. Detect if 64 bits, and if so copy .so file to /usr/lib64
+
+4. Comment out one unused variable
+
+Would it be possible to include these changes in the tar ball on your web pages? 
+I seem to be making these changes over and over on different systems! 
+Initial download was from XX-USB_CD5_3 tar file, and xxusb_3.22 Linux version
+
+Also, I might suggest reducing the number of Linux versions, the tar ball is getting  
+pretty big! 
