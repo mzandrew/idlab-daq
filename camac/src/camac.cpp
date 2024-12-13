@@ -28,7 +28,7 @@ int setup_camac_crate_controller(void) {
 	struct usb_device *dev;
 	xxusb_devices_find(devices); //Find XX_USB devices and open the first one found
 	dev = devices[0].usbdev;
-	udev = xxusb_device_open(dev); 
+	udev = xxusb_device_open(dev);
 	if(!udev) {
 		printf ("\n\nFailedto Open CC_USB \n\n");
 		return 0;
@@ -59,6 +59,7 @@ int get_new_value_from_camac_module(int slot, int channel, int number_of_retries
 	if (number_of_retries_remaining<1) {
 		return 0;
 	}
+	static int last_CamD = 0;
 	int CamN, CamA, CamF;
 	CamN = slot;
 	CamA = channel;
@@ -67,11 +68,18 @@ int get_new_value_from_camac_module(int slot, int channel, int number_of_retries
 	int return_value;
 	if (CamF < 8) {
 		return_value = CAMAC_read(udev, CamN, CamA, CamF, &CamD, &CamQ, &CamX);
-		if (return_value < 0 || CamQ==0) {
-			//printf("Read Operation Failed\n");
+		if (return_value < 0) {
+			printf("Read Operation Failed\n");
 			return_value = get_new_value_from_camac_module(slot, channel, number_of_retries_remaining-1);
 		} else {
-			printf("\nX = %i, Q = %i, D = %lx", CamX, CamQ, CamD);
+			//if (CamQ==0) {
+			if (last_CamD==CamD) {
+				//printf("\nX = %i, Q = %i, D = %lx", CamX, CamQ, CamD);
+				return_value = get_new_value_from_camac_module(slot, channel, number_of_retries_remaining-1);
+			} else {
+				printf("\nX = %i, Q = %i, D = %lx", CamX, CamQ, CamD);
+				last_CamD = CamD;
+			}
 		}
 	}
 	return CamD;
@@ -162,9 +170,9 @@ int main (int argc,  char *argv[]) {
 	int channel = 3;
 	//write_value_to_camac_module(slot, channel, value);
 	//set_something_on_camac_module(slot, channel);
-	take_N_events_and_write_them_to_file(slot, channel, 100, "datafile");
+	take_N_events_and_write_them_to_file(slot, channel, 1000, "datafile");
 	xxusb_device_close(udev); // Close the Device
-	printf("\n\n\n");
+	printf("\n");
 	return 0;
 }
 
