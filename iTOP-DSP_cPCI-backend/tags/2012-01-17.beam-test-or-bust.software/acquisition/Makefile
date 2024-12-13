@@ -5,8 +5,10 @@ FINAL_OBJECT_FILES0 = bin/prerun bin/pedestal_run bin/laser bin/beamtest
 FINAL_OBJECT_FILES1 = bin/turn_sampling_rate_feedback_off bin/turn_up_Vbias bin/turn_down_Vbias bin/request_a_global_reset bin/tell_status_of_signals bin/camac_only bin/readout_temperature_of_all_connected_modules bin/turn_all_DACs_to_nominal bin/turn_feedback_on bin/turn_feedback_off bin/turn_off_all_DACs bin/reset_trigger_flip_flop bin/readout_all_pending_data bin/set_look_back
 
 # needed to link all:
+SPECIAL_INTERMEDIATE_OBJECT_FILES1 = work/status_file.o work/acquisition.o work/parse_config_file.o work/command_packet_builder.o work/fiber_readout.o work/read_CAMAC.o
 INTERMEDIATE_OBJECT_FILES1 = work/status_file.o work/acquisition.o work/parse_config_file.o work/stdPCI.o work/pci.o work/command_packet_builder.o work/fiber_readout.o work/read_CAMAC.o
 
+SPECIAL_LINK_OPTIONS = -L$(shell pwd)/contrib -lusb -Wl,-rpath,$(shell pwd)/contrib
 LINK_OPTIONS = -L$(shell pwd)/contrib -laltix -lxx_usb -lusb -Wl,-rpath,$(shell pwd)/contrib
 
 default :
@@ -66,7 +68,7 @@ bin/turn_sampling_rate_feedback_off : work/turn_sampling_rate_feedback_off.o $(I
 
 # camac:
 
-bin/camac_only : work/camac_only.o $(INTERMEDIATE_OBJECT_FILES1) work/read_CAMAC.o ; g++ $^ $(LINK_OPTIONS) -o $@
+bin/camac_only : work/camac_only.o $(SPECIAL_INTERMEDIATE_OBJECT_FILES1) work/read_CAMAC.o ; g++ $^ $(SPECIAL_LINK_OPTIONS) -o $@
 
 # other:
 

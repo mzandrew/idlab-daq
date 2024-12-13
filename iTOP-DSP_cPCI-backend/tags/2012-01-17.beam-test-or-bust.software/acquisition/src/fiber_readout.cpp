@@ -1,4 +1,5 @@
 // 2011-?? mza
+// 2024-12-12 mza
 
 using namespace std;
 #include <iostream>
@@ -365,7 +366,7 @@ void analyze_packet(unsigned long int packet_number, unsigned short int channel)
 //	printf("P");
 }
 
-struct timeval start, end, watchdog;
+struct timeval start, endend, watchdog;
 
 void start_timer(void) {
 	gettimeofday(&start, NULL);	
@@ -376,15 +377,15 @@ int stop_timer(struct timeval* begin) {
 		begin = &start;
 	}
 	int sec, usec;
-	gettimeofday(&end, NULL);
-	sec = end.tv_sec - begin->tv_sec;
-	usec = end.tv_usec - begin->tv_usec;
+	gettimeofday(&endend, NULL);
+	sec = endend.tv_sec - begin->tv_sec;
+	usec = endend.tv_usec - begin->tv_usec;
 	return sec*1000000+usec;
 }
 
 int stop_timer_in_seconds(void) {
-	gettimeofday(&end, NULL);
-	return end.tv_sec - start.tv_sec;
+	gettimeofday(&endend, NULL);
+	return endend.tv_sec - start.tv_sec;
 }
 
 void enable_sampling_rate_feedback(void) {

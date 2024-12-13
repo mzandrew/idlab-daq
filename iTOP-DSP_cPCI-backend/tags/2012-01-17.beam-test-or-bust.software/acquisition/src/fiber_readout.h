@@ -2,6 +2,7 @@
 #define fiber_readout
 
 #include <string>
+using namespace std;
 
 // defined here so there aren't a bunch of magic fours hanging around in the code:
 #define NUMBER_OF_BYTES_IN_A_WORD (4)
