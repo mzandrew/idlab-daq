@@ -16,8 +16,6 @@
 #include <libxxusb.h>
 #include <stdio.h>
 //#include <time.h>
-//#include <math.h>
-//#include <cstdlib>
 #include <string>
 using namespace std;
 
@@ -55,6 +53,28 @@ void make_lights_dance(void) {
 //void set_camac_parameter(N,A,F) {
 //}
 
+int get_value_from_camac_module(int slot, int channel, int number_of_retries_remaining=5) {
+	if (number_of_retries_remaining<1) {
+		return 0;
+	}
+	int CamN, CamA, CamF;
+	CamN = slot;
+	CamA = channel;
+	CamF = 0;
+	long CamD; int CamQ, CamX;
+	int return_value;
+	if (CamF < 8) {
+		return_value = CAMAC_read(udev, CamN, CamA, CamF, &CamD, &CamQ, &CamX);
+		if (return_value < 0) {
+			//printf("Read Operation Failed\n");
+			return_value = get_value_from_camac_module(slot, channel, number_of_retries_remaining-1);
+		} else {
+			printf("\nX = %i, Q = %i, D = %lx", CamX, CamQ, CamD);
+		}
+	}
+	return CamD;
+}
+
 int get_new_value_from_camac_module(int slot, int channel, int number_of_retries_remaining=5) {
 	if (number_of_retries_remaining<1) {
 		return 0;
@@ -69,7 +89,7 @@ int get_new_value_from_camac_module(int slot, int channel, int number_of_retries
 	if (CamF < 8) {
 		return_value = CAMAC_read(udev, CamN, CamA, CamF, &CamD, &CamQ, &CamX);
 		if (return_value < 0) {
-			printf("Read Operation Failed\n");
+			//printf("Read Operation Failed\n");
 			return_value = get_new_value_from_camac_module(slot, channel, number_of_retries_remaining-1);
 		} else {
 			//if (CamQ==0) {
@@ -128,20 +148,21 @@ int write_value_to_camac_module(int slot, int channel, long value, int number_of
 	return return_value;
 }
 
-int get_value_from_TDC(int channel) {
-	int slot = 23;
-	return get_new_value_from_camac_module(slot, channel);
+int get_value_from_lecroy2228A_TDC(int channel) {
+	int slot = 7;
+	return get_value_from_camac_module(slot, channel);
 }
 
 int get_value_from_lecroy2249_QDC(int channel) {
 	int slot = 20;
-	return get_new_value_from_camac_module(slot, channel);
+	return get_value_from_camac_module(slot, channel);
 }
 
 int take_N_events_and_write_them_to_file(int slot, int channel, int N, string filename) {
 	int return_value[N];
 	for (int i=0; i<N; i++) {
-		return_value[i] = get_new_value_from_camac_module(slot, channel);
+		return_value[i] = get_value_from_camac_module(slot, channel);
+		//return_value[i] = get_new_value_from_camac_module(slot, channel);
 	}
 	char str[256];
 	FILE *f;
@@ -170,6 +191,9 @@ int main (int argc,  char *argv[]) {
 	int channel = 3;
 	//write_value_to_camac_module(slot, channel, value);
 	//set_something_on_camac_module(slot, channel);
+//	int value;
+//	value = get_value_from_lecroy2228A_TDC(channel);
+//	printf("\n%d", value);
 	take_N_events_and_write_them_to_file(slot, channel, 1000, "datafile");
 	xxusb_device_close(udev); // Close the Device
 	printf("\n");
