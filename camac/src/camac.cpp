@@ -5,6 +5,14 @@
 // published by the Free Software Foundation, version 2.
 // last updated 2024-12-13 by mza and Keisuke-san
 
+// notes on camac:
+// CamN is the slot number on the camac crate
+// CamA is the address of the register you're reading or writing (which frequently corresponds to the channel number for simeple modules)
+// CamF is the function you are requesting (read, write, set, etc)
+// CamD is the data returned from simple camac modules
+// CamQ is whether the data returned is new/stale
+// CamX is ???
+
 #include <libxxusb.h>
 #include <stdio.h>
 //#include <time.h>
@@ -47,7 +55,7 @@ void make_lights_dance(void) {
 //void set_camac_parameter(N,A,F) {
 //}
 
-int get_value_from_camac_module(int slot, int channel, int number_of_retries_remaining=5) {
+int get_new_value_from_camac_module(int slot, int channel, int number_of_retries_remaining=5) {
 	if (number_of_retries_remaining<1) {
 		return 0;
 	}
@@ -59,11 +67,11 @@ int get_value_from_camac_module(int slot, int channel, int number_of_retries_rem
 	int return_value;
 	if (CamF < 8) {
 		return_value = CAMAC_read(udev, CamN, CamA, CamF, &CamD, &CamQ, &CamX);
-		if (return_value < 0) {
+		if (return_value < 0 || CamQ==0) {
 			//printf("Read Operation Failed\n");
-			return_value = get_value_from_camac_module(slot, channel, number_of_retries_remaining-1);
+			return_value = get_new_value_from_camac_module(slot, channel, number_of_retries_remaining-1);
 		} else {
-			printf("\nX = %i, Q = %i, D = %lx",CamX, CamQ, CamD);
+			printf("\nX = %i, Q = %i, D = %lx", CamX, CamQ, CamD);
 		}
 	}
 	return CamD;
@@ -85,9 +93,9 @@ int set_something_on_camac_module(int slot, int channel, int number_of_retries_r
 		return_value = CAMAC_read(udev, CamN, CamA, CamF, &CamD, &CamQ, &CamX);
 		if (return_value < 0) {
 			printf("Write Operation Failed\n");
-			return_value = get_value_from_camac_module(slot, channel, number_of_retries_remaining-1);
+			return_value = get_new_value_from_camac_module(slot, channel, number_of_retries_remaining-1);
 		} else {
-			printf("\nX = %i, Q = %i",CamX, CamQ);
+			printf("\nX = %i, Q = %i", CamX, CamQ);
 		}
 	}
 	return return_value;
@@ -114,29 +122,34 @@ int write_value_to_camac_module(int slot, int channel, long value, int number_of
 
 int get_value_from_TDC(int channel) {
 	int slot = 23;
-	return get_value_from_camac_module(slot, channel);
+	return get_new_value_from_camac_module(slot, channel);
 }
 
 int get_value_from_lecroy2249_QDC(int channel) {
 	int slot = 20;
-	return get_value_from_camac_module(slot, channel);
+	return get_new_value_from_camac_module(slot, channel);
 }
 
 int take_N_events_and_write_them_to_file(int slot, int channel, int N, string filename) {
 	int return_value[N];
 	for (int i=0; i<N; i++) {
-		return_value[i] = get_value_from_camac_module(slot, channel);
+		return_value[i] = get_new_value_from_camac_module(slot, channel);
 	}
-	printf("\n\nthe array of values is:\n");
 	char str[256];
+	FILE *f;
+	f = fopen(filename.c_str(), "w");
+	printf("\n\nthe array of values is:\n");
 	for (int i=0; i<N; i++) {
 		if (i==0) {
 			sprintf(str, "%x", return_value[i]); // change to %d here if you want decimal
 		} else {
 			sprintf(str, ",%x", return_value[i]); // change to %d here if you want decimal
 		}
-		printf(str);
+		printf("%s", str);
+		fprintf(f, "%s", str);
 	}
+	fprintf(f, "\n");
+	fclose(f);
 	return 0;
 }
 
